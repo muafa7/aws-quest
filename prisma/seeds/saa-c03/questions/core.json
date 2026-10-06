@@ -1,0 +1,21 @@
+[
+  {
+    "code": "SAA-RDS-001",
+    "concept": "saa-rds-multi-az",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company runs a relational database on Amazon RDS and requires automatic failover if the primary database becomes unavailable. Which solution best meets the requirement?",
+    "options": [
+      { "key": "A", "text": "Create an RDS read replica in the same Availability Zone", "correct": false },
+      { "key": "B", "text": "Enable an RDS Multi-AZ deployment", "correct": true },
+      { "key": "C", "text": "Place Amazon ElastiCache in front of the database", "correct": false },
+      { "key": "D", "text": "Increase the database instance size", "correct": false }
+    ],
+    "tags": ["rds", "multi-az", "high-availability", "failover"],
+    "source": {
+      "title": "Amazon RDS Multi-AZ deployments",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+    }
+  }
+]

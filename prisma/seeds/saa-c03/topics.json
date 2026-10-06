@@ -1,0 +1,6 @@
+[
+  { "slug": "secure-architectures", "name": "Design Secure Architectures", "order": 1, "weight": 0.30 },
+  { "slug": "resilient-architectures", "name": "Design Resilient Architectures", "order": 2, "weight": 0.26 },
+  { "slug": "high-performing-architectures", "name": "Design High-Performing Architectures", "order": 3, "weight": 0.24 },
+  { "slug": "cost-optimized-architectures", "name": "Design Cost-Optimized Architectures", "order": 4, "weight": 0.20 }
+]

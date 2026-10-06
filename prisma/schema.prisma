@@ -1,0 +1,184 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Certification {
+  id                Int               @id @default(autoincrement())
+  code              String            @unique
+  name              String
+  examQuestionCount Int
+  durationMinutes   Int
+  active            Boolean           @default(true)
+  topics            Topic[]
+  practiceSessions  PracticeSession[]
+  mockExams         MockExam[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model Topic {
+  id              Int           @id @default(autoincrement())
+  certificationId Int
+  slug            String
+  name            String
+  order           Int
+  weight          Float?
+  certification   Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  concepts        Concept[]
+
+  @@unique([certificationId, slug])
+  @@index([certificationId, order])
+}
+
+model Concept {
+  id                 Int              @id @default(autoincrement())
+  topicId            Int
+  slug               String           @unique
+  name               String
+  generalExplanation String
+  keyNote            String?
+  referenceUrl       String?
+  order              Int
+  active             Boolean          @default(true)
+  topic              Topic            @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  lesson             Lesson?
+  questions          Question[]
+  progress           ConceptProgress?
+
+  @@index([topicId, order])
+}
+
+model Lesson {
+  id        Int     @id @default(autoincrement())
+  conceptId Int     @unique
+  title     String
+  summary   String
+  keyPoints String
+  order     Int     @default(1)
+  concept   Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+}
+
+model Question {
+  id          Int                @id @default(autoincrement())
+  code        String             @unique
+  conceptId   Int
+  type        String
+  difficulty  String
+  style       String
+  prompt      String
+  active      Boolean            @default(true)
+  sourceTitle String?
+  sourceUrl   String?
+  concept     Concept            @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  options     QuestionOption[]
+  tags        QuestionTag[]
+  attempts    Attempt[]
+  mockItems   MockExamQuestion[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@index([conceptId, active])
+  @@index([difficulty, style])
+}
+
+model QuestionOption {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  key        String
+  text       String
+  isCorrect  Boolean  @default(false)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, key])
+}
+
+model QuestionTag {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  tag        String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, tag])
+  @@index([tag])
+}
+
+model PracticeSession {
+  id              Int           @id @default(autoincrement())
+  certificationId Int
+  startedAt       DateTime      @default(now())
+  endedAt         DateTime?
+  questionCount   Int           @default(0)
+  correctCount    Int           @default(0)
+  certification   Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  attempts        Attempt[]
+}
+
+model Attempt {
+  id                      Int              @id @default(autoincrement())
+  questionId              Int
+  practiceSessionId       Int?
+  mode                    String
+  confidence              String?
+  isCorrect               Boolean
+  questionTextSnapshot    String
+  selectedOptionsSnapshot String
+  correctOptionsSnapshot  String
+  answeredAt              DateTime         @default(now())
+  question                Question         @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  practiceSession         PracticeSession? @relation(fields: [practiceSessionId], references: [id], onDelete: SetNull)
+
+  @@index([questionId, answeredAt])
+  @@index([practiceSessionId])
+}
+
+model ConceptProgress {
+  id                    Int      @id @default(autoincrement())
+  conceptId             Int      @unique
+  totalAttempts         Int      @default(0)
+  correctAttempts       Int      @default(0)
+  wrongAttempts         Int      @default(0)
+  lowConfidenceCount    Int      @default(0)
+  mediumConfidenceCount Int      @default(0)
+  highConfidenceCount   Int      @default(0)
+  reviewStage           Int      @default(0)
+  introducedAt          DateTime?
+  lastReviewedAt        DateTime?
+  nextReviewAt          DateTime?
+  masteredAt            DateTime?
+  concept               Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+}
+
+model MockExam {
+  id              Int                @id @default(autoincrement())
+  certificationId Int
+  status          String
+  startedAt       DateTime           @default(now())
+  endedAt         DateTime?
+  durationMinutes Int
+  questionCount   Int
+  correctCount    Int                @default(0)
+  certification   Certification      @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  questions       MockExamQuestion[]
+
+  @@index([certificationId, startedAt])
+}
+
+model MockExamQuestion {
+  id                      Int      @id @default(autoincrement())
+  mockExamId              Int
+  questionId              Int
+  position                Int
+  selectedOptionsSnapshot String?
+  correctOptionsSnapshot  String
+  isCorrect               Boolean?
+  mockExam                MockExam @relation(fields: [mockExamId], references: [id], onDelete: Cascade)
+  question                Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
+
+  @@unique([mockExamId, position])
+  @@unique([mockExamId, questionId])
+}

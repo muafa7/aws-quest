@@ -1,0 +1,40 @@
+[
+  {
+    "code": "CCP-ELA-001",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which cloud characteristic allows computing capacity to increase and decrease as application demand changes?",
+    "options": [
+      { "key": "A", "text": "Elasticity", "correct": true },
+      { "key": "B", "text": "Durability", "correct": false },
+      { "key": "C", "text": "Governance", "correct": false },
+      { "key": "D", "text": "Capital expenditure", "correct": false }
+    ],
+    "tags": ["elasticity", "cloud-concepts"],
+    "source": {
+      "title": "AWS Cloud Overview",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    }
+  },
+  {
+    "code": "CCP-SRM-001",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company runs an application on Amazon EC2. Who is responsible for patching the guest operating system?",
+    "options": [
+      { "key": "A", "text": "AWS", "correct": false },
+      { "key": "B", "text": "The customer", "correct": true },
+      { "key": "C", "text": "AWS Support", "correct": false },
+      { "key": "D", "text": "The hardware manufacturer", "correct": false }
+    ],
+    "tags": ["ec2", "shared-responsibility", "security"],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    }
+  }
+]

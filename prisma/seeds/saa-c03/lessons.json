@@ -1,0 +1,13 @@
+[
+  {
+    "concept": "saa-rds-multi-az",
+    "title": "RDS Multi-AZ",
+    "summary": "Gunakan Multi-AZ ketika requirement utamanya adalah database high availability dan automatic failover.",
+    "keyPoints": [
+      "Standby ditempatkan di Availability Zone lain.",
+      "Tujuan utamanya adalah availability, bukan read scaling.",
+      "Read replica digunakan ketika workload membutuhkan kapasitas baca tambahan."
+    ],
+    "order": 1
+  }
+]

@@ -1,0 +1,6 @@
+[
+  { "slug": "cloud-concepts", "name": "Cloud Concepts", "order": 1, "weight": 0.24 },
+  { "slug": "security-compliance", "name": "Security and Compliance", "order": 2, "weight": 0.30 },
+  { "slug": "cloud-technology-services", "name": "Cloud Technology and Services", "order": 3, "weight": 0.34 },
+  { "slug": "billing-pricing-support", "name": "Billing, Pricing, and Support", "order": 4, "weight": 0.12 }
+]
