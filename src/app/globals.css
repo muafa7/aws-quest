@@ -15,9 +15,18 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(245, 158, 11, 0.055), transparent 28rem),
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    var(--background);
+  background-size: auto, 100% 4px, auto;
   color: var(--foreground);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+::selection {
+  background: #fbbf24;
+  color: #090d14;
 }
 
 button,
@@ -25,4 +34,30 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+button,
+a,
+input,
+label {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+}
+
+.retro-panel {
+  position: relative;
+}
+
+.retro-panel::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.025);
 }

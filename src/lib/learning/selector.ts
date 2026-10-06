@@ -3,6 +3,13 @@ import { confidencePriority } from "./review";
 import type { Confidence, SafeQuestion } from "./types";
 
 type Candidate = Awaited<ReturnType<typeof loadCandidates>>[number];
+type RecentAttempt = {
+  questionId: number;
+  isCorrect: boolean;
+  confidence: string | null;
+  answeredAt: Date;
+  question: { conceptId: number };
+};
 
 async function loadCandidates(certificationCode: string) {
   return prisma.concept.findMany({
@@ -30,11 +37,12 @@ function conceptAccuracy(candidate: Candidate) {
   return progress.correctAttempts / progress.totalAttempts;
 }
 
-function conceptPriority(candidate: Candidate, now: Date, latestAttempt: {
-  isCorrect: boolean;
-  confidence: string | null;
-  conceptId: number;
-} | null) {
+function conceptPriority(
+  candidate: Candidate,
+  now: Date,
+  latestForConcept: RecentAttempt | undefined,
+  isImmediatelyRecentConcept: boolean,
+) {
   let score = 0;
   const progress = candidate.progress;
   const accuracy = conceptAccuracy(candidate);
@@ -44,16 +52,14 @@ function conceptPriority(candidate: Candidate, now: Date, latestAttempt: {
   if (accuracy !== null && accuracy < 0.7) score += 5;
   if (progress?.masteredAt) score -= 5;
 
-  if (latestAttempt?.conceptId === candidate.id) {
-    score -= 3;
-    if (latestAttempt.confidence && ["LOW", "MEDIUM", "HIGH"].includes(latestAttempt.confidence)) {
-      score += confidencePriority(
-        latestAttempt.isCorrect,
-        latestAttempt.confidence as Confidence,
-      );
-    }
+  if (latestForConcept?.confidence && ["LOW", "MEDIUM", "HIGH"].includes(latestForConcept.confidence)) {
+    score += confidencePriority(
+      latestForConcept.isCorrect,
+      latestForConcept.confidence as Confidence,
+    );
   }
 
+  if (isImmediatelyRecentConcept) score -= 3;
   return score;
 }
 
@@ -81,7 +87,10 @@ export async function selectPracticeQuestion(certificationCode: string): Promise
   if (candidates.length === 0) return null;
 
   const recentAttempts = await prisma.attempt.findMany({
-    where: { question: { concept: { topic: { certification: { code: certificationCode } } } } },
+    where: {
+      mode: { in: ["LEARN", "PRACTICE"] },
+      question: { concept: { topic: { certification: { code: certificationCode } } } },
+    },
     select: {
       questionId: true,
       isCorrect: true,
@@ -90,21 +99,34 @@ export async function selectPracticeQuestion(certificationCode: string): Promise
       question: { select: { conceptId: true } },
     },
     orderBy: { answeredAt: "desc" },
-    take: 30,
+    take: 100,
   });
 
-  const latestAttempt = recentAttempts[0]
-    ? {
-        isCorrect: recentAttempts[0].isCorrect,
-        confidence: recentAttempts[0].confidence,
-        conceptId: recentAttempts[0].question.conceptId,
-      }
-    : null;
+  const latestByConcept = new Map<number, RecentAttempt>();
+  for (const attempt of recentAttempts) {
+    if (!latestByConcept.has(attempt.question.conceptId)) {
+      latestByConcept.set(attempt.question.conceptId, attempt);
+    }
+  }
 
+  const mostRecentConceptId = recentAttempts[0]?.question.conceptId;
   const now = new Date();
   const ranked = candidates
-    .map((candidate) => ({ candidate, score: conceptPriority(candidate, now, latestAttempt) }))
-    .sort((a, b) => b.score - a.score || a.candidate.topic.order - b.candidate.topic.order || a.candidate.order - b.candidate.order);
+    .map((candidate) => ({
+      candidate,
+      score: conceptPriority(
+        candidate,
+        now,
+        latestByConcept.get(candidate.id),
+        mostRecentConceptId === candidate.id,
+      ),
+    }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        a.candidate.topic.order - b.candidate.topic.order ||
+        a.candidate.order - b.candidate.order,
+    );
 
   const recentQuestionIds = new Set(recentAttempts.slice(0, 8).map((attempt) => attempt.questionId));
   const seenQuestionIds = new Set(recentAttempts.map((attempt) => attempt.questionId));

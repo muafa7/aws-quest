@@ -49,13 +49,40 @@ export async function startMockExam(formData: FormData) {
   });
   if (!certification) throw new Error("Certification not found");
 
-  const pool = certification.topics.flatMap((topic) =>
-    topic.concepts.flatMap((concept) => concept.questions.map((question) => ({ ...question, topicId: topic.id }))),
-  );
-  if (pool.length === 0) throw new Error("No active questions are available for this certification.");
+  const topicPools = certification.topics.map((topic) => ({
+    topicId: topic.id,
+    weight: topic.weight ?? 0,
+    questions: topic.concepts.flatMap((concept) => concept.questions),
+  }));
+  const poolSize = topicPools.reduce((sum, topic) => sum + topic.questions.length, 0);
+  if (poolSize === 0) throw new Error("No active questions are available for this certification.");
 
-  const targetCount = Math.min(certification.examQuestionCount, pool.length);
-  const selected = pool.slice(0, targetCount);
+  const targetCount = Math.min(certification.examQuestionCount, poolSize);
+  const selected: (typeof topicPools)[number]["questions"] = [];
+  const used = new Set<number>();
+
+  for (const topic of topicPools) {
+    const quota = Math.min(
+      topic.questions.length,
+      Math.floor(targetCount * topic.weight),
+    );
+    for (const question of topic.questions.slice(0, quota)) {
+      selected.push(question);
+      used.add(question.id);
+    }
+  }
+
+  if (selected.length < targetCount) {
+    for (const topic of topicPools) {
+      for (const question of topic.questions) {
+        if (selected.length >= targetCount) break;
+        if (used.has(question.id)) continue;
+        selected.push(question);
+        used.add(question.id);
+      }
+      if (selected.length >= targetCount) break;
+    }
+  }
 
   const exam = await prisma.mockExam.create({
     data: {
