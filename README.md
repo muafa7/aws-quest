@@ -56,6 +56,7 @@ pnpm dev          # start Next.js in development
 pnpm build        # production build
 pnpm lint         # ESLint
 pnpm typecheck    # TypeScript check
+pnpm test:learning # learning-engine unit tests
 pnpm db:generate  # generate Prisma Client
 pnpm db:setup     # generate + db push + seed
 pnpm db:seed      # re-run idempotent content seeds

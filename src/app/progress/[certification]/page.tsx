@@ -11,7 +11,7 @@ function accuracy(correct: number, total: number) {
 export default async function CertificationProgressPage({ params }: { params: Promise<{ certification: string }> }) {
   const { certification: code } = await params;
   const data = await certificationProgress(code);
-  if (!data) notFound();
+  if (!data) return notFound();
   const now = new Date();
 
   return (

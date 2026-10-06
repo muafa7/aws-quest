@@ -36,9 +36,11 @@ export async function startMockExam(formData: FormData) {
         include: {
           concepts: {
             where: { active: true },
+            orderBy: { order: "asc" },
             include: {
               questions: {
                 where: { active: true },
+                orderBy: { code: "asc" },
                 select: { id: true, options: { where: { isCorrect: true }, select: { key: true } } },
               },
             },

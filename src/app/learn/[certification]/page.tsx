@@ -7,7 +7,7 @@ import { ProgressBar } from "@/components/progress-bar";
 export default async function LearnCertificationPage({ params }: { params: Promise<{ certification: string }> }) {
   const { certification: code } = await params;
   const data = await certificationProgress(code);
-  if (!data) notFound();
+  if (!data) return notFound();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6">

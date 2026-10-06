@@ -11,20 +11,27 @@ function format(seconds: number) {
 
 export function ExamTimer({ startedAt, durationMinutes, formId }: { startedAt: string; durationMinutes: number; formId: string }) {
   const deadline = useMemo(() => new Date(startedAt).getTime() + durationMinutes * 60_000, [startedAt, durationMinutes]);
-  const [remaining, setRemaining] = useState(() => Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+  const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
+    let timer: number | undefined;
+    const tick = () => {
       const next = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
       setRemaining(next);
       if (next === 0) {
-        window.clearInterval(timer);
+        if (timer) window.clearInterval(timer);
         const form = document.getElementById(formId) as HTMLFormElement | null;
         form?.requestSubmit();
       }
-    }, 1000);
-    return () => window.clearInterval(timer);
+    };
+
+    tick();
+    timer = window.setInterval(tick, 1000);
+    return () => {
+      if (timer) window.clearInterval(timer);
+    };
   }, [deadline, formId]);
 
-  return <span className={remaining < 300 ? "font-black text-red-300" : "font-black text-amber-300"}>{format(remaining)}</span>;
+  const urgent = remaining !== null && remaining < 300;
+  return <span className={urgent ? "font-black text-red-300" : "font-black text-amber-300"}>{remaining === null ? "--:--" : format(remaining)}</span>;
 }

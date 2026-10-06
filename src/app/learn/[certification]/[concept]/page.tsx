@@ -27,7 +27,7 @@ export default async function LearnConceptPage({
   if (!concept?.lesson) notFound();
 
   const previousAttempts = await prisma.attempt.findMany({
-    where: { question: { conceptId: concept.id }, mode: "LEARN" },
+    where: { question: { conceptId: concept.id }, mode: { in: ["LEARN", "PRACTICE"] } },
     select: { questionId: true },
   });
   const seen = new Set(previousAttempts.map((attempt) => attempt.questionId));

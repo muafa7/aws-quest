@@ -150,6 +150,7 @@ export async function submitLearningAnswer(formData: FormData) {
         introducedAt: mode === "LEARN" ? now : existingProgress?.introducedAt,
         lastReviewedAt: now,
         nextReviewAt: reviewDateForStage(stage, now),
+        masteredAt: !isCorrect ? null : undefined,
       },
       update: {
         totalAttempts: { increment: 1 },
@@ -160,6 +161,7 @@ export async function submitLearningAnswer(formData: FormData) {
         introducedAt: mode === "LEARN" && !existingProgress?.introducedAt ? now : undefined,
         lastReviewedAt: now,
         nextReviewAt: reviewDateForStage(stage, now),
+        masteredAt: !isCorrect ? null : undefined,
       },
     });
 
