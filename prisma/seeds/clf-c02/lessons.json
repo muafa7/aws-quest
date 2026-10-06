@@ -1,0 +1,24 @@
+[
+  {
+    "concept": "clf-elasticity",
+    "title": "Elasticity",
+    "summary": "Elasticity membuat kapasitas cloud dapat bertambah ketika demand naik dan berkurang kembali ketika demand turun.",
+    "keyPoints": [
+      "Resource mengikuti perubahan workload.",
+      "Scale out saat demand meningkat dan scale in saat demand menurun.",
+      "Elasticity berbeda dari sekadar kemampuan menangani pertumbuhan jangka panjang."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-shared-responsibility",
+    "title": "Shared Responsibility Model",
+    "summary": "AWS mengelola security OF the cloud, sedangkan customer mengelola security IN the cloud sesuai service yang digunakan.",
+    "keyPoints": [
+      "AWS mengelola physical infrastructure.",
+      "Pada EC2, customer mengelola guest operating system dan aplikasinya.",
+      "Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS."
+    ],
+    "order": 1
+  }
+]

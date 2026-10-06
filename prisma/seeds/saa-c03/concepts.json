@@ -1,0 +1,12 @@
+[
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-rds-multi-az",
+    "name": "Amazon RDS Multi-AZ",
+    "generalExplanation": "RDS Multi-AZ digunakan terutama untuk high availability dan failover. RDS mempertahankan standby di Availability Zone lain dan dapat melakukan failover ketika primary mengalami gangguan. Fitur ini berbeda dari read replica yang terutama digunakan untuk read scaling.",
+    "keyNote": "Multi-AZ = high availability/failover; read replica = read scaling.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+    "order": 1,
+    "active": true
+  }
+]

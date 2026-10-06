@@ -1,0 +1,22 @@
+[
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-elasticity",
+    "name": "Elasticity",
+    "generalExplanation": "Elasticity adalah kemampuan resource cloud bertambah atau berkurang mengikuti perubahan kebutuhan workload. Fokusnya adalah penyesuaian kapasitas terhadap demand yang berubah.",
+    "keyNote": "Elasticity = kapasitas naik dan turun mengikuti demand.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "security-compliance",
+    "slug": "clf-shared-responsibility",
+    "name": "Shared Responsibility Model",
+    "generalExplanation": "AWS bertanggung jawab atas security OF the cloud, termasuk physical facilities dan underlying infrastructure. Customer bertanggung jawab atas security IN the cloud sesuai service yang digunakan. Pada EC2, customer mengelola guest OS, patching, aplikasi, dan konfigurasinya.",
+    "keyNote": "EC2: customer mengelola guest OS; AWS mengelola underlying infrastructure.",
+    "referenceUrl": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+    "order": 1,
+    "active": true
+  }
+]
