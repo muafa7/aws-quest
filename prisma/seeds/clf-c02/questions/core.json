@@ -7,12 +7,31 @@
     "style": "UNDERSTANDING",
     "question": "Which cloud characteristic allows computing capacity to increase and decrease as application demand changes?",
     "options": [
-      { "key": "A", "text": "Elasticity", "correct": true },
-      { "key": "B", "text": "Durability", "correct": false },
-      { "key": "C", "text": "Governance", "correct": false },
-      { "key": "D", "text": "Capital expenditure", "correct": false }
+      {
+        "key": "A",
+        "text": "Elasticity",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Governance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Capital expenditure",
+        "correct": false
+      }
     ],
-    "tags": ["elasticity", "cloud-concepts"],
+    "tags": [
+      "elasticity",
+      "cloud-concepts"
+    ],
     "source": {
       "title": "AWS Cloud Overview",
       "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
@@ -26,12 +45,188 @@
     "style": "SCENARIO",
     "question": "A company runs an application on Amazon EC2. Who is responsible for patching the guest operating system?",
     "options": [
-      { "key": "A", "text": "AWS", "correct": false },
-      { "key": "B", "text": "The customer", "correct": true },
-      { "key": "C", "text": "AWS Support", "correct": false },
-      { "key": "D", "text": "The hardware manufacturer", "correct": false }
+      {
+        "key": "A",
+        "text": "AWS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The customer",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Support",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The hardware manufacturer",
+        "correct": false
+      }
     ],
-    "tags": ["ec2", "shared-responsibility", "security"],
+    "tags": [
+      "ec2",
+      "shared-responsibility",
+      "security"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    }
+  },
+  {
+    "code": "CCP-ELA-002",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An online store automatically adds compute capacity during a traffic spike and removes the extra capacity when traffic returns to normal. Which cloud benefit is this demonstrating?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Elasticity",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Data sovereignty",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Dedicated tenancy",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "scaling",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "AWS Cloud Overview",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    }
+  },
+  {
+    "code": "CCP-ELA-003",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST describes elasticity in cloud computing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Resources can be adjusted up or down to match changing demand",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Every workload must run in more than one AWS Region",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "All data is automatically archived after a fixed period",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Customers purchase enough hardware for peak demand in advance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "capacity",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "AWS Cloud Overview",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    }
+  },
+  {
+    "code": "CCP-SRM-002",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company stores confidential files in an Amazon S3 bucket. Under the AWS shared responsibility model, who is responsible for configuring the bucket permissions for the company's data?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The customer",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS physical security staff",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The internet service provider",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The hardware manufacturer",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "shared-responsibility",
+      "access-control"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    }
+  },
+  {
+    "code": "CCP-SRM-003",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which task is an AWS responsibility when a customer uses Amazon EC2?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Patching the guest operating system",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Managing application user accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Securing the physical infrastructure that runs EC2",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Configuring the customer's security group rules",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "shared-responsibility",
+      "physical-security"
+    ],
     "source": {
       "title": "AWS Shared Responsibility Model",
       "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"

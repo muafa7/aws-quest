@@ -7,12 +7,112 @@
     "style": "SCENARIO",
     "question": "A company runs a relational database on Amazon RDS and requires automatic failover if the primary database becomes unavailable. Which solution best meets the requirement?",
     "options": [
-      { "key": "A", "text": "Create an RDS read replica in the same Availability Zone", "correct": false },
-      { "key": "B", "text": "Enable an RDS Multi-AZ deployment", "correct": true },
-      { "key": "C", "text": "Place Amazon ElastiCache in front of the database", "correct": false },
-      { "key": "D", "text": "Increase the database instance size", "correct": false }
+      {
+        "key": "A",
+        "text": "Create an RDS read replica in the same Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable an RDS Multi-AZ deployment",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Place Amazon ElastiCache in front of the database",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase the database instance size",
+        "correct": false
+      }
     ],
-    "tags": ["rds", "multi-az", "high-availability", "failover"],
+    "tags": [
+      "rds",
+      "multi-az",
+      "high-availability",
+      "failover"
+    ],
+    "source": {
+      "title": "Amazon RDS Multi-AZ deployments",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+    }
+  },
+  {
+    "code": "SAA-RDS-002",
+    "concept": "saa-rds-multi-az",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "A workload needs to offload read-only queries from its primary Amazon RDS database. High availability is already handled separately. Which feature should a solutions architect use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "RDS read replica",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "RDS Multi-AZ standby only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A larger backup retention window",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A database parameter group",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rds",
+      "read-replica",
+      "read-scaling"
+    ],
+    "source": {
+      "title": "Amazon RDS Multi-AZ deployments",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+    }
+  },
+  {
+    "code": "SAA-RDS-003",
+    "concept": "saa-rds-multi-az",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "ARCHITECTURE",
+    "question": "A production application uses Amazon RDS. The primary requirement is to minimize database downtime during an Availability Zone failure without changing the application to send reads to another endpoint. What should the architect configure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Multi-AZ deployment",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A read replica in the same Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Manual database snapshots every hour",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon S3 Transfer Acceleration",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rds",
+      "multi-az",
+      "availability",
+      "failover"
+    ],
     "source": {
       "title": "Amazon RDS Multi-AZ deployments",
       "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"

@@ -18,7 +18,7 @@ import {
 } from "./seeds/schema";
 
 const seedRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), "seeds");
-const connectionString = process.env.DATABASE_URL ?? "file:./prisma/dev.db";
+const connectionString = process.env.DATABASE_URL ?? "file:./dev.db";
 const adapter = new PrismaBetterSqlite3({ url: connectionString });
 const prisma = new PrismaClient({ adapter });
 
