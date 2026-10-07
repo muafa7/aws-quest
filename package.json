@@ -18,6 +18,7 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "db:setup": "prisma generate && prisma db push && prisma db seed",
+    "content:validate": "tsx prisma/validate-content.ts",
     "test:learning": "tsx --test tests/learning/*.test.ts"
   },
   "dependencies": {

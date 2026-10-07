@@ -1,56 +1,58 @@
 import { z } from "zod";
 
-export const certificationSchema = z.object({
-  code: z.string().min(1),
-  name: z.string().min(1),
+const nonEmpty = z.string().trim().min(1);
+
+export const certificationSchema = z.strictObject({
+  code: nonEmpty,
+  name: nonEmpty,
   examQuestionCount: z.number().int().positive(),
   durationMinutes: z.number().int().positive(),
   active: z.boolean().default(true),
 });
 
-export const topicSchema = z.object({
-  slug: z.string().min(1),
-  name: z.string().min(1),
+export const topicSchema = z.strictObject({
+  slug: nonEmpty,
+  name: nonEmpty,
   order: z.number().int().positive(),
   weight: z.number().min(0).max(1).optional(),
 });
 
-export const conceptSchema = z.object({
-  topic: z.string().min(1),
-  slug: z.string().min(1),
-  name: z.string().min(1),
-  generalExplanation: z.string().min(1),
-  keyNote: z.string().optional(),
+export const conceptSchema = z.strictObject({
+  topic: nonEmpty,
+  slug: nonEmpty,
+  name: nonEmpty,
+  generalExplanation: nonEmpty,
+  keyNote: nonEmpty.optional(),
   referenceUrl: z.url().optional(),
   order: z.number().int().positive(),
   active: z.boolean().default(true),
 });
 
-export const lessonSchema = z.object({
-  concept: z.string().min(1),
-  title: z.string().min(1),
-  summary: z.string().min(1),
-  keyPoints: z.array(z.string().min(1)).min(1),
+export const lessonSchema = z.strictObject({
+  concept: nonEmpty,
+  title: nonEmpty,
+  summary: nonEmpty,
+  keyPoints: z.array(nonEmpty).min(1),
   order: z.number().int().positive().default(1),
 });
 
-export const questionSchema = z.object({
-  code: z.string().min(1),
-  concept: z.string().min(1),
+export const questionSchema = z.strictObject({
+  code: nonEmpty,
+  concept: nonEmpty,
   type: z.enum(["SINGLE_CHOICE", "MULTIPLE_CHOICE"]),
   difficulty: z.enum(["EASY", "MEDIUM", "HARD"]),
   style: z.enum(["BASIC", "UNDERSTANDING", "COMPARISON", "SCENARIO", "ARCHITECTURE"]),
-  question: z.string().min(1),
+  question: nonEmpty,
   options: z.array(
-    z.object({
-      key: z.string().min(1),
-      text: z.string().min(1),
+    z.strictObject({
+      key: nonEmpty,
+      text: nonEmpty,
       correct: z.boolean(),
     }),
   ).min(2),
-  tags: z.array(z.string().min(1)).default([]),
-  source: z.object({
-    title: z.string().min(1),
+  tags: z.array(nonEmpty).default([]),
+  source: z.strictObject({
+    title: nonEmpty,
     url: z.url(),
   }).optional(),
   active: z.boolean().default(true),

@@ -60,6 +60,7 @@ pnpm test:learning # learning-engine unit tests
 pnpm db:generate  # generate Prisma Client
 pnpm db:setup     # generate + db push + seed
 pnpm db:seed      # re-run idempotent content seeds
+pnpm content:validate # validate seed JSON and print coverage stats (no database writes)
 pnpm db:studio    # Prisma Studio
 ```
 

@@ -3,7 +3,7 @@
 Planning guidance for the curated question banks. Recommended counts are targets, not quotas: quality and concept coverage take priority over hitting an exact total.
 
 - Exam scope source: [AWS Certified Cloud Practitioner (CLF-C02) exam guide](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html), in-scope and out-of-scope service lists checked on 2026-10-07.
-- Counts are updated in the same commit as each content batch.
+- Counts are updated in the same commit as each content batch; refresh them from `pnpm content:validate`.
 
 ---
 

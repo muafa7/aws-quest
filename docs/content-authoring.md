@@ -36,4 +36,6 @@ Never reference generated database IDs from seed files.
 
 ## Seed behavior
 
-`pnpm db:seed` validates the complete content bundle before writing to the database. Questions are upserted by stable code. Options and tags are replaced from the current source definition so repeated seeds remain deterministic.
+`pnpm db:seed` validates every certification bundle before writing to the database, so one invalid file blocks the whole seed. Questions are upserted by stable code. Options and tags are replaced from the current source definition so repeated seeds remain deterministic.
+
+`pnpm content:validate` runs the same checks without touching the database and prints per-domain, per-concept, style, difficulty, type and correct-key counts. Validation rejects unknown JSON keys, blank strings, unknown references, duplicate slugs, codes, lessons, option keys and tags, active concepts without a lesson, malformed codes, a code prefix shared by two concepts, `(Select N.)` mismatches, and questions placed in a file for another domain. Correct-key distribution and concepts with fewer than 4 questions are reported but do not fail validation.
