@@ -418,5 +418,185 @@
     "referenceUrl": "https://aws.amazon.com/security/",
     "order": 24,
     "active": true
+  },
+{
+    "topic": "cloud-technology-services",
+    "slug": "clf-aws-access-methods",
+    "name": "Ways to Access AWS (Console, CLI, SDKs, APIs)",
+    "generalExplanation": "AWS resources dapat dikelola melalui beberapa interface. AWS Management Console menyediakan antarmuka berbasis web untuk pekerjaan interaktif. AWS CLI menjalankan perintah AWS dari command shell dan cocok untuk scripting. AWS SDK menyediakan library yang terintegrasi dengan bahasa pemrograman agar aplikasi dapat memanggil AWS APIs. AWS service APIs adalah interface programmatic yang mendasari berbagai tools tersebut. Pilihan interface tidak mengubah permission: semua request tetap harus diautentikasi dan diotorisasi.",
+    "keyNote": "Console = web UI; CLI = command line/scripting; SDK = library dalam aplikasi; API = interface programmatic service.",
+    "referenceUrl": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-infrastructure-as-code",
+    "name": "Infrastructure as Code (AWS CloudFormation)",
+    "generalExplanation": "Infrastructure as code (IaC) mendefinisikan infrastructure dalam file sehingga resource dapat dibuat dan diubah secara repeatable. AWS CloudFormation menggunakan template JSON atau YAML untuk mendeskripsikan AWS resources dan kemudian men-deploy-nya sebagai stack. Template dapat disimpan di version control, direview, digunakan ulang, dan membantu mengurangi configuration drift akibat provisioning manual. CloudFormation berbeda dari Elastic Beanstalk: CloudFormation adalah general-purpose infrastructure provisioning, sedangkan Elastic Beanstalk berfokus pada deployment dan pengelolaan environment aplikasi.",
+    "keyNote": "CloudFormation = definisikan AWS resources sebagai template lalu kelola deployment-nya sebagai stack.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-deployment-models",
+    "name": "Cloud Deployment Models (cloud, hybrid, on-premises, Outposts)",
+    "generalExplanation": "Cloud deployment menggunakan resources yang berjalan di cloud provider. On-premises menjalankan infrastructure di fasilitas organisasi sendiri. Hybrid menghubungkan environment on-premises dengan cloud sehingga keduanya digunakan bersama. AWS Outposts adalah fully managed AWS infrastructure yang ditempatkan di customer premises dan tetap terhubung ke AWS Region, sehingga cocok untuk hybrid workloads yang membutuhkan local processing, low latency, atau data residency tertentu.",
+    "keyNote": "Cloud = resource di AWS; on-premises = resource di fasilitas sendiri; hybrid = keduanya terhubung; Outposts membawa AWS infrastructure ke customer premises.",
+    "referenceUrl": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-regions",
+    "name": "AWS Regions",
+    "generalExplanation": "AWS Region adalah geographic area terpisah yang berisi multiple Availability Zones. Pemilihan Region biasanya mempertimbangkan compliance/data residency, proximity ke user untuk latency, service availability, dan biaya. Resource tidak otomatis direplikasi ke Region lain kecuali service atau arsitektur memang dikonfigurasi untuk melakukannya. Region berbeda dari Availability Zone: Region adalah geographic area, sedangkan AZ adalah isolated location di dalam Region.",
+    "keyNote": "Region = geographic area; pilih berdasarkan compliance, latency, service availability, dan cost.",
+    "referenceUrl": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-availability-zones",
+    "name": "Availability Zones",
+    "generalExplanation": "Availability Zone (AZ) adalah isolated location di dalam AWS Region dan terdiri dari satu atau lebih discrete data centers dengan redundant power, networking, dan connectivity. AZ dalam Region terhubung dengan low-latency, high-bandwidth, highly redundant networking. Menyebarkan workload ke beberapa AZ membantu meningkatkan availability karena kegagalan satu lokasi tidak harus menghentikan seluruh workload. AZ bukan Region dan bukan edge location.",
+    "keyNote": "AZ = isolated location dalam satu Region; Multi-AZ membantu melindungi workload dari kegagalan satu lokasi.",
+    "referenceUrl": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-edge-locations",
+    "name": "Edge Locations and AWS Global Accelerator",
+    "generalExplanation": "AWS memiliki global network of points of presence (PoPs), termasuk edge locations, yang berada lebih dekat ke end users daripada banyak Regional workloads. PoPs digunakan oleh services seperti Amazon CloudFront, Amazon Route 53, dan AWS Global Accelerator. Global Accelerator menggunakan AWS global network dan static anycast IP addresses untuk mengarahkan traffic ke healthy Regional endpoints dengan jalur yang optimal. Edge location berbeda dari Region: edge location adalah bagian dari edge network, bukan lokasi utama untuk menjalankan general-purpose regional compute resources.",
+    "keyNote": "Edge/PoP membawa networking dan content services lebih dekat ke users; Global Accelerator mengoptimalkan traffic ke healthy Regional endpoints.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-ec2",
+    "name": "Amazon EC2 and Instance Types",
+    "generalExplanation": "Amazon EC2 menyediakan virtual servers di AWS Cloud dengan kontrol atas operating system, software, networking, dan compute configuration. Instance type menentukan kombinasi compute, memory, storage, dan networking resources. General purpose cocok untuk workload seimbang; compute optimized untuk CPU-intensive workloads; memory optimized untuk workload yang membutuhkan memory besar; accelerated computing untuk hardware accelerator seperti GPU; storage optimized untuk workload dengan kebutuhan storage I/O tinggi. EC2 memberi kontrol lebih besar daripada serverless services seperti Lambda, tetapi customer juga memiliki lebih banyak operational responsibility.",
+    "keyNote": "EC2 = virtual server; pilih instance family sesuai kebutuhan compute, memory, accelerated computing, atau storage.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-auto-scaling",
+    "name": "Auto Scaling",
+    "generalExplanation": "Amazon EC2 Auto Scaling membantu menjaga jumlah EC2 instances yang sesuai untuk workload. Auto Scaling group memiliki minimum, maximum, dan desired capacity; scaling policies dapat menambah instances saat demand naik dan menguranginya saat demand turun. Auto Scaling juga dapat mengganti unhealthy instances untuk mempertahankan desired capacity. Auto Scaling berbeda dari Elastic Load Balancing: Auto Scaling mengubah dan menjaga compute capacity, sedangkan ELB mendistribusikan incoming traffic ke healthy targets.",
+    "keyNote": "EC2 Auto Scaling = maintain dan adjust jumlah instances; ELB = distribute traffic ke healthy targets.",
+    "referenceUrl": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-elastic-load-balancing",
+    "name": "Elastic Load Balancing",
+    "generalExplanation": "Elastic Load Balancing (ELB) mendistribusikan incoming traffic ke multiple healthy targets seperti EC2 instances, containers, dan IP addresses, termasuk across multiple Availability Zones. ELB melakukan health checks dan menghindari targets yang unhealthy. ELB meningkatkan availability dan membantu mencegah satu target menerima seluruh traffic. ELB tidak menambah jumlah EC2 instances; kapasitas compute biasanya disesuaikan oleh EC2 Auto Scaling.",
+    "keyNote": "ELB = satu entry point yang mendistribusikan traffic ke healthy targets; Auto Scaling mengubah jumlah compute.",
+    "referenceUrl": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-lambda",
+    "name": "AWS Lambda and Serverless APIs (API Gateway)",
+    "generalExplanation": "AWS Lambda adalah serverless compute service untuk menjalankan code tanpa provisioning atau mengelola servers. Lambda Functions umum digunakan untuk event-driven dan request-response workloads serta scale secara otomatis sesuai invocations. Amazon API Gateway digunakan untuk membuat, publish, maintain, monitor, dan secure REST, HTTP, atau WebSocket APIs dan dapat menjadi front door untuk Lambda. Lambda berbeda dari EC2 karena customer tidak mengelola underlying servers; EC2 memberi kontrol server yang lebih langsung.",
+    "keyNote": "Lambda = run code tanpa manage server; API Gateway = managed front door untuk APIs, termasuk APIs yang memanggil Lambda.",
+    "referenceUrl": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-containers",
+    "name": "Containers (ECS, EKS, Fargate, ECR)",
+    "generalExplanation": "Amazon ECS adalah fully managed container orchestration service AWS. Amazon EKS adalah managed Kubernetes service untuk workloads yang membutuhkan Kubernetes APIs dan ecosystem. AWS Fargate adalah serverless, pay-as-you-go compute engine untuk containers sehingga customer tidak perlu mengelola server capacity untuk tasks/pods yang didukung. Amazon ECR adalah managed container image registry untuk menyimpan, push, dan pull container images. ECR menyimpan images; ECS/EKS meng-orchestrate containers; Fargate menyediakan compute untuk menjalankannya.",
+    "keyNote": "ECS = AWS container orchestration; EKS = managed Kubernetes; Fargate = serverless container compute; ECR = image registry.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-managed-compute-options",
+    "name": "Managed Compute Options (Elastic Beanstalk, Lightsail, Batch)",
+    "generalExplanation": "AWS Elastic Beanstalk membantu deploy web applications dengan menangani provisioning dan configuration environment seperti compute, load balancing, health monitoring, dan scaling berdasarkan platform yang dipilih. Amazon Lightsail menyederhanakan virtual private servers dan resource umum untuk website atau small applications dengan pengalaman yang lebih sederhana dan predictable bundles. AWS Batch adalah fully managed service untuk scheduling dan menjalankan batch computing jobs serta provisioning compute sesuai job demand. Ketiganya menyelesaikan use case berbeda dan tidak menggantikan general-purpose IaC seperti CloudFormation.",
+    "keyNote": "Beanstalk = managed app environment; Lightsail = simple VPS/application bundle; Batch = managed batch-job scheduling dan compute.",
+    "referenceUrl": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-rds-aurora",
+    "name": "Amazon RDS and Amazon Aurora (managed vs EC2-hosted databases)",
+    "generalExplanation": "Amazon RDS adalah managed relational database service yang menangani banyak database administration tasks seperti backups, software patching, failure detection, dan recovery. Amazon Aurora adalah fully managed relational database engine yang kompatibel dengan MySQL dan PostgreSQL. RDS Multi-AZ terutama digunakan untuk high availability dan failover, sedangkan read replicas umum digunakan untuk meningkatkan read scaling. Menjalankan database sendiri di EC2 memberi kontrol lebih besar terhadap OS dan database stack, tetapi customer juga mengelola lebih banyak operasi.",
+    "keyNote": "RDS/Aurora = managed relational databases; Multi-AZ untuk availability/failover, read replicas untuk read scaling.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-dynamodb",
+    "name": "Amazon DynamoDB",
+    "generalExplanation": "Amazon DynamoDB adalah serverless, fully managed, distributed NoSQL database yang mendukung key-value dan document data models dan dirancang untuk consistent single-digit millisecond performance at scale. Customer tidak mengelola database servers atau patching. DynamoDB cocok untuk high-scale operational workloads dengan access patterns yang dapat dimodelkan melalui keys dan indexes. DynamoDB berbeda dari RDS: DynamoDB adalah NoSQL, sedangkan RDS adalah managed relational database dengan relational engines dan SQL capabilities.",
+    "keyNote": "DynamoDB = serverless managed NoSQL key-value/document database dengan low-latency performance at scale.",
+    "referenceUrl": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-other-databases",
+    "name": "Other Purpose-Built Databases (ElastiCache, DocumentDB, Neptune)",
+    "generalExplanation": "AWS menyediakan purpose-built database services untuk kebutuhan berbeda. Amazon ElastiCache menyediakan distributed in-memory data store/cache untuk low-latency access dan mendukung Valkey, Memcached, dan Redis OSS. Amazon DocumentDB adalah fully managed document database dengan MongoDB compatibility. Amazon Neptune adalah fully managed graph database untuk highly connected datasets seperti relationship graphs, recommendation, dan fraud use cases. Pilih database berdasarkan data model dan access pattern, bukan sekadar karena semua service menyimpan data.",
+    "keyNote": "ElastiCache = in-memory cache; DocumentDB = MongoDB-compatible document database; Neptune = graph database.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-database-migration",
+    "name": "Database Migration (AWS DMS, AWS SCT)",
+    "generalExplanation": "AWS Database Migration Service (AWS DMS) digunakan untuk migrate atau replicate data antara supported data stores dan dapat mendukung one-time migration maupun ongoing changes untuk mengurangi downtime. Untuk migration antara database engines yang berbeda, schema mungkin perlu dikonversi. DMS Schema Conversion dapat melakukan assessment dan conversion, dan AWS Schema Conversion Tool (AWS SCT) juga dapat digunakan untuk mengonversi existing database schema dari satu engine ke engine lain. DMS berfokus pada data movement/replication; schema-conversion tools berfokus pada database schema dan code objects.",
+    "keyNote": "DMS = move/replicate data; DMS Schema Conversion atau AWS SCT = convert schema saat target engine berbeda.",
+    "referenceUrl": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-vpc",
+    "name": "Amazon VPC (subnets, gateways, PrivateLink, Transit Gateway)",
+    "generalExplanation": "Amazon VPC menyediakan logically isolated virtual network di AWS. Subnet adalah range IP addresses dalam VPC dan berada di satu Availability Zone. Route tables menentukan arah network traffic. Internet gateway menghubungkan VPC ke internet untuk resource yang dirancang memiliki internet connectivity, sedangkan NAT gateway umum digunakan agar resources di private subnet dapat memulai outbound IPv4 connections tanpa menerima unsolicited inbound connections dari internet. VPC endpoints/AWS PrivateLink memberi private connectivity ke supported services tanpa melalui public internet. AWS Transit Gateway bertindak sebagai central hub untuk menghubungkan multiple VPCs dan on-premises networks.",
+    "keyNote": "VPC = isolated virtual network; subnet = AZ-scoped IP range; endpoints/PrivateLink = private service access; Transit Gateway = central network hub.",
+    "referenceUrl": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
+    "order": 17,
+    "active": true
+  },
+  {
+    "topic": "cloud-technology-services",
+    "slug": "clf-route-53",
+    "name": "Amazon Route 53",
+    "generalExplanation": "Amazon Route 53 adalah highly available and scalable DNS service. Route 53 dapat mendaftarkan domain names, meng-host DNS records yang menerjemahkan names ke endpoints, melakukan health checks, dan menggunakan routing policies untuk menentukan jawaban DNS. Route 53 berbeda dari Elastic Load Balancing: Route 53 memberikan DNS-level routing/lookup, sedangkan ELB menerima dan mendistribusikan application/network traffic ke registered targets.",
+    "keyNote": "Route 53 = DNS, domain registration, health checks, dan DNS routing; ELB = distribute traffic ke targets.",
+    "referenceUrl": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html",
+    "order": 18,
+    "active": true
   }
 ]

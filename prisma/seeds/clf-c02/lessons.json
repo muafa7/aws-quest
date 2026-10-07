@@ -529,5 +529,229 @@
       "Pilih resource sesuai tujuan: learning/guidance, troubleshooting, atau procurement solusi third-party."
     ],
     "order": 1
+  },
+{
+    "concept": "clf-aws-access-methods",
+    "title": "Ways to Access AWS",
+    "summary": "AWS menyediakan web console dan programmatic interfaces. Pilih interface berdasarkan apakah pekerjaan bersifat interaktif, scripted, atau tertanam langsung dalam aplikasi.",
+    "keyPoints": [
+      "AWS Management Console adalah web-based interface untuk mengelola AWS services secara interaktif.",
+      "AWS CLI menjalankan AWS service commands dari terminal dan cocok untuk automation melalui scripts.",
+      "AWS SDK menyediakan language-specific libraries untuk memanggil AWS services dari application code.",
+      "AWS APIs adalah programmatic interfaces yang mendasari banyak tools; authentication dan authorization tetap berlaku di semua access methods."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-infrastructure-as-code",
+    "title": "Infrastructure as Code with AWS CloudFormation",
+    "summary": "Infrastructure as code membuat infrastructure repeatable karena desired resources didefinisikan sebagai code. CloudFormation adalah AWS service utama untuk provisioning infrastructure dari templates.",
+    "keyPoints": [
+      "CloudFormation template mendeskripsikan AWS resources dan properties menggunakan JSON atau YAML.",
+      "Deployment template menghasilkan stack, yaitu collection of resources yang dikelola sebagai satu unit.",
+      "Templates dapat disimpan di version control, direview, dan digunakan ulang untuk environment yang konsisten.",
+      "CloudFormation adalah general-purpose infrastructure provisioning; Elastic Beanstalk lebih berfokus pada deployment application environments.",
+      "IaC membantu mengurangi manual configuration differences dan membuat changes lebih repeatable."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-deployment-models",
+    "title": "Cloud, On-Premises, and Hybrid Deployment",
+    "summary": "Deployment model menjelaskan di mana infrastructure berjalan dan bagaimana cloud serta on-premises resources digunakan bersama.",
+    "keyPoints": [
+      "Cloud deployment menggunakan resources yang berjalan di infrastructure cloud provider.",
+      "On-premises infrastructure berada di fasilitas organisasi sendiri.",
+      "Hybrid architecture menghubungkan cloud dengan on-premises environments.",
+      "AWS Outposts membawa AWS-managed infrastructure dan APIs ke customer premises untuk supported workloads."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-regions",
+    "title": "AWS Regions",
+    "summary": "Region adalah geographic area tempat AWS mengoperasikan multiple Availability Zones. Region selection merupakan keputusan penting untuk latency, compliance, service availability, dan cost.",
+    "keyPoints": [
+      "Setiap Region adalah geographic area yang terpisah.",
+      "Region berisi multiple Availability Zones.",
+      "Pertimbangkan legal/data residency requirements dan proximity ke users ketika memilih Region.",
+      "Pastikan service/feature yang dibutuhkan tersedia di Region tersebut.",
+      "Resource atau data tidak otomatis menjadi multi-Region kecuali service atau arsitektur dikonfigurasi untuk itu."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-availability-zones",
+    "title": "Availability Zones",
+    "summary": "Availability Zones adalah isolated locations dalam Region yang memungkinkan workload dirancang agar tidak bergantung pada satu lokasi fisik.",
+    "keyPoints": [
+      "Satu AZ terdiri dari satu atau lebih discrete data centers dengan redundant infrastructure.",
+      "AZ dalam Region terhubung melalui low-latency, high-bandwidth, highly redundant networking.",
+      "Deploying across multiple AZs adalah pola umum untuk meningkatkan high availability.",
+      "AZ berbeda dari Region dan edge location: AZ berada di dalam satu Region."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-edge-locations",
+    "title": "Edge Locations and Global Accelerator",
+    "summary": "AWS edge network membawa networking dan content-delivery capabilities lebih dekat ke users melalui points of presence yang tersebar secara global.",
+    "keyPoints": [
+      "Points of presence mencakup edge locations yang digunakan oleh services seperti CloudFront, Route 53, dan Global Accelerator.",
+      "Edge locations bukan pengganti AWS Regions untuk general-purpose regional compute.",
+      "AWS Global Accelerator menggunakan AWS global network untuk mengarahkan traffic ke healthy endpoints.",
+      "Global Accelerator menyediakan static anycast IP addresses dan berfokus pada network path/performance, bukan menjalankan application servers di edge location."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ec2",
+    "title": "Amazon EC2 and Instance Types",
+    "summary": "EC2 menyediakan virtual servers yang configurable di AWS. Instance family dipilih berdasarkan resource profile yang dibutuhkan workload.",
+    "keyPoints": [
+      "EC2 memberi kontrol atas virtual server, operating system, software, networking, dan storage configuration.",
+      "General purpose instances menyeimbangkan compute, memory, dan networking untuk berbagai workload.",
+      "Compute optimized cocok untuk CPU-intensive workloads; memory optimized untuk memory-intensive workloads.",
+      "Accelerated computing menggunakan hardware accelerators seperti GPU; storage optimized fokus pada local storage throughput/IO.",
+      "EC2 memberi lebih banyak infrastructure control dibanding serverless compute, tetapi juga lebih banyak operational responsibility."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-auto-scaling",
+    "title": "Amazon EC2 Auto Scaling",
+    "summary": "EC2 Auto Scaling menjaga compute capacity sesuai target dan dapat menyesuaikan jumlah instances ketika demand berubah.",
+    "keyPoints": [
+      "Auto Scaling group memiliki minimum, maximum, dan desired capacity.",
+      "Scaling policies dapat scale out ketika demand naik dan scale in ketika demand turun.",
+      "Auto Scaling dapat mengganti unhealthy instances untuk mempertahankan desired capacity.",
+      "Auto Scaling mengelola capacity; Elastic Load Balancing mendistribusikan incoming traffic."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-elastic-load-balancing",
+    "title": "Elastic Load Balancing",
+    "summary": "ELB mendistribusikan incoming traffic ke multiple healthy targets sehingga aplikasi tidak bergantung pada satu target.",
+    "keyPoints": [
+      "ELB dapat route traffic ke targets seperti EC2 instances, containers, dan IP addresses.",
+      "Health checks membantu menghindari routing traffic ke unhealthy targets.",
+      "Load balancer dapat bekerja across multiple Availability Zones untuk meningkatkan availability.",
+      "ELB mendistribusikan traffic; EC2 Auto Scaling menambah atau mengurangi compute capacity."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-lambda",
+    "title": "AWS Lambda and Amazon API Gateway",
+    "summary": "Lambda menjalankan code tanpa server management dan cocok untuk event-driven atau request-response processing. API Gateway menyediakan managed API front door.",
+    "keyPoints": [
+      "Lambda Functions menjalankan code tanpa provisioning atau patching servers.",
+      "Lambda dapat dipicu oleh events atau API calls dan scale berdasarkan invocations.",
+      "API Gateway membuat dan mengelola REST, HTTP, dan WebSocket APIs.",
+      "API Gateway dapat memanggil Lambda sebagai backend untuk serverless APIs.",
+      "EC2 memberi lebih banyak server control; Lambda mengurangi infrastructure management."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-containers",
+    "title": "Containers on AWS",
+    "summary": "AWS memiliki layanan berbeda untuk orchestration, Kubernetes, serverless container compute, dan image storage.",
+    "keyPoints": [
+      "Amazon ECS adalah AWS fully managed container orchestration service.",
+      "Amazon EKS menyediakan managed Kubernetes.",
+      "AWS Fargate menjalankan container workloads tanpa customer mengelola server capacity.",
+      "Amazon ECR adalah managed registry untuk container images dan OCI artifacts.",
+      "ECR menyimpan images; ECS/EKS mengelola workloads; Fargate menyediakan serverless compute capacity."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-managed-compute-options",
+    "title": "Managed Compute Options",
+    "summary": "Elastic Beanstalk, Lightsail, dan AWS Batch mengurangi operational work untuk use case yang berbeda: application environments, simple projects, dan batch jobs.",
+    "keyPoints": [
+      "Elastic Beanstalk deploys web applications dan menangani banyak environment provisioning tasks.",
+      "Lightsail menyederhanakan VPS, networking, databases, dan resource umum untuk small applications dan websites.",
+      "AWS Batch schedules batch jobs dan provisions compute resources sesuai job demand.",
+      "CloudFormation tetap lebih general untuk infrastructure-as-code provisioning dibanding ketiga use-case-specific services tersebut."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-rds-aurora",
+    "title": "Amazon RDS and Amazon Aurora",
+    "summary": "RDS dan Aurora menyediakan managed relational database capabilities sehingga customer tidak perlu mengelola banyak infrastructure dan database administration tasks sendiri.",
+    "keyPoints": [
+      "Amazon RDS supports familiar relational database engines dan menangani backups, patching, failure detection, dan recovery.",
+      "Amazon Aurora adalah fully managed relational engine yang kompatibel dengan MySQL dan PostgreSQL.",
+      "Multi-AZ deployments terutama digunakan untuk high availability dan failover.",
+      "Read replicas umum digunakan untuk meningkatkan read scaling.",
+      "Database di EC2 memberi control lebih besar tetapi customer mengelola operating system dan lebih banyak database operations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-dynamodb",
+    "title": "Amazon DynamoDB",
+    "summary": "DynamoDB adalah serverless managed NoSQL database untuk high-scale key-value dan document workloads dengan predictable low-latency performance.",
+    "keyPoints": [
+      "DynamoDB mendukung key-value dan document data models.",
+      "AWS mengelola servers, patching, availability, dan scaling infrastructure untuk DynamoDB.",
+      "DynamoDB dirancang untuk consistent single-digit millisecond performance at scale.",
+      "On-demand capacity dapat menyesuaikan request capacity tanpa customer mengelola database servers.",
+      "DynamoDB adalah NoSQL; RDS/Aurora adalah relational database services."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-other-databases",
+    "title": "Purpose-Built Database Services",
+    "summary": "AWS purpose-built databases memilih data model yang sesuai dengan workload, misalnya cache, documents, atau graph relationships.",
+    "keyPoints": [
+      "ElastiCache menyediakan managed in-memory cache/data store dan mendukung Valkey, Memcached, serta Redis OSS.",
+      "DocumentDB menyediakan managed document database dengan MongoDB compatibility.",
+      "Neptune adalah managed graph database untuk highly connected datasets.",
+      "Pilih service berdasarkan access pattern dan data model, bukan hanya berdasarkan istilah 'database'."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-database-migration",
+    "title": "AWS Database Migration",
+    "summary": "AWS DMS dan schema-conversion tools membantu memindahkan database sambil memisahkan masalah data movement dari schema conversion.",
+    "keyPoints": [
+      "AWS DMS dapat migrate data atau replicate ongoing changes antara supported source dan target data stores.",
+      "Ongoing replication dapat membantu mengurangi application downtime selama migration.",
+      "Migration antara engine berbeda dapat membutuhkan schema conversion.",
+      "DMS Schema Conversion atau AWS SCT dapat mengonversi database schemas; AWS DMS kemudian memindahkan data."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-vpc",
+    "title": "Amazon VPC",
+    "summary": "VPC adalah logically isolated virtual network untuk AWS resources. Subnets, routing, gateways, endpoints, dan Transit Gateway menentukan connectivity.",
+    "keyPoints": [
+      "Subnet adalah IP range di dalam VPC dan setiap subnet berada di satu Availability Zone.",
+      "Route tables menentukan ke mana traffic dari subnet atau gateway diarahkan.",
+      "Internet gateway menyediakan internet connectivity untuk appropriately configured resources; NAT gateway umum untuk outbound internet access dari private subnets.",
+      "VPC endpoints/AWS PrivateLink memungkinkan private connectivity ke supported services tanpa public internet path.",
+      "Transit Gateway dapat menjadi central hub untuk menghubungkan banyak VPCs dan on-premises networks."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-route-53",
+    "title": "Amazon Route 53",
+    "summary": "Route 53 menyediakan DNS dan domain capabilities, termasuk hosted zones, health checks, dan DNS routing policies.",
+    "keyPoints": [
+      "Route 53 menerjemahkan domain names menjadi DNS responses yang mengarahkan clients ke endpoints.",
+      "Route 53 dapat digunakan sebagai domain registrar dan authoritative DNS service.",
+      "Health checks dapat membantu DNS failover dan menghindari unhealthy endpoints dalam supported routing patterns.",
+      "Route 53 melakukan DNS-level routing; Elastic Load Balancing mendistribusikan actual application/network traffic ke targets."
+    ],
+    "order": 1
   }
 ]

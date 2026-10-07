@@ -1,0 +1,3272 @@
+[
+  {
+    "code": "CCP-ACC-001",
+    "concept": "clf-aws-access-methods",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS access method provides a browser-based graphical interface for managing AWS services?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Management Console",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Command Line Interface (AWS CLI)",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS SDK",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS service API endpoint",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-access",
+      "management-console"
+    ],
+    "source": {
+      "title": "What is the AWS Management Console?",
+      "url": "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ACC-002",
+    "concept": "clf-aws-access-methods",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A system administrator wants to automate a recurring AWS task by running commands from a shell script. Which access method is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Management Console",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Command Line Interface (AWS CLI)",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Support Center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-access",
+      "aws-cli",
+      "automation"
+    ],
+    "source": {
+      "title": "What is the AWS Command Line Interface?",
+      "url": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ACC-003",
+    "concept": "clf-aws-access-methods",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an AWS SDK from the AWS CLI?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An AWS SDK is only a browser interface, while the AWS CLI is a managed database",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An AWS SDK can bypass IAM authorization, while the AWS CLI cannot",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "An AWS SDK provides language-specific libraries for application code, while the AWS CLI provides shell commands for interacting with AWS services",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An AWS SDK is only for billing, while the AWS CLI is only for networking",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-access",
+      "sdk",
+      "aws-cli",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS SDKs and Tools Reference Guide",
+      "url": "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ACC-004",
+    "concept": "clf-aws-access-methods",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A developer is writing a Python application that must create and read objects in AWS services directly from application code. Which approach is MOST suitable?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require a person to click through the AWS Management Console for every request",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use Route 53 health checks as the application interface",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use an Elastic Load Balancer as a replacement for the service API",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use an AWS SDK for Python to call the service APIs",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-access",
+      "sdk",
+      "api",
+      "application-code"
+    ],
+    "source": {
+      "title": "AWS SDKs and Tools Reference Guide",
+      "url": "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAC-001",
+    "concept": "clf-infrastructure-as-code",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of AWS CloudFormation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provision and manage AWS resources from infrastructure templates",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Distribute incoming traffic across application targets",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provide a managed relational database engine",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Register internet domain names",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudformation",
+      "infrastructure-as-code"
+    ],
+    "source": {
+      "title": "What is AWS CloudFormation?",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAC-002",
+    "concept": "clf-infrastructure-as-code",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "In AWS CloudFormation, what is a stack?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A physical rack of servers in an AWS data center",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A collection of AWS resources managed as a single unit from a CloudFormation template",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A container image repository",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A DNS routing policy",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudformation",
+      "stack",
+      "template"
+    ],
+    "source": {
+      "title": "What is AWS CloudFormation?",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAC-003",
+    "concept": "clf-infrastructure-as-code",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS CloudFormation from AWS Elastic Beanstalk?",
+    "options": [
+      {
+        "key": "A",
+        "text": "CloudFormation is a DNS service, while Elastic Beanstalk is a relational database",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudFormation stores container images, while Elastic Beanstalk converts database schemas",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudFormation is general-purpose infrastructure provisioning from templates, while Elastic Beanstalk focuses on deploying and managing application environments",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "CloudFormation only manages billing, while Elastic Beanstalk only manages IAM users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudformation",
+      "elastic-beanstalk",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS CloudFormation?",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAC-004",
+    "concept": "clf-infrastructure-as-code",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team deletes its test environment at the end of each project and must recreate the same AWS resources for the next project. Which solution BEST recreates that environment consistently?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create each environment manually and document the differences afterward",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use Route 53 to copy EC2 operating systems between environments",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use an Application Load Balancer to provision all infrastructure resources",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Define the infrastructure in a reusable CloudFormation template and deploy stacks from it",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudformation",
+      "repeatability",
+      "template",
+      "configuration"
+    ],
+    "source": {
+      "title": "What is AWS CloudFormation?",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAC-005",
+    "concept": "clf-infrastructure-as-code",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO are benefits of using AWS CloudFormation templates as infrastructure as code? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "The same infrastructure definition can be reused to create consistent environments",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "CloudFormation guarantees that applications contain no software defects",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Template files can be tracked in version control to review infrastructure changes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "CloudFormation removes the need for IAM permissions",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Every CloudFormation stack is automatically deployed to all AWS Regions",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudformation",
+      "infrastructure-as-code",
+      "repeatability",
+      "version-control"
+    ],
+    "source": {
+      "title": "What is AWS CloudFormation?",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DPM-001",
+    "concept": "clf-deployment-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which deployment model uses both on-premises infrastructure and cloud resources as part of the same overall environment?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Hybrid",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Cloud-only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Single-AZ",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Edge-only",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "deployment-model",
+      "hybrid"
+    ],
+    "source": {
+      "title": "What is AWS Outposts?",
+      "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DPM-002",
+    "concept": "clf-deployment-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is AWS Outposts designed to provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A public DNS resolver that replaces Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS-managed infrastructure and supported AWS services at a customer premises",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A global content cache that replaces every AWS Region",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A software license inventory service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "deployment-model",
+      "outposts",
+      "hybrid"
+    ],
+    "source": {
+      "title": "What is AWS Outposts?",
+      "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DPM-003",
+    "concept": "clf-deployment-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an on-premises deployment from a cloud deployment?",
+    "options": [
+      {
+        "key": "A",
+        "text": "On-premises resources always use AWS APIs, while cloud resources cannot",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "On-premises deployments are automatically multi-Region, while cloud deployments are not",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "On-premises infrastructure runs in facilities controlled by the organization, while cloud resources run on provider infrastructure and are consumed as cloud services",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "On-premises deployments cannot use networking, while cloud deployments can",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "deployment-model",
+      "on-premises",
+      "cloud",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Outposts?",
+      "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DPM-004",
+    "concept": "clf-deployment-models",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A manufacturer must process some data locally at its factory but also wants to use AWS services and tooling. Which TWO characteristics make a hybrid approach with AWS Outposts relevant? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "All AWS services run on the Outpost with no Regional connection",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Supported AWS infrastructure can run at the customer site",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The customer must replace AWS APIs with a separate proprietary interface",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The local environment remains connected to an associated AWS Region",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "The Outpost becomes an independent AWS Region owned by the customer",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "deployment-model",
+      "hybrid",
+      "outposts",
+      "local-processing"
+    ],
+    "source": {
+      "title": "What is AWS Outposts?",
+      "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-REG-001",
+    "concept": "clf-regions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an AWS Region?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A single server rack inside one data center",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A global DNS record",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A subnet inside one Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A separate geographic area that contains multiple Availability Zones",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "region",
+      "global-infrastructure"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-REG-002",
+    "concept": "clf-regions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company must keep regulated data within a specific country or geographic area. Which factor should be prioritized when selecting an AWS Region?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Legal, compliance, and data residency requirements",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The alphabetical order of Region codes",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The number of IAM users in the account",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The Availability Zone letter, because data residency is chosen per Availability Zone rather than per Region",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "region",
+      "compliance",
+      "data-residency"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-REG-003",
+    "concept": "clf-regions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an AWS Region from an Availability Zone?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Region is a subnet, while an Availability Zone is a VPC",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A Region is a geographic area containing multiple Availability Zones, while an Availability Zone is an isolated location within a Region",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A Region is an edge cache, while an Availability Zone is a DNS record",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Region and an Availability Zone are the same physical location with different names",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "region",
+      "availability-zone",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-REG-004",
+    "concept": "clf-regions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company serves most of its users from one country and has no special cross-border requirement. Which Region-selection factor can MOST directly help reduce network latency for those users?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Choose the Region with the most Availability Zones, regardless of where the users are located",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Choose a Region based only on the number of IAM groups",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Choose a Region geographically closer to the majority of users",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Choose any Region because physical distance never affects latency",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "region",
+      "latency",
+      "proximity"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-REG-005",
+    "concept": "clf-regions",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO factors should a company commonly evaluate when choosing an AWS Region? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Whether the Region automatically copies every resource to all other Regions",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Whether the Region removes the need for application backups",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Whether required AWS services and features are available in the Region",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Whether the Region guarantees identical pricing for every AWS service worldwide",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Whether the Region meets latency or regulatory requirements for the workload",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "region",
+      "service-availability",
+      "latency",
+      "compliance"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AZS-001",
+    "concept": "clf-availability-zones",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an AWS Availability Zone?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A global content delivery network",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A billing boundary shared by all AWS accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A DNS routing policy",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An isolated location within an AWS Region consisting of one or more discrete data centers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "availability-zone",
+      "global-infrastructure"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AZS-002",
+    "concept": "clf-availability-zones",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Why are Availability Zones within the same Region connected by low-latency, high-bandwidth networking?",
+    "options": [
+      {
+        "key": "A",
+        "text": "To support workloads that distribute components across isolated locations while communicating efficiently",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "To make all Availability Zones the same physical data center",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "To eliminate the need for any application-level resilience",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "To turn each Availability Zone into an independent AWS Region",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "availability-zone",
+      "multi-az",
+      "networking"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AZS-003",
+    "concept": "clf-availability-zones",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an Availability Zone from an edge location?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An Availability Zone only provides DNS, while an edge location hosts all EC2 instance types",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An Availability Zone hosts Regional workload resources in an isolated location, while an edge location is part of AWS's global edge network closer to end users",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An Availability Zone is outside every Region, while an edge location is always a subnet",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Availability Zones and edge locations are interchangeable names for the same facility type",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "availability-zone",
+      "edge-location",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AZS-004",
+    "concept": "clf-availability-zones",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A production application currently depends on resources in only one Availability Zone. Which change MOST directly reduces the risk that a single-AZ failure makes the application unavailable?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move all application components into one larger subnet in the same Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase the storage size of the existing single-zone server",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Deploy redundant application components across multiple Availability Zones",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Rename the Region in application configuration",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "availability-zone",
+      "multi-az",
+      "high-availability"
+    ],
+    "source": {
+      "title": "AWS Regions and Availability Zones",
+      "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EDG-001",
+    "concept": "clf-edge-locations",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an AWS edge location primarily part of?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A customer's private subnet",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An Amazon RDS database cluster",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "An EC2 Auto Scaling group",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The AWS global edge network that provides services closer to end users",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "edge-location",
+      "point-of-presence"
+    ],
+    "source": {
+      "title": "Points of presence - AWS Fault Isolation Boundaries",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EDG-002",
+    "concept": "clf-edge-locations",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service uses the AWS global network and static anycast IP addresses to improve the path from users to healthy application endpoints?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Global Accelerator",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS CloudFormation",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS License Manager",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "edge-network",
+      "global-accelerator",
+      "anycast"
+    ],
+    "source": {
+      "title": "AWS Global Accelerator",
+      "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EDG-003",
+    "concept": "clf-edge-locations",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an edge location from an AWS Region?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An edge location is always a customer data center, while a Region is always a single server",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An edge location is a point of presence used by edge networking/content services, while a Region is a geographic area where Regional AWS services run across Availability Zones",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An edge location contains every AWS service, while a Region contains only DNS",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An edge location and a Region are identical deployment boundaries",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "edge-location",
+      "region",
+      "comparison"
+    ],
+    "source": {
+      "title": "Points of presence - AWS Fault Isolation Boundaries",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EDG-004",
+    "concept": "clf-edge-locations",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company has application endpoints in multiple AWS Regions and wants users to enter through static global IP addresses while traffic is routed over the AWS global network toward healthy endpoints. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EC2 Auto Scaling",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS CloudFormation",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Global Accelerator",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon RDS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "global-accelerator",
+      "edge-network",
+      "multi-region",
+      "static-ip"
+    ],
+    "source": {
+      "title": "AWS Global Accelerator",
+      "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EC2-001",
+    "concept": "clf-ec2",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does Amazon EC2 provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A managed authoritative DNS service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A serverless NoSQL database",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A container image registry",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Resizable virtual server capacity in the AWS Cloud",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ec2",
+      "compute",
+      "virtual-server"
+    ],
+    "source": {
+      "title": "What is Amazon EC2?",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EC2-002",
+    "concept": "clf-ec2",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What does an Amazon EC2 instance type determine?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The combination of compute, memory, storage, and networking capabilities available to an instance",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The IAM password policy for the AWS account",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The DNS name of every application",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The AWS Support plan for the account",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "instance-type",
+      "compute"
+    ],
+    "source": {
+      "title": "Amazon EC2 instance types",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EC2-003",
+    "concept": "clf-ec2",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon EC2 from AWS Lambda for compute?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EC2 is a DNS service, while Lambda is an object store",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EC2 provides virtual servers with more operating-system and instance control, while Lambda runs code without customer management of the underlying servers",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "EC2 can only run containers, while Lambda can only run databases",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "EC2 automatically removes all operating-system responsibility, while Lambda requires customers to patch the host",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "lambda",
+      "comparison",
+      "compute"
+    ],
+    "source": {
+      "title": "What is Amazon EC2?",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EC2-004",
+    "concept": "clf-ec2",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A scientific workload spends most of its time performing CPU-intensive calculations and does not require unusually large memory. Which EC2 instance family category is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Memory optimized",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Storage optimized",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Compute optimized",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "General purpose selected only for maximum memory",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "compute-optimized",
+      "instance-family"
+    ],
+    "source": {
+      "title": "Amazon EC2 instance types",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EC2-005",
+    "concept": "clf-ec2",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Which TWO workload-to-instance-family mappings are appropriate? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "A memory-intensive in-memory analytics workload can benefit from memory optimized instances",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A CPU-bound batch calculation should always use memory optimized instances regardless of measurements",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A storage-I/O-intensive workload should always use the smallest general purpose instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A workload requiring GPUs or other hardware accelerators can benefit from accelerated computing instances",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Every application should use the same instance family because instance families have identical resource profiles",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "instance-family",
+      "memory-optimized",
+      "accelerated-computing"
+    ],
+    "source": {
+      "title": "Amazon EC2 instance types",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ASG-001",
+    "concept": "clf-auto-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of Amazon EC2 Auto Scaling?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Register internet domain names",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store container images",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Convert database schemas",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Maintain and adjust the number of EC2 instances available for an application",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ec2-auto-scaling",
+      "elasticity"
+    ],
+    "source": {
+      "title": "What is Amazon EC2 Auto Scaling?",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ASG-002",
+    "concept": "clf-auto-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What does the desired capacity of an EC2 Auto Scaling group represent?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The number of instances the group attempts to keep running, subject to its configured limits and policies",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The maximum number of DNS records in a hosted zone",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The amount of data stored in an S3 bucket",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The number of AWS Regions in an account",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-auto-scaling",
+      "desired-capacity"
+    ],
+    "source": {
+      "title": "What is Amazon EC2 Auto Scaling?",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ASG-003",
+    "concept": "clf-auto-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes EC2 Auto Scaling from Elastic Load Balancing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Auto Scaling provides DNS, while Elastic Load Balancing converts database schemas",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Auto Scaling changes and maintains compute capacity, while Elastic Load Balancing distributes incoming traffic across healthy targets",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Auto Scaling stores container images, while Elastic Load Balancing creates IAM users",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Auto Scaling and Elastic Load Balancing perform exactly the same function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-auto-scaling",
+      "elastic-load-balancing",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon EC2 Auto Scaling?",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ASG-004",
+    "concept": "clf-auto-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application experiences predictable traffic growth during business hours and lower traffic overnight. Which capability can automatically add EC2 instances as demand rises and remove them as demand falls?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Route 53 domain registration",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon EC2 Auto Scaling",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS License Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-auto-scaling",
+      "scale-out",
+      "scale-in",
+      "demand"
+    ],
+    "source": {
+      "title": "What is Amazon EC2 Auto Scaling?",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELB-001",
+    "concept": "clf-elastic-load-balancing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of Elastic Load Balancing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create relational database schemas",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store application source code",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Register software licenses",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Distribute incoming traffic across multiple targets",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "elastic-load-balancing",
+      "traffic-distribution"
+    ],
+    "source": {
+      "title": "What is Elastic Load Balancing?",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELB-002",
+    "concept": "clf-elastic-load-balancing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "How do Elastic Load Balancing health checks improve application availability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "They help the load balancer route traffic only to targets that are considered healthy",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "They automatically rewrite application code after every failure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "They copy every EC2 instance to another AWS Region",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "They replace IAM policies with network rules",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elastic-load-balancing",
+      "health-check",
+      "availability"
+    ],
+    "source": {
+      "title": "What is Elastic Load Balancing?",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELB-003",
+    "concept": "clf-elastic-load-balancing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST describes how Elastic Load Balancing and EC2 Auto Scaling can work together?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The load balancer creates IAM users, while Auto Scaling manages DNS records",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Auto Scaling adjusts the pool of EC2 instances, while the load balancer distributes traffic across the healthy instances in that pool",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Auto Scaling stores container images, while the load balancer creates database backups",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Both services only change DNS records and do not interact with compute targets",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elastic-load-balancing",
+      "ec2-auto-scaling",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Elastic Load Balancing?",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELB-004",
+    "concept": "clf-elastic-load-balancing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A web application runs on several EC2 instances across multiple Availability Zones. The company wants one entry point that stops sending new requests to an unhealthy instance. Which service should it use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS CloudFormation",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Database Migration Service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Elastic Load Balancing",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon ECR",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elastic-load-balancing",
+      "multi-az",
+      "health-check"
+    ],
+    "source": {
+      "title": "What is Elastic Load Balancing?",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LAM-001",
+    "concept": "clf-lambda",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Lambda?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A managed relational database service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A dedicated physical server purchasing model",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A DNS domain registrar",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A serverless compute service that runs code without requiring customers to provision or manage servers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "lambda",
+      "serverless",
+      "compute"
+    ],
+    "source": {
+      "title": "What is AWS Lambda?",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LAM-002",
+    "concept": "clf-lambda",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which workload pattern is well suited to AWS Lambda Functions?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Running code in response to events or API requests",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Maintaining a customer-managed operating system that must stay running indefinitely",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Providing authoritative DNS for a domain",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Storing container images for later deployment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "lambda",
+      "event-driven",
+      "serverless"
+    ],
+    "source": {
+      "title": "What is AWS Lambda?",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LAM-003",
+    "concept": "clf-lambda",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Lambda from Amazon EC2?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Lambda is a relational database, while EC2 is a DNS service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Lambda manages the underlying compute infrastructure for function execution, while EC2 gives customers direct virtual-server control",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Lambda requires customers to patch the host operating system, while EC2 never does",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Lambda can only run in customer data centers, while EC2 only runs at edge locations",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "lambda",
+      "ec2",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Lambda?",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LAM-004",
+    "concept": "clf-lambda",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to expose a serverless HTTP API whose requests invoke Lambda functions. Which AWS service is designed to act as the managed API front door?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon ECR",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Batch",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon API Gateway",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53 Resolver only",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "lambda",
+      "api-gateway",
+      "serverless-api"
+    ],
+    "source": {
+      "title": "What is Amazon API Gateway?",
+      "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LAM-005",
+    "concept": "clf-lambda",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Which TWO characteristics commonly make AWS Lambda Functions suitable for event-driven applications? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Customers must maintain a fleet of EC2 hosts before any function can run",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS manages the underlying servers and scaling infrastructure for function execution",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Every Lambda workload requires a permanently running operating system managed by the customer",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Lambda is primarily a domain-registration service",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Functions can be invoked by events or API calls",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "lambda",
+      "serverless",
+      "event-driven",
+      "managed-infrastructure"
+    ],
+    "source": {
+      "title": "What is AWS Lambda?",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CON-001",
+    "concept": "clf-containers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon ECS primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Registering domain names",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Converting relational database schemas",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Managing software license entitlements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Deploying, managing, and scaling containerized applications with AWS-managed orchestration",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "containers",
+      "ecs",
+      "orchestration"
+    ],
+    "source": {
+      "title": "What is Amazon Elastic Container Service?",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CON-002",
+    "concept": "clf-containers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service provides a managed Kubernetes environment?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EKS",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon ECR",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Batch",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Lightsail DNS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "containers",
+      "eks",
+      "kubernetes"
+    ],
+    "source": {
+      "title": "What is Amazon EKS?",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CON-003",
+    "concept": "clf-containers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon ECR from Amazon ECS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon ECR is a Kubernetes control plane, while Amazon ECS is a DNS registrar",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon ECR stores and manages container images, while Amazon ECS orchestrates running containerized applications",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon ECR scales EC2 instances, while Amazon ECS converts database schemas",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon ECR and Amazon ECS are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "containers",
+      "ecr",
+      "ecs",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Elastic Container Registry?",
+      "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CON-004",
+    "concept": "clf-containers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team wants to run containers on AWS without managing the underlying server capacity for those tasks. Which compute option is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon ECR",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Fargate",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "containers",
+      "fargate",
+      "serverless"
+    ],
+    "source": {
+      "title": "What is Amazon Elastic Container Service?",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CON-005",
+    "concept": "clf-containers",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company is building a container platform. Which TWO service mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Amazon ECR to store container images",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use Amazon ECR as a DNS service for container endpoints",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use Amazon EKS when the workload specifically requires Kubernetes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use AWS Fargate only as a container image registry",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Use Amazon ECS primarily to convert relational database schemas",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "containers",
+      "ecr",
+      "eks",
+      "kubernetes"
+    ],
+    "source": {
+      "title": "What is Amazon EKS?",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MCO-001",
+    "concept": "clf-managed-compute-options",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does AWS Elastic Beanstalk primarily help developers do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Register internet domains",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Convert database schemas between engines",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Store encryption keys in dedicated hardware",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Deploy web applications while AWS provisions and manages much of the application environment",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "elastic-beanstalk",
+      "managed-compute",
+      "application-deployment"
+    ],
+    "source": {
+      "title": "What is AWS Elastic Beanstalk?",
+      "url": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MCO-002",
+    "concept": "clf-managed-compute-options",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service is designed to make it simple to launch small websites or applications using bundled virtual servers and related resources?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Lightsail",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Batch",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Database Migration Service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon GuardDuty",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "lightsail",
+      "managed-compute",
+      "vps"
+    ],
+    "source": {
+      "title": "What is Amazon Lightsail?",
+      "url": "https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MCO-003",
+    "concept": "clf-managed-compute-options",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Batch from Elastic Beanstalk?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Batch is a DNS service, while Elastic Beanstalk is a key management service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Batch schedules and runs batch computing jobs, while Elastic Beanstalk focuses on deploying and managing application environments",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Batch stores container images, while Elastic Beanstalk registers domains",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Batch and Elastic Beanstalk are both only database migration tools",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-batch",
+      "elastic-beanstalk",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Batch?",
+      "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MCO-004",
+    "concept": "clf-managed-compute-options",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Which TWO workload-to-service mappings are appropriate? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Elastic Beanstalk primarily as a container image registry",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use Amazon Lightsail for a small project that benefits from a simple VPS-oriented experience",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use AWS Batch primarily to register domain names",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use AWS Batch to schedule and run large numbers of batch computing jobs",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use Amazon Lightsail primarily to convert database schemas between engines",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "managed-compute",
+      "lightsail",
+      "aws-batch"
+    ],
+    "source": {
+      "title": "What is AWS Batch?",
+      "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RDS-001",
+    "concept": "clf-rds-aurora",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon RDS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A managed NoSQL key-value database only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A container image registry",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A managed service for setting up, operating, and scaling relational databases in AWS",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A DNS domain-registration service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rds",
+      "relational-database"
+    ],
+    "source": {
+      "title": "What is Amazon RDS?",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RDS-002",
+    "concept": "clf-rds-aurora",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which database administration task is commonly handled by Amazon RDS as part of the managed service?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Designing the customer's application data model",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Creating every application user account according to business policy",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Writing the customer's SQL queries",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Database software patching and automated backup capabilities",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "rds",
+      "managed-database",
+      "patching",
+      "backup"
+    ],
+    "source": {
+      "title": "What is Amazon RDS?",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RDS-003",
+    "concept": "clf-rds-aurora",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Aurora from Amazon DynamoDB?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Aurora is a managed relational database engine compatible with MySQL and PostgreSQL, while DynamoDB is a managed NoSQL key-value and document database",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Aurora is a DNS service, while DynamoDB is a load balancer",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Aurora stores container images, while DynamoDB manages Kubernetes clusters",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Aurora and DynamoDB are the same database engine with different pricing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rds",
+      "aurora",
+      "dynamodb",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Aurora?",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RDS-004",
+    "concept": "clf-rds-aurora",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company uses Amazon RDS and wants automatic failover to a standby database in another Availability Zone if the primary DB instance becomes unavailable. Which capability is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A read replica used only for reporting queries",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "RDS Multi-AZ deployment",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon Route 53 domain registration",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon ECR cross-account image replication",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rds",
+      "multi-az",
+      "high-availability",
+      "failover"
+    ],
+    "source": {
+      "title": "What is Amazon RDS?",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RDS-005",
+    "concept": "clf-rds-aurora",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about Amazon RDS are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon RDS requires customers to patch the physical database host hardware",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon RDS is a NoSQL-only database service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Multi-AZ deployments are primarily used to improve database availability and failover",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Using Amazon RDS means customers no longer decide who can access application data",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Read replicas can be used to scale read-heavy workloads",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "rds",
+      "multi-az",
+      "read-replica",
+      "managed-database"
+    ],
+    "source": {
+      "title": "What is Amazon RDS?",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DDB-001",
+    "concept": "clf-dynamodb",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What type of database is Amazon DynamoDB?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A self-managed relational database running only on EC2",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A graph database service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A serverless, fully managed NoSQL key-value and document database",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A DNS record store",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dynamodb",
+      "nosql",
+      "serverless"
+    ],
+    "source": {
+      "title": "What is Amazon DynamoDB?",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DDB-002",
+    "concept": "clf-dynamodb",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which operational task does DynamoDB remove from the customer?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Defining application access patterns",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Choosing which application data to store",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Designing IAM permissions for application access",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provisioning and patching database servers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "dynamodb",
+      "managed-database",
+      "serverless"
+    ],
+    "source": {
+      "title": "What is Amazon DynamoDB?",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DDB-003",
+    "concept": "clf-dynamodb",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes DynamoDB from Amazon RDS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "DynamoDB is a managed NoSQL service, while Amazon RDS provides managed relational database engines",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "DynamoDB is a DNS service, while RDS is a container orchestrator",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "DynamoDB can only run on customer-owned servers, while RDS only runs at edge locations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "DynamoDB and RDS use the same database model and APIs",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dynamodb",
+      "rds",
+      "comparison",
+      "nosql",
+      "relational"
+    ],
+    "source": {
+      "title": "What is Amazon DynamoDB?",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DDB-004",
+    "concept": "clf-dynamodb",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A new application needs a serverless database for high-scale key-value access with consistent low-latency performance and does not require relational joins. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon RDS for Oracle",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon DynamoDB",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon Neptune",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dynamodb",
+      "key-value",
+      "low-latency",
+      "serverless"
+    ],
+    "source": {
+      "title": "What is Amazon DynamoDB?",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DDB-005",
+    "concept": "clf-dynamodb",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO characteristics are associated with Amazon DynamoDB? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "It supports key-value and document data models",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "It requires customers to patch database servers manually",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It is designed primarily for complex relational JOIN operations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS manages the underlying database infrastructure and scaling mechanisms",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "It requires a dedicated EC2 instance for every table",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dynamodb",
+      "nosql",
+      "managed-database",
+      "key-value"
+    ],
+    "source": {
+      "title": "What is Amazon DynamoDB?",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DBO-001",
+    "concept": "clf-other-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon ElastiCache primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Providing authoritative DNS for public domains",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Running Kubernetes control planes",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Providing a managed in-memory data store or cache for low-latency access",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Converting database schemas between relational engines",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticache",
+      "cache",
+      "in-memory"
+    ],
+    "source": {
+      "title": "What is Amazon ElastiCache?",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DBO-002",
+    "concept": "clf-other-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS database service is designed for MongoDB-compatible document workloads?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Neptune",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon ElastiCache",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon DocumentDB",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "documentdb",
+      "document-database",
+      "mongodb-compatible"
+    ],
+    "source": {
+      "title": "What is Amazon DocumentDB (with MongoDB compatibility)?",
+      "url": "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DBO-003",
+    "concept": "clf-other-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Neptune from Amazon DocumentDB?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Neptune is a graph database for highly connected data, while DocumentDB is a MongoDB-compatible document database",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Neptune is an in-memory cache, while DocumentDB is a DNS service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Neptune stores container images, while DocumentDB manages Kubernetes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Neptune and DocumentDB are both relational database engines",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "neptune",
+      "documentdb",
+      "graph-database",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Neptune?",
+      "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DBO-004",
+    "concept": "clf-other-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is building a fraud-detection application that frequently traverses complex relationships among accounts, devices, and transactions. Which database service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon ElastiCache used only as a cache",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Neptune",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon DocumentDB selected only for relational JOIN support",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "neptune",
+      "graph-database",
+      "fraud-detection"
+    ],
+    "source": {
+      "title": "What is Amazon Neptune?",
+      "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DMS-001",
+    "concept": "clf-database-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Database Migration Service (AWS DMS) primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Registering internet domains",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Storing container images",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Migrating and replicating data between supported data stores",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Distributing incoming web traffic",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dms",
+      "database-migration",
+      "replication"
+    ],
+    "source": {
+      "title": "What is AWS Database Migration Service?",
+      "url": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DMS-002",
+    "concept": "clf-database-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "How can AWS DMS help reduce downtime during a database migration?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It guarantees that the source application never writes new data",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It replaces every application server with Lambda functions",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It converts DNS records into database schemas",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It can replicate ongoing source changes while the target database is being prepared for cutover",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "dms",
+      "database-migration",
+      "change-data-capture",
+      "downtime"
+    ],
+    "source": {
+      "title": "What is AWS Database Migration Service?",
+      "url": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DMS-003",
+    "concept": "clf-database-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS DMS from AWS Schema Conversion Tool (AWS SCT)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS DMS moves or replicates data, while AWS SCT converts database schemas and code objects between supported engines",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS DMS is a DNS service, while AWS SCT is a load balancer",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS DMS stores container images, while AWS SCT runs Kubernetes clusters",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS DMS and AWS SCT perform exactly the same task",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dms",
+      "aws-sct",
+      "schema-conversion",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is the AWS Schema Conversion Tool?",
+      "url": "https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DMS-004",
+    "concept": "clf-database-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company is moving from one relational database engine to a different engine. It needs both schema conversion and ongoing data replication before cutover. Which approach is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use only Route 53 because DNS records automatically convert database schemas",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a schema-conversion capability such as AWS SCT or DMS Schema Conversion for the schema, and AWS DMS for data migration and ongoing replication",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use only Elastic Load Balancing because health checks replicate database data",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use Amazon ECR because container image replication migrates relational data",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dms",
+      "aws-sct",
+      "schema-conversion",
+      "replication"
+    ],
+    "source": {
+      "title": "What is AWS Database Migration Service?",
+      "url": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VPC-001",
+    "concept": "clf-vpc",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon VPC?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A managed relational database engine",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A global container image registry",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A logically isolated virtual network in AWS",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A domain-registration service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "vpc",
+      "networking",
+      "isolation"
+    ],
+    "source": {
+      "title": "What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VPC-002",
+    "concept": "clf-vpc",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a subnet in Amazon VPC?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A collection of AWS Regions",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A DNS routing policy",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A software license pool",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A range of IP addresses within a VPC that resides in a single Availability Zone",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "vpc",
+      "subnet",
+      "availability-zone"
+    ],
+    "source": {
+      "title": "What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VPC-003",
+    "concept": "clf-vpc",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an internet gateway from a NAT gateway in a typical VPC design?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An internet gateway enables connectivity between a VPC and the internet, while a NAT gateway commonly lets private-subnet resources initiate outbound IPv4 connections without accepting unsolicited inbound internet connections",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An internet gateway converts database schemas, while a NAT gateway stores container images",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "An internet gateway connects IAM users, while a NAT gateway registers domain names",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Internet gateways and NAT gateways are identical services with different names",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "vpc",
+      "internet-gateway",
+      "nat-gateway",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VPC-004",
+    "concept": "clf-vpc",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Instances in a private VPC subnet must access a supported AWS service without sending traffic through the public internet. Which VPC capability is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A public IPv4 address on every instance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A VPC endpoint using the appropriate endpoint type, including AWS PrivateLink for supported interface endpoints",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A separate internet gateway for each instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Route 53 domain registration",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "vpc",
+      "vpc-endpoint",
+      "privatelink",
+      "private-connectivity"
+    ],
+    "source": {
+      "title": "What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VPC-005",
+    "concept": "clf-vpc",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company has many VPCs and an on-premises network. Which TWO statements correctly describe useful Amazon VPC networking capabilities? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Every subnet automatically spans all Availability Zones in a Region",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Transit Gateway can act as a central hub for routing between multiple VPCs and external network connections",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A VPC endpoint requires traffic to traverse the public internet",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An internet gateway automatically makes every resource in every subnet publicly reachable",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "VPC route tables determine where network traffic from subnets or gateways is directed",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "vpc",
+      "transit-gateway",
+      "route-table",
+      "networking"
+    ],
+    "source": {
+      "title": "What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-R53-001",
+    "concept": "clf-route-53",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon Route 53 primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Running virtual servers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Storing container images",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Highly available DNS, domain registration, and DNS routing capabilities",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Converting database schemas",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "route-53",
+      "dns",
+      "domain-registration"
+    ],
+    "source": {
+      "title": "Amazon Route 53",
+      "url": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-R53-002",
+    "concept": "clf-route-53",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is a Route 53 hosted zone?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A group of EC2 instances managed by Auto Scaling",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A container image repository",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A database replication task",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A container for DNS records that define how traffic should be routed for a domain",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "route-53",
+      "hosted-zone",
+      "dns"
+    ],
+    "source": {
+      "title": "Amazon Route 53",
+      "url": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-R53-003",
+    "concept": "clf-route-53",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Route 53 from Elastic Load Balancing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route 53 answers DNS queries and can make DNS routing decisions, while Elastic Load Balancing distributes actual incoming traffic across registered targets",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Route 53 scales EC2 instance counts, while Elastic Load Balancing registers domains",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Route 53 stores container images, while Elastic Load Balancing converts database schemas",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Route 53 and Elastic Load Balancing are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "route-53",
+      "elastic-load-balancing",
+      "comparison",
+      "dns"
+    ],
+    "source": {
+      "title": "Amazon Route 53",
+      "url": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-R53-004",
+    "concept": "clf-route-53",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company has two endpoints that provide the same application function. It wants DNS responses to avoid an endpoint when a Route 53 health check reports it as unhealthy. Which Route 53 capability is relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EC2 instance-family selection",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "DNS failover using health checks and an appropriate routing configuration",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon ECR image scanning",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS SCT schema conversion",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "route-53",
+      "health-check",
+      "dns-failover"
+    ],
+    "source": {
+      "title": "Amazon Route 53",
+      "url": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html"
+    },
+    "active": true
+  }
+]

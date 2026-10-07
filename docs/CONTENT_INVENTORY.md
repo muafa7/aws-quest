@@ -25,9 +25,9 @@ Planning guidance for the curated question banks. Recommended counts are targets
 
 | Metric | Current | Planned |
 | --- | --- | --- |
-| Concepts | 42 | 90 |
-| Lessons | 42 | 90 |
-| Active questions | 198 | ~415 |
+| Concepts | 60 | 90 |
+| Lessons | 60 | 90 |
+| Active questions | 278 | ~415 |
 
 ### Domains
 
@@ -35,11 +35,11 @@ Planning guidance for the curated question banks. Recommended counts are targets
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 18 / 18 | 83 / 83 |
 | 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 24 / 24 | 115 / 115 |
-| 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 0 / 36 | 0 / 159 |
+| 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 18 / 36 | 80 / 159 |
 | 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 0 / 12 | 0 / 58 |
-| | | **Total** | | | **42 / 90** | **198 / ~415** |
+| | | **Total** | | | **60 / 90** | **278 / ~415** |
 
-Cloud Concepts and Security and Compliance are fully seeded in their domain files. The original elasticity codes `CCP-ELA-001` through `CCP-ELA-003` and shared-responsibility codes `CCP-SRM-001` through `CCP-SRM-003` are unchanged. `questions/core.json` has been removed.
+Cloud Concepts and Security and Compliance are fully seeded. Cloud Technology and Services Part 1 covers concepts 1–18 in `questions/cloud-technology-services.json`. Concepts 19–36 in that domain are not seeded yet. `questions/core.json` has been removed.
 
 Domain 3 is above its 34% exam weight because it covers the most services. Mock exams still sample by exam weight and only need 7–22 questions per domain. The total is driven by the 4-questions-per-concept floor; going much lower would mean merging concepts and weakening their explanations.
 
@@ -108,24 +108,24 @@ Column guide:
 
 | # | Slug | Prefix | Name | Status | Lesson | Existing | Recommended | Main styles | Commonly confused with |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `clf-aws-access-methods` | ACC | Ways to Access AWS (Console, CLI, SDKs, APIs) | planned | planned | 0 | 4 | Basic, Comparison | Infrastructure as code |
-| 2 | `clf-infrastructure-as-code` | IAC | Infrastructure as Code (AWS CloudFormation) | planned | planned | 0 | 5 | Understanding, Comparison | Elastic Beanstalk, access methods |
-| 3 | `clf-deployment-models` | DPM | Cloud Deployment Models (cloud, hybrid, on-premises, Outposts) | planned | planned | 0 | 4 | Comparison, Scenario | Hybrid connectivity |
-| 4 | `clf-regions` | REG | AWS Regions | planned | planned | 0 | 5 | Understanding, Scenario | Availability Zones, edge locations |
-| 5 | `clf-availability-zones` | AZS | Availability Zones | planned | planned | 0 | 4 | Understanding, Comparison | Regions, high availability |
-| 6 | `clf-edge-locations` | EDG | Edge Locations and AWS Global Accelerator | planned | planned | 0 | 4 | Comparison | CloudFront, Regions |
-| 7 | `clf-ec2` | EC2 | Amazon EC2 and Instance Types | planned | planned | 0 | 5 | Basic, Understanding, Scenario | Lambda, Lightsail |
-| 8 | `clf-auto-scaling` | ASG | Auto Scaling | planned | planned | 0 | 4 | Understanding, Scenario | Elastic Load Balancing, elasticity |
-| 9 | `clf-elastic-load-balancing` | ELB | Elastic Load Balancing | planned | planned | 0 | 4 | Understanding, Scenario | Auto Scaling, Route 53 |
-| 10 | `clf-lambda` | LAM | AWS Lambda and Serverless APIs (API Gateway) | planned | planned | 0 | 5 | Basic, Comparison, Scenario | EC2, Fargate |
-| 11 | `clf-containers` | CON | Containers (ECS, EKS, Fargate, ECR) | planned | planned | 0 | 5 | Comparison, Scenario | Lambda |
-| 12 | `clf-managed-compute-options` | MCO | Managed Compute Options (Elastic Beanstalk, Lightsail, Batch) | planned | planned | 0 | 4 | Comparison, Scenario | CloudFormation, EC2 |
-| 13 | `clf-rds-aurora` | RDS | Amazon RDS and Amazon Aurora (managed vs EC2-hosted databases) | planned | planned | 0 | 5 | Basic, Comparison, Scenario | DynamoDB |
-| 14 | `clf-dynamodb` | DDB | Amazon DynamoDB | planned | planned | 0 | 5 | Comparison, Scenario | RDS |
-| 15 | `clf-other-databases` | DBO | Other Purpose-Built Databases (ElastiCache, DocumentDB, Neptune) | planned | planned | 0 | 4 | Basic, Comparison | DynamoDB, RDS |
-| 16 | `clf-database-migration` | DMS | Database Migration (AWS DMS, AWS SCT) | planned | planned | 0 | 4 | Scenario | Migration services |
-| 17 | `clf-vpc` | VPC | Amazon VPC (subnets, gateways, PrivateLink, Transit Gateway) | planned | planned | 0 | 5 | Understanding, Comparison | Security groups, network ACLs |
-| 18 | `clf-route-53` | R53 | Amazon Route 53 | planned | planned | 0 | 4 | Basic, Understanding | CloudFront, Elastic Load Balancing |
+| 1 | `clf-aws-access-methods` | ACC | Ways to Access AWS (Console, CLI, SDKs, APIs) | seeded | complete | 4 | 4 | Basic, Comparison | Infrastructure as code |
+| 2 | `clf-infrastructure-as-code` | IAC | Infrastructure as Code (AWS CloudFormation) | seeded | complete | 5 | 5 | Understanding, Comparison | Elastic Beanstalk, access methods |
+| 3 | `clf-deployment-models` | DPM | Cloud Deployment Models (cloud, hybrid, on-premises, Outposts) | seeded | complete | 4 | 4 | Comparison, Scenario | Hybrid connectivity |
+| 4 | `clf-regions` | REG | AWS Regions | seeded | complete | 5 | 5 | Understanding, Scenario | Availability Zones, edge locations |
+| 5 | `clf-availability-zones` | AZS | Availability Zones | seeded | complete | 4 | 4 | Understanding, Comparison | Regions, high availability |
+| 6 | `clf-edge-locations` | EDG | Edge Locations and AWS Global Accelerator | seeded | complete | 4 | 4 | Comparison | CloudFront, Regions |
+| 7 | `clf-ec2` | EC2 | Amazon EC2 and Instance Types | seeded | complete | 5 | 5 | Basic, Understanding, Scenario | Lambda, Lightsail |
+| 8 | `clf-auto-scaling` | ASG | Auto Scaling | seeded | complete | 4 | 4 | Understanding, Scenario | Elastic Load Balancing, elasticity |
+| 9 | `clf-elastic-load-balancing` | ELB | Elastic Load Balancing | seeded | complete | 4 | 4 | Understanding, Scenario | Auto Scaling, Route 53 |
+| 10 | `clf-lambda` | LAM | AWS Lambda and Serverless APIs (API Gateway) | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | EC2, Fargate |
+| 11 | `clf-containers` | CON | Containers (ECS, EKS, Fargate, ECR) | seeded | complete | 5 | 5 | Comparison, Scenario | Lambda |
+| 12 | `clf-managed-compute-options` | MCO | Managed Compute Options (Elastic Beanstalk, Lightsail, Batch) | seeded | complete | 4 | 4 | Comparison, Scenario | CloudFormation, EC2 |
+| 13 | `clf-rds-aurora` | RDS | Amazon RDS and Amazon Aurora (managed vs EC2-hosted databases) | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | DynamoDB |
+| 14 | `clf-dynamodb` | DDB | Amazon DynamoDB | seeded | complete | 5 | 5 | Comparison, Scenario | RDS |
+| 15 | `clf-other-databases` | DBO | Other Purpose-Built Databases (ElastiCache: Valkey, Memcached, Redis OSS; DocumentDB; Neptune) | seeded | complete | 4 | 4 | Basic, Comparison | DynamoDB, RDS |
+| 16 | `clf-database-migration` | DMS | Database Migration (AWS DMS, DMS Schema Conversion, AWS SCT) | seeded | complete | 4 | 4 | Scenario | Migration services |
+| 17 | `clf-vpc` | VPC | Amazon VPC (subnets, gateways, PrivateLink, Transit Gateway) | seeded | complete | 5 | 5 | Understanding, Comparison | Security groups, network ACLs |
+| 18 | `clf-route-53` | R53 | Amazon Route 53 | seeded | complete | 4 | 4 | Basic, Understanding | CloudFront, Elastic Load Balancing |
 | 19 | `clf-cloudfront` | CFR | Amazon CloudFront | planned | planned | 0 | 4 | Basic, Comparison, Scenario | Global Accelerator, S3 |
 | 20 | `clf-hybrid-connectivity` | HYB | Hybrid Connectivity (AWS VPN, AWS Direct Connect) | planned | planned | 0 | 5 | Comparison, Scenario | Deployment models |
 | 21 | `clf-s3` | S3B | Amazon S3 | planned | planned | 0 | 5 | Basic, Understanding, Scenario | EBS, EFS |
@@ -221,21 +221,39 @@ Current weak lessons: none. The shared-responsibility explanation now covers how
 | `CCP-CFG-001`–`005` | `clf-aws-config` | 5 | `questions/security-compliance.json` |
 | `CCP-ART-001`–`005` | `clf-compliance-artifact` | 5 | `questions/security-compliance.json` |
 | `CCP-SRS-001`–`004` | `clf-security-resources` | 4 | `questions/security-compliance.json` |
+| `CCP-ACC-001`–`004` | `clf-aws-access-methods` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-IAC-001`–`005` | `clf-infrastructure-as-code` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-DPM-001`–`004` | `clf-deployment-models` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-REG-001`–`005` | `clf-regions` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-AZS-001`–`004` | `clf-availability-zones` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-EDG-001`–`004` | `clf-edge-locations` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-EC2-001`–`005` | `clf-ec2` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-ASG-001`–`004` | `clf-auto-scaling` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-ELB-001`–`004` | `clf-elastic-load-balancing` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-LAM-001`–`005` | `clf-lambda` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-CON-001`–`005` | `clf-containers` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-MCO-001`–`004` | `clf-managed-compute-options` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-RDS-001`–`005` | `clf-rds-aurora` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-DDB-001`–`005` | `clf-dynamodb` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-DBO-001`–`004` | `clf-other-databases` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-DMS-001`–`004` | `clf-database-migration` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-VPC-001`–`005` | `clf-vpc` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-R53-001`–`004` | `clf-route-53` | 4 | `questions/cloud-technology-services.json` |
 
 `CCP-ELA-001` through `CCP-ELA-003` and `CCP-SRM-001` through `CCP-SRM-003` keep their original codes.
 
-Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`. Every other prefix starts at `001`.
+Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`, `CCP-ACC-005`, `CCP-IAC-006`, `CCP-DPM-005`, `CCP-REG-006`, `CCP-AZS-005`, `CCP-EDG-005`, `CCP-EC2-006`, `CCP-ASG-005`, `CCP-ELB-005`, `CCP-LAM-006`, `CCP-CON-006`, `CCP-MCO-005`, `CCP-RDS-006`, `CCP-DDB-006`, `CCP-DBO-005`, `CCP-DMS-005`, `CCP-VPC-006`, `CCP-R53-005`. Every other prefix starts at `001`.
 
 Relabelling style or difficulty keeps the same code (spec section 28).
 
 ### Distribution targets
 
-| Dimension | Current (198) | Target |
+| Dimension | Current (278) | Target |
 | --- | --- | --- |
-| Style | BASIC 46, UNDERSTANDING 58, COMPARISON 41, SCENARIO 53, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
-| Difficulty | EASY 79, MEDIUM 92, HARD 27 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
-| Type | SINGLE_CHOICE 171, MULTIPLE_CHOICE 27 | MULTIPLE_CHOICE 10–15% |
-| Correct-answer position | A 51, B 51, C 53, D 50, E 20 | Roughly 20–30% per letter (informational) |
+| Style | BASIC 64, UNDERSTANDING 80, COMPARISON 59, SCENARIO 75, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
+| Difficulty | EASY 111, MEDIUM 128, HARD 39 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
+| Type | SINGLE_CHOICE 241, MULTIPLE_CHOICE 37 | MULTIPLE_CHOICE 10–15% |
+| Correct-answer position | A 73, B 73, C 74, D 71, E 24 | Roughly 20–30% per letter (informational) |
 
 The exam guide lists "Designing cloud architecture" as out of scope for the CLF-C02 candidate, so ARCHITECTURE questions should be rare or absent.
 
@@ -305,6 +323,24 @@ Valid concept slugs today (only these may be referenced by questions and lessons
 - `clf-aws-config`
 - `clf-compliance-artifact`
 - `clf-security-resources`
+- `clf-aws-access-methods`
+- `clf-infrastructure-as-code`
+- `clf-deployment-models`
+- `clf-regions`
+- `clf-availability-zones`
+- `clf-edge-locations`
+- `clf-ec2`
+- `clf-auto-scaling`
+- `clf-elastic-load-balancing`
+- `clf-lambda`
+- `clf-containers`
+- `clf-managed-compute-options`
+- `clf-rds-aurora`
+- `clf-dynamodb`
+- `clf-other-databases`
+- `clf-database-migration`
+- `clf-vpc`
+- `clf-route-53`
 
 Planned slugs in the tables above become valid once they are added to `concepts.json` together with their lessons.
 
@@ -414,7 +450,7 @@ Good candidates for comparison questions and for checking that explanations name
 
 ### Notable content gaps
 
-- 48 of 90 planned concepts and their lessons do not exist yet. Domains 3 and 4 have no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Those empty domains contribute nothing; the weighted sample comes from Cloud Concepts and Security and Compliance, then any shortfall is filled from those same domains.
+- 30 of 90 planned concepts and their lessons do not exist yet. Cloud Technology and Services still needs concepts 19–36, and Billing, Pricing, and Support has no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Billing contributes nothing; the rest is sampled from the three seeded domains.
 - Every seeded CLF-C02 concept has at least 4 questions.
 - No CLF-C02 lesson is weak (see [Lesson status](#lesson-status)).
 - No ARCHITECTURE questions yet. The exam guide lists designing cloud architecture as out of scope, so that is expected.
