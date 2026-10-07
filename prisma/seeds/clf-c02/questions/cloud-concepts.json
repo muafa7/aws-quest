@@ -1,0 +1,1101 @@
+[
+  {
+    "code": "CCP-VAL-001",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "A startup wants to avoid purchasing servers before it knows how much capacity customers will require. Which AWS Cloud benefit MOST directly addresses this goal?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require hardware purchases sized for peak demand",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trade large upfront fixed expenses for variable, usage-based expenses",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use only long-term hardware contracts",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep spare physical servers in a company-owned data center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "variable-expense",
+      "pay-as-you-go"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-002",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A development team can provision a new test environment in minutes instead of waiting weeks for hardware procurement. Which cloud benefit does this MOST directly demonstrate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dedicated tenancy",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Data sovereignty",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Increased speed and agility",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Long-term capacity reservation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "agility",
+      "provisioning"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-003",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company wants its engineers to spend less time installing, powering, and maintaining physical servers. Which AWS Cloud value proposition is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reduce the undifferentiated work of running data centers",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase the number of physical servers the company owns",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Require every workload to use dedicated hardware",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Replace variable costs with larger capital purchases",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "data-center",
+      "operational-overhead"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-004",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is launching an application for customers in several geographic markets and wants to place workloads closer to users without building new data centers. Which AWS Cloud benefit is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Using only one Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Purchasing hardware several years in advance",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Keeping all workloads in a single physical facility",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Expanding globally using AWS infrastructure in multiple geographic areas",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "global-reach",
+      "agility"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-005",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A retailer cannot accurately predict how much infrastructure it will need during future sales events. Which cloud benefit BEST reduces the risk of paying for large amounts of unused peak capacity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Owning spare servers permanently",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Accessing capacity as needed instead of guessing far in advance",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Using fixed hardware capacity for the life of the application",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Purchasing a second company-owned data center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "capacity-planning",
+      "elasticity"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-006",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "COMPARISON",
+    "question": "Which statement BEST contrasts the AWS Cloud consumption model with a traditional upfront infrastructure purchase?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS requires customers to buy all hardware before deployment",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Traditional infrastructure always charges only for resources that are actively consumed",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS can use variable, usage-based spending instead of requiring the same large fixed investment before capacity is needed",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS removes all operating costs regardless of how many resources are used",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "fixed-expense",
+      "variable-expense"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-007",
+    "concept": "clf-cloud-value-proposition",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO are benefits associated with the AWS Cloud value proposition? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provision IT resources quickly when they are needed",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Own and maintain every physical server used by the workload",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Purchase enough hardware for several years of peak demand before launch",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reduce the need to operate and maintain company-owned data centers",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use a fixed amount of capacity that cannot be changed after deployment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "agility",
+      "operational-overhead"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-001",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Why can AWS customers benefit from massive economies of scale?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Each customer must purchase separate AWS data centers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS limits every customer to the same fixed capacity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Customers are required to own the physical hardware they use",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS aggregates usage across many customers and operates infrastructure at very large scale",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-002",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a typical customer benefit of AWS operating infrastructure at massive scale?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Lower variable cost than many organizations could achieve by building equivalent infrastructure on their own",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A requirement to purchase all capacity as capital expenditure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Capacity that grows and shrinks automatically as application demand changes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A requirement to use only dedicated physical hosts",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "variable-cost",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-003",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes economies of scale from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Economies of scale adjust capacity as demand changes, while elasticity lowers unit cost through provider scale",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Economies of scale keep a workload available during a component failure, while elasticity trades a fixed expense for a variable expense",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Economies of scale can reduce unit costs through provider scale, while elasticity adjusts capacity as demand changes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Economies of scale and elasticity mean exactly the same thing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-004",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company asks why a large cloud provider can often deliver infrastructure at a lower per-unit cost than the company could achieve in its own small data center. Which explanation is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The provider avoids using physical infrastructure",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The provider spreads purchasing and operating efficiencies across a very large customer base",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The provider keeps every customer's hardware permanently idle",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The provider requires every workload to run at peak capacity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "cost-efficiency",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-005",
+    "concept": "clf-economies-of-scale",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements explain how massive economies of scale can benefit AWS customers? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "They guarantee that application demand never changes",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Aggregated demand lets AWS operate infrastructure at a scale individual organizations usually cannot match",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "They require customers to maintain unused peak capacity",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "They automatically make every workload highly available",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Scale efficiencies can translate into lower pay-as-you-go prices for customers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "pay-as-you-go",
+      "cost-efficiency"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-001",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which statement BEST describes elasticity in cloud computing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Capacity can increase when demand rises and decrease when demand falls",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A workload is deployed redundantly so it can continue during a component failure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A workload can grow over time but must keep all added capacity permanently",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Data is retained for a specified period regardless of access pattern",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "capacity",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-002",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An online store adds compute capacity during a traffic spike and removes the extra capacity after traffic returns to normal. Which behavior is this demonstrating?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High availability",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Elasticity",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Dedicated tenancy",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "scaling",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-003",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes elasticity from high availability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Elasticity keeps a workload available during a component failure, while high availability adjusts capacity as demand changes",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Elasticity is only for databases, while high availability is only for compute",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Elasticity requires multiple AWS Regions, while high availability requires only one server",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Elasticity adjusts capacity as demand changes, while high availability focuses on keeping a workload available during failures",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "high-availability",
+      "comparison"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-004",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A retailer currently keeps enough compute capacity running all year to handle a short annual sales peak. Which change would BEST use cloud elasticity to reduce idle capacity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the peak capacity running continuously",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add capacity when demand rises and remove it when demand falls",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Move the application to a single larger physical server",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable scaling so the capacity never changes",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "cost-efficiency",
+      "capacity"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-005",
+    "concept": "clf-elasticity",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO behaviors are examples of elasticity? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Adding compute resources when request volume increases",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keeping maximum capacity running permanently regardless of demand",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Removing unneeded resources after demand decreases",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Creating a backup copy of data once per day",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Deploying the same fixed capacity in every environment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "scale-out",
+      "scale-in"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-001",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An application currently runs only in one Availability Zone. Which change MOST directly improves its availability during an Availability Zone failure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store application logs for a longer period",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Run redundant application resources across multiple Availability Zones with failover",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Increase the CPU size of the existing instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Move all resources into a single subnet",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "multi-az",
+      "failover"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-002",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes high availability from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High availability adjusts capacity as demand changes, while elasticity keeps a workload available during failures",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "High availability and elasticity are two names for the same behavior",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "High availability changes capacity only for cost reasons, while elasticity handles hardware failures",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "High availability focuses on continuing service through failures, while elasticity adjusts capacity to changing demand",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-003",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which design principle MOST directly reduces a single point of failure for a production workload?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use redundant resources in independent failure locations",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Run all components on one large instance",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Keep only one active copy of each critical component",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Place all compute resources in the same Availability Zone",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "redundancy",
+      "fault-isolation"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-004",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team creates nightly backups of an application database, but the application still becomes unavailable whenever its only active compute instance fails. Which change MOST directly addresses the availability problem?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create backups less frequently",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store the backups for a longer retention period",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add redundant serving resources and fail over to healthy resources when a failure occurs",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Increase the size of the existing single compute instance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "redundancy",
+      "failover",
+      "backup"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-005",
+    "concept": "clf-high-availability",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO practices directly support high availability for a workload? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Depend on a single active resource with no replacement",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Distribute workload resources across multiple Availability Zones",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Keep all resources in one failure location",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provision only enough capacity for normal demand and ignore failures",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Fail over requests to healthy resources when a component fails",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "multi-az",
+      "failover"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-001",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automatically modify every AWS resource without customer review",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide a legal compliance certification for every workload",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provide a consistent way to evaluate workloads against AWS architectural best practices and identify improvements",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Replace the need to define business requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "best-practices",
+      "review"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-002",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "How many pillars are in the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Six",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Three",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Eight",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Twelve",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-003",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement about trade-offs in the AWS Well-Architected Framework is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Every workload must prioritize all pillars equally in every environment",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Cost optimization must always be prioritized over reliability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The Framework forbids any trade-offs between architectural qualities",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Business context can drive trade-offs among pillars, while security and operational excellence are generally not traded off against the others",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars",
+      "trade-offs"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-004",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team wants a repeatable method to review an existing AWS workload and identify architectural risks and improvement opportunities. What should the team expect from a Well-Architected review?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A guarantee that the workload will never fail",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A structured assessment against AWS best practices that highlights areas for improvement",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Automatic replacement of all resources with the cheapest alternatives",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A certification that removes the need for future architecture reviews",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "review",
+      "best-practices"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-005",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which pair contains only pillars of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agility and Governance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Scalability and Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Reliability and Performance Efficiency",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Compliance and Business Continuity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  }
+]

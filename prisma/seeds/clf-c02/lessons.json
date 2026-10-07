@@ -1,12 +1,63 @@
 [
   {
+    "concept": "clf-cloud-value-proposition",
+    "title": "Value Proposition of the AWS Cloud",
+    "summary": "AWS Cloud membantu organisasi mendapatkan resource IT saat dibutuhkan tanpa harus membeli dan mengelola seluruh kapasitas fisik di awal. Nilainya terlihat pada biaya yang lebih fleksibel, provisioning yang cepat, dan kemampuan fokus pada pekerjaan yang memberi nilai bisnis.",
+    "keyPoints": [
+      "Biaya dapat bergeser dari fixed expense besar di awal menjadi variable expense berbasis penggunaan.",
+      "Resource dapat diprovisikan dalam hitungan menit sehingga eksperimen dan delivery menjadi lebih cepat.",
+      "Customer dapat mengurangi pekerjaan menjalankan dan memelihara data center sendiri.",
+      "Cloud membantu mengurangi kebutuhan menebak kapasitas peak jauh sebelum resource benar-benar diperlukan.",
+      "AWS memudahkan deployment ke berbagai lokasi global saat aplikasi membutuhkan jangkauan yang lebih luas."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-economies-of-scale",
+    "title": "Economies of Scale",
+    "summary": "AWS mengoperasikan infrastruktur untuk sangat banyak customer sehingga biaya dapat tersebar pada skala yang jauh lebih besar dibandingkan satu organisasi membangun semuanya sendiri.",
+    "keyPoints": [
+      "Penggunaan dari banyak customer dikumpulkan pada skala besar.",
+      "Skala besar membantu AWS memperoleh efisiensi operasional dan biaya per unit yang lebih rendah.",
+      "Efisiensi tersebut dapat diterjemahkan menjadi harga variable pay-as-you-go yang lebih rendah bagi customer.",
+      "Economies of scale membahas efisiensi biaya karena skala provider, bukan penyesuaian kapasitas terhadap demand."
+    ],
+    "order": 1
+  },
+  {
     "concept": "clf-elasticity",
     "title": "Elasticity",
-    "summary": "Elasticity membuat kapasitas cloud dapat bertambah ketika demand naik dan berkurang kembali ketika demand turun.",
+    "summary": "Elasticity membuat kapasitas cloud dapat bertambah ketika demand naik dan berkurang kembali ketika demand turun, sehingga workload tidak harus mempertahankan kapasitas peak setiap saat.",
     "keyPoints": [
-      "Resource mengikuti perubahan workload.",
-      "Scale out saat demand meningkat dan scale in saat demand menurun.",
-      "Elasticity berbeda dari sekadar kemampuan menangani pertumbuhan jangka panjang."
+      "Resource dapat scale out atau scale up ketika demand meningkat dan dikurangi kembali saat demand turun.",
+      "Elasticity membantu mengurangi idle capacity dan overprovisioning.",
+      "Scalability adalah kemampuan workload bertumbuh untuk menangani beban yang lebih besar; elasticity menekankan penyesuaian kapasitas mengikuti perubahan demand.",
+      "High availability berfokus pada menjaga layanan tetap tersedia saat terjadi kegagalan, bukan pada perubahan demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-high-availability",
+    "title": "High Availability and Fault Tolerance",
+    "summary": "High availability menjaga workload tetap dapat melayani pengguna ketika sebagian komponen gagal. Di AWS, redundancy dan deployment lintas Availability Zone membantu menghindari satu lokasi menjadi single point of failure.",
+    "keyPoints": [
+      "Gunakan redundant resources agar kegagalan satu komponen tidak menghentikan seluruh workload.",
+      "Availability Zone adalah fault-isolation boundary; Multi-AZ membantu melindungi workload dari kegagalan satu AZ.",
+      "Failover mengalihkan traffic atau workload ke resource yang masih sehat.",
+      "Fault-tolerant design menggunakan redundancy dan fault isolation agar workload tetap dapat beroperasi saat komponen gagal.",
+      "Elasticity merespons perubahan demand, sedangkan high availability merespons risiko kegagalan; backup mendukung recovery tetapi tidak menyediakan layanan aktif dengan sendirinya."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-well-architected-framework",
+    "title": "AWS Well-Architected Framework",
+    "summary": "AWS Well-Architected Framework membantu tim mengevaluasi workload secara konsisten terhadap best practices dan menemukan peluang perbaikan sesuai kebutuhan bisnis.",
+    "keyPoints": [
+      "Framework digunakan untuk menilai workload dan mengidentifikasi area perbaikan, bukan untuk memberi sertifikat compliance.",
+      "Enam pillar-nya adalah Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, dan Sustainability.",
+      "Trade-off antar pillar dapat berbeda sesuai kebutuhan bisnis, tetapi Security dan Operational Excellence umumnya tidak di-trade-off terhadap pillar lain.",
+      "Framework menyediakan pertanyaan dan best practices untuk membantu review arsitektur secara konsisten."
     ],
     "order": 1
   },

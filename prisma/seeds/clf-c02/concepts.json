@@ -1,12 +1,52 @@
 [
   {
     "topic": "cloud-concepts",
-    "slug": "clf-elasticity",
-    "name": "Elasticity",
-    "generalExplanation": "Elasticity adalah kemampuan resource cloud bertambah atau berkurang mengikuti perubahan kebutuhan workload. Fokusnya adalah penyesuaian kapasitas terhadap demand yang berubah.",
-    "keyNote": "Elasticity = kapasitas naik dan turun mengikuti demand.",
+    "slug": "clf-cloud-value-proposition",
+    "name": "Value Proposition of the AWS Cloud",
+    "generalExplanation": "Value proposition AWS Cloud mencakup perubahan dari investasi infrastruktur besar di awal menjadi biaya berbasis penggunaan, provisioning resource yang jauh lebih cepat, pengurangan pekerjaan mengelola data center, kemampuan menyesuaikan kapasitas dengan kebutuhan, serta kemudahan memperluas workload secara global. Nilai utamanya bukan sekadar memiliki server di cloud, tetapi meningkatkan agility, mengurangi pemborosan kapasitas, dan memungkinkan tim fokus pada kebutuhan bisnis.",
+    "keyNote": "AWS Cloud memberi agility dan fleksibilitas biaya: gunakan resource saat dibutuhkan, bayar sesuai penggunaan, dan kurangi pekerjaan mengelola infrastruktur fisik.",
     "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     "order": 1,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-economies-of-scale",
+    "name": "Economies of Scale",
+    "generalExplanation": "Economies of scale terjadi karena AWS menggabungkan penggunaan dari banyak customer dan mengoperasikan infrastruktur dalam skala sangat besar. Skala tersebut dapat menurunkan biaya per unit dan diterjemahkan menjadi biaya variabel yang lebih rendah bagi customer dibandingkan jika setiap organisasi membangun kapasitas serupa sendiri. Economies of scale berbeda dari elasticity: economies of scale berkaitan dengan efisiensi biaya karena skala provider, sedangkan elasticity berkaitan dengan menambah atau mengurangi kapasitas mengikuti demand.",
+    "keyNote": "Economies of scale = skala besar AWS membantu menurunkan biaya per unit; elasticity = kapasitas berubah mengikuti demand.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-elasticity",
+    "name": "Elasticity",
+    "generalExplanation": "Elasticity adalah kemampuan menambah kapasitas ketika demand naik dan mengurangi kapasitas ketika demand turun sehingga resource lebih sesuai dengan kebutuhan aktual. Elasticity membantu menghindari overprovisioning untuk peak demand sepanjang waktu. Ini berbeda dari scalability, yaitu kemampuan workload bertumbuh untuk menangani beban yang lebih besar, dan berbeda dari high availability, yang berfokus pada menjaga layanan tetap tersedia ketika terjadi kegagalan.",
+    "keyNote": "Elasticity = kapasitas naik dan turun mengikuti demand; scalability = kemampuan bertumbuh; high availability = tetap tersedia saat terjadi kegagalan.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-high-availability",
+    "name": "High Availability and Fault Tolerance",
+    "generalExplanation": "High availability berfokus pada menjaga workload tetap tersedia ketika terjadi kegagalan dengan mengurangi single point of failure, menggunakan redundancy, dan melakukan failover ke resource yang sehat. Di AWS, menjalankan workload pada beberapa Availability Zone adalah pola umum untuk membatasi dampak kegagalan satu lokasi. Fault-tolerant design menggunakan redundancy dan fault isolation agar workload dapat terus beroperasi ketika komponen gagal. High availability berbeda dari elasticity yang menyesuaikan kapasitas terhadap demand. Backup membantu pemulihan data, tetapi backup saja tidak membuat aplikasi tetap melayani request saat komponen aktif gagal.",
+    "keyNote": "High availability dan fault tolerance mengandalkan redundancy/fault isolation; Multi-AZ membantu mencegah satu lokasi menjadi single point of failure.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-well-architected-framework",
+    "name": "AWS Well-Architected Framework",
+    "generalExplanation": "AWS Well-Architected Framework menyediakan pendekatan yang konsisten untuk mengevaluasi workload terhadap best practices dan menemukan area yang perlu diperbaiki. Framework ini memiliki enam pillar: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, dan Sustainability. Trade-off antar pillar ditentukan oleh konteks bisnis, tetapi Security dan Operational Excellence umumnya tidak di-trade-off terhadap pillar lain. Framework ini bukan layanan yang otomatis mengubah resource dan bukan sertifikat compliance.",
+    "keyNote": "Well-Architected = evaluasi workload terhadap best practices melalui enam pillar dan gunakan hasilnya untuk menentukan perbaikan.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html",
+    "order": 5,
     "active": true
   },
   {
