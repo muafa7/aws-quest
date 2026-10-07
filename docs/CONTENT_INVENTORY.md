@@ -25,9 +25,9 @@ Planning guidance for the curated question banks. Recommended counts are targets
 
 | Metric | Current | Planned |
 | --- | --- | --- |
-| Concepts | 78 | 90 |
-| Lessons | 78 | 90 |
-| Active questions | 357 | ~415 |
+| Concepts | 90 | 90 |
+| Lessons | 90 | 90 |
+| Active questions | 415 | ~415 |
 
 ### Domains
 
@@ -36,10 +36,10 @@ Planning guidance for the curated question banks. Recommended counts are targets
 | 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 18 / 18 | 83 / 83 |
 | 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 24 / 24 | 115 / 115 |
 | 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 36 / 36 | 159 / 159 |
-| 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 0 / 12 | 0 / 58 |
-| | | **Total** | | | **78 / 90** | **357 / ~415** |
+| 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 12 / 12 | 58 / 58 |
+| | | **Total** | | | **90 / 90** | **415 / ~415** |
 
-Cloud Concepts, Security and Compliance, and Cloud Technology and Services are fully seeded. Billing, Pricing, and Support is not seeded yet. `questions/core.json` has been removed.
+All four CLF-C02 domains are fully seeded. `questions/core.json` has been removed.
 
 Domain 3 is above its 34% exam weight because it covers the most services. Mock exams still sample by exam weight and only need 7–22 questions per domain. The total is driven by the 4-questions-per-concept floor; going much lower would mean merging concepts and weakening their explanations.
 
@@ -149,18 +149,18 @@ Column guide:
 
 | # | Slug | Prefix | Name | Status | Lesson | Existing | Recommended | Main styles | Commonly confused with |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `clf-on-demand-spot` | ODS | On-Demand and Spot Instances | planned | planned | 0 | 5 | Comparison, Scenario | Reserved Instances, Savings Plans |
-| 2 | `clf-reserved-savings-plans` | RSP | Reserved Instances, Savings Plans, and Capacity Reservations | planned | planned | 0 | 6 | Comparison, Scenario | On-Demand, Spot |
-| 3 | `clf-dedicated-hosts-instances` | DED | Dedicated Hosts and Dedicated Instances | planned | planned | 0 | 4 | Comparison, Scenario | Licensing strategies |
-| 4 | `clf-data-transfer-costs` | DTC | Data Transfer Costs | planned | planned | 0 | 4 | Understanding, Scenario | CloudFront |
-| 5 | `clf-cost-management-tools` | CMT | Cost Management Tools (Budgets, Cost Explorer, Pricing Calculator, Cost and Usage Report) | planned | planned | 0 | 6 | Comparison, Scenario | Trusted Advisor |
-| 6 | `clf-consolidated-billing` | CBL | AWS Organizations Consolidated Billing | planned | planned | 0 | 5 | Understanding, Scenario | Multi-account governance |
-| 7 | `clf-cost-allocation-tags` | TAG | Cost Allocation Tags | planned | planned | 0 | 4 | Understanding, Scenario | Cost management tools |
-| 8 | `clf-support-plans` | SUP | AWS Support Plans | planned | planned | 0 | 6 | Comparison, Scenario | Technical resources |
-| 9 | `clf-trusted-advisor` | TAD | AWS Trusted Advisor (including Service Quotas) | planned | planned | 0 | 5 | Basic, Comparison, Scenario | Health Dashboard, Security Hub, Compute Optimizer |
-| 10 | `clf-health-dashboard` | HLT | AWS Health Dashboard and AWS Health API | planned | planned | 0 | 4 | Comparison | Trusted Advisor, CloudWatch |
-| 11 | `clf-technical-resources` | RES | AWS Technical Resources (documentation, whitepapers, re:Post, Knowledge Center, Prescriptive Guidance, Support Center, Trust and Safety) | planned | planned | 0 | 4 | Basic | Support plans |
-| 12 | `clf-partners-marketplace` | APN | AWS Partners, Marketplace, Professional Services, and Solutions Architects | planned | planned | 0 | 5 | Basic, Comparison | Support plans |
+| 1 | `clf-on-demand-spot` | ODS | On-Demand and Spot Instances | seeded | complete | 5 | 5 | Comparison, Scenario | Reserved Instances, Savings Plans |
+| 2 | `clf-reserved-savings-plans` | RSP | Reserved Instances, Savings Plans, and Capacity Reservations | seeded | complete | 6 | 6 | Comparison, Scenario | On-Demand, Spot |
+| 3 | `clf-dedicated-hosts-instances` | DED | Dedicated Hosts and Dedicated Instances | seeded | complete | 4 | 4 | Comparison, Scenario | Licensing strategies |
+| 4 | `clf-data-transfer-costs` | DTC | Data Transfer Costs | seeded | complete | 4 | 4 | Understanding, Scenario | CloudFront |
+| 5 | `clf-cost-management-tools` | CMT | Cost Management Tools (Budgets, Cost Explorer, Pricing Calculator, CUR 2.0 / Data Exports) | seeded | complete | 6 | 6 | Comparison, Scenario | Trusted Advisor |
+| 6 | `clf-consolidated-billing` | CBL | AWS Organizations Consolidated Billing | seeded | complete | 5 | 5 | Understanding, Scenario | Multi-account governance |
+| 7 | `clf-cost-allocation-tags` | TAG | Cost Allocation Tags | seeded | complete | 4 | 4 | Understanding, Scenario | Cost management tools |
+| 8 | `clf-support-plans` | SUP | AWS Support Plans (Basic, Business Support+, Enterprise Support, Unified Operations) | seeded | complete | 6 | 6 | Comparison, Scenario | Technical resources |
+| 9 | `clf-trusted-advisor` | TAD | AWS Trusted Advisor (including Service Quotas) | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | Health Dashboard, Security Hub, Compute Optimizer |
+| 10 | `clf-health-dashboard` | HLT | AWS Health Dashboard and AWS Health API | seeded | complete | 4 | 4 | Comparison | Trusted Advisor, CloudWatch |
+| 11 | `clf-technical-resources` | RES | AWS Technical Resources (documentation, whitepapers, re:Post Knowledge Center, Prescriptive Guidance, Support Center, Trust and Safety) | seeded | complete | 4 | 4 | Basic | Support plans |
+| 12 | `clf-partners-marketplace` | APN | AWS Partners, Marketplace, Professional Services, and Solutions Architects | seeded | complete | 5 | 5 | Basic, Comparison | Support plans |
 
 Storage pricing tiers (exam task 4.1) are owned by `clf-s3-storage-classes` in domain 3.
 
@@ -257,21 +257,33 @@ Current weak lessons: none. The shared-responsibility explanation now covers how
 | `CCP-DEV-001`–`004` | `clf-developer-tools` | 4 | `questions/cloud-technology-services.json` |
 | `CCP-EUC-001`–`004` | `clf-end-user-computing` | 4 | `questions/cloud-technology-services.json` |
 | `CCP-OTH-001`–`004` | `clf-other-in-scope-services` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-ODS-001`–`005` | `clf-on-demand-spot` | 5 | `questions/billing-pricing-support.json` |
+| `CCP-RSP-001`–`006` | `clf-reserved-savings-plans` | 6 | `questions/billing-pricing-support.json` |
+| `CCP-DED-001`–`004` | `clf-dedicated-hosts-instances` | 4 | `questions/billing-pricing-support.json` |
+| `CCP-DTC-001`–`004` | `clf-data-transfer-costs` | 4 | `questions/billing-pricing-support.json` |
+| `CCP-CMT-001`–`006` | `clf-cost-management-tools` | 6 | `questions/billing-pricing-support.json` |
+| `CCP-CBL-001`–`005` | `clf-consolidated-billing` | 5 | `questions/billing-pricing-support.json` |
+| `CCP-TAG-001`–`004` | `clf-cost-allocation-tags` | 4 | `questions/billing-pricing-support.json` |
+| `CCP-SUP-001`–`006` | `clf-support-plans` | 6 | `questions/billing-pricing-support.json` |
+| `CCP-TAD-001`–`005` | `clf-trusted-advisor` | 5 | `questions/billing-pricing-support.json` |
+| `CCP-HLT-001`–`004` | `clf-health-dashboard` | 4 | `questions/billing-pricing-support.json` |
+| `CCP-RES-001`–`004` | `clf-technical-resources` | 4 | `questions/billing-pricing-support.json` |
+| `CCP-APN-001`–`005` | `clf-partners-marketplace` | 5 | `questions/billing-pricing-support.json` |
 
 `CCP-ELA-001` through `CCP-ELA-003` and `CCP-SRM-001` through `CCP-SRM-003` keep their original codes.
 
-Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`, `CCP-ACC-005`, `CCP-IAC-006`, `CCP-DPM-005`, `CCP-REG-006`, `CCP-AZS-005`, `CCP-EDG-005`, `CCP-EC2-006`, `CCP-ASG-005`, `CCP-ELB-005`, `CCP-LAM-006`, `CCP-CON-006`, `CCP-MCO-005`, `CCP-RDS-006`, `CCP-DDB-006`, `CCP-DBO-005`, `CCP-DMS-005`, `CCP-VPC-006`, `CCP-R53-005`, `CCP-CFR-005`, `CCP-HYB-006`, `CCP-S3B-006`, `CCP-S3C-006`, `CCP-EBS-006`, `CCP-EFS-005`, `CCP-SGW-005`, `CCP-BKP-005`, `CCP-SGM-005`, `CCP-AIL-006`, `CCP-AIV-005`, `CCP-ANA-006`, `CCP-SBI-005`, `CCP-INT-006`, `CCP-SSM-005`, `CCP-DEV-005`, `CCP-EUC-005`, `CCP-OTH-005`. Every other prefix starts at `001`.
+Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`, `CCP-ACC-005`, `CCP-IAC-006`, `CCP-DPM-005`, `CCP-REG-006`, `CCP-AZS-005`, `CCP-EDG-005`, `CCP-EC2-006`, `CCP-ASG-005`, `CCP-ELB-005`, `CCP-LAM-006`, `CCP-CON-006`, `CCP-MCO-005`, `CCP-RDS-006`, `CCP-DDB-006`, `CCP-DBO-005`, `CCP-DMS-005`, `CCP-VPC-006`, `CCP-R53-005`, `CCP-CFR-005`, `CCP-HYB-006`, `CCP-S3B-006`, `CCP-S3C-006`, `CCP-EBS-006`, `CCP-EFS-005`, `CCP-SGW-005`, `CCP-BKP-005`, `CCP-SGM-005`, `CCP-AIL-006`, `CCP-AIV-005`, `CCP-ANA-006`, `CCP-SBI-005`, `CCP-INT-006`, `CCP-SSM-005`, `CCP-DEV-005`, `CCP-EUC-005`, `CCP-OTH-005`, `CCP-ODS-006`, `CCP-RSP-007`, `CCP-DED-005`, `CCP-DTC-005`, `CCP-CMT-007`, `CCP-CBL-006`, `CCP-TAG-005`, `CCP-SUP-007`, `CCP-TAD-006`, `CCP-HLT-005`, `CCP-RES-005`, `CCP-APN-006`. Every planned CLF-C02 prefix is now in use.
 
 Relabelling style or difficulty keeps the same code (spec section 28).
 
 ### Distribution targets
 
-| Dimension | Current (357) | Target |
+| Dimension | Current (415) | Target |
 | --- | --- | --- |
-| Style | BASIC 82, UNDERSTANDING 106, COMPARISON 77, SCENARIO 92, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
-| Difficulty | EASY 142, MEDIUM 159, HARD 56 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
-| Type | SINGLE_CHOICE 311, MULTIPLE_CHOICE 46 | MULTIPLE_CHOICE 10–15% |
-| Correct-answer position | A 95, B 94, C 95, D 92, E 27 | Roughly 20–30% per letter (informational) |
+| Style | BASIC 94, UNDERSTANDING 124, COMPARISON 91, SCENARIO 106, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
+| Difficulty | EASY 161, MEDIUM 186, HARD 68 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
+| Type | SINGLE_CHOICE 362, MULTIPLE_CHOICE 53 | MULTIPLE_CHOICE 10–15% |
+| Correct-answer position | A 111, B 110, C 111, D 107, E 29 | Roughly 20–30% per letter (informational) |
 
 The exam guide lists "Designing cloud architecture" as out of scope for the CLF-C02 candidate, so ARCHITECTURE questions should be rare or absent.
 
@@ -377,6 +389,18 @@ Valid concept slugs today (only these may be referenced by questions and lessons
 - `clf-developer-tools`
 - `clf-end-user-computing`
 - `clf-other-in-scope-services`
+- `clf-on-demand-spot`
+- `clf-reserved-savings-plans`
+- `clf-dedicated-hosts-instances`
+- `clf-data-transfer-costs`
+- `clf-cost-management-tools`
+- `clf-consolidated-billing`
+- `clf-cost-allocation-tags`
+- `clf-support-plans`
+- `clf-trusted-advisor`
+- `clf-health-dashboard`
+- `clf-technical-resources`
+- `clf-partners-marketplace`
 
 Planned slugs in the tables above become valid once they are added to `concepts.json` together with their lessons.
 
@@ -486,11 +510,11 @@ Good candidates for comparison questions and for checking that explanations name
 
 ### Notable content gaps
 
-- 12 of 90 planned concepts and their lessons do not exist yet. They are all in Billing, Pricing, and Support, which has no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65 and currently draws them from the three seeded domains.
+- All 90 planned CLF-C02 concepts and lessons are seeded, with 415 active questions. A CLF-C02 mock exam targets 65 questions and can now sample all four domains by exam weight.
 - Every seeded CLF-C02 concept has at least 4 questions.
 - No CLF-C02 lesson is weak (see [Lesson status](#lesson-status)).
 - No ARCHITECTURE questions yet. The exam guide lists designing cloud architecture as out of scope, so that is expected.
-- The AWS Support plan lineup in the current exam guide is Basic Support, AWS Business Support+, AWS Enterprise Support and AWS Unified Operations. Check the AWS Support plans page when writing `clf-support-plans`.
+- The seeded support-plan questions use Basic Support, AWS Business Support+, AWS Enterprise Support, and AWS Unified Operations. Developer Support, Business Support, and Enterprise On-Ramp remain transitional legacy plans through January 1, 2027.
 
 ### Engine constraints affecting content
 

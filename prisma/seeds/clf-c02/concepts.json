@@ -778,5 +778,125 @@
     "referenceUrl": "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html",
     "order": 36,
     "active": true
+  },
+{
+    "topic": "billing-pricing-support",
+    "slug": "clf-on-demand-spot",
+    "name": "On-Demand and Spot Instances",
+    "generalExplanation": "Amazon EC2 On-Demand Instances menggunakan pay-as-you-go pricing tanpa long-term commitment dan cocok untuk workloads yang tidak dapat diprediksi, short-term, atau tidak toleran terhadap interruption. Spot Instances menggunakan spare EC2 capacity dengan discount besar dibanding On-Demand, tetapi dapat diinterupsi oleh EC2 ketika kapasitas dibutuhkan kembali. Spot cocok untuk fault-tolerant, flexible, stateless, batch, atau distributed workloads yang dapat menangani interruption. Untuk steady usage dengan commitment, Savings Plans atau Reserved Instances biasanya lebih relevan.",
+    "keyNote": "On-Demand = fleksibel tanpa commitment; Spot = spare capacity dengan discount besar tetapi dapat diinterupsi.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-reserved-savings-plans",
+    "name": "Reserved Instances, Savings Plans, and Capacity Reservations",
+    "generalExplanation": "Savings Plans memberikan discount sebagai imbalan atas commitment terhadap consistent usage dalam USD per hour selama 1 atau 3 tahun. Reserved Instances memberikan billing discount untuk commitment terhadap instance configuration tertentu selama 1 atau 3 tahun. Capacity Reservations berbeda: tujuan utamanya adalah memastikan EC2 capacity tersedia untuk configuration tertentu di Availability Zone dan dapat dikenakan biaya setara On-Demand walaupun capacity tidak digunakan. Capacity guarantee dan billing discount adalah dua konsep berbeda; Savings Plans atau eligible RI discounts dapat diterapkan pada matching Capacity Reservation usage.",
+    "keyNote": "Savings Plans/RI = pricing discounts dengan commitment; Capacity Reservation = reserve EC2 capacity, bukan otomatis discount.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-dedicated-hosts-instances",
+    "name": "Dedicated Hosts and Dedicated Instances",
+    "generalExplanation": "Dedicated Instances adalah EC2 instances yang berjalan pada single-tenant hardware dedicated untuk satu customer account, tetapi customer tidak mendapatkan visibility/control atas physical host placement yang sama seperti Dedicated Hosts. Dedicated Hosts memberikan physical server yang didedikasikan untuk customer dan memungkinkan visibility serta control atas sockets/cores dan instance placement yang penting untuk beberapa software licensing dan compliance scenarios. Keduanya berbeda dari standard shared-tenancy EC2.",
+    "keyNote": "Dedicated Host = dedicated physical server + host-level visibility/control; Dedicated Instance = instance pada single-tenant hardware tanpa host-level control yang sama.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-data-transfer-costs",
+    "name": "Data Transfer Costs",
+    "generalExplanation": "AWS data transfer pricing bergantung pada service, source/destination, Region, Availability Zone, dan direction. Data transfer into AWS dari internet sering tidak dikenai data-transfer charge, sedangkan data transfer out ke internet umumnya dikenai charge setelah applicable free allowance. Beberapa transfers antar Availability Zones dalam Region dapat dikenai charge, sementara transfers tertentu dalam Availability Zone atau antara supported AWS services dalam Region dapat gratis. Untuk soal exam, hindari menghafal harga angka; pahami direction dan topology yang memengaruhi cost.",
+    "keyNote": "Data-transfer cost bergantung pada direction dan topology; outbound/cross-AZ sering lebih mahal daripada inbound/same-AZ.",
+    "referenceUrl": "https://aws.amazon.com/ec2/pricing/on-demand/",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-cost-management-tools",
+    "name": "Cost Management Tools (Budgets, Cost Explorer, Pricing Calculator, Cost and Usage Report)",
+    "generalExplanation": "AWS Cost Explorer digunakan untuk melihat, memfilter, dan menganalisis historical cost/usage serta forecasts. AWS Budgets menetapkan cost/usage targets dan alerts ketika actual atau forecasted values melewati threshold. AWS Pricing Calculator membuat estimates untuk planned workloads atau modeled billing changes sebelum deployment/change dilakukan. AWS Data Exports dengan Cost and Usage Report 2.0 (CUR 2.0) menyediakan detailed cost and usage data untuk downstream analysis. Pilih tool berdasarkan apakah kebutuhan utamanya analysis, alerting, estimation, atau detailed export.",
+    "keyNote": "Cost Explorer=analyze; Budgets=threshold/alert; Pricing Calculator=estimate; CUR 2.0/Data Exports=detailed billing data.",
+    "referenceUrl": "https://docs.aws.amazon.com/cost-management/latest/userguide/",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-consolidated-billing",
+    "name": "AWS Organizations Consolidated Billing",
+    "generalExplanation": "AWS Organizations consolidated billing menggabungkan charges dari member accounts ke management account sehingga organization mendapat central bill dan consolidated cost visibility. Usage dari multiple accounts dapat digabung untuk applicable volume pricing tiers, dan eligible Reserved Instance atau Savings Plans benefits dapat dibagikan sesuai billing rules. Consolidated billing tidak menggabungkan security boundaries: member accounts tetap separate AWS accounts. AWS Organizations consolidated billing tidak dikenai additional fee.",
+    "keyNote": "Consolidated billing = satu combined bill + aggregated usage benefits; accounts tetap terpisah.",
+    "referenceUrl": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-cost-allocation-tags",
+    "name": "Cost Allocation Tags",
+    "generalExplanation": "Tags adalah key-value metadata pada AWS resources. Untuk menggunakan tags dalam billing analysis, relevant AWS-generated atau user-defined tags harus diaktifkan sebagai cost allocation tags. Setelah aktif, tag dapat membantu mengelompokkan, memfilter, dan mengalokasikan biaya berdasarkan business context seperti project, application, environment, atau cost center. Cost allocation tags membantu showback/chargeback dan reporting, tetapi tidak mengubah harga resource itu sendiri.",
+    "keyNote": "Cost allocation tags = aktifkan tags untuk mengelompokkan dan melacak biaya berdasarkan business context.",
+    "referenceUrl": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-support-plans",
+    "name": "AWS Support Plans",
+    "generalExplanation": "Current AWS Support lineup mencakup Basic Support, AWS Business Support+, AWS Enterprise Support, dan AWS Unified Operations. Basic tersedia untuk semua customers dan mencakup account/billing support, service health, documentation, dan service quota increase requests, tetapi bukan technical support cases. Business Support+ menambahkan 24/7 technical support dan full Trusted Advisor checks. Enterprise Support menambahkan designated Technical Account Manager (TAM), faster critical response, dan strategic guidance. Unified Operations adalah tier paling proactive dengan designated specialist team, workload monitoring, deep operational guidance, dan rapid incident engagement. Developer Support, Business Support, dan Enterprise On-Ramp masih transitional sampai end-of-support pada 1 Januari 2027 dan bukan target lineup utama bank ini.",
+    "keyNote": "Basic < Business Support+ < Enterprise Support < Unified Operations; capability dan proactive guidance meningkat di tier lebih tinggi.",
+    "referenceUrl": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-trusted-advisor",
+    "name": "AWS Trusted Advisor (including Service Quotas)",
+    "generalExplanation": "AWS Trusted Advisor memeriksa AWS environment dan memberi recommendations dalam categories seperti Cost Optimization, Performance, Security, Fault Tolerance, Service Limits, dan Operational Excellence. Trusted Advisor bukan real-time monitoring system seperti CloudWatch dan bukan account-specific service event feed seperti AWS Health. Service-limit checks membantu mengidentifikasi usage yang mendekati quota; quota increase biasanya dikelola melalui Service Quotas atau Support sesuai service. Access ke full set of Trusted Advisor checks bergantung pada support plan.",
+    "keyNote": "Trusted Advisor = best-practice recommendations; Service Quotas = manage/request service quota increases.",
+    "referenceUrl": "https://docs.aws.amazon.com/awssupport/latest/user/get-started-with-aws-trusted-advisor.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-health-dashboard",
+    "name": "AWS Health Dashboard and AWS Health API",
+    "generalExplanation": "AWS Health Dashboard menampilkan public service events dan, ketika signed in, account-specific events serta scheduled changes yang dapat memengaruhi resources. Public service-health events tidak spesifik ke account; account-specific events dapat menyebut affected resources dan recommended actions. AWS Health API memungkinkan programmatic access ke health information tetapi memerlukan eligible paid support plan seperti Business Support+, Enterprise Support, atau Unified Operations. AWS Health berbeda dari Trusted Advisor: Health berfokus pada AWS service/account events, sedangkan Trusted Advisor memberikan best-practice recommendations.",
+    "keyNote": "AWS Health = service/account events dan scheduled changes; Trusted Advisor = recommendations terhadap environment.",
+    "referenceUrl": "https://docs.aws.amazon.com/health/latest/ug/aws-health-account-views.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-technical-resources",
+    "name": "AWS Technical Resources (documentation, whitepapers, re:Post, Knowledge Center, Prescriptive Guidance, Support Center, Trust and Safety)",
+    "generalExplanation": "AWS menyediakan resource berbeda sesuai kebutuhan. AWS Documentation adalah product/service reference dan user guides. AWS Whitepapers membahas architecture, security, economics, dan best practices secara lebih luas. AWS re:Post adalah community knowledge service dan menjadi home untuk AWS Knowledge Center articles yang berisi troubleshooting guidance. AWS Prescriptive Guidance menyediakan patterns, strategies, dan implementation guidance untuk common cloud initiatives. AWS Support Center digunakan untuk support cases bagi account yang eligible. Trust & Safety menangani abuse dan safety-related reports sesuai process AWS.",
+    "keyNote": "Docs=product reference; re:Post/Knowledge Center=Q&A + troubleshooting; Prescriptive Guidance=patterns/strategies; Support Center=support cases.",
+    "referenceUrl": "https://docs.aws.amazon.com/",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "billing-pricing-support",
+    "slug": "clf-partners-marketplace",
+    "name": "AWS Partners, Marketplace, Professional Services, and Solutions Architects",
+    "generalExplanation": "AWS Marketplace adalah curated digital catalog untuk menemukan, membeli, deploy, dan manage third-party software, data, serta services, termasuk professional services offerings. AWS Partner Network (APN) adalah global community of organizations yang membangun dan memberikan solutions/services menggunakan AWS. AWS Professional Services menyediakan AWS-led consulting engagements untuk initiatives seperti migration, modernization, data/AI, dan operational transformation. AWS Solutions Architects memberikan technical guidance untuk membantu customers merancang solutions; mereka bukan product catalog atau support-plan replacement.",
+    "keyNote": "Marketplace=buy third-party offerings; APN=partner ecosystem; Professional Services=AWS consulting; Solutions Architects=technical architecture guidance.",
+    "referenceUrl": "https://docs.aws.amazon.com/marketplace/latest/userguide/what-is-marketplace.html",
+    "order": 12,
+    "active": true
   }
 ]

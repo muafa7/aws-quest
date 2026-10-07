@@ -1,0 +1,2354 @@
+[
+  {
+    "code": "CCP-ODS-001",
+    "concept": "clf-on-demand-spot",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which Amazon EC2 purchasing option requires no long-term commitment and charges for compute as it is used?",
+    "options": [
+      {
+        "key": "A",
+        "text": "On-Demand Instances",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Spot Instances with interruption risk",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Reserved Instances with a term commitment",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Dedicated Hosts purchased only for server-bound licensing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-pricing",
+      "on-demand"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ODS-002",
+    "concept": "clf-on-demand-spot",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is the main pricing advantage and trade-off of Amazon EC2 Spot Instances?",
+    "options": [
+      {
+        "key": "A",
+        "text": "They guarantee dedicated physical hosts at the On-Demand price",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "They use spare EC2 capacity at a large discount, but they can be interrupted by EC2",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "They require a three-year commitment but cannot be interrupted",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "They reserve capacity in a specific Availability Zone without running an instance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-pricing",
+      "spot",
+      "interruption"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ODS-003",
+    "concept": "clf-on-demand-spot",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes On-Demand Instances from Spot Instances?",
+    "options": [
+      {
+        "key": "A",
+        "text": "On-Demand always requires a one-year term, while Spot requires three years",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "On-Demand reserves an entire physical host, while Spot is always single tenant",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "On-Demand emphasizes flexibility without interruption caused by EC2 capacity reclamation, while Spot offers deeper discounts for workloads that can tolerate interruption",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "On-Demand and Spot have identical pricing and interruption behavior",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-pricing",
+      "on-demand",
+      "spot",
+      "comparison"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ODS-004",
+    "concept": "clf-on-demand-spot",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company runs thousands of independent image-processing jobs. Failed jobs can be retried and completion time is flexible. Which EC2 purchasing option is MOST cost-effective?",
+    "options": [
+      {
+        "key": "A",
+        "text": "On-Demand Instances only because interruption is acceptable",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Dedicated Hosts solely to reduce batch-compute price",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Capacity Reservations solely to obtain a billing discount",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Spot Instances",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ec2-pricing",
+      "spot",
+      "batch",
+      "fault-tolerant"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ODS-005",
+    "concept": "clf-on-demand-spot",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Which TWO workloads are good candidates for EC2 Spot Instances? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "A stateless worker fleet whose interrupted tasks can be retried",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A single-instance database that cannot tolerate any interruption",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A flexible batch-processing workload with no strict requirement that each instance run continuously",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A workload that requires guaranteed capacity in one Availability Zone at all times",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "A legacy application whose license requires a customer-controlled dedicated physical host",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2-pricing",
+      "spot",
+      "fault-tolerant",
+      "batch"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-001",
+    "concept": "clf-reserved-savings-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What do AWS Savings Plans provide in exchange for a usage commitment?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Discounted pricing for eligible compute usage",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A dedicated physical host with no billing commitment",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A guarantee that an EC2 instance can never be interrupted",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A DNS routing policy for multi-Region applications",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "savings-plans",
+      "commitment-discount"
+    ],
+    "source": {
+      "title": "Compute Savings Plans and Reserved Instances",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-ris.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-002",
+    "concept": "clf-reserved-savings-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is the primary purpose of an EC2 Capacity Reservation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide a billing discount without reserving capacity",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Reserve EC2 capacity for a specific configuration in an Availability Zone",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Store long-term backup objects",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create an organization-wide support plan",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "capacity-reservation",
+      "ec2-capacity"
+    ],
+    "source": {
+      "title": "Capacity Reservation pricing and billing",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-pricing-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-003",
+    "concept": "clf-reserved-savings-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes a Savings Plan from an EC2 Reserved Instance?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Savings Plans reserve a physical host, while Reserved Instances are DNS records",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Savings Plans can only apply to S3 storage, while Reserved Instances can only apply to Lambda",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Savings Plan commits to a consistent amount of eligible usage spending, while an EC2 Reserved Instance discount is tied more directly to an eligible EC2 instance configuration",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Savings Plans and Reserved Instances are both capacity reservations with no pricing effect",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "savings-plans",
+      "reserved-instances",
+      "comparison"
+    ],
+    "source": {
+      "title": "Compute Savings Plans and Reserved Instances",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-ris.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-004",
+    "concept": "clf-reserved-savings-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement about Capacity Reservations is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Capacity Reservation always includes the deepest EC2 pricing discount",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A Capacity Reservation is free until an instance launches into it",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Capacity Reservation can only reserve capacity across all Regions at once",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Capacity Reservation solves a capacity-availability requirement and can incur On-Demand-equivalent charges even when the reserved capacity is unused",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "capacity-reservation",
+      "on-demand",
+      "comparison"
+    ],
+    "source": {
+      "title": "Capacity Reservation pricing and billing",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-pricing-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-005",
+    "concept": "clf-reserved-savings-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company has steady compute usage for the next three years but expects to change instance families and Regions as its architecture evolves. Which pricing model should it evaluate FIRST for flexible commitment discounts?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Compute Savings Plans",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A Capacity Reservation used only for guaranteed capacity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Spot Instances for every production component regardless of interruption tolerance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Dedicated Hosts solely because usage is predictable",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "savings-plans",
+      "compute-savings-plans",
+      "flexibility"
+    ],
+    "source": {
+      "title": "Compute Savings Plans and Reserved Instances",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-ris.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSP-006",
+    "concept": "clf-reserved-savings-plans",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements correctly describe EC2 pricing and capacity concepts? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Capacity Reservation automatically creates a three-year Savings Plan",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Savings Plans are primarily a pricing-discount mechanism based on a usage commitment",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Reserved Instances cannot provide billing discounts",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Capacity Reservations are primarily a capacity-availability mechanism for matching EC2 instances",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Spot Instances guarantee reserved capacity in a chosen Availability Zone",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "savings-plans",
+      "capacity-reservation",
+      "reserved-instances"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DED-001",
+    "concept": "clf-dedicated-hosts-instances",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an Amazon EC2 Dedicated Host?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A shared-tenancy EC2 instance with no host visibility",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A physical server dedicated for a customer's EC2 usage with host-level visibility and placement control",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A managed DNS service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A serverless compute environment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dedicated-host",
+      "single-tenant"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DED-002",
+    "concept": "clf-dedicated-hosts-instances",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which requirement most strongly points to using Dedicated Hosts instead of standard shared-tenancy EC2?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The application needs a public DNS name",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The application needs object storage",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A software license is bound to physical sockets or cores and requires host-level visibility",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "The team wants to send email notifications",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dedicated-host",
+      "byol",
+      "licensing"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DED-003",
+    "concept": "clf-dedicated-hosts-instances",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Dedicated Hosts from Dedicated Instances?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dedicated Hosts are always serverless, while Dedicated Instances are always containers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Dedicated Hosts are object storage, while Dedicated Instances are block storage",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Dedicated Hosts and Dedicated Instances provide identical host-level licensing visibility",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Dedicated Hosts expose host-level placement and hardware visibility, while Dedicated Instances provide single-tenant instances without the same host-level control",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "dedicated-host",
+      "dedicated-instance",
+      "comparison"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DED-004",
+    "concept": "clf-dedicated-hosts-instances",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company must reuse eligible per-socket software licenses and track how EC2 instances are placed on the licensed physical server. Which purchasing option is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EC2 Dedicated Hosts",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Dedicated Instances only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Spot Instances",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A standard On-Demand shared-tenancy instance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "dedicated-host",
+      "licensing",
+      "byol"
+    ],
+    "source": {
+      "title": "Amazon EC2 billing and purchasing options",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DTC-001",
+    "concept": "clf-data-transfer-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which data-transfer direction is generally more likely to incur AWS data-transfer charges?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Data transferred into AWS from the internet",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Data transferred out from AWS to the internet",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "All data transferred within the same EC2 instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Every API call within the AWS Management Console",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "data-transfer",
+      "internet-egress"
+    ],
+    "source": {
+      "title": "EC2 On-Demand Instance Pricing - Data Transfer",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DTC-002",
+    "concept": "clf-data-transfer-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Why can an architecture that frequently transfers data between Availability Zones have higher network cost than one that keeps chatty components within one Availability Zone?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Availability Zones use different currencies",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS requires a separate Support plan for every Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Some cross-Availability-Zone data transfers are charged in each direction",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Cross-AZ traffic always becomes internet traffic",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "data-transfer",
+      "cross-az",
+      "cost"
+    ],
+    "source": {
+      "title": "EC2 On-Demand Instance Pricing - Data Transfer",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DTC-003",
+    "concept": "clf-data-transfer-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST describes AWS data-transfer pricing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "All AWS data transfer is free regardless of direction",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Only the number of IAM users determines transfer cost",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Data transfer always has one global flat price for every service and topology",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Transfer cost depends on factors such as direction, service, Region, and whether traffic crosses Availability Zones or other network boundaries",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "data-transfer",
+      "pricing",
+      "comparison"
+    ],
+    "source": {
+      "title": "EC2 On-Demand Instance Pricing - Data Transfer",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DTC-004",
+    "concept": "clf-data-transfer-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team is optimizing a high-volume application with frequent bidirectional traffic between EC2 instances in different Availability Zones. Which cost category should the team explicitly evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cross-Availability-Zone data-transfer charges",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Support case fees for each packet",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 Glacier retrieval fees even though S3 is not used",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Route 53 domain-registration fees for each TCP connection",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "data-transfer",
+      "cross-az",
+      "ec2",
+      "cost-optimization"
+    ],
+    "source": {
+      "title": "EC2 On-Demand Instance Pricing - Data Transfer",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-001",
+    "concept": "clf-cost-management-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS tool is designed to visualize and analyze historical AWS costs and usage?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Pricing Calculator",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Cost Explorer",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Support Center",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "cost-explorer"
+    ],
+    "source": {
+      "title": "Analyzing your costs and usage with AWS Cost Explorer",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-002",
+    "concept": "clf-cost-management-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS cost-management feature can alert a team when actual or forecasted spending crosses a defined threshold?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Pricing Calculator",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Data Exports only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Budgets",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Health Dashboard",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "budgets",
+      "alert"
+    ],
+    "source": {
+      "title": "AWS Billing and Cost Management",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-003",
+    "concept": "clf-cost-management-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Pricing Calculator from AWS Cost Explorer?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Pricing Calculator opens support cases, while Cost Explorer registers domains",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Pricing Calculator manages IAM users, while Cost Explorer stores objects",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Pricing Calculator and Cost Explorer are identical tools",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Pricing Calculator estimates planned or modeled costs, while Cost Explorer analyzes actual historical cost and usage data and forecasts",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "pricing-calculator",
+      "cost-explorer",
+      "comparison"
+    ],
+    "source": {
+      "title": "Generating estimates with AWS Pricing Calculator",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/pricing-calculator.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-004",
+    "concept": "clf-cost-management-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is planning a new AWS workload that does not exist yet and wants an estimate before deployment. Which tool should it use FIRST?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Pricing Calculator",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Cost Explorer only, because it requires historical usage",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Health Dashboard",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Trusted Advisor service-limit checks",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "pricing-calculator",
+      "estimate"
+    ],
+    "source": {
+      "title": "Generating estimates with AWS Pricing Calculator",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/pricing-calculator.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-005",
+    "concept": "clf-cost-management-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A FinOps team needs the most detailed recurring AWS cost and usage dataset for its own analytics pipeline in Amazon S3. Which capability is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Budgets email alerts only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Data Exports with Cost and Usage Report 2.0 (CUR 2.0)",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Support Center",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53 hosted zones",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "cur-2",
+      "data-exports",
+      "finops"
+    ],
+    "source": {
+      "title": "What is AWS Data Exports?",
+      "url": "https://docs.aws.amazon.com/cur/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CMT-006",
+    "concept": "clf-cost-management-tools",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO mappings of AWS cost-management tools to use cases are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Pricing Calculator primarily to inspect account-specific AWS Health events",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use Cost Explorer primarily to create IAM users",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use AWS Budgets to monitor thresholds and receive budget alerts",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use CUR 2.0 primarily as a technical-support case system",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Use Cost Explorer to analyze trends and drill into historical costs and usage",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cost-management",
+      "budgets",
+      "cost-explorer"
+    ],
+    "source": {
+      "title": "AWS Billing and Cost Management",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CBL-001",
+    "concept": "clf-consolidated-billing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is a key benefit of consolidated billing in AWS Organizations?",
+    "options": [
+      {
+        "key": "A",
+        "text": "All member accounts become one IAM security boundary",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Every AWS service becomes free",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The management account can receive a combined view and bill for member-account usage",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "All member resources are automatically moved into one Region",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "organizations",
+      "consolidated-billing"
+    ],
+    "source": {
+      "title": "Consolidating billing for AWS Organizations",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CBL-002",
+    "concept": "clf-consolidated-billing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "How can consolidated billing sometimes reduce overall cost?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It eliminates all data-transfer charges",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It converts every On-Demand instance into a Spot Instance",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It changes every resource to the smallest size automatically",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS can aggregate eligible usage across accounts when applying certain volume pricing tiers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "organizations",
+      "consolidated-billing",
+      "volume-discount"
+    ],
+    "source": {
+      "title": "Consolidating billing for AWS Organizations",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CBL-003",
+    "concept": "clf-consolidated-billing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement about consolidated billing is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Accounts remain separate AWS accounts even though charges are consolidated",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "All IAM users from member accounts are automatically merged",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Consolidated billing removes account-level resource isolation",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Consolidated billing requires every workload to share one VPC",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "organizations",
+      "consolidated-billing",
+      "account-isolation"
+    ],
+    "source": {
+      "title": "Consolidating billing for AWS Organizations",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CBL-004",
+    "concept": "clf-consolidated-billing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company has 20 AWS accounts and wants central billing while keeping teams in separate accounts. Which AWS capability BEST meets this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create one IAM user shared by all teams",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Organizations consolidated billing",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Move every workload into one account",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use Route 53 health checks",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "organizations",
+      "consolidated-billing",
+      "multi-account"
+    ],
+    "source": {
+      "title": "Consolidating billing for AWS Organizations",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CBL-005",
+    "concept": "clf-consolidated-billing",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements are benefits or characteristics of AWS Organizations consolidated billing? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Eligible usage across accounts can contribute to applicable volume pricing tiers",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "It automatically grants administrators in one member account access to every other member account",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It requires an additional fee just to enable consolidated billing",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Eligible Savings Plans and Reserved Instance billing benefits can be shared across accounts according to AWS billing rules",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "It automatically makes every workload multi-Region",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "organizations",
+      "consolidated-billing",
+      "savings-plans",
+      "reserved-instances"
+    ],
+    "source": {
+      "title": "Consolidating billing for AWS Organizations",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAG-001",
+    "concept": "clf-cost-allocation-tags",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the main purpose of AWS cost allocation tags?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the price of an EC2 instance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase an account's service quota",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Categorize and track AWS costs using business-relevant labels such as project or cost center",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Encrypt all resource data",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-allocation-tag",
+      "tagging",
+      "cost-tracking"
+    ],
+    "source": {
+      "title": "Organizing and tracking costs using AWS cost allocation tags",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAG-002",
+    "concept": "clf-cost-allocation-tags",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What must generally happen before a resource tag can be used as a cost allocation dimension in AWS billing tools?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The resource must be moved to another Region",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A Premium Support case must be opened",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The tag value must be converted into an IAM policy",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The relevant tag must be activated as a cost allocation tag",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cost-allocation-tag",
+      "activation",
+      "billing"
+    ],
+    "source": {
+      "title": "Organizing and tracking costs using AWS cost allocation tags",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAG-003",
+    "concept": "clf-cost-allocation-tags",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes cost allocation tags from AWS Budgets?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost allocation tags categorize spend by business context, while AWS Budgets tracks spend or usage against defined thresholds",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Cost allocation tags send support engineers, while Budgets creates DNS records",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Cost allocation tags reserve EC2 capacity, while Budgets purchases Savings Plans automatically",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Cost allocation tags and Budgets perform the same function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-allocation-tag",
+      "budgets",
+      "comparison"
+    ],
+    "source": {
+      "title": "Organizing and tracking costs using AWS cost allocation tags",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAG-004",
+    "concept": "clf-cost-allocation-tags",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants monthly AWS reports to show costs separately for Project Alpha and Project Beta even though both projects share the same AWS account. Which approach is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create different Availability Zone letters for each project",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Apply project tags to supported resources and activate those tags for cost allocation",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use one shared untagged resource name for all projects",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Open separate AWS Health events for each project",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cost-allocation-tag",
+      "project",
+      "showback"
+    ],
+    "source": {
+      "title": "Organizing and tracking costs using AWS cost allocation tags",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-001",
+    "concept": "clf-support-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS Support plan is included for all AWS customers?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Business Support+",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Enterprise Support",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Basic Support",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Unified Operations",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "basic-support"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-002",
+    "concept": "clf-support-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which capability is available with AWS Business Support+ but not with Basic Support?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Access to AWS service documentation",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Access to public service health information",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Ability to ask account and billing questions",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "24/7 access to Cloud Support Engineers for technical support through phone, web, and chat",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "business-support-plus",
+      "technical-support"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-003",
+    "concept": "clf-support-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which feature is a major addition of AWS Enterprise Support over Business Support+?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A designated Technical Account Manager (TAM)",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The ability to create an AWS account",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Access to AWS Documentation",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Access to Basic Support billing questions",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "enterprise-support",
+      "tam",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-004",
+    "concept": "clf-support-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company operates business-critical production workloads and wants a designated TAM plus strategic guidance from AWS. Which support tier should it evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Basic Support",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Enterprise Support",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Business Support+ only",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "No support plan because TAMs are provided by Cost Explorer",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "enterprise-support",
+      "tam"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-005",
+    "concept": "clf-support-plans",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST characterizes AWS Unified Operations compared with Enterprise Support?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Unified Operations removes all technical support access",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Unified Operations is the free tier for personal AWS accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Unified Operations adds a designated specialist team, proactive workload monitoring, and deeper application-specific operational engagement",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Unified Operations only provides billing documentation and no operational guidance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "unified-operations",
+      "enterprise-support",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SUP-006",
+    "concept": "clf-support-plans",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements reflect the current AWS Support lineup? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Basic Support includes unlimited technical support cases with Cloud Support Engineers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Business Support+ provides 24/7 technical support and full Trusted Advisor checks",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Developer Support is the long-term replacement for Business Support+",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Unified Operations provides fewer proactive capabilities than Basic Support",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "AWS Enterprise Support includes a designated TAM and faster production-critical response than Business Support+",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-support",
+      "business-support-plus",
+      "enterprise-support"
+    ],
+    "source": {
+      "title": "AWS Support Plans",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAD-001",
+    "concept": "clf-trusted-advisor",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does AWS Trusted Advisor primarily provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Real-time packet capture for every VPC",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A marketplace for third-party products",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A serverless relational database",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Best-practice checks and recommendations for an AWS environment",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "trusted-advisor",
+      "recommendations"
+    ],
+    "source": {
+      "title": "Get started with Trusted Advisor Recommendations",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/get-started-with-aws-trusted-advisor.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAD-002",
+    "concept": "clf-trusted-advisor",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which Trusted Advisor category can identify resources or configurations that may reduce AWS spending?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost Optimization",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Domain Registration",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Machine Translation",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Object Versioning",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "trusted-advisor",
+      "cost-optimization"
+    ],
+    "source": {
+      "title": "Get started with Trusted Advisor Recommendations",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/get-started-with-aws-trusted-advisor.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAD-003",
+    "concept": "clf-trusted-advisor",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Trusted Advisor from AWS Health?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Trusted Advisor is a DNS service, while AWS Health is block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trusted Advisor gives best-practice recommendations about the customer's environment, while AWS Health reports service and account events that may affect resources",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Trusted Advisor is a pricing calculator, while AWS Health manages IAM users",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Trusted Advisor and AWS Health are identical tools",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "trusted-advisor",
+      "aws-health",
+      "comparison"
+    ],
+    "source": {
+      "title": "Get started with Trusted Advisor Recommendations",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/get-started-with-aws-trusted-advisor.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAD-004",
+    "concept": "clf-trusted-advisor",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team wants to know whether its usage is approaching an AWS service quota. Which feature is MOST directly relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon CloudFront cache behaviors",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon S3 Lifecycle",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Trusted Advisor Service Limits checks and the Service Quotas console",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Marketplace private offers",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "trusted-advisor",
+      "service-quotas",
+      "service-limits"
+    ],
+    "source": {
+      "title": "Service limits - AWS Support",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/service-limits.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-TAD-005",
+    "concept": "clf-trusted-advisor",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO are Trusted Advisor recommendation categories? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Domain Registration",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Fault Tolerance",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Machine Translation",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Container Image Storage",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "trusted-advisor",
+      "security",
+      "fault-tolerance"
+    ],
+    "source": {
+      "title": "Get started with Trusted Advisor Recommendations",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/get-started-with-aws-trusted-advisor.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HLT-001",
+    "concept": "clf-health-dashboard",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the AWS Health Dashboard used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Estimating the monthly cost of a new workload",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Storing container images",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Creating IAM permission policies",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Viewing AWS service events, account-specific events, and scheduled changes that may affect AWS resources",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-health",
+      "health-dashboard"
+    ],
+    "source": {
+      "title": "Viewing your account events in the AWS Health Dashboard",
+      "url": "https://docs.aws.amazon.com/health/latest/ug/aws-health-account-views.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HLT-002",
+    "concept": "clf-health-dashboard",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is an account-specific AWS Health event?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An event that is relevant to a particular AWS account or its resources and may identify affected resources",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A public service event that is never related to any account",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Cost Explorer forecast",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Marketplace private offer",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-health",
+      "account-specific-event"
+    ],
+    "source": {
+      "title": "Viewing your account events in the AWS Health Dashboard",
+      "url": "https://docs.aws.amazon.com/health/latest/ug/aws-health-account-views.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HLT-003",
+    "concept": "clf-health-dashboard",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Health public events from account-specific events?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Public events are pricing estimates, while account events are IAM policies",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Public events describe service issues not specific to one account, while account-specific events relate to a particular account or resources",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Public events require Dedicated Hosts, while account events require Spot Instances",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Public and account-specific events are always identical",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-health",
+      "public-event",
+      "account-specific-event",
+      "comparison"
+    ],
+    "source": {
+      "title": "Viewing your account events in the AWS Health Dashboard",
+      "url": "https://docs.aws.amazon.com/health/latest/ug/aws-health-account-views.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HLT-004",
+    "concept": "clf-health-dashboard",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants programmatic access to events about scheduled changes that may affect its AWS resources. Which capability should it evaluate, assuming it has an eligible support plan?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Pricing Calculator API only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon S3 Lifecycle",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Health API",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Marketplace Catalog API",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-health",
+      "health-api",
+      "scheduled-change"
+    ],
+    "source": {
+      "title": "Integrating AWS Health with other systems using the AWS Health API",
+      "url": "https://docs.aws.amazon.com/health/latest/ug/health-api.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RES-001",
+    "concept": "clf-technical-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Where should a user look FIRST for official configuration guidance and user guides for a specific AWS service?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Marketplace seller listings",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EC2 Spot market history only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Cost allocation tag reports",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Documentation",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "technical-resource",
+      "documentation"
+    ],
+    "source": {
+      "title": "AWS Documentation",
+      "url": "https://docs.aws.amazon.com/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RES-002",
+    "concept": "clf-technical-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is the AWS re:Post Knowledge Center primarily useful for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Troubleshooting articles and answers to common AWS technical questions",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Buying Reserved Instances",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Managing EC2 Capacity Reservations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Creating consolidated bills",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "technical-resource",
+      "repost",
+      "knowledge-center",
+      "troubleshooting"
+    ],
+    "source": {
+      "title": "AWS re:Post Knowledge Center",
+      "url": "https://repost.aws/knowledge-center/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RES-003",
+    "concept": "clf-technical-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Prescriptive Guidance from AWS Documentation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Prescriptive Guidance is a support pricing plan, while Documentation is a billing invoice",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Prescriptive Guidance focuses on strategies, patterns, and implementation guidance for common initiatives, while Documentation provides product-specific reference and usage guidance",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Prescriptive Guidance is a DNS service, while Documentation is object storage",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Prescriptive Guidance and Documentation are identical resources",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "technical-resource",
+      "prescriptive-guidance",
+      "documentation",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RES-004",
+    "concept": "clf-technical-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team needs an AWS-authored migration pattern that explains a repeatable implementation approach rather than only a service API reference. Which resource is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Pricing Calculator",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Cost Explorer",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Prescriptive Guidance",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "EC2 Capacity Reservations",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "technical-resource",
+      "prescriptive-guidance",
+      "migration-pattern"
+    ],
+    "source": {
+      "title": "AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-APN-001",
+    "concept": "clf-partners-marketplace",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Marketplace?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A mandatory replacement for AWS Support",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A service for reserving EC2 capacity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A DNS-only service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A curated digital catalog for finding, buying, deploying, and managing third-party software, data, and services",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-marketplace",
+      "third-party"
+    ],
+    "source": {
+      "title": "What is AWS Marketplace?",
+      "url": "https://docs.aws.amazon.com/marketplace/latest/userguide/what-is-marketplace.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-APN-002",
+    "concept": "clf-partners-marketplace",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is the AWS Partner Network (APN)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A global community of organizations that build and deliver solutions and services using AWS",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An EC2 purchasing option",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A private subnet type",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A storage class for archived objects",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-partner-network",
+      "apn"
+    ],
+    "source": {
+      "title": "AWS Partner Network",
+      "url": "https://aws.amazon.com/partners/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-APN-003",
+    "concept": "clf-partners-marketplace",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Marketplace from AWS Professional Services?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Marketplace is a support plan, while Professional Services is a storage class",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Marketplace is a catalog and procurement channel for third-party offerings, while AWS Professional Services provides AWS-led consulting engagements",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Marketplace creates IAM users, while Professional Services registers domains",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Marketplace and Professional Services are identical offerings",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-marketplace",
+      "professional-services",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Professional Services",
+      "url": "https://aws.amazon.com/professional-services/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-APN-004",
+    "concept": "clf-partners-marketplace",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A finance team wants to subscribe to a third-party data-analytics application and pay for it on the AWS bill. Where should it look FIRST?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Health Dashboard",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Service Quotas",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Marketplace",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-marketplace",
+      "saas",
+      "procurement"
+    ],
+    "source": {
+      "title": "What is AWS Marketplace?",
+      "url": "https://docs.aws.amazon.com/marketplace/latest/userguide/what-is-marketplace.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-APN-005",
+    "concept": "clf-partners-marketplace",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements correctly describe AWS customer-guidance resources? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Marketplace is the only way to open an AWS technical support case",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Solutions Architects can provide technical architecture guidance based on customer requirements",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The AWS Partner Network is an EC2 capacity-reservation mechanism",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Professional Services can provide AWS-led consulting engagements for initiatives such as migration and modernization",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "AWS Solutions Architects are a billing discount model",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "solutions-architect",
+      "professional-services",
+      "guidance"
+    ],
+    "source": {
+      "title": "AWS Professional Services",
+      "url": "https://aws.amazon.com/professional-services/"
+    },
+    "active": true
+  }
+]

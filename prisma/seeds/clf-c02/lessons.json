@@ -980,5 +980,160 @@
       "AWS IoT Core securely connects devices to AWS dan routes device messages/data menggunakan rules."
     ],
     "order": 1
+  },
+{
+    "concept": "clf-on-demand-spot",
+    "title": "On-Demand and Spot Instances",
+    "summary": "On-Demand dan Spot adalah dua EC2 purchasing options dengan trade-off utama antara flexibility dan interruption risk.",
+    "keyPoints": [
+      "On-Demand tidak memerlukan long-term commitment dan cocok untuk unpredictable atau short-term workloads.",
+      "Spot menggunakan spare EC2 capacity dengan discount besar terhadap On-Demand.",
+      "Spot Instances dapat diinterupsi oleh EC2, sehingga workload harus interruption-tolerant.",
+      "Batch, stateless, distributed, dan flexible workloads sering cocok untuk Spot.",
+      "Steady predictable usage dapat lebih cocok dengan commitment discount seperti Savings Plans atau Reserved Instances."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-reserved-savings-plans",
+    "title": "Reserved Instances, Savings Plans, and Capacity Reservations",
+    "summary": "Pricing commitment dan capacity reservation menyelesaikan dua masalah berbeda: discount versus guaranteed capacity.",
+    "keyPoints": [
+      "Savings Plans memberi discount berdasarkan commitment terhadap consistent spend/usage rate selama 1 atau 3 tahun.",
+      "Reserved Instances memberi billing discount berdasarkan commitment terhadap eligible EC2 configuration selama 1 atau 3 tahun.",
+      "Capacity Reservations reserve EC2 capacity pada specific Availability Zone dan configuration.",
+      "Capacity Reservation bukan discount; unused reserved capacity dapat tetap dikenai On-Demand-equivalent charge.",
+      "Savings Plans atau eligible RI discounts dapat apply ke matching usage, termasuk usage dalam Capacity Reservation sesuai rules."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-dedicated-hosts-instances",
+    "title": "Dedicated Hosts and Dedicated Instances",
+    "summary": "Dedicated tenancy digunakan ketika customer membutuhkan single-tenant hardware, tetapi Dedicated Hosts memberi host-level control lebih besar.",
+    "keyPoints": [
+      "Dedicated Instances berjalan pada hardware yang dedicated untuk satu customer account.",
+      "Dedicated Hosts memberikan physical server dedicated beserta visibility/control terhadap host resources.",
+      "Dedicated Hosts sering relevan untuk server-bound licensing atau compliance requirements.",
+      "Dedicated Instances tidak memberikan host placement/licensing visibility yang sama seperti Dedicated Hosts."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-data-transfer-costs",
+    "title": "AWS Data Transfer Costs",
+    "summary": "Data-transfer pricing bergantung pada direction dan network topology. Untuk CLF-C02, pahami pola biaya, bukan angka harga yang cepat berubah.",
+    "keyPoints": [
+      "Data transfer into AWS dari internet umumnya lebih murah atau free dibanding transfer out ke internet, subject to service rules.",
+      "Data transfer out ke internet umumnya dikenai charge setelah applicable allowance.",
+      "Cross-Availability-Zone transfer untuk beberapa services dapat dikenai charge in each direction.",
+      "Transfers tertentu dalam same Availability Zone atau antara supported services dalam same Region dapat free.",
+      "NAT Gateway, Transit Gateway, PrivateLink, dan services lain di data path dapat memiliki processing charges tersendiri."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cost-management-tools",
+    "title": "AWS Cost Management Tools",
+    "summary": "AWS menyediakan tools terpisah untuk analyze, alert, estimate, dan export cost data.",
+    "keyPoints": [
+      "Cost Explorer digunakan untuk visualizing, filtering, analyzing, dan forecasting cost/usage.",
+      "AWS Budgets menetapkan target cost/usage dan dapat mengirim alert berdasarkan actual atau forecasted thresholds.",
+      "AWS Pricing Calculator digunakan untuk estimate planned workloads atau modeled billing changes.",
+      "AWS Data Exports CUR 2.0 menyediakan detailed recurring cost and usage data untuk downstream analysis.",
+      "Tool yang tepat ditentukan oleh apakah kebutuhan utama adalah analysis, alerting, estimating, atau raw/detailed data export."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-consolidated-billing",
+    "title": "AWS Organizations Consolidated Billing",
+    "summary": "Consolidated billing menggabungkan usage dan charges dari AWS accounts dalam organization tanpa menghilangkan account isolation.",
+    "keyPoints": [
+      "Management account bertanggung jawab atas consolidated bill untuk member-account usage.",
+      "Member accounts tetap separate AWS accounts dengan resource dan permission boundaries sendiri.",
+      "Aggregated usage dapat membantu organization mencapai applicable volume pricing tiers.",
+      "Eligible Reserved Instance dan Savings Plans discounts dapat be shared according to AWS billing rules.",
+      "Consolidated billing tidak memiliki additional fee."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cost-allocation-tags",
+    "title": "Cost Allocation Tags",
+    "summary": "Cost allocation tags menambahkan business context ke billing data sehingga spend dapat dianalisis berdasarkan project, team, environment, atau cost center.",
+    "keyPoints": [
+      "Tags terdiri dari key dan value yang melekat pada supported resources atau accounts.",
+      "Relevant tags harus diaktifkan sebagai cost allocation tags sebelum digunakan dalam billing analysis.",
+      "AWS-generated dan user-defined cost allocation tags didukung.",
+      "Activated tags dapat digunakan untuk grouping/filtering cost data dan internal showback/chargeback.",
+      "Tags membantu attribution dan reporting; tags tidak mengubah pricing resource."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-support-plans",
+    "title": "AWS Support Plans",
+    "summary": "AWS Support tiers meningkat dari Basic menuju Business Support+, Enterprise Support, dan Unified Operations dengan technical support dan proactive capabilities yang semakin dalam.",
+    "keyPoints": [
+      "Basic Support tersedia untuk semua customers dan mencakup account/billing assistance, service health, documentation, dan quota increase cases.",
+      "Business Support+ menambahkan 24/7 technical support, full Trusted Advisor checks, dan faster response untuk critical cases.",
+      "Enterprise Support menambahkan designated TAM, strategic guidance, dan faster production-critical response.",
+      "Unified Operations menambahkan designated specialist team, proactive workload monitoring, personalized runbooks/reviews, dan rapid incident engagement.",
+      "Developer Support, Business Support, dan Enterprise On-Ramp adalah transitional legacy plans yang dijadwalkan end-of-support 1 Januari 2027."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-trusted-advisor",
+    "title": "AWS Trusted Advisor and Service Quotas",
+    "summary": "Trusted Advisor memberi best-practice recommendations, sedangkan Service Quotas membantu melihat dan mengelola service limits.",
+    "keyPoints": [
+      "Trusted Advisor categories mencakup Cost Optimization, Performance, Security, Fault Tolerance, Service Limits, dan Operational Excellence.",
+      "Recommendations dapat mengidentifikasi idle resources, security settings, resilience gaps, atau approaching quotas.",
+      "Service Limits checks memberi visibility terhadap current usage versus quota.",
+      "Quota increases biasanya diminta melalui Service Quotas ketika supported.",
+      "Trusted Advisor bukan substitute untuk CloudWatch monitoring atau AWS Health events."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-health-dashboard",
+    "title": "AWS Health Dashboard and AWS Health API",
+    "summary": "AWS Health memberi visibility terhadap service events, account-specific events, dan scheduled changes yang dapat memengaruhi workloads.",
+    "keyPoints": [
+      "Public Health events menunjukkan service availability events yang tidak specific ke satu account.",
+      "Signed-in Health Dashboard menampilkan account-specific events dan affected resources ketika available.",
+      "Scheduled changes membantu customer menyiapkan maintenance atau lifecycle events.",
+      "AWS Health API memberikan programmatic access dan memerlukan eligible paid support plan.",
+      "AWS Health memberi event context; Trusted Advisor memberi best-practice recommendations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-technical-resources",
+    "title": "AWS Technical Resources",
+    "summary": "AWS technical resources memiliki tujuan berbeda dari product documentation hingga troubleshooting dan implementation guidance.",
+    "keyPoints": [
+      "AWS Documentation menyediakan service user guides, API references, dan configuration guidance.",
+      "AWS Whitepapers membahas principles, architecture, security, economics, dan best practices.",
+      "AWS re:Post menyediakan community knowledge dan AWS Knowledge Center troubleshooting articles.",
+      "AWS Prescriptive Guidance menyediakan strategies, patterns, dan implementation guidance.",
+      "AWS Support Center digunakan untuk account/support cases sesuai support entitlement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-partners-marketplace",
+    "title": "AWS Partners, Marketplace, and Professional Guidance",
+    "summary": "AWS Marketplace, APN, Professional Services, dan Solutions Architects membantu customers melalui product procurement, partner ecosystem, consulting, dan technical architecture guidance.",
+    "keyPoints": [
+      "AWS Marketplace adalah curated catalog untuk third-party software, data, SaaS, AMIs, dan professional services.",
+      "AWS Partner Network adalah ecosystem organisasi yang membangun dan memberikan AWS-based solutions/services.",
+      "AWS Professional Services adalah AWS-led consulting untuk transformation initiatives.",
+      "Solutions Architects memberikan technical architecture guidance dan membantu customers map requirements ke AWS designs.",
+      "Marketplace adalah procurement/catalog channel, bukan AWS Support plan."
+    ],
+    "order": 1
   }
 ]
