@@ -71,5 +71,171 @@
       "Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS."
     ],
     "order": 1
+  },
+  {
+    "concept": "clf-wa-operational-excellence",
+    "title": "Well-Architected: Operational Excellence",
+    "summary": "Operational Excellence membahas bagaimana tim menjalankan, mengamati, dan terus memperbaiki workload agar dapat mendukung business outcomes secara efektif.",
+    "keyPoints": [
+      "Gunakan observability dan operational metrics untuk memahami kondisi workload dan mengambil tindakan.",
+      "Buat prosedur operasi yang jelas, dapat diuji, dan diperbarui berdasarkan pengalaman.",
+      "Lakukan perubahan kecil dan reversible untuk mengurangi blast radius dan mempercepat recovery.",
+      "Gunakan automation untuk membuat respons lebih konsisten, mengurangi human error, dan mengurangi operator toil.",
+      "Operational Excellence berfokus pada cara workload dioperasikan dan ditingkatkan; Reliability berfokus pada kemampuan workload menjalankan fungsi dan pulih dari gangguan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-security",
+    "title": "Well-Architected: Security",
+    "summary": "Security pillar membantu melindungi data, sistem, dan aset dengan menerapkan kontrol identitas, proteksi berlapis, traceability, dan kesiapan merespons security events.",
+    "keyPoints": [
+      "Kelola identity dan permissions dengan prinsip least privilege.",
+      "Pertahankan traceability agar aktivitas dan perubahan dapat dianalisis.",
+      "Lindungi data sesuai kebutuhan, termasuk saat disimpan dan ditransmisikan.",
+      "Gunakan security controls pada berbagai layer dan automate security best practices jika memungkinkan.",
+      "Siapkan proses untuk mendeteksi, merespons, dan memulihkan diri dari security events."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-reliability",
+    "title": "Well-Architected: Reliability",
+    "summary": "Reliability memastikan workload dapat menjalankan fungsi yang diharapkan secara konsisten dan dapat pulih ketika terjadi gangguan.",
+    "keyPoints": [
+      "Bangun fondasi dan service quotas yang sesuai untuk kebutuhan workload.",
+      "Gunakan resilient design dan hindari single points of failure.",
+      "Kelola perubahan dengan automation dan proses yang dapat diuji.",
+      "Uji recovery procedure dan kemampuan workload untuk pulih dari failure.",
+      "Reliability berfokus pada correctness, resilience, dan recovery; Performance Efficiency berfokus pada penggunaan resource secara efisien untuk memenuhi performance requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-performance-efficiency",
+    "title": "Well-Architected: Performance Efficiency",
+    "summary": "Performance Efficiency adalah penggunaan computing resources yang tepat dan efisien agar workload memenuhi requirement performa sekarang dan tetap efisien ketika demand atau teknologi berubah.",
+    "keyPoints": [
+      "Pilih resource dan service berdasarkan karakteristik workload, bukan kebiasaan lama.",
+      "Gunakan data dan measurement untuk mengevaluasi performa.",
+      "Eksperimen dan evaluasi teknologi baru ketika dapat meningkatkan efisiensi.",
+      "Gunakan managed atau serverless technologies ketika sesuai untuk mengurangi kebutuhan mengelola infrastructure.",
+      "Performance Efficiency dan Cost Optimization saling memengaruhi, tetapi masing-masing mengoptimalkan tujuan yang berbeda."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-cost-optimization",
+    "title": "Well-Architected: Cost Optimization",
+    "summary": "Cost Optimization membantu workload memberikan business value tanpa membayar resource atau pola penggunaan yang tidak diperlukan.",
+    "keyPoints": [
+      "Bangun praktik Cloud Financial Management dan visibility terhadap pengeluaran.",
+      "Pahami usage agar pemborosan dan resource idle dapat ditemukan.",
+      "Pilih resource, service, dan pricing model yang cost-effective untuk workload.",
+      "Sesuaikan supply dengan demand dan hindari overprovisioning yang tidak diperlukan.",
+      "Optimasi biaya adalah proses berkelanjutan dan tidak berarti selalu memilih opsi termurah tanpa mempertimbangkan requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-sustainability",
+    "title": "Well-Architected: Sustainability",
+    "summary": "Sustainability pillar membantu mengurangi environmental impact workload dengan meningkatkan resource efficiency dan mengurangi waste sepanjang lifecycle workload.",
+    "keyPoints": [
+      "Selaraskan resource dengan actual demand dan hindari kapasitas yang tidak diperlukan.",
+      "Tingkatkan utilization dan gunakan software atau architecture yang lebih efisien.",
+      "Pertimbangkan efficient hardware, managed services, dan teknologi baru ketika sesuai.",
+      "Region selection dapat menjadi salah satu faktor sustainability jika tetap memenuhi business requirements.",
+      "Cost Optimization dan Sustainability sering sama-sama mengurangi waste, tetapi sustainability berfokus pada environmental impact."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloud-adoption-framework",
+    "title": "AWS Cloud Adoption Framework (AWS CAF)",
+    "summary": "AWS CAF membantu organisasi menilai cloud readiness, menemukan capability gaps, dan menyusun transformation roadmap agar cloud adoption menghasilkan business outcomes.",
+    "keyPoints": [
+      "Enam perspectives AWS CAF adalah Business, People, Governance, Platform, Security, dan Operations.",
+      "Business, People, dan Governance banyak membahas kemampuan organisasi dan proses bisnis.",
+      "Platform, Security, dan Operations banyak membahas kemampuan teknis dan operasional.",
+      "AWS CAF digunakan untuk transformation readiness dan capability development.",
+      "AWS CAF berbeda dari AWS Well-Architected Framework, yang mengevaluasi workload terhadap architectural best practices."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-migration-strategies",
+    "title": "Migration Strategies (7 Rs)",
+    "summary": "7 Rs membantu menentukan pendekatan yang paling sesuai untuk setiap workload ketika organisasi merencanakan migration ke AWS.",
+    "keyPoints": [
+      "Rehost memindahkan workload dengan perubahan aplikasi minimal, sering disebut lift and shift.",
+      "Replatform membuat optimasi terbatas tanpa redesign besar; refactor/re-architect mengubah arsitektur secara lebih mendalam.",
+      "Repurchase mengganti aplikasi dengan produk lain, misalnya solusi SaaS.",
+      "Retain mempertahankan workload di lingkungan asal untuk sekarang; retire menghentikan workload yang tidak lagi diperlukan.",
+      "Relocate memindahkan workload ke environment yang kompatibel tanpa mengubah overall architecture secara signifikan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-migration-services",
+    "title": "AWS Migration Services",
+    "summary": "AWS menyediakan tools berbeda untuk discovery, assessment, rehosting, dan tracking migration. Pilih tool berdasarkan tahap dan tujuan migration.",
+    "keyPoints": [
+      "AWS Transform MGN (formerly AWS Application Migration Service) membantu rehost physical, virtual, atau cloud servers ke AWS dengan replication dan cutover.",
+      "AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency information untuk migration planning.",
+      "AWS Migration Hub mengagregasi migration information sehingga progress dapat dilihat dan dilacak dari satu tempat.",
+      "Migration Evaluator membantu assessment dan directional business case menggunakan inventory serta utilization data.",
+      "Database migration memiliki tools khusus seperti AWS DMS; jangan menyamakan server rehosting dengan database migration."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-fixed-vs-variable-costs",
+    "title": "Fixed vs Variable Costs",
+    "summary": "Cloud memungkinkan organisasi mengurangi kebutuhan upfront infrastructure investment dan lebih banyak membayar resource berdasarkan penggunaan aktual.",
+    "keyPoints": [
+      "Fixed expense adalah biaya besar yang harus dikeluarkan meskipun actual usage belum diketahui, misalnya membeli data center atau server di awal.",
+      "Variable expense berubah mengikuti jumlah resource yang dikonsumsi.",
+      "Pay-as-you-go membantu biaya lebih dekat dengan actual usage dan mengurangi kebutuhan menebak peak capacity jauh di depan.",
+      "Fixed vs variable cost membahas model pengeluaran customer; economies of scale membahas efisiensi biaya karena skala provider."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-licensing-strategies",
+    "title": "Licensing Strategies",
+    "summary": "AWS mendukung beberapa licensing model, termasuk membawa lisensi yang sudah dimiliki ketika vendor terms mengizinkan dan menggunakan software dengan license cost yang sudah termasuk.",
+    "keyPoints": [
+      "BYOL menggunakan license entitlement yang dimiliki customer dan tetap harus mematuhi vendor licensing terms.",
+      "License-included berarti license cost sudah termasuk dalam penggunaan produk atau resource yang dipilih.",
+      "AWS License Manager memberikan centralized visibility untuk license usage di berbagai account dan Region.",
+      "Self-managed license rules dapat membantu tracking dan compliance terhadap entitlement yang dimiliki organisasi."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-rightsizing",
+    "title": "Rightsizing",
+    "summary": "Rightsizing menyesuaikan ukuran atau configuration resource dengan kebutuhan workload agar performance tetap sesuai tanpa membayar kapasitas yang tidak diperlukan.",
+    "keyPoints": [
+      "Resource yang terlalu besar dapat menyebabkan waste, sedangkan resource yang terlalu kecil dapat menimbulkan performance risk.",
+      "AWS Compute Optimizer menganalisis configuration dan utilization metrics untuk menghasilkan recommendations.",
+      "Recommendation dapat membantu performance, cost savings, atau keduanya tergantung workload.",
+      "Rightsizing memilih ukuran/configuration yang sesuai; elasticity mengubah jumlah atau kapasitas resource mengikuti demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-automation-benefits",
+    "title": "Benefits of Automation",
+    "summary": "Automation mengubah langkah manual menjadi proses yang repeatable dan konsisten sehingga perubahan dapat dilakukan lebih cepat dengan risiko human error yang lebih rendah.",
+    "keyPoints": [
+      "Automation mengurangi manual effort, operator toil, dan variasi hasil akibat langkah manusia.",
+      "Infrastructure dan operational procedures dapat diperlakukan sebagai code, di-review, diuji, dan di-version-control.",
+      "AWS CloudFormation dapat membuat resource dari template secara repeatable dan consistent.",
+      "Automated deployment dan operational response membantu mempercepat perubahan serta membuat proses lebih mudah diaudit.",
+      "Automation adalah cara mengeksekusi proses; elasticity adalah kemampuan kapasitas berubah mengikuti demand."
+    ],
+    "order": 1
   }
 ]

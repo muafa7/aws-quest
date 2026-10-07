@@ -58,5 +58,135 @@
     "referenceUrl": "https://aws.amazon.com/compliance/shared-responsibility-model/",
     "order": 1,
     "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-operational-excellence",
+    "name": "Well-Architected: Operational Excellence",
+    "generalExplanation": "Operational Excellence adalah kemampuan mendukung development dan menjalankan workload secara efektif, mendapatkan insight tentang operasi, serta terus memperbaiki proses untuk menghasilkan business value. Praktiknya mencakup observability, prosedur yang jelas, perubahan kecil yang dapat dibalik, pembelajaran dari kejadian operasional, dan automation untuk mengurangi human error. Pilar ini berbeda dari Reliability: Operational Excellence berfokus pada cara tim mengoperasikan dan meningkatkan workload, sedangkan Reliability berfokus pada workload yang tetap menjalankan fungsi yang diharapkan dan pulih dari gangguan.",
+    "keyNote": "Operational Excellence = operasi yang terukur, dapat diulang, dapat dipelajari, dan terus diperbaiki.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-security",
+    "name": "Well-Architected: Security",
+    "generalExplanation": "Security pillar berfokus pada perlindungan data, sistem, dan aset sambil memanfaatkan teknologi cloud untuk meningkatkan security posture. Area pentingnya mencakup identity dan access management, traceability, perlindungan data, security di berbagai layer, automation, dan persiapan menghadapi security events. Security bukan sekadar membuat sistem tetap tersedia; Availability dan recovery lebih dekat dengan Reliability.",
+    "keyNote": "Security = lindungi data, sistem, dan aset dengan kontrol identitas, proteksi berlapis, traceability, dan respons yang siap.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-reliability",
+    "name": "Well-Architected: Reliability",
+    "generalExplanation": "Reliability adalah kemampuan workload menjalankan fungsi yang dimaksud secara benar dan konsisten ketika dibutuhkan. Ini mencakup fondasi yang kuat, arsitektur yang resilient, pengelolaan perubahan yang konsisten, kemampuan memperoleh resource untuk memenuhi demand, dan proses recovery yang telah diuji. Reliability berbeda dari Performance Efficiency, yang menekankan penggunaan resource secara efisien untuk memenuhi requirement performa.",
+    "keyNote": "Reliability = workload tetap berfungsi sesuai harapan dan mampu pulih dari disruption.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-performance-efficiency",
+    "name": "Well-Architected: Performance Efficiency",
+    "generalExplanation": "Performance Efficiency adalah kemampuan menggunakan computing resources secara efisien untuk memenuhi requirement sistem dan mempertahankan efisiensi ketika demand atau teknologi berubah. Praktiknya meliputi pemilihan resource yang tepat, pengukuran performa, eksperimen, dan pemanfaatan layanan atau teknologi yang sesuai. Pilar ini tidak sama dengan Cost Optimization: solusi termurah belum tentu memenuhi kebutuhan performa, dan solusi tercepat belum tentu paling hemat biaya.",
+    "keyNote": "Performance Efficiency = gunakan resource dan teknologi yang tepat untuk memenuhi kebutuhan performa secara efisien.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-cost-optimization",
+    "name": "Well-Architected: Cost Optimization",
+    "generalExplanation": "Cost Optimization adalah kemampuan menjalankan sistem untuk memberikan business value pada price point terendah yang sesuai kebutuhan. Fokusnya mencakup Cloud Financial Management, memahami pengeluaran dan penggunaan, memilih resource yang cost-effective, menyesuaikan supply dengan demand, dan mengoptimalkan workload secara berkelanjutan. Cost Optimization bukan berarti selalu memilih resource termurah jika pilihan tersebut gagal memenuhi requirement bisnis.",
+    "keyNote": "Cost Optimization = hilangkan pemborosan dan pilih pola penggunaan yang memberi business value dengan biaya yang tepat.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/definition.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-wa-sustainability",
+    "name": "Well-Architected: Sustainability",
+    "generalExplanation": "Sustainability pillar berfokus pada pengurangan environmental impact workload cloud melalui peningkatan efisiensi dan pengurangan waste. Praktiknya mencakup menyelaraskan resource dengan demand, meningkatkan utilization, menggunakan hardware dan service yang efisien, mengoptimalkan software dan data, serta mempertimbangkan lokasi workload jika requirement bisnis memungkinkan. Cost Optimization dan Sustainability sering sama-sama mengurangi waste, tetapi Sustainability berfokus pada environmental impact sedangkan Cost Optimization berfokus pada business value dan biaya.",
+    "keyNote": "Sustainability = kurangi environmental impact dengan memaksimalkan efisiensi dan meminimalkan resource yang tidak diperlukan.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-cloud-adoption-framework",
+    "name": "AWS Cloud Adoption Framework (AWS CAF)",
+    "generalExplanation": "AWS Cloud Adoption Framework (AWS CAF) membantu organisasi mempercepat business outcomes dengan menilai cloud readiness, mengidentifikasi capability gaps, dan mengembangkan transformation roadmap secara iteratif. AWS CAF memiliki enam perspectives: Business, People, Governance, Platform, Security, dan Operations. AWS CAF berfokus pada kesiapan dan transformasi organisasi, sedangkan AWS Well-Architected Framework berfokus pada evaluasi workload terhadap architectural best practices.",
+    "keyNote": "AWS CAF = framework transformasi organisasi dengan enam perspectives: Business, People, Governance, Platform, Security, Operations.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-migration-strategies",
+    "name": "Migration Strategies (7 Rs)",
+    "generalExplanation": "AWS menggunakan tujuh strategi umum untuk menentukan pendekatan migrasi aplikasi: rehost, relocate, replatform, refactor/re-architect, repurchase, retain, dan retire. Rehost memindahkan workload dengan perubahan minimal; replatform melakukan optimasi terbatas tanpa redesign besar; refactor mengubah arsitektur secara lebih mendalam; repurchase berpindah ke produk lain seperti SaaS; retain menunda atau mempertahankan workload di lingkungan asal; retire menghentikan workload yang tidak lagi dibutuhkan; relocate memindahkan workload tanpa mengubah arsitektur secara keseluruhan, misalnya memindahkan platform yang kompatibel.",
+    "keyNote": "7 Rs = Rehost, Relocate, Replatform, Refactor, Repurchase, Retain, Retire.",
+    "referenceUrl": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-migration-services",
+    "name": "Migration Services (AWS Transform MGN, Application Discovery Service, Migration Hub, Migration Evaluator)",
+    "generalExplanation": "AWS menyediakan tools untuk tahap migration yang berbeda. AWS Transform MGN, yang sebelumnya bernama AWS Application Migration Service, digunakan untuk rehost server ke AWS dengan replication dan cutover. AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency data untuk membantu migration planning. AWS Migration Hub memberikan tempat terpusat untuk melihat dan melacak migration information. Migration Evaluator membantu assessment dan directional business case dengan data inventory dan utilization. Service ini berbeda dari AWS DMS/SCT yang berfokus pada database migration.",
+    "keyNote": "MGN = rehost server; Discovery Service = discovery; Migration Hub = tracking; Migration Evaluator = assessment/business case.",
+    "referenceUrl": "https://aws.amazon.com/application-migration-service/",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-fixed-vs-variable-costs",
+    "name": "Fixed vs Variable Costs",
+    "generalExplanation": "Salah satu economic benefit cloud adalah menukar fixed expense besar di awal dengan variable expense yang mengikuti penggunaan. Pada model tradisional, organisasi sering membeli data center dan hardware sebelum mengetahui demand aktual. Di AWS, banyak resource dapat dikonsumsi dengan model usage-based sehingga biaya lebih mudah mengikuti kebutuhan. Fixed vs variable cost berbeda dari economies of scale: fixed/variable membahas model pengeluaran customer, sedangkan economies of scale membahas efisiensi biaya karena AWS beroperasi dalam skala besar.",
+    "keyNote": "Cloud membantu menukar upfront fixed expense dengan variable expense yang mengikuti penggunaan.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-licensing-strategies",
+    "name": "Licensing Strategies (BYOL vs License Included, License Manager)",
+    "generalExplanation": "Software di AWS dapat menggunakan model Bring Your Own License (BYOL) ketika terms vendor mengizinkan customer menggunakan lisensi yang sudah dimiliki, atau model license-included ketika biaya lisensi sudah termasuk dalam penggunaan produk atau resource. AWS License Manager membantu organisasi mengelola self-managed licenses, melacak penggunaan, menerapkan licensing rules, dan meningkatkan visibility serta compliance di berbagai account dan Region. Pilihan licensing tetap harus mengikuti terms dari software vendor.",
+    "keyNote": "BYOL memakai entitlement milik customer; license-included menyertakan lisensi; License Manager membantu tracking dan compliance.",
+    "referenceUrl": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-rightsizing",
+    "name": "Rightsizing (AWS Compute Optimizer)",
+    "generalExplanation": "Rightsizing adalah proses mencocokkan konfigurasi dan ukuran resource dengan kebutuhan workload agar tidak overprovisioned atau underprovisioned. AWS Compute Optimizer menganalisis configuration dan utilization metrics untuk memberikan rekomendasi yang dapat membantu meningkatkan performance, menghemat biaya, atau keduanya. Rightsizing berbeda dari elasticity: rightsizing memilih ukuran/configuration yang sesuai, sedangkan elasticity menambah atau mengurangi kapasitas mengikuti perubahan demand.",
+    "keyNote": "Rightsizing = cocokkan ukuran resource dengan kebutuhan; Compute Optimizer memberi rekomendasi berdasarkan utilization.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recommendations.html",
+    "order": 17,
+    "active": true
+  },
+  {
+    "topic": "cloud-concepts",
+    "slug": "clf-automation-benefits",
+    "name": "Benefits of Automation",
+    "generalExplanation": "Automation membuat operasi dan perubahan lebih repeatable, consistent, cepat, dan lebih sedikit bergantung pada langkah manual yang rawan human error. Di AWS, infrastructure dan operations dapat didefinisikan sebagai code, lalu diuji, di-version-control, dan dijalankan secara otomatis. AWS CloudFormation adalah contoh service untuk provisioning infrastructure secara repeatable dari template. Automation berbeda dari elasticity: automation adalah cara mengeksekusi proses secara konsisten, sedangkan elasticity adalah perubahan kapasitas mengikuti demand.",
+    "keyNote": "Automation = proses repeatable dan konsisten, mengurangi manual effort dan human error.",
+    "referenceUrl": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/prepare.html",
+    "order": 18,
+    "active": true
   }
 ]

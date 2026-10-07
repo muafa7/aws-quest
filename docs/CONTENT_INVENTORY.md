@@ -25,21 +25,21 @@ Planning guidance for the curated question banks. Recommended counts are targets
 
 | Metric | Current | Planned |
 | --- | --- | --- |
-| Concepts | 6 | 90 |
-| Lessons | 6 | 90 |
-| Active questions | 30 | ~415 |
+| Concepts | 19 | 90 |
+| Lessons | 19 | 90 |
+| Active questions | 86 | ~415 |
 
 ### Domains
 
 | # | Topic slug | Name | Exam weight | Question file | Concepts (seeded / planned) | Questions (existing / recommended) |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 5 / 18 | 27 / 83 |
+| 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 18 / 18 | 83 / 83 |
 | 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 1 / 24 | 3 / 115 |
 | 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 0 / 36 | 0 / 159 |
 | 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 0 / 12 | 0 / 58 |
-| | | **Total** | | | **6 / 90** | **30 / ~415** |
+| | | **Total** | | | **19 / 90** | **86 / ~415** |
 
-Cloud Concepts questions, including the original elasticity questions `CCP-ELA-001` through `CCP-ELA-003`, now live in `questions/cloud-concepts.json`. `questions/core.json` still holds the three Shared Responsibility questions until that domain's first content batch, and `core.json` is removed once empty.
+Cloud Concepts is fully seeded in `questions/cloud-concepts.json`, including the original elasticity questions `CCP-ELA-001` through `CCP-ELA-003`. `questions/core.json` still holds the three Shared Responsibility questions until that domain's first content batch, and `core.json` is removed once empty.
 
 Domain 3 is above its 34% exam weight because it covers the most services. Mock exams still sample by exam weight and only need 7–22 questions per domain. The total is driven by the 4-questions-per-concept floor; going much lower would mean merging concepts and weakening their explanations.
 
@@ -61,19 +61,19 @@ Column guide:
 | 3 | `clf-elasticity` | ELA | Elasticity | seeded | complete | 5 | 5 | Understanding, Scenario, Comparison | Scalability, high availability, auto scaling |
 | 4 | `clf-high-availability` | HAV | High Availability and Fault Tolerance | seeded | complete | 5 | 5 | Understanding, Comparison, Scenario | Elasticity, Availability Zones, backup |
 | 5 | `clf-well-architected-framework` | WAR | AWS Well-Architected Framework | seeded | complete | 5 | 5 | Basic, Understanding | Pillars, AWS CAF |
-| 6 | `clf-wa-operational-excellence` | WOE | Well-Architected: Operational Excellence | planned | planned | 0 | 4 | Comparison, Scenario | Reliability |
-| 7 | `clf-wa-security` | WSE | Well-Architected: Security | planned | planned | 0 | 4 | Comparison, Scenario | Reliability, operational excellence |
-| 8 | `clf-wa-reliability` | WRE | Well-Architected: Reliability | planned | planned | 0 | 4 | Comparison, Scenario | Operational excellence, performance efficiency |
-| 9 | `clf-wa-performance-efficiency` | WPE | Well-Architected: Performance Efficiency | planned | planned | 0 | 4 | Comparison, Scenario | Reliability, cost optimization |
-| 10 | `clf-wa-cost-optimization` | WCO | Well-Architected: Cost Optimization | planned | planned | 0 | 4 | Comparison, Scenario | Sustainability, performance efficiency |
-| 11 | `clf-wa-sustainability` | WSU | Well-Architected: Sustainability | planned | planned | 0 | 4 | Comparison, Scenario | Cost optimization |
-| 12 | `clf-cloud-adoption-framework` | CAF | AWS Cloud Adoption Framework (AWS CAF) | planned | planned | 0 | 5 | Basic, Comparison | Well-Architected Framework, migration strategies |
-| 13 | `clf-migration-strategies` | MIG | Migration Strategies (7 Rs) | planned | planned | 0 | 5 | Comparison, Scenario | Migration services, AWS CAF |
-| 14 | `clf-migration-services` | MGS | Migration Services (Application Migration Service, Application Discovery Service, Migration Hub, Migration Evaluator) | planned | planned | 0 | 5 | Basic, Scenario | Database migration (AWS DMS, AWS SCT) |
-| 15 | `clf-fixed-vs-variable-costs` | CPX | Fixed vs Variable Costs | planned | planned | 0 | 5 | Understanding, Comparison, Scenario | Economies of scale |
-| 16 | `clf-licensing-strategies` | LIC | Licensing Strategies (BYOL vs License Included, License Manager) | planned | planned | 0 | 4 | Understanding, Scenario | Dedicated Hosts |
-| 17 | `clf-rightsizing` | RSZ | Rightsizing (Compute Optimizer) | planned | planned | 0 | 4 | Understanding, Scenario | Elasticity, Trusted Advisor |
-| 18 | `clf-automation-benefits` | AUT | Benefits of Automation | planned | planned | 0 | 4 | Understanding, Scenario | Infrastructure as code |
+| 6 | `clf-wa-operational-excellence` | WOE | Well-Architected: Operational Excellence | seeded | complete | 4 | 4 | Comparison, Scenario | Reliability |
+| 7 | `clf-wa-security` | WSE | Well-Architected: Security | seeded | complete | 4 | 4 | Comparison, Scenario | Reliability, operational excellence |
+| 8 | `clf-wa-reliability` | WRE | Well-Architected: Reliability | seeded | complete | 4 | 4 | Comparison, Scenario | Operational excellence, performance efficiency |
+| 9 | `clf-wa-performance-efficiency` | WPE | Well-Architected: Performance Efficiency | seeded | complete | 4 | 4 | Comparison, Scenario | Reliability, cost optimization |
+| 10 | `clf-wa-cost-optimization` | WCO | Well-Architected: Cost Optimization | seeded | complete | 4 | 4 | Comparison, Scenario | Sustainability, performance efficiency |
+| 11 | `clf-wa-sustainability` | WSU | Well-Architected: Sustainability | seeded | complete | 4 | 4 | Comparison, Scenario | Cost optimization |
+| 12 | `clf-cloud-adoption-framework` | CAF | AWS Cloud Adoption Framework (AWS CAF) | seeded | complete | 5 | 5 | Basic, Comparison | Well-Architected Framework, migration strategies |
+| 13 | `clf-migration-strategies` | MIG | Migration Strategies (7 Rs) | seeded | complete | 5 | 5 | Comparison, Scenario | Migration services, AWS CAF |
+| 14 | `clf-migration-services` | MGS | Migration Services (AWS Transform MGN, Application Discovery Service, Migration Hub, Migration Evaluator) | seeded | complete | 5 | 5 | Basic, Scenario | Database migration (AWS DMS, AWS SCT) |
+| 15 | `clf-fixed-vs-variable-costs` | CPX | Fixed vs Variable Costs | seeded | complete | 5 | 5 | Understanding, Comparison, Scenario | Economies of scale |
+| 16 | `clf-licensing-strategies` | LIC | Licensing Strategies (BYOL vs License Included, License Manager) | seeded | complete | 4 | 4 | Understanding, Scenario | Dedicated Hosts |
+| 17 | `clf-rightsizing` | RSZ | Rightsizing (Compute Optimizer) | seeded | complete | 4 | 4 | Understanding, Scenario | Elasticity, Trusted Advisor |
+| 18 | `clf-automation-benefits` | AUT | Benefits of Automation | seeded | complete | 4 | 4 | Understanding, Scenario | Infrastructure as code |
 
 #### 2. Security and Compliance (`security-compliance`) — 24 concepts, 115 questions
 
@@ -186,6 +186,19 @@ Current weak lessons:
 | `CCP-ELA-001`–`005` | `clf-elasticity` | 5 | `questions/cloud-concepts.json` |
 | `CCP-HAV-001`–`005` | `clf-high-availability` | 5 | `questions/cloud-concepts.json` |
 | `CCP-WAR-001`–`005` | `clf-well-architected-framework` | 5 | `questions/cloud-concepts.json` |
+| `CCP-WOE-001`–`004` | `clf-wa-operational-excellence` | 4 | `questions/cloud-concepts.json` |
+| `CCP-WSE-001`–`004` | `clf-wa-security` | 4 | `questions/cloud-concepts.json` |
+| `CCP-WRE-001`–`004` | `clf-wa-reliability` | 4 | `questions/cloud-concepts.json` |
+| `CCP-WPE-001`–`004` | `clf-wa-performance-efficiency` | 4 | `questions/cloud-concepts.json` |
+| `CCP-WCO-001`–`004` | `clf-wa-cost-optimization` | 4 | `questions/cloud-concepts.json` |
+| `CCP-WSU-001`–`004` | `clf-wa-sustainability` | 4 | `questions/cloud-concepts.json` |
+| `CCP-CAF-001`–`005` | `clf-cloud-adoption-framework` | 5 | `questions/cloud-concepts.json` |
+| `CCP-MIG-001`–`005` | `clf-migration-strategies` | 5 | `questions/cloud-concepts.json` |
+| `CCP-MGS-001`–`005` | `clf-migration-services` | 5 | `questions/cloud-concepts.json` |
+| `CCP-CPX-001`–`005` | `clf-fixed-vs-variable-costs` | 5 | `questions/cloud-concepts.json` |
+| `CCP-LIC-001`–`004` | `clf-licensing-strategies` | 4 | `questions/cloud-concepts.json` |
+| `CCP-RSZ-001`–`004` | `clf-rightsizing` | 4 | `questions/cloud-concepts.json` |
+| `CCP-AUT-001`–`004` | `clf-automation-benefits` | 4 | `questions/cloud-concepts.json` |
 | `CCP-SRM-001`–`003` | `clf-shared-responsibility` | 3 | `questions/core.json` |
 
 `CCP-ELA-001`, `CCP-ELA-002`, and `CCP-ELA-003` keep their original codes. `CCP-ELA-001` is now `BASIC`. `CCP-ELA-003` compares elasticity with high availability.
@@ -195,18 +208,18 @@ Still open on the Shared Responsibility questions:
 - `CCP-SRM-001`: implausible distractors (AWS Support, hardware manufacturer).
 - `CCP-SRM-002`: implausible distractors (ISP, hardware manufacturer).
 
-Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-SRM-004`. Every other prefix starts at `001`.
+Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-004`. Every other prefix starts at `001`.
 
 Relabelling style or difficulty keeps the same code (spec section 28).
 
 ### Distribution targets
 
-| Dimension | Current (30) | Target |
+| Dimension | Current (86) | Target |
 | --- | --- | --- |
-| Style | BASIC 5, UNDERSTANDING 10, COMPARISON 5, SCENARIO 10, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
-| Difficulty | EASY 13, MEDIUM 14, HARD 3 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
-| Type | SINGLE_CHOICE 26, MULTIPLE_CHOICE 4 | MULTIPLE_CHOICE 10–15% |
-| Correct-answer position | A 8, B 9, C 9, D 6, E 2 | Roughly 20–30% per letter (informational) |
+| Style | BASIC 18, UNDERSTANDING 24, COMPARISON 19, SCENARIO 25, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
+| Difficulty | EASY 33, MEDIUM 42, HARD 11 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
+| Type | SINGLE_CHOICE 74, MULTIPLE_CHOICE 12 | MULTIPLE_CHOICE 10–15% |
+| Correct-answer position | A 23, B 24, C 25, D 21, E 5 | Roughly 20–30% per letter (informational) |
 
 The exam guide lists "Designing cloud architecture" as out of scope for the CLF-C02 candidate, so ARCHITECTURE questions should be rare or absent.
 
@@ -239,6 +252,19 @@ Valid concept slugs today (only these may be referenced by questions and lessons
 - `clf-elasticity`
 - `clf-high-availability`
 - `clf-well-architected-framework`
+- `clf-wa-operational-excellence`
+- `clf-wa-security`
+- `clf-wa-reliability`
+- `clf-wa-performance-efficiency`
+- `clf-wa-cost-optimization`
+- `clf-wa-sustainability`
+- `clf-cloud-adoption-framework`
+- `clf-migration-strategies`
+- `clf-migration-services`
+- `clf-fixed-vs-variable-costs`
+- `clf-licensing-strategies`
+- `clf-rightsizing`
+- `clf-automation-benefits`
 - `clf-shared-responsibility`
 
 Planned slugs in the tables above become valid once they are added to `concepts.json` together with their lessons.
@@ -349,8 +375,8 @@ Good candidates for comparison questions and for checking that explanations name
 
 ### Notable content gaps
 
-- 84 of 90 planned concepts and their lessons do not exist yet. Domains 3 and 4 have no concepts. While the bank is below 65 questions, a CLF-C02 mock exam uses every available question, so it currently contains all 30.
-- `clf-shared-responsibility` still has exactly 3 questions, so no unseen question is left for review after mastery attempts. The five Cloud Concepts concepts each have at least 4.
+- 71 of 90 planned concepts and their lessons do not exist yet. Domains 3 and 4 have no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Those empty domains contribute nothing, and the exam is filled from Cloud Concepts plus the 3 Shared Responsibility questions.
+- `clf-shared-responsibility` still has exactly 3 questions, so no unseen question is left for review after mastery attempts. Every Cloud Concepts concept has at least 4.
 - One lesson is weak (see [Lesson status](#lesson-status)).
 - The SRM questions use implausible distractors.
 - No ARCHITECTURE questions yet. The exam guide lists designing cloud architecture as out of scope, so that is expected.
