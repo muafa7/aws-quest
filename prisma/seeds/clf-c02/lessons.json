@@ -64,11 +64,13 @@
   {
     "concept": "clf-shared-responsibility",
     "title": "Shared Responsibility Model",
-    "summary": "AWS mengelola security OF the cloud, sedangkan customer mengelola security IN the cloud sesuai service yang digunakan.",
+    "summary": "AWS mengamankan infrastructure yang menjalankan cloud, sedangkan customer mengamankan data, identities, applications, dan konfigurasi yang berada dalam kendalinya. Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS.",
     "keyPoints": [
-      "AWS mengelola physical infrastructure.",
-      "Pada EC2, customer mengelola guest operating system dan aplikasinya.",
-      "Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS."
+      "AWS bertanggung jawab atas security OF the cloud: facilities, hardware, networking, dan underlying infrastructure.",
+      "Pada EC2, customer mengelola guest OS, patching, applications, data, dan konfigurasi network/security yang dikendalikan customer.",
+      "Pada managed services seperti RDS dan Lambda, AWS mengelola lebih banyak underlying platform; customer tetap mengelola data, access, dan application/configuration yang menjadi tanggung jawabnya.",
+      "Pada S3, AWS mengelola infrastructure service, sedangkan customer mengelola data dan bucket/access configuration.",
+      "Gunakan service yang lebih managed untuk mengurangi sebagian operational responsibility, bukan untuk menghilangkan seluruh customer responsibility."
     ],
     "order": 1
   },
@@ -235,6 +237,296 @@
       "AWS CloudFormation dapat membuat resource dari template secara repeatable dan consistent.",
       "Automated deployment dan operational response membantu mempercepat perubahan serta membuat proses lebih mudah diaudit.",
       "Automation adalah cara mengeksekusi proses; elasticity adalah kemampuan kapasitas berubah mengikuti demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-users-groups-policies",
+    "title": "IAM Users, Groups, and Policies",
+    "summary": "IAM mengatur siapa yang dapat mengakses AWS dan tindakan apa yang boleh mereka lakukan. Permissions didefinisikan melalui policies dan sebaiknya mengikuti prinsip least privilege.",
+    "keyPoints": [
+      "IAM user adalah identity dengan credentials jangka panjang untuk use case tertentu; AWS menganjurkan temporary credentials/federation untuk human access bila memungkinkan.",
+      "IAM group memudahkan pemberian permissions yang sama kepada beberapa IAM users.",
+      "IAM policies adalah JSON documents yang mendefinisikan allowed/denied actions, resources, dan conditions.",
+      "AWS managed policies dikelola AWS; customer managed policies dibuat dan dikelola customer untuk kebutuhan yang lebih spesifik.",
+      "Credential reports dan access/last-used information membantu meninjau credentials dan mengurangi permissions yang tidak diperlukan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-roles",
+    "title": "IAM Roles",
+    "summary": "IAM role menyediakan permissions tanpa melekatkan long-term credentials ke satu user. Principal yang diizinkan dapat assume role dan memperoleh temporary security credentials.",
+    "keyPoints": [
+      "Roles tidak memiliki standard long-term password atau access keys.",
+      "Trust policy menentukan principal yang boleh assume role; permissions policy menentukan tindakan yang boleh dilakukan role.",
+      "AWS services dapat menggunakan service roles untuk mengakses resources atas nama workload.",
+      "Cross-account roles memungkinkan principal dari account lain memperoleh permissions sementara tanpa membuat duplicate IAM users.",
+      "Temporary credentials dari role mengurangi kebutuhan menyimpan access keys jangka panjang."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-root-user",
+    "title": "AWS Account Root User",
+    "summary": "Root user memiliki complete access ke AWS account sehingga harus diperlakukan sebagai emergency/highly privileged identity, bukan identity untuk pekerjaan harian.",
+    "keyPoints": [
+      "Gunakan root user hanya untuk tasks yang benar-benar membutuhkan root credentials.",
+      "Aktifkan MFA dan lindungi account-recovery mechanisms.",
+      "Jangan membuat long-term access keys untuk root user.",
+      "Gunakan IAM Identity Center atau administrative roles/users yang sesuai untuk day-to-day administration.",
+      "Monitor penggunaan root credentials dan simpan credentials dengan kontrol yang ketat."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-mfa-credentials",
+    "title": "MFA, Password Policies, and Access Keys",
+    "summary": "Credential hygiene mengurangi risiko credential theft dan account compromise. MFA, password controls, dan penggunaan temporary credentials adalah bagian penting dari IAM security.",
+    "keyPoints": [
+      "MFA menambahkan faktor autentikasi tambahan selain password.",
+      "IAM password policy mengatur persyaratan password bagi IAM users yang memakai console password.",
+      "Access keys adalah long-term programmatic credentials dan tidak boleh di-hard-code atau dibagikan.",
+      "Gunakan roles/federation dan temporary credentials bila memungkinkan; disable atau rotate credentials yang tidak lagi diperlukan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-identity-center",
+    "title": "AWS IAM Identity Center",
+    "summary": "IAM Identity Center menyediakan centralized workforce access ke AWS accounts dan applications, termasuk integrasi dengan external identity providers.",
+    "keyPoints": [
+      "Gunakan IAM Identity Center untuk workforce users yang membutuhkan access ke satu atau banyak AWS accounts.",
+      "Identity source dapat berasal dari built-in directory atau external identity provider.",
+      "Permission sets digunakan untuk mendefinisikan access yang kemudian di-assign ke users/groups dan AWS accounts.",
+      "Identity Center berfokus pada workforce access; Amazon Cognito berfokus pada end-user identity untuk web/mobile applications."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cognito",
+    "title": "Amazon Cognito",
+    "summary": "Amazon Cognito menyediakan sign-up, sign-in, federation, dan AWS credential capabilities untuk users dari web dan mobile applications.",
+    "keyPoints": [
+      "Cognito user pools adalah user directory untuk app authentication dan menghasilkan tokens.",
+      "User pools dapat federate dengan social, SAML, dan OIDC identity providers.",
+      "Cognito identity pools dapat memberikan temporary AWS credentials kepada authenticated maupun guest app users sesuai configuration.",
+      "Cognito ditujukan untuk application users; IAM Identity Center terutama untuk workforce users yang mengakses AWS accounts dan applications."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-multi-account-governance",
+    "title": "Multi-Account Governance",
+    "summary": "Beberapa AWS services bekerja bersama untuk governance multi-account: Organizations, Control Tower, Service Catalog, dan RAM memiliki peran yang berbeda.",
+    "keyPoints": [
+      "Service Control Policies (SCPs) menetapkan maximum available permissions pada accounts/OUs; SCPs tidak memberikan permissions.",
+      "AWS Control Tower membantu membuat dan meng-govern multi-account landing zone dengan prescriptive controls/guardrails.",
+      "AWS Service Catalog menyediakan approved IT products untuk controlled self-service provisioning.",
+      "AWS Resource Access Manager membagikan supported resources antar accounts, organization, atau OUs.",
+      "Gunakan kombinasi tools berdasarkan kebutuhan permission boundaries, account governance, approved provisioning, atau resource sharing."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-secrets-management",
+    "title": "Credential Storage",
+    "summary": "Secrets Manager dan Parameter Store sama-sama dapat menyimpan sensitive values, tetapi Secrets Manager memiliki lifecycle capabilities yang lebih khusus untuk secrets.",
+    "keyPoints": [
+      "AWS Secrets Manager menyimpan secrets seperti passwords, database credentials, API keys, dan tokens.",
+      "Secrets Manager mendukung automatic rotation untuk banyak use cases.",
+      "Systems Manager Parameter Store menyediakan hierarchical storage untuk configuration data dan SecureString values.",
+      "Parameter Store tidak menyediakan automatic rotation service sendiri; KMS digunakan untuk encryption keys, bukan sebagai primary secret-value store."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-encryption-kms",
+    "title": "Encryption and Key Management",
+    "summary": "KMS, CloudHSM, dan ACM sama-sama terkait cryptography tetapi menyelesaikan kebutuhan yang berbeda: managed keys, dedicated HSMs, dan certificate lifecycle.",
+    "keyPoints": [
+      "AWS KMS membuat dan mengontrol encryption/signing keys dan terintegrasi dengan banyak AWS services.",
+      "AWS CloudHSM menyediakan dedicated single-tenant HSMs dan kontrol customer yang lebih besar terhadap HSM serta keys.",
+      "AWS Certificate Manager membuat, menyimpan, dan memperbarui SSL/TLS X.509 certificates.",
+      "Gunakan KMS untuk managed key management, CloudHSM untuk specialized dedicated-HSM requirements, dan ACM untuk TLS certificate management.",
+      "Encryption keys dan secret values adalah hal berbeda; jangan gunakan KMS sebagai pengganti secret store."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-groups",
+    "title": "Security Groups",
+    "summary": "Security groups adalah stateful virtual firewalls yang mengontrol traffic ke AWS resources pada resource/network-interface level.",
+    "keyPoints": [
+      "Security groups memiliki inbound dan outbound allow rules; tidak ada explicit deny rule.",
+      "Security groups bersifat stateful, sehingga response traffic untuk allowed connection otomatis diizinkan.",
+      "Security groups diterapkan pada resources/network interfaces, bukan sebagai subnet-wide ACL.",
+      "Network ACLs berbeda karena subnet-level, stateless, dan mendukung allow serta deny rules.",
+      "Gunakan least-privilege network rules dan jangan membuka ports/sources lebih luas dari yang dibutuhkan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-network-acls",
+    "title": "Network ACLs",
+    "summary": "Network ACLs memberikan stateless traffic filtering pada subnet dan dapat digunakan sebagai layer network control tambahan.",
+    "keyPoints": [
+      "Network ACLs bekerja pada subnet level.",
+      "Rules dievaluasi berdasarkan rule number dan dapat allow atau deny traffic.",
+      "Network ACLs bersifat stateless; return traffic harus diizinkan secara eksplisit oleh rule yang sesuai.",
+      "Security groups berbeda karena stateful, resource-level, dan menggunakan allow rules."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-shield",
+    "title": "AWS Shield",
+    "summary": "AWS Shield melindungi applications dan AWS resources dari DDoS attacks. Standard dan Advanced berbeda pada level protection dan subscription.",
+    "keyPoints": [
+      "AWS Shield Standard memberikan basic DDoS protection secara otomatis untuk AWS customers tanpa Shield Advanced subscription.",
+      "AWS Shield Advanced adalah paid subscription dengan expanded DDoS detection/mitigation, visibility, dan support capabilities.",
+      "Shield fokus pada DDoS protection.",
+      "AWS WAF berfokus pada inspection dan filtering HTTP(S) requests berdasarkan web rules.",
+      "Shield Advanced dan WAF dapat digunakan bersama untuk layered application protection."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-waf",
+    "title": "AWS WAF and AWS Firewall Manager",
+    "summary": "AWS WAF mengontrol web requests menggunakan web ACLs, sementara Firewall Manager membantu menerapkan security policies secara terpusat di banyak accounts dan resources.",
+    "keyPoints": [
+      "AWS WAF dapat allow, block, atau count HTTP(S) requests berdasarkan rules.",
+      "Rules dapat memeriksa IP, country, strings/regex, request rate, dan attack patterns seperti SQL injection atau XSS.",
+      "AWS Firewall Manager menyederhanakan centralized policy administration across accounts/resources.",
+      "AWS Shield berfokus pada DDoS protection; security groups berfokus pada network access ke resources, bukan HTTP request inspection.",
+      "WAF protection packs/web ACLs diterapkan ke supported web-facing AWS resources."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-guardduty",
+    "title": "Amazon GuardDuty",
+    "summary": "GuardDuty adalah managed threat detection service yang menganalisis AWS telemetry, threat intelligence, dan machine learning untuk menemukan suspicious atau malicious activity.",
+    "keyPoints": [
+      "GuardDuty continuously monitors supported AWS data sources dan event logs.",
+      "GuardDuty dapat menemukan compromised credentials, unusual API behavior, cryptomining, malware-related activity, dan berbagai threat patterns.",
+      "Output GuardDuty adalah security findings yang dapat diintegrasikan dengan services lain.",
+      "Inspector mencari vulnerabilities/exposure; Macie mencari sensitive data; Detective membantu investigation.",
+      "GuardDuty tidak menggantikan preventive controls seperti IAM least privilege atau network filtering."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-inspector",
+    "title": "Amazon Inspector",
+    "summary": "Amazon Inspector adalah vulnerability management service untuk continuously scanning supported AWS workloads dan menghasilkan prioritized findings.",
+    "keyPoints": [
+      "Inspector scans Amazon EC2 instances, Amazon ECR container images, dan AWS Lambda functions.",
+      "Inspector mencari software vulnerabilities dan supported unintended network exposure.",
+      "Findings membantu teams memprioritaskan remediation.",
+      "GuardDuty berfokus pada active/suspicious threats, sedangkan Inspector berfokus pada vulnerabilities dan exposure."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-macie",
+    "title": "Amazon Macie",
+    "summary": "Amazon Macie membantu menemukan dan memonitor sensitive data serta data-security risks pada Amazon S3.",
+    "keyPoints": [
+      "Macie menggunakan machine learning dan pattern matching untuk sensitive data discovery.",
+      "Macie berfokus terutama pada Amazon S3 data estate dan dapat membuat bucket inventory.",
+      "Macie dapat menemukan categories seperti credentials, financial data, PHI, dan PII pada supported S3 objects.",
+      "GuardDuty mendeteksi threats dan Inspector memindai vulnerabilities; Macie berfokus pada sensitive data."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-detective",
+    "title": "Amazon Detective",
+    "summary": "Amazon Detective membantu teams menyelidiki security findings dengan correlated context, historical activity, dan graph-based analysis.",
+    "keyPoints": [
+      "Detective mengumpulkan dan menghubungkan data dari AWS resources untuk investigations.",
+      "Behavior graphs, analytics, dan visualizations membantu memahami entities dan activity yang terkait finding.",
+      "Detective dapat membantu menyelidiki GuardDuty dan security findings.",
+      "Detective bukan primary vulnerability scanner atau sensitive-data discovery service."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-hub",
+    "title": "AWS Security Hub",
+    "summary": "Security Hub CSPM memberikan centralized security posture view, mengagregasi findings, dan menjalankan checks terhadap security standards dan best practices.",
+    "keyPoints": [
+      "Security Hub CSPM dapat menerima findings dari GuardDuty, Inspector, Macie, dan supported third-party products.",
+      "Security standards dan controls membantu menilai environment terhadap best practices/compliance frameworks.",
+      "Banyak Security Hub CSPM controls menggunakan AWS Config untuk resource configuration checks.",
+      "Security Hub mengagregasi dan memprioritaskan posture information; specialized detection tetap dilakukan oleh services seperti GuardDuty atau Inspector."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloudtrail",
+    "title": "AWS CloudTrail",
+    "summary": "CloudTrail menyediakan audit history untuk activity di AWS accounts dan membantu menjawab siapa melakukan action apa, kapan, dan dari mana.",
+    "keyPoints": [
+      "CloudTrail records events dari console, CLI, SDK/API, dan AWS services.",
+      "Event history menyediakan 90 hari management events di Region.",
+      "Trails atau CloudTrail Lake digunakan untuk ongoing collection/retention dan analysis.",
+      "CloudTrail berfokus pada account/API activity; CloudWatch berfokus pada operational metrics/logs/alarms.",
+      "CloudTrail records mendukung security investigation, governance, dan audit use cases."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloudwatch",
+    "title": "Amazon CloudWatch",
+    "summary": "CloudWatch memberikan observability untuk resources dan applications melalui metrics, logs, alarms, dashboards, dan monitoring tools.",
+    "keyPoints": [
+      "CloudWatch metrics melacak performance dan utilization data.",
+      "CloudWatch Logs mengumpulkan dan query log data.",
+      "CloudWatch alarms mengevaluasi metrics terhadap thresholds dan dapat memicu notifications/actions.",
+      "CloudTrail berfokus pada API/account activity; AWS Config pada resource configuration/compliance.",
+      "Gunakan CloudWatch untuk operational health, performance monitoring, dan alerting."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-config",
+    "title": "AWS Config",
+    "summary": "AWS Config merekam resource configuration dan relationships serta mengevaluasi compliance terhadap desired configuration rules.",
+    "keyPoints": [
+      "Config menyimpan configuration items dan history untuk supported AWS resources.",
+      "AWS Config rules mengevaluasi apakah resource compliant atau noncompliant.",
+      "Configuration history membantu audit perubahan dan troubleshooting.",
+      "CloudTrail merekam who-did-what API activity; Config merekam state/configuration resource.",
+      "Security Hub CSPM menggunakan AWS Config untuk banyak posture checks."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-compliance-artifact",
+    "title": "AWS Compliance and AWS Artifact",
+    "summary": "AWS Artifact memberikan self-service access ke AWS compliance reports dan legal agreements yang dapat dibutuhkan untuk audit, assurance, atau regulatory programs.",
+    "keyPoints": [
+      "Artifact Reports menyediakan downloadable AWS security/compliance reports.",
+      "Artifact Agreements memungkinkan review, accept, dan manage legal agreements seperti BAA jika applicable.",
+      "Artifact dapat digunakan pada account atau, untuk supported agreements, melalui AWS Organizations.",
+      "Artifact bukan scanner yang mengevaluasi resource configurations.",
+      "Gunakan Config/Security Hub untuk technical configuration checks; gunakan Artifact untuk documentation dan agreements."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-resources",
+    "title": "Security Resources and Third-Party Products",
+    "summary": "AWS menyediakan official security guidance dan troubleshooting resources, sementara AWS Marketplace menyediakan third-party security products dan services.",
+    "keyPoints": [
+      "AWS Security website/center menyediakan security information, programs, dan guidance.",
+      "AWS Security Blog berisi announcements, best practices, dan technical guidance.",
+      "AWS re:Post Knowledge Center menyediakan AWS Official troubleshooting articles untuk common issues.",
+      "AWS Marketplace menyediakan third-party security software dan services yang dapat dievaluasi dan dibeli.",
+      "Pilih resource sesuai tujuan: learning/guidance, troubleshooting, atau procurement solusi third-party."
     ],
     "order": 1
   }

@@ -25,21 +25,21 @@ Planning guidance for the curated question banks. Recommended counts are targets
 
 | Metric | Current | Planned |
 | --- | --- | --- |
-| Concepts | 19 | 90 |
-| Lessons | 19 | 90 |
-| Active questions | 86 | ~415 |
+| Concepts | 42 | 90 |
+| Lessons | 42 | 90 |
+| Active questions | 198 | ~415 |
 
 ### Domains
 
 | # | Topic slug | Name | Exam weight | Question file | Concepts (seeded / planned) | Questions (existing / recommended) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 18 / 18 | 83 / 83 |
-| 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 1 / 24 | 3 / 115 |
+| 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 24 / 24 | 115 / 115 |
 | 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 0 / 36 | 0 / 159 |
 | 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 0 / 12 | 0 / 58 |
-| | | **Total** | | | **19 / 90** | **86 / ~415** |
+| | | **Total** | | | **42 / 90** | **198 / ~415** |
 
-Cloud Concepts is fully seeded in `questions/cloud-concepts.json`, including the original elasticity questions `CCP-ELA-001` through `CCP-ELA-003`. `questions/core.json` still holds the three Shared Responsibility questions until that domain's first content batch, and `core.json` is removed once empty.
+Cloud Concepts and Security and Compliance are fully seeded in their domain files. The original elasticity codes `CCP-ELA-001` through `CCP-ELA-003` and shared-responsibility codes `CCP-SRM-001` through `CCP-SRM-003` are unchanged. `questions/core.json` has been removed.
 
 Domain 3 is above its 34% exam weight because it covers the most services. Mock exams still sample by exam weight and only need 7–22 questions per domain. The total is driven by the 4-questions-per-concept floor; going much lower would mean merging concepts and weakening their explanations.
 
@@ -79,30 +79,30 @@ Column guide:
 
 | # | Slug | Prefix | Name | Status | Lesson | Existing | Recommended | Main styles | Commonly confused with |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `clf-shared-responsibility` | SRM | Shared Responsibility Model | seeded | weak | 3 | 8 | Scenario, Understanding, Comparison | How responsibility shifts across EC2, RDS, Lambda, S3 |
-| 2 | `clf-iam-users-groups-policies` | IAM | IAM Users, Groups, and Policies (least privilege, managed vs custom policies, access reports) | planned | planned | 0 | 7 | Basic, Understanding, Scenario | IAM roles, IAM Identity Center |
-| 3 | `clf-iam-roles` | ROL | IAM Roles (including cross-account roles) | planned | planned | 0 | 5 | Scenario, Comparison | IAM users, access keys |
-| 4 | `clf-root-user` | ROO | AWS Account Root User | planned | planned | 0 | 5 | Understanding, Scenario | IAM users |
-| 5 | `clf-mfa-credentials` | MFA | MFA, Password Policies, and Access Keys | planned | planned | 0 | 4 | Basic, Understanding | Root user, credential storage |
-| 6 | `clf-iam-identity-center` | IDC | AWS IAM Identity Center (federation) | planned | planned | 0 | 4 | Scenario, Comparison | Amazon Cognito, IAM users |
-| 7 | `clf-cognito` | COG | Amazon Cognito | planned | planned | 0 | 4 | Scenario, Comparison | IAM Identity Center |
-| 8 | `clf-multi-account-governance` | GOV | Multi-Account Governance (Organizations SCPs, Control Tower, Service Catalog, RAM) | planned | planned | 0 | 5 | Understanding, Scenario | IAM policies, consolidated billing |
-| 9 | `clf-secrets-management` | SMG | Credential Storage (Secrets Manager, Systems Manager Parameter Store) | planned | planned | 0 | 4 | Comparison, Scenario | AWS KMS |
-| 10 | `clf-encryption-kms` | KMS | Encryption and Key Management (KMS, CloudHSM, ACM) | planned | planned | 0 | 5 | Understanding, Comparison | Credential storage |
-| 11 | `clf-security-groups` | SGR | Security Groups | planned | planned | 0 | 5 | Understanding, Comparison | Network ACLs |
-| 12 | `clf-network-acls` | NAC | Network ACLs | planned | planned | 0 | 4 | Understanding, Comparison | Security groups |
-| 13 | `clf-shield` | SHD | AWS Shield | planned | planned | 0 | 5 | Basic, Comparison | AWS WAF |
-| 14 | `clf-aws-waf` | WAF | AWS WAF and AWS Firewall Manager | planned | planned | 0 | 5 | Basic, Comparison, Scenario | AWS Shield, security groups |
-| 15 | `clf-guardduty` | GDY | Amazon GuardDuty | planned | planned | 0 | 5 | Basic, Comparison | Inspector, Detective, Macie |
-| 16 | `clf-inspector` | INS | Amazon Inspector | planned | planned | 0 | 4 | Basic, Comparison | GuardDuty |
-| 17 | `clf-macie` | MAC | Amazon Macie | planned | planned | 0 | 4 | Basic, Comparison | GuardDuty |
-| 18 | `clf-detective` | DET | Amazon Detective | planned | planned | 0 | 4 | Comparison | GuardDuty, Security Hub |
-| 19 | `clf-security-hub` | SHB | AWS Security Hub | planned | planned | 0 | 4 | Understanding, Comparison | GuardDuty, Trusted Advisor |
-| 20 | `clf-cloudtrail` | CTR | AWS CloudTrail | planned | planned | 0 | 5 | Basic, Comparison, Scenario | CloudWatch, AWS Config |
-| 21 | `clf-cloudwatch` | CWT | Amazon CloudWatch | planned | planned | 0 | 5 | Basic, Comparison, Scenario | CloudTrail |
-| 22 | `clf-aws-config` | CFG | AWS Config | planned | planned | 0 | 5 | Understanding, Comparison | CloudTrail |
-| 23 | `clf-compliance-artifact` | ART | AWS Compliance and AWS Artifact | planned | planned | 0 | 5 | Basic, Scenario | AWS Config, security resources |
-| 24 | `clf-security-resources` | SRS | Security Resources and Third-Party Products (Marketplace, Knowledge Center, Security Center, Security Blog) | planned | planned | 0 | 4 | Basic | Technical resources, AWS Marketplace |
+| 1 | `clf-shared-responsibility` | SRM | Shared Responsibility Model | seeded | complete | 8 | 8 | Scenario, Understanding, Comparison | How responsibility shifts across EC2, RDS, Lambda, S3 |
+| 2 | `clf-iam-users-groups-policies` | IAM | IAM Users, Groups, and Policies (least privilege, managed vs custom policies, access reports) | seeded | complete | 7 | 7 | Basic, Understanding, Scenario | IAM roles, IAM Identity Center |
+| 3 | `clf-iam-roles` | ROL | IAM Roles (including cross-account roles) | seeded | complete | 5 | 5 | Scenario, Comparison | IAM users, access keys |
+| 4 | `clf-root-user` | ROO | AWS Account Root User | seeded | complete | 5 | 5 | Understanding, Scenario | IAM users |
+| 5 | `clf-mfa-credentials` | MFA | MFA, Password Policies, and Access Keys | seeded | complete | 4 | 4 | Basic, Understanding | Root user, credential storage |
+| 6 | `clf-iam-identity-center` | IDC | AWS IAM Identity Center (federation) | seeded | complete | 4 | 4 | Scenario, Comparison | Amazon Cognito, IAM users |
+| 7 | `clf-cognito` | COG | Amazon Cognito | seeded | complete | 4 | 4 | Scenario, Comparison | IAM Identity Center |
+| 8 | `clf-multi-account-governance` | GOV | Multi-Account Governance (Organizations SCPs, Control Tower, Service Catalog, RAM) | seeded | complete | 5 | 5 | Understanding, Scenario | IAM policies, consolidated billing |
+| 9 | `clf-secrets-management` | SMG | Credential Storage (Secrets Manager, Systems Manager Parameter Store) | seeded | complete | 4 | 4 | Comparison, Scenario | AWS KMS |
+| 10 | `clf-encryption-kms` | KMS | Encryption and Key Management (KMS, CloudHSM, ACM) | seeded | complete | 5 | 5 | Understanding, Comparison | Credential storage |
+| 11 | `clf-security-groups` | SGR | Security Groups | seeded | complete | 5 | 5 | Understanding, Comparison | Network ACLs |
+| 12 | `clf-network-acls` | NAC | Network ACLs | seeded | complete | 4 | 4 | Understanding, Comparison | Security groups |
+| 13 | `clf-shield` | SHD | AWS Shield | seeded | complete | 5 | 5 | Basic, Comparison | AWS WAF |
+| 14 | `clf-aws-waf` | WAF | AWS WAF and AWS Firewall Manager | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | AWS Shield, security groups |
+| 15 | `clf-guardduty` | GDY | Amazon GuardDuty | seeded | complete | 5 | 5 | Basic, Comparison | Inspector, Detective, Macie |
+| 16 | `clf-inspector` | INS | Amazon Inspector | seeded | complete | 4 | 4 | Basic, Comparison | GuardDuty |
+| 17 | `clf-macie` | MAC | Amazon Macie | seeded | complete | 4 | 4 | Basic, Comparison | GuardDuty |
+| 18 | `clf-detective` | DET | Amazon Detective | seeded | complete | 4 | 4 | Comparison | GuardDuty, Security Hub |
+| 19 | `clf-security-hub` | SHB | AWS Security Hub CSPM | seeded | complete | 4 | 4 | Understanding, Comparison | GuardDuty, Trusted Advisor |
+| 20 | `clf-cloudtrail` | CTR | AWS CloudTrail | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | CloudWatch, AWS Config |
+| 21 | `clf-cloudwatch` | CWT | Amazon CloudWatch | seeded | complete | 5 | 5 | Basic, Comparison, Scenario | CloudTrail |
+| 22 | `clf-aws-config` | CFG | AWS Config | seeded | complete | 5 | 5 | Understanding, Comparison | CloudTrail |
+| 23 | `clf-compliance-artifact` | ART | AWS Compliance and AWS Artifact | seeded | complete | 5 | 5 | Basic, Scenario | AWS Config, security resources |
+| 24 | `clf-security-resources` | SRS | Security Resources and Third-Party Products (Marketplace, re:Post Knowledge Center, Security Center, Security Blog) | seeded | complete | 4 | 4 | Basic | Technical resources, AWS Marketplace |
 
 #### 3. Cloud Technology and Services (`cloud-technology-services`) — 36 concepts, 159 questions
 
@@ -173,9 +173,7 @@ Storage pricing tiers (exam task 4.1) are owned by `clf-s3-storage-classes` in d
 | `missing` | Active concept without a lesson. Learn returns 404 for it, so it must not ship. |
 | `planned` | Concept not yet in `concepts.json`. |
 
-Current weak lessons:
-
-- `clf-shared-responsibility`: the explanation and key note only cover EC2, while CCP-SRM-002 is about S3 bucket permissions. Broaden to EC2 vs RDS vs Lambda vs S3 before adding more questions.
+Current weak lessons: none. The shared-responsibility explanation now covers how responsibility shifts across EC2, RDS, Lambda, and S3.
 
 ### Existing questions
 
@@ -199,27 +197,45 @@ Current weak lessons:
 | `CCP-LIC-001`–`004` | `clf-licensing-strategies` | 4 | `questions/cloud-concepts.json` |
 | `CCP-RSZ-001`–`004` | `clf-rightsizing` | 4 | `questions/cloud-concepts.json` |
 | `CCP-AUT-001`–`004` | `clf-automation-benefits` | 4 | `questions/cloud-concepts.json` |
-| `CCP-SRM-001`–`003` | `clf-shared-responsibility` | 3 | `questions/core.json` |
+| `CCP-SRM-001`–`008` | `clf-shared-responsibility` | 8 | `questions/security-compliance.json` |
+| `CCP-IAM-001`–`007` | `clf-iam-users-groups-policies` | 7 | `questions/security-compliance.json` |
+| `CCP-ROL-001`–`005` | `clf-iam-roles` | 5 | `questions/security-compliance.json` |
+| `CCP-ROO-001`–`005` | `clf-root-user` | 5 | `questions/security-compliance.json` |
+| `CCP-MFA-001`–`004` | `clf-mfa-credentials` | 4 | `questions/security-compliance.json` |
+| `CCP-IDC-001`–`004` | `clf-iam-identity-center` | 4 | `questions/security-compliance.json` |
+| `CCP-COG-001`–`004` | `clf-cognito` | 4 | `questions/security-compliance.json` |
+| `CCP-GOV-001`–`005` | `clf-multi-account-governance` | 5 | `questions/security-compliance.json` |
+| `CCP-SMG-001`–`004` | `clf-secrets-management` | 4 | `questions/security-compliance.json` |
+| `CCP-KMS-001`–`005` | `clf-encryption-kms` | 5 | `questions/security-compliance.json` |
+| `CCP-SGR-001`–`005` | `clf-security-groups` | 5 | `questions/security-compliance.json` |
+| `CCP-NAC-001`–`004` | `clf-network-acls` | 4 | `questions/security-compliance.json` |
+| `CCP-SHD-001`–`005` | `clf-shield` | 5 | `questions/security-compliance.json` |
+| `CCP-WAF-001`–`005` | `clf-aws-waf` | 5 | `questions/security-compliance.json` |
+| `CCP-GDY-001`–`005` | `clf-guardduty` | 5 | `questions/security-compliance.json` |
+| `CCP-INS-001`–`004` | `clf-inspector` | 4 | `questions/security-compliance.json` |
+| `CCP-MAC-001`–`004` | `clf-macie` | 4 | `questions/security-compliance.json` |
+| `CCP-DET-001`–`004` | `clf-detective` | 4 | `questions/security-compliance.json` |
+| `CCP-SHB-001`–`004` | `clf-security-hub` | 4 | `questions/security-compliance.json` |
+| `CCP-CTR-001`–`005` | `clf-cloudtrail` | 5 | `questions/security-compliance.json` |
+| `CCP-CWT-001`–`005` | `clf-cloudwatch` | 5 | `questions/security-compliance.json` |
+| `CCP-CFG-001`–`005` | `clf-aws-config` | 5 | `questions/security-compliance.json` |
+| `CCP-ART-001`–`005` | `clf-compliance-artifact` | 5 | `questions/security-compliance.json` |
+| `CCP-SRS-001`–`004` | `clf-security-resources` | 4 | `questions/security-compliance.json` |
 
-`CCP-ELA-001`, `CCP-ELA-002`, and `CCP-ELA-003` keep their original codes. `CCP-ELA-001` is now `BASIC`. `CCP-ELA-003` compares elasticity with high availability.
+`CCP-ELA-001` through `CCP-ELA-003` and `CCP-SRM-001` through `CCP-SRM-003` keep their original codes.
 
-Still open on the Shared Responsibility questions:
-
-- `CCP-SRM-001`: implausible distractors (AWS Support, hardware manufacturer).
-- `CCP-SRM-002`: implausible distractors (ISP, hardware manufacturer).
-
-Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-004`. Every other prefix starts at `001`.
+Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`. Every other prefix starts at `001`.
 
 Relabelling style or difficulty keeps the same code (spec section 28).
 
 ### Distribution targets
 
-| Dimension | Current (86) | Target |
+| Dimension | Current (198) | Target |
 | --- | --- | --- |
-| Style | BASIC 18, UNDERSTANDING 24, COMPARISON 19, SCENARIO 25, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
-| Difficulty | EASY 33, MEDIUM 42, HARD 11 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
-| Type | SINGLE_CHOICE 74, MULTIPLE_CHOICE 12 | MULTIPLE_CHOICE 10–15% |
-| Correct-answer position | A 23, B 24, C 25, D 21, E 5 | Roughly 20–30% per letter (informational) |
+| Style | BASIC 46, UNDERSTANDING 58, COMPARISON 41, SCENARIO 53, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
+| Difficulty | EASY 79, MEDIUM 92, HARD 27 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
+| Type | SINGLE_CHOICE 171, MULTIPLE_CHOICE 27 | MULTIPLE_CHOICE 10–15% |
+| Correct-answer position | A 51, B 51, C 53, D 50, E 20 | Roughly 20–30% per letter (informational) |
 
 The exam guide lists "Designing cloud architecture" as out of scope for the CLF-C02 candidate, so ARCHITECTURE questions should be rare or absent.
 
@@ -266,6 +282,29 @@ Valid concept slugs today (only these may be referenced by questions and lessons
 - `clf-rightsizing`
 - `clf-automation-benefits`
 - `clf-shared-responsibility`
+- `clf-iam-users-groups-policies`
+- `clf-iam-roles`
+- `clf-root-user`
+- `clf-mfa-credentials`
+- `clf-iam-identity-center`
+- `clf-cognito`
+- `clf-multi-account-governance`
+- `clf-secrets-management`
+- `clf-encryption-kms`
+- `clf-security-groups`
+- `clf-network-acls`
+- `clf-shield`
+- `clf-aws-waf`
+- `clf-guardduty`
+- `clf-inspector`
+- `clf-macie`
+- `clf-detective`
+- `clf-security-hub`
+- `clf-cloudtrail`
+- `clf-cloudwatch`
+- `clf-aws-config`
+- `clf-compliance-artifact`
+- `clf-security-resources`
 
 Planned slugs in the tables above become valid once they are added to `concepts.json` together with their lessons.
 
@@ -275,7 +314,7 @@ Question (`questions/<topic-slug>.json`, an array of these; example only, not se
 
 ```json
 {
-  "code": "CCP-SRM-004",
+  "code": "CCP-SRM-009",
   "concept": "clf-shared-responsibility",
   "type": "SINGLE_CHOICE",
   "difficulty": "MEDIUM",
@@ -375,10 +414,9 @@ Good candidates for comparison questions and for checking that explanations name
 
 ### Notable content gaps
 
-- 71 of 90 planned concepts and their lessons do not exist yet. Domains 3 and 4 have no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Those empty domains contribute nothing, and the exam is filled from Cloud Concepts plus the 3 Shared Responsibility questions.
-- `clf-shared-responsibility` still has exactly 3 questions, so no unseen question is left for review after mastery attempts. Every Cloud Concepts concept has at least 4.
-- One lesson is weak (see [Lesson status](#lesson-status)).
-- The SRM questions use implausible distractors.
+- 48 of 90 planned concepts and their lessons do not exist yet. Domains 3 and 4 have no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Those empty domains contribute nothing; the weighted sample comes from Cloud Concepts and Security and Compliance, then any shortfall is filled from those same domains.
+- Every seeded CLF-C02 concept has at least 4 questions.
+- No CLF-C02 lesson is weak (see [Lesson status](#lesson-status)).
 - No ARCHITECTURE questions yet. The exam guide lists designing cloud architecture as out of scope, so that is expected.
 - The AWS Support plan lineup in the current exam guide is Basic Support, AWS Business Support+, AWS Enterprise Support and AWS Unified Operations. Check the AWS Support plans page when writing `clf-support-plans`.
 
