@@ -1,23 +1,1138 @@
 [
   {
+    "concept": "clf-cloud-value-proposition",
+    "title": "Value Proposition of the AWS Cloud",
+    "summary": "AWS Cloud membantu organisasi mendapatkan resource IT saat dibutuhkan tanpa harus membeli dan mengelola seluruh kapasitas fisik di awal. Nilainya terlihat pada biaya yang lebih fleksibel, provisioning yang cepat, dan kemampuan fokus pada pekerjaan yang memberi nilai bisnis.",
+    "keyPoints": [
+      "Biaya dapat bergeser dari fixed expense besar di awal menjadi variable expense berbasis penggunaan.",
+      "Resource dapat diprovisikan dalam hitungan menit sehingga eksperimen dan delivery menjadi lebih cepat.",
+      "Customer dapat mengurangi pekerjaan menjalankan dan memelihara data center sendiri.",
+      "Cloud membantu mengurangi kebutuhan menebak kapasitas peak jauh sebelum resource benar-benar diperlukan.",
+      "AWS memudahkan deployment ke berbagai lokasi global saat aplikasi membutuhkan jangkauan yang lebih luas."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-economies-of-scale",
+    "title": "Economies of Scale",
+    "summary": "AWS mengoperasikan infrastruktur untuk sangat banyak customer sehingga biaya dapat tersebar pada skala yang jauh lebih besar dibandingkan satu organisasi membangun semuanya sendiri.",
+    "keyPoints": [
+      "Penggunaan dari banyak customer dikumpulkan pada skala besar.",
+      "Skala besar membantu AWS memperoleh efisiensi operasional dan biaya per unit yang lebih rendah.",
+      "Efisiensi tersebut dapat diterjemahkan menjadi harga variable pay-as-you-go yang lebih rendah bagi customer.",
+      "Economies of scale membahas efisiensi biaya karena skala provider, bukan penyesuaian kapasitas terhadap demand."
+    ],
+    "order": 1
+  },
+  {
     "concept": "clf-elasticity",
     "title": "Elasticity",
-    "summary": "Elasticity membuat kapasitas cloud dapat bertambah ketika demand naik dan berkurang kembali ketika demand turun.",
+    "summary": "Elasticity membuat kapasitas cloud dapat bertambah ketika demand naik dan berkurang kembali ketika demand turun, sehingga workload tidak harus mempertahankan kapasitas peak setiap saat.",
     "keyPoints": [
-      "Resource mengikuti perubahan workload.",
-      "Scale out saat demand meningkat dan scale in saat demand menurun.",
-      "Elasticity berbeda dari sekadar kemampuan menangani pertumbuhan jangka panjang."
+      "Resource dapat scale out atau scale up ketika demand meningkat dan dikurangi kembali saat demand turun.",
+      "Elasticity membantu mengurangi idle capacity dan overprovisioning.",
+      "Scalability adalah kemampuan workload bertumbuh untuk menangani beban yang lebih besar; elasticity menekankan penyesuaian kapasitas mengikuti perubahan demand.",
+      "High availability berfokus pada menjaga layanan tetap tersedia saat terjadi kegagalan, bukan pada perubahan demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-high-availability",
+    "title": "High Availability and Fault Tolerance",
+    "summary": "High availability menjaga workload tetap dapat melayani pengguna ketika sebagian komponen gagal. Di AWS, redundancy dan deployment lintas Availability Zone membantu menghindari satu lokasi menjadi single point of failure.",
+    "keyPoints": [
+      "Gunakan redundant resources agar kegagalan satu komponen tidak menghentikan seluruh workload.",
+      "Availability Zone adalah fault-isolation boundary; Multi-AZ membantu melindungi workload dari kegagalan satu AZ.",
+      "Failover mengalihkan traffic atau workload ke resource yang masih sehat.",
+      "Fault-tolerant design menggunakan redundancy dan fault isolation agar workload tetap dapat beroperasi saat komponen gagal.",
+      "Elasticity merespons perubahan demand, sedangkan high availability merespons risiko kegagalan; backup mendukung recovery tetapi tidak menyediakan layanan aktif dengan sendirinya."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-well-architected-framework",
+    "title": "AWS Well-Architected Framework",
+    "summary": "AWS Well-Architected Framework membantu tim mengevaluasi workload secara konsisten terhadap best practices dan menemukan peluang perbaikan sesuai kebutuhan bisnis.",
+    "keyPoints": [
+      "Framework digunakan untuk menilai workload dan mengidentifikasi area perbaikan, bukan untuk memberi sertifikat compliance.",
+      "Enam pillar-nya adalah Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, dan Sustainability.",
+      "Trade-off antar pillar dapat berbeda sesuai kebutuhan bisnis, tetapi Security dan Operational Excellence umumnya tidak di-trade-off terhadap pillar lain.",
+      "Framework menyediakan pertanyaan dan best practices untuk membantu review arsitektur secara konsisten."
     ],
     "order": 1
   },
   {
     "concept": "clf-shared-responsibility",
     "title": "Shared Responsibility Model",
-    "summary": "AWS mengelola security OF the cloud, sedangkan customer mengelola security IN the cloud sesuai service yang digunakan.",
+    "summary": "AWS mengamankan infrastructure yang menjalankan cloud, sedangkan customer mengamankan data, identities, applications, dan konfigurasi yang berada dalam kendalinya. Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS.",
     "keyPoints": [
-      "AWS mengelola physical infrastructure.",
-      "Pada EC2, customer mengelola guest operating system dan aplikasinya.",
-      "Semakin managed sebuah service, semakin banyak operational responsibility yang ditangani AWS."
+      "AWS bertanggung jawab atas security OF the cloud: facilities, hardware, networking, dan underlying infrastructure.",
+      "Pada EC2, customer mengelola guest OS, patching, applications, data, dan konfigurasi network/security yang dikendalikan customer.",
+      "Pada managed services seperti RDS dan Lambda, AWS mengelola lebih banyak underlying platform; customer tetap mengelola data, access, dan application/configuration yang menjadi tanggung jawabnya.",
+      "Pada S3, AWS mengelola infrastructure service, sedangkan customer mengelola data dan bucket/access configuration.",
+      "Gunakan service yang lebih managed untuk mengurangi sebagian operational responsibility, bukan untuk menghilangkan seluruh customer responsibility."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-operational-excellence",
+    "title": "Well-Architected: Operational Excellence",
+    "summary": "Operational Excellence membahas bagaimana tim menjalankan, mengamati, dan terus memperbaiki workload agar dapat mendukung business outcomes secara efektif.",
+    "keyPoints": [
+      "Gunakan observability dan operational metrics untuk memahami kondisi workload dan mengambil tindakan.",
+      "Buat prosedur operasi yang jelas, dapat diuji, dan diperbarui berdasarkan pengalaman.",
+      "Lakukan perubahan kecil dan reversible untuk mengurangi blast radius dan mempercepat recovery.",
+      "Gunakan automation untuk membuat respons lebih konsisten, mengurangi human error, dan mengurangi operator toil.",
+      "Operational Excellence berfokus pada cara workload dioperasikan dan ditingkatkan; Reliability berfokus pada kemampuan workload menjalankan fungsi dan pulih dari gangguan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-security",
+    "title": "Well-Architected: Security",
+    "summary": "Security pillar membantu melindungi data, sistem, dan aset dengan menerapkan kontrol identitas, proteksi berlapis, traceability, dan kesiapan merespons security events.",
+    "keyPoints": [
+      "Kelola identity dan permissions dengan prinsip least privilege.",
+      "Pertahankan traceability agar aktivitas dan perubahan dapat dianalisis.",
+      "Lindungi data sesuai kebutuhan, termasuk saat disimpan dan ditransmisikan.",
+      "Gunakan security controls pada berbagai layer dan automate security best practices jika memungkinkan.",
+      "Siapkan proses untuk mendeteksi, merespons, dan memulihkan diri dari security events."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-reliability",
+    "title": "Well-Architected: Reliability",
+    "summary": "Reliability memastikan workload dapat menjalankan fungsi yang diharapkan secara konsisten dan dapat pulih ketika terjadi gangguan.",
+    "keyPoints": [
+      "Bangun fondasi dan service quotas yang sesuai untuk kebutuhan workload.",
+      "Gunakan resilient design dan hindari single points of failure.",
+      "Kelola perubahan dengan automation dan proses yang dapat diuji.",
+      "Uji recovery procedure dan kemampuan workload untuk pulih dari failure.",
+      "Reliability berfokus pada correctness, resilience, dan recovery; Performance Efficiency berfokus pada penggunaan resource secara efisien untuk memenuhi performance requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-performance-efficiency",
+    "title": "Well-Architected: Performance Efficiency",
+    "summary": "Performance Efficiency adalah penggunaan computing resources yang tepat dan efisien agar workload memenuhi requirement performa sekarang dan tetap efisien ketika demand atau teknologi berubah.",
+    "keyPoints": [
+      "Pilih resource dan service berdasarkan karakteristik workload, bukan kebiasaan lama.",
+      "Gunakan data dan measurement untuk mengevaluasi performa.",
+      "Eksperimen dan evaluasi teknologi baru ketika dapat meningkatkan efisiensi.",
+      "Gunakan managed atau serverless technologies ketika sesuai untuk mengurangi kebutuhan mengelola infrastructure.",
+      "Performance Efficiency dan Cost Optimization saling memengaruhi, tetapi masing-masing mengoptimalkan tujuan yang berbeda."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-cost-optimization",
+    "title": "Well-Architected: Cost Optimization",
+    "summary": "Cost Optimization membantu workload memberikan business value tanpa membayar resource atau pola penggunaan yang tidak diperlukan.",
+    "keyPoints": [
+      "Bangun praktik Cloud Financial Management dan visibility terhadap pengeluaran.",
+      "Pahami usage agar pemborosan dan resource idle dapat ditemukan.",
+      "Pilih resource, service, dan pricing model yang cost-effective untuk workload.",
+      "Sesuaikan supply dengan demand dan hindari overprovisioning yang tidak diperlukan.",
+      "Optimasi biaya adalah proses berkelanjutan dan tidak berarti selalu memilih opsi termurah tanpa mempertimbangkan requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-wa-sustainability",
+    "title": "Well-Architected: Sustainability",
+    "summary": "Sustainability pillar membantu mengurangi environmental impact workload dengan meningkatkan resource efficiency dan mengurangi waste sepanjang lifecycle workload.",
+    "keyPoints": [
+      "Selaraskan resource dengan actual demand dan hindari kapasitas yang tidak diperlukan.",
+      "Tingkatkan utilization dan gunakan software atau architecture yang lebih efisien.",
+      "Pertimbangkan efficient hardware, managed services, dan teknologi baru ketika sesuai.",
+      "Region selection dapat menjadi salah satu faktor sustainability jika tetap memenuhi business requirements.",
+      "Cost Optimization dan Sustainability sering sama-sama mengurangi waste, tetapi sustainability berfokus pada environmental impact."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloud-adoption-framework",
+    "title": "AWS Cloud Adoption Framework (AWS CAF)",
+    "summary": "AWS CAF membantu organisasi menilai cloud readiness, menemukan capability gaps, dan menyusun transformation roadmap agar cloud adoption menghasilkan business outcomes.",
+    "keyPoints": [
+      "Enam perspectives AWS CAF adalah Business, People, Governance, Platform, Security, dan Operations.",
+      "Business, People, dan Governance banyak membahas kemampuan organisasi dan proses bisnis.",
+      "Platform, Security, dan Operations banyak membahas kemampuan teknis dan operasional.",
+      "AWS CAF digunakan untuk transformation readiness dan capability development.",
+      "AWS CAF berbeda dari AWS Well-Architected Framework, yang mengevaluasi workload terhadap architectural best practices."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-migration-strategies",
+    "title": "Migration Strategies (7 Rs)",
+    "summary": "7 Rs membantu menentukan pendekatan yang paling sesuai untuk setiap workload ketika organisasi merencanakan migration ke AWS.",
+    "keyPoints": [
+      "Rehost memindahkan workload dengan perubahan aplikasi minimal, sering disebut lift and shift.",
+      "Replatform membuat optimasi terbatas tanpa redesign besar; refactor/re-architect mengubah arsitektur secara lebih mendalam.",
+      "Repurchase mengganti aplikasi dengan produk lain, misalnya solusi SaaS.",
+      "Retain mempertahankan workload di lingkungan asal untuk sekarang; retire menghentikan workload yang tidak lagi diperlukan.",
+      "Relocate memindahkan workload ke environment yang kompatibel tanpa mengubah overall architecture secara signifikan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-migration-services",
+    "title": "AWS Migration Services",
+    "summary": "AWS menyediakan tools berbeda untuk discovery, assessment, rehosting, dan tracking migration. Pilih tool berdasarkan tahap dan tujuan migration.",
+    "keyPoints": [
+      "AWS Transform MGN (formerly AWS Application Migration Service) membantu rehost physical, virtual, atau cloud servers ke AWS dengan replication dan cutover.",
+      "AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency information untuk migration planning.",
+      "AWS Migration Hub mengagregasi migration information sehingga progress dapat dilihat dan dilacak dari satu tempat.",
+      "Migration Evaluator membantu assessment dan directional business case menggunakan inventory serta utilization data.",
+      "Database migration memiliki tools khusus seperti AWS DMS; jangan menyamakan server rehosting dengan database migration."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-fixed-vs-variable-costs",
+    "title": "Fixed vs Variable Costs",
+    "summary": "Cloud memungkinkan organisasi mengurangi kebutuhan upfront infrastructure investment dan lebih banyak membayar resource berdasarkan penggunaan aktual.",
+    "keyPoints": [
+      "Fixed expense adalah biaya besar yang harus dikeluarkan meskipun actual usage belum diketahui, misalnya membeli data center atau server di awal.",
+      "Variable expense berubah mengikuti jumlah resource yang dikonsumsi.",
+      "Pay-as-you-go membantu biaya lebih dekat dengan actual usage dan mengurangi kebutuhan menebak peak capacity jauh di depan.",
+      "Fixed vs variable cost membahas model pengeluaran customer; economies of scale membahas efisiensi biaya karena skala provider."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-licensing-strategies",
+    "title": "Licensing Strategies",
+    "summary": "AWS mendukung beberapa licensing model, termasuk membawa lisensi yang sudah dimiliki ketika vendor terms mengizinkan dan menggunakan software dengan license cost yang sudah termasuk.",
+    "keyPoints": [
+      "BYOL menggunakan license entitlement yang dimiliki customer dan tetap harus mematuhi vendor licensing terms.",
+      "License-included berarti license cost sudah termasuk dalam penggunaan produk atau resource yang dipilih.",
+      "AWS License Manager memberikan centralized visibility untuk license usage di berbagai account dan Region.",
+      "Self-managed license rules dapat membantu tracking dan compliance terhadap entitlement yang dimiliki organisasi."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-rightsizing",
+    "title": "Rightsizing",
+    "summary": "Rightsizing menyesuaikan ukuran atau configuration resource dengan kebutuhan workload agar performance tetap sesuai tanpa membayar kapasitas yang tidak diperlukan.",
+    "keyPoints": [
+      "Resource yang terlalu besar dapat menyebabkan waste, sedangkan resource yang terlalu kecil dapat menimbulkan performance risk.",
+      "AWS Compute Optimizer menganalisis configuration dan utilization metrics untuk menghasilkan recommendations.",
+      "Recommendation dapat membantu performance, cost savings, atau keduanya tergantung workload.",
+      "Rightsizing memilih ukuran/configuration yang sesuai; elasticity mengubah jumlah atau kapasitas resource mengikuti demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-automation-benefits",
+    "title": "Benefits of Automation",
+    "summary": "Automation mengubah langkah manual menjadi proses yang repeatable dan konsisten sehingga perubahan dapat dilakukan lebih cepat dengan risiko human error yang lebih rendah.",
+    "keyPoints": [
+      "Automation mengurangi manual effort, operator toil, dan variasi hasil akibat langkah manusia.",
+      "Infrastructure dan operational procedures dapat diperlakukan sebagai code, di-review, diuji, dan di-version-control.",
+      "AWS CloudFormation dapat membuat resource dari template secara repeatable dan consistent.",
+      "Automated deployment dan operational response membantu mempercepat perubahan serta membuat proses lebih mudah diaudit.",
+      "Automation adalah cara mengeksekusi proses; elasticity adalah kemampuan kapasitas berubah mengikuti demand."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-users-groups-policies",
+    "title": "IAM Users, Groups, and Policies",
+    "summary": "IAM mengatur siapa yang dapat mengakses AWS dan tindakan apa yang boleh mereka lakukan. Permissions didefinisikan melalui policies dan sebaiknya mengikuti prinsip least privilege.",
+    "keyPoints": [
+      "IAM user adalah identity dengan credentials jangka panjang untuk use case tertentu; AWS menganjurkan temporary credentials/federation untuk human access bila memungkinkan.",
+      "IAM group memudahkan pemberian permissions yang sama kepada beberapa IAM users.",
+      "IAM policies adalah JSON documents yang mendefinisikan allowed/denied actions, resources, dan conditions.",
+      "AWS managed policies dikelola AWS; customer managed policies dibuat dan dikelola customer untuk kebutuhan yang lebih spesifik.",
+      "Credential reports dan access/last-used information membantu meninjau credentials dan mengurangi permissions yang tidak diperlukan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-roles",
+    "title": "IAM Roles",
+    "summary": "IAM role menyediakan permissions tanpa melekatkan long-term credentials ke satu user. Principal yang diizinkan dapat assume role dan memperoleh temporary security credentials.",
+    "keyPoints": [
+      "Roles tidak memiliki standard long-term password atau access keys.",
+      "Trust policy menentukan principal yang boleh assume role; permissions policy menentukan tindakan yang boleh dilakukan role.",
+      "AWS services dapat menggunakan service roles untuk mengakses resources atas nama workload.",
+      "Cross-account roles memungkinkan principal dari account lain memperoleh permissions sementara tanpa membuat duplicate IAM users.",
+      "Temporary credentials dari role mengurangi kebutuhan menyimpan access keys jangka panjang."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-root-user",
+    "title": "AWS Account Root User",
+    "summary": "Root user memiliki complete access ke AWS account sehingga harus diperlakukan sebagai emergency/highly privileged identity, bukan identity untuk pekerjaan harian.",
+    "keyPoints": [
+      "Gunakan root user hanya untuk tasks yang benar-benar membutuhkan root credentials.",
+      "Aktifkan MFA dan lindungi account-recovery mechanisms.",
+      "Jangan membuat long-term access keys untuk root user.",
+      "Gunakan IAM Identity Center atau administrative roles/users yang sesuai untuk day-to-day administration.",
+      "Monitor penggunaan root credentials dan simpan credentials dengan kontrol yang ketat."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-mfa-credentials",
+    "title": "MFA, Password Policies, and Access Keys",
+    "summary": "Credential hygiene mengurangi risiko credential theft dan account compromise. MFA, password controls, dan penggunaan temporary credentials adalah bagian penting dari IAM security.",
+    "keyPoints": [
+      "MFA menambahkan faktor autentikasi tambahan selain password.",
+      "IAM password policy mengatur persyaratan password bagi IAM users yang memakai console password.",
+      "Access keys adalah long-term programmatic credentials dan tidak boleh di-hard-code atau dibagikan.",
+      "Gunakan roles/federation dan temporary credentials bila memungkinkan; disable atau rotate credentials yang tidak lagi diperlukan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-iam-identity-center",
+    "title": "AWS IAM Identity Center",
+    "summary": "IAM Identity Center menyediakan centralized workforce access ke AWS accounts dan applications, termasuk integrasi dengan external identity providers.",
+    "keyPoints": [
+      "Gunakan IAM Identity Center untuk workforce users yang membutuhkan access ke satu atau banyak AWS accounts.",
+      "Identity source dapat berasal dari built-in directory atau external identity provider.",
+      "Permission sets digunakan untuk mendefinisikan access yang kemudian di-assign ke users/groups dan AWS accounts.",
+      "Identity Center berfokus pada workforce access; Amazon Cognito berfokus pada end-user identity untuk web/mobile applications."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cognito",
+    "title": "Amazon Cognito",
+    "summary": "Amazon Cognito menyediakan sign-up, sign-in, federation, dan AWS credential capabilities untuk users dari web dan mobile applications.",
+    "keyPoints": [
+      "Cognito user pools adalah user directory untuk app authentication dan menghasilkan tokens.",
+      "User pools dapat federate dengan social, SAML, dan OIDC identity providers.",
+      "Cognito identity pools dapat memberikan temporary AWS credentials kepada authenticated maupun guest app users sesuai configuration.",
+      "Cognito ditujukan untuk application users; IAM Identity Center terutama untuk workforce users yang mengakses AWS accounts dan applications."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-multi-account-governance",
+    "title": "Multi-Account Governance",
+    "summary": "Beberapa AWS services bekerja bersama untuk governance multi-account: Organizations, Control Tower, Service Catalog, dan RAM memiliki peran yang berbeda.",
+    "keyPoints": [
+      "Service Control Policies (SCPs) menetapkan maximum available permissions pada accounts/OUs; SCPs tidak memberikan permissions.",
+      "AWS Control Tower membantu membuat dan meng-govern multi-account landing zone dengan prescriptive controls/guardrails.",
+      "AWS Service Catalog menyediakan approved IT products untuk controlled self-service provisioning.",
+      "AWS Resource Access Manager membagikan supported resources antar accounts, organization, atau OUs.",
+      "Gunakan kombinasi tools berdasarkan kebutuhan permission boundaries, account governance, approved provisioning, atau resource sharing."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-secrets-management",
+    "title": "Credential Storage",
+    "summary": "Secrets Manager dan Parameter Store sama-sama dapat menyimpan sensitive values, tetapi Secrets Manager memiliki lifecycle capabilities yang lebih khusus untuk secrets.",
+    "keyPoints": [
+      "AWS Secrets Manager menyimpan secrets seperti passwords, database credentials, API keys, dan tokens.",
+      "Secrets Manager mendukung automatic rotation untuk banyak use cases.",
+      "Systems Manager Parameter Store menyediakan hierarchical storage untuk configuration data dan SecureString values.",
+      "Parameter Store tidak menyediakan automatic rotation service sendiri; KMS digunakan untuk encryption keys, bukan sebagai primary secret-value store."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-encryption-kms",
+    "title": "Encryption and Key Management",
+    "summary": "KMS, CloudHSM, dan ACM sama-sama terkait cryptography tetapi menyelesaikan kebutuhan yang berbeda: managed keys, dedicated HSMs, dan certificate lifecycle.",
+    "keyPoints": [
+      "AWS KMS membuat dan mengontrol encryption/signing keys dan terintegrasi dengan banyak AWS services.",
+      "AWS CloudHSM menyediakan dedicated single-tenant HSMs dan kontrol customer yang lebih besar terhadap HSM serta keys.",
+      "AWS Certificate Manager membuat, menyimpan, dan memperbarui SSL/TLS X.509 certificates.",
+      "Gunakan KMS untuk managed key management, CloudHSM untuk specialized dedicated-HSM requirements, dan ACM untuk TLS certificate management.",
+      "Encryption keys dan secret values adalah hal berbeda; jangan gunakan KMS sebagai pengganti secret store."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-groups",
+    "title": "Security Groups",
+    "summary": "Security groups adalah stateful virtual firewalls yang mengontrol traffic ke AWS resources pada resource/network-interface level.",
+    "keyPoints": [
+      "Security groups memiliki inbound dan outbound allow rules; tidak ada explicit deny rule.",
+      "Security groups bersifat stateful, sehingga response traffic untuk allowed connection otomatis diizinkan.",
+      "Security groups diterapkan pada resources/network interfaces, bukan sebagai subnet-wide ACL.",
+      "Network ACLs berbeda karena subnet-level, stateless, dan mendukung allow serta deny rules.",
+      "Gunakan least-privilege network rules dan jangan membuka ports/sources lebih luas dari yang dibutuhkan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-network-acls",
+    "title": "Network ACLs",
+    "summary": "Network ACLs memberikan stateless traffic filtering pada subnet dan dapat digunakan sebagai layer network control tambahan.",
+    "keyPoints": [
+      "Network ACLs bekerja pada subnet level.",
+      "Rules dievaluasi berdasarkan rule number dan dapat allow atau deny traffic.",
+      "Network ACLs bersifat stateless; return traffic harus diizinkan secara eksplisit oleh rule yang sesuai.",
+      "Security groups berbeda karena stateful, resource-level, dan menggunakan allow rules."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-shield",
+    "title": "AWS Shield",
+    "summary": "AWS Shield melindungi applications dan AWS resources dari DDoS attacks. Standard dan Advanced berbeda pada level protection dan subscription.",
+    "keyPoints": [
+      "AWS Shield Standard memberikan basic DDoS protection secara otomatis untuk AWS customers tanpa Shield Advanced subscription.",
+      "AWS Shield Advanced adalah paid subscription dengan expanded DDoS detection/mitigation, visibility, dan support capabilities.",
+      "Shield fokus pada DDoS protection.",
+      "AWS WAF berfokus pada inspection dan filtering HTTP(S) requests berdasarkan web rules.",
+      "Shield Advanced dan WAF dapat digunakan bersama untuk layered application protection."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-waf",
+    "title": "AWS WAF and AWS Firewall Manager",
+    "summary": "AWS WAF mengontrol web requests menggunakan web ACLs, sementara Firewall Manager membantu menerapkan security policies secara terpusat di banyak accounts dan resources.",
+    "keyPoints": [
+      "AWS WAF dapat allow, block, atau count HTTP(S) requests berdasarkan rules.",
+      "Rules dapat memeriksa IP, country, strings/regex, request rate, dan attack patterns seperti SQL injection atau XSS.",
+      "AWS Firewall Manager menyederhanakan centralized policy administration across accounts/resources.",
+      "AWS Shield berfokus pada DDoS protection; security groups berfokus pada network access ke resources, bukan HTTP request inspection.",
+      "WAF protection packs/web ACLs diterapkan ke supported web-facing AWS resources."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-guardduty",
+    "title": "Amazon GuardDuty",
+    "summary": "GuardDuty adalah managed threat detection service yang menganalisis AWS telemetry, threat intelligence, dan machine learning untuk menemukan suspicious atau malicious activity.",
+    "keyPoints": [
+      "GuardDuty continuously monitors supported AWS data sources dan event logs.",
+      "GuardDuty dapat menemukan compromised credentials, unusual API behavior, cryptomining, malware-related activity, dan berbagai threat patterns.",
+      "Output GuardDuty adalah security findings yang dapat diintegrasikan dengan services lain.",
+      "Inspector mencari vulnerabilities/exposure; Macie mencari sensitive data; Detective membantu investigation.",
+      "GuardDuty tidak menggantikan preventive controls seperti IAM least privilege atau network filtering."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-inspector",
+    "title": "Amazon Inspector",
+    "summary": "Amazon Inspector adalah vulnerability management service untuk continuously scanning supported AWS workloads dan menghasilkan prioritized findings.",
+    "keyPoints": [
+      "Inspector scans Amazon EC2 instances, Amazon ECR container images, dan AWS Lambda functions.",
+      "Inspector mencari software vulnerabilities dan supported unintended network exposure.",
+      "Findings membantu teams memprioritaskan remediation.",
+      "GuardDuty berfokus pada active/suspicious threats, sedangkan Inspector berfokus pada vulnerabilities dan exposure."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-macie",
+    "title": "Amazon Macie",
+    "summary": "Amazon Macie membantu menemukan dan memonitor sensitive data serta data-security risks pada Amazon S3.",
+    "keyPoints": [
+      "Macie menggunakan machine learning dan pattern matching untuk sensitive data discovery.",
+      "Macie berfokus terutama pada Amazon S3 data estate dan dapat membuat bucket inventory.",
+      "Macie dapat menemukan categories seperti credentials, financial data, PHI, dan PII pada supported S3 objects.",
+      "GuardDuty mendeteksi threats dan Inspector memindai vulnerabilities; Macie berfokus pada sensitive data."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-detective",
+    "title": "Amazon Detective",
+    "summary": "Amazon Detective membantu teams menyelidiki security findings dengan correlated context, historical activity, dan graph-based analysis.",
+    "keyPoints": [
+      "Detective mengumpulkan dan menghubungkan data dari AWS resources untuk investigations.",
+      "Behavior graphs, analytics, dan visualizations membantu memahami entities dan activity yang terkait finding.",
+      "Detective dapat membantu menyelidiki GuardDuty dan security findings.",
+      "Detective bukan primary vulnerability scanner atau sensitive-data discovery service."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-hub",
+    "title": "AWS Security Hub",
+    "summary": "Security Hub CSPM memberikan centralized security posture view, mengagregasi findings, dan menjalankan checks terhadap security standards dan best practices.",
+    "keyPoints": [
+      "Security Hub CSPM dapat menerima findings dari GuardDuty, Inspector, Macie, dan supported third-party products.",
+      "Security standards dan controls membantu menilai environment terhadap best practices/compliance frameworks.",
+      "Banyak Security Hub CSPM controls menggunakan AWS Config untuk resource configuration checks.",
+      "Security Hub mengagregasi dan memprioritaskan posture information; specialized detection tetap dilakukan oleh services seperti GuardDuty atau Inspector."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloudtrail",
+    "title": "AWS CloudTrail",
+    "summary": "CloudTrail menyediakan audit history untuk activity di AWS accounts dan membantu menjawab siapa melakukan action apa, kapan, dan dari mana.",
+    "keyPoints": [
+      "CloudTrail records events dari console, CLI, SDK/API, dan AWS services.",
+      "Event history menyediakan 90 hari management events di Region.",
+      "Trails atau CloudTrail Lake digunakan untuk ongoing collection/retention dan analysis.",
+      "CloudTrail berfokus pada account/API activity; CloudWatch berfokus pada operational metrics/logs/alarms.",
+      "CloudTrail records mendukung security investigation, governance, dan audit use cases."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cloudwatch",
+    "title": "Amazon CloudWatch",
+    "summary": "CloudWatch memberikan observability untuk resources dan applications melalui metrics, logs, alarms, dashboards, dan monitoring tools.",
+    "keyPoints": [
+      "CloudWatch metrics melacak performance dan utilization data.",
+      "CloudWatch Logs mengumpulkan dan query log data.",
+      "CloudWatch alarms mengevaluasi metrics terhadap thresholds dan dapat memicu notifications/actions.",
+      "CloudTrail berfokus pada API/account activity; AWS Config pada resource configuration/compliance.",
+      "Gunakan CloudWatch untuk operational health, performance monitoring, dan alerting."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-config",
+    "title": "AWS Config",
+    "summary": "AWS Config merekam resource configuration dan relationships serta mengevaluasi compliance terhadap desired configuration rules.",
+    "keyPoints": [
+      "Config menyimpan configuration items dan history untuk supported AWS resources.",
+      "AWS Config rules mengevaluasi apakah resource compliant atau noncompliant.",
+      "Configuration history membantu audit perubahan dan troubleshooting.",
+      "CloudTrail merekam who-did-what API activity; Config merekam state/configuration resource.",
+      "Security Hub CSPM menggunakan AWS Config untuk banyak posture checks."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-compliance-artifact",
+    "title": "AWS Compliance and AWS Artifact",
+    "summary": "AWS Artifact memberikan self-service access ke AWS compliance reports dan legal agreements yang dapat dibutuhkan untuk audit, assurance, atau regulatory programs.",
+    "keyPoints": [
+      "Artifact Reports menyediakan downloadable AWS security/compliance reports.",
+      "Artifact Agreements memungkinkan review, accept, dan manage legal agreements seperti BAA jika applicable.",
+      "Artifact dapat digunakan pada account atau, untuk supported agreements, melalui AWS Organizations.",
+      "Artifact bukan scanner yang mengevaluasi resource configurations.",
+      "Gunakan Config/Security Hub untuk technical configuration checks; gunakan Artifact untuk documentation dan agreements."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-security-resources",
+    "title": "Security Resources and Third-Party Products",
+    "summary": "AWS menyediakan official security guidance dan troubleshooting resources, sementara AWS Marketplace menyediakan third-party security products dan services.",
+    "keyPoints": [
+      "AWS Security website/center menyediakan security information, programs, dan guidance.",
+      "AWS Security Blog berisi announcements, best practices, dan technical guidance.",
+      "AWS re:Post Knowledge Center menyediakan AWS Official troubleshooting articles untuk common issues.",
+      "AWS Marketplace menyediakan third-party security software dan services yang dapat dievaluasi dan dibeli.",
+      "Pilih resource sesuai tujuan: learning/guidance, troubleshooting, atau procurement solusi third-party."
+    ],
+    "order": 1
+  },
+{
+    "concept": "clf-aws-access-methods",
+    "title": "Ways to Access AWS",
+    "summary": "AWS menyediakan web console dan programmatic interfaces. Pilih interface berdasarkan apakah pekerjaan bersifat interaktif, scripted, atau tertanam langsung dalam aplikasi.",
+    "keyPoints": [
+      "AWS Management Console adalah web-based interface untuk mengelola AWS services secara interaktif.",
+      "AWS CLI menjalankan AWS service commands dari terminal dan cocok untuk automation melalui scripts.",
+      "AWS SDK menyediakan language-specific libraries untuk memanggil AWS services dari application code.",
+      "AWS APIs adalah programmatic interfaces yang mendasari banyak tools; authentication dan authorization tetap berlaku di semua access methods."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-infrastructure-as-code",
+    "title": "Infrastructure as Code with AWS CloudFormation",
+    "summary": "Infrastructure as code membuat infrastructure repeatable karena desired resources didefinisikan sebagai code. CloudFormation adalah AWS service utama untuk provisioning infrastructure dari templates.",
+    "keyPoints": [
+      "CloudFormation template mendeskripsikan AWS resources dan properties menggunakan JSON atau YAML.",
+      "Deployment template menghasilkan stack, yaitu collection of resources yang dikelola sebagai satu unit.",
+      "Templates dapat disimpan di version control, direview, dan digunakan ulang untuk environment yang konsisten.",
+      "CloudFormation adalah general-purpose infrastructure provisioning; Elastic Beanstalk lebih berfokus pada deployment application environments.",
+      "IaC membantu mengurangi manual configuration differences dan membuat changes lebih repeatable."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-deployment-models",
+    "title": "Cloud, On-Premises, and Hybrid Deployment",
+    "summary": "Deployment model menjelaskan di mana infrastructure berjalan dan bagaimana cloud serta on-premises resources digunakan bersama.",
+    "keyPoints": [
+      "Cloud deployment menggunakan resources yang berjalan di infrastructure cloud provider.",
+      "On-premises infrastructure berada di fasilitas organisasi sendiri.",
+      "Hybrid architecture menghubungkan cloud dengan on-premises environments.",
+      "AWS Outposts membawa AWS-managed infrastructure dan APIs ke customer premises untuk supported workloads."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-regions",
+    "title": "AWS Regions",
+    "summary": "Region adalah geographic area tempat AWS mengoperasikan multiple Availability Zones. Region selection merupakan keputusan penting untuk latency, compliance, service availability, dan cost.",
+    "keyPoints": [
+      "Setiap Region adalah geographic area yang terpisah.",
+      "Region berisi multiple Availability Zones.",
+      "Pertimbangkan legal/data residency requirements dan proximity ke users ketika memilih Region.",
+      "Pastikan service/feature yang dibutuhkan tersedia di Region tersebut.",
+      "Resource atau data tidak otomatis menjadi multi-Region kecuali service atau arsitektur dikonfigurasi untuk itu."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-availability-zones",
+    "title": "Availability Zones",
+    "summary": "Availability Zones adalah isolated locations dalam Region yang memungkinkan workload dirancang agar tidak bergantung pada satu lokasi fisik.",
+    "keyPoints": [
+      "Satu AZ terdiri dari satu atau lebih discrete data centers dengan redundant infrastructure.",
+      "AZ dalam Region terhubung melalui low-latency, high-bandwidth, highly redundant networking.",
+      "Deploying across multiple AZs adalah pola umum untuk meningkatkan high availability.",
+      "AZ berbeda dari Region dan edge location: AZ berada di dalam satu Region."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-edge-locations",
+    "title": "Edge Locations and Global Accelerator",
+    "summary": "AWS edge network membawa networking dan content-delivery capabilities lebih dekat ke users melalui points of presence yang tersebar secara global.",
+    "keyPoints": [
+      "Points of presence mencakup edge locations yang digunakan oleh services seperti CloudFront, Route 53, dan Global Accelerator.",
+      "Edge locations bukan pengganti AWS Regions untuk general-purpose regional compute.",
+      "AWS Global Accelerator menggunakan AWS global network untuk mengarahkan traffic ke healthy endpoints.",
+      "Global Accelerator menyediakan static anycast IP addresses dan berfokus pada network path/performance, bukan menjalankan application servers di edge location."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ec2",
+    "title": "Amazon EC2 and Instance Types",
+    "summary": "EC2 menyediakan virtual servers yang configurable di AWS. Instance family dipilih berdasarkan resource profile yang dibutuhkan workload.",
+    "keyPoints": [
+      "EC2 memberi kontrol atas virtual server, operating system, software, networking, dan storage configuration.",
+      "General purpose instances menyeimbangkan compute, memory, dan networking untuk berbagai workload.",
+      "Compute optimized cocok untuk CPU-intensive workloads; memory optimized untuk memory-intensive workloads.",
+      "Accelerated computing menggunakan hardware accelerators seperti GPU; storage optimized fokus pada local storage throughput/IO.",
+      "EC2 memberi lebih banyak infrastructure control dibanding serverless compute, tetapi juga lebih banyak operational responsibility."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-auto-scaling",
+    "title": "Amazon EC2 Auto Scaling",
+    "summary": "EC2 Auto Scaling menjaga compute capacity sesuai target dan dapat menyesuaikan jumlah instances ketika demand berubah.",
+    "keyPoints": [
+      "Auto Scaling group memiliki minimum, maximum, dan desired capacity.",
+      "Scaling policies dapat scale out ketika demand naik dan scale in ketika demand turun.",
+      "Auto Scaling dapat mengganti unhealthy instances untuk mempertahankan desired capacity.",
+      "Auto Scaling mengelola capacity; Elastic Load Balancing mendistribusikan incoming traffic."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-elastic-load-balancing",
+    "title": "Elastic Load Balancing",
+    "summary": "ELB mendistribusikan incoming traffic ke multiple healthy targets sehingga aplikasi tidak bergantung pada satu target.",
+    "keyPoints": [
+      "ELB dapat route traffic ke targets seperti EC2 instances, containers, dan IP addresses.",
+      "Health checks membantu menghindari routing traffic ke unhealthy targets.",
+      "Load balancer dapat bekerja across multiple Availability Zones untuk meningkatkan availability.",
+      "ELB mendistribusikan traffic; EC2 Auto Scaling menambah atau mengurangi compute capacity."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-lambda",
+    "title": "AWS Lambda and Amazon API Gateway",
+    "summary": "Lambda menjalankan code tanpa server management dan cocok untuk event-driven atau request-response processing. API Gateway menyediakan managed API front door.",
+    "keyPoints": [
+      "Lambda Functions menjalankan code tanpa provisioning atau patching servers.",
+      "Lambda dapat dipicu oleh events atau API calls dan scale berdasarkan invocations.",
+      "API Gateway membuat dan mengelola REST, HTTP, dan WebSocket APIs.",
+      "API Gateway dapat memanggil Lambda sebagai backend untuk serverless APIs.",
+      "EC2 memberi lebih banyak server control; Lambda mengurangi infrastructure management."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-containers",
+    "title": "Containers on AWS",
+    "summary": "AWS memiliki layanan berbeda untuk orchestration, Kubernetes, serverless container compute, dan image storage.",
+    "keyPoints": [
+      "Amazon ECS adalah AWS fully managed container orchestration service.",
+      "Amazon EKS menyediakan managed Kubernetes.",
+      "AWS Fargate menjalankan container workloads tanpa customer mengelola server capacity.",
+      "Amazon ECR adalah managed registry untuk container images dan OCI artifacts.",
+      "ECR menyimpan images; ECS/EKS mengelola workloads; Fargate menyediakan serverless compute capacity."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-managed-compute-options",
+    "title": "Managed Compute Options",
+    "summary": "Elastic Beanstalk, Lightsail, dan AWS Batch mengurangi operational work untuk use case yang berbeda: application environments, simple projects, dan batch jobs.",
+    "keyPoints": [
+      "Elastic Beanstalk deploys web applications dan menangani banyak environment provisioning tasks.",
+      "Lightsail menyederhanakan VPS, networking, databases, dan resource umum untuk small applications dan websites.",
+      "AWS Batch schedules batch jobs dan provisions compute resources sesuai job demand.",
+      "CloudFormation tetap lebih general untuk infrastructure-as-code provisioning dibanding ketiga use-case-specific services tersebut."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-rds-aurora",
+    "title": "Amazon RDS and Amazon Aurora",
+    "summary": "RDS dan Aurora menyediakan managed relational database capabilities sehingga customer tidak perlu mengelola banyak infrastructure dan database administration tasks sendiri.",
+    "keyPoints": [
+      "Amazon RDS supports familiar relational database engines dan menangani backups, patching, failure detection, dan recovery.",
+      "Amazon Aurora adalah fully managed relational engine yang kompatibel dengan MySQL dan PostgreSQL.",
+      "Multi-AZ deployments terutama digunakan untuk high availability dan failover.",
+      "Read replicas umum digunakan untuk meningkatkan read scaling.",
+      "Database di EC2 memberi control lebih besar tetapi customer mengelola operating system dan lebih banyak database operations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-dynamodb",
+    "title": "Amazon DynamoDB",
+    "summary": "DynamoDB adalah serverless managed NoSQL database untuk high-scale key-value dan document workloads dengan predictable low-latency performance.",
+    "keyPoints": [
+      "DynamoDB mendukung key-value dan document data models.",
+      "AWS mengelola servers, patching, availability, dan scaling infrastructure untuk DynamoDB.",
+      "DynamoDB dirancang untuk consistent single-digit millisecond performance at scale.",
+      "On-demand capacity dapat menyesuaikan request capacity tanpa customer mengelola database servers.",
+      "DynamoDB adalah NoSQL; RDS/Aurora adalah relational database services."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-other-databases",
+    "title": "Purpose-Built Database Services",
+    "summary": "AWS purpose-built databases memilih data model yang sesuai dengan workload, misalnya cache, documents, atau graph relationships.",
+    "keyPoints": [
+      "ElastiCache menyediakan managed in-memory cache/data store dan mendukung Valkey, Memcached, serta Redis OSS.",
+      "DocumentDB menyediakan managed document database dengan MongoDB compatibility.",
+      "Neptune adalah managed graph database untuk highly connected datasets.",
+      "Pilih service berdasarkan access pattern dan data model, bukan hanya berdasarkan istilah 'database'."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-database-migration",
+    "title": "AWS Database Migration",
+    "summary": "AWS DMS dan schema-conversion tools membantu memindahkan database sambil memisahkan masalah data movement dari schema conversion.",
+    "keyPoints": [
+      "AWS DMS dapat migrate data atau replicate ongoing changes antara supported source dan target data stores.",
+      "Ongoing replication dapat membantu mengurangi application downtime selama migration.",
+      "Migration antara engine berbeda dapat membutuhkan schema conversion.",
+      "DMS Schema Conversion atau AWS SCT dapat mengonversi database schemas; AWS DMS kemudian memindahkan data."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-vpc",
+    "title": "Amazon VPC",
+    "summary": "VPC adalah logically isolated virtual network untuk AWS resources. Subnets, routing, gateways, endpoints, dan Transit Gateway menentukan connectivity.",
+    "keyPoints": [
+      "Subnet adalah IP range di dalam VPC dan setiap subnet berada di satu Availability Zone.",
+      "Route tables menentukan ke mana traffic dari subnet atau gateway diarahkan.",
+      "Internet gateway menyediakan internet connectivity untuk appropriately configured resources; NAT gateway umum untuk outbound internet access dari private subnets.",
+      "VPC endpoints/AWS PrivateLink memungkinkan private connectivity ke supported services tanpa public internet path.",
+      "Transit Gateway dapat menjadi central hub untuk menghubungkan banyak VPCs dan on-premises networks."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-route-53",
+    "title": "Amazon Route 53",
+    "summary": "Route 53 menyediakan DNS dan domain capabilities, termasuk hosted zones, health checks, dan DNS routing policies.",
+    "keyPoints": [
+      "Route 53 menerjemahkan domain names menjadi DNS responses yang mengarahkan clients ke endpoints.",
+      "Route 53 dapat digunakan sebagai domain registrar dan authoritative DNS service.",
+      "Health checks dapat membantu DNS failover dan menghindari unhealthy endpoints dalam supported routing patterns.",
+      "Route 53 melakukan DNS-level routing; Elastic Load Balancing mendistribusikan actual application/network traffic ke targets."
+    ],
+    "order": 1
+  },
+{
+    "concept": "clf-cloudfront",
+    "title": "Amazon CloudFront",
+    "summary": "CloudFront adalah AWS content delivery network yang mempercepat static dan dynamic content dengan edge locations di seluruh dunia.",
+    "keyPoints": [
+      "CloudFront caches eligible content closer to users untuk mengurangi latency dan origin load.",
+      "Origins dapat berupa Amazon S3, HTTP servers, dan supported AWS origins.",
+      "Edge locations adalah bagian dari global edge network, bukan Regions untuk general-purpose compute.",
+      "CloudFront berfokus pada content delivery/caching; Global Accelerator berfokus pada optimized network path ke application endpoints."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-hybrid-connectivity",
+    "title": "Hybrid Connectivity",
+    "summary": "AWS Site-to-Site VPN dan Direct Connect menghubungkan customer networks dengan AWS menggunakan connectivity model yang berbeda.",
+    "keyPoints": [
+      "Site-to-Site VPN menggunakan encrypted IPsec tunnels dan biasanya berjalan melalui internet.",
+      "Direct Connect menyediakan dedicated network path dari customer network ke AWS.",
+      "Direct Connect dapat memberi bandwidth/latency yang lebih consistent dibanding internet-based connectivity.",
+      "VPN sering lebih cepat disiapkan dan dapat digunakan sebagai primary, temporary, atau backup connectivity.",
+      "VPN dan Direct Connect dapat digunakan bersama sesuai resilience dan encryption needs."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-s3",
+    "title": "Amazon S3",
+    "summary": "Amazon S3 menyediakan durable, scalable object storage untuk data dalam jumlah kecil maupun sangat besar.",
+    "keyPoints": [
+      "S3 menyimpan objects di buckets dan diakses melalui S3 APIs.",
+      "S3 cocok untuk backup, data lakes, static assets, media, analytics, dan archive use cases.",
+      "S3 berbeda dari EBS block storage dan EFS shared file storage.",
+      "Fitur seperti versioning, replication, lifecycle, encryption, dan access controls membantu data management.",
+      "Storage class dapat dipilih berdasarkan access pattern dan cost requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-s3-storage-classes",
+    "title": "S3 Storage Classes and Lifecycle",
+    "summary": "S3 storage classes mengoptimalkan cost dan access characteristics untuk data dengan pola penggunaan berbeda.",
+    "keyPoints": [
+      "S3 Standard cocok untuk frequently accessed general-purpose objects.",
+      "S3 Intelligent-Tiering otomatis memindahkan objects antar access tiers ketika access pattern berubah atau tidak diketahui.",
+      "S3 Standard-IA cocok untuk long-lived infrequently accessed data yang tetap membutuhkan millisecond access.",
+      "S3 Glacier storage classes digunakan untuk archive dengan retrieval characteristics dan cost berbeda.",
+      "S3 Lifecycle rules dapat transition objects ke lower-cost classes atau expire objects secara otomatis."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ebs-instance-store",
+    "title": "Amazon EBS and EC2 Instance Store",
+    "summary": "EBS dan instance store sama-sama menyediakan block storage untuk EC2, tetapi durability/lifecycle-nya berbeda.",
+    "keyPoints": [
+      "EBS volume adalah persistent block storage dengan lifecycle terpisah dari underlying EC2 host.",
+      "EBS cocok untuk boot volumes, databases, dan data yang harus persisten.",
+      "Instance store adalah temporary block storage physically attached ke instance host.",
+      "Instance-store data dapat hilang ketika instance stops, hibernates, terminates, atau underlying host fails.",
+      "Instance store cocok untuk caches, buffers, scratch data, dan replicated data yang dapat dibuat ulang."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-efs-fsx",
+    "title": "Amazon EFS and Amazon FSx",
+    "summary": "EFS dan FSx menyediakan managed file storage, tetapi menargetkan compatibility dan workload berbeda.",
+    "keyPoints": [
+      "EFS adalah serverless elastic shared file system dengan NFS interface untuk Linux workloads.",
+      "Multiple clients dapat concurrently mount dan access EFS file systems.",
+      "Amazon FSx menyediakan managed file systems untuk specific technologies seperti Windows File Server, Lustre, NetApp ONTAP, dan OpenZFS.",
+      "Pilih EFS untuk general shared NFS use cases dan FSx ketika specific file-system compatibility/features dibutuhkan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-storage-gateway",
+    "title": "AWS Storage Gateway",
+    "summary": "Storage Gateway mengintegrasikan on-premises applications dengan cloud-backed AWS storage melalui hybrid gateway appliances.",
+    "keyPoints": [
+      "S3 File Gateway exposes NFS/SMB file shares dengan objects stored di Amazon S3.",
+      "Volume Gateway menyediakan cloud-backed iSCSI block volumes.",
+      "Tape Gateway menyediakan virtual tape library untuk backup software dan cloud archive.",
+      "Storage Gateway menyelesaikan hybrid storage integration; network connectivity itself disediakan oleh network path seperti internet, VPN, atau Direct Connect."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-backup",
+    "title": "AWS Backup and AWS Elastic Disaster Recovery",
+    "summary": "AWS Backup dan AWS DRS menangani data protection tetapi pada layer yang berbeda: backup copies versus server disaster recovery.",
+    "keyPoints": [
+      "AWS Backup centralizes backup policies, schedules, retention, and recovery points across supported resources.",
+      "Backup plans dapat membantu standardisasi data-protection policy across accounts/resources.",
+      "AWS Elastic Disaster Recovery continuously replicates server data ke low-cost staging resources.",
+      "AWS DRS launches recovery instances ketika failover/recovery diperlukan.",
+      "Backup digunakan untuk recover data; DRS berfokus pada recovering whole server workloads dengan recovery objectives lebih cepat."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-sagemaker",
+    "title": "Amazon SageMaker AI",
+    "summary": "SageMaker AI menyediakan managed tooling untuk machine learning lifecycle ketika teams perlu membangun dan menjalankan custom ML models.",
+    "keyPoints": [
+      "SageMaker AI supports building, training, tuning, and deploying ML models.",
+      "Managed infrastructure mengurangi pekerjaan menyiapkan training dan inference environments.",
+      "SageMaker AI cocok untuk custom ML workflows dan data-science teams.",
+      "Pre-built AI services seperti Rekognition atau Comprehend lebih cocok ketika ready-made capability sudah memenuhi requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ai-language-services",
+    "title": "AI Language and Assistant Services",
+    "summary": "AWS language services memetakan berbagai input/output: text analysis, conversation, speech synthesis, speech recognition, translation, dan generative assistants.",
+    "keyPoints": [
+      "Comprehend menggunakan NLP untuk menemukan entities, sentiment, key phrases, dan insights lain dari text.",
+      "Lex digunakan untuk conversational bots dengan text dan voice interfaces.",
+      "Polly mengubah text menjadi speech; Transcribe mengubah speech menjadi text.",
+      "Translate melakukan machine translation antar languages.",
+      "Amazon Q menyediakan generative AI assistant capabilities; Q Developer berfokus pada development dan AWS operations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ai-vision-document-services",
+    "title": "AI Vision and Document Services",
+    "summary": "Rekognition dan Textract sama-sama menganalisis visual input, tetapi Rekognition berfokus pada image/video understanding sedangkan Textract berfokus pada documents.",
+    "keyPoints": [
+      "Rekognition dapat identify objects, scenes, faces, text, dan visual content characteristics sesuai feature.",
+      "Textract mengekstrak printed/handwritten text dari documents.",
+      "Textract juga dapat mengenali forms, tables, dan structured document relationships.",
+      "Pilih Rekognition untuk visual analysis dan Textract untuk document data extraction."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-analytics-services",
+    "title": "AWS Analytics Services",
+    "summary": "Athena, Redshift, EMR, dan Glue menangani analytical workloads pada layer berbeda: query, warehouse, big-data processing, dan data integration.",
+    "keyPoints": [
+      "Athena menjalankan serverless SQL queries langsung terhadap data di S3.",
+      "Redshift adalah managed cloud data warehouse.",
+      "EMR menjalankan managed big-data frameworks seperti Apache Spark dan Hadoop.",
+      "Glue menyediakan serverless data integration, Data Catalog, dan ETL capabilities.",
+      "Pilih service berdasarkan apakah kebutuhan utama adalah ad hoc query, data warehouse, big-data frameworks, atau data integration."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-streaming-search-bi",
+    "title": "Streaming, Search, and Business Intelligence",
+    "summary": "Kinesis, OpenSearch Service, dan Amazon Quick Sight melayani streaming, search/log analytics, dan business intelligence.",
+    "keyPoints": [
+      "Kinesis Data Streams ingests real-time streaming records untuk consumers/processors.",
+      "OpenSearch Service menyediakan managed search dan log analytics.",
+      "Amazon QuickSight evolved into Amazon Quick; its BI capability is now called Amazon Quick Sight.",
+      "Quick Sight digunakan untuk interactive visualizations, dashboards, dan business intelligence.",
+      "Pilih Kinesis untuk streams, OpenSearch untuk search/log analytics, dan Quick Sight untuk BI."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-application-integration",
+    "title": "Application Integration",
+    "summary": "SNS, SQS, EventBridge, dan Step Functions membantu decouple applications dan membangun event-driven workflows dengan pola yang berbeda.",
+    "keyPoints": [
+      "SNS adalah pub/sub service untuk fan-out notifications/messages ke multiple subscribers.",
+      "SQS menyimpan messages dalam queue agar producers dan consumers dapat bekerja secara asynchronous.",
+      "EventBridge routes events dari AWS services, custom applications, dan supported SaaS sources berdasarkan rules.",
+      "Step Functions coordinates multiple steps/services dalam state-machine workflows.",
+      "SNS pushes, SQS queues, EventBridge routes events, dan Step Functions orchestrates workflow state."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-systems-manager",
+    "title": "AWS Systems Manager",
+    "summary": "Systems Manager menyediakan centralized operational management untuk managed nodes di AWS, on-premises, dan multicloud.",
+    "keyPoints": [
+      "Run Command menjalankan commands remotely pada managed nodes.",
+      "Session Manager menyediakan secure shell-like access tanpa membuka inbound SSH/RDP ports.",
+      "Automation menjalankan operational runbooks dan Patch Manager membantu patching at scale.",
+      "Parameter Store menyimpan configuration parameters dan secrets sederhana.",
+      "Systems Manager performs operational management; CloudWatch primarily observes metrics, logs, and alarms."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-developer-tools",
+    "title": "AWS Developer Tools",
+    "summary": "CodeBuild, CodePipeline, dan X-Ray mencakup build execution, delivery workflow, dan distributed application tracing.",
+    "keyPoints": [
+      "CodeBuild compiles source, runs tests, and produces build artifacts tanpa customer mengelola build servers.",
+      "CodePipeline models dan automates stages dalam software release process.",
+      "X-Ray traces requests through distributed applications untuk menemukan latency dan errors.",
+      "CodePipeline dapat coordinate build actions seperti CodeBuild, sedangkan X-Ray digunakan setelah/selama runtime untuk diagnostics."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-end-user-computing",
+    "title": "AWS End-User Computing",
+    "summary": "AWS menyediakan managed virtual desktops, application streaming, dan isolated browser access untuk end users.",
+    "keyPoints": [
+      "Amazon WorkSpaces provides managed virtual desktop experiences.",
+      "Amazon WorkSpaces Applications, formerly AppStream 2.0, streams desktop applications to users without local installation.",
+      "WorkSpaces Secure Browser provides isolated browser sessions for internal web and SaaS applications.",
+      "AWS announced WorkSpaces Secure Browser will close to new customers starting October 29, 2026; existing customers can continue using it.",
+      "Choose full desktop, streamed application, or browser-only access based on the user requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-other-in-scope-services",
+    "title": "Business, Frontend, and IoT Services",
+    "summary": "Amazon Connect, SES, Amplify, dan IoT Core adalah in-scope services untuk contact centers, email, web/mobile applications, dan IoT connectivity.",
+    "keyPoints": [
+      "Amazon Connect adalah cloud contact center service.",
+      "Amazon SES menyediakan scalable email sending and receiving capabilities.",
+      "AWS Amplify membantu build, deploy, dan host web/mobile frontends dan full-stack applications.",
+      "AWS IoT Core securely connects devices to AWS dan routes device messages/data menggunakan rules."
+    ],
+    "order": 1
+  },
+{
+    "concept": "clf-on-demand-spot",
+    "title": "On-Demand and Spot Instances",
+    "summary": "On-Demand dan Spot adalah dua EC2 purchasing options dengan trade-off utama antara flexibility dan interruption risk.",
+    "keyPoints": [
+      "On-Demand tidak memerlukan long-term commitment dan cocok untuk unpredictable atau short-term workloads.",
+      "Spot menggunakan spare EC2 capacity dengan discount besar terhadap On-Demand.",
+      "Spot Instances dapat diinterupsi oleh EC2, sehingga workload harus interruption-tolerant.",
+      "Batch, stateless, distributed, dan flexible workloads sering cocok untuk Spot.",
+      "Steady predictable usage dapat lebih cocok dengan commitment discount seperti Savings Plans atau Reserved Instances."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-reserved-savings-plans",
+    "title": "Reserved Instances, Savings Plans, and Capacity Reservations",
+    "summary": "Pricing commitment dan capacity reservation menyelesaikan dua masalah berbeda: discount versus guaranteed capacity.",
+    "keyPoints": [
+      "Savings Plans memberi discount berdasarkan commitment terhadap consistent spend/usage rate selama 1 atau 3 tahun.",
+      "Reserved Instances memberi billing discount berdasarkan commitment terhadap eligible EC2 configuration selama 1 atau 3 tahun.",
+      "Capacity Reservations reserve EC2 capacity pada specific Availability Zone dan configuration.",
+      "Capacity Reservation bukan discount; unused reserved capacity dapat tetap dikenai On-Demand-equivalent charge.",
+      "Savings Plans atau eligible RI discounts dapat apply ke matching usage, termasuk usage dalam Capacity Reservation sesuai rules."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-dedicated-hosts-instances",
+    "title": "Dedicated Hosts and Dedicated Instances",
+    "summary": "Dedicated tenancy digunakan ketika customer membutuhkan single-tenant hardware, tetapi Dedicated Hosts memberi host-level control lebih besar.",
+    "keyPoints": [
+      "Dedicated Instances berjalan pada hardware yang dedicated untuk satu customer account.",
+      "Dedicated Hosts memberikan physical server dedicated beserta visibility/control terhadap host resources.",
+      "Dedicated Hosts sering relevan untuk server-bound licensing atau compliance requirements.",
+      "Dedicated Instances tidak memberikan host placement/licensing visibility yang sama seperti Dedicated Hosts."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-data-transfer-costs",
+    "title": "AWS Data Transfer Costs",
+    "summary": "Data-transfer pricing bergantung pada direction dan network topology. Untuk CLF-C02, pahami pola biaya, bukan angka harga yang cepat berubah.",
+    "keyPoints": [
+      "Data transfer into AWS dari internet umumnya lebih murah atau free dibanding transfer out ke internet, subject to service rules.",
+      "Data transfer out ke internet umumnya dikenai charge setelah applicable allowance.",
+      "Cross-Availability-Zone transfer untuk beberapa services dapat dikenai charge in each direction.",
+      "Transfers tertentu dalam same Availability Zone atau antara supported services dalam same Region dapat free.",
+      "NAT Gateway, Transit Gateway, PrivateLink, dan services lain di data path dapat memiliki processing charges tersendiri."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cost-management-tools",
+    "title": "AWS Cost Management Tools",
+    "summary": "AWS menyediakan tools terpisah untuk analyze, alert, estimate, dan export cost data.",
+    "keyPoints": [
+      "Cost Explorer digunakan untuk visualizing, filtering, analyzing, dan forecasting cost/usage.",
+      "AWS Budgets menetapkan target cost/usage dan dapat mengirim alert berdasarkan actual atau forecasted thresholds.",
+      "AWS Pricing Calculator digunakan untuk estimate planned workloads atau modeled billing changes.",
+      "AWS Data Exports CUR 2.0 menyediakan detailed recurring cost and usage data untuk downstream analysis.",
+      "Tool yang tepat ditentukan oleh apakah kebutuhan utama adalah analysis, alerting, estimating, atau raw/detailed data export."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-consolidated-billing",
+    "title": "AWS Organizations Consolidated Billing",
+    "summary": "Consolidated billing menggabungkan usage dan charges dari AWS accounts dalam organization tanpa menghilangkan account isolation.",
+    "keyPoints": [
+      "Management account bertanggung jawab atas consolidated bill untuk member-account usage.",
+      "Member accounts tetap separate AWS accounts dengan resource dan permission boundaries sendiri.",
+      "Aggregated usage dapat membantu organization mencapai applicable volume pricing tiers.",
+      "Eligible Reserved Instance dan Savings Plans discounts dapat be shared according to AWS billing rules.",
+      "Consolidated billing tidak memiliki additional fee."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-cost-allocation-tags",
+    "title": "Cost Allocation Tags",
+    "summary": "Cost allocation tags menambahkan business context ke billing data sehingga spend dapat dianalisis berdasarkan project, team, environment, atau cost center.",
+    "keyPoints": [
+      "Tags terdiri dari key dan value yang melekat pada supported resources atau accounts.",
+      "Relevant tags harus diaktifkan sebagai cost allocation tags sebelum digunakan dalam billing analysis.",
+      "AWS-generated dan user-defined cost allocation tags didukung.",
+      "Activated tags dapat digunakan untuk grouping/filtering cost data dan internal showback/chargeback.",
+      "Tags membantu attribution dan reporting; tags tidak mengubah pricing resource."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-support-plans",
+    "title": "AWS Support Plans",
+    "summary": "AWS Support tiers meningkat dari Basic menuju Business Support+, Enterprise Support, dan Unified Operations dengan technical support dan proactive capabilities yang semakin dalam.",
+    "keyPoints": [
+      "Basic Support tersedia untuk semua customers dan mencakup account/billing assistance, service health, documentation, dan quota increase cases.",
+      "Business Support+ menambahkan 24/7 technical support, full Trusted Advisor checks, dan faster response untuk critical cases.",
+      "Enterprise Support menambahkan designated TAM, strategic guidance, dan faster production-critical response.",
+      "Unified Operations menambahkan designated specialist team, proactive workload monitoring, personalized runbooks/reviews, dan rapid incident engagement.",
+      "Developer Support, Business Support, dan Enterprise On-Ramp adalah transitional legacy plans yang dijadwalkan end-of-support 1 Januari 2027."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-trusted-advisor",
+    "title": "AWS Trusted Advisor and Service Quotas",
+    "summary": "Trusted Advisor memberi best-practice recommendations, sedangkan Service Quotas membantu melihat dan mengelola service limits.",
+    "keyPoints": [
+      "Trusted Advisor categories mencakup Cost Optimization, Performance, Security, Fault Tolerance, Service Limits, dan Operational Excellence.",
+      "Recommendations dapat mengidentifikasi idle resources, security settings, resilience gaps, atau approaching quotas.",
+      "Service Limits checks memberi visibility terhadap current usage versus quota.",
+      "Quota increases biasanya diminta melalui Service Quotas ketika supported.",
+      "Trusted Advisor bukan substitute untuk CloudWatch monitoring atau AWS Health events."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-health-dashboard",
+    "title": "AWS Health Dashboard and AWS Health API",
+    "summary": "AWS Health memberi visibility terhadap service events, account-specific events, dan scheduled changes yang dapat memengaruhi workloads.",
+    "keyPoints": [
+      "Public Health events menunjukkan service availability events yang tidak specific ke satu account.",
+      "Signed-in Health Dashboard menampilkan account-specific events dan affected resources ketika available.",
+      "Scheduled changes membantu customer menyiapkan maintenance atau lifecycle events.",
+      "AWS Health API memberikan programmatic access dan memerlukan eligible paid support plan.",
+      "AWS Health memberi event context; Trusted Advisor memberi best-practice recommendations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-technical-resources",
+    "title": "AWS Technical Resources",
+    "summary": "AWS technical resources memiliki tujuan berbeda dari product documentation hingga troubleshooting dan implementation guidance.",
+    "keyPoints": [
+      "AWS Documentation menyediakan service user guides, API references, dan configuration guidance.",
+      "AWS Whitepapers membahas principles, architecture, security, economics, dan best practices.",
+      "AWS re:Post menyediakan community knowledge dan AWS Knowledge Center troubleshooting articles.",
+      "AWS Prescriptive Guidance menyediakan strategies, patterns, dan implementation guidance.",
+      "AWS Support Center digunakan untuk account/support cases sesuai support entitlement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-partners-marketplace",
+    "title": "AWS Partners, Marketplace, and Professional Guidance",
+    "summary": "AWS Marketplace, APN, Professional Services, dan Solutions Architects membantu customers melalui product procurement, partner ecosystem, consulting, dan technical architecture guidance.",
+    "keyPoints": [
+      "AWS Marketplace adalah curated catalog untuk third-party software, data, SaaS, AMIs, dan professional services.",
+      "AWS Partner Network adalah ecosystem organisasi yang membangun dan memberikan AWS-based solutions/services.",
+      "AWS Professional Services adalah AWS-led consulting untuk transformation initiatives.",
+      "Solutions Architects memberikan technical architecture guidance dan membantu customers map requirements ke AWS designs.",
+      "Marketplace adalah procurement/catalog channel, bukan AWS Support plan."
     ],
     "order": 1
   }

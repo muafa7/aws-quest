@@ -1,0 +1,3388 @@
+[
+  {
+    "code": "CCP-VAL-001",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "A startup wants to avoid purchasing servers before it knows how much capacity customers will require. Which AWS Cloud benefit MOST directly addresses this goal?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require hardware purchases sized for peak demand",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trade large upfront fixed expenses for variable, usage-based expenses",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use only long-term hardware contracts",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep spare physical servers in a company-owned data center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "variable-expense",
+      "pay-as-you-go"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-002",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A development team can provision a new test environment in minutes instead of waiting weeks for hardware procurement. Which cloud benefit does this MOST directly demonstrate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dedicated tenancy",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Data sovereignty",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Increased speed and agility",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Long-term capacity reservation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "agility",
+      "provisioning"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-003",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company wants its engineers to spend less time installing, powering, and maintaining physical servers. Which AWS Cloud value proposition is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reduce the undifferentiated work of running data centers",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase the number of physical servers the company owns",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Require every workload to use dedicated hardware",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Replace variable costs with larger capital purchases",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "data-center",
+      "operational-overhead"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-004",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is launching an application for customers in several geographic markets and wants to place workloads closer to users without building new data centers. Which AWS Cloud benefit is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Using only one Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Purchasing hardware several years in advance",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Keeping all workloads in a single physical facility",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Expanding globally using AWS infrastructure in multiple geographic areas",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "global-reach",
+      "agility"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-005",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A retailer cannot accurately predict how much infrastructure it will need during future sales events. Which cloud benefit BEST reduces the risk of paying for large amounts of unused peak capacity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Owning spare servers permanently",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Accessing capacity as needed instead of guessing far in advance",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Using fixed hardware capacity for the life of the application",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Purchasing a second company-owned data center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "capacity-planning",
+      "elasticity"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-006",
+    "concept": "clf-cloud-value-proposition",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "COMPARISON",
+    "question": "Which statement BEST contrasts the AWS Cloud consumption model with a traditional upfront infrastructure purchase?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS requires customers to buy all hardware before deployment",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Traditional infrastructure always charges only for resources that are actively consumed",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS can use variable, usage-based spending instead of requiring the same large fixed investment before capacity is needed",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS removes all operating costs regardless of how many resources are used",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "fixed-expense",
+      "variable-expense"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-VAL-007",
+    "concept": "clf-cloud-value-proposition",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO are benefits associated with the AWS Cloud value proposition? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provision IT resources quickly when they are needed",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Own and maintain every physical server used by the workload",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Purchase enough hardware for several years of peak demand before launch",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reduce the need to operate and maintain company-owned data centers",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use a fixed amount of capacity that cannot be changed after deployment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-value",
+      "agility",
+      "operational-overhead"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-001",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Why can AWS customers benefit from massive economies of scale?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Each customer must purchase separate AWS data centers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS limits every customer to the same fixed capacity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Customers are required to own the physical hardware they use",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS aggregates usage across many customers and operates infrastructure at very large scale",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-002",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a typical customer benefit of AWS operating infrastructure at massive scale?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Lower variable cost than many organizations could achieve by building equivalent infrastructure on their own",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A requirement to purchase all capacity as capital expenditure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Capacity that grows and shrinks automatically as application demand changes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A requirement to use only dedicated physical hosts",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "variable-cost",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-003",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes economies of scale from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Economies of scale adjust capacity as demand changes, while elasticity lowers unit cost through provider scale",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Economies of scale keep a workload available during a component failure, while elasticity trades a fixed expense for a variable expense",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Economies of scale can reduce unit costs through provider scale, while elasticity adjusts capacity as demand changes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Economies of scale and elasticity mean exactly the same thing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-004",
+    "concept": "clf-economies-of-scale",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company asks why a large cloud provider can often deliver infrastructure at a lower per-unit cost than the company could achieve in its own small data center. Which explanation is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The provider avoids using physical infrastructure",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The provider spreads purchasing and operating efficiencies across a very large customer base",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The provider keeps every customer's hardware permanently idle",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The provider requires every workload to run at peak capacity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "cost-efficiency",
+      "cloud-economics"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ECO-005",
+    "concept": "clf-economies-of-scale",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements explain how massive economies of scale can benefit AWS customers? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "They guarantee that application demand never changes",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Aggregated demand lets AWS operate infrastructure at a scale individual organizations usually cannot match",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "They require customers to maintain unused peak capacity",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "They automatically make every workload highly available",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Scale efficiencies can translate into lower pay-as-you-go prices for customers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "economies-of-scale",
+      "pay-as-you-go",
+      "cost-efficiency"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-001",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which statement BEST describes elasticity in cloud computing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Capacity can increase when demand rises and decrease when demand falls",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A workload is deployed redundantly so it can continue during a component failure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A workload can grow over time but must keep all added capacity permanently",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Data is retained for a specified period regardless of access pattern",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "capacity",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-002",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An online store adds compute capacity during a traffic spike and removes the extra capacity after traffic returns to normal. Which behavior is this demonstrating?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High availability",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Elasticity",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Dedicated tenancy",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "scaling",
+      "cloud-concepts"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-003",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes elasticity from high availability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Elasticity keeps a workload available during a component failure, while high availability adjusts capacity as demand changes",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Elasticity is only for databases, while high availability is only for compute",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Elasticity requires multiple AWS Regions, while high availability requires only one server",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Elasticity adjusts capacity as demand changes, while high availability focuses on keeping a workload available during failures",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "high-availability",
+      "comparison"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-004",
+    "concept": "clf-elasticity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A retailer currently keeps enough compute capacity running all year to handle a short annual sales peak. Which change would BEST use cloud elasticity to reduce idle capacity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the peak capacity running continuously",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add capacity when demand rises and remove it when demand falls",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Move the application to a single larger physical server",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable scaling so the capacity never changes",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "cost-efficiency",
+      "capacity"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ELA-005",
+    "concept": "clf-elasticity",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO behaviors are examples of elasticity? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Adding compute resources when request volume increases",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keeping maximum capacity running permanently regardless of demand",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Removing unneeded resources after demand decreases",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Creating a backup copy of data once per day",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Deploying the same fixed capacity in every environment",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "elasticity",
+      "scale-out",
+      "scale-in"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-001",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An application currently runs only in one Availability Zone. Which change MOST directly improves its availability during an Availability Zone failure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store application logs for a longer period",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Run redundant application resources across multiple Availability Zones with failover",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Increase the CPU size of the existing instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Move all resources into a single subnet",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "multi-az",
+      "failover"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-002",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes high availability from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High availability adjusts capacity as demand changes, while elasticity keeps a workload available during failures",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "High availability and elasticity are two names for the same behavior",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "High availability changes capacity only for cost reasons, while elasticity handles hardware failures",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "High availability focuses on continuing service through failures, while elasticity adjusts capacity to changing demand",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-003",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which design principle MOST directly reduces a single point of failure for a production workload?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use redundant resources in independent failure locations",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Run all components on one large instance",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Keep only one active copy of each critical component",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Place all compute resources in the same Availability Zone",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "redundancy",
+      "fault-isolation"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-004",
+    "concept": "clf-high-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team creates nightly backups of an application database, but the application still becomes unavailable whenever its only active compute instance fails. Which change MOST directly addresses the availability problem?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create backups less frequently",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store the backups for a longer retention period",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add redundant serving resources and fail over to healthy resources when a failure occurs",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Increase the size of the existing single compute instance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "redundancy",
+      "failover",
+      "backup"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HAV-005",
+    "concept": "clf-high-availability",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO practices directly support high availability for a workload? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Depend on a single active resource with no replacement",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Distribute workload resources across multiple Availability Zones",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Keep all resources in one failure location",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provision only enough capacity for normal demand and ignore failures",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Fail over requests to healthy resources when a component fails",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "high-availability",
+      "multi-az",
+      "failover"
+    ],
+    "source": {
+      "title": "Deploy the workload to multiple locations - AWS Well-Architected Reliability Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-001",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automatically modify every AWS resource without customer review",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide a legal compliance certification for every workload",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provide a consistent way to evaluate workloads against AWS architectural best practices and identify improvements",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Replace the need to define business requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "best-practices",
+      "review"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-002",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "How many pillars are in the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Six",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Three",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Eight",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Twelve",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-003",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement about trade-offs in the AWS Well-Architected Framework is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Every workload must prioritize all pillars equally in every environment",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Cost optimization must always be prioritized over reliability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The Framework forbids any trade-offs between architectural qualities",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Business context can drive trade-offs among pillars, while security and operational excellence are generally not traded off against the others",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars",
+      "trade-offs"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-004",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team wants a repeatable method to review an existing AWS workload and identify architectural risks and improvement opportunities. What should the team expect from a Well-Architected review?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A guarantee that the workload will never fail",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A structured assessment against AWS best practices that highlights areas for improvement",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Automatic replacement of all resources with the cheapest alternatives",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A certification that removes the need for future architecture reviews",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "review",
+      "best-practices"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAR-005",
+    "concept": "clf-well-architected-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which pair contains only pillars of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agility and Governance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Scalability and Durability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Reliability and Performance Efficiency",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Compliance and Business Continuity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "pillars",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Well-Architected Framework - Definitions",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/definitions.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WOE-001",
+    "concept": "clf-wa-operational-excellence",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary focus of the Operational Excellence pillar of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Running and improving workloads effectively while gaining insight into operations",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Minimizing environmental impact regardless of operational process",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Selecting only the lowest-priced AWS resources",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Protecting data by replacing all operational procedures with encryption",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "operational-excellence"
+    ],
+    "source": {
+      "title": "Operational Excellence Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WOE-002",
+    "concept": "clf-wa-operational-excellence",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A team reviews incidents, updates its runbooks, and uses operational metrics to improve future responses. Which Well-Architected pillar is MOST directly represented?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost Optimization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Operational Excellence",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Performance Efficiency",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Sustainability",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "operational-excellence",
+      "continuous-improvement"
+    ],
+    "source": {
+      "title": "Operational Excellence Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WOE-003",
+    "concept": "clf-wa-operational-excellence",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Operational Excellence from Reliability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Operational Excellence focuses only on reducing cost, while Reliability focuses only on encryption",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Operational Excellence and Reliability are different names for the same pillar",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Operational Excellence focuses on how teams operate and continuously improve workloads, while Reliability focuses on workloads performing their intended function and recovering from disruptions",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Operational Excellence focuses on environmental impact, while Reliability focuses on purchasing models",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "operational-excellence",
+      "reliability",
+      "comparison"
+    ],
+    "source": {
+      "title": "Operational Excellence Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WOE-004",
+    "concept": "clf-wa-operational-excellence",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants to improve operational consistency and reduce errors during routine changes. Which TWO practices align with Operational Excellence? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automate repeatable operational procedures where appropriate",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Depend on undocumented manual steps known only by one operator",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use frequent, small, reversible changes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Combine many unrelated changes into large releases to reduce deployment frequency",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Avoid reviewing operational events after they are resolved",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "operational-excellence",
+      "automation",
+      "reversible-changes"
+    ],
+    "source": {
+      "title": "Operational Excellence Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSE-001",
+    "concept": "clf-wa-security",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary focus of the Security pillar of the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reducing environmental impact by maximizing resource utilization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Ensuring every resource uses the least expensive pricing option",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Increasing application throughput without considering access controls",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Protecting data, systems, and assets while improving the workload's security posture",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "security"
+    ],
+    "source": {
+      "title": "Security Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSE-002",
+    "concept": "clf-wa-security",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A company wants every administrator to receive only the permissions required for their job. Which security principle BEST supports this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Least privilege",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Maximum utilization",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Horizontal scaling",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Economies of scale",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "security",
+      "least-privilege"
+    ],
+    "source": {
+      "title": "Security Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSE-003",
+    "concept": "clf-wa-security",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes the Security pillar from the Reliability pillar?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security focuses on reducing cost, while Reliability focuses on license management",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Security focuses on protecting data, systems, and assets, while Reliability focuses on consistent operation and recovery from disruptions",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Security focuses on resource utilization, while Reliability focuses on carbon intensity",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Security and Reliability have identical goals and practices",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "security",
+      "reliability",
+      "comparison"
+    ],
+    "source": {
+      "title": "Security Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSE-004",
+    "concept": "clf-wa-security",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team is improving the security posture of an AWS workload. Which TWO actions align with the Security pillar? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant permanent administrator permissions to every developer",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Apply least-privilege permissions to identities",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Disable logging to reduce storage usage",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Maintain traceability of security-relevant activity",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Treat security incidents as impossible once encryption is enabled",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "security",
+      "least-privilege",
+      "traceability"
+    ],
+    "source": {
+      "title": "Security Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WRE-001",
+    "concept": "clf-wa-reliability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does the Reliability pillar primarily address?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A workload always using the newest instance family",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A workload always choosing the lowest possible monthly cost",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A workload performing its intended function correctly and consistently and recovering from disruptions",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A workload minimizing environmental impact regardless of business requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "reliability"
+    ],
+    "source": {
+      "title": "Reliability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WRE-002",
+    "concept": "clf-wa-reliability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A team regularly tests its failure-recovery procedures instead of assuming they will work. Which Well-Architected pillar does this MOST directly support?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost Optimization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sustainability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Performance Efficiency",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reliability",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "reliability",
+      "recovery"
+    ],
+    "source": {
+      "title": "Reliability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WRE-003",
+    "concept": "clf-wa-reliability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Reliability from Performance Efficiency?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reliability emphasizes correct, consistent operation and recovery, while Performance Efficiency emphasizes efficient use of resources to meet performance requirements",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Reliability is about software licensing, while Performance Efficiency is about physical security",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Reliability is about minimizing environmental impact, while Performance Efficiency is about account governance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reliability and Performance Efficiency are identical because both use computing resources",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "reliability",
+      "performance-efficiency",
+      "comparison"
+    ],
+    "source": {
+      "title": "Reliability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WRE-004",
+    "concept": "clf-wa-reliability",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants a production workload to be more resilient to failures. Which TWO practices align with the Reliability pillar? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume failures will not occur in managed cloud services",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Keep all critical dependencies on one component to simplify operations",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Test recovery procedures regularly",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Avoid monitoring service quotas because capacity never affects reliability",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Design the workload to recover from component or infrastructure disruptions",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "reliability",
+      "resilience",
+      "recovery"
+    ],
+    "source": {
+      "title": "Reliability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WPE-001",
+    "concept": "clf-wa-performance-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary goal of the Performance Efficiency pillar?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Purchase maximum capacity regardless of utilization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use computing resources efficiently to meet system requirements as demand and technologies evolve",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Minimize cost even when performance requirements are not met",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Replace all managed services with self-managed infrastructure",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "performance-efficiency"
+    ],
+    "source": {
+      "title": "Performance Efficiency Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WPE-002",
+    "concept": "clf-wa-performance-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A team benchmarks several AWS compute options and chooses the one that meets its latency requirement with efficient resource use. Which pillar is MOST directly represented?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sustainability",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Performance Efficiency",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Operational Excellence",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "performance-efficiency",
+      "benchmarking"
+    ],
+    "source": {
+      "title": "Performance Efficiency Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WPE-003",
+    "concept": "clf-wa-performance-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Performance Efficiency from Cost Optimization?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Performance Efficiency always means selecting the cheapest resource, while Cost Optimization always means selecting the fastest resource",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Performance Efficiency is about identity controls, while Cost Optimization is about disaster recovery",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Performance Efficiency and Cost Optimization cannot influence the same design decision",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Performance Efficiency focuses on efficient resource use to meet performance requirements, while Cost Optimization focuses on delivering business value at the appropriate lowest price point",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "performance-efficiency",
+      "cost-optimization",
+      "comparison"
+    ],
+    "source": {
+      "title": "Performance Efficiency Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WPE-004",
+    "concept": "clf-wa-performance-efficiency",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A workload's demand and technology options change frequently. Which TWO practices align with Performance Efficiency? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use data and measurement to evaluate resource performance",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keep the original resource choice permanently even when requirements change",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provision the largest possible resource for every workload without testing",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reevaluate technology choices as new, more suitable options become available",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Choose resources only by monthly price and ignore performance requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "performance-efficiency",
+      "measurement",
+      "technology-selection"
+    ],
+    "source": {
+      "title": "Performance Efficiency Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WCO-001",
+    "concept": "clf-wa-cost-optimization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary focus of the Cost Optimization pillar?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Deliver business value while avoiding unnecessary cost and using cost-effective resources",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Maximize resource size regardless of utilization",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Minimize environmental impact as the only design objective",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Require all workloads to use dedicated hardware",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "cost-optimization"
+    ],
+    "source": {
+      "title": "Cost Optimization Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/definition.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WCO-002",
+    "concept": "clf-wa-cost-optimization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A company finds several consistently underused resources and changes them to sizes that still meet workload requirements. Which Cost Optimization practice does this BEST represent?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increasing fixed capacity for every possible peak",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Using cost-effective resources and removing overprovisioning",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Disabling cost visibility to reduce administrative work",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Prioritizing the highest-priced resource for every workload",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "cost-optimization",
+      "rightsizing"
+    ],
+    "source": {
+      "title": "Cost Optimization Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/definition.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WCO-003",
+    "concept": "clf-wa-cost-optimization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement about Cost Optimization is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost Optimization requires minimizing cost even when the workload can no longer meet requirements",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Cost Optimization means every AWS resource should be purchased with the same pricing model",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The lowest-priced option is not automatically optimal if it fails to meet required business or technical outcomes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Cost Optimization is complete once a workload is initially deployed",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "cost-optimization",
+      "business-value"
+    ],
+    "source": {
+      "title": "Cost Optimization Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/definition.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WCO-004",
+    "concept": "clf-wa-cost-optimization",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants to improve cost efficiency without reducing required service levels. Which TWO actions align with the Cost Optimization pillar? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep idle resources indefinitely because they might be needed someday",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Measure expenditure and usage to identify waste",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Choose the cheapest option even when it cannot meet required performance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Stop reviewing costs after the initial architecture is deployed",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Match resource supply and purchasing choices to workload demand",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "cost-optimization",
+      "usage-awareness",
+      "demand"
+    ],
+    "source": {
+      "title": "Cost Optimization Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/definition.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSU-001",
+    "concept": "clf-wa-sustainability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary focus of the Sustainability pillar?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Guarantee the lowest possible monthly bill",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replace all security controls with managed services",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Run maximum capacity at all times regardless of demand",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reduce the environmental impact of cloud workloads by improving efficiency and reducing waste",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "sustainability"
+    ],
+    "source": {
+      "title": "Sustainability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSU-002",
+    "concept": "clf-wa-sustainability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A workload keeps large amounts of compute capacity running even when demand is low. Which change BEST aligns with Sustainability guidance?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Align provisioned resources more closely with actual demand",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keep the unused capacity running to avoid any scaling activity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Duplicate every idle resource in another Region regardless of requirements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase resource size so utilization becomes even lower",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "sustainability",
+      "resource-efficiency"
+    ],
+    "source": {
+      "title": "Sustainability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSU-003",
+    "concept": "clf-wa-sustainability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Sustainability from Cost Optimization?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Sustainability is only about software licenses, while Cost Optimization is only about security",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sustainability focuses on reducing environmental impact, while Cost Optimization focuses on delivering business value with cost-efficient resource use",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Sustainability and Cost Optimization always require exactly the same decision",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Sustainability focuses only on availability, while Cost Optimization focuses only on latency",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "sustainability",
+      "cost-optimization",
+      "comparison"
+    ],
+    "source": {
+      "title": "Sustainability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WSU-004",
+    "concept": "clf-wa-sustainability",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team wants to reduce the environmental impact of an AWS workload. Which TWO practices align with the Sustainability pillar? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase utilization and remove resources that are no longer required",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Run peak capacity continuously even when usage is low",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Optimize software and architecture to reduce unnecessary resource consumption",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Keep obsolete components active because they have already been deployed",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Ignore workload demand when selecting resource quantities",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "well-architected",
+      "sustainability",
+      "utilization",
+      "efficiency"
+    ],
+    "source": {
+      "title": "Sustainability Pillar - AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/best-practices-for-sustainability-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CAF-001",
+    "concept": "clf-cloud-adoption-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of the AWS Cloud Adoption Framework (AWS CAF)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide a certification that guarantees every AWS workload is secure",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Automatically migrate every on-premises server to Amazon EC2",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Help organizations improve cloud readiness and guide cloud-enabled business transformation",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Replace the AWS Well-Architected Framework for workload architecture reviews",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-caf",
+      "cloud-adoption",
+      "transformation"
+    ],
+    "source": {
+      "title": "Foundational capabilities - AWS Cloud Adoption Framework",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CAF-002",
+    "concept": "clf-cloud-adoption-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which set contains only AWS CAF perspectives?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cost, Reliability, Performance, Security, Sustainability, and Operations",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Compute, Storage, Database, Network, Analytics, and Security",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Strategy, Architecture, Migration, Billing, Support, and Marketplace",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Business, People, Governance, Platform, Security, and Operations",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-caf",
+      "perspectives"
+    ],
+    "source": {
+      "title": "Foundational capabilities - AWS Cloud Adoption Framework",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CAF-003",
+    "concept": "clf-cloud-adoption-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS CAF from the AWS Well-Architected Framework?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS CAF guides organizational cloud readiness and transformation capabilities, while Well-Architected evaluates workloads against architectural best practices",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS CAF is only a pricing framework, while Well-Architected is only a migration tool",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CAF reviews individual IAM permissions, while Well-Architected only manages invoices",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS CAF and Well-Architected are identical frameworks with different names",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-caf",
+      "well-architected",
+      "comparison"
+    ],
+    "source": {
+      "title": "Foundational capabilities - AWS Cloud Adoption Framework",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CAF-004",
+    "concept": "clf-cloud-adoption-framework",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An organization needs to develop cloud skills, evolve its culture, and prepare its workforce for a cloud transformation. Which AWS CAF perspective is MOST directly associated with these concerns?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Platform",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "People",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Security",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Governance",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-caf",
+      "people-perspective",
+      "cloud-readiness"
+    ],
+    "source": {
+      "title": "Foundational capabilities - AWS Cloud Adoption Framework",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CAF-005",
+    "concept": "clf-cloud-adoption-framework",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements correctly describe AWS CAF? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "It is primarily a service for replicating servers to Amazon EC2",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It helps organizations identify cloud-readiness capability gaps",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "It guarantees that a workload meets every Well-Architected best practice",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It organizes guidance into six perspectives owned by relevant stakeholders",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "It replaces the need to define business outcomes for cloud transformation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-caf",
+      "cloud-readiness",
+      "perspectives"
+    ],
+    "source": {
+      "title": "Foundational capabilities - AWS Cloud Adoption Framework",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/foundational-capabilities.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MIG-001",
+    "concept": "clf-migration-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which list contains only AWS migration strategies from the 7 Rs?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rehost, reserve, replicate, resize, recover, report, and review",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Build, test, deploy, monitor, scale, patch, and archive",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Rehost, relocate, replatform, refactor, repurchase, retain, and retire",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Assess, secure, encrypt, route, cache, balance, and optimize",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "7-rs"
+    ],
+    "source": {
+      "title": "About the migration strategies - AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MIG-002",
+    "concept": "clf-migration-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company wants to move an existing application to AWS with minimal application changes. Which migration strategy is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Refactor",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Repurchase",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Retire",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Rehost",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "migration",
+      "rehost",
+      "lift-and-shift"
+    ],
+    "source": {
+      "title": "About the migration strategies - AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MIG-003",
+    "concept": "clf-migration-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes replatform from refactor?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replatform makes limited optimizations without a major redesign, while refactor substantially changes the application architecture",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Replatform means decommission the application, while refactor means leave it on premises",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Replatform means replace the application with SaaS, while refactor means move it unchanged",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Replatform and refactor both require no application changes",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "replatform",
+      "refactor",
+      "comparison"
+    ],
+    "source": {
+      "title": "About the migration strategies - AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MIG-004",
+    "concept": "clf-migration-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company decides to replace an internally hosted CRM application with a SaaS product instead of moving the existing application. Which migration strategy is this?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Retain",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Repurchase",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Rehost",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Relocate",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "repurchase",
+      "saas"
+    ],
+    "source": {
+      "title": "About the migration strategies - AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MIG-005",
+    "concept": "clf-migration-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application is no longer used and provides no business value. The company decides to decommission it rather than migrate it. Which migration strategy applies?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Retain",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replatform",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Retire",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Rehost",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "retire",
+      "decommission"
+    ],
+    "source": {
+      "title": "About the migration strategies - AWS Prescriptive Guidance",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MGS-001",
+    "concept": "clf-migration-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Transform MGN, formerly AWS Application Migration Service, primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Converting relational database schemas between database engines",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Managing software license entitlements across AWS accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Delivering cached web content from edge locations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Rehosting physical, virtual, or cloud-based servers to AWS",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "migration",
+      "aws-transform-mgn",
+      "rehost"
+    ],
+    "source": {
+      "title": "AWS Transform MGN - Rehost applications to AWS",
+      "url": "https://aws.amazon.com/application-migration-service/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MGS-002",
+    "concept": "clf-migration-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is the primary role of AWS Application Discovery Service in a migration?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Collect configuration, utilization, process, and dependency information to support migration planning",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Continuously replicate source server disks for final cutover",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Purchase Reserved Instances for migrated workloads",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provide DNS routing after the migration",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "application-discovery",
+      "discovery"
+    ],
+    "source": {
+      "title": "What is AWS Application Discovery Service?",
+      "url": "https://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MGS-003",
+    "concept": "clf-migration-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Migration Hub from AWS Transform MGN?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Migration Hub performs block-level server replication, while AWS Transform MGN only displays migration status",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Migration Hub provides centralized migration visibility and tracking, while AWS Transform MGN performs server rehosting through replication and cutover",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Migration Hub manages software licenses, while AWS Transform MGN creates cost budgets",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Migration Hub and AWS Transform MGN are both database schema-conversion tools",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "migration-hub",
+      "aws-transform-mgn",
+      "comparison"
+    ],
+    "source": {
+      "title": "Discover on-premises resources using AWS Migration Hub discovery tools",
+      "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/gs-new-user-discovery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MGS-004",
+    "concept": "clf-migration-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants an assessment based on server inventory and utilization data to build a directional business case for moving to AWS. Which tool is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Transform MGN",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS License Manager",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Migration Evaluator",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon CloudFront",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "migration",
+      "migration-evaluator",
+      "assessment",
+      "business-case"
+    ],
+    "source": {
+      "title": "Discover on-premises resources using AWS Migration Hub discovery tools",
+      "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/gs-new-user-discovery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MGS-005",
+    "concept": "clf-migration-services",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A migration team is still in the discovery and planning stage. Which TWO capabilities are appropriate at this stage? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure CloudFront cache behaviors for the future application",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Purchase Dedicated Hosts before determining migration requirements",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Collect on-premises server utilization and dependency information",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use a server rehosting cutover as the primary method for discovering application dependencies",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Build an assessment or directional business case from inventory and utilization data",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "migration",
+      "discovery",
+      "migration-evaluator",
+      "planning"
+    ],
+    "source": {
+      "title": "Discover on-premises resources using AWS Migration Hub discovery tools",
+      "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/gs-new-user-discovery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CPX-001",
+    "concept": "clf-fixed-vs-variable-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which statement BEST describes the shift from fixed to variable expense in cloud computing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Purchase enough hardware for peak demand several years in advance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replace all operating expenses with mandatory capital purchases",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Pay the same amount regardless of how many cloud resources are used",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Pay for resources as they are consumed instead of making the same large upfront infrastructure investment before demand is known",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloud-economics",
+      "fixed-cost",
+      "variable-cost"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CPX-002",
+    "concept": "clf-fixed-vs-variable-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which example is MOST clearly a fixed upfront infrastructure expense?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Purchasing servers and data-center equipment before the workload starts",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Paying for compute capacity only while it is being used",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Reducing the number of running instances when demand falls",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Using a usage-based managed service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-economics",
+      "fixed-expense",
+      "capex"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CPX-003",
+    "concept": "clf-fixed-vs-variable-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes the fixed-to-variable cost benefit from economies of scale?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Fixed-to-variable cost is about high availability, while economies of scale is about encryption",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Fixed-to-variable cost describes how the customer pays for capacity, while economies of scale describes cost efficiencies AWS gains by operating at large scale",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Fixed-to-variable cost and economies of scale are exactly the same cloud characteristic",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Fixed-to-variable cost describes application latency, while economies of scale describes software licensing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-economics",
+      "fixed-expense",
+      "variable-expense",
+      "economies-of-scale"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CPX-004",
+    "concept": "clf-fixed-vs-variable-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "A company buys enough on-premises hardware for its expected three-year peak before launching a new application. Which cloud economic model would MOST directly reduce this upfront capacity risk?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Purchase even more hardware before launch",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Keep all capacity fixed for the full three years",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use variable, usage-based cloud resources and add capacity when needed",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use a larger company-owned data center with the same upfront purchasing model",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloud-economics",
+      "variable-expense",
+      "capacity-planning"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CPX-005",
+    "concept": "clf-fixed-vs-variable-costs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A workload has highly uncertain demand. Why can a variable cloud consumption model be financially useful?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It guarantees every AWS service will have zero operating cost",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It requires the customer to own the physical infrastructure",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It fixes monthly spending at the same amount regardless of usage",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It can reduce the need to commit capital to peak capacity before actual demand is known",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloud-economics",
+      "variable-expense",
+      "uncertain-demand"
+    ],
+    "source": {
+      "title": "Six advantages of cloud computing",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LIC-001",
+    "concept": "clf-licensing-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does BYOL mean in an AWS software licensing context?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bring Your Own License, using eligible software licenses the customer already owns according to vendor terms",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Buy Your Own Location, selecting the physical AWS data center",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Balance Your Online Load, distributing traffic between Regions",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Build Your Own Lambda, packaging every application as a function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "licensing",
+      "byol"
+    ],
+    "source": {
+      "title": "What is AWS License Manager?",
+      "url": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LIC-002",
+    "concept": "clf-licensing-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a key purpose of AWS License Manager?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automatically convert every BYOL agreement into an AWS-owned license",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide centralized visibility and controls for software license usage and compliance",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Replace software vendor licensing terms",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provide application load balancing for licensed software",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "licensing",
+      "license-manager",
+      "compliance"
+    ],
+    "source": {
+      "title": "What is AWS License Manager?",
+      "url": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LIC-003",
+    "concept": "clf-licensing-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes BYOL from a license-included model?",
+    "options": [
+      {
+        "key": "A",
+        "text": "BYOL always includes the software license in AWS usage charges, while license-included requires a separate customer entitlement",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "BYOL can be used without considering vendor terms, while license-included always requires Dedicated Hosts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "BYOL uses eligible license entitlement owned by the customer, while license-included pricing includes the software license with the selected offering",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "BYOL and license-included are identical billing labels",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "licensing",
+      "byol",
+      "license-included",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS License Manager?",
+      "url": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-LIC-004",
+    "concept": "clf-licensing-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company owns eligible enterprise software licenses and wants to track their use across multiple AWS accounts to reduce licensing overages. Which AWS service is MOST relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Migration Hub",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Compute Optimizer",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CloudFormation",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS License Manager",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "licensing",
+      "license-manager",
+      "multi-account"
+    ],
+    "source": {
+      "title": "What is AWS License Manager?",
+      "url": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSZ-001",
+    "concept": "clf-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is rightsizing in the AWS Cloud?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Matching resource size and configuration to actual workload requirements",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Running every resource at the largest available size",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Deploying every workload in every AWS Region",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keeping resource configuration unchanged for the life of the application",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rightsizing",
+      "cost-efficiency"
+    ],
+    "source": {
+      "title": "Get EC2 instance recommendations from Compute Optimizer",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recommendations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSZ-002",
+    "concept": "clf-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "How can AWS Compute Optimizer assist with rightsizing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It automatically rewrites application source code",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It analyzes resource configuration and utilization metrics to generate recommendations",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "It replaces vendor software license agreements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It guarantees that every recommendation has zero performance risk",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rightsizing",
+      "compute-optimizer",
+      "utilization"
+    ],
+    "source": {
+      "title": "Get EC2 instance recommendations from Compute Optimizer",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recommendations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSZ-003",
+    "concept": "clf-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes rightsizing from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rightsizing handles security events, while elasticity manages software licenses",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Rightsizing and elasticity both mean permanently running maximum capacity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Rightsizing chooses an appropriate resource size or configuration, while elasticity changes capacity as demand rises or falls",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Rightsizing is only for storage, while elasticity is only for databases",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "rightsizing",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Get EC2 instance recommendations from Compute Optimizer",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recommendations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-RSZ-004",
+    "concept": "clf-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EC2 instance has remained lightly utilized for months, and the company wants to reduce cost while maintaining required performance. What should the company evaluate FIRST?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Moving the workload to the largest available EC2 instance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Adding more unused instances without reviewing utilization",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Buying additional on-premises hardware for the same workload",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Compute Optimizer rightsizing recommendation for a more appropriate instance configuration",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "rightsizing",
+      "compute-optimizer",
+      "ec2"
+    ],
+    "source": {
+      "title": "Get EC2 instance recommendations from Compute Optimizer",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recommendations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AUT-001",
+    "concept": "clf-automation-benefits",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is a primary benefit of automating repeatable cloud operations?",
+    "options": [
+      {
+        "key": "A",
+        "text": "More consistent execution with less manual effort and fewer human errors",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A guarantee that failures can never occur",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A requirement to perform every change manually",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Permanent elimination of all operational costs",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "automation",
+      "operational-excellence"
+    ],
+    "source": {
+      "title": "Prepare - Operational Excellence Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/prepare.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AUT-002",
+    "concept": "clf-automation-benefits",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Why is defining infrastructure as code useful?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It prevents infrastructure from ever changing",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Infrastructure definitions can be versioned, reviewed, tested, and used to create repeatable environments",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "It requires every resource to be created manually after the template is written",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It replaces the need for access control and monitoring",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "automation",
+      "infrastructure-as-code",
+      "version-control"
+    ],
+    "source": {
+      "title": "Prepare - Operational Excellence Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/prepare.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AUT-003",
+    "concept": "clf-automation-benefits",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes automation from elasticity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Automation and elasticity are two names for the same cloud characteristic",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Automation is only about reducing storage cost, while elasticity is only about software licensing",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Automation executes processes consistently with reduced manual intervention, while elasticity adjusts capacity as workload demand changes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Automation changes physical AWS Regions automatically, while elasticity performs security auditing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "automation",
+      "elasticity",
+      "comparison"
+    ],
+    "source": {
+      "title": "Prepare - Operational Excellence Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/prepare.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AUT-004",
+    "concept": "clf-automation-benefits",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company repeatedly creates identical test environments by manually clicking through the AWS console, and configuration differences frequently cause errors. Which approach BEST addresses this problem?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Continue the manual process but add more operators",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create larger instances so configuration differences are less visible",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Disable version control for infrastructure definitions",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Define the infrastructure in a reusable AWS CloudFormation template and provision environments from that template",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "automation",
+      "cloudformation",
+      "infrastructure-as-code",
+      "repeatability"
+    ],
+    "source": {
+      "title": "Prepare - Operational Excellence Pillar",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/prepare.html"
+    },
+    "active": true
+  }
+]

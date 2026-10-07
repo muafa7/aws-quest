@@ -11,7 +11,7 @@ This document summarizes what is implemented in the current V1 development slice
 - Prisma ORM + SQLite driver adapter
 - Idempotent JSON content seeding
 - Stable certification, concept, and question identifiers
-- Seed validation for option/correct-answer constraints
+- Seed validation for strict keys, references, correct-answer and `(Select N.)` rules, code prefixes and question file domains, also available as `pnpm content:validate`
 
 ### Learn Mode
 

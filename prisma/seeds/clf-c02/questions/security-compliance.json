@@ -1,0 +1,4699 @@
+[
+  {
+    "code": "CCP-SRM-001",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company runs an application on Amazon EC2. Who is responsible for patching the guest operating system?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS, because AWS manages the physical hosts that run EC2",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The customer",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS and the customer jointly patch the same guest operating system",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The operating system vendor automatically patches every EC2 guest operating system",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "shared-responsibility",
+      "security"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-002",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company stores confidential files in an Amazon S3 bucket. Under the AWS shared responsibility model, who is responsible for configuring the bucket permissions for the company's data?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The customer",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS, because Amazon S3 is a managed service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS and the customer must approve every bucket permission change together",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The identity provider that authenticates the company's workforce users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "shared-responsibility",
+      "access-control"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-003",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which task is an AWS responsibility when a customer uses Amazon EC2?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Patching the guest operating system",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Managing application user accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Securing the physical infrastructure that runs EC2",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Configuring the customer's security group rules",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ec2",
+      "shared-responsibility",
+      "physical-security"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-004",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company uses Amazon RDS for a production database. Which task is AWS responsible for under the shared responsibility model?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Creating database users and deciding their privileges",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Classifying the sensitivity of the data stored in the database",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Configuring which application identities are allowed to connect to the database",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Maintaining the underlying infrastructure and operating system used by the managed database service",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "rds",
+      "shared-responsibility",
+      "managed-service"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-005",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company deploys code with AWS Lambda. Which task remains the customer's responsibility?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Securing the function code, data, and IAM permissions used by the function",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Patching the physical servers that execute the function",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Maintaining the data center power and cooling systems",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Replacing failed physical hosts that run the Lambda service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "lambda",
+      "shared-responsibility",
+      "iam"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-006",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "How does customer responsibility generally change when moving from Amazon EC2 to a more managed service such as Amazon RDS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The customer becomes responsible for the physical data center in addition to the application",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS becomes responsible for all customer data classification and user permissions",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS manages more of the underlying platform, while the customer still manages data, access, and customer-controlled configuration",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "The shared responsibility model no longer applies to managed services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "shared-responsibility",
+      "ec2",
+      "rds",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-007",
+    "concept": "clf-shared-responsibility",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which statement about the AWS shared responsibility model is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS is responsible for every security configuration after a workload is deployed to AWS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The exact division of responsibilities depends partly on the AWS service and the controls that remain with the customer",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Customers are always responsible for patching the physical hosts used by AWS services",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The division of responsibility is identical for Amazon EC2, Amazon RDS, AWS Lambda, and Amazon S3",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "shared-responsibility",
+      "managed-services",
+      "security"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRM-008",
+    "concept": "clf-shared-responsibility",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO responsibilities generally remain with the customer across AWS services? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Securing AWS data center buildings",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replacing failed physical servers in AWS facilities",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Maintaining the AWS global network infrastructure",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Classifying and protecting the customer's data according to business requirements",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Managing identities and permissions that the customer controls",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "shared-responsibility",
+      "data-protection",
+      "identity"
+    ],
+    "source": {
+      "title": "AWS Shared Responsibility Model",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-001",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of an IAM policy?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store application passwords and database credentials",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Monitor CPU utilization and create performance alarms",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Distribute incoming application traffic across servers",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Define which actions are allowed or denied on AWS resources under specified conditions",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam",
+      "policies",
+      "permissions"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-002",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is an IAM group used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Apply a common set of permissions to multiple IAM users",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Provide temporary credentials directly to AWS services",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a separate AWS account for every employee",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store encryption keys for application data",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "groups",
+      "users"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-003",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A developer only needs to read objects from one Amazon S3 bucket. Which approach BEST follows the principle of least privilege?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Attach AdministratorAccess so future requests will not require policy changes",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Grant full access to all S3 buckets in the account",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Grant only the S3 read actions required for that bucket",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Give the developer the root user credentials for temporary use",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "least-privilege",
+      "s3"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-004",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an AWS managed policy from a customer managed policy?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS managed policies can only be attached to root users, while customer managed policies can only be attached to groups",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS manages and updates AWS managed policies, while the customer creates and maintains customer managed policies",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS managed policies contain only deny statements, while customer managed policies contain only allow statements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Customer managed policies are created automatically by AWS and cannot be edited by customers",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "managed-policies",
+      "customer-managed-policies",
+      "comparison"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-005",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A security team wants a report showing the status of IAM user credentials, including password and access key information. Which IAM feature should the team use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon CloudWatch dashboard",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Config conformance pack",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Artifact report",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "IAM credential report",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam",
+      "credential-report",
+      "audit"
+    ],
+    "source": {
+      "title": "Getting credential reports for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-006",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants to reduce excessive permissions that accumulated over time. Which approach BEST supports this goal?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Review access and last-used information, then refine policies toward the permissions actually required",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Replace all customer managed policies with AdministratorAccess",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create additional access keys for each IAM user before reviewing permissions",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Move all permissions to the root user so they are managed in one place",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "least-privilege",
+      "access-review"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IAM-007",
+    "concept": "clf-iam-users-groups-policies",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO practices help implement least privilege in IAM? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use wildcard administrator permissions for every identity",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Share one IAM user's credentials across an entire team",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Grant only the actions and resources required for a task",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Create root access keys for routine automation",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Review permissions and remove access that is no longer needed",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam",
+      "least-privilege",
+      "permissions"
+    ],
+    "source": {
+      "title": "Policies and permissions in AWS Identity and Access Management",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROL-001",
+    "concept": "clf-iam-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is a key characteristic of an IAM role?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It must have a long-term password and access key",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It provides permissions through temporary security credentials when assumed",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "It can only be used by the AWS account root user",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It permanently transfers ownership of AWS resources to another account",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "roles",
+      "temporary-credentials"
+    ],
+    "source": {
+      "title": "IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROL-002",
+    "concept": "clf-iam-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An application running on Amazon EC2 needs permission to read from an S3 bucket. What is the recommended way to provide the application with AWS credentials?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Hard-code an IAM user's access key in the application source code",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store root user access keys in an environment variable",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Share one developer's long-term credentials with the instance",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Attach an IAM role with the required permissions to the EC2 instance",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam",
+      "roles",
+      "ec2",
+      "temporary-credentials"
+    ],
+    "source": {
+      "title": "IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROL-003",
+    "concept": "clf-iam-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes an IAM role from an IAM user?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A role is intended to be assumed and provides temporary credentials, while an IAM user can have long-term credentials",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A role can have permissions, while an IAM user cannot have permissions",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "An IAM user can be used across accounts, while a role can never be used across accounts",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A role is only for billing access, while an IAM user is only for application access",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "roles",
+      "users",
+      "comparison"
+    ],
+    "source": {
+      "title": "IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROL-004",
+    "concept": "clf-iam-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team in Account A needs temporary access to specific resources in Account B without creating duplicate IAM users in Account B. What should Account B configure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A new root user for Account A inside Account B",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A shared long-term access key stored in both accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A cross-account IAM role that trusts the appropriate principal in Account A and grants only the required permissions",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An IAM group in Account B with no role or trust relationship",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "cross-account",
+      "roles",
+      "trust-policy"
+    ],
+    "source": {
+      "title": "IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROL-005",
+    "concept": "clf-iam-roles",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about IAM roles are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Every role must have a console password",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A role can be assumed by authorized users, applications, or AWS services",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Roles require permanent access keys to be stored with the application",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A role can only be used within the account where the calling user was originally created",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "A role session uses temporary security credentials",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam",
+      "roles",
+      "temporary-credentials"
+    ],
+    "source": {
+      "title": "IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROO-001",
+    "concept": "clf-root-user",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "When should the AWS account root user generally be used?",
+    "options": [
+      {
+        "key": "A",
+        "text": "For routine application deployments",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Only for tasks that specifically require root user credentials",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "For every administrator's daily console access",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "As the shared identity for all developers",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "root-user",
+      "iam",
+      "best-practices"
+    ],
+    "source": {
+      "title": "Root user best practices for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROO-002",
+    "concept": "clf-root-user",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which control is strongly recommended to protect the AWS account root user?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create several root access keys and distribute them to administrators",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Disable account recovery mechanisms",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use the root user for all automation so credentials stay centralized",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable multi-factor authentication (MFA)",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "root-user",
+      "mfa",
+      "best-practices"
+    ],
+    "source": {
+      "title": "Root user best practices for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROO-003",
+    "concept": "clf-root-user",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An administrator needs full administrative access for normal daily work. What is the BEST practice?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use an appropriately secured administrative identity or workforce access method instead of the root user",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use the root user because administrative work always requires root credentials",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create and share a root access key among the operations team",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable MFA on the root user to reduce sign-in friction",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "root-user",
+      "administration",
+      "iam-identity-center"
+    ],
+    "source": {
+      "title": "Root user best practices for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROO-004",
+    "concept": "clf-root-user",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Why should long-term access keys generally not be created for the AWS account root user?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Root access keys can only read billing information and cannot access resources",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Root access keys expire automatically after each API call",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "They would provide programmatic credentials with the root user's unrestricted privileges",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS services cannot authenticate requests made with root access keys",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "root-user",
+      "access-keys",
+      "credentials"
+    ],
+    "source": {
+      "title": "Root user best practices for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ROO-005",
+    "concept": "clf-root-user",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to reduce the risk that a single person's departure prevents recovery of a critical AWS account. Which practice is MOST appropriate for the root identity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use an employee's personal email address as the permanent root contact",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Protect the root credentials and recovery mechanisms with organization-controlled processes rather than relying on one individual",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Store the root password in the source code repository",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Remove all monitoring of root-user activity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "root-user",
+      "account-recovery",
+      "governance"
+    ],
+    "source": {
+      "title": "Root user best practices for your AWS account",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MFA-001",
+    "concept": "clf-mfa-credentials",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What security benefit does multi-factor authentication (MFA) provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It replaces authorization policies with network rules",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It automatically encrypts every object stored in Amazon S3",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It removes the need to protect access keys",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It requires an additional authentication factor beyond the password",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "mfa",
+      "authentication",
+      "credentials"
+    ],
+    "source": {
+      "title": "Multi-factor authentication in AWS",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MFA-002",
+    "concept": "clf-mfa-credentials",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does an IAM password policy control?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Password requirements for IAM users who use console passwords",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The encryption algorithm used for Amazon S3 objects",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The allowed inbound ports for EC2 instances",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The maximum permissions allowed by AWS Organizations",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam",
+      "password-policy",
+      "credentials"
+    ],
+    "source": {
+      "title": "Set an account password policy for IAM users",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MFA-003",
+    "concept": "clf-mfa-credentials",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A developer needs programmatic AWS access for a short-lived task. Which approach is preferable when supported?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a root user access key for the task",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Hard-code a permanent IAM access key in the application",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use temporary credentials obtained through a role or federation",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Share another developer's long-term access key",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "access-keys",
+      "temporary-credentials",
+      "iam"
+    ],
+    "source": {
+      "title": "Temporary security credentials in IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MFA-004",
+    "concept": "clf-mfa-credentials",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO practices improve the security of AWS credentials? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Commit access keys to a private source-code repository",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Share one IAM user's password among team members",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use MFA for privileged interactive access",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Create root access keys for routine scripts",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Disable or rotate long-term credentials that are no longer needed",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "mfa",
+      "access-keys",
+      "credential-hygiene"
+    ],
+    "source": {
+      "title": "Security best practices in IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IDC-001",
+    "concept": "clf-iam-identity-center",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS IAM Identity Center primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Providing end-user sign-up for public mobile applications",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Centrally managing workforce access to AWS accounts and applications",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Scanning EC2 instances for software vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Filtering HTTP requests to web applications",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam-identity-center",
+      "workforce",
+      "federation"
+    ],
+    "source": {
+      "title": "What is IAM Identity Center?",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IDC-002",
+    "concept": "clf-iam-identity-center",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company already uses an external corporate identity provider and wants employees to access multiple AWS accounts with centralized assignments. Which AWS service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Cognito",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Macie",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS IAM Identity Center",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "iam-identity-center",
+      "workforce",
+      "external-idp"
+    ],
+    "source": {
+      "title": "What is IAM Identity Center?",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IDC-003",
+    "concept": "clf-iam-identity-center",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes IAM Identity Center from Amazon Cognito?",
+    "options": [
+      {
+        "key": "A",
+        "text": "IAM Identity Center focuses on workforce access to AWS accounts and applications, while Cognito focuses on identity for web and mobile application users",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "IAM Identity Center stores encryption keys, while Cognito manages TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "IAM Identity Center monitors CPU metrics, while Cognito records API audit events",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "IAM Identity Center is only for root users, while Cognito is only for AWS services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam-identity-center",
+      "cognito",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is IAM Identity Center?",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-IDC-004",
+    "concept": "clf-iam-identity-center",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to assign the same predefined level of AWS account access to a workforce group across several accounts. Which IAM Identity Center feature is designed for this?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 bucket policies",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Network ACLs",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Permission sets",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "CloudWatch metric filters",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "iam-identity-center",
+      "permission-sets",
+      "multi-account"
+    ],
+    "source": {
+      "title": "What is IAM Identity Center?",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-COG-001",
+    "concept": "clf-cognito",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an Amazon Cognito user pool?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A centralized workforce portal for administrators of many AWS accounts",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A user directory that provides sign-up and sign-in capabilities for web and mobile applications",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A vulnerability scanner for container images",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A service for managing SSL/TLS certificates",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cognito",
+      "user-pools",
+      "authentication"
+    ],
+    "source": {
+      "title": "Amazon Cognito user pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-COG-002",
+    "concept": "clf-cognito",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is an Amazon Cognito identity pool primarily used to provide to application users?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Permanent root user credentials",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Dedicated hardware security modules",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Service control policies for AWS Organizations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Temporary AWS credentials for accessing permitted AWS resources",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cognito",
+      "identity-pools",
+      "temporary-credentials"
+    ],
+    "source": {
+      "title": "Amazon Cognito identity pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-COG-003",
+    "concept": "clf-cognito",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Cognito user pools from Cognito identity pools?",
+    "options": [
+      {
+        "key": "A",
+        "text": "User pools authenticate application users and issue tokens, while identity pools can exchange identities for temporary AWS credentials",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "User pools store encryption keys, while identity pools store TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "User pools manage AWS Organizations, while identity pools manage security groups",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "User pools are for EC2 patching, while identity pools are for S3 lifecycle policies",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cognito",
+      "user-pools",
+      "identity-pools",
+      "comparison"
+    ],
+    "source": {
+      "title": "Amazon Cognito identity pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-COG-004",
+    "concept": "clf-cognito",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A consumer-facing mobile app needs self-service user sign-up and sign-in, including optional federation with social identity providers. Which AWS service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS IAM Identity Center",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Organizations",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Cognito user pools",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cognito",
+      "user-pools",
+      "federation",
+      "mobile-app"
+    ],
+    "source": {
+      "title": "Amazon Cognito user pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GOV-001",
+    "concept": "clf-multi-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the purpose of a Service Control Policy (SCP) in AWS Organizations?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant permissions directly to every IAM user in the organization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Set the maximum available permissions for principals in affected member accounts or organizational units",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Create application user accounts for a mobile app",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Encrypt secrets stored by applications",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "organizations",
+      "scp",
+      "governance"
+    ],
+    "source": {
+      "title": "Service control policies (SCPs) - AWS Organizations",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GOV-002",
+    "concept": "clf-multi-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which statement about Service Control Policies is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "SCPs are attached to individual EC2 instances as stateful firewalls",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "SCPs replace all IAM policies in member accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "SCPs provide temporary credentials to workforce users",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "SCPs limit the permissions that can be available, but they do not grant permissions by themselves",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "organizations",
+      "scp",
+      "permissions"
+    ],
+    "source": {
+      "title": "Service control policies (SCPs) - AWS Organizations",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GOV-003",
+    "concept": "clf-multi-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants a prescriptive way to establish and govern a multi-account AWS landing zone with centralized controls. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Control Tower",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Resource Access Manager",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Cognito",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "control-tower",
+      "multi-account",
+      "landing-zone"
+    ],
+    "source": {
+      "title": "What Is AWS Control Tower?",
+      "url": "https://docs.aws.amazon.com/controltower/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GOV-004",
+    "concept": "clf-multi-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "COMPARISON",
+    "question": "Which statement correctly matches an AWS governance service to its purpose?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Service Catalog sets organization-wide maximum IAM permissions, while AWS RAM creates workforce identities",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Service Catalog detects threats, while AWS RAM scans software vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Service Catalog provides approved products for controlled self-service provisioning, while AWS RAM shares supported resources across accounts",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Service Catalog manages DDoS protection, while AWS RAM filters web requests",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "service-catalog",
+      "ram",
+      "governance",
+      "comparison"
+    ],
+    "source": {
+      "title": "What Is AWS Service Catalog?",
+      "url": "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GOV-005",
+    "concept": "clf-multi-account-governance",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about multi-account governance are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Control Tower helps establish and govern a multi-account landing zone",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An SCP directly grants AdministratorAccess to every identity it covers",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Service Catalog is a threat-detection service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Organizations replaces the need for IAM permissions inside member accounts",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "AWS RAM can share supported resources with other AWS accounts or organizational units",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "organizations",
+      "control-tower",
+      "ram",
+      "multi-account"
+    ],
+    "source": {
+      "title": "What Is AWS Control Tower?",
+      "url": "https://docs.aws.amazon.com/controltower/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SMG-001",
+    "concept": "clf-secrets-management",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS service is designed specifically to store, manage, and rotate secrets such as database credentials?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Key Management Service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Secrets Manager",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon CloudWatch",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Config",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "secrets-manager",
+      "credentials",
+      "rotation"
+    ],
+    "source": {
+      "title": "Use AWS Secrets Manager secrets in Parameter Store",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_parameterstore.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SMG-002",
+    "concept": "clf-secrets-management",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a common use case for AWS Systems Manager Parameter Store?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Detect compromised AWS credentials from threat telemetry",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide DDoS mitigation for internet-facing applications",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Aggregate security findings from multiple services",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store hierarchical configuration values and secure parameter values",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "parameter-store",
+      "configuration",
+      "secrets"
+    ],
+    "source": {
+      "title": "Use AWS Secrets Manager secrets in Parameter Store",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_parameterstore.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SMG-003",
+    "concept": "clf-secrets-management",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Secrets Manager from Systems Manager Parameter Store?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Secrets Manager includes secret lifecycle capabilities such as automatic rotation, while Parameter Store provides hierarchical configuration and secret-value storage without its own automatic rotation service",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Secrets Manager stores only encryption keys, while Parameter Store stores only TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Secrets Manager is a network firewall, while Parameter Store is an identity provider",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Secrets Manager is only for public data, while Parameter Store is only for root credentials",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "secrets-manager",
+      "parameter-store",
+      "rotation",
+      "comparison"
+    ],
+    "source": {
+      "title": "Use AWS Secrets Manager secrets in Parameter Store",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_parameterstore.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SMG-004",
+    "concept": "clf-secrets-management",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application stores a database password that must be rotated automatically on a schedule. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS KMS alone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS CloudTrail",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Secrets Manager",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "secrets-manager",
+      "database-credentials",
+      "rotation"
+    ],
+    "source": {
+      "title": "Use AWS Secrets Manager secrets in Parameter Store",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_parameterstore.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-KMS-001",
+    "concept": "clf-encryption-kms",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of AWS Key Management Service (AWS KMS)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store application passwords as the primary secret database",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create and control cryptographic keys used to encrypt or sign data",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Filter HTTP requests to web applications",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provide user sign-up for mobile applications",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "kms",
+      "encryption",
+      "key-management"
+    ],
+    "source": {
+      "title": "AWS Key Management Service",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-KMS-002",
+    "concept": "clf-encryption-kms",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service provides dedicated single-tenant hardware security modules for customers that need greater control over HSMs and cryptographic keys?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Inspector",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS CloudHSM",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudhsm",
+      "hsm",
+      "cryptography"
+    ],
+    "source": {
+      "title": "What is AWS CloudHSM?",
+      "url": "https://docs.aws.amazon.com/cloudhsm/latest/userguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-KMS-003",
+    "concept": "clf-encryption-kms",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is AWS Certificate Manager (ACM) primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provisioning and managing SSL/TLS X.509 certificates",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Managing service control policies across an organization",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Detecting sensitive data in Amazon S3",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Recording API activity for audit purposes",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "acm",
+      "tls",
+      "certificates"
+    ],
+    "source": {
+      "title": "What is AWS Certificate Manager?",
+      "url": "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-KMS-004",
+    "concept": "clf-encryption-kms",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS KMS, AWS CloudHSM, and AWS Certificate Manager?",
+    "options": [
+      {
+        "key": "A",
+        "text": "KMS manages TLS certificates, CloudHSM aggregates findings, and ACM scans vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "KMS provides DDoS protection, CloudHSM stores application users, and ACM records API calls",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "KMS provides managed key management, CloudHSM provides dedicated HSMs with greater customer control, and ACM manages SSL/TLS certificates",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "KMS, CloudHSM, and ACM are interchangeable services for storing application passwords",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "kms",
+      "cloudhsm",
+      "acm",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Key Management Service",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-KMS-005",
+    "concept": "clf-encryption-kms",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is selecting AWS cryptography services. Which TWO mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Amazon Macie to create dedicated hardware security modules",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use AWS KMS for managed encryption-key control integrated with AWS services",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use AWS CloudHSM as the primary service for user sign-up and sign-in",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use AWS Artifact to rotate application database passwords",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Use AWS Certificate Manager to manage SSL/TLS certificates for supported applications and services",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "kms",
+      "acm",
+      "cryptography"
+    ],
+    "source": {
+      "title": "AWS Key Management Service",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGR-001",
+    "concept": "clf-security-groups",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which statement BEST describes an Amazon VPC security group?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A subnet-level stateless firewall that supports explicit deny rules",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A service that records AWS API activity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A managed DDoS protection subscription",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A stateful virtual firewall that controls allowed inbound and outbound traffic for associated resources",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "security-groups",
+      "vpc",
+      "stateful"
+    ],
+    "source": {
+      "title": "Control traffic to your AWS resources using security groups",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGR-002",
+    "concept": "clf-security-groups",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What does it mean that security groups are stateful?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Response traffic for an allowed connection is automatically permitted",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Every inbound rule must have an identical outbound rule number",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Security groups remember configuration history for audit purposes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Security groups can contain explicit deny rules that override allows",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-groups",
+      "stateful",
+      "networking"
+    ],
+    "source": {
+      "title": "Control traffic to your AWS resources using security groups",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGR-003",
+    "concept": "clf-security-groups",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes security groups from network ACLs?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security groups operate only at the subnet level, while network ACLs attach to IAM users",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Security groups support only deny rules, while network ACLs support only allow rules",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Security groups are stateful and associated with resources, while network ACLs are stateless and operate at the subnet level",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Security groups are for application logging, while network ACLs are for encryption",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-groups",
+      "network-acls",
+      "comparison"
+    ],
+    "source": {
+      "title": "Control traffic to your AWS resources using security groups",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGR-004",
+    "concept": "clf-security-groups",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An EC2 web server should accept HTTPS traffic only from a specific corporate CIDR range. Which control is MOST appropriate at the instance resource level?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An SCP that grants HTTPS access to the EC2 instance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A security group inbound rule allowing TCP port 443 from the corporate CIDR range",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An AWS Artifact agreement for the corporate network",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A CloudTrail trail filtered to HTTPS requests",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-groups",
+      "ec2",
+      "least-privilege",
+      "https"
+    ],
+    "source": {
+      "title": "Control traffic to your AWS resources using security groups",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGR-005",
+    "concept": "clf-security-groups",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about security groups are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security groups are evaluated by numbered rules in ascending order",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Security groups apply to every resource in a subnet automatically",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Return traffic always requires a separate explicit reverse-direction rule",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Security groups contain allow rules rather than explicit deny rules",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Security groups are stateful",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "security-groups",
+      "stateful",
+      "allow-rules"
+    ],
+    "source": {
+      "title": "Control traffic to your AWS resources using security groups",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-NAC-001",
+    "concept": "clf-network-acls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "At what level does a network ACL operate in an Amazon VPC?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Individual IAM user level",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Organizations level",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Application source-code level",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Subnet level",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "network-acls",
+      "vpc",
+      "subnet"
+    ],
+    "source": {
+      "title": "Control subnet traffic with network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-NAC-002",
+    "concept": "clf-network-acls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which capability is available in network ACL rules?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Both allow and deny rules",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Only allow rules because network ACLs are stateful",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only identity-based permissions",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only HTTP path filtering",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "network-acls",
+      "allow-rules",
+      "deny-rules"
+    ],
+    "source": {
+      "title": "Control subnet traffic with network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-NAC-003",
+    "concept": "clf-network-acls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Why might return traffic need an explicit network ACL rule even when the original request was allowed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Network ACLs automatically deny all response traffic generated by AWS services",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Network ACLs are identity policies rather than network controls",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Network ACLs are stateless and evaluate return traffic separately",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Network ACLs only work after CloudTrail records the request",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "network-acls",
+      "stateless",
+      "return-traffic"
+    ],
+    "source": {
+      "title": "Control subnet traffic with network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-NAC-004",
+    "concept": "clf-network-acls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A security team wants a subnet-level control that can explicitly deny traffic from a known unwanted CIDR range. Which VPC feature should the team use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A security group only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A network ACL",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An IAM role trust policy",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An AWS WAF web ACL attached to an IAM user",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "network-acls",
+      "subnet",
+      "deny-rules"
+    ],
+    "source": {
+      "title": "Control subnet traffic with network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHD-001",
+    "concept": "clf-shield",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What type of attack is AWS Shield primarily designed to help protect against?",
+    "options": [
+      {
+        "key": "A",
+        "text": "SQL schema drift",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Accidental IAM policy deletion",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Sensitive data stored in S3",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Distributed denial-of-service (DDoS) attacks",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "shield",
+      "ddos",
+      "security"
+    ],
+    "source": {
+      "title": "AWS Shield Documentation",
+      "url": "https://docs.aws.amazon.com/shield/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHD-002",
+    "concept": "clf-shield",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which statement about AWS Shield Standard is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It provides basic DDoS protection automatically for AWS customers without a Shield Advanced subscription",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "It requires a paid Shield Advanced subscription before any protection is enabled",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It is primarily a vulnerability scanner for EC2 and Lambda",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It is a web identity provider for application users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "shield",
+      "shield-standard",
+      "ddos"
+    ],
+    "source": {
+      "title": "AWS Shield Documentation",
+      "url": "https://docs.aws.amazon.com/shield/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHD-003",
+    "concept": "clf-shield",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Shield from AWS WAF?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Shield manages encryption keys, while WAF manages TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Shield records API activity, while WAF records resource configuration history",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Shield focuses on DDoS protection, while WAF inspects and controls HTTP(S) web requests using rules",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Shield provides workforce SSO, while WAF provides app-user sign-up",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "shield",
+      "waf",
+      "comparison",
+      "ddos"
+    ],
+    "source": {
+      "title": "AWS Shield Documentation",
+      "url": "https://docs.aws.amazon.com/shield/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHD-004",
+    "concept": "clf-shield",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company needs expanded DDoS detection and mitigation capabilities beyond the protection included by default. Which offering should it evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Shield Standard only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Shield Advanced",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon Macie",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "shield",
+      "shield-advanced",
+      "ddos"
+    ],
+    "source": {
+      "title": "AWS Shield Documentation",
+      "url": "https://docs.aws.amazon.com/shield/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHD-005",
+    "concept": "clf-shield",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about AWS Shield are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Shield is primarily used to discover PII in Amazon S3",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Shield replaces IAM policies for user authorization",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Shield Standard is included for AWS customers without a Shield Advanced subscription",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Shield's main purpose is to record resource configuration changes",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Shield Advanced provides expanded DDoS protection capabilities for protected resources",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "shield",
+      "shield-standard",
+      "shield-advanced",
+      "ddos"
+    ],
+    "source": {
+      "title": "AWS Shield Documentation",
+      "url": "https://docs.aws.amazon.com/shield/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAF-001",
+    "concept": "clf-aws-waf",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of AWS WAF?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide temporary credentials to workforce users",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Scan EC2 instances for software vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Manage encryption keys for application data",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Inspect and control HTTP(S) requests to supported web applications and resources",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "waf",
+      "web-acl",
+      "application-security"
+    ],
+    "source": {
+      "title": "Configuring protection in AWS WAF",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAF-002",
+    "concept": "clf-aws-waf",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which type of condition can AWS WAF use in a web ACL rule?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Characteristics of HTTP requests such as source IP, request content, or request rate",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Whether an IAM user's password is older than 90 days",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Whether an EC2 instance has enough CPU credits",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Whether an AWS account has accepted a legal agreement",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "waf",
+      "web-acl",
+      "http"
+    ],
+    "source": {
+      "title": "Configuring protection in AWS WAF",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAF-003",
+    "concept": "clf-aws-waf",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Firewall Manager from AWS WAF?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS WAF manages organization accounts, while Firewall Manager provides application user sign-up",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS WAF filters web requests, while Firewall Manager centrally applies and manages supported security policies across accounts and resources",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS WAF stores secrets, while Firewall Manager rotates encryption keys",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS WAF scans container images, while Firewall Manager records API activity",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "waf",
+      "firewall-manager",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Firewall Manager Documentation",
+      "url": "https://docs.aws.amazon.com/firewall-manager/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAF-004",
+    "concept": "clf-aws-waf",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants to block web requests that match known SQL injection patterns before they reach a supported web application. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Shield Standard alone",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS IAM Identity Center",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS WAF",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "waf",
+      "sql-injection",
+      "web-security"
+    ],
+    "source": {
+      "title": "Configuring protection in AWS WAF",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-WAF-005",
+    "concept": "clf-aws-waf",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Which TWO use cases are appropriate for AWS WAF? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create cross-account IAM roles",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Discover sensitive data stored in S3 objects",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Block requests from specified IP addresses or matching malicious request patterns",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Patch guest operating systems on EC2 instances",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Apply rate-based controls to excessive web requests",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "waf",
+      "web-acl",
+      "rate-based-rules"
+    ],
+    "source": {
+      "title": "Configuring protection in AWS WAF",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GDY-001",
+    "concept": "clf-guardduty",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of Amazon GuardDuty?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Detect suspicious and potentially malicious activity in AWS environments",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Manage SSL/TLS certificate renewals",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Store application configuration parameters",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create approved product catalogs for end users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "guardduty",
+      "threat-detection"
+    ],
+    "source": {
+      "title": "What is Amazon GuardDuty?",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GDY-002",
+    "concept": "clf-guardduty",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which data does GuardDuty analyze as part of its threat-detection capabilities?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only monthly AWS invoices",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS telemetry and logs such as CloudTrail management events, VPC flow information, and DNS activity",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Only application source code stored in Git repositories",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only AWS Artifact compliance reports",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "guardduty",
+      "cloudtrail",
+      "vpc-flow-logs",
+      "dns"
+    ],
+    "source": {
+      "title": "What is Amazon GuardDuty?",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GDY-003",
+    "concept": "clf-guardduty",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon GuardDuty from Amazon Inspector?",
+    "options": [
+      {
+        "key": "A",
+        "text": "GuardDuty manages TLS certificates, while Inspector manages encryption keys",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "GuardDuty stores secrets, while Inspector provides workforce SSO",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "GuardDuty and Inspector are identical services with different consoles",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "GuardDuty detects suspicious or malicious activity, while Inspector scans supported workloads for vulnerabilities and unintended exposure",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "guardduty",
+      "inspector",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon GuardDuty?",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GDY-004",
+    "concept": "clf-guardduty",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A security team wants a managed service that can flag unusual AWS API behavior and activity associated with compromised credentials. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon GuardDuty",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Service Catalog",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon CloudWatch dashboards alone",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "guardduty",
+      "compromised-credentials",
+      "threat-detection"
+    ],
+    "source": {
+      "title": "What is Amazon GuardDuty?",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-GDY-005",
+    "concept": "clf-guardduty",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about Amazon GuardDuty are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "It is primarily a legal-agreement repository",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It replaces all preventive IAM and network controls",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It uses threat intelligence and analytics to identify suspicious activity",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "It is primarily used to issue public TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "It generates security findings that can be integrated with other security services",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "guardduty",
+      "findings",
+      "threat-intelligence"
+    ],
+    "source": {
+      "title": "What is Amazon GuardDuty?",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INS-001",
+    "concept": "clf-inspector",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon Inspector primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "DDoS protection for internet-facing resources",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Continuous vulnerability management for supported AWS workloads",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Workforce federation across AWS accounts",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Storage of compliance agreements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "inspector",
+      "vulnerability-management"
+    ],
+    "source": {
+      "title": "What is Amazon Inspector?",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INS-002",
+    "concept": "clf-inspector",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which resources can Amazon Inspector scan for supported vulnerabilities?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only Amazon S3 buckets",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Only Route 53 hosted zones",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only IAM users and groups",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon EC2 instances, Amazon ECR container images, and AWS Lambda functions",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "inspector",
+      "ec2",
+      "ecr",
+      "lambda"
+    ],
+    "source": {
+      "title": "What is Amazon Inspector?",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INS-003",
+    "concept": "clf-inspector",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Inspector from Amazon Macie?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Inspector finds software vulnerabilities and exposure in supported workloads, while Macie discovers sensitive data and data-security risks in Amazon S3",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Inspector manages IAM permissions, while Macie manages network ACLs",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Inspector records API calls, while Macie issues TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Inspector and Macie both only provide DDoS protection",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "inspector",
+      "macie",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Inspector?",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INS-004",
+    "concept": "clf-inspector",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants continuous findings about known software vulnerabilities in its ECR container images. Which service should it use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Detective",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Inspector",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Shield",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "inspector",
+      "ecr",
+      "container-images",
+      "vulnerabilities"
+    ],
+    "source": {
+      "title": "What is Amazon Inspector?",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MAC-001",
+    "concept": "clf-macie",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon Macie primarily designed to help discover?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Unpatched packages in EC2 operating systems",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sensitive data and data-security risks in Amazon S3",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "DDoS attacks against Route 53",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Workforce access assignments across accounts",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "macie",
+      "s3",
+      "sensitive-data"
+    ],
+    "source": {
+      "title": "What is Amazon Macie?",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MAC-002",
+    "concept": "clf-macie",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which technology does Amazon Macie use to help identify sensitive data?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route-table propagation and BGP only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "TLS certificate validation only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Service control policy inheritance only",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Machine learning and pattern matching",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "macie",
+      "machine-learning",
+      "pattern-matching"
+    ],
+    "source": {
+      "title": "What is Amazon Macie?",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MAC-003",
+    "concept": "clf-macie",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Macie from Amazon GuardDuty?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Macie focuses on sensitive-data discovery and S3 data-security risks, while GuardDuty focuses on threat detection",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Macie manages TLS certificates, while GuardDuty manages root-user passwords",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Macie provides DDoS protection, while GuardDuty provides workforce SSO",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Macie and GuardDuty both only evaluate billing data",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "macie",
+      "guardduty",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Macie?",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-MAC-004",
+    "concept": "clf-macie",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to identify S3 objects that may contain personally identifiable information (PII). Which AWS service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Inspector",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Shield Advanced",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Macie",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "macie",
+      "s3",
+      "pii",
+      "sensitive-data"
+    ],
+    "source": {
+      "title": "What is Amazon Macie?",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DET-001",
+    "concept": "clf-detective",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of Amazon Detective?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Issue public TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Help investigate security findings and identify root causes using correlated context and analytics",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Create service control policies",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Perform automatic secret rotation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "detective",
+      "investigation",
+      "security-findings"
+    ],
+    "source": {
+      "title": "What is Amazon Detective?",
+      "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DET-002",
+    "concept": "clf-detective",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "How does Amazon Detective help a security analyst investigate suspicious activity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It replaces all logs with a single monthly invoice",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It blocks all inbound network traffic by default",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "It automatically changes every IAM policy to AdministratorAccess",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It correlates resource activity and provides visual context such as behavior graphs",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "detective",
+      "behavior-graph",
+      "investigation"
+    ],
+    "source": {
+      "title": "What is Amazon Detective?",
+      "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DET-003",
+    "concept": "clf-detective",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Detective from Amazon GuardDuty?",
+    "options": [
+      {
+        "key": "A",
+        "text": "GuardDuty detects threats and creates findings, while Detective helps investigate findings and understand related activity",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Detective provides DDoS protection, while GuardDuty manages certificates",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Detective stores application secrets, while GuardDuty manages password policies",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Detective and GuardDuty have exactly the same primary function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "detective",
+      "guardduty",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Detective?",
+      "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DET-004",
+    "concept": "clf-detective",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A GuardDuty finding indicates suspicious activity by an IAM role. The security team wants correlated historical context to understand the entities and behavior involved. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Service Catalog",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Detective",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Systems Manager Parameter Store",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "detective",
+      "guardduty",
+      "iam-role",
+      "investigation"
+    ],
+    "source": {
+      "title": "What is Amazon Detective?",
+      "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHB-001",
+    "concept": "clf-security-hub",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is a primary function of AWS Security Hub CSPM?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store application secrets with automatic rotation",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide a centralized view of security posture and findings across AWS services and accounts",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Provide DNS resolution for VPC resources",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Patch guest operating systems on EC2 instances",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-hub",
+      "cspm",
+      "findings"
+    ],
+    "source": {
+      "title": "Introduction to AWS Security Hub CSPM",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHB-002",
+    "concept": "clf-security-hub",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS services can provide findings that Security Hub CSPM can aggregate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only AWS Billing and Cost Management",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Only Route 53 and CloudFront",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only AWS Certificate Manager",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Services such as Amazon GuardDuty, Amazon Inspector, and Amazon Macie",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "security-hub",
+      "guardduty",
+      "inspector",
+      "macie"
+    ],
+    "source": {
+      "title": "Introduction to AWS Security Hub CSPM",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHB-003",
+    "concept": "clf-security-hub",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Security Hub CSPM from GuardDuty?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Security Hub CSPM aggregates posture information and evaluates security controls, while GuardDuty specializes in threat detection",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Security Hub CSPM provides temporary credentials, while GuardDuty creates IAM users",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Security Hub CSPM manages TLS certificates, while GuardDuty stores secrets",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Security Hub CSPM and GuardDuty are interchangeable services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-hub",
+      "guardduty",
+      "comparison"
+    ],
+    "source": {
+      "title": "Introduction to AWS Security Hub CSPM",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SHB-004",
+    "concept": "clf-security-hub",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO capabilities are associated with AWS Security Hub CSPM? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Act as the primary store for application database passwords",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Assess AWS environments against supported security standards and controls",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Replace security groups with subnet firewall rules",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Issue all public TLS certificates used by AWS customers",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Aggregate findings from supported AWS services and third-party products",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "security-hub",
+      "security-standards",
+      "findings"
+    ],
+    "source": {
+      "title": "Introduction to AWS Security Hub CSPM",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CTR-001",
+    "concept": "clf-cloudtrail",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS CloudTrail primarily used to record?",
+    "options": [
+      {
+        "key": "A",
+        "text": "CPU utilization metrics from EC2 instances",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sensitive-data classifications for S3 objects",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Activity and API events in an AWS account",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Software vulnerability findings from container images",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudtrail",
+      "audit",
+      "api-activity"
+    ],
+    "source": {
+      "title": "How CloudTrail works",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CTR-002",
+    "concept": "clf-cloudtrail",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What does CloudTrail Event history provide by default?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Unlimited retention of every data event in every Region",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A searchable record of the past 90 days of management events in an AWS Region",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A five-year archive of CloudWatch metrics",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Automatic remediation of noncompliant resources",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudtrail",
+      "event-history",
+      "management-events"
+    ],
+    "source": {
+      "title": "How CloudTrail works",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CTR-003",
+    "concept": "clf-cloudtrail",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS CloudTrail from Amazon CloudWatch?",
+    "options": [
+      {
+        "key": "A",
+        "text": "CloudTrail manages TLS certificates, while CloudWatch manages encryption keys",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudTrail creates IAM users, while CloudWatch creates Organizations accounts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudTrail filters HTTP requests, while CloudWatch provides DDoS protection",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "CloudTrail records account and API activity for auditing, while CloudWatch focuses on operational metrics, logs, alarms, and observability",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudtrail",
+      "cloudwatch",
+      "comparison"
+    ],
+    "source": {
+      "title": "How CloudTrail works",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CTR-004",
+    "concept": "clf-cloudtrail",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A security analyst needs to determine which identity changed an IAM policy yesterday and from which source IP address. Which service should the analyst check FIRST?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS CloudTrail",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon Macie",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Shield",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Service Catalog",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudtrail",
+      "iam",
+      "audit",
+      "investigation"
+    ],
+    "source": {
+      "title": "How CloudTrail works",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CTR-005",
+    "concept": "clf-cloudtrail",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about AWS CloudTrail are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "CloudTrail is primarily a software vulnerability scanner",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudTrail automatically blocks every suspicious API call",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudTrail can record activity made through the console, CLI, SDKs, APIs, and AWS services",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "CloudTrail is the service used to issue SSL/TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "A trail or CloudTrail Lake can be used for ongoing collection beyond the default Event history window",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudtrail",
+      "audit",
+      "event-history"
+    ],
+    "source": {
+      "title": "How CloudTrail works",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CWT-001",
+    "concept": "clf-cloudwatch",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon CloudWatch primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Managing legal compliance agreements",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Providing cross-account temporary IAM credentials",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Monitoring AWS resources and applications using operational telemetry such as metrics and logs",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Filtering web requests for SQL injection",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudwatch",
+      "monitoring",
+      "observability"
+    ],
+    "source": {
+      "title": "What is Amazon CloudWatch?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CWT-002",
+    "concept": "clf-cloudwatch",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What can a CloudWatch alarm do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant permanent IAM permissions to a user",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Evaluate a metric against a threshold and trigger a notification or automated action",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Create an AWS Organizations service control policy",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Issue a public TLS certificate",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudwatch",
+      "alarms",
+      "metrics"
+    ],
+    "source": {
+      "title": "What is Amazon CloudWatch?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CWT-003",
+    "concept": "clf-cloudwatch",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon CloudWatch from AWS Config?",
+    "options": [
+      {
+        "key": "A",
+        "text": "CloudWatch stores secrets, while Config rotates credentials",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudWatch provides workforce federation, while Config creates app users",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudWatch and Config both only record billing information",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "CloudWatch focuses on operational telemetry and alerting, while Config records resource configuration state and evaluates compliance",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudwatch",
+      "config",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon CloudWatch?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CWT-004",
+    "concept": "clf-cloudwatch",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An operations team wants an alert when an EC2 instance's CPU utilization remains above a defined threshold. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon CloudWatch",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Artifact",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Detective",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudwatch",
+      "ec2",
+      "alarms",
+      "cpu"
+    ],
+    "source": {
+      "title": "What is Amazon CloudWatch?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CWT-005",
+    "concept": "clf-cloudwatch",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO are core Amazon CloudWatch capabilities? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Accept legal agreements for an AWS organization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create cross-account role trust policies",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provide the AWS account root user",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Collect and visualize metrics for resources and applications",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Collect, store, and query log data",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudwatch",
+      "metrics",
+      "logs"
+    ],
+    "source": {
+      "title": "What is Amazon CloudWatch?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFG-001",
+    "concept": "clf-aws-config",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is a primary purpose of AWS Config?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provide application user sign-up and sign-in",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Protect against DDoS attacks",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Record AWS resource configurations and how they change over time",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Manage SSL/TLS certificate renewals",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-config",
+      "configuration-history",
+      "compliance"
+    ],
+    "source": {
+      "title": "What Is AWS Config?",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFG-002",
+    "concept": "clf-aws-config",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What does an AWS Config rule evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Whether a user has successfully completed MFA registration",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Whether resource configurations comply with defined conditions",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Whether a web request contains SQL injection text",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Whether an S3 object contains PII using machine learning",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-config",
+      "config-rules",
+      "compliance"
+    ],
+    "source": {
+      "title": "What Is AWS Config?",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFG-003",
+    "concept": "clf-aws-config",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Config from AWS CloudTrail?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Config records resource configuration state and compliance, while CloudTrail records account and API activity",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Config provides DDoS protection, while CloudTrail manages TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Config stores application secrets, while CloudTrail rotates passwords",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Config is for workforce federation, while CloudTrail is for mobile-app users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-config",
+      "cloudtrail",
+      "comparison"
+    ],
+    "source": {
+      "title": "What Is AWS Config?",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFG-004",
+    "concept": "clf-aws-config",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A compliance team needs to know when a security group became noncompliant with an approved configuration rule and review its configuration history. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Cognito",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Shield Advanced",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Config",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Certificate Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-config",
+      "security-groups",
+      "compliance",
+      "history"
+    ],
+    "source": {
+      "title": "What Is AWS Config?",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFG-005",
+    "concept": "clf-aws-config",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO capabilities are provided by AWS Config? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Track configuration history for supported AWS resources",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Issue temporary AWS credentials to mobile-app users",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provide application-layer DDoS protection",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Automatically rotate database passwords as its primary function",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Evaluate resource configurations against rules for compliance",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-config",
+      "configuration-history",
+      "config-rules"
+    ],
+    "source": {
+      "title": "What Is AWS Config?",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ART-001",
+    "concept": "clf-compliance-artifact",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Artifact primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Scanning EC2 instances for software vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Accessing AWS security and compliance reports and managing certain legal agreements",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Detecting suspicious API activity",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Filtering inbound HTTP requests",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-artifact",
+      "compliance",
+      "reports"
+    ],
+    "source": {
+      "title": "Getting started with AWS Artifact",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/getting-started.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ART-002",
+    "concept": "clf-compliance-artifact",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "A company auditor needs an AWS compliance report for an assessment. Which service should the company use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon GuardDuty",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon CloudWatch",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS WAF",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-artifact",
+      "audit",
+      "compliance-reports"
+    ],
+    "source": {
+      "title": "Getting started with AWS Artifact",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/getting-started.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ART-003",
+    "concept": "clf-compliance-artifact",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A healthcare organization needs to review and accept an eligible Business Associate Addendum (BAA) with AWS. Which service is designed for this task?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Artifact",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Config",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Inspector",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Secrets Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-artifact",
+      "agreements",
+      "baa"
+    ],
+    "source": {
+      "title": "Getting started with AWS Artifact",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/getting-started.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ART-004",
+    "concept": "clf-compliance-artifact",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Artifact from AWS Config?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Artifact detects threats, while Config manages TLS certificates",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Artifact provides workforce SSO, while Config provides app-user identity",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Artifact provides compliance documentation and agreements, while Config evaluates and records AWS resource configurations",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Artifact filters web requests, while Config provides DDoS mitigation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-artifact",
+      "aws-config",
+      "comparison"
+    ],
+    "source": {
+      "title": "Getting started with AWS Artifact",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/getting-started.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ART-005",
+    "concept": "clf-compliance-artifact",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO tasks can AWS Artifact support? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Continuously scan ECR images for vulnerabilities",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provide temporary AWS credentials to EC2 workloads",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Block HTTP requests based on source IP address",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Download AWS security and compliance reports",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Review and manage supported agreements with AWS",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "aws-artifact",
+      "reports",
+      "agreements"
+    ],
+    "source": {
+      "title": "Getting started with AWS Artifact",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/getting-started.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRS-001",
+    "concept": "clf-security-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS resource contains official troubleshooting articles for common customer issues?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Shield Advanced",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS re:Post Knowledge Center",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Key Management Service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-resources",
+      "knowledge-center",
+      "repost"
+    ],
+    "source": {
+      "title": "AWS re:Post Knowledge Center",
+      "url": "https://www.repost.aws/knowledge-center/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRS-002",
+    "concept": "clf-security-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Where should a customer look for AWS-authored security announcements, best practices, and technical guidance articles?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Certificate Manager certificate inventory",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "IAM credential report",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon VPC route table",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Security Blog",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "security-resources",
+      "security-blog",
+      "guidance"
+    ],
+    "source": {
+      "title": "AWS Security Blog",
+      "url": "https://aws.amazon.com/blogs/security/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRS-003",
+    "concept": "clf-security-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to evaluate and purchase a third-party security product that is offered for deployment on AWS. Which resource is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Marketplace",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS CloudTrail Event history",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Artifact Agreements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "IAM Identity Center",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-resources",
+      "aws-marketplace",
+      "third-party"
+    ],
+    "source": {
+      "title": "Security solutions in AWS Marketplace",
+      "url": "https://aws.amazon.com/marketplace/solutions/security"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SRS-004",
+    "concept": "clf-security-resources",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement correctly matches an AWS security resource to its purpose?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The AWS Security Blog creates IAM permissions, while the AWS Security website/center records API activity",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The AWS Security website/center is a vulnerability scanner, while the AWS Security Blog manages encryption keys",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The AWS Security website/center provides centralized security guidance and service information, while the AWS Security Blog publishes security articles and announcements",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "The AWS Security Blog is a marketplace for third-party products, while the AWS Security website/center is only a billing tool",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "security-resources",
+      "security-center",
+      "security-blog",
+      "comparison"
+    ],
+    "source": {
+      "title": "AWS Security",
+      "url": "https://aws.amazon.com/security/"
+    },
+    "active": true
+  }
+]
