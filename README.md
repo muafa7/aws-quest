@@ -90,6 +90,7 @@ See:
 
 - [`docs/product-spec.md`](docs/product-spec.md)
 - [`docs/content-authoring.md`](docs/content-authoring.md)
+- [`docs/CONTENT_INVENTORY.md`](docs/CONTENT_INVENTORY.md)
 
 ## Learning engine notes
 
