@@ -25,9 +25,9 @@ Planning guidance for the curated question banks. Recommended counts are targets
 
 | Metric | Current | Planned |
 | --- | --- | --- |
-| Concepts | 60 | 90 |
-| Lessons | 60 | 90 |
-| Active questions | 278 | ~415 |
+| Concepts | 78 | 90 |
+| Lessons | 78 | 90 |
+| Active questions | 357 | ~415 |
 
 ### Domains
 
@@ -35,11 +35,11 @@ Planning guidance for the curated question banks. Recommended counts are targets
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `cloud-concepts` | Cloud Concepts | 24% | `questions/cloud-concepts.json` | 18 / 18 | 83 / 83 |
 | 2 | `security-compliance` | Security and Compliance | 30% | `questions/security-compliance.json` | 24 / 24 | 115 / 115 |
-| 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 18 / 36 | 80 / 159 |
+| 3 | `cloud-technology-services` | Cloud Technology and Services | 34% | `questions/cloud-technology-services.json` | 36 / 36 | 159 / 159 |
 | 4 | `billing-pricing-support` | Billing, Pricing, and Support | 12% | `questions/billing-pricing-support.json` | 0 / 12 | 0 / 58 |
-| | | **Total** | | | **60 / 90** | **278 / ~415** |
+| | | **Total** | | | **78 / 90** | **357 / ~415** |
 
-Cloud Concepts and Security and Compliance are fully seeded. Cloud Technology and Services Part 1 covers concepts 1–18 in `questions/cloud-technology-services.json`. Concepts 19–36 in that domain are not seeded yet. `questions/core.json` has been removed.
+Cloud Concepts, Security and Compliance, and Cloud Technology and Services are fully seeded. Billing, Pricing, and Support is not seeded yet. `questions/core.json` has been removed.
 
 Domain 3 is above its 34% exam weight because it covers the most services. Mock exams still sample by exam weight and only need 7–22 questions per domain. The total is driven by the 4-questions-per-concept floor; going much lower would mean merging concepts and weakening their explanations.
 
@@ -126,24 +126,24 @@ Column guide:
 | 16 | `clf-database-migration` | DMS | Database Migration (AWS DMS, DMS Schema Conversion, AWS SCT) | seeded | complete | 4 | 4 | Scenario | Migration services |
 | 17 | `clf-vpc` | VPC | Amazon VPC (subnets, gateways, PrivateLink, Transit Gateway) | seeded | complete | 5 | 5 | Understanding, Comparison | Security groups, network ACLs |
 | 18 | `clf-route-53` | R53 | Amazon Route 53 | seeded | complete | 4 | 4 | Basic, Understanding | CloudFront, Elastic Load Balancing |
-| 19 | `clf-cloudfront` | CFR | Amazon CloudFront | planned | planned | 0 | 4 | Basic, Comparison, Scenario | Global Accelerator, S3 |
-| 20 | `clf-hybrid-connectivity` | HYB | Hybrid Connectivity (AWS VPN, AWS Direct Connect) | planned | planned | 0 | 5 | Comparison, Scenario | Deployment models |
-| 21 | `clf-s3` | S3B | Amazon S3 | planned | planned | 0 | 5 | Basic, Understanding, Scenario | EBS, EFS |
-| 22 | `clf-s3-storage-classes` | S3C | Amazon S3 Storage Classes and Lifecycle Policies | planned | planned | 0 | 5 | Comparison, Scenario | AWS Backup |
-| 23 | `clf-ebs-instance-store` | EBS | Block Storage (Amazon EBS, Instance Store) | planned | planned | 0 | 5 | Comparison, Scenario | S3, EFS |
-| 24 | `clf-efs-fsx` | EFS | File Storage (Amazon EFS, Amazon FSx) | planned | planned | 0 | 4 | Comparison, Scenario | EBS, S3 |
-| 25 | `clf-storage-gateway` | SGW | AWS Storage Gateway | planned | planned | 0 | 4 | Scenario | Hybrid connectivity, S3 |
-| 26 | `clf-aws-backup` | BKP | AWS Backup and AWS Elastic Disaster Recovery | planned | planned | 0 | 4 | Understanding, Scenario | S3 lifecycle policies |
-| 27 | `clf-sagemaker` | SGM | Amazon SageMaker AI | planned | planned | 0 | 4 | Basic, Comparison | AI services |
-| 28 | `clf-ai-language-services` | AIL | AI Language and Assistant Services (Comprehend, Lex, Polly, Transcribe, Translate, Amazon Q) | planned | planned | 0 | 5 | Basic, Comparison | SageMaker AI, vision services |
-| 29 | `clf-ai-vision-document-services` | AIV | AI Vision and Document Services (Rekognition, Textract) | planned | planned | 0 | 4 | Basic, Comparison | Language services |
-| 30 | `clf-analytics-services` | ANA | Analytics Services (Athena, Redshift, EMR, Glue) | planned | planned | 0 | 5 | Basic, Comparison | RDS, streaming services |
-| 31 | `clf-streaming-search-bi` | SBI | Streaming, Search, and BI (Kinesis, OpenSearch Service, Quick Sight) | planned | planned | 0 | 4 | Basic, Comparison | Analytics services, SQS |
-| 32 | `clf-application-integration` | INT | Application Integration (SNS, SQS, EventBridge, Step Functions) | planned | planned | 0 | 5 | Comparison, Scenario | Kinesis |
-| 33 | `clf-systems-manager` | SSM | AWS Systems Manager | planned | planned | 0 | 4 | Understanding, Scenario | Secrets Manager, CloudWatch |
-| 34 | `clf-developer-tools` | DEV | Developer Tools (CodeBuild, CodePipeline, X-Ray) | planned | planned | 0 | 4 | Basic | CloudFormation |
-| 35 | `clf-end-user-computing` | EUC | End-User Computing (WorkSpaces, AppStream 2.0, WorkSpaces Secure Browser) | planned | planned | 0 | 4 | Basic, Comparison | EC2 |
-| 36 | `clf-other-in-scope-services` | OTH | Business, Frontend, and IoT Services (Connect, SES, Amplify, IoT Core) | planned | planned | 0 | 4 | Basic | SNS |
+| 19 | `clf-cloudfront` | CFR | Amazon CloudFront | seeded | complete | 4 | 4 | Basic, Comparison, Scenario | Global Accelerator, S3 |
+| 20 | `clf-hybrid-connectivity` | HYB | Hybrid Connectivity (AWS VPN, AWS Direct Connect) | seeded | complete | 5 | 5 | Comparison, Scenario | Deployment models |
+| 21 | `clf-s3` | S3B | Amazon S3 | seeded | complete | 5 | 5 | Basic, Understanding, Scenario | EBS, EFS |
+| 22 | `clf-s3-storage-classes` | S3C | Amazon S3 Storage Classes and Lifecycle Policies | seeded | complete | 5 | 5 | Comparison, Scenario | AWS Backup |
+| 23 | `clf-ebs-instance-store` | EBS | Block Storage (Amazon EBS, Instance Store) | seeded | complete | 5 | 5 | Comparison, Scenario | S3, EFS |
+| 24 | `clf-efs-fsx` | EFS | File Storage (Amazon EFS, Amazon FSx) | seeded | complete | 4 | 4 | Comparison, Scenario | EBS, S3 |
+| 25 | `clf-storage-gateway` | SGW | AWS Storage Gateway (S3 File Gateway, Volume Gateway, Tape Gateway) | seeded | complete | 4 | 4 | Scenario | Hybrid connectivity, S3 |
+| 26 | `clf-aws-backup` | BKP | AWS Backup and AWS Elastic Disaster Recovery | seeded | complete | 4 | 4 | Understanding, Scenario | S3 lifecycle policies |
+| 27 | `clf-sagemaker` | SGM | Amazon SageMaker AI | seeded | complete | 4 | 4 | Basic, Comparison | AI services |
+| 28 | `clf-ai-language-services` | AIL | AI Language and Assistant Services (Comprehend, Lex, Polly, Transcribe, Translate, Amazon Q Developer) | seeded | complete | 5 | 5 | Basic, Comparison | SageMaker AI, vision services |
+| 29 | `clf-ai-vision-document-services` | AIV | AI Vision and Document Services (Rekognition, Textract) | seeded | complete | 4 | 4 | Basic, Comparison | Language services |
+| 30 | `clf-analytics-services` | ANA | Analytics Services (Athena, Redshift, EMR, Glue) | seeded | complete | 5 | 5 | Basic, Comparison | RDS, streaming services |
+| 31 | `clf-streaming-search-bi` | SBI | Streaming, Search, and BI (Kinesis, OpenSearch Service, Amazon Quick Sight) | seeded | complete | 4 | 4 | Basic, Comparison | Analytics services, SQS |
+| 32 | `clf-application-integration` | INT | Application Integration (SNS, SQS, EventBridge, Step Functions) | seeded | complete | 5 | 5 | Comparison, Scenario | Kinesis |
+| 33 | `clf-systems-manager` | SSM | AWS Systems Manager | seeded | complete | 4 | 4 | Understanding, Scenario | Secrets Manager, CloudWatch |
+| 34 | `clf-developer-tools` | DEV | Developer Tools (CodeBuild, CodePipeline, X-Ray) | seeded | complete | 4 | 4 | Basic | CloudFormation |
+| 35 | `clf-end-user-computing` | EUC | End-User Computing (WorkSpaces, WorkSpaces Applications / AppStream 2.0, WorkSpaces Secure Browser) | seeded | complete | 4 | 4 | Basic, Comparison | EC2 |
+| 36 | `clf-other-in-scope-services` | OTH | Business, Frontend, and IoT Services (Connect, SES, Amplify, IoT Core) | seeded | complete | 4 | 4 | Basic | SNS |
 
 #### 4. Billing, Pricing, and Support (`billing-pricing-support`) — 12 concepts, 58 questions
 
@@ -239,21 +239,39 @@ Current weak lessons: none. The shared-responsibility explanation now covers how
 | `CCP-DMS-001`–`004` | `clf-database-migration` | 4 | `questions/cloud-technology-services.json` |
 | `CCP-VPC-001`–`005` | `clf-vpc` | 5 | `questions/cloud-technology-services.json` |
 | `CCP-R53-001`–`004` | `clf-route-53` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-CFR-001`–`004` | `clf-cloudfront` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-HYB-001`–`005` | `clf-hybrid-connectivity` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-S3B-001`–`005` | `clf-s3` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-S3C-001`–`005` | `clf-s3-storage-classes` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-EBS-001`–`005` | `clf-ebs-instance-store` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-EFS-001`–`004` | `clf-efs-fsx` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-SGW-001`–`004` | `clf-storage-gateway` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-BKP-001`–`004` | `clf-aws-backup` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-SGM-001`–`004` | `clf-sagemaker` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-AIL-001`–`005` | `clf-ai-language-services` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-AIV-001`–`004` | `clf-ai-vision-document-services` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-ANA-001`–`005` | `clf-analytics-services` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-SBI-001`–`004` | `clf-streaming-search-bi` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-INT-001`–`005` | `clf-application-integration` | 5 | `questions/cloud-technology-services.json` |
+| `CCP-SSM-001`–`004` | `clf-systems-manager` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-DEV-001`–`004` | `clf-developer-tools` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-EUC-001`–`004` | `clf-end-user-computing` | 4 | `questions/cloud-technology-services.json` |
+| `CCP-OTH-001`–`004` | `clf-other-in-scope-services` | 4 | `questions/cloud-technology-services.json` |
 
 `CCP-ELA-001` through `CCP-ELA-003` and `CCP-SRM-001` through `CCP-SRM-003` keep their original codes.
 
-Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`, `CCP-ACC-005`, `CCP-IAC-006`, `CCP-DPM-005`, `CCP-REG-006`, `CCP-AZS-005`, `CCP-EDG-005`, `CCP-EC2-006`, `CCP-ASG-005`, `CCP-ELB-005`, `CCP-LAM-006`, `CCP-CON-006`, `CCP-MCO-005`, `CCP-RDS-006`, `CCP-DDB-006`, `CCP-DBO-005`, `CCP-DMS-005`, `CCP-VPC-006`, `CCP-R53-005`. Every other prefix starts at `001`.
+Next free codes: `CCP-VAL-008`, `CCP-ECO-006`, `CCP-ELA-006`, `CCP-HAV-006`, `CCP-WAR-006`, `CCP-WOE-005`, `CCP-WSE-005`, `CCP-WRE-005`, `CCP-WPE-005`, `CCP-WCO-005`, `CCP-WSU-005`, `CCP-CAF-006`, `CCP-MIG-006`, `CCP-MGS-006`, `CCP-CPX-006`, `CCP-LIC-005`, `CCP-RSZ-005`, `CCP-AUT-005`, `CCP-SRM-009`, `CCP-IAM-008`, `CCP-ROL-006`, `CCP-ROO-006`, `CCP-MFA-005`, `CCP-IDC-005`, `CCP-COG-005`, `CCP-GOV-006`, `CCP-SMG-005`, `CCP-KMS-006`, `CCP-SGR-006`, `CCP-NAC-005`, `CCP-SHD-006`, `CCP-WAF-006`, `CCP-GDY-006`, `CCP-INS-005`, `CCP-MAC-005`, `CCP-DET-005`, `CCP-SHB-005`, `CCP-CTR-006`, `CCP-CWT-006`, `CCP-CFG-006`, `CCP-ART-006`, `CCP-SRS-005`, `CCP-ACC-005`, `CCP-IAC-006`, `CCP-DPM-005`, `CCP-REG-006`, `CCP-AZS-005`, `CCP-EDG-005`, `CCP-EC2-006`, `CCP-ASG-005`, `CCP-ELB-005`, `CCP-LAM-006`, `CCP-CON-006`, `CCP-MCO-005`, `CCP-RDS-006`, `CCP-DDB-006`, `CCP-DBO-005`, `CCP-DMS-005`, `CCP-VPC-006`, `CCP-R53-005`, `CCP-CFR-005`, `CCP-HYB-006`, `CCP-S3B-006`, `CCP-S3C-006`, `CCP-EBS-006`, `CCP-EFS-005`, `CCP-SGW-005`, `CCP-BKP-005`, `CCP-SGM-005`, `CCP-AIL-006`, `CCP-AIV-005`, `CCP-ANA-006`, `CCP-SBI-005`, `CCP-INT-006`, `CCP-SSM-005`, `CCP-DEV-005`, `CCP-EUC-005`, `CCP-OTH-005`. Every other prefix starts at `001`.
 
 Relabelling style or difficulty keeps the same code (spec section 28).
 
 ### Distribution targets
 
-| Dimension | Current (278) | Target |
+| Dimension | Current (357) | Target |
 | --- | --- | --- |
-| Style | BASIC 64, UNDERSTANDING 80, COMPARISON 59, SCENARIO 75, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
-| Difficulty | EASY 111, MEDIUM 128, HARD 39 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
-| Type | SINGLE_CHOICE 241, MULTIPLE_CHOICE 37 | MULTIPLE_CHOICE 10–15% |
-| Correct-answer position | A 73, B 73, C 74, D 71, E 24 | Roughly 20–30% per letter (informational) |
+| Style | BASIC 82, UNDERSTANDING 106, COMPARISON 77, SCENARIO 92, ARCHITECTURE 0 | BASIC ~25%, UNDERSTANDING ~30%, COMPARISON ~22%, SCENARIO ~23%, ARCHITECTURE 0–2% |
+| Difficulty | EASY 142, MEDIUM 159, HARD 56 | EASY ~40%, MEDIUM ~45%, HARD ~15% |
+| Type | SINGLE_CHOICE 311, MULTIPLE_CHOICE 46 | MULTIPLE_CHOICE 10–15% |
+| Correct-answer position | A 95, B 94, C 95, D 92, E 27 | Roughly 20–30% per letter (informational) |
 
 The exam guide lists "Designing cloud architecture" as out of scope for the CLF-C02 candidate, so ARCHITECTURE questions should be rare or absent.
 
@@ -341,6 +359,24 @@ Valid concept slugs today (only these may be referenced by questions and lessons
 - `clf-database-migration`
 - `clf-vpc`
 - `clf-route-53`
+- `clf-cloudfront`
+- `clf-hybrid-connectivity`
+- `clf-s3`
+- `clf-s3-storage-classes`
+- `clf-ebs-instance-store`
+- `clf-efs-fsx`
+- `clf-storage-gateway`
+- `clf-aws-backup`
+- `clf-sagemaker`
+- `clf-ai-language-services`
+- `clf-ai-vision-document-services`
+- `clf-analytics-services`
+- `clf-streaming-search-bi`
+- `clf-application-integration`
+- `clf-systems-manager`
+- `clf-developer-tools`
+- `clf-end-user-computing`
+- `clf-other-in-scope-services`
 
 Planned slugs in the tables above become valid once they are added to `concepts.json` together with their lessons.
 
@@ -450,7 +486,7 @@ Good candidates for comparison questions and for checking that explanations name
 
 ### Notable content gaps
 
-- 30 of 90 planned concepts and their lessons do not exist yet. Cloud Technology and Services still needs concepts 19–36, and Billing, Pricing, and Support has no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65. Billing contributes nothing; the rest is sampled from the three seeded domains.
+- 12 of 90 planned concepts and their lessons do not exist yet. They are all in Billing, Pricing, and Support, which has no concepts. The bank is above 65 questions, so a CLF-C02 mock exam targets 65 and currently draws them from the three seeded domains.
 - Every seeded CLF-C02 concept has at least 4 questions.
 - No CLF-C02 lesson is weak (see [Lesson status](#lesson-status)).
 - No ARCHITECTURE questions yet. The exam guide lists designing cloud architecture as out of scope, so that is expected.

@@ -753,5 +753,232 @@
       "Route 53 melakukan DNS-level routing; Elastic Load Balancing mendistribusikan actual application/network traffic ke targets."
     ],
     "order": 1
+  },
+{
+    "concept": "clf-cloudfront",
+    "title": "Amazon CloudFront",
+    "summary": "CloudFront adalah AWS content delivery network yang mempercepat static dan dynamic content dengan edge locations di seluruh dunia.",
+    "keyPoints": [
+      "CloudFront caches eligible content closer to users untuk mengurangi latency dan origin load.",
+      "Origins dapat berupa Amazon S3, HTTP servers, dan supported AWS origins.",
+      "Edge locations adalah bagian dari global edge network, bukan Regions untuk general-purpose compute.",
+      "CloudFront berfokus pada content delivery/caching; Global Accelerator berfokus pada optimized network path ke application endpoints."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-hybrid-connectivity",
+    "title": "Hybrid Connectivity",
+    "summary": "AWS Site-to-Site VPN dan Direct Connect menghubungkan customer networks dengan AWS menggunakan connectivity model yang berbeda.",
+    "keyPoints": [
+      "Site-to-Site VPN menggunakan encrypted IPsec tunnels dan biasanya berjalan melalui internet.",
+      "Direct Connect menyediakan dedicated network path dari customer network ke AWS.",
+      "Direct Connect dapat memberi bandwidth/latency yang lebih consistent dibanding internet-based connectivity.",
+      "VPN sering lebih cepat disiapkan dan dapat digunakan sebagai primary, temporary, atau backup connectivity.",
+      "VPN dan Direct Connect dapat digunakan bersama sesuai resilience dan encryption needs."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-s3",
+    "title": "Amazon S3",
+    "summary": "Amazon S3 menyediakan durable, scalable object storage untuk data dalam jumlah kecil maupun sangat besar.",
+    "keyPoints": [
+      "S3 menyimpan objects di buckets dan diakses melalui S3 APIs.",
+      "S3 cocok untuk backup, data lakes, static assets, media, analytics, dan archive use cases.",
+      "S3 berbeda dari EBS block storage dan EFS shared file storage.",
+      "Fitur seperti versioning, replication, lifecycle, encryption, dan access controls membantu data management.",
+      "Storage class dapat dipilih berdasarkan access pattern dan cost requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-s3-storage-classes",
+    "title": "S3 Storage Classes and Lifecycle",
+    "summary": "S3 storage classes mengoptimalkan cost dan access characteristics untuk data dengan pola penggunaan berbeda.",
+    "keyPoints": [
+      "S3 Standard cocok untuk frequently accessed general-purpose objects.",
+      "S3 Intelligent-Tiering otomatis memindahkan objects antar access tiers ketika access pattern berubah atau tidak diketahui.",
+      "S3 Standard-IA cocok untuk long-lived infrequently accessed data yang tetap membutuhkan millisecond access.",
+      "S3 Glacier storage classes digunakan untuk archive dengan retrieval characteristics dan cost berbeda.",
+      "S3 Lifecycle rules dapat transition objects ke lower-cost classes atau expire objects secara otomatis."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ebs-instance-store",
+    "title": "Amazon EBS and EC2 Instance Store",
+    "summary": "EBS dan instance store sama-sama menyediakan block storage untuk EC2, tetapi durability/lifecycle-nya berbeda.",
+    "keyPoints": [
+      "EBS volume adalah persistent block storage dengan lifecycle terpisah dari underlying EC2 host.",
+      "EBS cocok untuk boot volumes, databases, dan data yang harus persisten.",
+      "Instance store adalah temporary block storage physically attached ke instance host.",
+      "Instance-store data dapat hilang ketika instance stops, hibernates, terminates, atau underlying host fails.",
+      "Instance store cocok untuk caches, buffers, scratch data, dan replicated data yang dapat dibuat ulang."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-efs-fsx",
+    "title": "Amazon EFS and Amazon FSx",
+    "summary": "EFS dan FSx menyediakan managed file storage, tetapi menargetkan compatibility dan workload berbeda.",
+    "keyPoints": [
+      "EFS adalah serverless elastic shared file system dengan NFS interface untuk Linux workloads.",
+      "Multiple clients dapat concurrently mount dan access EFS file systems.",
+      "Amazon FSx menyediakan managed file systems untuk specific technologies seperti Windows File Server, Lustre, NetApp ONTAP, dan OpenZFS.",
+      "Pilih EFS untuk general shared NFS use cases dan FSx ketika specific file-system compatibility/features dibutuhkan."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-storage-gateway",
+    "title": "AWS Storage Gateway",
+    "summary": "Storage Gateway mengintegrasikan on-premises applications dengan cloud-backed AWS storage melalui hybrid gateway appliances.",
+    "keyPoints": [
+      "S3 File Gateway exposes NFS/SMB file shares dengan objects stored di Amazon S3.",
+      "Volume Gateway menyediakan cloud-backed iSCSI block volumes.",
+      "Tape Gateway menyediakan virtual tape library untuk backup software dan cloud archive.",
+      "Storage Gateway menyelesaikan hybrid storage integration; network connectivity itself disediakan oleh network path seperti internet, VPN, atau Direct Connect."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-aws-backup",
+    "title": "AWS Backup and AWS Elastic Disaster Recovery",
+    "summary": "AWS Backup dan AWS DRS menangani data protection tetapi pada layer yang berbeda: backup copies versus server disaster recovery.",
+    "keyPoints": [
+      "AWS Backup centralizes backup policies, schedules, retention, and recovery points across supported resources.",
+      "Backup plans dapat membantu standardisasi data-protection policy across accounts/resources.",
+      "AWS Elastic Disaster Recovery continuously replicates server data ke low-cost staging resources.",
+      "AWS DRS launches recovery instances ketika failover/recovery diperlukan.",
+      "Backup digunakan untuk recover data; DRS berfokus pada recovering whole server workloads dengan recovery objectives lebih cepat."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-sagemaker",
+    "title": "Amazon SageMaker AI",
+    "summary": "SageMaker AI menyediakan managed tooling untuk machine learning lifecycle ketika teams perlu membangun dan menjalankan custom ML models.",
+    "keyPoints": [
+      "SageMaker AI supports building, training, tuning, and deploying ML models.",
+      "Managed infrastructure mengurangi pekerjaan menyiapkan training dan inference environments.",
+      "SageMaker AI cocok untuk custom ML workflows dan data-science teams.",
+      "Pre-built AI services seperti Rekognition atau Comprehend lebih cocok ketika ready-made capability sudah memenuhi requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ai-language-services",
+    "title": "AI Language and Assistant Services",
+    "summary": "AWS language services memetakan berbagai input/output: text analysis, conversation, speech synthesis, speech recognition, translation, dan generative assistants.",
+    "keyPoints": [
+      "Comprehend menggunakan NLP untuk menemukan entities, sentiment, key phrases, dan insights lain dari text.",
+      "Lex digunakan untuk conversational bots dengan text dan voice interfaces.",
+      "Polly mengubah text menjadi speech; Transcribe mengubah speech menjadi text.",
+      "Translate melakukan machine translation antar languages.",
+      "Amazon Q menyediakan generative AI assistant capabilities; Q Developer berfokus pada development dan AWS operations."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-ai-vision-document-services",
+    "title": "AI Vision and Document Services",
+    "summary": "Rekognition dan Textract sama-sama menganalisis visual input, tetapi Rekognition berfokus pada image/video understanding sedangkan Textract berfokus pada documents.",
+    "keyPoints": [
+      "Rekognition dapat identify objects, scenes, faces, text, dan visual content characteristics sesuai feature.",
+      "Textract mengekstrak printed/handwritten text dari documents.",
+      "Textract juga dapat mengenali forms, tables, dan structured document relationships.",
+      "Pilih Rekognition untuk visual analysis dan Textract untuk document data extraction."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-analytics-services",
+    "title": "AWS Analytics Services",
+    "summary": "Athena, Redshift, EMR, dan Glue menangani analytical workloads pada layer berbeda: query, warehouse, big-data processing, dan data integration.",
+    "keyPoints": [
+      "Athena menjalankan serverless SQL queries langsung terhadap data di S3.",
+      "Redshift adalah managed cloud data warehouse.",
+      "EMR menjalankan managed big-data frameworks seperti Apache Spark dan Hadoop.",
+      "Glue menyediakan serverless data integration, Data Catalog, dan ETL capabilities.",
+      "Pilih service berdasarkan apakah kebutuhan utama adalah ad hoc query, data warehouse, big-data frameworks, atau data integration."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-streaming-search-bi",
+    "title": "Streaming, Search, and Business Intelligence",
+    "summary": "Kinesis, OpenSearch Service, dan Amazon Quick Sight melayani streaming, search/log analytics, dan business intelligence.",
+    "keyPoints": [
+      "Kinesis Data Streams ingests real-time streaming records untuk consumers/processors.",
+      "OpenSearch Service menyediakan managed search dan log analytics.",
+      "Amazon QuickSight evolved into Amazon Quick; its BI capability is now called Amazon Quick Sight.",
+      "Quick Sight digunakan untuk interactive visualizations, dashboards, dan business intelligence.",
+      "Pilih Kinesis untuk streams, OpenSearch untuk search/log analytics, dan Quick Sight untuk BI."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-application-integration",
+    "title": "Application Integration",
+    "summary": "SNS, SQS, EventBridge, dan Step Functions membantu decouple applications dan membangun event-driven workflows dengan pola yang berbeda.",
+    "keyPoints": [
+      "SNS adalah pub/sub service untuk fan-out notifications/messages ke multiple subscribers.",
+      "SQS menyimpan messages dalam queue agar producers dan consumers dapat bekerja secara asynchronous.",
+      "EventBridge routes events dari AWS services, custom applications, dan supported SaaS sources berdasarkan rules.",
+      "Step Functions coordinates multiple steps/services dalam state-machine workflows.",
+      "SNS pushes, SQS queues, EventBridge routes events, dan Step Functions orchestrates workflow state."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-systems-manager",
+    "title": "AWS Systems Manager",
+    "summary": "Systems Manager menyediakan centralized operational management untuk managed nodes di AWS, on-premises, dan multicloud.",
+    "keyPoints": [
+      "Run Command menjalankan commands remotely pada managed nodes.",
+      "Session Manager menyediakan secure shell-like access tanpa membuka inbound SSH/RDP ports.",
+      "Automation menjalankan operational runbooks dan Patch Manager membantu patching at scale.",
+      "Parameter Store menyimpan configuration parameters dan secrets sederhana.",
+      "Systems Manager performs operational management; CloudWatch primarily observes metrics, logs, and alarms."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-developer-tools",
+    "title": "AWS Developer Tools",
+    "summary": "CodeBuild, CodePipeline, dan X-Ray mencakup build execution, delivery workflow, dan distributed application tracing.",
+    "keyPoints": [
+      "CodeBuild compiles source, runs tests, and produces build artifacts tanpa customer mengelola build servers.",
+      "CodePipeline models dan automates stages dalam software release process.",
+      "X-Ray traces requests through distributed applications untuk menemukan latency dan errors.",
+      "CodePipeline dapat coordinate build actions seperti CodeBuild, sedangkan X-Ray digunakan setelah/selama runtime untuk diagnostics."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-end-user-computing",
+    "title": "AWS End-User Computing",
+    "summary": "AWS menyediakan managed virtual desktops, application streaming, dan isolated browser access untuk end users.",
+    "keyPoints": [
+      "Amazon WorkSpaces provides managed virtual desktop experiences.",
+      "Amazon WorkSpaces Applications, formerly AppStream 2.0, streams desktop applications to users without local installation.",
+      "WorkSpaces Secure Browser provides isolated browser sessions for internal web and SaaS applications.",
+      "AWS announced WorkSpaces Secure Browser will close to new customers starting October 29, 2026; existing customers can continue using it.",
+      "Choose full desktop, streamed application, or browser-only access based on the user requirement."
+    ],
+    "order": 1
+  },
+  {
+    "concept": "clf-other-in-scope-services",
+    "title": "Business, Frontend, and IoT Services",
+    "summary": "Amazon Connect, SES, Amplify, dan IoT Core adalah in-scope services untuk contact centers, email, web/mobile applications, dan IoT connectivity.",
+    "keyPoints": [
+      "Amazon Connect adalah cloud contact center service.",
+      "Amazon SES menyediakan scalable email sending and receiving capabilities.",
+      "AWS Amplify membantu build, deploy, dan host web/mobile frontends dan full-stack applications.",
+      "AWS IoT Core securely connects devices to AWS dan routes device messages/data menggunakan rules."
+    ],
+    "order": 1
   }
 ]

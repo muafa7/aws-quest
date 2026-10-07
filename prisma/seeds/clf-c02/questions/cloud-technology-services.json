@@ -3268,5 +3268,3238 @@
       "url": "https://docs.aws.amazon.com/Route53/latest/APIReference/Welcome.html"
     },
     "active": true
+  },
+{
+    "code": "CCP-CFR-001",
+    "concept": "clf-cloudfront",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon CloudFront primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delivering web content with low latency through a global network of edge locations",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Provisioning relational database instances",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Running batch computing jobs",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Managing software license entitlements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudfront",
+      "cdn",
+      "edge-location"
+    ],
+    "source": {
+      "title": "What is Amazon CloudFront?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFR-002",
+    "concept": "clf-cloudfront",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a CloudFront origin?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The IAM user who created the distribution",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The source location from which CloudFront retrieves content, such as an S3 bucket or an HTTP server",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The Availability Zone letter used by the viewer",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The billing account that pays for the request",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudfront",
+      "origin",
+      "cdn"
+    ],
+    "source": {
+      "title": "What is Amazon CloudFront?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFR-003",
+    "concept": "clf-cloudfront",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon CloudFront from AWS Global Accelerator?",
+    "options": [
+      {
+        "key": "A",
+        "text": "CloudFront is a database service, while Global Accelerator is an object store",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudFront only manages IAM users, while Global Accelerator only manages billing",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudFront is a CDN that can cache and deliver content at edge locations, while Global Accelerator optimizes network traffic to healthy application endpoints using the AWS global network",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "CloudFront and Global Accelerator are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "cloudfront",
+      "global-accelerator",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon CloudFront?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-CFR-004",
+    "concept": "clf-cloudfront",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A global website serves the same images and JavaScript files repeatedly to users around the world. Which service can cache these files closer to users to reduce latency and origin load?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Database Migration Service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS License Manager",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon EC2 Auto Scaling by itself",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon CloudFront",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "cloudfront",
+      "cache",
+      "edge-location",
+      "latency"
+    ],
+    "source": {
+      "title": "What is Amazon CloudFront?",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HYB-001",
+    "concept": "clf-hybrid-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does AWS Site-to-Site VPN provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Encrypted IPsec connectivity between a customer network and AWS",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A container image registry",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A managed data warehouse",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A global content cache",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "hybrid-connectivity",
+      "site-to-site-vpn",
+      "ipsec"
+    ],
+    "source": {
+      "title": "What is AWS Site-to-Site VPN?",
+      "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HYB-002",
+    "concept": "clf-hybrid-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is a key characteristic of AWS Direct Connect?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It automatically encrypts every application payload at the application layer",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "It provides a dedicated network connection path from customer premises to AWS",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "It is a DNS-only service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "It requires all traffic to use public internet routing",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "hybrid-connectivity",
+      "direct-connect",
+      "dedicated-connection"
+    ],
+    "source": {
+      "title": "What is AWS Direct Connect?",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HYB-003",
+    "concept": "clf-hybrid-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Direct Connect from AWS Site-to-Site VPN?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Direct Connect is object storage, while VPN is block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Direct Connect is a managed database, while VPN is a queue",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Direct Connect provides dedicated connectivity to AWS, while Site-to-Site VPN commonly provides encrypted tunnels over the internet",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Direct Connect and VPN are identical networking products",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "hybrid-connectivity",
+      "direct-connect",
+      "site-to-site-vpn",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Direct Connect?",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HYB-004",
+    "concept": "clf-hybrid-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company needs a quickly deployable encrypted connection from its data center to an Amazon VPC while it waits for a dedicated circuit to be installed. Which option is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon CloudFront",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EFS",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Glue",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Site-to-Site VPN",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "hybrid-connectivity",
+      "site-to-site-vpn",
+      "temporary-connectivity"
+    ],
+    "source": {
+      "title": "What is AWS Site-to-Site VPN?",
+      "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-HYB-005",
+    "concept": "clf-hybrid-connectivity",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about hybrid AWS connectivity are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Direct Connect can provide more consistent network performance by using a dedicated connection path",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Direct Connect is primarily a DNS routing service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Site-to-Site VPN uses IPsec to provide encrypted network connectivity",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Site-to-Site VPN requires an AWS edge cache to store all traffic",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Direct Connect automatically replaces all application-level encryption requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "hybrid-connectivity",
+      "direct-connect",
+      "site-to-site-vpn"
+    ],
+    "source": {
+      "title": "What is AWS Direct Connect?",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3B-001",
+    "concept": "clf-s3",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What type of storage does Amazon S3 provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Object storage",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Block storage attached directly as an EC2 volume",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A POSIX shared file system only",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A relational database engine",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "object-storage"
+    ],
+    "source": {
+      "title": "What is Amazon S3?",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3B-002",
+    "concept": "clf-s3",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "How does Amazon S3 organize stored data?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Blocks are attached to EC2 hosts as instance store only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Objects are stored in buckets",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Files must always be mounted over NFS",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Rows are stored only in relational tables",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "bucket",
+      "object"
+    ],
+    "source": {
+      "title": "What is Amazon S3?",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3B-003",
+    "concept": "clf-s3",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon S3 from Amazon EBS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 is a relational database, while EBS is a DNS service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 and EBS expose the same storage interface and lifecycle",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 is object storage accessed through S3 APIs, while EBS provides block storage volumes for EC2 workloads",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "S3 is only for temporary cache data, while EBS is only for public websites",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "ebs",
+      "comparison",
+      "storage"
+    ],
+    "source": {
+      "title": "What is Amazon S3?",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3B-004",
+    "concept": "clf-s3",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company needs durable storage for millions of images that will be accessed by web applications through APIs and do not need to be mounted as a block device. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EC2 instance store",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EBS only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon S3",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "s3",
+      "object-storage",
+      "images"
+    ],
+    "source": {
+      "title": "What is Amazon S3?",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3B-005",
+    "concept": "clf-s3",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO capabilities are available with Amazon S3? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 requires customers to manage storage servers",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Object versioning can retain multiple versions of an object",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Every S3 bucket is automatically a POSIX file system",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Lifecycle rules can transition or expire objects according to policy",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "S3 objects can only be stored in one fixed storage class for their entire lifetime",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "versioning",
+      "lifecycle"
+    ],
+    "source": {
+      "title": "What is Amazon S3?",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3C-001",
+    "concept": "clf-s3-storage-classes",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which S3 storage class is the default for general-purpose, frequently accessed objects when no other class is specified?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Standard",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "S3 Glacier Deep Archive",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 One Zone-IA",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Glacier Flexible Retrieval",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "storage-class",
+      "s3-standard"
+    ],
+    "source": {
+      "title": "Understanding and managing Amazon S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3C-002",
+    "concept": "clf-s3-storage-classes",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which S3 storage class is designed to automatically optimize storage cost when access patterns are unknown or changing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Standard selected permanently",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 Intelligent-Tiering",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "S3 One Zone-IA for every critical workload",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Glacier Deep Archive for frequently accessed data",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "intelligent-tiering",
+      "storage-class"
+    ],
+    "source": {
+      "title": "Understanding and managing Amazon S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3C-003",
+    "concept": "clf-s3-storage-classes",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes S3 Standard-IA from S3 One Zone-IA?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Standard-IA is block storage, while One Zone-IA is file storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Standard-IA is always free to retrieve, while One Zone-IA cannot be retrieved",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 Standard-IA stores data across multiple Availability Zones, while S3 One Zone-IA stores data in a single Availability Zone",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Standard-IA is only for databases, while One Zone-IA is only for DNS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "s3",
+      "standard-ia",
+      "one-zone-ia",
+      "comparison"
+    ],
+    "source": {
+      "title": "Understanding and managing Amazon S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3C-004",
+    "concept": "clf-s3-storage-classes",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company stores compliance archives that are rarely accessed and can tolerate retrieval taking hours. Which S3 storage class is designed for the lowest-cost long-term archival use case?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Standard",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 Express One Zone",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 Standard-IA selected for frequent access",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Glacier Deep Archive",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "s3",
+      "glacier-deep-archive",
+      "archive"
+    ],
+    "source": {
+      "title": "Understanding and managing Amazon S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-S3C-005",
+    "concept": "clf-s3-storage-classes",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO actions can an S3 Lifecycle rule perform? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Resize an EC2 instance based on object age",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create IAM users when a bucket grows",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Transition eligible objects to another storage class",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Convert S3 objects into EBS volumes automatically",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Expire eligible objects after a defined period",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "s3",
+      "lifecycle",
+      "transition",
+      "expiration"
+    ],
+    "source": {
+      "title": "Managing the lifecycle of objects",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EBS-001",
+    "concept": "clf-ebs-instance-store",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What does Amazon EBS provide to Amazon EC2?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Persistent block storage volumes",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A global DNS service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A managed message queue",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A serverless data warehouse",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ebs",
+      "block-storage",
+      "ec2"
+    ],
+    "source": {
+      "title": "Amazon EBS volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EBS-002",
+    "concept": "clf-ebs-instance-store",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which workload is a good fit for EC2 instance store?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The only copy of critical business records that must persist after termination",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Temporary scratch data that can be recreated if the instance or host is lost",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "A shared NFS home directory for many EC2 instances",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Long-term object archive accessed through S3 APIs",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "instance-store",
+      "ephemeral-storage",
+      "scratch-data"
+    ],
+    "source": {
+      "title": "Amazon EC2 instance store",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EBS-003",
+    "concept": "clf-ebs-instance-store",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes EBS from EC2 instance store?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EBS is object storage, while instance store is DNS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EBS is always shared across thousands of instances, while instance store is a relational database",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "EBS provides persistent block volumes with a lifecycle separate from the host, while instance store is ephemeral storage physically attached to the host",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "EBS and instance store have identical durability characteristics",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ebs",
+      "instance-store",
+      "comparison",
+      "block-storage"
+    ],
+    "source": {
+      "title": "Amazon EBS volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EBS-004",
+    "concept": "clf-ebs-instance-store",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EC2-hosted database needs block storage whose data must persist if the instance is stopped and later started again. Which storage option is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EC2 instance store only",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon SNS",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An Amazon EBS volume",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ebs",
+      "persistent-storage",
+      "database"
+    ],
+    "source": {
+      "title": "Amazon EBS volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EBS-005",
+    "concept": "clf-ebs-instance-store",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO statements about EC2 storage are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "EBS is appropriate when block data must persist independently of the underlying instance host",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Instance-store data is designed as the only durable copy of critical data",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "EBS is accessed only through the S3 object API",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Instance store is useful for caches or temporary data that can be recreated",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Instance store automatically becomes a shared network file system",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ebs",
+      "instance-store",
+      "persistence"
+    ],
+    "source": {
+      "title": "Amazon EBS volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EFS-001",
+    "concept": "clf-efs-fsx",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What type of storage does Amazon EFS provide?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Elastic shared file storage using the NFS protocol",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Object storage accessed only through S3 APIs",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Ephemeral block storage physically attached to an EC2 host",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A relational database engine",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "efs",
+      "file-storage",
+      "nfs"
+    ],
+    "source": {
+      "title": "What is Amazon Elastic File System?",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EFS-002",
+    "concept": "clf-efs-fsx",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which requirement is a strong fit for Amazon EFS?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A single EC2 instance needs temporary scratch block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Multiple Linux-based compute instances need concurrent access to the same shared NFS file system",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An application needs a graph database",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A workload needs a container image registry",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "efs",
+      "shared-file-system",
+      "linux"
+    ],
+    "source": {
+      "title": "What is Amazon Elastic File System?",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EFS-003",
+    "concept": "clf-efs-fsx",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon EFS from Amazon FSx?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EFS is a DNS service, while FSx is a message queue",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EFS is object storage, while FSx is an IAM service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "EFS provides elastic shared NFS file storage, while FSx provides managed file systems for specific technologies such as Windows File Server, Lustre, ONTAP, and OpenZFS",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "EFS and FSx provide only identical NFS file systems",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "efs",
+      "fsx",
+      "comparison",
+      "file-storage"
+    ],
+    "source": {
+      "title": "Amazon FSx",
+      "url": "https://aws.amazon.com/fsx/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EFS-004",
+    "concept": "clf-efs-fsx",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A Windows application requires a fully managed file system compatible with Windows file-server features and SMB access. Which AWS storage family is the MOST appropriate starting point?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EFS selected for NFS-only access",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EC2 instance store",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon S3 Glacier Deep Archive mounted as a Windows system drive",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon FSx for Windows File Server",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "fsx",
+      "windows-file-server",
+      "smb"
+    ],
+    "source": {
+      "title": "Amazon FSx",
+      "url": "https://aws.amazon.com/fsx/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGW-001",
+    "concept": "clf-storage-gateway",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is the primary purpose of AWS Storage Gateway?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Integrate on-premises applications with cloud-backed AWS storage",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Provide managed Kubernetes control planes",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Register internet domain names",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Build machine learning models",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "storage-gateway",
+      "hybrid-storage"
+    ],
+    "source": {
+      "title": "What is Amazon S3 File Gateway",
+      "url": "https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGW-002",
+    "concept": "clf-storage-gateway",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which Storage Gateway option exposes NFS or SMB file shares while storing files as objects in Amazon S3?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tape Gateway",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon S3 File Gateway",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Direct Connect",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon EBS Multi-Attach",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "storage-gateway",
+      "s3-file-gateway",
+      "nfs",
+      "smb"
+    ],
+    "source": {
+      "title": "What is Amazon S3 File Gateway",
+      "url": "https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGW-003",
+    "concept": "clf-storage-gateway",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Tape Gateway from Volume Gateway?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tape Gateway is a DNS service, while Volume Gateway is a relational database",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Tape Gateway stores container images, while Volume Gateway runs Lambda functions",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Tape Gateway presents virtual tapes for backup/archive workflows, while Volume Gateway presents cloud-backed iSCSI block volumes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Tape Gateway and Volume Gateway expose the same storage interface",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "storage-gateway",
+      "tape-gateway",
+      "volume-gateway",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Tape Gateway?",
+      "url": "https://docs.aws.amazon.com/storagegateway/latest/tgw/WhatIsStorageGateway.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGW-004",
+    "concept": "clf-storage-gateway",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An organization has backup software that expects a virtual tape library and wants to archive backup data in AWS instead of maintaining physical tapes. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EFS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CodeBuild",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Storage Gateway Tape Gateway",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "storage-gateway",
+      "tape-gateway",
+      "backup",
+      "archive"
+    ],
+    "source": {
+      "title": "What is Tape Gateway?",
+      "url": "https://docs.aws.amazon.com/storagegateway/latest/tgw/WhatIsStorageGateway.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-BKP-001",
+    "concept": "clf-aws-backup",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Backup primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Centrally managing and automating backup policies for supported resources",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Distributing web traffic across targets",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Building container images",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Registering domain names",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-backup",
+      "backup",
+      "data-protection"
+    ],
+    "source": {
+      "title": "What is AWS Backup?",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-BKP-002",
+    "concept": "clf-aws-backup",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What can an AWS Backup plan define?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The CPU instruction set of an EC2 instance",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Backup schedules, lifecycle/retention behavior, and backup targets for protected resources",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The DNS TTL for every Route 53 record",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The source code of a Lambda function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-backup",
+      "backup-plan",
+      "retention"
+    ],
+    "source": {
+      "title": "What is AWS Backup?",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-BKP-003",
+    "concept": "clf-aws-backup",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Backup from AWS Elastic Disaster Recovery (AWS DRS)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Backup is a CDN, while AWS DRS is a DNS service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Backup and AWS DRS are identical storage classes",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Backup manages backup copies and policies, while AWS DRS continuously replicates server data to support disaster-recovery launches",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Backup builds ML models, while AWS DRS creates IAM users",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "aws-backup",
+      "elastic-disaster-recovery",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Elastic Disaster Recovery?",
+      "url": "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-BKP-004",
+    "concept": "clf-aws-backup",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Which TWO requirements align more directly with AWS Elastic Disaster Recovery than with a traditional backup-only approach? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create BI dashboards from business data",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Continuously replicate server data to a low-cost staging area",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Deliver cached static content from edge locations",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Convert speech to text",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Launch recovery instances in AWS during a disaster or recovery test",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "elastic-disaster-recovery",
+      "disaster-recovery",
+      "replication"
+    ],
+    "source": {
+      "title": "What is AWS Elastic Disaster Recovery?",
+      "url": "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGM-001",
+    "concept": "clf-sagemaker",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon SageMaker AI primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Providing authoritative DNS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Operating a virtual tape library",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Sending email at scale",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Building, training, and deploying machine learning models",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "sagemaker-ai",
+      "machine-learning"
+    ],
+    "source": {
+      "title": "What is Amazon SageMaker AI?",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGM-002",
+    "concept": "clf-sagemaker",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "When is Amazon SageMaker AI a better fit than a pre-built AI API?",
+    "options": [
+      {
+        "key": "A",
+        "text": "When a team needs to develop and manage a custom machine learning model and its training/inference workflow",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "When the only requirement is domain registration",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "When the only requirement is storing static objects",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "When no machine learning work is needed",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "sagemaker-ai",
+      "custom-model",
+      "machine-learning"
+    ],
+    "source": {
+      "title": "What is Amazon SageMaker AI?",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGM-003",
+    "concept": "clf-sagemaker",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes SageMaker AI from Amazon Rekognition?",
+    "options": [
+      {
+        "key": "A",
+        "text": "SageMaker AI is a DNS service, while Rekognition is block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "SageMaker AI provides a platform for custom ML development and deployment, while Rekognition provides pre-built image and video analysis capabilities",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "SageMaker AI only sends email, while Rekognition only runs containers",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "SageMaker AI and Rekognition are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "sagemaker-ai",
+      "rekognition",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon SageMaker AI?",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SGM-004",
+    "concept": "clf-sagemaker",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A data science team wants managed infrastructure to train a proprietary prediction model and deploy an endpoint for inference. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Polly",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon SageMaker AI",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Storage Gateway",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "sagemaker-ai",
+      "training",
+      "inference",
+      "custom-model"
+    ],
+    "source": {
+      "title": "What is Amazon SageMaker AI?",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIL-001",
+    "concept": "clf-ai-language-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS AI service analyzes text to identify insights such as entities, sentiment, and key phrases?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Polly",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Transcribe",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Rekognition",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Comprehend",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ai",
+      "comprehend",
+      "nlp"
+    ],
+    "source": {
+      "title": "What is Amazon Comprehend?",
+      "url": "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIL-002",
+    "concept": "clf-ai-language-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service converts written text into lifelike speech?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Polly",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon Transcribe",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Translate",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Textract",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "polly",
+      "text-to-speech"
+    ],
+    "source": {
+      "title": "What is Amazon Polly?",
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIL-003",
+    "concept": "clf-ai-language-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Transcribe from Amazon Polly?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Transcribe translates languages, while Polly extracts tables from documents",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Transcribe converts speech to text, while Polly converts text to speech",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Transcribe is a chatbot service, while Polly is a graph database",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Transcribe and Polly perform the same direction of conversion",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "transcribe",
+      "polly",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Transcribe?",
+      "url": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIL-004",
+    "concept": "clf-ai-language-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company wants to build a conversational chatbot that understands user text or voice input and manages conversational interactions. Which AWS service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Polly by itself",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon S3",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Lex",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon EBS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "lex",
+      "chatbot",
+      "conversation"
+    ],
+    "source": {
+      "title": "What is Amazon Lex V2?",
+      "url": "https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIL-005",
+    "concept": "clf-ai-language-services",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO service-to-capability mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Translate performs neural machine translation between languages",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon Comprehend is primarily a virtual desktop service",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Q Developer can assist with understanding, building, and operating AWS applications",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Polly converts speech recordings into written transcripts",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Amazon Lex is primarily a block-storage service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "translate",
+      "amazon-q-developer"
+    ],
+    "source": {
+      "title": "Amazon Q Documentation",
+      "url": "https://docs.aws.amazon.com/amazonq/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIV-001",
+    "concept": "clf-ai-vision-document-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon Rekognition primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Providing NFS file storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Sending application email",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Running relational database queries",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Analyzing images and videos using pre-built computer vision capabilities",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "ai",
+      "rekognition",
+      "computer-vision"
+    ],
+    "source": {
+      "title": "What is Amazon Rekognition?",
+      "url": "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIV-002",
+    "concept": "clf-ai-vision-document-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is Amazon Textract designed to extract from documents?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Text and structured information such as forms and tables",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "EC2 instance metrics only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Container images",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "DNS routing policies",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "textract",
+      "document-processing"
+    ],
+    "source": {
+      "title": "What is Amazon Textract?",
+      "url": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIV-003",
+    "concept": "clf-ai-vision-document-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Rekognition from Amazon Textract?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rekognition is a database migration tool, while Textract is a message queue",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Rekognition focuses on image/video analysis, while Textract focuses on extracting text and structure from documents",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Rekognition provides DNS, while Textract provides object storage",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Rekognition and Textract are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "rekognition",
+      "textract",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Rekognition?",
+      "url": "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-AIV-004",
+    "concept": "clf-ai-vision-document-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An insurance company receives scanned claim forms and wants to extract field values and tables without manually typing them. Which AWS service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Rekognition selected only for object detection",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Textract",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Direct Connect",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ai",
+      "textract",
+      "forms",
+      "tables"
+    ],
+    "source": {
+      "title": "What is Amazon Textract?",
+      "url": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ANA-001",
+    "concept": "clf-analytics-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS service lets users run serverless SQL queries directly against data stored in Amazon S3?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon ECR",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon WorkSpaces",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Athena",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "analytics",
+      "athena",
+      "s3",
+      "sql"
+    ],
+    "source": {
+      "title": "What is Amazon Athena?",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ANA-002",
+    "concept": "clf-analytics-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is Amazon Redshift primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cloud data warehousing and large-scale analytical queries",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Managing DNS zones",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Providing virtual desktops",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Storing container images",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "redshift",
+      "data-warehouse"
+    ],
+    "source": {
+      "title": "Amazon Redshift",
+      "url": "https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ANA-003",
+    "concept": "clf-analytics-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Glue from Amazon EMR?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Glue is a DNS service, while EMR is block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Glue is a serverless data integration service with catalog and ETL capabilities, while EMR provides managed big-data frameworks such as Spark and Hadoop",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Glue provides virtual desktops, while EMR sends email",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Glue and EMR are identical data warehouses",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "glue",
+      "emr",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS Glue?",
+      "url": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ANA-004",
+    "concept": "clf-analytics-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A data analyst needs to run occasional SQL queries against log files already stored in Amazon S3 and does not want to provision a database cluster. Which service is MOST appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Redshift provisioned only because a cluster is mandatory",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EC2 instance store",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Athena",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "athena",
+      "serverless",
+      "s3"
+    ],
+    "source": {
+      "title": "What is Amazon Athena?",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-ANA-005",
+    "concept": "clf-analytics-services",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO service-to-use-case mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Amazon Athena primarily as a virtual desktop service",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use Amazon EMR for managed processing with big-data frameworks such as Apache Spark",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use Amazon Redshift primarily as a DNS registrar",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use AWS Glue for serverless data integration and catalog/ETL tasks",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use AWS Glue primarily as a CDN",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "emr",
+      "glue",
+      "big-data",
+      "etl"
+    ],
+    "source": {
+      "title": "What is Amazon EMR?",
+      "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SBI-001",
+    "concept": "clf-streaming-search-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS service is designed for real-time streaming data ingestion with ordered streams of records?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon EFS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS License Manager",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Kinesis Data Streams",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "analytics",
+      "kinesis",
+      "streaming"
+    ],
+    "source": {
+      "title": "What is Amazon Kinesis Data Streams?",
+      "url": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SBI-002",
+    "concept": "clf-streaming-search-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is Amazon OpenSearch Service commonly used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Managed search, log analytics, and observability workloads",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Persistent EC2 boot volumes",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Virtual desktop streaming",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Domain registration only",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "opensearch",
+      "search",
+      "log-analytics"
+    ],
+    "source": {
+      "title": "What is Amazon OpenSearch Service?",
+      "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SBI-003",
+    "concept": "clf-streaming-search-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon Quick Sight from Amazon OpenSearch Service?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quick Sight is block storage, while OpenSearch is DNS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Quick Sight provides BI dashboards and visual analytics, while OpenSearch Service provides search and log-analytics capabilities",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Quick Sight is a container registry, while OpenSearch is email",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Quick Sight and OpenSearch are identical services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "quick-sight",
+      "opensearch",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon Quick?",
+      "url": "https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SBI-004",
+    "concept": "clf-streaming-search-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Business users need interactive dashboards and visualizations over company datasets rather than a search engine for application logs. Which AWS BI capability is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Kinesis Data Streams",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon OpenSearch Service selected only for log indexing",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Quick Sight within Amazon Quick",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "EC2 instance store",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "analytics",
+      "quick-sight",
+      "business-intelligence",
+      "dashboard"
+    ],
+    "source": {
+      "title": "What is Amazon Quick?",
+      "url": "https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INT-001",
+    "concept": "clf-application-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is Amazon SQS primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Providing global DNS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Building ML models",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Storing container images",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Providing managed message queues that decouple producers from consumers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "application-integration",
+      "sqs",
+      "queue"
+    ],
+    "source": {
+      "title": "What is Amazon SQS?",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INT-002",
+    "concept": "clf-application-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Which AWS service uses a publish/subscribe model to fan out a message to multiple subscribers?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon SNS",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon SQS used as a single queue only",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon EBS",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon RDS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "application-integration",
+      "sns",
+      "pub-sub",
+      "fan-out"
+    ],
+    "source": {
+      "title": "What is Amazon SNS?",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INT-003",
+    "concept": "clf-application-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes Amazon EventBridge from AWS Step Functions?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EventBridge is block storage, while Step Functions is DNS",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "EventBridge routes events to targets based on rules, while Step Functions orchestrates multi-step workflows using state machines",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "EventBridge stores container images, while Step Functions sends email only",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "EventBridge and Step Functions perform exactly the same function",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "application-integration",
+      "eventbridge",
+      "step-functions",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is Amazon EventBridge?",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INT-004",
+    "concept": "clf-application-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An order-processing system must absorb traffic spikes so that producers can continue submitting work even when consumers process messages more slowly. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EFS",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon SQS",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Artifact",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "application-integration",
+      "sqs",
+      "decoupling",
+      "buffer"
+    ],
+    "source": {
+      "title": "What is Amazon SQS?",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-INT-005",
+    "concept": "clf-application-integration",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO service-to-pattern mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon SQS is primarily a CDN",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EventBridge is primarily persistent block storage",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon SNS supports pub/sub fan-out to multiple subscribers",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Step Functions is primarily a domain registrar",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "AWS Step Functions coordinates multi-step workflows and tracks workflow state",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "application-integration",
+      "sns",
+      "step-functions",
+      "pub-sub",
+      "workflow"
+    ],
+    "source": {
+      "title": "What is AWS Step Functions?",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SSM-001",
+    "concept": "clf-systems-manager",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS Systems Manager primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delivering cached website content",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Creating relational database schemas",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Running a public DNS service",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Centrally managing and operating nodes and common operational tasks across environments",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "systems-manager",
+      "operations",
+      "node-management"
+    ],
+    "source": {
+      "title": "What is AWS Systems Manager?",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SSM-002",
+    "concept": "clf-systems-manager",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "Which Systems Manager capability provides secure interactive access to managed nodes without requiring inbound SSH or RDP ports?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Session Manager",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Route 53 Resolver",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 Lifecycle",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "CloudFront Origin Shield",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "systems-manager",
+      "session-manager",
+      "remote-access"
+    ],
+    "source": {
+      "title": "What is AWS Systems Manager?",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SSM-003",
+    "concept": "clf-systems-manager",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Systems Manager from Amazon CloudWatch?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Systems Manager is object storage, while CloudWatch is block storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Systems Manager performs node management and operational actions, while CloudWatch focuses on observability through metrics, logs, alarms, and related monitoring capabilities",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Systems Manager and CloudWatch are identical services",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Systems Manager only manages DNS, while CloudWatch only sends email",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "systems-manager",
+      "cloudwatch",
+      "comparison",
+      "operations"
+    ],
+    "source": {
+      "title": "What is AWS Systems Manager?",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-SSM-004",
+    "concept": "clf-systems-manager",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An operations team must apply patches and run administrative commands across a large fleet of managed EC2 and on-premises servers without manually logging in to each server. Which service is the BEST fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon CloudFront",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Quick Sight",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Systems Manager",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Database Migration Service",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "systems-manager",
+      "patching",
+      "run-command",
+      "hybrid"
+    ],
+    "source": {
+      "title": "What is AWS Systems Manager?",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DEV-001",
+    "concept": "clf-developer-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "What is AWS CodeBuild primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Registering domain names",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Providing virtual desktops",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Managing S3 storage classes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Compiling source code, running tests, and producing build artifacts",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "developer-tools",
+      "codebuild",
+      "build"
+    ],
+    "source": {
+      "title": "What is AWS CodeBuild?",
+      "url": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DEV-002",
+    "concept": "clf-developer-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is AWS CodePipeline designed to automate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Stages and actions in a continuous software release workflow",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Block storage attachment",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "DNS recursive resolution",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Machine translation",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "developer-tools",
+      "codepipeline",
+      "continuous-delivery"
+    ],
+    "source": {
+      "title": "What is AWS CodePipeline?",
+      "url": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DEV-003",
+    "concept": "clf-developer-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS X-Ray from AWS CodeBuild?",
+    "options": [
+      {
+        "key": "A",
+        "text": "X-Ray stores container images, while CodeBuild registers domains",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "X-Ray traces requests through distributed applications for diagnostics, while CodeBuild runs builds and tests",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "X-Ray is a database, while CodeBuild is a CDN",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "X-Ray and CodeBuild perform identical pipeline stages",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "developer-tools",
+      "x-ray",
+      "codebuild",
+      "comparison"
+    ],
+    "source": {
+      "title": "What is AWS X-Ray?",
+      "url": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-DEV-004",
+    "concept": "clf-developer-tools",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team needs to identify which downstream service is adding latency to requests in a distributed application. Which AWS developer tool is MOST directly relevant?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS CodeBuild",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon SES",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS X-Ray",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon EBS",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "developer-tools",
+      "x-ray",
+      "distributed-tracing",
+      "latency"
+    ],
+    "source": {
+      "title": "What is AWS X-Ray?",
+      "url": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EUC-001",
+    "concept": "clf-end-user-computing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS service provides managed virtual desktops to end users?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon AppStream 2.0 selected only as object storage",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Route 53",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Glue",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon WorkSpaces",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "end-user-computing",
+      "workspaces",
+      "virtual-desktop"
+    ],
+    "source": {
+      "title": "What is Amazon WorkSpaces?",
+      "url": "https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EUC-002",
+    "concept": "clf-end-user-computing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "What is Amazon WorkSpaces Applications, formerly AppStream 2.0, primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Streaming desktop applications from AWS to users without requiring those applications to be installed locally",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Providing managed relational databases",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Creating S3 storage classes",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Running DNS health checks",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "end-user-computing",
+      "appstream-2",
+      "application-streaming"
+    ],
+    "source": {
+      "title": "Amazon WorkSpaces Applications (formerly AppStream 2.0)",
+      "url": "https://aws.amazon.com/workspaces/applications/"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EUC-003",
+    "concept": "clf-end-user-computing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes WorkSpaces Secure Browser from Amazon WorkSpaces?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Secure Browser is block storage, while WorkSpaces is a CDN",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Secure Browser provides isolated browser sessions for web access, while WorkSpaces provides managed virtual desktops",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Secure Browser is a database migration service, while WorkSpaces is a queue",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Secure Browser and WorkSpaces provide identical end-user environments",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "end-user-computing",
+      "secure-browser",
+      "workspaces",
+      "comparison"
+    ],
+    "source": {
+      "title": "Amazon WorkSpaces Secure Browser",
+      "url": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-EUC-004",
+    "concept": "clf-end-user-computing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants contractors to access internal web applications through an isolated browser session without providing each contractor a full virtual desktop. Which service matches this capability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon WorkSpaces selected specifically because a full desktop is not wanted",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EBS",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon WorkSpaces Secure Browser",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Route 53",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "end-user-computing",
+      "secure-browser",
+      "browser-isolation"
+    ],
+    "source": {
+      "title": "Amazon WorkSpaces Secure Browser",
+      "url": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-OTH-001",
+    "concept": "clf-other-in-scope-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "Which AWS service provides a cloud-based contact center?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon SES",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Amplify",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS IoT Core",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Connect",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "amazon-connect",
+      "contact-center"
+    ],
+    "source": {
+      "title": "What is Amazon Connect?",
+      "url": "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-OTH-002",
+    "concept": "clf-other-in-scope-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "What is Amazon Simple Email Service (Amazon SES) primarily used for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Sending and receiving email at scale",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Providing managed virtual desktops",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Running graph databases",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Providing dedicated network circuits",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "ses",
+      "email"
+    ],
+    "source": {
+      "title": "What is Amazon SES?",
+      "url": "https://docs.aws.amazon.com/ses/latest/dg/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-OTH-003",
+    "concept": "clf-other-in-scope-services",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "Which statement BEST distinguishes AWS Amplify from AWS IoT Core?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amplify is block storage, while IoT Core is a relational database",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amplify provides tools and managed capabilities for web/mobile application development and hosting, while IoT Core connects devices and routes IoT messages to AWS services",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amplify is a DNS registrar, while IoT Core is a data warehouse",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amplify and IoT Core are identical frontend services",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "amplify",
+      "iot-core",
+      "comparison"
+    ],
+    "source": {
+      "title": "Welcome to AWS Amplify Hosting",
+      "url": "https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "CCP-OTH-004",
+    "concept": "clf-other-in-scope-services",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "Which TWO service-to-use-case mappings are correct? (Select TWO.)",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Amazon Connect for a cloud contact-center workload",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use Amazon SES primarily for virtual desktop delivery",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use AWS Amplify primarily as a dedicated network circuit",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use AWS IoT Core to connect devices and route device messages into AWS services",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use AWS IoT Core primarily as a relational database engine",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "amazon-connect",
+      "iot-core",
+      "in-scope-services"
+    ],
+    "source": {
+      "title": "What is AWS IoT Core?",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html"
+    },
+    "active": true
   }
 ]
