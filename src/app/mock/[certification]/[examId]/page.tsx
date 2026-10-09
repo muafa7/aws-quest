@@ -1,3 +1,7 @@
+import { ArcadeButton } from "@/components/arcade-button";
+import { ArcadeIcon } from "@/components/arcade-icon";
+import { ProgressBar } from "@/components/progress-bar";
+import { domainTone } from "@/components/retro-panel";
 import { notFound } from "next/navigation";
 import { submitMockExam } from "@/app/_actions/mock";
 import { ExamTimer } from "@/components/exam-timer";
@@ -42,26 +46,23 @@ export default async function MockExamPage({ params }: { params: Promise<{ certi
     const weakConcepts = [...weak.entries()].sort((a, b) => b[1] - a[1]);
 
     return (
-      <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-        <RetroPanel accent>
+      <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--exam">
+        <RetroPanel accent className="session-hero">
           <Eyebrow>BOSS EXAM RESULT // {code}</Eyebrow>
-          <div className="mt-5 flex flex-wrap items-end justify-between gap-5">
-            <div><p className="text-5xl font-black text-amber-300">{percent}%</p><p className="mt-2 text-slate-400">Internal practice score</p></div>
-            <div className="text-right"><p className="text-2xl font-black text-slate-100">{exam.correctCount} / {exam.questionCount}</p><p className="text-xs uppercase tracking-[0.14em] text-slate-500">Correct</p></div>
+          <h1>Exam complete</h1>
+          <div className="exam-score">
+            <div><p className="exam-score__value">{percent}<span>%</span></p><p className="exam-score__label">Internal practice score</p></div>
+            <div className="exam-score__correct"><strong>{exam.correctCount} / {exam.questionCount}</strong><p>Correct</p></div>
           </div>
         </RetroPanel>
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
-          <RetroPanel>
-            <Eyebrow>DOMAIN ANALYSIS</Eyebrow>
-            <div className="mt-4 space-y-3">
-              {[...domains.entries()].map(([domain, value]) => <div key={domain} className="flex items-center justify-between gap-4 border-b border-slate-800 pb-3"><span className="text-sm text-slate-300">{domain}</span><StatusBadge tone={value.correct === value.total ? "success" : "neutral"}>{value.correct}/{value.total}</StatusBadge></div>)}
-            </div>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <RetroPanel tone="violet">
+            <div className="panel-heading"><ArcadeIcon name="progress" /><h2>Domain analysis</h2></div>
+            <div>{[...domains.entries()].map(([domain, value], index) => <div key={domain} className="domain-result" data-tone={domainTone(index)}><div className="domain-result__label"><span>{domain}</span><StatusBadge tone={value.correct === value.total ? "success" : "neutral"}>{value.correct}/{value.total}</StatusBadge></div><ProgressBar value={value.total ? (value.correct / value.total) * 100 : 0} label={domain} /></div>)}</div>
           </RetroPanel>
-          <RetroPanel>
-            <Eyebrow>RECOMMENDED REVIEW</Eyebrow>
-            <div className="mt-4 space-y-3">
-              {weakConcepts.length ? weakConcepts.map(([concept, misses]) => <div key={concept} className="flex justify-between border-b border-slate-800 pb-3 text-sm"><span className="text-slate-300">{concept}</span><span className="text-red-300">{misses} miss{misses === 1 ? "" : "es"}</span></div>) : <p className="text-sm text-emerald-300">No weak concepts in this run.</p>}
-            </div>
+          <RetroPanel tone="coral">
+            <div className="panel-heading"><ArcadeIcon name="learn" /><h2>Recommended review</h2></div>
+            <div>{weakConcepts.length ? weakConcepts.map(([concept, misses]) => <div key={concept} className="log-row"><div className="log-row__top"><span className="text-slate-300">{concept}</span><span className="text-[var(--danger)]">{misses} miss{misses === 1 ? "" : "es"}</span></div></div>) : <p className="empty-plate text-[var(--success)]">No weak concepts in this run.</p>}</div>
           </RetroPanel>
         </div>
       </main>
@@ -70,32 +71,27 @@ export default async function MockExamPage({ params }: { params: Promise<{ certi
 
   const formId = `mock-exam-${exam.id}`;
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-      <div className="sticky top-[69px] z-30 mb-5 flex items-center justify-between border border-slate-700 bg-[#0d1420]/95 p-3 backdrop-blur">
-        <div><Eyebrow>BOSS EXAM // {code}</Eyebrow><p className="mt-1 text-xs text-slate-500">{exam.questionCount} questions · no feedback until submit</p></div>
-        <div className="text-right"><p className="text-[10px] uppercase tracking-[0.16em] text-slate-500">Time left</p><ExamTimer startedAt={exam.startedAt.toISOString()} durationMinutes={exam.durationMinutes} formId={formId} /></div>
-      </div>
-      <form id={formId} action={submitMockExam} className="space-y-5">
+    <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--exam">
+      <header className="exam-hud">
+        <div><h1 className="eyebrow">BOSS EXAM // {code}</h1><p className="exam-hud__description">{exam.questionCount} questions &middot; no feedback until submit</p></div>
+        <div className="exam-hud__timer"><p>Time left</p><ExamTimer startedAt={exam.startedAt.toISOString()} durationMinutes={exam.durationMinutes} formId={formId} /></div>
+      </header>
+      <form id={formId} action={submitMockExam} className="space-y-6">
         <input type="hidden" name="certification" value={code} />
         <input type="hidden" name="examId" value={exam.id} />
         {exam.questions.map((item) => {
           const multiple = item.question.type === "MULTIPLE_CHOICE";
           return (
             <RetroPanel key={item.id}>
-              <div className="flex items-center justify-between gap-3"><p className="text-xs font-black text-amber-300">QUESTION {item.position}</p><StatusBadge>{item.question.difficulty}</StatusBadge></div>
-              <fieldset className="mt-4 space-y-3">
-                <legend className="mb-4 text-base font-semibold leading-7 text-slate-100">{item.question.prompt}</legend>
-                {item.question.options.map((option) => (
-                  <label key={option.id} className="flex cursor-pointer gap-3 border border-slate-700 bg-[#080d15] p-3 hover:border-amber-500/60">
-                    <input type={multiple ? "checkbox" : "radio"} name={`question_${item.questionId}`} value={option.key} className="mt-1 accent-amber-400" />
-                    <span className="font-bold text-amber-300">{option.key}</span><span className="text-sm leading-6 text-slate-300">{option.text}</span>
-                  </label>
-                ))}
+              <div className="exam-question__header"><p className="exam-question__number">QUESTION {item.position}</p><StatusBadge>{item.question.difficulty}</StatusBadge></div>
+              <fieldset className="question-options">
+                <legend className="question-prompt">{item.question.prompt}</legend>
+                {item.question.options.map((option) => <label key={option.id} className="answer-option"><input type={multiple ? "checkbox" : "radio"} name={`question_${item.questionId}`} value={option.key} /><span className="answer-option__key">{option.key}</span><span className="answer-option__text">{option.text}</span></label>)}
               </fieldset>
             </RetroPanel>
           );
         })}
-        <button className="w-full border border-amber-400 bg-amber-400 px-4 py-4 text-sm font-black tracking-[0.14em] text-slate-950 shadow-[4px_4px_0_#78350f]">SUBMIT MOCK EXAM</button>
+        <ArcadeButton className="w-full">Submit mock exam <ArcadeIcon name="arrow" width={18} height={18} /></ArcadeButton>
       </form>
     </main>
   );

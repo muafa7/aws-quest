@@ -1,3 +1,7 @@
+import { ArcadeButton, buttonClassName } from "@/components/arcade-button";
+import { ArcadeIcon } from "@/components/arcade-icon";
+import { HudStats } from "@/components/hud-stats";
+import { ProgressBar } from "@/components/progress-bar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { finishPracticeSession, startPracticeSession } from "@/app/_actions/learning";
@@ -22,14 +26,15 @@ export default async function PracticeCertificationPage({
   const sessionId = Number(query.session);
   if (!Number.isInteger(sessionId)) {
     return (
-      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <RetroPanel accent>
+      <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
+        <RetroPanel accent tone="teal" className="session-hero">
+          <div className="session-hero__icon"><ArcadeIcon name="practice" width={28} height={28} /></div>
           <Eyebrow>PRACTICE // {code}</Eyebrow>
-          <h1 className="mt-3 text-3xl font-black text-slate-100">Unlimited adaptive session</h1>
-          <p className="mt-4 leading-7 text-slate-400">No fixed daily limit. A checkpoint appears every 10 questions, but you decide when the session ends.</p>
-          <form action={startPracticeSession} className="mt-7">
+          <h1>Unlimited adaptive session</h1>
+          <p className="session-hero__description">No fixed daily limit. A checkpoint appears every 10 questions, but you decide when the session ends.</p>
+          <form action={startPracticeSession} className="mt-8">
             <input type="hidden" name="certification" value={code} />
-            <button className="w-full border border-amber-400 bg-amber-400 px-4 py-3 text-sm font-black tracking-[0.14em] text-slate-950 shadow-[4px_4px_0_#78350f]">START PRACTICE</button>
+            <ArcadeButton className="w-full">Start practice <ArcadeIcon name="arrow" width={18} height={18} /></ArcadeButton>
           </form>
         </RetroPanel>
       </main>
@@ -43,11 +48,12 @@ export default async function PracticeCertificationPage({
 
   if (session.endedAt) {
     return (
-      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <RetroPanel>
+      <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
+        <RetroPanel accent tone="teal" className="session-hero">
+          <div className="session-hero__icon"><ArcadeIcon name="check" width={28} height={28} /></div>
           <Eyebrow>SESSION COMPLETE</Eyebrow>
-          <h1 className="mt-3 text-3xl font-black text-slate-100">{session.correctCount} / {session.questionCount} correct</h1>
-          <Link href={`/progress/${code}`} className="mt-6 block border border-amber-400 bg-amber-400 px-4 py-3 text-center text-sm font-black text-slate-950">VIEW PROGRESS</Link>
+          <h1>{session.correctCount} / {session.questionCount} correct</h1>
+          <Link href={`/progress/${code}`} className={buttonClassName("primary", "mt-8 w-full")}>View progress <ArcadeIcon name="arrow" width={18} height={18} /></Link>
         </RetroPanel>
       </main>
     );
@@ -57,17 +63,14 @@ export default async function PracticeCertificationPage({
   if (Number.isInteger(attemptId)) {
     const attempt = await prisma.attempt.findFirst({
       where: { id: attemptId, practiceSessionId: session.id },
-      include: { question: { include: { concept: true } } },
+      include: { question: { include: { concept: true, options: { select: { key: true, text: true }, orderBy: { key: "asc" } } } } },
     });
     if (attempt) {
       return (
-        <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <Eyebrow>PRACTICE // Q{session.questionCount}</Eyebrow>
-            <StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge>
-          </div>
-          <AttemptFeedback attempt={attempt} explanation={attempt.question.concept.generalExplanation} keyNote={attempt.question.concept.keyNote} />
-          <Link href={`/practice/${code}?session=${session.id}`} className="mt-4 block border border-amber-400 bg-amber-400 px-4 py-3 text-center text-sm font-black tracking-[0.14em] text-slate-950">CONTINUE</Link>
+        <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
+          <header className="session-hud"><div><Eyebrow>PRACTICE // Q{session.questionCount}</Eyebrow><h1>Answer feedback</h1></div><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge></header>
+          <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={attempt.question.concept.generalExplanation} keyNote={attempt.question.concept.keyNote} />
+          <Link href={`/practice/${code}?session=${session.id}`} className={buttonClassName("primary", "mt-5 w-full")}>Continue <ArcadeIcon name="arrow" width={18} height={18} /></Link>
         </main>
       );
     }
@@ -77,20 +80,23 @@ export default async function PracticeCertificationPage({
   if (showCheckpoint) {
     const accuracy = session.questionCount ? Math.round((session.correctCount / session.questionCount) * 100) : 0;
     return (
-      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <RetroPanel accent>
-          <Eyebrow>SESSION CHECKPOINT</Eyebrow>
-          <div className="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div className="border border-slate-700 bg-[#080d15] p-4"><strong className="block text-2xl text-slate-100">{session.questionCount}</strong><span className="text-[10px] uppercase text-slate-500">Answered</span></div>
-            <div className="border border-slate-700 bg-[#080d15] p-4"><strong className="block text-2xl text-emerald-300">{session.correctCount}</strong><span className="text-[10px] uppercase text-slate-500">Correct</span></div>
-            <div className="border border-slate-700 bg-[#080d15] p-4"><strong className="block text-2xl text-amber-300">{accuracy}%</strong><span className="text-[10px] uppercase text-slate-500">Accuracy</span></div>
-          </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <Link href={`/practice/${code}?session=${session.id}&checkpoint=${session.questionCount}`} className="border border-amber-400 bg-amber-400 px-4 py-3 text-center text-sm font-black text-slate-950">CONTINUE</Link>
+      <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
+        <RetroPanel accent className="session-hero">
+          <div className="session-hero__icon"><ArcadeIcon name="progress" width={28} height={28} /></div>
+          <Eyebrow>PRACTICE // {code}</Eyebrow>
+          <h1>Session checkpoint</h1>
+          <HudStats items={[
+            { label: "Answered", value: session.questionCount },
+            { label: "Correct", value: session.correctCount, tone: "success" },
+            { label: "Accuracy", value: `${accuracy}%`, tone: "accent" },
+          ]} />
+          <ProgressBar value={accuracy} label="Session accuracy" />
+          <div className="session-actions">
+            <Link href={`/practice/${code}?session=${session.id}&checkpoint=${session.questionCount}`} className={buttonClassName()}>Continue <ArcadeIcon name="arrow" width={17} height={17} /></Link>
             <form action={finishPracticeSession}>
               <input type="hidden" name="certification" value={code} />
               <input type="hidden" name="sessionId" value={session.id} />
-              <button className="w-full border border-slate-600 px-4 py-3 text-sm font-bold text-slate-300 hover:border-amber-400">FINISH SESSION</button>
+              <ArcadeButton variant="secondary" className="w-full">Finish session</ArcadeButton>
             </form>
           </div>
         </RetroPanel>
@@ -100,26 +106,21 @@ export default async function PracticeCertificationPage({
 
   const question = await selectPracticeQuestion(code);
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <Eyebrow>PRACTICE // {code}</Eyebrow>
-          <h1 className="mt-2 text-xl font-black text-slate-100">Adaptive encounter</h1>
-        </div>
-        <div className="flex gap-2"><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge><StatusBadge>SESSION #{session.id}</StatusBadge></div>
-      </div>
+    <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
+      <header className="session-hud">
+        <div><Eyebrow>PRACTICE // {code}</Eyebrow><h1>Adaptive encounter</h1></div>
+        <div className="session-hud__badges"><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge><StatusBadge>SESSION #{session.id}</StatusBadge></div>
+      </header>
       {question ? (
         <RetroPanel accent>
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Concept // {question.concept.name}</p>
+          <div className="panel-heading"><ArcadeIcon name="practice" /><p className="panel-meta">Concept // {question.concept.name}</p></div>
           <QuestionForm question={question} certification={code} mode="PRACTICE" sessionId={session.id} />
         </RetroPanel>
-      ) : (
-        <RetroPanel><p className="text-slate-400">No active questions are available yet.</p></RetroPanel>
-      )}
-      <form action={finishPracticeSession} className="mt-4 text-right">
+      ) : <RetroPanel><p className="empty-plate">No active questions are available yet.</p></RetroPanel>}
+      <form action={finishPracticeSession} className="mt-5 text-right">
         <input type="hidden" name="certification" value={code} />
         <input type="hidden" name="sessionId" value={session.id} />
-        <button className="text-xs font-bold tracking-[0.13em] text-slate-600 hover:text-red-300">FINISH SESSION</button>
+        <ArcadeButton variant="quiet">Finish session</ArcadeButton>
       </form>
     </main>
   );

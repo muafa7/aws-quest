@@ -1,10 +1,14 @@
+import { PageHeader } from "@/components/page-header";
+import { ArcadeIcon } from "@/components/arcade-icon";
+import { buttonClassName } from "@/components/arcade-button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getSafeQuestionById } from "@/lib/learning/selector";
 import { AttemptFeedback } from "@/components/feedback";
 import { QuestionForm } from "@/components/question-form";
-import { Eyebrow, RetroPanel } from "@/components/retro-panel";
+import { RetroPanel } from "@/components/retro-panel";
+import { ProgressBar, percentOf } from "@/components/progress-bar";
 
 export default async function LearnConceptPage({
   params,
@@ -35,53 +39,61 @@ export default async function LearnConceptPage({
   const question = questionId ? await getSafeQuestionById(questionId) : null;
   const attemptId = Number(attemptParam);
   const attempt = Number.isInteger(attemptId)
-    ? await prisma.attempt.findFirst({ where: { id: attemptId, question: { conceptId: concept.id } } })
+    ? await prisma.attempt.findFirst({
+        where: { id: attemptId, question: { conceptId: concept.id } },
+        include: { question: { select: { options: { select: { key: true, text: true }, orderBy: { key: "asc" } } } } },
+      })
     : null;
   const keyPoints = JSON.parse(concept.lesson.keyPoints) as string[];
 
+  // Presentation only: same sequence as the stage map (topic order, then concept order).
+  const sequence = await prisma.concept.findMany({
+    where: { active: true, lesson: { isNot: null }, topic: { certification: { code: certification } } },
+    select: { slug: true, name: true },
+    orderBy: [{ topic: { order: "asc" } }, { order: "asc" }],
+  });
+  const currentIndex = sequence.findIndex((item) => item.slug === concept.slug);
+  const nextConcept = currentIndex >= 0 ? (sequence[currentIndex + 1] ?? null) : null;
+
   return (
-    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <Eyebrow>{certification} // {concept.topic.name}</Eyebrow>
-          <h1 className="mt-2 text-2xl font-black text-slate-100">{concept.lesson.title}</h1>
+    <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--wide">
+      <PageHeader eyebrow={<>{certification}{" // "}{concept.topic.name}</>} title={concept.lesson.title} icon="learn" action={<Link href={`/learn/${certification}`} className={buttonClassName("quiet")}><ArcadeIcon name="back" width={16} height={16} /> Stage map</Link>} />
+      {currentIndex >= 0 ? (
+        <div className="lesson-position">
+          <ProgressBar compact tone="teal" value={percentOf(currentIndex + 1, sequence.length)} label={`Lesson ${currentIndex + 1} of ${sequence.length}`} valueText={concept.topic.name} />
+          {nextConcept ? <p className="lesson-position__next">Up next: {nextConcept.name}</p> : <p className="lesson-position__next">This is the last lesson in {certification}.</p>}
         </div>
-        <Link href={`/learn/${certification}`} className="text-xs font-bold tracking-[0.13em] text-slate-500 hover:text-amber-300">← STAGE MAP</Link>
-      </div>
-
-      <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
-        <RetroPanel>
-          <Eyebrow>LESSON</Eyebrow>
-          <p className="mt-4 text-lg leading-8 text-slate-200">{concept.lesson.summary}</p>
-          <div className="mt-6 space-y-3">
-            {keyPoints.map((point, index) => (
-              <div key={point} className="flex gap-3 border-l-2 border-slate-700 pl-4 text-sm leading-6 text-slate-400">
-                <span className="text-amber-300">0{index + 1}</span><span>{point}</span>
-              </div>
-            ))}
+      ) : null}
+      <div className="lesson-grid">
+        <RetroPanel tone="teal">
+          <div className="panel-heading"><ArcadeIcon name="learn" /><h2>Lesson</h2></div>
+          <div lang="id">
+            <p className="lesson-summary">{concept.lesson.summary}</p>
+            <div className="lesson-points">{keyPoints.map((point, index) => <div key={point} className="lesson-point"><span className="lesson-point__number">{String(index + 1).padStart(2, "0")}</span><p className="lesson-point__text">{point}</p></div>)}</div>
+            {concept.keyNote ? <div className="key-note"><p className="key-note__label" lang="en">Key Note</p><p className="key-note__text">{concept.keyNote}</p></div> : null}
           </div>
-          {concept.keyNote ? (
-            <div className="mt-6 border border-amber-800/70 bg-amber-950/20 p-4">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-400">Key Note</p>
-              <p className="mt-2 text-sm leading-6 text-amber-100">{concept.keyNote}</p>
-            </div>
-          ) : null}
-          {concept.referenceUrl ? <a href={concept.referenceUrl} target="_blank" rel="noreferrer" className="mt-5 inline-block text-xs text-slate-500 underline underline-offset-4 hover:text-amber-300">AWS reference ↗</a> : null}
+          {concept.referenceUrl ? <a href={concept.referenceUrl} target="_blank" rel="noreferrer" aria-label="AWS reference (opens in a new tab)" className="text-link mt-4 underline underline-offset-4">AWS reference <ArcadeIcon name="external" width={15} height={15} /></a> : null}
         </RetroPanel>
-
-        <div>
+        <div className="min-w-0">
           {attempt ? (
-            <div className="space-y-4">
-              <AttemptFeedback attempt={attempt} explanation={concept.generalExplanation} keyNote={concept.keyNote} />
-              <Link href={`/learn/${certification}`} className="block border border-amber-400 bg-amber-400 px-4 py-3 text-center text-sm font-black tracking-[0.14em] text-slate-950">CONTINUE TO MAP</Link>
+            <div className="space-y-5">
+              <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={concept.generalExplanation} keyNote={concept.keyNote} />
+              {nextConcept ? (
+                <div className="session-actions !mt-0">
+                  <Link href={`/learn/${certification}/${nextConcept.slug}`} className={buttonClassName("primary")}>Next lesson <ArcadeIcon name="arrow" width={17} height={17} /></Link>
+                  <Link href={`/learn/${certification}`} className={buttonClassName("secondary")}>Stage map</Link>
+                </div>
+              ) : (
+                <Link href={`/learn/${certification}`} className={buttonClassName("primary", "w-full")}>Back to stage map <ArcadeIcon name="arrow" width={17} height={17} /></Link>
+              )}
             </div>
           ) : question ? (
             <RetroPanel accent>
-              <Eyebrow>CHALLENGE</Eyebrow>
-              <div className="mt-4"><QuestionForm question={question} certification={certification} conceptSlug={conceptSlug} mode="LEARN" /></div>
+              <div className="panel-heading"><ArcadeIcon name="practice" /><h2>Challenge</h2></div>
+              <QuestionForm question={question} certification={certification} conceptSlug={conceptSlug} mode="LEARN" />
             </RetroPanel>
           ) : (
-            <RetroPanel><p className="text-slate-400">No challenge has been seeded for this concept yet.</p></RetroPanel>
+            <RetroPanel><p className="empty-plate">No challenge has been seeded for this concept yet.</p></RetroPanel>
           )}
         </div>
       </div>

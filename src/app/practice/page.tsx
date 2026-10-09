@@ -1,23 +1,24 @@
+import { PageHeader } from "@/components/page-header";
+import { ArcadeIcon } from "@/components/arcade-icon";
+import { domainTone } from "@/components/retro-panel";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { Eyebrow, RetroPanel, StatusBadge } from "@/components/retro-panel";
+import { RetroPanel } from "@/components/retro-panel";
 
 export const metadata = { title: "Practice" };
 
 export default async function PracticePage() {
   const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <Eyebrow>PRACTICE MODE</Eyebrow>
-      <h1 className="mt-3 text-3xl font-black text-slate-100">Adaptive training</h1>
-      <p className="mt-3 max-w-2xl leading-7 text-slate-400">The engine prioritizes misconceptions, due reviews, weak concepts, and unseen material while avoiding immediate exact repeats.</p>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
-        {certifications.map((certification) => (
-          <Link key={certification.id} href={`/practice/${certification.code}`}>
-            <RetroPanel className="h-full transition hover:border-amber-400/70">
-              <StatusBadge tone="warning">{certification.code}</StatusBadge>
-              <h2 className="mt-4 text-xl font-black text-slate-100">{certification.name}</h2>
-              <p className="mt-3 text-sm text-slate-500">Start unlimited practice →</p>
+    <main id="main-content" tabIndex={-1} className="page-wrap">
+      <PageHeader eyebrow="PRACTICE MODE" title="Adaptive training" description="The engine prioritizes misconceptions, due reviews, weak concepts, and unseen material while avoiding immediate exact repeats." icon="practice" tone="teal" />
+      <div className="certification-grid">
+        {certifications.map((certification, index) => (
+          <Link key={certification.id} href={`/practice/${certification.code}`} className="panel-link">
+            <RetroPanel accent interactive tone={domainTone(index)} className="picker-card">
+              <div className="certification-card__top"><span className="code-chip">{certification.code}</span><span className="picker-card__icon"><ArcadeIcon name="practice" width={24} height={24} /></span></div>
+              <h2>{certification.name}</h2>
+              <div className="picker-card__footer"><span>Start unlimited practice</span><ArcadeIcon name="arrow" /></div>
             </RetroPanel>
           </Link>
         ))}
