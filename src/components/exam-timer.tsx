@@ -14,24 +14,22 @@ export function ExamTimer({ startedAt, durationMinutes, formId }: { startedAt: s
   const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
-    let timer: number | undefined;
     const tick = () => {
       const next = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
       setRemaining(next);
       if (next === 0) {
-        if (timer) window.clearInterval(timer);
+        window.clearInterval(timer);
         const form = document.getElementById(formId) as HTMLFormElement | null;
         form?.requestSubmit();
       }
     };
 
+    // Create the interval before the first tick so an already-expired exam can clear it.
+    const timer = window.setInterval(tick, 1000);
     tick();
-    timer = window.setInterval(tick, 1000);
-    return () => {
-      if (timer) window.clearInterval(timer);
-    };
+    return () => window.clearInterval(timer);
   }, [deadline, formId]);
 
   const urgent = remaining !== null && remaining < 300;
-  return <span className={urgent ? "font-black text-red-300" : "font-black text-amber-300"}>{remaining === null ? "--:--" : format(remaining)}</span>;
+  return <span className={`exam-timer${urgent ? " exam-timer--urgent" : ""}`} role="timer" aria-live="off" aria-label="Time remaining">{remaining === null ? "--:--" : format(remaining)}</span>;
 }
