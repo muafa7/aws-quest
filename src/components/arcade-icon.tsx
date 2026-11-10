@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export type ArcadeIconName = "learn" | "practice" | "mock" | "progress" | "history" | "arrow" | "external" | "back" | "check" | "close" | "cloud" | "clock" | "layers";
+export type ArcadeIconName = "learn" | "practice" | "mock" | "progress" | "history" | "review" | "arrow" | "external" | "back" | "check" | "close" | "cloud" | "clock" | "layers";
 
 const paths: Record<ArcadeIconName, React.ReactNode> = {
   learn: <><path d="M12 5v15M3 4h5a4 4 0 0 1 4 2 4 4 0 0 1 4-2h5v15h-5a5 5 0 0 0-4 2 5 5 0 0 0-4-2H3z" /></>,
@@ -8,6 +8,7 @@ const paths: Record<ArcadeIconName, React.ReactNode> = {
   mock: <><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3" /></>,
   progress: <><path d="M4 20V10M10 20V4M16 20v-8M22 20H2" /></>,
   history: <><path d="M3 10a9 9 0 1 1 1.9 7.5M3 4v6h6M12 7v5l3 2" /></>,
+  review: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></>,
   arrow: <><path d="M4 12h16m-6-6 6 6-6 6" /></>,
   external: <><path d="M8 5H5v14h14v-3M11 3h10v10M10 14 21 3" /></>,
   back: <><path d="M20 12H4m6-6-6 6 6 6" /></>,

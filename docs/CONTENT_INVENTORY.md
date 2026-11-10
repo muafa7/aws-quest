@@ -478,9 +478,9 @@ Lesson (`lessons.json`, exactly one per concept):
 2. Write at least 4 active questions per concept. Mastery needs 3 distinct questions; the fourth leaves an unseen question for review.
 3. Start each concept with an easy entry question (`001`), then build towards comparison and scenario questions.
 4. Practice shows the concept name above the question. Prefer recognition questions that name the service and ask what it does ("What does Amazon GuardDuty do?") over questions whose answer is the concept's own name.
-5. A comparison question belongs to the concept that is its correct answer. That concept's `generalExplanation` must name the contrast, because feedback shows only the concept explanation.
+5. A comparison question belongs to the concept that is its correct answer. That concept's `generalExplanation` must name the contrast, because questions without per-option explanations rely on it.
 6. Distractors must be plausible options from the same content area, not obviously wrong answers.
-7. Balance correct-answer positions across A–D; options are always shown in key order.
+7. Options are shuffled on display, so key position does not leak the answer. Never re-key an existing option.
 8. Use AWS exam phrasing where natural: "MOST cost-effective", "LEAST operational overhead", "highly available".
 9. Check every question against current AWS documentation and the in-scope service list. Do not use out-of-scope services (for example AWS Snow Family, AWS Wavelength, AWS IQ, AWS CodeDeploy, AWS CloudShell) as correct answers.
 10. Questions must be original. Never copy exam dumps.
@@ -521,9 +521,9 @@ Good candidates for comparison questions and for checking that explanations name
 
 - An active concept without a lesson returns 404 in Learn, and the stage map and progress table link to every active concept.
 - Concepts without active questions are skipped by Practice and Mock but still count towards campaign mastery.
-- Mastery requires at least 3 distinct questions answered on at least 2 dates, with the last 3 attempts correct and the latest confidence MEDIUM or HIGH.
-- Within a concept, the lowest unseen question code is served first.
-- Feedback shows the concept's `generalExplanation` and `keyNote`; there is no per-question explanation.
+- Only Practice answers clear a concept: the last 3 must be correct, not LOW confidence, on 3 different questions, across at least 2 UTC dates. A concept with fewer than 3 training questions shows SMALL BANK and cannot be cleared.
+- In Learn, the lowest unseen question code is served first, then the least recently answered.
+- Feedback shows the original question, both answers, the concept's `generalExplanation` and `keyNote`, and every option with its `explanation` when present. It opens automatically for wrong or LOW-confidence answers and stays one click away otherwise.
 - Practice shows the concept name above each question.
-- Options are shown in key order and are not shuffled.
+- Options are shuffled per display with positional letters. The shown order and the option wording are stored on each attempt, so later edits do not change past reviews.
 - Mock exams currently take the first questions of each domain in concept and code order, so every mock contains the same questions. Fixing this is outside the content work.

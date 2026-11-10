@@ -36,7 +36,7 @@ export default async function HistoryPage() {
         <div className="space-y-6">
           <RetroPanel tone="teal">
             <div className="panel-heading"><ArcadeIcon name="practice" /><h2>Practice sessions</h2></div>
-            <div>{sessions.map((session) => <div key={session.id} className="log-row"><div className="log-row__top"><span>{session.certification.code} #{session.id}</span><span className="text-[var(--teal)]">{session.correctCount}/{session.questionCount}</span></div><p className="activity-meta">{session.startedAt.toLocaleString("en-GB")}</p></div>)}</div>
+            <div>{sessions.map((session) => <Link key={session.id} href={`/practice/${session.certification.code}?session=${session.id}`} className="log-row"><div className="log-row__top"><span>{session.certification.code} #{session.id}</span><span className="text-[var(--teal)]">{session.endedAt ? "" : "OPEN \u00b7 "}{session.correctCount}/{session.questionCount}</span></div><p className="activity-meta">{session.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
             {sessions.length === 0 ? <p className="empty-plate">No practice sessions recorded yet.</p> : null}
           </RetroPanel>
           <RetroPanel tone="violet">

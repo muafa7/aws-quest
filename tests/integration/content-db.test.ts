@@ -87,6 +87,35 @@ test("re-seeding keeps question identities and history, and retires removed cont
   assert.ok(await prisma.attempt.findUnique({ where: { id: attempt.id } }), "history on retired questions is preserved");
 });
 
+test("answer reviews keep the order and wording that was shown, even after content edits", async () => {
+  const { prisma } = modules;
+  const { snapshotOptions } = await import("../../src/lib/learning/answers");
+  const { reviewOptions } = await import("../../src/lib/learning/feedback");
+  const question = await prisma.question.findFirstOrThrow({
+    where: { code: { startsWith: "CCP-" }, type: "SINGLE_CHOICE" },
+    include: { options: { orderBy: { key: "asc" } } },
+  });
+  const shown = [...question.options].reverse().map((option) => option.key);
+  const correct = question.options.filter((option) => option.isCorrect).map((option) => option.key);
+  const attempt = await prisma.attempt.create({
+    data: {
+      questionId: question.id, mode: "LEARN", confidence: "HIGH", isCorrect: true, questionTextSnapshot: question.prompt,
+      selectedOptionsSnapshot: JSON.stringify(correct), correctOptionsSnapshot: JSON.stringify(correct),
+      optionOrderSnapshot: JSON.stringify(shown), optionsSnapshot: snapshotOptions(question.options),
+    },
+  });
+  const edited = question.options[0];
+  await prisma.questionOption.update({ where: { id: edited.id }, data: { text: "Edited after the answer" } });
+
+  const stored = await prisma.attempt.findUniqueOrThrow({ where: { id: attempt.id } });
+  const current = await prisma.questionOption.findMany({ where: { questionId: question.id }, select: { key: true, text: true, explanation: true } });
+  const rows = reviewOptions(stored, current);
+  assert.deepEqual(rows.map((row) => row.key), shown);
+  assert.equal(rows.find((row) => row.key === edited.key)?.text, edited.text);
+  assert.equal(rows.find((row) => row.correct)?.letter, String.fromCharCode(65 + shown.indexOf(correct[0])));
+  await prisma.questionOption.update({ where: { id: edited.id }, data: { text: edited.text } });
+});
+
 test("reserved questions never reach Learn or Practice", async () => {
   const { prisma, selector } = modules;
   const reserved = await prisma.question.findFirstOrThrow({ where: { assessmentPackId: { not: null } } });

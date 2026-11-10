@@ -132,6 +132,10 @@ model Attempt {
   questionTextSnapshot    String
   selectedOptionsSnapshot String
   correctOptionsSnapshot  String
+  /// JSON array of canonical option keys in the order they were shown
+  optionOrderSnapshot     String?
+  /// JSON array of { key, text, explanation } as the options read when answered
+  optionsSnapshot         String?
   answeredAt              DateTime         @default(now())
   question                Question         @relation(fields: [questionId], references: [id], onDelete: Restrict)
   practiceSession         PracticeSession? @relation(fields: [practiceSessionId], references: [id], onDelete: SetNull)

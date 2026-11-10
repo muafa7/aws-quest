@@ -9,8 +9,10 @@ AWS Quest currently implements the V1 application shell for:
 - AWS Certified Cloud Practitioner (CLF-C02)
 - AWS Certified Solutions Architect – Associate (SAA-C03)
 - short concept lessons
-- immediate learn-mode challenges
-- confidence-aware adaptive practice
+- immediate learn-mode challenges, with an optional "try from memory" mode
+- confidence-aware adaptive practice with resumable sessions and a session recap
+- answer review with the original question, shuffled-option letters, and per-option explanations
+- a mistakes page filtered by certification, domain, source, session and confidence
 - concept-level spaced review
 - concept mastery tracking
 - timed mock exams with blueprint-aware topic weighting
@@ -93,6 +95,7 @@ pnpm db:studio    # Prisma Studio
 /mock/[certification]/[examId]
 /progress
 /progress/[certification]
+/mistakes
 /history
 ```
 
@@ -121,7 +124,9 @@ Regular practice prioritizes, in broad order:
 
 Question selection prefers an unseen question from the chosen concept, then a question outside the recent-question window, before allowing an exact repeat.
 
-The spaced-review MVP uses stages of 1, 3, 7, 14, 30, and 60 days. Mastery requires repeated retrieval rather than a single correct answer.
+The spaced-review MVP uses stages of 1, 3, 7, 14, 30, and 60 days. A correct answer before the review is due keeps the current stage and due date, so answering several questions in one sitting cannot inflate the interval. A wrong answer lowers the stage and never pushes a pending review later.
+
+A concept is cleared only from Practice, where the lesson is not on screen: the last three Practice answers must be correct, not LOW confidence, on three different questions, and span at least two days. Learn answers still schedule reviews but never clear a concept. Concepts cleared under the earlier rule keep their status until the next wrong answer.
 
 ## Important
 

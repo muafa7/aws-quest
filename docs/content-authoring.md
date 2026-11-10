@@ -25,13 +25,13 @@ Never reference generated database IDs from seed files.
 ## Authoring conventions
 
 1. Never delete or reuse a question code. Retire a question with `"active": false`; the seeder never deletes rows, and attempts keep referencing old questions.
-2. Within a concept, the lowest unseen code is served first. Number questions in learning order, starting with an easy entry question.
+2. In Learn, the lowest unseen code in a concept is served first, then the least recently answered. Number questions in learning order, starting with an easy entry question.
 3. Every active concept needs a lesson (Learn returns 404 without one) and at least 4 active questions (mastery needs 3 distinct questions).
 4. A code prefix stays inside one topic (domain). CLF-C02 registers one prefix per concept (`CCP-SRM`); SAA-C03 uses domain families shared by that domain's concepts (`SAA-SEC`, `SAA-RES`, `SAA-PER`, `SAA-COST`).
-5. Feedback shows the concept explanation, not a per-question explanation. A comparison question belongs to the concept that is its correct answer, and that concept's explanation must name the contrast.
+5. Feedback shows the concept explanation plus each option's `explanation` when present. A comparison question belongs to the concept that is its correct answer, and that concept's explanation must still name the contrast, because older questions have no per-option notes.
 6. `MULTIPLE_CHOICE` prompts state how many answers to pick, e.g. `(Select TWO.)` or inline `Select TWO.`, matching the number of correct options.
 7. Distractors should be plausible options from the same content area.
-8. Options are shown in key order, so balance correct-answer positions across a bank.
+8. Options are shuffled each time a question is shown and labelled by position; keys stay the canonical identity for grading and history. Never re-key an existing option: past attempts store keys.
 9. Name question files after the domain's topic slug, e.g. `questions/security-compliance.json`.
 10. Optional `options[].explanation` (Bahasa Indonesia) says why that specific option is right or wrong.
 11. Sealed assessment questions live in `questions/<topic-slug>.reserved.json` and declare an `assessmentPack` ID such as `SAA-C03-FRESH-A`. They never appear in Learn, Practice or standard mocks. A pack must contain exactly the certification's exam length, with each domain within one question of its blueprint quota. Never move a reserved question into a training file to fill a small bank; that spoils the pack.

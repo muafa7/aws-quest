@@ -9,6 +9,7 @@ const nav: { label: string; href: string; icon: ArcadeIconName }[] = [
   { label: "Learn", href: "/learn", icon: "learn" },
   { label: "Practice", href: "/practice", icon: "practice" },
   { label: "Mock exam", href: "/mock", icon: "mock" },
+  { label: "Mistakes", href: "/mistakes", icon: "review" },
   { label: "Progress", href: "/progress", icon: "progress" },
   { label: "History", href: "/history", icon: "history" },
 ];
