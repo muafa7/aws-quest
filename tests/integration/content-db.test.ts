@@ -135,3 +135,57 @@ test("reserved questions never reach Learn or Practice", async () => {
     });
   }
 });
+
+test("readiness reads qualifying mocks, first-time flags and unseen counts from stored records", async () => {
+  const { prisma } = modules;
+  const { certificationReadiness } = await import("../../src/lib/learning/analytics");
+  const code = "CLF-C02";
+  const baseline = await certificationReadiness(code, { introduced: 10, reviewDue: 1 });
+  assert.ok(baseline);
+  assert.equal(baseline.trainingCount, 415);
+  assert.equal(baseline.freshPackAvailable, false);
+  assert.equal(baseline.readiness.state, "INSUFFICIENT_DATA");
+
+  const unseen = await prisma.question.findMany({
+    where: { active: true, assessmentPackId: null, concept: { topic: { certification: { code } } }, attempts: { none: {} }, mockItems: { none: {} } },
+    select: { id: true, concept: { select: { topicId: true } } },
+    orderBy: { id: "asc" },
+  });
+  const byTopic = new Map<number, number[]>();
+  for (const question of unseen) byTopic.set(question.concept.topicId, [...(byTopic.get(question.concept.topicId) ?? []), question.id]);
+  const roundRobin: number[] = [];
+  for (let i = 0; roundRobin.length < unseen.length; i++) for (const ids of byTopic.values()) if (ids[i] !== undefined) roundRobin.push(ids[i]);
+
+  const day = 86_400_000;
+  const createMock = (ids: number[], timeValidity: string | null, correct: number) => prisma.mockExam.create({
+    data: {
+      certification: { connect: { code } }, status: "COMPLETED", assessmentMode: "STANDARD", durationMinutes: 90,
+      questionCount: ids.length, correctCount: correct, timeValidity,
+      startedAt: new Date(Date.now() - day - 3_600_000), endedAt: new Date(Date.now() - day),
+      questions: { create: ids.map((questionId, position) => ({ questionId, position, correctOptionsSnapshot: "[]", selectedOptionsSnapshot: "[]", isCorrect: position < correct, wasUnseenAtStart: true })) },
+    },
+  });
+  await createMock(roundRobin.slice(0, 65), "VALID", 56);
+  await createMock(roundRobin.slice(65, 130), "VALID", 56);
+  await createMock(roundRobin.slice(130, 195), "EXPIRED", 65);
+  await createMock(roundRobin.slice(195, 205), "VALID", 10);
+
+  const attemptOn = (questionId: number, isFirstRecordedAttempt: boolean, isCorrect: boolean) => prisma.attempt.create({
+    data: { questionId, mode: "PRACTICE", confidence: "MEDIUM", isCorrect, isFirstRecordedAttempt, questionTextSnapshot: "", selectedOptionsSnapshot: "[]", correctOptionsSnapshot: "[]" },
+  });
+  await attemptOn(roundRobin[300], true, true);
+  await attemptOn(roundRobin[301], true, false);
+  await attemptOn(roundRobin[300], false, true);
+
+  const result = await certificationReadiness(code, { introduced: 10, reviewDue: 1 });
+  assert.ok(result);
+  assert.equal(result.unseenCount, baseline.unseenCount - 205 - 2);
+  assert.deepEqual(result.evidence.practiceFirst, { correct: baseline.evidence.practiceFirst.correct + 1, total: baseline.evidence.practiceFirst.total + 2 });
+  assert.deepEqual(result.evidence.repeat, { correct: baseline.evidence.repeat.correct + 1, total: baseline.evidence.repeat.total + 1 });
+  assert.deepEqual(result.readiness.standardScores, [56 / 65, 56 / 65]);
+  assert.equal(result.readiness.excludedMocks, 2);
+  assert.deepEqual(result.readiness.firstSight, { correct: 112, total: 130 });
+  assert.ok(result.readiness.domains.every((domain) => domain.total >= 10));
+  assert.equal(result.readiness.domains.reduce((sum, domain) => sum + domain.total, 0), 130);
+  assert.equal(result.readiness.state, "ON_TRACK");
+});

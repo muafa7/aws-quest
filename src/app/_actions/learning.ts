@@ -114,6 +114,8 @@ export async function submitLearningAnswer(formData: FormData) {
   const attempt = await prisma.$transaction(async (tx) => {
     const existing = await tx.conceptProgress.findUnique({ where: { conceptId: question.conceptId } });
     const { stage, nextReviewAt } = scheduleReview(existing?.reviewStage ?? 0, isCorrect, confidence, now, existing?.nextReviewAt ?? null);
+    const earlierAttempts = await tx.attempt.count({ where: { questionId } });
+    const mockShows = await tx.mockExamQuestion.count({ where: { questionId } });
 
     const created = await tx.attempt.create({
       data: {
@@ -127,6 +129,7 @@ export async function submitLearningAnswer(formData: FormData) {
         correctOptionsSnapshot: JSON.stringify(correct),
         optionOrderSnapshot: JSON.stringify(optionOrder),
         optionsSnapshot: snapshotOptions(question.options),
+        isFirstRecordedAttempt: earlierAttempts + mockShows === 0,
       },
     });
 

@@ -385,6 +385,29 @@
   .mistake-card__top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; }
   .mistake-card__prompt { margin-top: 16px; color: #dce3ee; font-size: 16px; line-height: 1.75; overflow-wrap: anywhere; }
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .readiness-panel { margin-bottom: 34px; }
+  .readiness-panel__top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 14px; }
+  .readiness-panel__top h2 { margin-top: 8px; font-size: 24px; font-weight: 600; }
+  .readiness-panel__summary { margin-top: 14px; max-width: 75ch; color: var(--muted); font-size: 14px; line-height: 1.75; }
+  .readiness-panel__heading { margin-bottom: 14px; font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--subtle); }
+  .readiness-next { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-block: 24px 30px; padding: 18px 20px; border: 1px solid var(--line); border-left: 3px solid var(--violet); background: var(--surface-inset); }
+  .readiness-next > div { flex: 1; min-width: min(100%,18rem); }
+  .readiness-next__reason { margin-top: 6px; color: #dce3ee; font-size: 14px; line-height: 1.7; }
+  .readiness-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 32px; align-items: start; }
+  .readiness-gates { display: grid; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .readiness-gate { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); background: var(--surface-inset); }
+  .readiness-gate p { color: #d0d9e6; font-size: 13px; line-height: 1.6; }
+  .readiness-gate small { display: block; margin-top: 3px; color: var(--subtle); font-size: 12px; line-height: 1.6; }
+  .readiness-gate__mark { display: grid; place-items: center; flex-shrink: 0; width: 24px; height: 24px; border: 1px solid var(--line-strong); color: var(--subtle); font-size: 12px; }
+  .readiness-gate[data-status="PASS"] .readiness-gate__mark { color: var(--success); border-color: #2b785d; }
+  .readiness-gate[data-status="FAIL"] .readiness-gate__mark { color: var(--danger); border-color: #92505a; }
+  .evidence-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+  .evidence-stat { padding: 14px 16px; border: 1px solid var(--line); background: var(--surface-inset); }
+  .evidence-stat dt { color: var(--subtle); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+  .evidence-stat dd { margin-top: 8px; font-family: var(--font-outfit),sans-serif; font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; color: #e6ecf4; }
+  .evidence-stat p { margin-top: 6px; color: var(--subtle); font-size: 11px; line-height: 1.6; }
+  .readiness-method { display: grid; gap: 8px; margin-top: 10px; padding-left: 18px; list-style: square; color: var(--muted); font-size: 13px; line-height: 1.7; }
+  .loading-panel p { margin-top: 10px; color: var(--muted); font-size: 14px; }
 }
 
 @media (min-width: 768px) {
@@ -404,6 +427,8 @@
   .lesson-grid { grid-template-columns: minmax(0,1fr); }
   .history-grid { grid-template-columns: minmax(0,1fr); }
   .lesson-summary,.lesson-point__text { max-width: 76ch; }
+  .readiness-grid { grid-template-columns: minmax(0,1fr); }
+  .evidence-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 @media (max-width: 767px) {
@@ -462,6 +487,8 @@
   .exam-timer { font-size: 25px; }
   .progress-row { grid-template-columns: minmax(0,1fr); gap: 20px; padding: 20px; }
   .progress-row__meta { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+  .evidence-grid { grid-template-columns: minmax(0,1fr); }
+  .readiness-next .arcade-button { width: 100%; }
   .activity-row__main { flex-direction: column; }
   .option-breakdown__note { padding-left: 0; }
   .filter-group { grid-template-columns: minmax(0,1fr); gap: 7px; }

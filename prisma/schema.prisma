@@ -136,6 +136,8 @@ model Attempt {
   optionOrderSnapshot     String?
   /// JSON array of { key, text, explanation } as the options read when answered
   optionsSnapshot         String?
+  /// True when no earlier attempt or mock had shown this question; null for attempts recorded before this was tracked
+  isFirstRecordedAttempt  Boolean?
   answeredAt              DateTime         @default(now())
   question                Question         @relation(fields: [questionId], references: [id], onDelete: Restrict)
   practiceSession         PracticeSession? @relation(fields: [practiceSessionId], references: [id], onDelete: SetNull)

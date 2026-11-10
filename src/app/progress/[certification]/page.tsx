@@ -3,14 +3,22 @@ import { HudStats } from "@/components/hud-stats";
 import { domainTone } from "@/components/retro-panel";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { certificationReadiness } from "@/lib/learning/analytics";
 import { certificationProgress } from "@/lib/learning/progress";
 import { conceptState } from "@/lib/learning/status";
 import { Eyebrow, RetroPanel } from "@/components/retro-panel";
 import { CampaignMeters } from "@/components/progress-bar";
 import { ConceptStatusBadges } from "@/components/concept-status";
+import { ReadinessPanel, ReadinessPanelLoading } from "@/components/readiness-panel";
 
 function accuracy(correct: number, total: number) {
   return total === 0 ? "\u2014" : `${Math.round((correct / total) * 100)}%`;
+}
+
+async function Readiness({ code, introduced, reviewDue }: { code: string; introduced: number; reviewDue: number }) {
+  const data = await certificationReadiness(code, { introduced, reviewDue });
+  return data ? <ReadinessPanel code={code} data={data} /> : null;
 }
 
 export default async function CertificationProgressPage({ params }: { params: Promise<{ certification: string }> }) {
@@ -30,6 +38,9 @@ export default async function CertificationProgressPage({ params }: { params: Pr
           { label: "Review Due", value: data.reviewDue, tone: "accent" },
         ]} />
       </RetroPanel>
+      <Suspense fallback={<ReadinessPanelLoading />}>
+        <Readiness code={code} introduced={data.introduced} reviewDue={data.reviewDue} />
+      </Suspense>
       <section>
         <Eyebrow>CONCEPT STATUS</Eyebrow>
         <p className="panel-meta mt-2">Cleared means the last three Practice answers were correct, not low confidence, on three different questions, across at least two days.{data.smallBank > 0 ? " Small bank: fewer than 3 practice questions, so the concept cannot be cleared yet." : ""}</p>
