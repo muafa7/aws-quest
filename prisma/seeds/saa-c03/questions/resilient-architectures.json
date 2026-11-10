@@ -1,0 +1,2863 @@
+[
+  {
+    "code": "SAA-RES-001",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An image API must quickly acknowledge uploads while processing can finish later. Traffic arrives in bursts, and processing workers may be unavailable briefly. Which architecture best decouples intake from processing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Make the upload request wait synchronously for a larger worker instance to finish.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Send each task to a random worker over HTTP without persisting it.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Cache completed responses in CloudFront but keep all processing synchronous.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store uploaded images in S3, enqueue object references in SQS, and let workers process the queue asynchronously.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling"
+    ],
+    "source": {
+      "title": "SQS at-least-once delivery",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-002",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "SQS workers usually need four minutes to process a job, but the queue visibility timeout is 30 seconds. Some jobs are received by another worker while the first worker is still processing them. Which change is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set an appropriate visibility timeout, extend it for long jobs, and keep processing idempotent.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Add a delivery delay to every new message but leave visibility at 30 seconds.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Delete each message immediately after receiving it, before processing succeeds.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase only the message retention period from one day to seven days.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling"
+    ],
+    "source": {
+      "title": "SQS visibility timeout",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-003",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A small number of invalid messages repeatedly fail in an SQS standard queue. The team needs to isolate them for investigation after a limited number of receives while continuing normal processing. Which configuration fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase message retention only, without limiting the receives of repeatedly failing messages.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase the visibility timeout for the entire queue but never move repeatedly failing messages elsewhere.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Configure a dead-letter queue and a redrive policy with an appropriate maxReceiveCount.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Delete every message after its first failed processing attempt and keep no failure record.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling"
+    ],
+    "source": {
+      "title": "SQS dead-letter queues",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-004",
+    "concept": "saa-ordering-and-idempotency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An order system must process updates in enqueue order for each customer account, while processing different accounts concurrently. Which SQS design best matches these requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a FIFO queue with one MessageGroupId shared by every account.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a new random MessageGroupId for every message from the same account.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a FIFO queue with the customer account ID as MessageGroupId.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use a standard queue and assume MessageGroupId enforces FIFO ordering.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "ordering-and-idempotency"
+    ],
+    "source": {
+      "title": "SQS message groups",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-005",
+    "concept": "saa-ordering-and-idempotency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A worker charges a payment provider and then crashes before deleting its SQS message. The message is delivered again. Which design best prevents a second charge while still allowing recovery?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Generate a new payment idempotency key for every retry.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Delete every message before contacting the payment provider.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Switch to FIFO and assume a successful external charge can never be executed twice.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use a stable business operation ID with the provider's idempotency feature and persist processing state safely.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "ordering-and-idempotency"
+    ],
+    "source": {
+      "title": "SQS at-least-once delivery",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-006",
+    "concept": "saa-ordering-and-idempotency",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A producer retries SendMessage after a timeout. The team wants FIFO deduplication to recognize retries of the same business event within the supported deduplication interval. Which actions support this design? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Generate a new MessageDeduplicationId on every network retry.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use an SQS FIFO queue.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Assume the deduplication window also makes all downstream database writes atomic.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Reuse a stable MessageDeduplicationId for retries of the same event.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Use only a longer message retention period on a standard queue.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "ordering-and-idempotency"
+    ],
+    "source": {
+      "title": "SQS FIFO deduplication",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-007",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Billing, email, and analytics services must each receive every order-created event. Each service needs its own backlog and retry pace. Which architecture meets these requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route each event to exactly one target using an ALB round-robin algorithm.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Call all services synchronously in series before accepting the order.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Publish to SNS and subscribe a separate SQS queue for each service.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Let all three services poll one shared SQS queue.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing"
+    ],
+    "source": {
+      "title": "SNS to SQS fanout",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-008",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A platform receives events from AWS services and supported SaaS integrations. It wants a central event bus with rules that route matching event content to different targets without custom polling code. Which design fits best?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Route 53 weighted DNS records to inspect event JSON fields.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use an ALB listener to periodically poll SaaS audit APIs.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use one SQS queue and require every target to discard unrelated messages after receiving them.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use EventBridge event buses and event-pattern rules with the required targets.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing"
+    ],
+    "source": {
+      "title": "EventBridge event patterns",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-009",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An SNS topic must deliver order events into two SQS queues owned by the same team. The subscriptions exist, but the queue policies do not permit SNS delivery. Which changes preserve least privilege and independent processing? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have each downstream service consume its own subscribed queue.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Make both services compete for only one of the two queues.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Replace the subscriptions with a single synchronous call to one service.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Allow anonymous SendMessage from every principal without a source restriction.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Allow the SNS service to send messages with a condition restricting the source to the intended topic ARN.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing"
+    ],
+    "source": {
+      "title": "SNS to SQS fanout",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-010",
+    "concept": "saa-workflow-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An approval workflow can pause for two days while a person reviews a request. It must resume from the saved step when approval arrives, without running an idle server or Lambda invocation. Which solution fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a Step Functions Express workflow for the two-day callback wait.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a synchronous ALB request with a two-day idle connection as the workflow state.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a Step Functions Standard workflow with a supported callback task-token pattern.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Keep a single Lambda invocation sleeping until the approver responds.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "workflow-recovery"
+    ],
+    "source": {
+      "title": "Step Functions integration patterns",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-011",
+    "concept": "saa-workflow-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Step Functions task calls a service that sometimes returns a transient throttling error. Persistent failures should go to a controlled error branch. Which configuration is best?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete the state machine whenever one request is throttled.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Retry every error forever with no delay.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use bounded retries with backoff for retryable errors and a Catch transition for remaining failures.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Ignore every failure and mark the task successful.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "workflow-recovery"
+    ],
+    "source": {
+      "title": "Step Functions error handling",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-012",
+    "concept": "saa-workflow-recovery",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A workflow reserves inventory and then requests payment from an external provider. Payment may fail permanently after the reservation succeeds. Which design choices improve recovery? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use idempotent operation identifiers for retried external steps.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Define an explicit compensation step that releases inventory when payment cannot complete.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Record the order as paid before sending the payment request.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Retry all declined payments indefinitely without checking the failure type.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Assume Step Functions automatically rolls back every external service side effect.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "workflow-recovery"
+    ],
+    "source": {
+      "title": "Step Functions error handling",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-013",
+    "concept": "saa-stateless-application-tiers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A web application stores login sessions only in EC2 memory. Users lose their sessions when Auto Scaling replaces an instance. Which change best removes this dependency?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the Auto Scaling maximum without changing session storage.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable sticky sessions and continue storing the only copy of session data locally.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use one very large instance and disable replacements permanently.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store session state in an appropriate shared service and let any application instance retrieve it.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "stateless-application-tiers"
+    ],
+    "source": {
+      "title": "EC2 Auto Scaling architecture",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-014",
+    "concept": "saa-stateless-application-tiers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A stateless web tier runs on replaceable EC2 instances in multiple AZs. Uploaded documents are accessed through an object-storage API, not a shared POSIX file system. The application must keep those documents when an instance is replaced. Which design is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable load-balancer stickiness while keeping the only document copy on local scratch storage.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store uploaded documents in S3 and persist their object references in the application data model.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Keep documents only in each server's memory and rebuild instances more frequently.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store each document only on the local instance that first receives its upload.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "stateless-application-tiers"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-015",
+    "concept": "saa-stateless-application-tiers",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Workers process queued jobs on replaceable EC2 instances. A worker may terminate at any point. Which actions best preserve work and allow safe recovery? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume all instance shutdowns will run the application's cleanup script successfully.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Keep the only completion record in the worker's memory.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Make retried processing idempotent using a stable job identifier.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Persist the completed business result before acknowledging or deleting the corresponding message.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Delete messages immediately on receipt to prevent all retries.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "stateless-application-tiers"
+    ],
+    "source": {
+      "title": "SQS at-least-once delivery",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-016",
+    "concept": "saa-managed-execution-and-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team has a containerized HTTP service and wants automatic replacement of failed tasks across Availability Zones without managing an EC2 worker fleet. Which architecture best matches?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Deploy an EKS cluster with self-managed nodes solely to avoid managing compute hosts.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use an SQS queue as the HTTP server without any compute consumers.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Run the container manually on one EC2 instance with no service scheduler.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Run an ECS service on Fargate across multiple subnets behind an ALB.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-execution-and-migration"
+    ],
+    "source": {
+      "title": "ECS on AWS Fargate",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-017",
+    "concept": "saa-managed-execution-and-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An SQS-triggered Lambda worker overwhelms a small database during bursts. The database has a known safe concurrency level, and jobs may wait in the queue. Which design improvement is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Remove all concurrency controls so Lambda consumes the backlog as fast as possible.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Limit consumer concurrency to the tested downstream capacity and retain queued work for later processing.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Reduce queue retention below the expected backlog processing time.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Delete excess messages whenever the database refuses a connection.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-execution-and-migration"
+    ],
+    "source": {
+      "title": "Lambda provisioned concurrency",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-018",
+    "concept": "saa-managed-execution-and-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company is moving an application that uses an ActiveMQ-compatible broker and JMS. It wants a managed broker with minimal changes to the existing messaging protocol and client code. Which service should it evaluate first?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon SQS as a drop-in JMS broker replacement without reviewing client compatibility.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon MQ with a compatible ActiveMQ engine and deployment mode.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon EventBridge while retaining every broker-specific operation unchanged.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Kinesis Data Streams as a protocol-identical ActiveMQ broker.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-execution-and-migration"
+    ],
+    "source": {
+      "title": "Amazon MQ",
+      "url": "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-019",
+    "concept": "saa-multi-az-application-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A stateless website must continue serving requests after one Availability Zone fails. Its data tier is already resilient. Which application-tier design best addresses this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use an Auto Scaling group restricted to one AZ and increase its maximum size.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use an ALB and an Auto Scaling group spanning multiple AZs, with capacity planning for the surviving AZs.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use two EC2 instances in different subnets within the same AZ.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use one large instance with an Elastic IP and a daily snapshot.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multi-az-application-availability"
+    ],
+    "source": {
+      "title": "EC2 Auto Scaling architecture",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-020",
+    "concept": "saa-multi-az-application-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EC2 instance passes host status checks but its application repeatedly fails the ALB health check. Auto Scaling currently uses only EC2 health checks. What should be changed to replace failed application instances?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the instance's DNS TTL so health status changes less often.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase maximum group size but keep the unhealthy instance permanently in service.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Disable ALB health checks so the application always appears healthy.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable load balancer health checks for the Auto Scaling group and configure suitable health-check grace behavior.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multi-az-application-availability"
+    ],
+    "source": {
+      "title": "Auto Scaling health checks",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-021",
+    "concept": "saa-multi-az-application-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A VPC uses zonal public NAT gateways. Private subnets in AZ A and AZ B currently route through the NAT gateway in AZ A. The team must retain the zonal NAT design but remove AZ A as the shared egress dependency. What should it do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Deploy a zonal NAT gateway in AZ B and route each AZ's private subnets through its local NAT gateway.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Replace the private route with an internet gateway route while leaving instances without public IPv4 addresses.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Attach a second Elastic IP to the existing NAT gateway and treat it as cross-AZ failover.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Add a second zonal NAT gateway in AZ A and keep all routes pointing into AZ A.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multi-az-application-availability"
+    ],
+    "source": {
+      "title": "Zonal NAT gateway behavior",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-basics.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-022",
+    "concept": "saa-relational-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An RDS PostgreSQL workload requires automatic AZ failover. Long reporting queries must also run away from the primary, and reports can tolerate replication lag. Which design meets both needs?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a larger Single-AZ primary for both transactions and reports.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a Multi-AZ DB instance deployment with one standby and add a separate read replica for reporting.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use a Multi-AZ DB instance deployment with one standby and send reports to that standby.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep a Single-AZ primary and rely only on manual promotion of its read replica.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "relational-availability"
+    ],
+    "source": {
+      "title": "RDS Multi-AZ DB instance with one standby",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-023",
+    "concept": "saa-relational-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A buggy deployment deletes important rows from an RDS database. The same changes reach the standby. Automated backups and point-in-time recovery were enabled before the incident. Which response addresses this logical data loss?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase database storage capacity to reconstruct deleted rows automatically.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add another read replica after the deletion and expect it to recover the lost rows.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Restore to a new DB instance at a valid time before the deletion, validate it, and plan the application cutover.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Fail over to the standby and assume it contains the pre-deletion data.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "relational-availability"
+    ],
+    "source": {
+      "title": "RDS point-in-time restore",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-024",
+    "concept": "saa-relational-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An Aurora cluster has one writer and no Aurora Replicas. The company wants a ready compute instance that can be promoted if the writer's AZ fails. Which change is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the only compute instance in the writer AZ and shorten the backup interval instead of adding a replica.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add a reader in the same AZ only and declare the design AZ-independent.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Rely only on the replicated cluster storage and assume a second running compute instance already exists.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Add an appropriately sized Aurora Replica in another AZ and configure promotion priorities as needed.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "relational-availability"
+    ],
+    "source": {
+      "title": "Aurora high availability",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-025",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A noncritical application can lose up to 24 hours of data and remain unavailable for up to eight hours after a regional disaster. Tested restoration from cross-Region backups meets both objectives. Which strategy minimizes continuously running standby infrastructure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Run a full-capacity active-active deployment in two Regions.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use backup and restore with tested infrastructure automation and cross-Region backups.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Keep backups only in the primary Region and plan to use them when that entire Region is unavailable.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Run a full-capacity warm standby permanently even though restore already meets the targets.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-026",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "COMPARISON",
+    "question": "A company maintains a functional copy of its application in a second Region at reduced capacity. Data is replicated continuously. During disaster recovery, the team scales up the secondary environment and switches traffic. Which strategy is described?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Warm standby.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Full-capacity active-active with both Regions continuously serving production traffic.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Pilot light with only core data services running and no functional application tier.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Backup and restore only.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-027",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A key-value application needs local reads and writes in two AWS Regions. The team accepts the documented eventual-consistency and conflict behavior for its data model and does not want to implement replication itself. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create independent DynamoDB tables in each Region and configure only cross-Region backup copies.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use latency-based DNS to send requests to independent tables without any data replication.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a single-Region DynamoDB table with a GSI and treat the index as a writable cross-Region replica.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use DynamoDB global tables configured for multi-Region eventual consistency and design application conflict handling appropriately.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies"
+    ],
+    "source": {
+      "title": "DynamoDB global tables and consistency modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-028",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company wants recoverable copies of supported AWS resources outside the production account. Production operators must not have deletion rights over those copies. Which design best provides this isolation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Copy backups to another vault in the same production account while keeping unrestricted production deletion permissions.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store every backup in the production account under the same unrestricted operator role.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Copy backups into a dedicated backup account and restrict destination vault and key permissions separately.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Create read replicas only and treat them as immutable historical backups.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery"
+    ],
+    "source": {
+      "title": "Cross-account backup copies",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/create-cross-account-backup.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-029",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB table had point-in-time recovery enabled before an accidental deletion. The team needs data from shortly before the incident. Which recovery plan is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Restore to a new table at the selected available recovery time, validate settings and data, and update application references.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Restore the latest table schema only and expect indexes to reconstruct deleted item values.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable PITR only after the deletion and recover any historical time from before it was enabled.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Expect PITR to rewind the existing table in place without a new table.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery"
+    ],
+    "source": {
+      "title": "DynamoDB point-in-time restores",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/pointintimerecovery_restores.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-030",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company enables S3 cross-Region live replication on a bucket that already contains years of data. It needs new writes and the existing objects copied to the destination. Which actions meet this requirement? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disable source versioning after configuring replication to improve correctness.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replace replication with an HTTP redirect to the source bucket.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Assume enabling live replication automatically copies every pre-existing object.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use S3 Batch Replication for eligible objects that existed before live replication was enabled.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Configure the required versioning, replication permissions, and live replication rules for eligible new writes.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery"
+    ],
+    "source": {
+      "title": "S3 replication",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-031",
+    "concept": "saa-health-routing-and-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A website has a primary deployment and a ready standby deployment in another Region. Its data recovery process is already handled. The company wants DNS to prefer the primary and return the standby when the primary is unhealthy. Which configuration fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use equal weighted records for both deployments even while the primary remains healthy.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Route 53 failover records with suitable health evaluation for the endpoints.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Route 53 simple routing to the primary only, with no standby record or health evaluation.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep the standby DNS record but omit health evaluation and always return the primary answer.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "health-routing-and-failover"
+    ],
+    "source": {
+      "title": "Route 53 DNS failover",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-032",
+    "concept": "saa-health-routing-and-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "An ALB target group contains only unhealthy registered targets in all enabled Availability Zones. An engineer assumes the ALB must stop forwarding all traffic. Which behavior should the design account for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The ALB can fail open and route requests to the unhealthy registered targets.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "The ALB automatically launches healthy replacements even without a scaling service integration.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The ALB guarantees that no request can reach any unhealthy target under any circumstance.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The ALB always returns HTTP 503 whenever any unhealthy target remains registered.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "health-routing-and-failover"
+    ],
+    "source": {
+      "title": "ALB target health and fail-open behavior",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-033",
+    "concept": "saa-health-routing-and-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A CloudFront distribution serves downloadable static files using GET requests. A synchronized secondary origin is ready. The team wants CloudFront to use it when the primary returns selected server error codes. Which configuration fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an origin group with primary and secondary origins and configure the applicable failover status codes.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase cache TTLs and assume uncached files can always be retrieved when the primary origin fails.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a custom error page from the primary origin as the only recovery mechanism.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Add a second origin but never reference an origin group in cache behaviors.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "health-routing-and-failover"
+    ],
+    "source": {
+      "title": "CloudFront origin failover",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-034",
+    "concept": "saa-durable-shared-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An NFS-based application runs across two AZs. Its shared file storage must remain available if one AZ fails. Which storage deployment best meets the requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "EFS Regional with mount targets in the application AZs.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "EFS One Zone located only in the first application AZ.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "One EBS volume in the first AZ attached as a cross-AZ NFS filesystem automatically.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A single NFS server on EC2 with all data on local instance store.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "durable-shared-storage"
+    ],
+    "source": {
+      "title": "Amazon EFS features",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/features.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-035",
+    "concept": "saa-durable-shared-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Windows application needs a managed SMB file share integrated with Active Directory and automatic failover across AZs. Which option best matches these requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An EFS mount exposed directly as native SMB without an SMB server.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A Single-AZ FSx for Windows file system and a promise that snapshots provide uninterrupted failover.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon FSx for Windows File Server with a Multi-AZ deployment.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An S3 bucket mounted through custom software while assuming all SMB locking semantics are identical.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "durable-shared-storage"
+    ],
+    "source": {
+      "title": "FSx for Windows availability",
+      "url": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-036",
+    "concept": "saa-durable-shared-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A fault-tolerant batch job uses fast local scratch storage on replaceable instances. It can resume from a checkpoint. Which design preserves recoverability if an instance disappears?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Periodically write checkpoints to durable storage and recreate local scratch data when resuming.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keep the only checkpoint on the same local scratch volume.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a checkpoint only after the entire job finishes, leaving no progress recoverable during execution.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Copy the checkpoint to another directory on the same instance store device.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "durable-shared-storage"
+    ],
+    "source": {
+      "title": "EC2 Auto Scaling architecture",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-037",
+    "concept": "saa-hybrid-connectivity-resilience",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company must preserve hybrid connectivity if one Direct Connect location becomes unavailable. Which improvement most directly reduces that shared-failure risk?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provision redundant connectivity through separate Direct Connect locations with independent on-premises paths.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase bandwidth on the existing connection without adding an alternate path.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add another connection to the same device at the same Direct Connect location only.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Add a second VLAN over the existing single physical connection.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "hybrid-connectivity-resilience"
+    ],
+    "source": {
+      "title": "Direct Connect resiliency toolkit",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/resiliency_toolkit.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-038",
+    "concept": "saa-hybrid-connectivity-resilience",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An on-premises team configured only one of the two tunnels in a Site-to-Site VPN connection. Maintenance of that tunnel interrupts connectivity. What should it do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure both tunnels and verify routing and failover behavior on the customer gateway.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Create an additional VPC route to the same tunnel but leave the second tunnel unconfigured.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use only DNS failover between two names that both resolve to the same configured tunnel.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep one tunnel and only increase its idle timeout.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "hybrid-connectivity-resilience"
+    ],
+    "source": {
+      "title": "Site-to-Site VPN tunnel redundancy",
+      "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-039",
+    "concept": "saa-hybrid-connectivity-resilience",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A critical application has redundant network connections and a documented disaster recovery runbook. Which actions provide evidence that recovery objectives can actually be met? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Treat the number of connections as proof of zero downtime without testing.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Test only a DNS change without checking application dependencies or the backup path.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Assume replication makes any future recovery point objective automatically zero.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Run controlled failover exercises and measure application recovery and data loss against the stated objectives.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Verify backup-path capacity, routing, credentials, and dependencies during the exercises.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "hybrid-connectivity-resilience"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-040",
+    "concept": "saa-container-orchestration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company already uses Kubernetes manifests, operators, and Kubernetes-native deployment tools. It wants AWS to operate the Kubernetes control plane while preserving those interfaces. Which platform fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Batch as a replacement for all Kubernetes operators.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon EKS with a suitable worker-compute model.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon ECS after importing the Kubernetes manifests without conversion.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon EC2 Auto Scaling alone as the Kubernetes control plane.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "container-orchestration",
+      "practice"
+    ],
+    "source": {
+      "title": "Amazon EKS",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-041",
+    "concept": "saa-container-orchestration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An ECS service uses rolling deployments and has a previous completed deployment. New task revisions sometimes fail to start or fail health checks. The team wants failed releases stopped and automatically rolled back. What should it configure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The ECS deployment circuit breaker with rollback enabled.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A higher desired task count while ignoring target health.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Longer DNS TTL values for the service endpoint.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An SQS dead-letter queue as the ECS deployment controller.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "container-orchestration",
+      "practice"
+    ],
+    "source": {
+      "title": "ECS deployment circuit breaker",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-042",
+    "concept": "saa-container-orchestration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Fargate tasks cannot pull a private ECR image. Network access is working, and the application task role already allows access to its DynamoDB table. Which permission location should the architect inspect for the image-pull failure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The DynamoDB table resource policy exclusively.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The task execution role used by the ECS/Fargate agent.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The application task role only, because no separate agent role exists.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The ALB listener certificate policy.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "container-orchestration",
+      "practice"
+    ],
+    "source": {
+      "title": "ECS task execution role",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-043",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Lambda function processes batches from an SQS standard queue. One invalid record causes every successful record in the batch to be retried. Which change reduces unnecessary retries?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disable all retries and rely on the visibility timeout to store permanent results.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Return success for the whole batch even when one record failed.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable partial batch responses and return identifiers of failed records while keeping processing idempotent.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Increase the batch size so more successful records share each failure.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "Lambda SQS partial failures",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-errorhandling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-044",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A worker bug moved valid SQS messages into a dead-letter queue. The bug is fixed, but downstream capacity is limited. What is the safest recovery plan?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Validate representative messages, redrive at a controlled rate, and monitor the downstream service and duplicate effects.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Move all messages back immediately and remove downstream concurrency limits.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Increase the maximum receive count without inspecting or replaying stored messages.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Delete the dead-letter queue because the worker code is now fixed.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling",
+      "practice"
+    ],
+    "source": {
+      "title": "SQS dead-letter queues",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-045",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "EC2 queue workers average two seconds per job. The target is about 60 seconds of queued work per active worker. Which target backlog per worker is a reasonable initial value for a target-tracking policy, before load testing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "2 messages per worker.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "60 messages per worker regardless of processing time.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "30 messages per worker.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "120 messages per worker.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "Queue backlog scaling",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-046",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EventBridge bus feeds several services. A new consumer bug is discovered after events were delivered successfully. The team wants to reprocess a selected historical time range without asking producers to recreate events. What should have been configured?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An EventBridge archive with suitable retention, followed by a controlled replay to the source bus.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Only a target dead-letter queue for events that failed delivery.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only a longer API timeout on producers.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only CloudWatch metrics for the count of events.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "EventBridge archives",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-archive.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-047",
+    "concept": "saa-managed-data-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company needs a scheduled flow of Salesforce records into S3 for analytics. The supported connector meets its field-mapping and volume requirements. It wants minimal custom API polling and credential-handling code. Which service fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS DataSync pointed at a Salesforce HTTPS API as an NFS source.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon AppFlow.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "AWS Application Migration Service to replicate Salesforce-managed servers.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon SQS alone polling Salesforce automatically.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-data-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "Amazon AppFlow",
+      "url": "https://docs.aws.amazon.com/appflow/latest/userguide/what-is-appflow.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-048",
+    "concept": "saa-managed-data-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "External partners must continue uploading files with existing SFTP clients. Files should arrive in S3, and the company does not want to patch or scale SFTP servers. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A DataSync task that accepts inbound SFTP user sessions directly.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An S3 static website endpoint with SFTP enabled on port 22.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "An AWS Transfer Family SFTP endpoint backed by S3 with appropriate user access mappings.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An S3 File Gateway SMB share without changing partner clients.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-data-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "Transfer Family SFTP",
+      "url": "https://docs.aws.amazon.com/transfer/latest/userguide/create-server-sftp.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-049",
+    "concept": "saa-managed-ai-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A document-processing application receives scanned invoices. It needs extracted text plus table cells and form key-value pairs without training an OCR model. Which managed capability should the architecture use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Transcribe batch jobs on the image files.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon Comprehend sentiment analysis on the raw image bytes.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Polly text-to-speech on the scanned invoice.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Textract document analysis.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-ai-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "Textract document analysis",
+      "url": "https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-050",
+    "concept": "saa-managed-ai-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A support platform already stores UTF-8 customer comments. It needs sentiment scores and named entities in supported languages with minimal model operations. Which service fits this processing stage?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Comprehend.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon Transcribe speech recognition.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Polly speech synthesis.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Textract table extraction.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-ai-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "Amazon Comprehend",
+      "url": "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-051",
+    "concept": "saa-server-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company must quickly move supported virtual machines to EC2 with minimal application changes. It needs continuous block-level replication, test launches, and a controlled cutover. Which service should it evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Transfer Family as an automated operating-system converter.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Amazon AppFlow as a hypervisor replication service.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Application Migration Service (MGN, now documented as AWS Transform MGN).",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS DMS Schema Conversion alone.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "server-migration",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Transform MGN (Application Migration Service)",
+      "url": "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-052",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A recovery exercise found that manually rebuilding security groups, subnets, and application resources took hours and introduced configuration differences. Backups of application data already exist. Which change most directly improves repeatability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase backup frequency but continue rebuilding all infrastructure from memory.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a larger instance in the recovery Region without testing permissions.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Maintain tested infrastructure-as-code templates and combine deployment with a documented data-restore procedure.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Copy production instance names into a spreadsheet as the full recovery mechanism.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS CloudFormation",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-053",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Lambda function processes every ObjectCreated event in an S3 bucket and writes its output back to that bucket. It repeatedly invokes itself. Which redesign prevents this loop while keeping new source files processed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the function timeout so recursion finishes in one invocation.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trigger only on an input prefix and write to a different output prefix, or use separate buckets.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Disable all S3 event notifications and manually invoke every future job.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase Lambda concurrency to process the recursive backlog faster.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 events and Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-054",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An SNS topic carries order events with a region message attribute. Separate SQS queues should receive only events for their assigned region. Producers should publish once without knowing queue names. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the SQS visibility timeout based on the region attribute.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Apply subscription filter policies for the region attribute to each SNS subscription.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use one shared SQS queue and let consumers delete messages for other regions.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create a producer IAM user for every message and use the username as routing.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing",
+      "practice"
+    ],
+    "source": {
+      "title": "SNS subscription filtering",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-subscription-filter-policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-055",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Workers process 500 MB source documents, far larger than a normal SQS message. The system needs durable queuing and retries without splitting each document into queue fragments. Which design is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the SQS visibility timeout until a 500 MB message is accepted.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Store each document in S3 and queue a reference with controlled access and coordinated retention.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Base64-encode the document and send it as one ordinary SQS message.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store the only copy in producer memory and queue its process ID.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling",
+      "practice"
+    ],
+    "source": {
+      "title": "Large SQS payloads",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-managing-large-messages.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-056",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A scheduler invokes a billing task at a specified time. Delivery can be retried after transient failures, and a timeout may occur after the task commits its result. Which design protects the business operation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a stable operation ID with idempotent processing and configure bounded retries plus a failure destination.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use a new random operation ID on every retry to avoid conflicts.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Assume scheduled invocations can never be duplicated.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable persistence until the scheduler confirms delivery.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "Scheduler failure handling",
+      "url": "https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-schedule.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-057",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A tested recovery takes 40 minutes. Backups occur every four hours, and a failure can happen just before the next backup. The business requires an RTO of one hour and an RPO of 30 minutes. What must change?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reduce potential data loss with more frequent protection or replication; the measured recovery time already meets the RTO.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase the backup interval to reduce backup overhead.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Nothing, because RTO and RPO are interchangeable measurements.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only shorten recovery time to 20 minutes; the backup interval already meets the RPO.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-058",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A secondary Region continuously maintains the critical database state. Application servers are not running there, but tested automation can provision them and switch traffic during recovery. Which DR strategy is this?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Warm standby with a fully functional reduced-capacity application.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Backup and restore with no continuously maintained core components.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Active-active because the database exists in two Regions.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Pilot light.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-059",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A warm-standby environment works at small scale. During a DR exercise, scaling it to production capacity fails because account quotas and subnet IP capacity are insufficient. Which preparation is missing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a shorter DNS TTL while leaving capacity unchanged.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Replicate the same data more frequently without testing scale-up.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Validate target-Region quotas, network capacity, and scale-up procedures at the required recovery load.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Assume quota increases in the primary Region automatically apply everywhere.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-060",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company uses AWS Backup for supported resources. After a review period, recovery points must not be deleted or have retention shortened by account administrators before policy allows. Which feature should be configured and carefully tested?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only a daily email reminder about retention.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Governance mode while giving every administrator permission to remove the lock.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Backup Vault Lock in compliance mode, allowing its grace period to expire after validation.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An IAM Allow policy granting administrators full backup access.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Backup Vault Lock",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-061",
+    "concept": "saa-multiregion-data",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "S3 replication copies production objects to a second Region. The company also needs recovery from accidental deletions and must preserve earlier versions. Which additional design concern is most important?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a closer Region and omit restore tests.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Configure and test version retention, delete-marker behavior, and protected recovery access rather than treating replication alone as a backup.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Assume every replication destination automatically retains all versions forever.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable versioning at the destination to ensure the newest delete always wins.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multiregion-data",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 replication",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-062",
+    "concept": "saa-multiregion-data",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A compatible Aurora application needs low-latency reads in another Region and a regional recovery option. It accepts a measured nonzero replication lag. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Aurora Global Database with a secondary regional cluster and a tested promotion/failover procedure.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An Aurora reader endpoint assumed to spread a regional cluster across the world automatically.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A single-AZ Aurora writer with a DNS alias in another Region.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An RDS Proxy in another Region as the only stored copy.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multiregion-data",
+      "practice"
+    ],
+    "source": {
+      "title": "Aurora Global Database",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-063",
+    "concept": "saa-stateful-service-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A provisioned ElastiCache Valkey replication group currently has only a primary node. The application can reconstruct cached data, but a primary failure causes an avoidable long outage. Which change improves managed failover?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add replicas in other AZs and enable supported Multi-AZ automatic failover; ensure clients reconnect correctly.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Increase the cache TTL and assume it prevents node failures.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a larger single cache node with no replicas.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only enable an RDS Multi-AZ standby for an unrelated database.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "stateful-service-failover",
+      "practice"
+    ],
+    "source": {
+      "title": "ElastiCache automatic failover",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-064",
+    "concept": "saa-multiregion-data",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An inventory service uses DynamoDB global tables in multi-Region eventual consistency mode. Both Regions may sell the last unit using local conditional writes. Which design issue must be addressed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increasing the TTL makes cross-Region writes strongly consistent.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A condition evaluated in one Region does not by itself enforce a single global stock decision across concurrent regional writes.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Storing the item in an S3 cache removes all write conflicts.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Every conditional write automatically locks the item in all Regions before returning.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multiregion-data",
+      "practice"
+    ],
+    "source": {
+      "title": "DynamoDB global table consistency modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-065",
+    "concept": "saa-durable-shared-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application uses a Regional EFS file system across two AZs, but all clients mount through a manually pinned endpoint in one AZ. The team wants resilient, local access paths. Which improvement fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change EFS to One Zone storage while keeping the single pinned endpoint.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase file permissions to 777 to bypass an AZ outage.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Copy the mount-target IP into more configuration files.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create appropriate mount targets in the application AZs and use supported mount/DNS behavior instead of pinning every client to one target.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "durable-shared-storage",
+      "practice"
+    ],
+    "source": {
+      "title": "EFS mount targets",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/manage-fs-access-create-delete-mount-targets.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-066",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "EC2 workers are being interrupted by routine Auto Scaling scale-in while uploading results. Which design reduces avoidable interruption yet remains safe for unexpected instance failures?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete each queue message before work begins to prevent redelivery.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a termination lifecycle hook to stop taking new jobs and finish or checkpoint work, while retaining retry-safe queue processing.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use a lifecycle hook and remove all job retry logic permanently.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Raise minimum capacity indefinitely so no instance is ever replaced.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "Auto Scaling lifecycle hooks",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-067",
+    "concept": "saa-health-routing-and-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Route 53 failover changes the healthy answer after an outage, but some clients continue calling the old endpoint. The application uses ordinary DNS records and persistent connections. Which explanation should guide the design?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route 53 always terminates every old TCP connection immediately.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Health checks automatically replicate application sessions between endpoints.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A lower TTL guarantees zero downtime for every client.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Resolvers may retain answers until TTL expiry, and existing connections or client caches also affect failover time.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "health-routing-and-failover",
+      "practice"
+    ],
+    "source": {
+      "title": "Route 53 record TTL",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values-basic.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-068",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A Lambda consumer of Kinesis repeatedly retries a batch containing one bad record, delaying later processing. The team must isolate failures and retain failed data for investigation. Which approach is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase shard count and assume the existing poison record disappears.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Disable all monitoring because retries ensure eventual correctness.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Return success for all records even when no processing completed.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Configure supported partial-batch/bisect behavior, bounded retries or record age, and an appropriate failure destination.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "Lambda Kinesis partial batches",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/services-kinesis-batchfailurereporting.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-069",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An API accepts bursty work and writes to a dependency with limited capacity. API Gateway throttling is enabled, but the dependency still needs a predictable processing rate. Which architecture best isolates the dependency?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume API usage-plan quotas are exact hard limits and remove worker controls.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Increase every client retry rate when throttling occurs.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Acknowledge accepted asynchronous work, buffer it durably, and limit worker concurrency with overload handling.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Scale only the public DNS service while leaving processing unbounded.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "API Gateway usage plans",
+      "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-RES-070",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A request crosses API Gateway, Lambda, and downstream services. Aggregate CPU metrics are normal, but users see intermittent latency. Which addition helps identify the slow dependency for individual sampled requests?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Distributed tracing with AWS X-Ray using supported instrumentation and correlation.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Only an S3 inventory of static website objects.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only more frequent database backups.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only AWS Cost Explorer grouped by service.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS X-Ray",
+      "url": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html"
+    },
+    "active": true
+  }
+]

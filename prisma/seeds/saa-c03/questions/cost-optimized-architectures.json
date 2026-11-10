@@ -1,0 +1,2216 @@
+[
+  {
+    "code": "SAA-COST-001",
+    "concept": "saa-s3-access-and-retention-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company stores millions of objects larger than 1 MB in S3. Access frequency changes unpredictably. All objects must remain available with millisecond access, and the team wants automatic tier management. Which option best fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move all objects to S3 Standard-IA solely because current-day access is low",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable Intelligent-Tiering Archive Access and Deep Archive Access for every object",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Transition all objects to S3 Glacier Deep Archive after one day",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use S3 Intelligent-Tiering without enabling its optional asynchronous archive-access tiers",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "s3-access-and-retention-cost"
+    ],
+    "source": {
+      "title": "S3 Intelligent-Tiering",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-002",
+    "concept": "saa-s3-access-and-retention-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company retains large compliance archives for seven years. Retrieval is extremely rare, and retrieval workflows can accommodate a delay of about two days. Among the listed classes, which offers the lowest storage-cost tier intended for this long-term archive pattern?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Standard",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 Glacier Deep Archive",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "S3 Glacier Instant Retrieval",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Standard-IA",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "s3-access-and-retention-cost"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-003",
+    "concept": "saa-s3-access-and-retention-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Objects are uploaded to S3, read frequently for ten days, and permanently deleted on day 20. An architect proposes moving them to Standard-IA on day 10 to save money. What should the architect recognize?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Standard-IA removes all minimum-duration and retrieval charges when lifecycle performs the transition",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Moving the objects to Deep Archive on day 10 guarantees free retrieval and immediate deletion with no remaining charges",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Standard-IA transition eligibility and minimum-duration charges make this proposed short-lived lifecycle unsuitable; compare the full cost before changing classes",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Any lower advertised storage rate guarantees a lower total cost even for objects deleted soon afterward",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "s3-access-and-retention-cost"
+    ],
+    "source": {
+      "title": "S3 Lifecycle transition considerations",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-004",
+    "concept": "saa-storage-utilization-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application stores relatively little data, but its gp2 volume was enlarged mainly to obtain more IOPS. The required IOPS and throughput fit within gp3 limits. Which change can reduce unnecessary capacity provisioning?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move the database files to an S3 Glacier class while keeping the same block-device interface",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Evaluate gp3 with storage capacity, IOPS, and throughput configured to the measured requirements",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use an st1 volume and assume HDD random-I/O behavior is identical to SSD",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep increasing gp2 capacity even though the application does not need additional storage",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-utilization-efficiency"
+    ],
+    "source": {
+      "title": "EBS general purpose SSD volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/general-purpose.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-005",
+    "concept": "saa-storage-utilization-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application uses a large EFS file system. Most files have not been accessed for months, but applications must keep using the same NFS paths. Occasional access to cold files is acceptable. Which option should the team evaluate to lower storage cost with limited code changes?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move all files to S3 Deep Archive and expect existing NFS mounts to work unchanged",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Configure EFS Lifecycle management for appropriate infrequent-access or archive classes after evaluating access costs and latency",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Delete the mount targets but leave the file system intact",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase EFS throughput settings even though cold-file storage dominates the bill",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-utilization-efficiency"
+    ],
+    "source": {
+      "title": "EFS Lifecycle management",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-006",
+    "concept": "saa-storage-utilization-efficiency",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company finds storage charges for incomplete S3 multipart uploads from failed client sessions. Completed objects must not be deleted. Which actions address this waste? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Have clients explicitly abort multipart uploads that they intentionally abandon",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Enable S3 Versioning and assume it automatically removes all uncommitted parts",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Expire every completed object after one day regardless of retention requirements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Configure a lifecycle rule to abort incomplete multipart uploads after an appropriate number of days",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Transition incomplete parts to Deep Archive without aborting the upload",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-utilization-efficiency"
+    ],
+    "source": {
+      "title": "Aborting incomplete multipart uploads",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-abort-incomplete-mpu-lifecycle-config.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-007",
+    "concept": "saa-compute-pricing-and-capacity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company expects a stable baseline of compute spending for the next year, but it may move workloads between EC2 instance families, AWS Fargate, and Lambda. Which purchase option best preserves that flexibility while discounting eligible baseline usage?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An EC2 Instance Savings Plan tied to one instance family and Region as the discount for all three services",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An EC2 Capacity Reservation assumed to discount all Lambda invocations",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Compute Savings Plan sized to the eligible hourly baseline",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A Reserved DB Instance covering the application compute spend",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-pricing-and-capacity"
+    ],
+    "source": {
+      "title": "Savings Plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-008",
+    "concept": "saa-compute-pricing-and-capacity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A batch workload consists of independent tasks that can checkpoint and restart. It has a flexible completion window and can use multiple compatible instance types. Which design is best suited to reducing EC2 purchase cost while accommodating interruptions?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a single fixed Spot capacity pool and assume it guarantees availability for the entire completion window",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Buy dedicated physical hosts solely because the workload is interruptible",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a diversified Spot fleet with checkpointing, retry logic, and an appropriate capacity-aware allocation strategy",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use Spot but disable retries because interrupted instances always finish their tasks first",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-pricing-and-capacity"
+    ],
+    "source": {
+      "title": "EC2 Spot Instances",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-009",
+    "concept": "saa-compute-pricing-and-capacity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company buys a Compute Savings Plan and assumes it now has guaranteed EC2 capacity for a particular instance type in one Availability Zone. A launch later fails because capacity is unavailable. Which statement correctly separates the two requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The Savings Plan discounts eligible usage; a suitable Capacity Reservation is a separate mechanism for reserving matching EC2 capacity",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Any Savings Plan automatically reserves every discounted instance type in every Availability Zone",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Spot interruption notice can be used as a long-term capacity reservation",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Purchasing a larger Savings Plan always resolves a capacity shortage",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-pricing-and-capacity"
+    ],
+    "source": {
+      "title": "Savings Plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-010",
+    "concept": "saa-compute-utilization-and-rightsizing",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A development team uses EBS-backed EC2 instances only on weekdays during office hours. The instances have no required overnight processes, and their persistent volumes must be retained. Which actions appropriately reduce waste? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Terminate all instances without preserving the required data or a rebuild plan",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Account for continuing storage and other retained-resource charges while instances are stopped",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Leave every instance running and only reduce CloudWatch dashboard refresh frequency",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Assume stopping an instance deletes all attached EBS volumes and their backups",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Automate stopping and starting the instances around the approved working schedule",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-utilization-and-rightsizing"
+    ],
+    "source": {
+      "title": "Stopping and starting EC2",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-011",
+    "concept": "saa-compute-utilization-and-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A lightweight event handler runs for a few seconds per request and is idle for most of the day. It fits Lambda runtime and resource limits, has no special hardware requirement, and does not need pre-initialized capacity. Which option avoids paying for an always-running worker?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Invoke Lambda on demand for each event, with retries and permissions configured for the event source",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Configure substantial Lambda provisioned concurrency for the entire day despite no initialization-latency requirement",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Run the handler in an always-on dedicated host solely to avoid per-request charges",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep a large EC2 worker running continuously even when no events arrive",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-utilization-and-rightsizing"
+    ],
+    "source": {
+      "title": "Lambda quotas",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-012",
+    "concept": "saa-compute-utilization-and-rightsizing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A cost review finds low average EC2 CPU utilization, but the application has brief memory-heavy peaks and a strict latency objective. Which approach is most appropriate before downsizing?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Buy a three-year commitment for a smaller type before running any validation",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Remove monitoring to lower cost before establishing whether the smaller size works",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Review representative CPU, memory, and latency data, evaluate Compute Optimizer recommendations, and load-test the proposed size",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Choose the smallest available instance solely from average CPU utilization",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-utilization-and-rightsizing"
+    ],
+    "source": {
+      "title": "AWS Compute Optimizer",
+      "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-013",
+    "concept": "saa-database-capacity-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB table has a measured, steady request rate with predictable modest growth. A cost model using current regional prices shows correctly sized provisioned capacity is cheaper than on-demand for this workload. Which approach best follows the evidence while handling growth?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep on-demand solely because it must always be cheaper regardless of utilization",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Provision far below the sustained request rate and disable throttling alarms",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Provision for a hypothetical hundredfold peak indefinitely without checking demand",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use provisioned capacity sized for the workload, with suitable auto scaling, alarms, and periodic review",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-capacity-cost"
+    ],
+    "source": {
+      "title": "DynamoDB capacity modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/capacity-mode.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-014",
+    "concept": "saa-database-capacity-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A new DynamoDB application has unpredictable traffic and no reliable baseline for capacity planning. The team wants request-based billing and minimal management of read/write capacity. Which mode should it evaluate first?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provisioned mode with a fixed small capacity and no monitoring or scaling",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "On-demand capacity mode, while still monitoring quotas, partition-key distribution, and any configured throughput limits",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "On-demand mode with the assumption that it eliminates all throttling and quota constraints",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A fixed provisioned allocation equal to the largest imaginable traffic spike for every hour",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-capacity-cost"
+    ],
+    "source": {
+      "title": "DynamoDB capacity modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/capacity-mode.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-015",
+    "concept": "saa-database-capacity-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A compatible Aurora PostgreSQL application has highly variable demand and long low-usage periods. The team wants database compute to scale within a configured range without repeatedly changing fixed instance classes. Which option should it evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A read replica used as the only autoscaling control for write capacity",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An oversized fixed provisioned writer kept at peak capacity at all times",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "RDS Proxy alone, because pooling automatically changes the database instance size",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Aurora Serverless capacity with suitable minimum and maximum settings and a workload cost test",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-capacity-cost"
+    ],
+    "source": {
+      "title": "Aurora Serverless capacity",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-016",
+    "concept": "saa-database-retention-and-commitment",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A production RDS database will run continuously for the next year. Its engine, Region, and eligible instance configuration are expected to remain stable. Which action can discount matching database instance usage without migrating the database?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an additional standby solely because a second instance always reduces the total bill",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Purchase a Compute Savings Plan and assume it covers ordinary RDS DB instance charges",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Stop the production database nightly even though it must operate continuously",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Purchase an appropriately matched Reserved DB Instance offering after reviewing its term and payment options",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-retention-and-commitment"
+    ],
+    "source": {
+      "title": "Reserved DB instances",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-017",
+    "concept": "saa-database-retention-and-commitment",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A DynamoDB table stores temporary session records. The company wants old records cleaned up with minimal custom deletion code, but sessions must become invalid at their exact expiration time. Which design satisfies both requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable TTL for cleanup and have the application independently reject sessions whose expiration timestamp has passed",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Enable TTL and keep accepting a session until the item disappears",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Remove expiration timestamps and periodically delete random records to keep the table small",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable the application expiration check because TTL deletion is guaranteed at the exact second",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-retention-and-commitment"
+    ],
+    "source": {
+      "title": "DynamoDB time to live",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-018",
+    "concept": "saa-database-retention-and-commitment",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company has many manual RDS snapshots from retired test environments. Some are still required by policy, but others exceed the approved retention period. Which actions reduce waste without undermining recovery requirements? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume retained snapshots become free as soon as the source DB instance is deleted",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Delete every snapshot regardless of policy because the source database no longer runs",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Remove snapshots that are confirmed unnecessary and automate future retention review or lifecycle where supported",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Disable all production backups to offset charges from unused test snapshots",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Inventory snapshot ownership and retention requirements before identifying deletable snapshots",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-retention-and-commitment"
+    ],
+    "source": {
+      "title": "RDS snapshot deletion and retention charges",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteSnapshot.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-019",
+    "concept": "saa-private-network-transfer-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "EC2 workers in private subnets transfer a large amount of data to S3 in the same Region through a NAT gateway. They require no special cross-network S3 access. Which change can remove NAT processing charges for this S3 traffic?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the NAT gateway's traffic volume so its per-GB processing becomes automatically free",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Keep the NAT route and enable S3 Versioning",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create an S3 gateway endpoint and associate the appropriate subnet route tables",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Add an interface endpoint solely on the assumption that all endpoint types have identical zero processing cost",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "private-network-transfer-cost"
+    ],
+    "source": {
+      "title": "VPC NAT and endpoint pricing",
+      "url": "https://aws.amazon.com/vpc/pricing/"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-020",
+    "concept": "saa-private-network-transfer-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A production VPC must keep its existing zonal NAT gateway architecture. It has one NAT gateway in each of two Availability Zones, but every private subnet currently routes internet egress through the gateway in the first AZ. Which change reduces unnecessary cross-AZ traffic while preserving the two-AZ design?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route each private subnet to the existing NAT gateway in its own Availability Zone",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Replace all default routes with S3 gateway endpoint routes for arbitrary internet destinations",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Delete the second NAT gateway and keep both AZs dependent on the first",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Route both private subnets through the gateway in a third AZ",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "private-network-transfer-cost"
+    ],
+    "source": {
+      "title": "Zonal NAT gateway behavior",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-basics.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-021",
+    "concept": "saa-private-network-transfer-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Only two VPCs with non-overlapping CIDRs need direct private connectivity in one Region. There is no requirement for transitive routing, centralized inspection, or near-term expansion. Which design should be evaluated as a simpler alternative to Transit Gateway attachment and processing charges?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A direct VPC peering connection with the required routes and security rules",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A public internet path with no encryption or access controls because it has fewer route tables",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Transit Gateway deployed solely because every VPC connection requires transitive routing",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Two NAT gateways used as bidirectional private routers between the VPC CIDRs",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "private-network-transfer-cost"
+    ],
+    "source": {
+      "title": "VPC peering and its limitations",
+      "url": "https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-022",
+    "concept": "saa-delivery-and-shared-front-door-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A global website repeatedly serves identical versioned assets from an EC2 origin. The company wants to reduce repeated origin requests and origin compute load. Which change directly supports this goal?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Global Accelerator and assume it caches every asset at the edge",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Configure the caching-disabled policy for every immutable asset.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add more origin instances but force every user request to bypass all caches",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Cache the assets in CloudFront with suitable TTLs and cache policies, then measure total delivery cost",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-and-shared-front-door-cost"
+    ],
+    "source": {
+      "title": "CloudFront cache keys and policies",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-023",
+    "concept": "saa-delivery-and-shared-front-door-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Several low-traffic HTTP services each use a separate ALB. They may share a frontend, their combined load fits the planned ALB capacity, and there is no separate-isolation requirement. Which design can reduce duplicated load-balancer resources?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replace the ALBs with one NLB and expect native HTTP path-based rules",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create an additional ALB for every URL path to minimize fixed components",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use one ALB with host- or path-based rules and separate target groups for the services",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Place all services into one target group and remove any way to distinguish their host/path requirements",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-and-shared-front-door-cost"
+    ],
+    "source": {
+      "title": "Application Load Balancer",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-024",
+    "concept": "saa-delivery-and-shared-front-door-cost",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A CloudFront distribution serves identical public images to all users. Its cache policy includes every cookie and query parameter, even though only an image-version parameter changes the image. Which actions improve cache reuse without changing the intended response? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Reuse the same policy for personalized invoice responses without checking authorization or response variation",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Exclude irrelevant cookies from the cache key for this public-image behavior",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Exclude every parameter, including the version that changes the image",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Set the TTL to zero for all image responses to increase cache hits",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Include the image-version parameter but exclude query parameters that do not affect the response",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-and-shared-front-door-cost"
+    ],
+    "source": {
+      "title": "CloudFront cache keys and policies",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-025",
+    "concept": "saa-archive-query-and-snapshot-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An analyst runs Athena queries over years of uncompressed CSV logs but usually selects one day and a few fields. Which storage-layout change is most likely to reduce query scan charges while preserving the dataset?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the CSV layout and increase S3 Versioning retention",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Convert to a suitable compressed columnar format, partition by date, and query with partition predicates",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Move all files into Deep Archive and assume Athena restores them transparently for instant queries",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Merge the entire history into one unpartitioned file and continue SELECT *",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "archive-query-and-snapshot-economics"
+    ],
+    "source": {
+      "title": "Athena columnar formats",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-026",
+    "concept": "saa-archive-query-and-snapshot-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company stores derived thumbnails that can be regenerated from durable source images. They are accessed infrequently but need millisecond reads when requested. The company explicitly accepts losing the derived copy if one Availability Zone is destroyed. Which class should it evaluate for lower-cost storage of the derived copies?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Glacier Flexible Retrieval as an always-online millisecond-access class",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 One Zone-IA",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "S3 Standard solely because every reproducible object requires multi-AZ storage",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Glacier Deep Archive without a restore process",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "archive-query-and-snapshot-economics"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-027",
+    "concept": "saa-archive-query-and-snapshot-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A team keeps daily EBS snapshots. Older snapshots exceed the approved retention policy, but the team fears that deleting any older snapshot will break every newer incremental snapshot. Which statement is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Snapshot deletion also deletes the live source EBS volume",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Deleting any snapshot immediately frees the full provisioned size of its source volume",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "EBS preserves blocks required by retained snapshots; deleting an old snapshot does not make a retained snapshot unrestorable, but savings depend on blocks no longer referenced",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Users must always retain the first snapshot forever or all later snapshots become unusable",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "archive-query-and-snapshot-economics"
+    ],
+    "source": {
+      "title": "EBS incremental snapshots",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-028",
+    "concept": "saa-hybrid-and-regional-cost-tradeoffs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A small office needs encrypted connectivity to a VPC for modest traffic. Existing internet connectivity is adequate, variable internet latency is acceptable, and there is no requirement for a dedicated circuit. Which option should be evaluated first for a lower fixed-infrastructure footprint?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A single public unencrypted application endpoint in place of the required encrypted network connection",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A dedicated Direct Connect circuit solely because all encrypted hybrid connections require one",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Multiple dedicated circuits before measuring bandwidth or availability requirements",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Site-to-Site VPN using the existing internet connection and properly configured tunnels",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "hybrid-and-regional-cost-tradeoffs"
+    ],
+    "source": {
+      "title": "Site-to-Site VPN tunnel redundancy",
+      "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-029",
+    "concept": "saa-hybrid-and-regional-cost-tradeoffs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A dataset is produced and stored in Region A. A daily process in Region B downloads the entire dataset only to produce a small summary used in B. There is no requirement to keep the compute in B, and regional processing services are equivalent. Which redesign reduces unnecessary inter-Region data transfer?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep downloading the entire dataset but increase DNS TTL",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a NAT gateway for the same transfer and assume it eliminates inter-Region charges",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Process the raw dataset in Region A and transfer only the required summary to Region B",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Replicate the raw dataset twice to Region B before processing it",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "hybrid-and-regional-cost-tradeoffs"
+    ],
+    "source": {
+      "title": "VPC NAT and endpoint pricing",
+      "url": "https://aws.amazon.com/vpc/pricing/"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-030",
+    "concept": "saa-hybrid-and-regional-cost-tradeoffs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "For a design exercise, assume a NAT-based path costs $0.05 per GB plus $30 per month, while an eligible gateway-endpoint path has no endpoint hourly or processing charge. The workload transfers 1,000 GB per month to S3 in the same Region and has no other internet traffic. If the now-unused NAT gateway can be removed, what monthly path-specific charge is avoided? Ignore all other costs and use these hypothetical rates.",
+    "options": [
+      {
+        "key": "A",
+        "text": "$80",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "$50",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "$130",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "$30",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "hybrid-and-regional-cost-tradeoffs"
+    ],
+    "source": {
+      "title": "VPC NAT and endpoint pricing",
+      "url": "https://aws.amazon.com/vpc/pricing/"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-031",
+    "concept": "saa-cost-attribution-and-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A research institution shares a large S3 dataset with authenticated organizations. Each organization should pay its own download and request charges, while the institution continues paying storage charges. Which option fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a bucket policy that grants GetObject and assume that permission alone changes billing.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Make the bucket public and rely on anonymous access to identify the payer.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable S3 Requester Pays and require clients to acknowledge requester charges.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Enable versioning and assume the latest reader pays all bucket storage.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "cost-attribution-and-controls",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 Requester Pays",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-032",
+    "concept": "saa-cost-attribution-and-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "EC2 resources are tagged with Department, but the team cannot group billing reports by that user-defined tag. What should be checked before changing instance sizes?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Whether the tag value is an EC2 instance type name rather than a department.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Whether the Department tag is used only in an IAM authorization condition without cost-allocation activation.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Whether Department has been activated as a cost allocation tag in Billing and Cost Management.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Whether the report groups only by linked account instead of the activated Department dimension.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "cost-attribution-and-controls",
+      "practice"
+    ],
+    "source": {
+      "title": "Activate cost allocation tags",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-033",
+    "concept": "saa-cost-attribution-and-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A sandbox needs warnings when actual or forecast monthly spend exceeds a threshold. The owner proposes an AWS Budget and assumes no further charges can occur after the threshold. Which assessment is correct?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A cost budget automatically stops every AWS resource at the exact threshold without configuration.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Only EC2 utilization alarms can provide cost-threshold notifications, so a monetary budget cannot be used.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Cost alerts require removing all IAM permissions from the account owner first.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Budgets can notify and support configured actions, but billing updates and actions are not an instantaneous universal spending cap.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "cost-attribution-and-controls",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Budgets",
+      "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-034",
+    "concept": "saa-cost-attribution-and-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A platform team needs repeatable SQL analysis of usage line items, accounts, and activated cost tags over billing history. It wants the underlying data in its own S3 bucket. Which approach fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Export detailed cost-and-usage data to S3 and query it with Athena using the appropriate schema.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use only an AWS Pricing Calculator estimate as the actual historical usage ledger.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use only CloudTrail management events as a complete invoice replacement.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use only a monthly budget notification email as a queryable resource-level dataset.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "cost-attribution-and-controls",
+      "practice"
+    ],
+    "source": {
+      "title": "Cost and Usage Reports",
+      "url": "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-035",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A general purpose S3 bucket stores millions of objects encrypted with SSE-KMS. KMS request charges are significant. The application can accept the documented encryption-context and audit differences. Which feature should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable S3 versioning as the mechanism that caches KMS data keys.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Switch to DSSE-KMS and assume S3 Bucket Keys support that mode.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Disable all encryption because reducing KMS requests requires plaintext objects.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Bucket Keys for supported SSE-KMS objects.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 Bucket Keys",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-036",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A versioned bucket overwrites reports daily. Only the latest report and 30 days of prior versions are required, but old versions accumulate. Which lifecycle change addresses the unnecessary storage?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure noncurrent-version expiration consistent with the 30-day recovery requirement.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Expire only current objects and assume all noncurrent versions are immediately removed.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Disable access logging and leave every noncurrent version untouched.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Add replication to another Region as the primary way to remove old versions.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 Lifecycle transition considerations",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-037",
+    "concept": "saa-storage-request-economics",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A workload creates millions of tiny log objects. A proposal compares archive tiers using only the advertised per-GB storage rate. Which additional factors should be included before deciding whether to compact and archive the logs? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only the number of IAM users that can view the bucket console.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Assume every archive tier provides instant access without retrieval charges.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Assume compaction is always correct even if individual records must be deleted independently.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Per-object/request charges, minimum billable sizes or durations where applicable, and retrieval patterns.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Whether compaction still permits the required lookup, retention, and deletion behavior.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-038",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EC2 log-processing job needs a non-boot block volume for large sequential scans. Its measured throughput fits st1 limits and it does not need low-latency small random I/O. Which option deserves a cost comparison first?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Provisioned IOPS SSD solely because all block workloads need maximum random IOPS.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 Glacier Deep Archive mounted as an EBS volume without restore.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Throughput Optimized HDD (st1), sized and benchmarked for the required throughput.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An st1 volume used as the EC2 boot volume.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "Throughput Optimized HDD volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/hdd-vols.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-039",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "For the same workload, a Lambda benchmark takes 2 seconds at 1 GB and 0.8 seconds at 2 GB. Assume identical per-GB-second rates, request counts, and other charges; both satisfy latency requirements. Which configuration uses less billed compute?",
+    "options": [
+      {
+        "key": "A",
+        "text": "2 GB, because 2 x 0.8 = 1.6 GB-seconds instead of 2 GB-seconds.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Both settings have equal compute cost because each uses a different amount of memory.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "1 GB, because a smaller memory setting always costs less regardless of duration.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "2 GB, because its billed compute is 0.8 GB-seconds rather than 2 GB-seconds.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "Lambda memory configuration",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-040",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An ECS batch service processes durable queued jobs. Jobs checkpoint to S3, retries are idempotent, and completion can be delayed during spare-capacity shortages. Which capacity option can lower compute cost without making a fixed-capacity promise?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disable checkpoint writes so interrupted tasks are guaranteed to resume from memory.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Fargate Spot for every noncheckpointed critical request with no retry design.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Fargate Spot for suitable tasks, with interruption handling and a fallback policy if deadlines require it.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A Compute Savings Plan as a reservation guaranteeing immediate Fargate Spot capacity.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "ECS Fargate capacity providers",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-capacity-providers.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-041",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Linux service is mostly portable code but includes native libraries. The team considers Graviton-based instances to improve price-performance. What is the best next step?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Commit the entire peak spend before testing libraries or demand.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Build a compatible Arm artifact and benchmark correctness, throughput, latency, and cost per unit of work.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Launch the existing x86-only binary on Arm and assume automatic instruction compatibility.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Compare hourly prices only while ignoring that throughput may differ.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "Compute Optimizer architecture migration considerations",
+      "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/view-ec2-recommendations.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-042",
+    "concept": "saa-commitment-and-capacity-planning",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Eligible compute spend has a stable baseline and a much larger peak for two hours weekly. The company wants a long-term commitment discount without paying for a mostly unused commitment. Which strategy is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Evaluate a commitment around dependable baseline usage and cover uncertain peaks with flexible capacity.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Assume unused hourly commitment can always be banked indefinitely for next week.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Remove all monitoring once the commitment is purchased.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Commit to the weekly maximum for every hour of the term.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "commitment-and-capacity-planning",
+      "practice"
+    ],
+    "source": {
+      "title": "Savings Plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-043",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A development web service is used on weekdays only. It can tolerate startup delay, its persistent data is external, and the environment is reproducible. What can reduce idle compute cost?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete the persistent database every evening regardless of retention requirements.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Keep the fleet at its measured peak count and reduce only its storage allocation.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Purchase maximum long-term capacity before testing the weekday schedule.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Schedule the disposable service capacity to zero outside working hours and restore it before use.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "EC2 scheduled scaling",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-044",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB catalog display can tolerate short propagation delays. It currently uses strongly consistent base-table reads for every display request. Which change can reduce read-unit consumption without changing the stated user experience?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use eventual reads for balance settlement too, without checking correctness requirements.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use eventually consistent reads for this display path while retaining stronger reads where required elsewhere.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Add a filter expression and assume filtered-out items consume no read capacity.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable a strongly consistent GSI read as the cheaper alternative.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "DynamoDB read consistency",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-045",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB query reads many items and discards nearly all of them with a filter expression. Read costs remain high. Which redesign can reduce the amount actually read for a frequent access pattern?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use an appropriate key/index access pattern that narrows the items selected before filtering.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Keep the same scan and add a client-side filter after the response arrives.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add more filter predicates and assume capacity is charged only for final output.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Increase the response page size so all discarded items are always read together.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "DynamoDB filter expressions",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.FilterExpression.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-046",
+    "concept": "saa-database-request-economics",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB table has several GSIs projecting every attribute. Some indexes are unused, and frequently changed large attributes are not needed by the remaining index queries. Which actions should be evaluated? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replace all key queries with full table scans without measuring.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add every table attribute to additional duplicate indexes.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Assume GSI updates never consume write resources.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Remove indexes confirmed unnecessary for application access patterns.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Limit projections to the attributes needed by remaining index access patterns.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "DynamoDB global secondary indexes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-047",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "For a supported Aurora deployment, a forecast estimates Standard at $800 for compute/storage plus $500 for I/O. The equivalent I/O-Optimized configuration is estimated at $1,100 total with no separate read/write I/O charge. Other costs are equal. Which is less expensive in this forecast?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Standard, because $800 is lower than $1,100 regardless of I/O charges.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Both always cost the same because storage modes only change availability.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "I/O-Optimized by $500 because its compute and storage charges must be ignored.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "I/O-Optimized, by $200 per month.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "Aurora storage configurations",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-048",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An RDS DB instance grew substantially during a one-time import. Data is later removed, but allocated storage and charges do not shrink. What should the cost plan recognize?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Switch to Multi-AZ and assume it halves primary storage allocation.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "RDS storage autoscaling increases allocated storage; reducing allocation requires a supported migration/recreation approach, not automatic shrink.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Delete every automated backup to force the primary volume to shrink.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Disable autoscaling and expect existing allocated storage to shrink immediately.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "RDS storage autoscaling",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.Autoscaling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-049",
+    "concept": "saa-network-cost-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A NAT gateway must remain for unrelated traffic. For one AWS service, assume an interface endpoint costs $20 monthly plus $0.01/GB. Sending that service traffic through the existing NAT adds $0.045/GB. Ignore all other differences. At 1,000 GB monthly, which path has lower incremental cost?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The endpoint saves the entire NAT monthly bill even though NAT must remain.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The interface endpoint: $30 versus $45.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Both cost the same because they transfer the same number of gigabytes.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The NAT path: $10 versus $45.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "network-cost-models",
+      "practice"
+    ],
+    "source": {
+      "title": "Interface VPC endpoints",
+      "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/create-interface-endpoint.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-050",
+    "concept": "saa-network-cost-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A multi-AZ application exchanges large amounts of intermediate data between tightly coupled worker pairs. The system must still survive an AZ failure. Which optimization is worth evaluating?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Route all intra-Region traffic through a distant Region.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable DNS health checks as a guarantee that all data-transfer charges disappear.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Move every worker and durable data copy into one AZ with no recovery plan.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Place chatty worker pairs together where feasible while retaining redundant capacity and failover across AZs.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "network-cost-models",
+      "practice"
+    ],
+    "source": {
+      "title": "SAA cost-optimized architectures domain",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain4.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-051",
+    "concept": "saa-delivery-cache-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A global CloudFront distribution fronts an expensive image-rendering origin. Different edge locations often miss on the same cacheable image at nearly the same time. Which feature can consolidate origin requests, subject to a cost-benefit check?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disable all caching so every viewer reaches the origin directly.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable S3 Transfer Acceleration on an unrelated upload bucket.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add a unique random query parameter to every cache key.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "CloudFront Origin Shield.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-cache-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "CloudFront Origin Shield",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/origin-shield.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-052",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "An EC2 worker polls an intermittently active SQS queue several times per second. Most receives return no messages. Jobs should start promptly when messages arrive. Which change reduces unnecessary receive requests without imposing a fixed sleep before every job?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep short polling but increase the message retention period.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable SQS long polling with an appropriate wait time and a client HTTP timeout longer than that wait.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Wait a fixed several minutes before every ReceiveMessage request.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Keep short polling and reduce the visibility timeout of every message.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "SQS long polling",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/best-practices-setting-up-long-polling.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-053",
+    "concept": "saa-delivery-cache-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A cost review proposes caching authenticated account pages under a URL-only CloudFront key to reduce origin traffic. Pages differ by user. What is the appropriate response?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Apply a very long shared TTL because a cheaper origin always outweighs user isolation.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Reject shared caching for those responses unless isolation and cache policy correctly preserve user-specific authorization; optimize public assets separately.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Enable gzip as the only control preventing one user from receiving another user data.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Remove authorization headers from the origin request and assume identity is still preserved.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-cache-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "CloudFront cache keys and policies",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-COST-054",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A temporary export is deleted after ten days and downloaded frequently during that time. A proposal selects an archive tier solely for its low storage rate. Which response best evaluates total cost and usability?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Choose the coldest tier because minimum-duration charges never apply to deleted objects.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Count only compressed bytes and ignore frequency of reads.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Compare request, retrieval, minimum-duration, and access-latency terms against a frequently accessed storage class before choosing.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Assume every archive object is readable immediately using a normal GET without restore.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true
+  }
+]

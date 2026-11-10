@@ -1,0 +1,3308 @@
+[
+  {
+    "code": "SAA-SEC-001",
+    "concept": "saa-workforce-federation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company uses a corporate identity provider and has 40 AWS accounts. Employees need a single sign-in experience and different permissions in development and production. Which approach minimizes ongoing identity administration?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create one IAM role in the management account and assume its permissions automatically authorize employees in all member accounts.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Connect the identity provider to IAM Identity Center and assign groups to account-specific permission sets.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Create an IAM user for every employee in every AWS account and synchronize passwords with a script.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create a Cognito user pool and add all AWS account administrators as application users.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workforce-federation"
+    ],
+    "source": {
+      "title": "IAM Identity Center",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-002",
+    "concept": "saa-workforce-federation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "Developers already use IAM Identity Center to access AWS accounts. They need command-line access without storing long-term IAM user access keys. Which solution fits this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store one IAM user access key in a shared Secrets Manager secret for all developers.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create one IAM user per developer and store its access keys in the local CLI credentials file.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Configure a user-pool JWT as the AWS CLI access key without a supported credential exchange.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Configure AWS CLI profiles for IAM Identity Center and obtain temporary sessions through sign-in.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workforce-federation"
+    ],
+    "source": {
+      "title": "IAM Identity Center",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-003",
+    "concept": "saa-workforce-federation",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An organization wants its support engineers to view production resources but not change them. The engineers already belong to a corporate Support group synchronized with IAM Identity Center. Which actions establish the required access? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a permission set containing only the read permissions required for support work.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Assign the group to the development accounts only and assume the assignment applies to production.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create the read-only permission set but leave it unassigned to all users and groups.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Attach AdministratorAccess to the Support group in every account.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Assign the Support group to that permission set in the production accounts.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workforce-federation"
+    ],
+    "source": {
+      "title": "IAM Identity Center",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-004",
+    "concept": "saa-workload-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "EC2 instances in an Auto Scaling group upload invoices to a specific S3 prefix. New instances must obtain access automatically without receiving stored access keys. What should a solutions architect configure?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bake an IAM user access key into the machine image used by the group.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Attach the S3 upload policy only to the IAM user that launches the Auto Scaling group.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Attach an instance profile with an IAM role allowing uploads only to the invoice prefix.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Add an S3 gateway endpoint and rely on its route table as the only authorization control.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workload-roles"
+    ],
+    "source": {
+      "title": "IAM roles for EC2",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-005",
+    "concept": "saa-workload-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "An application running in an ECS task on Fargate needs to read a DynamoDB table. The task starts successfully, but its application API calls are denied. Which role should receive the table read permissions?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The ECS task execution role, because it is used for every application request.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Grant the table permissions only to the ECS service-linked role that manages service resources.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The ECS task IAM role used by the application.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "An EC2 instance profile attached to a Fargate host managed by the customer.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workload-roles"
+    ],
+    "source": {
+      "title": "ECS task IAM roles",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-006",
+    "concept": "saa-workload-roles",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "A Lambda function reads objects only from the reports/ prefix of one S3 bucket. It never lists the bucket or writes objects. Which permission design best follows least privilege?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allow s3:* on every S3 resource in the function execution role.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Allow s3:ListBucket on the bucket ARN and omit object-read permissions.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Allow s3:GetObject on the reports/* object ARN in the function execution role.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Allow s3:GetObject on the bucket ARN without its object path.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workload-roles"
+    ],
+    "source": {
+      "title": "IAM security best practices",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-007",
+    "concept": "saa-cross-account-access",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A deployment role in account A must assume a release role in account B. There are no organization guardrails or explicit denies blocking the operation. Which actions are required? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Attach the deployment role policy to an unrelated group in account B instead of configuring the release role.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Allow the account A deployment role to call sts:AssumeRole on the release role ARN.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Configure the release role trust policy to trust the deployment role in account A.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Give the account A role permission to list roles in account B but not to assume the release role.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Put sts:AssumeRole only in the release role permissions policy and omit its trust relationship.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "cross-account-access"
+    ],
+    "source": {
+      "title": "Cross-account IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_aws-accounts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-008",
+    "concept": "saa-cross-account-access",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A monitoring vendor serves many customers from the same AWS account. It must assume a read-only role in your account, and you need protection against another vendor customer causing that role to be used on their behalf. Which design is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allow every AWS account to assume the role if it knows the role ARN.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trust the vendor account and let any of its customers choose the same role session name.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Share a read-only IAM user access key and omit role-based access.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Trust the vendor principal and require the customer-specific external ID supplied by the vendor.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "cross-account-access"
+    ],
+    "source": {
+      "title": "Third-party roles and external IDs",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-009",
+    "concept": "saa-cross-account-access",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A partner can already assume a role in your account. That role must read only objects under partner-a/ in a bucket owned by your account. The objects use SSE-S3, and no resource policy or explicit deny changes the authorization. Which permissions policy should the assumed role receive?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allow s3:GetObject on every bucket in your account because the trust policy already names the partner.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add s3:GetObject to the trust policy and leave the role without an applicable permissions policy.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Allow s3:GetObject on the bucket's partner-a/* object ARN only.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Allow s3:ListBucket on the bucket but grant no object-read permission.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "cross-account-access"
+    ],
+    "source": {
+      "title": "Cross-account IAM roles",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_aws-accounts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-010",
+    "concept": "saa-guardrails-permissions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company must prevent ordinary IAM administrators in its organization's member accounts from disabling CloudTrail trails. Administrators must retain other permitted actions. Which control should the company use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use an AWS Config rule to detect disabled trails, without any preventive deny.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Attach an additional Allow policy for CloudTrail to every administrator.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Apply an SCP that explicitly denies the relevant CloudTrail disable and delete operations in the member accounts.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Attach a read-only policy to administrators while leaving their broader administrator permissions in place.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "guardrails-permissions"
+    ],
+    "source": {
+      "title": "Service control policies",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-011",
+    "concept": "saa-guardrails-permissions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A platform team lets developers create IAM roles for applications in one account. The developers must not grant those roles permissions outside an approved maximum policy. Which approach is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an SCP Allow statement and assume it grants only the approved actions to every role.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Require the approved permissions boundary on created roles and prevent developers from changing or removing it.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Attach a permissions boundary to the developer role only and assume every newly created role inherits it.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Require the approved boundary only in a deployment checklist while still permitting developers to remove it.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "guardrails-permissions"
+    ],
+    "source": {
+      "title": "IAM permissions boundaries",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-012",
+    "concept": "saa-guardrails-permissions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "UNDERSTANDING",
+    "question": "An IAM role has an identity policy allowing an S3 action. An applicable SCP explicitly denies that same action. The request does not involve the management account or an exempt service-linked role. What is the result?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The request is allowed because the role policy is evaluated more recently.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The request is allowed because an applicable identity-based Allow always overrides an SCP Deny.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The request is denied; adding another identity-based Allow does not override the applicable Deny.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "The request is allowed if the role session is temporary rather than a long-term IAM user session.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "guardrails-permissions"
+    ],
+    "source": {
+      "title": "Service control policies",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-013",
+    "concept": "saa-private-service-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Private EC2 instances need to read S3 objects in the same Region. They have no internet gateway or NAT route, and access is needed only from this VPC. Which option provides the required path with no additional endpoint charge?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an S3 interface endpoint and assume it has no hourly or data-processing endpoint charge.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add a public S3 bucket policy without changing the VPC routing.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create an S3 gateway endpoint and associate it with the instances' subnet route tables.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Deploy a public NAT gateway solely for S3 traffic.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-service-connectivity"
+    ],
+    "source": {
+      "title": "Gateway VPC endpoints",
+      "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-014",
+    "concept": "saa-private-service-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application in private subnets must retrieve Secrets Manager secrets without internet access. Its IAM permissions are already correct. Which configuration should provide private connectivity?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an S3 gateway endpoint and route Secrets Manager requests through its prefix list.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add secretsmanager:GetSecretValue to the application role again and leave networking unchanged.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a Secrets Manager interface endpoint but leave its security group blocking inbound HTTPS from the application.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Create a Secrets Manager interface endpoint, enable private DNS, and permit HTTPS from the application in the endpoint security group.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-service-connectivity"
+    ],
+    "source": {
+      "title": "Interface VPC endpoints",
+      "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/create-interface-endpoint.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-015",
+    "concept": "saa-private-service-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A vendor exposes a TCP service from its VPC. Customer VPC CIDR ranges may overlap with the vendor's ranges. Customers should reach only this service, not receive full routed access to the vendor network. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Connect the overlapping customer and vendor VPCs through route-table entries alone, without translation or a service endpoint.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create VPC peering connections even when the CIDR ranges overlap.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Attach every VPC to a shared transit gateway and advertise all overlapping routes unchanged.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Publish a PrivateLink endpoint service behind a Network Load Balancer and let customers create interface endpoints.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-service-connectivity"
+    ],
+    "source": {
+      "title": "PrivateLink endpoint services",
+      "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-016",
+    "concept": "saa-network-segmentation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A web application and an RDS PostgreSQL database are in the same VPC. Application instance IP addresses change frequently. The database should accept port 5432 only from the application tier. What should the database security group allow?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Inbound all traffic from the entire VPC CIDR.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Inbound TCP 5432 with the application security group as the source.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Inbound TCP 443 from the load balancer security group.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Inbound TCP 5432 from 0.0.0.0/0.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "network-segmentation"
+    ],
+    "source": {
+      "title": "Security group rules",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-017",
+    "concept": "saa-network-segmentation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "COMPARISON",
+    "question": "A subnet must immediately reject traffic from one known external IPv4 CIDR while continuing to allow other permitted traffic. Which subnet-level control can express this explicit deny?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A network ACL deny rule evaluated before a broader matching allow rule.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "A security group rule with a Deny action for the CIDR.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Configure an outbound-only network ACL deny for traffic that must be rejected on its inbound path.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Remove one allow rule from a security group while another rule still allows the same CIDR.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "network-segmentation"
+    ],
+    "source": {
+      "title": "Network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-018",
+    "concept": "saa-network-segmentation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "UNDERSTANDING",
+    "question": "A custom network ACL permits inbound HTTPS to EC2 web servers but has no rule permitting outbound response traffic. Security groups and routes are correct. Which change addresses the missing return path?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume the network ACL automatically permits established connections because security groups are stateful.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add a second inbound HTTPS allow rule to the same ACL.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Increase the ALB idle timeout but leave the network ACL response path blocked.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Allow the appropriate outbound response traffic to client ephemeral ports in the network ACL.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "network-segmentation"
+    ],
+    "source": {
+      "title": "Network ACLs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-019",
+    "concept": "saa-application-edge-protection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A public application behind an ALB receives requests containing SQL injection patterns in query strings. The team needs managed HTTP filtering without modifying application code. Which control should it add?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable Shield Standard and assume it provides the requested SQL-injection web ACL rules.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Associate an AWS WAF web ACL with the ALB and enable appropriate managed rules.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Replace the ALB security group with an inbound rule allowing only TCP 443.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable GuardDuty findings but add no request-filtering control to the ALB.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "application-edge-protection"
+    ],
+    "source": {
+      "title": "AWS WAF",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-020",
+    "concept": "saa-application-edge-protection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A login endpoint behind CloudFront is receiving excessive requests from individual client IP addresses. The team wants to limit matching HTTP requests at the edge, not impose an exact billing quota. Which configuration fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use only a network ACL rule matching the HTTP URL path.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a static WAF IP block list that never evaluates request rates.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Apply a WAF rate-based rule globally without limiting it to the login path.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use an AWS WAF rate-based rule scoped to the login path and aggregate by client IP.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "application-edge-protection"
+    ],
+    "source": {
+      "title": "WAF rate-based rules",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-021",
+    "concept": "saa-application-edge-protection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "COMPARISON",
+    "question": "A company already uses standard AWS DDoS protections. It now needs an enhanced managed DDoS protection service for eligible internet-facing resources, including specialized response capabilities subject to AWS prerequisites. Which service should it evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Network ACL rules alone, with no enhanced managed DDoS protection subscription.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Shield Advanced.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Amazon GuardDuty alone to block volumetric attacks and provide enhanced DDoS response entitlements.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS WAF alone as a replacement for all enhanced DDoS response-service capabilities.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "application-edge-protection"
+    ],
+    "source": {
+      "title": "AWS Shield",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-022",
+    "concept": "saa-secrets-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application uses a database password that must rotate automatically. The team wants a managed secret store with supported rotation integration rather than a custom scheduler and encrypted text file. Which solution should it choose?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Update the stored secret on a schedule without updating the database credential.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Encrypt the password once with KMS and assume key rotation changes the database password.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Store the password in a SecureString parameter and assume Parameter Store automatically changes the database password.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Store the credential in Secrets Manager and configure rotation that updates both the secret and database.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secrets-lifecycle"
+    ],
+    "source": {
+      "title": "Secrets Manager rotation",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-023",
+    "concept": "saa-secrets-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A service needs centrally stored, versioned configuration values under /production/api/. One value must be encrypted, but none require automatic credential rotation. Which option directly matches this lightweight configuration use case?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Put the values in each container image and redeploy all images whenever configuration changes.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Systems Manager Parameter Store with String and SecureString parameters as appropriate.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use an S3 object as configuration and rely on the object key alone to provide Parameter Store-style hierarchy and version APIs.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use a single plain String parameter for every value, including the one that must be encrypted.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secrets-lifecycle"
+    ],
+    "source": {
+      "title": "Systems Manager Parameter Store",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-024",
+    "concept": "saa-secrets-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team selects an RDS engine and version that support RDS-managed master passwords in Secrets Manager. It wants AWS to manage password generation and rotation for that master credential. What should it do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable RDS management of the master password in Secrets Manager and grant only necessary secret access.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Rotate the KMS key and keep the database password permanently unchanged.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a customer Lambda rotation function because every Secrets Manager rotation requires one.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Change only the database password manually and leave the stored secret unchanged.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secrets-lifecycle"
+    ],
+    "source": {
+      "title": "RDS-managed master passwords",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-025",
+    "concept": "saa-customer-identity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A consumer web application needs self-service registration, sign-in, and federation with social identity providers. Users will call the company's backend API, not administer AWS accounts. Which service best fits authentication?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An Amazon Cognito user pool.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "IAM Identity Center account assignments for every consumer.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Cognito identity pool alone, treated as the user directory and registration service.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An IAM user for each consumer, with IAM user creation exposed as the public registration flow.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "customer-identity"
+    ],
+    "source": {
+      "title": "Cognito user pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-026",
+    "concept": "saa-customer-identity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Mobile users authenticate through a Cognito user pool. The application must then call AWS APIs directly with temporary credentials scoped to each user's allowed resources. What should be added?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An additional user pool without any AWS credential exchange or IAM roles.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Send the user-pool JWT directly as an AWS access-key ID when signing S3 requests.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A Cognito identity pool with appropriately scoped IAM roles.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use the same unrestricted IAM role for every user and omit resource scoping.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "customer-identity"
+    ],
+    "source": {
+      "title": "Cognito identity pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-027",
+    "concept": "saa-customer-identity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An authenticated mobile application writes files directly to S3 using a Cognito identity pool. Each user must access only that user's assigned prefix. Which design enforces this requirement at the service boundary?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Attach a policy that allows all prefixes and put the user identifier only in an object tag not referenced by any authorization rule.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Restrict only ListBucket results while permitting GetObject and PutObject across the entire bucket.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use scoped IAM permissions that restrict the federated identity to its assigned S3 prefix.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Grant bucket-wide access and hide other users' files in the mobile interface.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "customer-identity"
+    ],
+    "source": {
+      "title": "Cognito identity pools",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-028",
+    "concept": "saa-encryption-key-control",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company stores sensitive documents in S3. Its security team needs control over the encryption key policy and a separation between key administrators and applications that decrypt data. Which approach best supports these requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use SSE-S3 and assume the company can edit the underlying S3-managed encryption key policy.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Give every key administrator kms:* and claim this prevents those administrators from decrypting.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use the AWS managed S3 KMS key and assume its key policy is fully editable by the company.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use SSE-KMS with a customer managed key and separate key-administration permissions from decrypt permissions.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-key-control"
+    ],
+    "source": {
+      "title": "KMS key policies",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-029",
+    "concept": "saa-encryption-key-control",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "UNDERSTANDING",
+    "question": "A role has an IAM Allow for kms:Decrypt on a customer managed key in the same account. The key policy neither authorizes that role nor enables IAM policies to grant access, and no grant applies. Why is decrypt denied?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allowing S3 GetObject automatically overrides any missing KMS authorization.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The role must rotate the key before any IAM policy can ever grant decryption.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The key policy has not established an applicable authorization path for that role.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "The key alias must be renamed to match the role name before decrypt is authorized.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-key-control"
+    ],
+    "source": {
+      "title": "KMS key policies",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-030",
+    "concept": "saa-encryption-key-control",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A role in account B reads SSE-KMS objects from account A. S3 access is already configured. Which actions establish KMS decryption access, assuming no explicit deny? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allow the required KMS decrypt operation on that key in the account B role's IAM policy.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Permit only kms:DescribeKey on the key instead of decrypt.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Permit the account B role to use the key in account A's customer managed KMS key policy.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Grant only s3:GetObject in account B and treat that as sufficient KMS authorization.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Add an IAM Allow in account A to an unrelated local role instead of allowing the account B role.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-key-control"
+    ],
+    "source": {
+      "title": "Cross-account KMS permissions",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-031",
+    "concept": "saa-private-content-delivery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company serves private S3 objects through CloudFront. Users must not bypass CloudFront by requesting the S3 object URL directly. Which origin configuration should it use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Configure a CloudFront cache policy while leaving the S3 bucket policy open to direct public reads.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Add signed viewer URLs while leaving the bucket publicly readable.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use an S3 bucket origin with OAC and a bucket policy allowing the intended CloudFront distribution.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use the S3 website endpoint with OAC and keep all objects publicly readable.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "private-content-delivery"
+    ],
+    "source": {
+      "title": "CloudFront S3 origin access control",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-032",
+    "concept": "saa-private-content-delivery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A backend authorizes a user to download one private S3 object for a short period. The user should not receive AWS credentials or bucket-wide access. Which solution is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Return a presigned GET URL for a different object prefix than the one the backend authorized.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Return a presigned PUT URL for the object when the user only needs to download it.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Return a short-lived presigned GET URL generated by an authorized backend role.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Grant the user ListBucket but no permission to read object contents.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "private-content-delivery"
+    ],
+    "source": {
+      "title": "S3 presigned URLs",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-033",
+    "concept": "saa-private-content-delivery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A subscription site uses CloudFront to deliver hundreds of private media segments per video. It wants to authorize a subscriber for the related files without changing every segment URL. Which viewer-access mechanism fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use one signed URL for the video manifest and assume it authorizes every unmodified segment request automatically.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "CloudFront signed cookies with an appropriately scoped policy.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Generate a separate signed URL for every segment and rewrite every segment reference.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only origin access control, with no viewer authorization.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "private-content-delivery"
+    ],
+    "source": {
+      "title": "CloudFront signed cookies",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-034",
+    "concept": "saa-immutable-retention",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company must keep specific S3 object versions unchanged for seven years. No user, including the account root user, may shorten retention or permanently delete those protected versions during that period. Which configuration meets this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Versioning alone with administrator delete permissions.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "An S3 Lifecycle expiration rule set to one year.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "S3 Object Lock in governance mode with broad bypass permissions.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Object Lock in compliance mode with the required retention period.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "immutable-retention"
+    ],
+    "source": {
+      "title": "S3 Object Lock",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-035",
+    "concept": "saa-immutable-retention",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Documents in S3 must remain protected until an investigation finishes. The end date is unknown, and authorized staff will explicitly release the protection later. Which feature best matches this lifecycle?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable S3 Versioning without restricting permanent version deletion by authorized administrators.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a bucket lifecycle rule to delete objects automatically when their last-access timestamp changes.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Set a short fixed retention period and assume protection remains indefinitely after it expires.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An S3 Object Lock legal hold on the relevant object versions.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "immutable-retention"
+    ],
+    "source": {
+      "title": "S3 Object Lock",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-036",
+    "concept": "saa-immutable-retention",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A developer overwrites an S3 object. The bucket had versioning enabled, previous versions were retained, and no permanent version deletion occurred. What is the simplest recovery approach?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Retrieve the previous object version and restore it as the current content if needed.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Disable versioning and expect S3 to reconstruct overwritten bytes automatically.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable replication only after the overwrite and assume it recreates the missing earlier content.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Delete all noncurrent versions and then request restoration of the overwritten bytes.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "immutable-retention"
+    ],
+    "source": {
+      "title": "S3 Versioning",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-037",
+    "concept": "saa-discovery-audit-detection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company has thousands of S3 objects and needs to discover which supported objects contain personal information. It wants managed classification rather than writing its own scanning engine. Which service should it use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Macie.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Config resource configuration rules only.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CloudTrail management events only.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon Inspector software vulnerability scans only.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "discovery-audit-detection"
+    ],
+    "source": {
+      "title": "Amazon Macie",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-038",
+    "concept": "saa-discovery-audit-detection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Auditors need records of GetObject and PutObject calls for a sensitive S3 bucket. The company currently records only CloudTrail management events. Which change addresses the missing object-level audit records?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable only AWS Config history for bucket configuration changes.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Configure CloudTrail S3 data events for the relevant bucket and operations.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Enable only S3 Versioning and assume it logs all reads.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable additional CloudTrail management events but leave S3 data events disabled.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "discovery-audit-detection"
+    ],
+    "source": {
+      "title": "CloudTrail data events",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-039",
+    "concept": "saa-discovery-audit-detection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "COMPARISON",
+    "question": "A security team wants managed detection of suspicious AWS credential use and potentially malicious workload activity based on supported AWS data sources. It does not want to build its own threat-analysis pipeline. Which service fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Macie alone for every EC2 and IAM threat.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Config compliance rules alone.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon GuardDuty.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Amazon Inspector vulnerability scans alone.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "discovery-audit-detection"
+    ],
+    "source": {
+      "title": "Amazon GuardDuty",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-040",
+    "concept": "saa-secure-remote-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company has a Direct Connect connection but must also encrypt traffic between its on-premises network and AWS using IPsec. Which approach meets this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable encryption at rest on the destination storage without encrypting the network path.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Assume every Direct Connect circuit is already IPsec-encrypted by default.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Configure a supported Site-to-Site VPN over the Direct Connect connectivity.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use MACsec alone and assume link-layer encryption is the required end-to-end IPsec tunnel.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secure-remote-connectivity"
+    ],
+    "source": {
+      "title": "Direct Connect encryption",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-041",
+    "concept": "saa-secure-remote-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "Remote employees using laptops need authenticated access to private applications in a VPC from changing locations. The company wants a managed client-based VPN rather than maintaining a VPN server. Which service should it select?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An EC2-hosted VPN appliance that the company must patch and maintain.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "AWS Site-to-Site VPN configured to a single office gateway as the only roaming-laptop client-access mechanism.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "PrivateLink interface endpoints without any remote-client network connection or authentication flow.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Client VPN.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secure-remote-connectivity"
+    ],
+    "source": {
+      "title": "AWS Client VPN",
+      "url": "https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-042",
+    "concept": "saa-secure-remote-connectivity",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Administrators need shell access to private EC2 instances without public IP addresses, bastion hosts, or inbound SSH rules. Instances can reach the required Systems Manager endpoints. Which additional components are required? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "A running, supported SSM Agent and an appropriate managed-node IAM role on the instances.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "IAM permissions that authorize administrators to start the required Session Manager sessions.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Only an EC2 SSH key pair, with no SSM Agent or managed-node permissions.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A public Elastic IP for every instance.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "An inbound security group rule allowing port 22 from the entire internet.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secure-remote-connectivity"
+    ],
+    "source": {
+      "title": "Systems Manager Session Manager",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-043",
+    "concept": "saa-tls-and-transport-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An application requires the original TLS connection to terminate on its EC2 servers, not on the load balancer. Layer 7 routing is not required. Which listener design meets this requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An ALB HTTPS listener that terminates client TLS and establishes a separate HTTPS connection to targets.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "A Network Load Balancer TCP listener on port 443 that forwards to the application servers.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "An ALB HTTPS listener that decrypts requests before forwarding HTTP.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An NLB TLS listener with the application certificate installed on the load balancer.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "tls-and-transport-controls"
+    ],
+    "source": {
+      "title": "ALB HTTPS listeners and TCP passthrough",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-044",
+    "concept": "saa-tls-and-transport-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "BASIC",
+    "question": "A CloudFront distribution will serve https://learn.example.com using an ACM-issued public certificate for viewer connections. In which Region should the certificate be requested?",
+    "options": [
+      {
+        "key": "A",
+        "text": "US East (N. Virginia), us-east-1.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Only the Region containing the S3 origin, regardless of CloudFront requirements.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Only the Region nearest to the first viewer.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A different Region for every CloudFront edge location.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "tls-and-transport-controls"
+    ],
+    "source": {
+      "title": "CloudFront TLS certificate requirements",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-045",
+    "concept": "saa-tls-and-transport-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An S3 bucket already encrypts objects at rest. A security requirement additionally forbids requests over unencrypted HTTP. Which control directly enforces the transport requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require only SSE-KMS encryption headers on uploads without evaluating the transport condition.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Rotate the KMS key more frequently but leave HTTP access allowed.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable S3 Block Public Access and assume authenticated HTTP requests are therefore forbidden.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A bucket policy explicitly denying requests when aws:SecureTransport is false, with required service-principal exceptions considered.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "tls-and-transport-controls"
+    ],
+    "source": {
+      "title": "S3 bucket policy examples",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-046",
+    "concept": "saa-policy-evaluation-abac",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A developer role has an identity policy allowing s3:GetObject on a project bucket. The bucket policy explicitly denies this role access to the confidential prefix. No other policy affects the request. What happens when the role reads an object in that prefix?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The request succeeds because the role and bucket are in the same account.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The request succeeds if AdministratorAccess is attached to the role.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The request succeeds because identity policies are evaluated before bucket policies.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The request is denied because the applicable explicit deny overrides the allow.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "policy-evaluation-abac",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM policy evaluation",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-047",
+    "concept": "saa-policy-evaluation-abac",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A platform team lets developers create application roles. Every new role must remain within an approved permission boundary, and developers must not remove that boundary. Which delegation design meets the requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add the approved policy as an optional inline policy on each application role.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Attach the approved policy to the developers but allow unrestricted creation of new roles.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use resource tags alone without authorization conditions or restrictions on tag changes.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Require the approved permissions boundary during role creation and restrict changing or deleting it.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "policy-evaluation-abac",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM permissions boundaries",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-048",
+    "concept": "saa-policy-evaluation-abac",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Teams create many project resources in services that support tag-based authorization. Staff should access only resources whose Project tag matches their principal tag. Which approach scales authorization while reducing policy rewrites?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Grant access to all resources and use Project tags only in billing reports.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Let each employee set any Project principal tag before making requests.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use ABAC conditions comparing the tags and tightly control who can assign or change authorization tags.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Create a separate AWS account for every resource to eliminate all permission policies.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "policy-evaluation-abac",
+      "practice"
+    ],
+    "source": {
+      "title": "Attribute-based access control",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_attribute-based-access-control.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-049",
+    "concept": "saa-policy-evaluation-abac",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A role allows reading and writing a bucket. An application assumes the role with a session policy allowing only reads. No resource policy grants additional access and no other restriction applies. What can that session do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Read the permitted objects but not write them.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Read and write because the role policy always overrides a session policy.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Write but not read because session policies list denied operations.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Access other buckets because session policies can add permissions to a role.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "policy-evaluation-abac",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM policy evaluation",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-050",
+    "concept": "saa-service-to-service-authorization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An external CI service issues signed OIDC tokens identifying the repository and deployment environment. Only production jobs from one repository may deploy to AWS. How should the company avoid storing long-lived AWS access keys?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store an IAM user key in every build artifact and rotate it quarterly.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Trust every subject from the CI provider because its tokens are signed.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Attach an EC2 instance profile to the external CI service.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Trust the OIDC provider in an IAM role and restrict the token audience and subject to the approved jobs.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "service-to-service-authorization",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM OIDC federation",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-051",
+    "concept": "saa-workforce-federation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Engineers need read-only production access and deployment access in development through IAM Identity Center. Their corporate directory already maintains the groups. Which configuration avoids giving all engineers the same privileges everywhere?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign one administrator permission set to every group and rely on naming conventions.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use one read-only permission set for both accounts and let development users edit that permission set for their deployments.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a Cognito identity pool and treat its application roles as account permission sets.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Assign the directory groups to different permission sets in the appropriate accounts.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "workforce-federation",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM Identity Center",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-052",
+    "concept": "saa-central-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A growing organization needs repeatable account provisioning, centralized log and audit accounts, and a consistent baseline of preventive and detective controls. Which service should orchestrate this landing-zone setup?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Control Tower with an AWS Organizations-based landing zone.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Cost Explorer with a consolidated billing dashboard.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "IAM Access Analyzer with the management account as its trust zone.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager with a resource share for all employees.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "central-account-governance",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Control Tower",
+      "url": "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-053",
+    "concept": "saa-central-account-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A networking account owns VPCs and subnets. Application teams in other accounts in the same AWS organization must deploy their own supported resources into approved subnets while retaining ownership of those resources. Which approach fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move all application resources into the networking account and give teams roles in that account.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create an IAM group in the networking account containing roles from all member accounts.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Share the subnets through AWS RAM using VPC sharing.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Use a Transit Gateway attachment to make another account the owner of a subnet.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "central-account-governance",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Resource Access Manager",
+      "url": "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-054",
+    "concept": "saa-directory-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company keeps its Microsoft AD authoritative on premises. A supported AWS application needs to authenticate against that directory over existing private connectivity. The company wants a directory gateway, not new domain controllers or a synchronized cloud directory. Which option fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AD Connector.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An IAM group with the same name as the on-premises domain.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A new AWS Managed Microsoft AD forest with separately provisioned users.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "A Cognito user pool with a copied password database.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "directory-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "AD Connector",
+      "url": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_ad_connector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-055",
+    "concept": "saa-directory-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A company is deploying directory-aware Windows applications in AWS. It needs a new managed AD domain, group policies, and a trust relationship with its existing on-premises AD. Which service meets these requirements with the least domain-controller administration?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Managed Microsoft AD.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "An IAM Identity Center permission set for Windows group-policy processing.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AD Connector as the new domain controller hosting group policies.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "An Amazon Cognito user pool for LDAP and domain-join operations.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "directory-integration",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Managed Microsoft AD",
+      "url": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-056",
+    "concept": "saa-service-to-service-authorization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A deployment role can create Lambda functions but must let them access only a designated application bucket. The role currently has iam:PassRole on every role in the account. Which change best closes the privilege-escalation path?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Allow the deployer to pass only roles tagged Approved, while also letting it freely change that tag on every role.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Restrict only the deployment role's own s3:GetObject permissions.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Restrict Lambda names to the project prefix while allowing every execution-role ARN.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Restrict iam:PassRole to approved least-privilege Lambda execution roles.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "service-to-service-authorization",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM PassRole",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-057",
+    "concept": "saa-cross-account-access",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Multiple partner accounts upload reports into a central S3 bucket. The bucket owner must own all objects and manage access through policies, without maintaining object ACLs. Which bucket configuration should be used?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Versioning alone.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "S3 Object Ownership set to Bucket owner enforced.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Object writer ownership with a public-read ACL on every upload.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Bucket owner preferred without requiring any compatible upload ACL.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "cross-account-access",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 Object Ownership",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-058",
+    "concept": "saa-private-service-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A role has permission to read two S3 buckets. Traffic uses an S3 gateway endpoint whose policy permits only Bucket A. The role attempts to read Bucket B through that endpoint. No resource policy grants an exception. What is the correct interpretation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The request bypasses the endpoint policy automatically and uses the internet.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The endpoint policy can block the request; it does not grant additional S3 permissions.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The endpoint policy matters only to anonymous requests.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The endpoint policy adds Bucket B because the IAM role already allows it.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-service-connectivity",
+      "practice"
+    ],
+    "source": {
+      "title": "IAM policy evaluation",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-059",
+    "concept": "saa-private-api-auth",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An internal REST API in API Gateway must be invoked only through one approved VPC endpoint. It must not expose a public API endpoint. Which combination provides the required perimeter?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use a Regional public API and remove its DNS record from the company website.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use a private REST API with an interface endpoint and a resource policy restricting aws:SourceVpce.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Place a NAT gateway in front of the API Gateway service.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Use an edge-optimized API and require an API key.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-api-auth",
+      "practice"
+    ],
+    "source": {
+      "title": "API Gateway private REST APIs",
+      "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-apis.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-060",
+    "concept": "saa-private-api-auth",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A paid REST API uses API Gateway usage plans and API keys to meter customers. It also needs to validate signed user tokens and authorize each request. What should the architect add?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A private DNS name without any authorization checks.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Longer API keys so they become user authentication tokens.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "A suitable authorizer that validates tokens, while retaining API keys for usage-plan tracking.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "A larger usage-plan quota to prevent unauthorized requests.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "private-api-auth",
+      "practice"
+    ],
+    "source": {
+      "title": "API Gateway usage plans",
+      "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-061",
+    "concept": "saa-application-edge-protection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An internet-facing ALB accepts HTTPS for a web application. Security must block common SQL-injection patterns in HTTP requests without changing application code. Which control addresses this requirement most directly?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Associate an AWS WAF web ACL with the ALB and use appropriate SQL-injection rules.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Add an ALB security-group rule that inspects SQL keywords.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a network ACL to allow port 443 only.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable Shield Standard and assume it removes every malicious HTTP payload.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "application-edge-protection",
+      "practice"
+    ],
+    "source": {
+      "title": "WAF rate-based rules",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-062",
+    "concept": "saa-network-inspection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Private workloads need outbound access, but security requires centrally managed Suricata-compatible inspection of traffic crossing the VPC perimeter. Which design meets the inspection requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add only a Route 53 Resolver DNS Firewall rule and assume it performs stateful inspection of all outbound packets.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable GuardDuty and assume its findings block packets inline.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Route the relevant traffic through AWS Network Firewall endpoints with suitable stateful rules.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Attach AWS WAF directly to each private-subnet route table.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "network-inspection",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Network Firewall",
+      "url": "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-063",
+    "concept": "saa-network-inspection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A security team needs the same approved WAF rules applied to in-scope ALBs across existing and newly enrolled AWS accounts. Which service minimizes per-account policy maintenance?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Firewall Manager with an organization-scoped policy.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Shield Standard alone with no WAF policies.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Amazon Inspector scanning each account's EC2 packages.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "AWS Resource Access Manager sharing the security account's ALB.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "network-inspection",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Firewall Manager",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-064",
+    "concept": "saa-security-posture",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A team needs continuous assessment of supported EC2 instances and ECR container images for known software vulnerabilities. It already uses GuardDuty for suspicious activity. Which service fills the missing requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Amazon Inspector.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Amazon Macie.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CloudTrail event history.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Route 53 Resolver DNS Firewall.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "security-posture",
+      "practice"
+    ],
+    "source": {
+      "title": "Amazon Inspector vulnerability management",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-065",
+    "concept": "saa-security-posture",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A central security team wants a consolidated view of findings from GuardDuty, Inspector, and Macie and checks against AWS security best practices across accounts. Which service should provide that posture-management view?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Security Hub CSPM.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "AWS Artifact as a real-time account finding aggregator.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS Organizations consolidated billing.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Amazon CloudWatch Logs as an automatic vulnerability and compliance engine.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "security-posture",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Security Hub CSPM",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-066",
+    "concept": "saa-security-posture",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company requires every production security group to avoid unrestricted SSH ingress. It wants to detect drift and run an approved remediation workflow when a group becomes noncompliant. Which combination fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Config rules with an appropriate remediation action.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Route 53 health checks on the SSH port only.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "CloudTrail log retention with no rule evaluation or response.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "S3 Object Lock on the application bucket.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "security-posture",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS Config configuration evaluation",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-067",
+    "concept": "saa-discovery-audit-detection",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company needs management-event audit logs from all accounts, including newly created accounts, delivered to a protected central S3 bucket. Member teams must not manage the central trail. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use AWS Config alone to record every API request body.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Use VPC Flow Logs instead of CloudTrail for all IAM API operations.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Use a multi-Region organization trail with centrally controlled log storage and permissions.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Ask each team to download its console event history monthly.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "discovery-audit-detection",
+      "practice"
+    ],
+    "source": {
+      "title": "Organization trails",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-068",
+    "concept": "saa-secure-remote-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Administrators need audited shell sessions to private EC2 instances that have no internet egress. The instances have SSM Agent and the necessary IAM role. What networking should be added to use Session Manager without opening SSH?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Attach an internet gateway while leaving all routes unchanged.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create an S3 gateway endpoint and assume it replaces all Systems Manager endpoints.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add an inbound port 22 rule from every administrator's home IP.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Provide the required Systems Manager interface endpoints and permit the necessary HTTPS traffic.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.2",
+      "secure-remote-connectivity",
+      "practice"
+    ],
+    "source": {
+      "title": "Systems Manager Session Manager",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-069",
+    "concept": "saa-service-to-service-authorization",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An SQS queue accepts messages from an SNS topic. Its policy currently allows the SNS service principal without restricting the source. The queue must accept only one approved topic. Which condition should narrow the service permission?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change the queue visibility timeout to identify the sender.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Restrict aws:SourceArn to the approved topic ARN, with suitable source-account checks where applicable.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Use a vendor-generated ExternalId as the SNS message body.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Allow every SNS topic because AWS service principals are always trusted.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.1",
+      "service-to-service-authorization",
+      "practice"
+    ],
+    "source": {
+      "title": "Confused deputy prevention",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-070",
+    "concept": "saa-data-lake-governance",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Analysts query an S3 data lake using Athena SQL and a Lake Formation-governed catalog. They may see transaction amounts but not personal identifiers. Direct S3 access is restricted. Which approach avoids maintaining separate dataset copies?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Encrypt the bucket and give all analysts unrestricted decrypt permission.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Grant read access to every object and hide identifier columns only in a dashboard.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create an S3 bucket policy referencing CSV column numbers.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Grant Lake Formation column-level permissions for the allowed columns.",
+        "correct": true
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "data-lake-governance",
+      "practice"
+    ],
+    "source": {
+      "title": "Lake Formation data filters",
+      "url": "https://docs.aws.amazon.com/lake-formation/latest/dg/data-filtering.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-071",
+    "concept": "saa-data-lake-governance",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Regional analysts use Athena SQL on a shared Lake Formation table. Each group must see only rows for its own region. Which two controls are needed for an effective design? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Restrict direct access to the underlying S3 data so users cannot bypass the governed query path.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Use an S3 storage-class transition to remove unauthorized rows.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Set one Athena output filename per group and omit data permissions.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Define appropriate Lake Formation row filters and grant the groups SELECT through those filters.",
+        "correct": true
+      },
+      {
+        "key": "E",
+        "text": "Give every analyst lake administrator permissions.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "data-lake-governance",
+      "practice"
+    ],
+    "source": {
+      "title": "Lake Formation data filters",
+      "url": "https://docs.aws.amazon.com/lake-formation/latest/dg/data-filtering.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-072",
+    "concept": "saa-encryption-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company enables automatic rotation on a supported symmetric customer managed KMS key. Existing encrypted objects must remain readable. Which statement correctly describes the result?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Previous ciphertext becomes unreadable as soon as new material is generated.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Every existing S3 object is automatically rewritten under the latest material immediately.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "The logical key remains the same, and KMS retains earlier key material to decrypt older ciphertext.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "All applications must replace the key ARN after each rotation.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-lifecycle",
+      "practice"
+    ],
+    "source": {
+      "title": "KMS key rotation",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-073",
+    "concept": "saa-encryption-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A bucket contains existing objects encrypted with SSE-S3. New policy requires all objects to use a designated customer managed KMS key. The team changes the bucket's default encryption. What additional work is required for the existing objects?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Change only the bucket policy display name.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Re-encrypt the existing objects through an appropriate copy or batch workflow and verify the result.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Wait for an automatic KMS rotation to convert all existing SSE-S3 objects.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable S3 Transfer Acceleration to rewrite object metadata.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-lifecycle",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 SSE-KMS",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-074",
+    "concept": "saa-encryption-key-control",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An application role in Account B needs to read an S3 object in Account A encrypted with Account A's customer managed KMS key. Which two permission layers must be appropriately configured? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 access through the role's permissions and the bucket's cross-account resource policy.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "KMS decrypt authorization in the key policy and the external role's IAM policy.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Only the S3 ACL, because KMS decrypt permission is implied by GetObject.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Only the KMS alias name, because aliases grant use to other accounts.",
+        "correct": false
+      },
+      {
+        "key": "E",
+        "text": "Only a VPC peering connection between the accounts.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-key-control",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 SSE-KMS",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-075",
+    "concept": "saa-encryption-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A legacy EC2 instance uses an unencrypted EBS data volume. The team can schedule a maintenance window and must preserve the data while encrypting it with a customer managed key. Which approach is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add TLS to the application and treat that as volume encryption.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable EBS encryption by default and assume the existing volume is converted without copying data.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Create a consistent snapshot, create an encrypted copy or encrypted restored volume, and replace the old volume after validation.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Enable EBS encryption by default and assume the attached volume becomes encrypted immediately.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-lifecycle",
+      "practice"
+    ],
+    "source": {
+      "title": "EBS encryption",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-076",
+    "concept": "saa-encryption-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An existing EFS file system was created without encryption at rest. A new requirement mandates encryption for all files. Which plan meets the requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable TLS for every NFS client connection and consider that sufficient encryption at rest.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Create an encrypted EFS file system, migrate or replicate the data, and validate applications before cutover.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "Enable only TLS on the current mount connections.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable encryption at rest on the original file system without copying data.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-lifecycle",
+      "practice"
+    ],
+    "source": {
+      "title": "EFS encryption at rest",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-077",
+    "concept": "saa-encryption-lifecycle",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A non-Aurora RDS database is unencrypted. A planned maintenance window permits migration to an encrypted replacement with the same engine. Which approach is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Take a snapshot, copy it with encryption enabled, restore a new DB instance, and perform a validated cutover.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Add a read replica and assume it independently changes the source encryption state.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Enable database-client TLS and declare stored snapshots encrypted.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Enable a checkbox to encrypt the existing DB instance in place immediately.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-lifecycle",
+      "practice"
+    ],
+    "source": {
+      "title": "RDS encryption",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-078",
+    "concept": "saa-private-content-delivery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A service signs an S3 download URL with temporary role credentials. The URL requests two hours of validity, but the role session expires in 30 minutes. What must the application account for?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The URL can be used exactly once because it is presigned.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "The link can stop working when the signing credentials expire, even before its requested URL expiry.",
+        "correct": true
+      },
+      {
+        "key": "C",
+        "text": "The link becomes public permanently after the role expires.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "The URL extends the role session automatically to two hours.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "private-content-delivery",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 presigned URLs",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-079",
+    "concept": "saa-private-service-connectivity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A central S3 bucket should be readable by approved roles only when requests come from the company's designated VPC endpoint. An organization-membership condition is already present. Which additional control addresses the missing requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assign a cost-allocation tag with the VPC endpoint ID.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "Enable versioning to force reads through private IP addresses.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Add an appropriate bucket-policy restriction using aws:SourceVpce while preserving required service access.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "Add more accounts to the organization and leave the network conditions unchanged.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "private-service-connectivity",
+      "practice"
+    ],
+    "source": {
+      "title": "S3 bucket policy examples",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-080",
+    "concept": "saa-tls-and-transport-controls",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An ALB uses an ACM-issued, DNS-validated public certificate. The team wants automatic renewal with minimal intervention. Which action is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the validation DNS records in place and the certificate eligible for renewal through its supported association.",
+        "correct": true
+      },
+      {
+        "key": "B",
+        "text": "Replace it with an imported certificate and assume ACM renews the external certificate automatically.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "Delete validation records after issuance because they are never checked again.",
+        "correct": false
+      },
+      {
+        "key": "D",
+        "text": "Change the ALB listener security policy and leave the certificate validation prerequisites removed.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "tls-and-transport-controls",
+      "practice"
+    ],
+    "source": {
+      "title": "ACM managed renewal",
+      "url": "https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html"
+    },
+    "active": true
+  },
+  {
+    "code": "SAA-SEC-081",
+    "concept": "saa-encryption-key-control",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A legacy signing application requires a PKCS#11-compatible interface and customer administration of cryptographic users on dedicated single-tenant HSMs. The team accepts managing HSM users and cluster availability. Which service best matches?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS KMS direct API calls with no application changes.",
+        "correct": false
+      },
+      {
+        "key": "B",
+        "text": "ACM certificate renewal alone.",
+        "correct": false
+      },
+      {
+        "key": "C",
+        "text": "AWS CloudHSM.",
+        "correct": true
+      },
+      {
+        "key": "D",
+        "text": "AWS Secrets Manager as the cryptographic signing engine.",
+        "correct": false
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-1.3",
+      "encryption-key-control",
+      "practice"
+    ],
+    "source": {
+      "title": "AWS CloudHSM",
+      "url": "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html"
+    },
+    "active": true
+  }
+]
