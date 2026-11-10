@@ -1,0 +1,1477 @@
+[
+  {
+    "code": "SAA-PER-066",
+    "concept": "saa-storage-workload-fit",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A stateless web tier must serve an expanding library of immutable images to global users. The application needs object retrieval, not file locking or a shared block device. Which architecture best separates storage growth from instance scaling?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store each object as a large database row and deliver it through the existing transactional API.",
+        "correct": false,
+        "explanation": "Ini menambah beban database dan application tier untuk object publik yang dapat dilayani terpisah."
+      },
+      {
+        "key": "B",
+        "text": "Use an EFS filesystem mounted by the application tier and serve every image through the instances.",
+        "correct": false,
+        "explanation": "Shared file storage mengurangi duplikasi tetapi jalur delivery masih bergantung pada scaling application tier, dan kebutuhan hanya object retrieval global."
+      },
+      {
+        "key": "C",
+        "text": "Package all media into the application deployment and replicate each deployment whenever the library changes.",
+        "correct": false,
+        "explanation": "Library yang terus tumbuh tetap terikat ukuran dan siklus deployment instance."
+      },
+      {
+        "key": "D",
+        "text": "Store objects in S3 and use an appropriately configured CloudFront distribution for delivery.",
+        "correct": true,
+        "explanation": "Object storage memisahkan durability dan skala dari instance; edge cache memperbaiki pengiriman konten yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "storage-workload-fit",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "CloudFront content delivery",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-067",
+    "concept": "saa-advanced-file-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An HPC pipeline has durable input datasets in S3 and needs a parallel filesystem during analysis. It can recreate the processing environment, but completed results must survive its deletion. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use only local instance-store files and copy results after all worker instances have been terminated.",
+        "correct": false,
+        "explanation": "Setelah storage ephemeral hilang, penyalinan hasil tidak lagi dapat diandalkan."
+      },
+      {
+        "key": "B",
+        "text": "Use an S3 bucket alone as a directly mounted POSIX filesystem with the same parallel-filesystem semantics.",
+        "correct": false,
+        "explanation": "S3 object API tidak menyediakan seluruh semantics filesystem paralel yang dibutuhkan workload ini."
+      },
+      {
+        "key": "C",
+        "text": "Use an appropriately configured FSx for Lustre filesystem linked to S3, and export required results before disposing of processing storage.",
+        "correct": true,
+        "explanation": "Lustre mendukung parallel filesystem; penyimpanan hasil ke S3 harus dipastikan, bukan diasumsikan selalu otomatis."
+      },
+      {
+        "key": "D",
+        "text": "Use scratch processing storage and assume linking the input dataset automatically preserves every new result before deletion.",
+        "correct": false,
+        "explanation": "Persistensi hasil memerlukan export atau penyimpanan durabel yang diverifikasi; link input tidak menjamin output sudah tersimpan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "advanced-file-storage",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "FSx for Lustre",
+      "url": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-068",
+    "concept": "saa-large-data-movement",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Users on distant continents upload large files directly to one S3 bucket. The team has measured poor long-distance upload performance and can benchmark an accelerated endpoint. Which combination should it evaluate? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move the destination objects to an infrequent-access class as the only change to the long-distance upload path.",
+        "correct": false,
+        "explanation": "Storage class tujuan tidak mengoptimalkan jaringan dan retry untuk upload yang sedang berlangsung."
+      },
+      {
+        "key": "B",
+        "text": "Multipart upload with controlled parallelism and retry of failed parts.",
+        "correct": true,
+        "explanation": "Multipart mengurangi kebutuhan mengulang seluruh file dan mendukung transfer paralel."
+      },
+      {
+        "key": "C",
+        "text": "S3 Transfer Acceleration for the supported bucket and client upload path.",
+        "correct": true,
+        "explanation": "Fitur ini ditujukan untuk transfer objek jarak jauh melalui jaringan edge AWS; manfaat harus diuji."
+      },
+      {
+        "key": "D",
+        "text": "CloudFront caching alone as a guarantee that every direct S3 upload is accelerated.",
+        "correct": false,
+        "explanation": "Cache distribusi download tidak otomatis mengubah jalur upload langsung."
+      },
+      {
+        "key": "E",
+        "text": "One serial upload with unlimited request retries that always restart the complete file.",
+        "correct": false,
+        "explanation": "Ini mempertahankan biaya pengulangan transfer besar."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "large-data-movement",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "S3 Transfer Acceleration",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-069",
+    "concept": "saa-container-compute-fit",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team runs a custom container for 45 minutes per job, with no Kubernetes API dependencies. Jobs need CPU and network access but no host-level administration. The team wants to avoid managing servers. Which choice fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Require an EKS cluster for every job despite having no Kubernetes requirement.",
+        "correct": false,
+        "explanation": "Ini menambah orchestration yang tidak dibutuhkan dibanding task ECS/Fargate yang sesuai workload."
+      },
+      {
+        "key": "B",
+        "text": "Run the container as an ECS task on Fargate, with suitable orchestration and durable job state.",
+        "correct": true,
+        "explanation": "Task container sesuai durasi dan tidak memerlukan manajemen host; retry/state tetap dirancang."
+      },
+      {
+        "key": "C",
+        "text": "Run every job in one Lambda invocation regardless of its maximum duration.",
+        "correct": false,
+        "explanation": "45 menit melampaui batas durasi invocation Lambda yang didokumentasikan."
+      },
+      {
+        "key": "D",
+        "text": "Run it as a continuously running EC2 host and manage the operating system and scheduler directly.",
+        "correct": false,
+        "explanation": "Mungkin dapat menjalankan job, tetapi tidak memenuhi preferensi tanpa pengelolaan server dibanding alternatif yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.2",
+      "container-compute-fit",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "ECS on AWS Fargate",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-070",
+    "concept": "saa-compute-scaling-and-latency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Lambda API meets latency targets after initialization. Intermittent first requests after idle periods miss the target, while database metrics are healthy. Reserved concurrency prevents starvation but does not preinitialize environments. Which change addresses the measured issue?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Evaluate provisioned concurrency on the invoked function version/alias, with monitoring and suitable scaling.",
+        "correct": true,
+        "explanation": "Provisioned concurrency mempersiapkan environment; masalah yang diukur adalah initialization, bukan kekurangan database."
+      },
+      {
+        "key": "B",
+        "text": "Increase reserved concurrency only and assume it prewarms every environment.",
+        "correct": false,
+        "explanation": "Reserved allocation tidak sama dengan pre-initialization."
+      },
+      {
+        "key": "C",
+        "text": "Retry the first user request immediately and exclude its first attempt from latency measurements.",
+        "correct": false,
+        "explanation": "Mengabaikan attempt pertama tidak memenuhi latency yang dialami pengguna."
+      },
+      {
+        "key": "D",
+        "text": "Increase the Lambda reserved-concurrency limit while keeping provisioned concurrency at zero.",
+        "correct": false,
+        "explanation": "Reserved concurrency menyediakan batas/alokasi, bukan preinitialized environments."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.2",
+      "compute-scaling-and-latency",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Lambda provisioned concurrency",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-071",
+    "concept": "saa-database-read-and-connection-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A bursty serverless application opens many short-lived connections to Aurora PostgreSQL. Queries themselves are fast, and operations include writes and immediate reads that must observe those writes. Which change most directly targets the bottleneck?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add read replicas only, without changing how short-lived write connections are created.",
+        "correct": false,
+        "explanation": "Replica membantu read load tetapi tidak secara langsung mempool koneksi write yang menjadi bottleneck."
+      },
+      {
+        "key": "B",
+        "text": "Route all writes to the Aurora reader endpoint to distribute write traffic.",
+        "correct": false,
+        "explanation": "Reader endpoint bukan target untuk membagi write ke read replicas."
+      },
+      {
+        "key": "C",
+        "text": "Evaluate RDS Proxy connection pooling with supported authentication and transaction behavior.",
+        "correct": true,
+        "explanation": "Proxy mengurangi churn koneksi; jalur baca/tulis tetap disesuaikan kebutuhan konsistensi."
+      },
+      {
+        "key": "D",
+        "text": "Cache every immediate post-write read indefinitely without invalidation.",
+        "correct": false,
+        "explanation": "Ini dapat melanggar kebutuhan membaca hasil write terbaru."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "database-read-and-connection-scaling",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "RDS Proxy",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-072",
+    "concept": "saa-database-read-and-connection-scaling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A PostgreSQL order database needs automatic AZ failover. Read-heavy reports can tolerate lag but should not compete with checkout queries. Which design addresses both requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use the single Multi-AZ standby as the reporting endpoint.",
+        "correct": false,
+        "explanation": "Single standby deployment tidak melayani query aplikasi."
+      },
+      {
+        "key": "B",
+        "text": "Use a supported Multi-AZ DB instance deployment and a separately configured read replica for reporting.",
+        "correct": true,
+        "explanation": "Standby menangani HA; read replica menyediakan kapasitas baca yang dapat lag."
+      },
+      {
+        "key": "C",
+        "text": "Use only a read replica requiring manual promotion and claim it supplies the requested automatic Multi-AZ failover.",
+        "correct": false,
+        "explanation": "Read scaling dan mekanisme failover otomatis yang diminta berbeda."
+      },
+      {
+        "key": "D",
+        "text": "Increase the primary instance size and remove every replica or standby.",
+        "correct": false,
+        "explanation": "Ini tidak memenuhi automatic AZ failover maupun isolasi reporting yang diminta."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "database-read-and-connection-scaling",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "RDS Multi-AZ DB instance with one standby",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-073",
+    "concept": "saa-dynamodb-access-patterns",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A table holds transactions for millions of customers. The dominant query fetches one customer transactions for a chosen date range. Queries across all customers by date are rare. Which primary-key design best supports the dominant access pattern?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Customer ID as partition key and a suitably ordered timestamp/transaction identifier as sort key.",
+        "correct": true,
+        "explanation": "Partition membatasi pelanggan dan sort key mendukung range; uniqueness dan skew tetap diperhatikan."
+      },
+      {
+        "key": "B",
+        "text": "Use a random transaction ID as the sole key and retrieve the date range through full-table scans.",
+        "correct": false,
+        "explanation": "Key acak tidak mendukung Query untuk satu customer dengan rentang tanggal tanpa index tambahan."
+      },
+      {
+        "key": "C",
+        "text": "A scan of every item followed by a customer filter for each request.",
+        "correct": false,
+        "explanation": "Ini membaca jauh lebih banyak data daripada query key yang sesuai."
+      },
+      {
+        "key": "D",
+        "text": "Use the calendar date as partition key for all customers and scan each daily partition for the selected customer.",
+        "correct": false,
+        "explanation": "Ini memusatkan traffic harian dan tetap membaca data pelanggan lain; access pattern utama bersifat customer-scoped."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "dynamodb-access-patterns",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "DynamoDB partition key design",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-074",
+    "concept": "saa-cache-correctness",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A profile API returns public display details and an account-suspension decision. Display details may be a few minutes old, but newly suspended users must immediately lose privileged access. Which design separates the requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cache authorization decisions under each user ID but refresh only when the public profile TTL expires.",
+        "correct": false,
+        "explanation": "Key per user mencegah kebocoran antar user, tetapi freshness suspension tetap gagal."
+      },
+      {
+        "key": "B",
+        "text": "Use eventually consistent replicas for every suspension check without verifying the immediate-revocation requirement.",
+        "correct": false,
+        "explanation": "Lag replica dapat membuat user yang baru ditangguhkan tetap diterima."
+      },
+      {
+        "key": "C",
+        "text": "Cache eligible display data while checking authorization against a mechanism that meets the required freshness.",
+        "correct": true,
+        "explanation": "Freshness berbeda membutuhkan jalur berbeda; cache profil tidak boleh menjadi otorisasi stale."
+      },
+      {
+        "key": "D",
+        "text": "Cache the entire authorization decision for the longest display-data TTL.",
+        "correct": false,
+        "explanation": "Ini memperpanjang hak pengguna yang sudah disuspend."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "cache-correctness",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Cache loading and write strategies",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-075",
+    "concept": "saa-load-balancer-fit",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "Several HTTP services share one domain. Requests under /orders and /catalog must reach different target groups, and the frontend terminates HTTPS. There is no requirement for fixed IP addresses or arbitrary UDP. Which load balancer fits most directly?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Network Load Balancer alone with rules that inspect every URL path.",
+        "correct": false,
+        "explanation": "NLB bekerja pada layer transport dan tidak menyediakan path routing seperti ALB."
+      },
+      {
+        "key": "B",
+        "text": "Gateway Load Balancer as the application path router.",
+        "correct": false,
+        "explanation": "GWLB ditujukan untuk appliance jaringan, bukan frontend routing URL ini."
+      },
+      {
+        "key": "C",
+        "text": "Route 53 weighted records that inspect the path of each HTTP request.",
+        "correct": false,
+        "explanation": "DNS tidak menerima URL path untuk pemilihan record."
+      },
+      {
+        "key": "D",
+        "text": "Application Load Balancer with path-based listener rules and an appropriate certificate.",
+        "correct": true,
+        "explanation": "ALB memahami host/path HTTP dan dapat meneruskan ke target group berbeda."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "load-balancer-fit",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Application Load Balancer",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-076",
+    "concept": "saa-global-delivery-and-dns",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A latency-sensitive UDP application runs in two AWS Regions. Customers require stable global anycast IP addresses and health-aware routing to healthy regional endpoints. Content caching is not needed. Which service fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "One regional ALB with a public DNS name for all UDP packets.",
+        "correct": false,
+        "explanation": "ALB tidak melayani arbitrary UDP dan tetap regional."
+      },
+      {
+        "key": "B",
+        "text": "AWS Global Accelerator with supported regional endpoints.",
+        "correct": true,
+        "explanation": "Global Accelerator mendukung TCP/UDP serta static anycast IP dan routing health-aware."
+      },
+      {
+        "key": "C",
+        "text": "Route 53 latency records as a guarantee of fixed anycast application IP addresses.",
+        "correct": false,
+        "explanation": "DNS latency routing tidak memberikan properti IP anycast statis layanan tersebut."
+      },
+      {
+        "key": "D",
+        "text": "CloudFront configured to cache arbitrary UDP datagrams.",
+        "correct": false,
+        "explanation": "CloudFront bukan distribusi UDP umum."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "global-delivery-and-dns",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "AWS Global Accelerator",
+      "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-077",
+    "concept": "saa-hybrid-dns-decisions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "Corporate DNS forwards a private application domain to healthy Resolver inbound endpoints in a networking VPC. The private hosted zone is associated only with an application VPC in another account. IP routing and DNS endpoint rules are correct, but the networking VPC cannot resolve the private records. Which change addresses the missing DNS association?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add public A records for the private application IPs and remove the private hosted zone.",
+        "correct": false,
+        "explanation": "Ini mengubah model namespace/privasi alih-alih memperbaiki association yang hilang."
+      },
+      {
+        "key": "B",
+        "text": "Add another VPC peering route and assume IP connectivity automatically associates private hosted zones.",
+        "correct": false,
+        "explanation": "Konektivitas tidak otomatis membagikan visibility hosted zone."
+      },
+      {
+        "key": "C",
+        "text": "Create an outbound rule for the same domain that forwards queries back to the corporate DNS server.",
+        "correct": false,
+        "explanation": "Ini tidak menambahkan private-zone association dan berisiko loop forwarding."
+      },
+      {
+        "key": "D",
+        "text": "Authorize the networking VPC association from the hosted-zone account and associate that VPC with the private hosted zone.",
+        "correct": true,
+        "explanation": "Resolver inbound menjawab dalam konteks VPC-nya; private zone perlu tersedia pada konteks tersebut dengan otorisasi lintas akun yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "hybrid-dns-decisions",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Associate a private hosted zone with a VPC in another account",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-078",
+    "concept": "saa-distributed-analytics-and-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An analytics team has tested Spark transformations and compatible dependencies. It processes large S3 datasets in scheduled bursts, with different resource needs each run. It prefers managed worker allocation and no permanently running cluster. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep a peak-sized self-managed Spark cluster running throughout idle periods.",
+        "correct": false,
+        "explanation": "Ini bertentangan dengan kebutuhan worker terkelola dan tanpa cluster permanen."
+      },
+      {
+        "key": "B",
+        "text": "Submit jobs to an appropriately configured EMR Serverless application and size/limit workers based on tests.",
+        "correct": true,
+        "explanation": "Runtime Spark dan alokasi worker terkelola cocok; IAM, kompatibilitas, dan batas biaya tetap dirancang."
+      },
+      {
+        "key": "C",
+        "text": "Load the raw data into SPICE and attempt to run the existing Spark dependency chain inside dashboard refresh.",
+        "correct": false,
+        "explanation": "SPICE adalah engine analitik dashboard, bukan runtime umum untuk pipeline Spark yang ada."
+      },
+      {
+        "key": "D",
+        "text": "Use a Glue crawler to discover the input schema and treat the catalog as a substitute for Spark execution.",
+        "correct": false,
+        "explanation": "Katalog tidak mengeksekusi transformation Spark."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "distributed-analytics-and-bi",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Amazon EMR Serverless",
+      "url": "https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/emr-serverless.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-079",
+    "concept": "saa-stream-ingestion-patterns",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A producer sends telemetry that must be inspected within seconds by several custom consumers. Each consumer needs independent replay within retention. A proposed design sends only buffered delivery batches to S3. Which addition better fits the real-time processing requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Send each event to one SQS queue with all custom consumers competing for its messages.",
+        "correct": false,
+        "explanation": "Competing consumers tidak menyediakan setiap consumer dengan stream dan replay position independen."
+      },
+      {
+        "key": "B",
+        "text": "Keep only buffered S3 delivery and increase the buffering interval to lower request overhead.",
+        "correct": false,
+        "explanation": "Ini dapat membantu biaya batching, tetapi memperburuk latency yang harus dalam hitungan detik."
+      },
+      {
+        "key": "C",
+        "text": "Use only a daily Athena query over yesterday data for the seconds-level decision.",
+        "correct": false,
+        "explanation": "Query batch harian tidak memenuhi batas latency."
+      },
+      {
+        "key": "D",
+        "text": "Use a stream such as Kinesis Data Streams for consumer processing and replay; archive/delivery can be a separate downstream path.",
+        "correct": true,
+        "explanation": "Stream menyediakan log konsumsi dan replay; penyimpanan batch saja tidak memenuhi alur near-real-time tersebut."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "stream-ingestion-patterns",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Kinesis Data Streams",
+      "url": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-080",
+    "concept": "saa-distributed-analytics-and-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Analysts run occasional SQL queries on large S3 event datasets. They need a shared table catalog, permission controls, and lower scanned bytes. The workload does not require an always-on transactional database. Which design is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use Athena with Glue Catalog metadata, suitable Lake Formation access controls, and partitioned columnar datasets.",
+        "correct": true,
+        "explanation": "Komponen terpisah melayani query, metadata, governance, serta efisiensi scan tanpa memuat semua data ke OLTP."
+      },
+      {
+        "key": "B",
+        "text": "Load all events into an always-on relational database before any analyst can query them.",
+        "correct": false,
+        "explanation": "Ini menambahkan ingestion dan operasi database yang tidak diperlukan untuk SQL sporadis atas S3."
+      },
+      {
+        "key": "C",
+        "text": "Use Glue crawler alone as both the SQL execution engine and row-level permission enforcement.",
+        "correct": false,
+        "explanation": "Crawler bukan gabungan engine query dan kontrol governance."
+      },
+      {
+        "key": "D",
+        "text": "Keep unpartitioned raw text and add only more catalog tables without changing selective scans.",
+        "correct": false,
+        "explanation": "Metadata tambahan saja tidak mengurangi bytes yang dibaca oleh query yang tetap menyapu seluruh dataset."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "distributed-analytics-and-bi",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Partitioning data in Athena",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/partitions.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-PER-081",
+    "concept": "saa-storage-throughput-diagnostics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A database on EC2 needs durable block storage, consistently low latency, and sustained random IOPS beyond the tested capability of its current general-purpose configuration. The instance EBS limits are sufficient. Which next design is most appropriate to benchmark?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase only the EBS volume capacity without checking whether its IOPS and throughput change.",
+        "correct": false,
+        "explanation": "Kapasitas byte dan I/O capability berbeda; soal memerlukan peningkatan random-I/O terukur."
+      },
+      {
+        "key": "B",
+        "text": "Use instance-store disks as the only copy of the database to minimize I/O latency.",
+        "correct": false,
+        "explanation": "Instance store tidak memenuhi kebutuhan block storage durabel sebagai satu-satunya copy."
+      },
+      {
+        "key": "C",
+        "text": "A suitable Provisioned IOPS SSD configuration, sized with the database and instance limits.",
+        "correct": true,
+        "explanation": "Storage SSD provisioned IOPS menyasar kebutuhan random I/O konsisten; uji end-to-end tetap wajib."
+      },
+      {
+        "key": "D",
+        "text": "A throughput-optimized HDD chosen only for its low per-GB price.",
+        "correct": false,
+        "explanation": "HDD sequential bukan kecocokan utama untuk latency random I/O ketat."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "storage-throughput-diagnostics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "EBS volume types",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-082",
+    "concept": "saa-advanced-file-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Windows application requires SMB shares, Windows ACLs, and Active Directory integration. It must remain available through an AZ failure and should not require operating Windows file-server instances. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "An EFS mount directly used as a native SMB Windows ACL server without a gateway.",
+        "correct": false,
+        "explanation": "EFS menyediakan NFS, bukan SMB/Windows ACL server native."
+      },
+      {
+        "key": "B",
+        "text": "A single unmanaged Windows instance with only local instance-store copies.",
+        "correct": false,
+        "explanation": "Ini mempertahankan administrasi server dan satu failure domain."
+      },
+      {
+        "key": "C",
+        "text": "An S3 website endpoint configured with Active Directory group policies.",
+        "correct": false,
+        "explanation": "Website endpoint bukan file share SMB terintegrasi AD."
+      },
+      {
+        "key": "D",
+        "text": "An appropriately configured Multi-AZ FSx for Windows File Server deployment integrated with the directory.",
+        "correct": true,
+        "explanation": "Layanan ini mempertahankan kebutuhan Windows file sharing dan menyediakan pilihan availability yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "advanced-file-storage",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "FSx for Windows availability",
+      "url": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-083",
+    "concept": "saa-large-data-movement",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A migration must transfer 6 TB of new data overnight. Measurements show the available link can transfer only 1 TB in that window after overhead. DataSync is already configured efficiently. What is the appropriate next architectural decision?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase effective transfer capacity, reduce the data needing transfer, or revise the window; verify the selected plan with measurements.",
+        "correct": true,
+        "explanation": "Layanan transfer tidak melampaui kapasitas jalur fisik; kebutuhan dan kapasitas harus direkonsiliasi."
+      },
+      {
+        "key": "B",
+        "text": "Disable integrity checks and assume a sixfold improvement is guaranteed regardless of bandwidth.",
+        "correct": false,
+        "explanation": "Jaminan tersebut tidak mengikuti bottleneck yang diukur dan mengurangi assurance."
+      },
+      {
+        "key": "C",
+        "text": "Increase S3 object retention and assume the initial transfer is faster.",
+        "correct": false,
+        "explanation": "Retensi tidak menaikkan kapasitas jalur."
+      },
+      {
+        "key": "D",
+        "text": "Create six identical DataSync tasks sharing the same saturated link and guarantee six times the throughput.",
+        "correct": false,
+        "explanation": "Paralelisme tidak mengalikan bandwidth yang sudah habis."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.1",
+      "large-data-movement",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS DataSync",
+      "url": "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-084",
+    "concept": "saa-hpc-and-compute-initialization",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A scientific simulation communicates heavily between nodes and can checkpoint. It needs low inter-node latency during each run, but can restart after a capacity interruption. Which pair of decisions fits these distinct needs? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the only checkpoint in the memory of a node that may be interrupted.",
+        "correct": false,
+        "explanation": "Kehilangan node juga menghilangkan checkpoint."
+      },
+      {
+        "key": "B",
+        "text": "Persist checkpoints outside ephemeral node storage and design restart orchestration.",
+        "correct": true,
+        "explanation": "Toleransi interupsi bergantung checkpoint durabel dan pemulihan yang benar."
+      },
+      {
+        "key": "C",
+        "text": "Assume a Spot discount itself guarantees synchronized gang capacity indefinitely.",
+        "correct": false,
+        "explanation": "Diskon Spot tidak menjamin kapasitas terus tersedia."
+      },
+      {
+        "key": "D",
+        "text": "Use suitable placement/network capabilities such as a cluster placement group and supported EFA configuration.",
+        "correct": true,
+        "explanation": "Komunikasi rapat membutuhkan desain interkoneksi, bukan hanya jumlah vCPU."
+      },
+      {
+        "key": "E",
+        "text": "Use an ALB as a general MPI interconnect for every packet.",
+        "correct": false,
+        "explanation": "ALB tidak menyediakan jaringan MPI."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.2",
+      "hpc-and-compute-initialization",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Elastic Fabric Adapter",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-085",
+    "concept": "saa-container-compute-fit",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A nightly workflow launches hundreds of containerized processing jobs with dependencies and retries. Some jobs take an hour and require GPU resources. The team wants a managed job scheduler rather than a web-server autoscaler. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "AWS Batch with suitable GPU-capable compute resources and job dependency/retry configuration.",
+        "correct": true,
+        "explanation": "Batch menyasar penjadwalan batch; pilihan compute harus mendukung GPU dan durasi pekerjaan."
+      },
+      {
+        "key": "B",
+        "text": "Fargate-only GPU tasks without checking hardware support.",
+        "correct": false,
+        "explanation": "Kebutuhan GPU memerlukan compute yang benar-benar mendukungnya."
+      },
+      {
+        "key": "C",
+        "text": "An ALB target group as the only scheduler for dependent non-HTTP jobs.",
+        "correct": false,
+        "explanation": "Load balancer bukan scheduler dependency batch."
+      },
+      {
+        "key": "D",
+        "text": "Lambda functions configured to exceed the service maximum duration for each one-hour job.",
+        "correct": false,
+        "explanation": "Batas durasi tidak dapat diabaikan oleh konfigurasi."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.2",
+      "container-compute-fit",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS Batch",
+      "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-086",
+    "concept": "saa-database-access-correctness",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB table is keyed by order ID. Support staff often search orders by customer ID and creation time. Those support results may lag briefly. Which addition fits without scanning all orders?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A filter expression on a full scan and an assumption that filtering removes read cost.",
+        "correct": false,
+        "explanation": "Scan tetap membaca kandidat sebelum filter."
+      },
+      {
+        "key": "B",
+        "text": "A GSI with a suitable customer/time key design and projections for the support query.",
+        "correct": true,
+        "explanation": "Alternate key index melayani query yang tidak cocok dengan primary key; eventual consistency diterima."
+      },
+      {
+        "key": "C",
+        "text": "A strongly consistent query on a GSI as a mandatory feature.",
+        "correct": false,
+        "explanation": "GSI tidak mendukung strong read; skenario tidak membutuhkannya."
+      },
+      {
+        "key": "D",
+        "text": "An S3 lifecycle rule that changes the table primary key for each query.",
+        "correct": false,
+        "explanation": "Lifecycle objek tidak mengubah struktur akses DynamoDB."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "database-access-correctness",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "DynamoDB global secondary indexes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-087",
+    "concept": "saa-purpose-built-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An ecommerce platform requires ACID order transactions and flexible full-text product search with relevance ranking. Product-search results can lag slightly. Which design avoids forcing both access patterns into one inappropriate store?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume enabling RDS Multi-AZ automatically creates a full-text search service with every desired feature.",
+        "correct": false,
+        "explanation": "HA database tidak membangun engine pencarian terpisah."
+      },
+      {
+        "key": "B",
+        "text": "Query every product by scanning all order rows for each keystroke indefinitely.",
+        "correct": false,
+        "explanation": "Ini tidak menyediakan indeks pencarian relevansi yang sesuai dan membebani OLTP."
+      },
+      {
+        "key": "C",
+        "text": "Use an in-memory search cache as the only durable order ledger with no recovery plan.",
+        "correct": false,
+        "explanation": "Search/cache bukan pengganti otomatis durability dan transaksi order."
+      },
+      {
+        "key": "D",
+        "text": "Keep orders in a suitable relational database and feed a search index such as OpenSearch through a monitored synchronization path.",
+        "correct": true,
+        "explanation": "Transactional source dan search index memiliki peran berbeda; lag dan kegagalan sinkronisasi harus dikelola."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "purpose-built-databases",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Amazon OpenSearch Service",
+      "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-088",
+    "concept": "saa-purpose-built-databases",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A migration candidate uses MongoDB drivers, transactions, and specialized database features. A proposal claims DocumentDB migration requires no application testing because it is MongoDB-compatible. What should the architect require?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Switch to Keyspaces and assume its Cassandra compatibility includes every MongoDB operation.",
+        "correct": false,
+        "explanation": "API kompatibilitas berbeda tidak dapat dipertukarkan."
+      },
+      {
+        "key": "B",
+        "text": "Use only a successful network ping as proof database behavior is unchanged.",
+        "correct": false,
+        "explanation": "Konektivitas bukan pengujian transaksi, query, atau semantics aplikasi."
+      },
+      {
+        "key": "C",
+        "text": "Approve immediate cutover solely because both systems store documents.",
+        "correct": false,
+        "explanation": "Model data sama tidak memastikan semua semantics dan fitur identik."
+      },
+      {
+        "key": "D",
+        "text": "Inventory required features and run compatibility/performance tests against the selected DocumentDB version before choosing the migration path.",
+        "correct": true,
+        "explanation": "Kompatibilitas API harus dibuktikan untuk fitur nyata, bukan disimpulkan dari label pemasaran."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "purpose-built-databases",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Amazon DocumentDB",
+      "url": "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-089",
+    "concept": "saa-database-migration",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A company migrates a relational database to a different supported engine. Most data is loaded, CDC is running, and some source stored procedures were not automatically converted. The final switch is tomorrow. What must be resolved before declaring readiness? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete source backups before application acceptance tests finish.",
+        "correct": false,
+        "explanation": "Ini mengurangi opsi recovery sebelum keberhasilan dibuktikan."
+      },
+      {
+        "key": "B",
+        "text": "Plan a controlled write cutover, replication catch-up, data validation, and rollback criteria.",
+        "correct": true,
+        "explanation": "CDC bukan pengganti koordinasi write terakhir serta keputusan recovery."
+      },
+      {
+        "key": "C",
+        "text": "Assume CDC compiles every source stored procedure into the target dialect automatically.",
+        "correct": false,
+        "explanation": "Replikasi data dan konversi kode bukan proses identik."
+      },
+      {
+        "key": "D",
+        "text": "Convert or replace unsupported schema/application behavior and validate it against the target.",
+        "correct": true,
+        "explanation": "Keberhasilan copy data tidak menjamin prosedur dan query kompatibel."
+      },
+      {
+        "key": "E",
+        "text": "Allow unrestricted writes to both databases indefinitely without conflict resolution.",
+        "correct": false,
+        "explanation": "Dual write tidak terkoordinasi dapat membuat data menyimpang."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.3",
+      "database-migration",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "DMS Schema Conversion",
+      "url": "https://docs.aws.amazon.com/dms/latest/userguide/schema-conversion.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-090",
+    "concept": "saa-load-balancer-fit",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A service uses a custom TCP protocol and requires stable IP addresses for partner firewall allowlists. It does not need URL routing. Which regional frontend is the most direct fit?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A Network Load Balancer with appropriate static address configuration and healthy targets.",
+        "correct": true,
+        "explanation": "NLB melayani transport TCP dan dapat menyediakan static addresses sesuai konfigurasi."
+      },
+      {
+        "key": "B",
+        "text": "A Gateway Load Balancer configured as a general customer-facing TCP application listener.",
+        "correct": false,
+        "explanation": "GWLB memiliki peran appliance insertion, bukan frontend aplikasi tersebut."
+      },
+      {
+        "key": "C",
+        "text": "A Route 53 weighted record as the only mechanism for target-level TCP health and connection distribution.",
+        "correct": false,
+        "explanation": "DNS bukan pengganti load balancer transport dengan sifat yang diminta."
+      },
+      {
+        "key": "D",
+        "text": "An ALB configured to inspect arbitrary binary TCP streams as HTTP paths.",
+        "correct": false,
+        "explanation": "ALB memerlukan protokol aplikasi yang didukung dan bukan generic TCP router."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "load-balancer-fit",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Network Load Balancer",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-091",
+    "concept": "saa-network-routing-topology",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "VPC A peers with B, and B peers with C. Applications in A must reach C through a centrally governed hub as the network expands to dozens of VPCs. What should the architect evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add DNS aliases in B and assume aliases create IP routes between A and C.",
+        "correct": false,
+        "explanation": "DNS tidak membuat konektivitas routing."
+      },
+      {
+        "key": "B",
+        "text": "Keep only the two peerings and assume B automatically forwards A-to-C traffic.",
+        "correct": false,
+        "explanation": "VPC peering tidak menyediakan transitive routing tersebut."
+      },
+      {
+        "key": "C",
+        "text": "A transit gateway topology with explicit attachment associations, routes, and segmentation.",
+        "correct": true,
+        "explanation": "Transit gateway mendukung hub routing; peering tidak menjadi transit hanya karena dua hubungan ada."
+      },
+      {
+        "key": "D",
+        "text": "Put all VPC CIDRs into one security-group description and omit route tables.",
+        "correct": false,
+        "explanation": "Deskripsi bukan konfigurasi forwarding jaringan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "network-routing-topology",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "VPC peering and its limitations",
+      "url": "https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-092",
+    "concept": "saa-hybrid-dns-decisions",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A VPC application must resolve corp.example on-premises, while office clients must resolve aws.internal in a VPC private zone. Connectivity exists. Which design handles both directions explicitly?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Publish both domains publicly and remove private DNS regardless of confidentiality requirements.",
+        "correct": false,
+        "explanation": "Ini mengubah trust dan exposure tanpa memenuhi tujuan desain privat."
+      },
+      {
+        "key": "B",
+        "text": "Use outbound Resolver rules for the corporate domain and inbound endpoints for office queries to the AWS private domain, avoiding forwarding loops.",
+        "correct": true,
+        "explanation": "Dua arah membutuhkan aturan berbeda; suffix dan tujuan harus mencegah query berputar."
+      },
+      {
+        "key": "C",
+        "text": "Use only inbound endpoints and assume they also implement all VPC-to-office forwarding rules.",
+        "correct": false,
+        "explanation": "Inbound bukan pengganti outbound conditional forwarding."
+      },
+      {
+        "key": "D",
+        "text": "Forward every unknown domain from both sides back to the other side unconditionally.",
+        "correct": false,
+        "explanation": "Ini dapat menciptakan loop dan kegagalan resolusi."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "hybrid-dns-decisions",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Route 53 Resolver inbound endpoints",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-overview-forward-network-to-vpc.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-093",
+    "concept": "saa-network-protocol-and-segmentation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A central transit gateway connects production, development, and DNS/shared-services VPCs. Production and development need DNS services but must not communicate directly. Which design property is essential?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Separate route-table associations and selective routes/propagation, supplemented by security controls on shared services.",
+        "correct": true,
+        "explanation": "Routing hub dapat disegmentasi; shared service juga harus membatasi akses yang diperlukan."
+      },
+      {
+        "key": "B",
+        "text": "Public DNS names as the only separation while all private routes remain open.",
+        "correct": false,
+        "explanation": "Penamaan tidak mengisolasi konektivitas."
+      },
+      {
+        "key": "C",
+        "text": "One route table receiving every route from every attachment and no further controls.",
+        "correct": false,
+        "explanation": "Ini memungkinkan routing dev-prod yang dilarang."
+      },
+      {
+        "key": "D",
+        "text": "Disable all attachments including shared services and declare the functional requirements satisfied.",
+        "correct": false,
+        "explanation": "Isolasi total juga menghapus akses DNS yang dibutuhkan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.4",
+      "network-protocol-and-segmentation",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Transit gateway route tables",
+      "url": "https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-094",
+    "concept": "saa-stream-scaling-and-checkpoints",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A telemetry stream needs events from each device processed in order, but no ordering is needed between different devices. Many devices are active. Which producer partitioning strategy best supports both requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase retention as the only means to guarantee ordering across unrelated partitions.",
+        "correct": false,
+        "explanation": "Retention menjaga history, bukan mengubah ordering scope."
+      },
+      {
+        "key": "B",
+        "text": "Use a random key for every event from the same device and assume order is preserved across shards.",
+        "correct": false,
+        "explanation": "Penyebaran acak dapat memisahkan urutan perangkat."
+      },
+      {
+        "key": "C",
+        "text": "Use one constant key for all devices solely to maximize parallel write distribution.",
+        "correct": false,
+        "explanation": "Konstanta memusatkan semua write, bukan menyebarkannya."
+      },
+      {
+        "key": "D",
+        "text": "Use a stable device identifier as partition key, with capacity and hot-device behavior monitored.",
+        "correct": true,
+        "explanation": "Key stabil mempertahankan pengelompokan per perangkat dan menyebarkan banyak perangkat; satu device panas tetap perlu analisis."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "stream-scaling-and-checkpoints",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Kinesis key concepts",
+      "url": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-095",
+    "concept": "saa-distributed-analytics-and-bi",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A finance dashboard is refreshed after each nightly warehouse load. Thousands of viewers need fast charts during business hours, and their queries should not repeatedly consume warehouse capacity. Which dataset mode fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Import once permanently and ignore future nightly changes.",
+        "correct": false,
+        "explanation": "Dataset akan stale setelah load berikutnya."
+      },
+      {
+        "key": "B",
+        "text": "Use direct query for each viewer and claim warehouse usage is eliminated.",
+        "correct": false,
+        "explanation": "Direct query tetap memerlukan query pada sumber."
+      },
+      {
+        "key": "C",
+        "text": "Import the approved dataset into SPICE after the load and monitor refresh success and access controls.",
+        "correct": true,
+        "explanation": "Import terjadwal melayani pembaca dari engine analitik terpisah; freshness mengikuti load yang ditentukan."
+      },
+      {
+        "key": "D",
+        "text": "Use Glue bookmarks as the dashboard rendering engine.",
+        "correct": false,
+        "explanation": "Bookmark ETL bukan engine visualisasi BI."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "distributed-analytics-and-bi",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Amazon Quick Sight business intelligence",
+      "url": "https://docs.aws.amazon.com/quick/latest/userguide/quick-bi.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-PER-096",
+    "concept": "saa-analytics-and-transformation",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Glue crawler discovers a new table, but malformed records still cause downstream analytics failures. A team expected the crawler to normalize every value and reject invalid business records. Which architectural addition is needed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Run the same crawler more frequently and assume business rules are inferred perfectly.",
+        "correct": false,
+        "explanation": "Frekuensi discovery tidak menentukan aturan bisnis pembersihan data."
+      },
+      {
+        "key": "B",
+        "text": "Give every analyst AdministratorAccess to bypass malformed values.",
+        "correct": false,
+        "explanation": "Izin lebih luas tidak memperbaiki isi data."
+      },
+      {
+        "key": "C",
+        "text": "Replace all tables with a dashboard title that describes the expected schema.",
+        "correct": false,
+        "explanation": "Label visual tidak mengubah payload data."
+      },
+      {
+        "key": "D",
+        "text": "An explicit validation/transformation stage with handling for rejected data, while using the catalog for metadata.",
+        "correct": true,
+        "explanation": "Crawler menemukan metadata; kualitas dan transformasi memerlukan proses yang dirancang."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-3.5",
+      "analytics-and-transformation",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS Glue data integration",
+      "url": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  }
+]

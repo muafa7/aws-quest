@@ -17,9 +17,12 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "db:setup": "prisma generate && prisma db push && prisma db seed",
+    "db:deploy": "prisma migrate deploy",
+    "db:setup": "prisma generate && prisma migrate deploy && prisma db seed",
     "content:validate": "tsx prisma/validate-content.ts",
-    "test:learning": "tsx --test tests/learning/*.test.ts"
+    "test": "tsx --test tests/learning/*.test.ts tests/content/*.test.ts",
+    "test:learning": "tsx --test tests/learning/*.test.ts",
+    "test:db": "tsx --test tests/integration/*.test.ts"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "7.10.0",

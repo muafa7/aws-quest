@@ -4,6 +4,7 @@ import { buttonClassName } from "@/components/arcade-button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "@/lib/learning/question-pools";
 import { getSafeQuestionById } from "@/lib/learning/selector";
 import { AttemptFeedback } from "@/components/feedback";
 import { QuestionForm } from "@/components/question-form";
@@ -24,7 +25,7 @@ export default async function LearnConceptPage({
     where: { slug: conceptSlug, topic: { certification: { code: certification } }, active: true },
     include: {
       lesson: true,
-      questions: { where: { active: true }, select: { id: true }, orderBy: { code: "asc" } },
+      questions: { where: trainingQuestionWhere, select: { id: true }, orderBy: { code: "asc" } },
       topic: { select: { name: true } },
     },
   });

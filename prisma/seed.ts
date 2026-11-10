@@ -103,53 +103,59 @@ async function seedCertification({ certification, topics, concepts, lessons, que
     const conceptId = conceptIds.get(question.concept);
     if (!conceptId) throw new Error(`Missing concept '${question.concept}' while seeding '${question.code}'`);
 
+    const fields = {
+      conceptId,
+      type: question.type,
+      difficulty: question.difficulty,
+      style: question.style,
+      prompt: question.question,
+      active: question.active,
+      sourceTitle: question.source?.title,
+      sourceUrl: question.source?.url,
+      assessmentPackId: question.assessmentPack ?? null,
+    };
     const record = await prisma.question.upsert({
       where: { code: question.code },
-      update: {
-        conceptId,
-        type: question.type,
-        difficulty: question.difficulty,
-        style: question.style,
-        prompt: question.question,
-        active: question.active,
-        sourceTitle: question.source?.title,
-        sourceUrl: question.source?.url,
-      },
-      create: {
-        code: question.code,
-        conceptId,
-        type: question.type,
-        difficulty: question.difficulty,
-        style: question.style,
-        prompt: question.question,
-        active: question.active,
-        sourceTitle: question.source?.title,
-        sourceUrl: question.source?.url,
-      },
+      update: fields,
+      create: { code: question.code, ...fields },
     });
 
-    await prisma.questionOption.deleteMany({ where: { questionId: record.id } });
-    await prisma.questionTag.deleteMany({ where: { questionId: record.id } });
-
-    await prisma.questionOption.createMany({
-      data: question.options.map((option) => ({
-        questionId: record.id,
-        key: option.key,
-        text: option.text,
-        isCorrect: option.correct,
-      })),
-    });
-
-    if (question.tags.length > 0) {
-      await prisma.questionTag.createMany({
+    await prisma.$transaction([
+      prisma.questionOption.deleteMany({ where: { questionId: record.id } }),
+      prisma.questionTag.deleteMany({ where: { questionId: record.id } }),
+      prisma.questionOption.createMany({
+        data: question.options.map((option) => ({
+          questionId: record.id,
+          key: option.key,
+          text: option.text,
+          isCorrect: option.correct,
+          explanation: option.explanation ?? null,
+        })),
+      }),
+      prisma.questionTag.createMany({
         data: question.tags.map((tag) => ({ questionId: record.id, tag })),
-      });
-    }
+      }),
+    ]);
   }
+
+  // Content removed from the seed files is retired rather than deleted, so attempts
+  // and mock history that reference it stay intact.
+  const inCertification = { topic: { certificationId: certificationRecord.id } };
+  const retiredQuestions = await prisma.question.updateMany({
+    where: { concept: inCertification, code: { notIn: questions.map(({ question }) => question.code) }, active: true },
+    data: { active: false },
+  });
+  const retiredConcepts = await prisma.concept.updateMany({
+    where: { ...inCertification, slug: { notIn: concepts.map((concept) => concept.slug) }, active: true },
+    data: { active: false },
+  });
+  const retired = retiredQuestions.count + retiredConcepts.count > 0
+    ? `; retired ${retiredConcepts.count} concepts and ${retiredQuestions.count} questions no longer in the seed files`
+    : "";
 
   console.log(
     `Seeded ${certification.code}: ${concepts.length} concepts, ${questions.length} questions ` +
-      `(database: ${await databaseTotals(certificationRecord.id)})`,
+      `(database: ${await databaseTotals(certificationRecord.id)})${retired}`,
   );
 }
 

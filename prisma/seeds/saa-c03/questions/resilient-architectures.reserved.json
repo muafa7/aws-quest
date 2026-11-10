@@ -1,0 +1,1612 @@
+[
+  {
+    "code": "SAA-RES-071",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A browser submits rendering jobs that can take 20 minutes. Keeping the HTTP request open causes timeouts and retries. Jobs must survive frontend restarts, and users need to check progress. Which architecture best fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enqueue the job but keep its only progress state in the original frontend process.",
+        "correct": false,
+        "explanation": "Queue memperbaiki durabilitas pekerjaan tetapi status tetap hilang saat frontend restart."
+      },
+      {
+        "key": "B",
+        "text": "Persist a job identifier/status, enqueue durable work, return an accepted response, and let clients query status or receive completion notifications.",
+        "correct": true,
+        "explanation": "Pemrosesan dipisahkan dari koneksi HTTP; status durabel memungkinkan pelacakan setelah restart."
+      },
+      {
+        "key": "C",
+        "text": "Use sticky sessions and local disk job files on frontend instances without shared durable job state.",
+        "correct": false,
+        "explanation": "Penggantian instance atau hilangnya instance masih membuat job/status terikat pada host tertentu."
+      },
+      {
+        "key": "D",
+        "text": "Increase the synchronous API timeout and retain all job state in the frontend process.",
+        "correct": false,
+        "explanation": "State masih hilang saat restart, meskipun timeout dibuat lebih panjang."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "SQS at-least-once delivery",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-072",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "An order service writes an order to a relational database and then publishes an event. A crash between these steps sometimes leaves a committed order with no event. Which design addresses that gap while accepting that delivery can be repeated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Commit the order and an outbox record in one database transaction, then publish the outbox asynchronously with idempotent consumers.",
+        "correct": true,
+        "explanation": "Outbox mengikat intent event pada commit bisnis; publisher dan consumer tetap menangani duplicate delivery."
+      },
+      {
+        "key": "B",
+        "text": "Switch the broker to FIFO and keep the two independent writes unchanged.",
+        "correct": false,
+        "explanation": "FIFO tidak membuat commit database dan publish menjadi satu transaksi atomik."
+      },
+      {
+        "key": "C",
+        "text": "Retry event publication only in process memory, without storing publication intent with the order.",
+        "correct": false,
+        "explanation": "Retry in-memory hilang saat crash; gap setelah commit tetap ada."
+      },
+      {
+        "key": "D",
+        "text": "Publish first and assume a later failed database transaction can never leave a misleading event.",
+        "correct": false,
+        "explanation": "Urutan dibalik memindahkan gap menjadi event untuk transaksi yang gagal."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Transactional outbox pattern",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-073",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Each uploaded-order event must be processed independently by billing and analytics. Analytics may be offline for hours without slowing billing. Both services currently consume one SQS queue and each event reaches only one service. Which change meets the requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase the consumer count on the same queue and assume every consumer receives every message.",
+        "correct": false,
+        "explanation": "Competing consumers membagi pekerjaan, bukan broadcast ke setiap layanan."
+      },
+      {
+        "key": "B",
+        "text": "Use a single FIFO message group and require billing to wait until analytics returns.",
+        "correct": false,
+        "explanation": "Ini menambah coupling dan melanggar independensi yang diminta."
+      },
+      {
+        "key": "C",
+        "text": "Remove the queues and send both requests sequentially inside the upload transaction.",
+        "correct": false,
+        "explanation": "Kegagalan analytics dapat menghambat jalur lain dan tidak memberi backlog mandiri."
+      },
+      {
+        "key": "D",
+        "text": "Fan out through SNS to a separate SQS queue for each service, with appropriate delivery permissions and retry handling.",
+        "correct": true,
+        "explanation": "Queue per subscriber menjaga backlog independen; shared queue membuat consumer bersaing atas pesan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "SNS to SQS fanout",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-074",
+    "concept": "saa-workflow-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Step Functions workflow charges a payment and then updates a shipment. The shipment step fails intermittently. A retry of the whole workflow sometimes charges the customer twice. Which change is most appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Retry the payment step with a newly generated idempotency key on every workflow attempt.",
+        "correct": false,
+        "explanation": "Key baru membuat retry tampak sebagai transaksi baru sehingga tidak melindungi dari charge ulang."
+      },
+      {
+        "key": "B",
+        "text": "Retry only at the HTTP client layer while restarting the entire workflow with no persisted step outcomes.",
+        "correct": false,
+        "explanation": "Boundary retry masih terlalu luas dan tidak melindungi efek bisnis yang sudah berhasil."
+      },
+      {
+        "key": "C",
+        "text": "Scope retries to appropriate steps and use stable idempotency keys or recorded outcomes for irreversible operations.",
+        "correct": true,
+        "explanation": "Retry harus sesuai failure boundary; efek seperti charge perlu perlindungan duplikasi bisnis."
+      },
+      {
+        "key": "D",
+        "text": "Use FIFO delivery as the sole protection against duplicated external payment effects after retries.",
+        "correct": false,
+        "explanation": "Deduplication delivery tidak menjamin efek eksternal hanya dijalankan sekali dalam seluruh failure window."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "workflow-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Step Functions error handling",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-075",
+    "concept": "saa-stateless-application-tiers",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An application uses ALB sticky sessions and stores carts only in instance memory. Users lose carts when the Auto Scaling group replaces unhealthy instances. Which design fixes the state dependency?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store required cart/session state in an appropriately durable shared store and make application instances replaceable.",
+        "correct": true,
+        "explanation": "State tidak lagi bergantung pada instance yang mungkin dihentikan; durability store disesuaikan kebutuhan."
+      },
+      {
+        "key": "B",
+        "text": "Use an instance snapshot taken nightly as the only recovery mechanism for active shopping carts.",
+        "correct": false,
+        "explanation": "Snapshot malam tidak mempertahankan semua cart aktif ketika instance gagal di antara backup."
+      },
+      {
+        "key": "C",
+        "text": "Increase cookie stickiness duration and keep all state only in failed instance memory.",
+        "correct": false,
+        "explanation": "Cookie tidak dapat memulihkan memori instance yang hilang."
+      },
+      {
+        "key": "D",
+        "text": "Spread instances across more AZs but keep independent cart state only in each instance memory.",
+        "correct": false,
+        "explanation": "Placement meningkatkan resiliency compute tetapi tidak menghilangkan kehilangan state lokal."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "stateless-application-tiers",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Application Load Balancer",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-076",
+    "concept": "saa-relational-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An RDS Multi-AZ DB instance fails over successfully, but some application processes continue trying an old resolved IP and fail. Which application behavior supports recovery?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Connect directly to the single standby address for writes before every failover.",
+        "correct": false,
+        "explanation": "Standby pada deployment ini bukan writer terpisah yang dilayani aplikasi."
+      },
+      {
+        "key": "B",
+        "text": "Extend connection-pool lifetimes and DNS caching so every process keeps using the pre-failover address.",
+        "correct": false,
+        "explanation": "Kebijakan itu mempertahankan endpoint hasil resolusi lama dan memperlambat recovery koneksi."
+      },
+      {
+        "key": "C",
+        "text": "Use the database endpoint, refresh DNS as appropriate, discard failed connections, and retry safe operations with bounded backoff.",
+        "correct": true,
+        "explanation": "Failover layanan tidak menyelamatkan semua koneksi lama; aplikasi perlu reconnect tanpa mengulang efek secara tidak aman."
+      },
+      {
+        "key": "D",
+        "text": "Hard-code the original primary IP into every connection pool.",
+        "correct": false,
+        "explanation": "IP lama dapat tetap menunjuk target yang tidak lagi melayani write."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "relational-availability",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "RDS Multi-AZ DB instance with one standby",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-077",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A destructive application deployment overwrites valid rows in a highly available database. The standby and asynchronous replicas receive the same bad changes. What capability is essential for recovery?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A tested recovery path to an appropriate point before the corruption, with validation and application cutover.",
+        "correct": true,
+        "explanation": "Replica mempertahankan perubahan termasuk yang salah; recovery historis menyediakan state sebelum insiden."
+      },
+      {
+        "key": "B",
+        "text": "Increase read-replica count and balance queries across the replicas after they catch up.",
+        "correct": false,
+        "explanation": "Menambah replika data yang sudah korup tidak menyediakan titik pemulihan historis."
+      },
+      {
+        "key": "C",
+        "text": "Promote a replica after verifying it has already applied every corrupt change.",
+        "correct": false,
+        "explanation": "Replica yang sudah korup tidak mengembalikan state lama."
+      },
+      {
+        "key": "D",
+        "text": "Add another synchronous standby after the corrupt writes have been applied.",
+        "correct": false,
+        "explanation": "Standby baru mengikuti state yang sudah salah; ia bukan sejarah data sebelum insiden."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "RDS point-in-time restore",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-078",
+    "concept": "saa-disaster-recovery-strategies",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A workload requires an RTO of at most 30 minutes and an RPO of at most 5 minutes. Tested designs have these results: backup/restore 4 hours/1 hour; pilot light 50 minutes/2 minutes; warm standby 15 minutes/2 minutes; active-active 1 minute/near-zero. Costs increase in that order. Which meets the targets at the lowest listed cost?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Active-active.",
+        "correct": false,
+        "explanation": "Memenuhi target tetapi bukan biaya terendah dari opsi yang juga memenuhi."
+      },
+      {
+        "key": "B",
+        "text": "Backup and restore.",
+        "correct": false,
+        "explanation": "RTO 4 jam dan RPO 1 jam melampaui kedua batas."
+      },
+      {
+        "key": "C",
+        "text": "Pilot light.",
+        "correct": false,
+        "explanation": "RPO cukup tetapi RTO 50 menit melampaui 30 menit."
+      },
+      {
+        "key": "D",
+        "text": "Warm standby.",
+        "correct": true,
+        "explanation": "15 menit RTO dan 2 menit RPO memenuhi dua batas; opsi lebih murah gagal setidaknya satu."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "disaster-recovery-strategies",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-079",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company enables S3 replication for a bucket with years of existing objects. New uploads appear at the destination, and the team declares every historical document protected. What should the recovery review require?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only upload one new test object and assume all older versions followed automatically.",
+        "correct": false,
+        "explanation": "Sampel objek baru tidak menguji salinan data historis."
+      },
+      {
+        "key": "B",
+        "text": "Disable source versioning immediately to accelerate the backlog.",
+        "correct": false,
+        "explanation": "Ini tidak memenuhi prasyarat replication dan tidak memindahkan backlog."
+      },
+      {
+        "key": "C",
+        "text": "Use the destination bucket creation date as proof of object completeness.",
+        "correct": false,
+        "explanation": "Metadata bucket tidak menunjukkan isi dan status semua objek."
+      },
+      {
+        "key": "D",
+        "text": "Plan replication of eligible existing objects with a supported batch mechanism and validate coverage plus ongoing replication status.",
+        "correct": true,
+        "explanation": "Rule baru tidak membuktikan backlog historis sudah diproses; validasi perlu mencakup kedua kelompok."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "S3 replication",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-080",
+    "concept": "saa-durable-shared-storage",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Application instances span two AZs but mount an NFS export hosted on one EC2 instance. The application requires shared POSIX-style file access and must continue during an AZ failure. Which redesign fits with less file-server administration?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Store shared mutable files independently on each application instance without synchronization.",
+        "correct": false,
+        "explanation": "Salinan lokal independen tidak menyediakan shared state yang konsisten."
+      },
+      {
+        "key": "B",
+        "text": "Keep the single NFS server and attach its one EBS volume to arbitrary instances in any AZ simultaneously.",
+        "correct": false,
+        "explanation": "EBS terikat AZ dan tidak menjadi filesystem lintas-AZ otomatis."
+      },
+      {
+        "key": "C",
+        "text": "Use a Regional EFS file system with appropriate mount targets and client/network configuration across the application AZs.",
+        "correct": true,
+        "explanation": "Regional EFS menghilangkan satu server NFS sebagai titik kegagalan; mount dan akses tiap AZ tetap dikonfigurasi."
+      },
+      {
+        "key": "D",
+        "text": "Use EFS One Zone and assume it has the same AZ-failure properties as Regional EFS.",
+        "correct": false,
+        "explanation": "One Zone memiliki failure scope berbeda dari Regional."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "durable-shared-storage",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Amazon EFS features",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/features.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-081",
+    "concept": "saa-multi-az-application-availability",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A stateless API needs 500 requests per second at its latency target. Each tested instance can serve 100 requests per second. Six instances are split evenly across two Availability Zones. The service must maintain the target immediately after either AZ fails, without waiting for new instances. Which capacity plan is the minimum that meets the stated model?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Place five instances in one AZ and one in the other to minimize steady-state capacity.",
+        "correct": false,
+        "explanation": "Kegagalan AZ berisi lima instance menyisakan hanya 100 request/detik."
+      },
+      {
+        "key": "B",
+        "text": "Keep five instances total, split three and two across the AZs.",
+        "correct": false,
+        "explanation": "Kapasitas total normal cukup, tetapi AZ yang tersisa hanya menyediakan 200 atau 300 request/detik."
+      },
+      {
+        "key": "C",
+        "text": "Maintain at least five ready instances in each AZ and verify traffic can reach all surviving instances.",
+        "correct": true,
+        "explanation": "Setelah satu AZ hilang, lima instance tersisa menyediakan 5 x 100 = 500 request/detik sesuai model."
+      },
+      {
+        "key": "D",
+        "text": "Keep three instances in each AZ and raise the Auto Scaling maximum to ten.",
+        "correct": false,
+        "explanation": "Maximum capacity tidak berarti instance tambahan sudah siap saat AZ gagal."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multi-az-application-availability",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Capacity and quota headroom for failover",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_manage_service_limits_suff_buffer_limits.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-082",
+    "concept": "saa-operational-recovery",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DR exercise can recreate infrastructure from templates in a second Region, but scale-out then fails because account quotas and available instance capacity are insufficient. Which improvements address the actual gap? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Validate and request required Regional service quotas before an incident.",
+        "correct": true,
+        "explanation": "Quota berbeda menurut scope; persiapan harus dilakukan sebelum recovery kritis."
+      },
+      {
+        "key": "B",
+        "text": "Assume a successful CloudFormation validation reserves all future capacity.",
+        "correct": false,
+        "explanation": "Validasi template tidak mencadangkan resource fisik."
+      },
+      {
+        "key": "C",
+        "text": "Increase backup retention only and leave the failed provisioning path unchanged.",
+        "correct": false,
+        "explanation": "Retensi tidak menyelesaikan quota atau ketersediaan kapasitas."
+      },
+      {
+        "key": "D",
+        "text": "Assess capacity needs and appropriate reservation or alternative-instance strategies, then test recovery at realistic scale.",
+        "correct": true,
+        "explanation": "Quota approval bukan jaminan physical capacity; pengujian dan strategi kapasitas keduanya diperlukan."
+      },
+      {
+        "key": "E",
+        "text": "Purchase a Savings Plan and assume it guarantees every instance type is available during failover.",
+        "correct": false,
+        "explanation": "Komitmen diskon bukan reservasi kapasitas umum."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Service Quotas",
+      "url": "https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-083",
+    "concept": "saa-managed-execution-and-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A legacy application relies on supported ActiveMQ messaging protocols and broker semantics. A short migration deadline prevents rewriting producers and consumers for native SQS APIs. Which option best reduces broker operations while preserving compatibility?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use EventBridge as a drop-in ActiveMQ wire-protocol server.",
+        "correct": false,
+        "explanation": "EventBridge bukan implementasi broker ActiveMQ."
+      },
+      {
+        "key": "B",
+        "text": "Replace the broker endpoint with an SQS URL and assume all ActiveMQ clients work unchanged.",
+        "correct": false,
+        "explanation": "SQS memiliki API dan semantics berbeda."
+      },
+      {
+        "key": "C",
+        "text": "Evaluate Amazon MQ for ActiveMQ with an appropriate availability configuration and compatibility tests.",
+        "correct": true,
+        "explanation": "Managed broker mempertahankan protokol yang didukung tanpa langsung menulis ulang ke SQS."
+      },
+      {
+        "key": "D",
+        "text": "Keep one unmanaged broker with no backup solely because managed services require total rewrites.",
+        "correct": false,
+        "explanation": "Amazon MQ menyediakan opsi kompatibilitas yang justru perlu dievaluasi."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-execution-and-migration",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Amazon MQ",
+      "url": "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-084",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "SQS workers process jobs with highly variable duration. A very short visibility timeout causes concurrent reprocessing, but a universally huge timeout delays recovery after crashes. Which approach best balances these needs?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Always use the largest timeout even for jobs that fail instantly.",
+        "correct": false,
+        "explanation": "Ini menunda pemulihan dan mengabaikan variasi durasi."
+      },
+      {
+        "key": "B",
+        "text": "Start with a suitable timeout and extend visibility for work that is still progressing, while retaining idempotency and failure handling.",
+        "correct": true,
+        "explanation": "Heartbeat visibility memberi waktu pada pekerjaan aktif tanpa menyamakan semua job dengan timeout sangat panjang."
+      },
+      {
+        "key": "C",
+        "text": "Assume increasing receive count makes standard queues guarantee no duplicate delivery.",
+        "correct": false,
+        "explanation": "At-least-once tetap memerlukan idempotensi."
+      },
+      {
+        "key": "D",
+        "text": "Delete the message immediately before processing so no retry is ever possible.",
+        "correct": false,
+        "explanation": "Crash sesudah delete dapat kehilangan pekerjaan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "SQS visibility timeout",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-085",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A Lambda consumer of a Kinesis stream repeatedly fails on one record. Healthy records keep being retried and progress stalls. Which design should the team evaluate while respecting ordering requirements?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Treat a successful Lambda invocation count as proof every record produced its intended effect.",
+        "correct": false,
+        "explanation": "Metric invocation tidak membuktikan correctness per record."
+      },
+      {
+        "key": "B",
+        "text": "Change to a larger batch and guarantee that a poison record becomes valid.",
+        "correct": false,
+        "explanation": "Ukuran batch tidak memperbaiki data salah."
+      },
+      {
+        "key": "C",
+        "text": "Use supported partial-batch/checkpoint and retry controls, isolate persistent failures, and make processing idempotent.",
+        "correct": true,
+        "explanation": "Kontrol failure boundary membantu kemajuan; urutan dan efek duplikat tetap harus dianalisis."
+      },
+      {
+        "key": "D",
+        "text": "Discard the entire stream whenever one record fails validation.",
+        "correct": false,
+        "explanation": "Ini kehilangan semua pekerjaan yang sah."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Lambda Kinesis partial batches",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/services-kinesis-batchfailurereporting.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-086",
+    "concept": "saa-hybrid-connectivity-resilience",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company has two Direct Connect connections, but both terminate at the same location through the same building path. The business must withstand loss of that location. What should be improved?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase DNS TTL so clients retain the same failed network path.",
+        "correct": false,
+        "explanation": "DNS cache tidak menyediakan konektivitas pengganti."
+      },
+      {
+        "key": "B",
+        "text": "Double the bandwidth of the existing shared-path connections only.",
+        "correct": false,
+        "explanation": "Bandwidth lebih besar tidak menambah keragaman failure domain."
+      },
+      {
+        "key": "C",
+        "text": "Create a second virtual interface on the same physical connection only.",
+        "correct": false,
+        "explanation": "Logical interface tambahan tidak menghilangkan kegagalan lokasi fisik."
+      },
+      {
+        "key": "D",
+        "text": "Use an appropriate redundant design across separate Direct Connect locations and paths, with routing/failover testing.",
+        "correct": true,
+        "explanation": "Dua koneksi tidak menghilangkan kegagalan bersama jika lokasi atau jalurnya sama."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "hybrid-connectivity-resilience",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Direct Connect resiliency toolkit",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/resiliency_toolkit.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-087",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A backup exercise restores a database and all infrastructure alarms are green. However, the application cannot decrypt a secret and the payment callback URL still points to the old environment. What does this show?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Green CPU metrics prove the recovery time objective is met regardless of failed transactions.",
+        "correct": false,
+        "explanation": "RTO mengukur kemampuan layanan pulih, bukan hanya metric infrastruktur."
+      },
+      {
+        "key": "B",
+        "text": "Recovery validation must include dependencies, configuration, permissions, and representative business transactions, not resource health alone.",
+        "correct": true,
+        "explanation": "Resource hidup belum membuktikan layanan dapat menjalankan alur bisnis; dependency perlu diuji."
+      },
+      {
+        "key": "C",
+        "text": "A database restore should automatically update all external integrations and IAM policies.",
+        "correct": false,
+        "explanation": "Restore data tidak mengubah semua dependency eksternal."
+      },
+      {
+        "key": "D",
+        "text": "All backups should be deleted because configuration errors imply every backup is corrupt.",
+        "correct": false,
+        "explanation": "Masalah konfigurasi perlu diperbaiki tanpa kesimpulan korupsi semua backup."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "AWS disaster recovery strategies",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-RES-088",
+    "concept": "saa-health-routing-and-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A team configures Route 53 failover records and expects every client to switch Regions within one second after a fault. Clients and resolvers cache DNS answers. Which statement is most accurate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A failover routing policy forcibly terminates all client TCP connections and rewrites their cached DNS immediately.",
+        "correct": false,
+        "explanation": "Route 53 tidak mengendalikan seluruh koneksi dan cache klien."
+      },
+      {
+        "key": "B",
+        "text": "Setting a high TTL makes cached clients discover changes faster.",
+        "correct": false,
+        "explanation": "TTL lebih tinggi biasanya mempertahankan jawaban lebih lama."
+      },
+      {
+        "key": "C",
+        "text": "As long as a secondary record exists, data recovery and application capacity are irrelevant.",
+        "correct": false,
+        "explanation": "Routing ke endpoint belum menjamin endpoint memiliki data dan kapasitas yang benar."
+      },
+      {
+        "key": "D",
+        "text": "Health detection, DNS caching, client behavior, and connection recovery all affect observed failover; test the complete path against the target.",
+        "correct": true,
+        "explanation": "Record failover tidak memberi jaminan satu detik untuk seluruh cache dan koneksi klien."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "health-routing-and-failover",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Route 53 DNS failover",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-089",
+    "concept": "saa-fanout-and-event-routing",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A telemetry platform needs fraud detection and a separate analytics consumer to read the same ordered-per-key stream. Analytics must rewind within the retention window without resetting fraud detection. Which architecture fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Replace the retained event stream with only periodic summary objects.",
+        "correct": false,
+        "explanation": "Ringkasan tidak mempertahankan payload event yang perlu direplay secara independen."
+      },
+      {
+        "key": "B",
+        "text": "Use a stream such as Kinesis with independent consumer processing positions and a retention period that covers replay needs.",
+        "correct": true,
+        "explanation": "Consumer dapat mengelola kemajuan masing-masing; retention menentukan history yang masih tersedia."
+      },
+      {
+        "key": "C",
+        "text": "Use one SQS queue with both services as competing consumers and assume each sees every event.",
+        "correct": false,
+        "explanation": "Queue bersama membagi pesan dan tidak menyediakan replay log bagi semua consumer."
+      },
+      {
+        "key": "D",
+        "text": "Reset the single shared consumer checkpoint whenever analytics needs replay.",
+        "correct": false,
+        "explanation": "Checkpoint bersama menyebabkan pemrosesan fraud terpengaruh replay analytics."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "fanout-and-event-routing",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Kinesis Data Streams",
+      "url": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-090",
+    "concept": "saa-backup-and-logical-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Compliance requires backup recovery points to remain undeletable during their retention period, including by administrators after a configured cooling-off period. Which AWS Backup feature should the team evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Vault Lock in compliance mode, with carefully reviewed retention settings and grace-period behavior.",
+        "correct": true,
+        "explanation": "Setelah cooling-off selesai, compliance lock membatasi perubahan/penghapusan sesuai ketentuan; salah konfigurasi berdampak serius."
+      },
+      {
+        "key": "B",
+        "text": "Use a vault access policy but retain an unrestricted path for the same administrators to remove the policy and delete recovery points.",
+        "correct": false,
+        "explanation": "Policy yang dapat dilepas oleh administrator tersebut tidak memberikan immutability yang diminta."
+      },
+      {
+        "key": "C",
+        "text": "Set a long backup-plan retention period without preventing an administrator from deleting recovery points early.",
+        "correct": false,
+        "explanation": "Retensi rencana saja tidak mencegah deletion berprivilege sebelum waktunya."
+      },
+      {
+        "key": "D",
+        "text": "Use governance-mode locking while allowing administrators to remove the lock configuration.",
+        "correct": false,
+        "explanation": "Persyaratan menghalangi admin setelah cooling-off memerlukan perilaku compliance lock yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "backup-and-logical-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS Backup Vault Lock",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-091",
+    "concept": "saa-container-orchestration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A blue/green release switches traffic to a new application revision. The revision also performs an incompatible database schema change. Switching traffic back alone does not restore the old application. What design principle was missed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Plan backward-compatible schema evolution and an explicit data-migration/rollback strategy in addition to traffic deployment controls.",
+        "correct": true,
+        "explanation": "Routing rollback tidak otomatis membatalkan perubahan data atau menjaga kompatibilitas versi lama."
+      },
+      {
+        "key": "B",
+        "text": "Add more application health checks but leave the old revision incompatible with the migrated schema.",
+        "correct": false,
+        "explanation": "Health checks mendeteksi gejala, bukan mengubah kompatibilitas schema."
+      },
+      {
+        "key": "C",
+        "text": "Assume blue/green traffic routing makes every database migration automatically reversible.",
+        "correct": false,
+        "explanation": "Perubahan skema memiliki lifecycle dan risiko tersendiri."
+      },
+      {
+        "key": "D",
+        "text": "Keep independent application environments but let either version perform arbitrary destructive schema changes during traffic shifting.",
+        "correct": false,
+        "explanation": "Environment compute terpisah tetap berbagi data; perubahan schema harus kompatibel atau dipulihkan secara terencana."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "container-orchestration",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Backward compatibility for data-store and schema changes",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/devops-guidance/dl.ads.5-ensure-backwards-compatibility-for-data-store-and-schema-changes.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-092",
+    "concept": "saa-stateful-service-failover",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A read cache accelerates a product catalog whose source of truth is a relational database. During a cache failover, every request fails even though the database is healthy. Slightly higher latency is acceptable, but an uncontrolled database surge is not. Which change fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Retry cache reads at a fixed short interval from every client without jitter or a retry budget.",
+        "correct": false,
+        "explanation": "Pola ini dapat mempertahankan retry storm dan tidak memberi fallback terkontrol."
+      },
+      {
+        "key": "B",
+        "text": "Queue all requests indefinitely behind cache recovery, even though the source database is available.",
+        "correct": false,
+        "explanation": "Ini menghilangkan kemampuan degradasi yang dapat memenuhi layanan dengan latency sedikit lebih tinggi."
+      },
+      {
+        "key": "C",
+        "text": "Immediately send every cache miss and retry to the database with no concurrency limit.",
+        "correct": false,
+        "explanation": "Fallback tak terbatas dapat menimbulkan surge yang dilarang requirement."
+      },
+      {
+        "key": "D",
+        "text": "Implement bounded cache-error fallback to the source with concurrency protection, timeouts, and recovery monitoring.",
+        "correct": true,
+        "explanation": "Fallback mempertahankan fungsi saat cache gagal; pembatasan mencegah database dibanjiri."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "stateful-service-failover",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Caching challenges and strategies",
+      "url": "https://aws.amazon.com/builders-library/caching-challenges-and-strategies/"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-093",
+    "concept": "saa-multiregion-data",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An Aurora Global Database supports regional disaster recovery. The business now requests guaranteed zero data loss for every unplanned regional failure. What should the architect do before promising that outcome?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set a low DNS TTL and treat faster endpoint switching as proof that all commits reached the other Region.",
+        "correct": false,
+        "explanation": "DNS mempercepat discovery endpoint, bukan menyelesaikan replikasi transaksi."
+      },
+      {
+        "key": "B",
+        "text": "Review asynchronous replication behavior, lag and supported recovery controls against the requirement; do not equate regional replicas with an unconditional zero-RPO guarantee.",
+        "correct": true,
+        "explanation": "Replikasi lintas Region perlu dianalisis terhadap data yang belum sampai; target bisnis bukan otomatis jaminan produk."
+      },
+      {
+        "key": "C",
+        "text": "Promise zero data loss because any service named Global synchronously commits to every Region.",
+        "correct": false,
+        "explanation": "Nama global tidak membuktikan mode commit sinkron di semua Region."
+      },
+      {
+        "key": "D",
+        "text": "Add more read replicas within the primary Region and regard this as a cross-Region zero-loss guarantee.",
+        "correct": false,
+        "explanation": "Replica regional tidak mengubah jaminan durability cross-Region untuk semua skenario failure."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multiregion-data",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Aurora Global Database",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-094",
+    "concept": "saa-multiregion-data",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "HARD",
+    "style": "SCENARIO",
+    "question": "A DynamoDB global table uses multi-Region eventual consistency. Two Regions may update the same inventory item concurrently. The application assumes independent regional conditional writes provide one global serialized stock counter. What must be addressed?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume last-writer-wins reconciliation automatically preserves every decrement without conflicts.",
+        "correct": false,
+        "explanation": "Rekonsiliasi nilai bukan jaminan konservasi seluruh operasi counter bisnis."
+      },
+      {
+        "key": "B",
+        "text": "Assign a different client token per Region and assume this prevents two Regions from decrementing the same last item.",
+        "correct": false,
+        "explanation": "Token terpisah tidak mengoordinasikan invariant stok global."
+      },
+      {
+        "key": "C",
+        "text": "Use a strongly consistent local read in each Region and assume the two local write decisions are globally serialized.",
+        "correct": false,
+        "explanation": "Konsistensi lokal tidak membuat conditional write antar Region MREC menjadi satu keputusan serial global."
+      },
+      {
+        "key": "D",
+        "text": "Redesign conflict/ownership semantics or choose a suitable consistency model; regional conditional success alone is not a globally serialized inventory guarantee in MREC.",
+        "correct": true,
+        "explanation": "Mode MREC memiliki replikasi dan resolusi konflik; constraint bisnis perlu model write yang sesuai."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "multiregion-data",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "DynamoDB global table consistency modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-095",
+    "concept": "saa-relational-availability",
+    "type": "MULTIPLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A relational workload must recover automatically from an AZ failure and also recover from an accidental table drop discovered later. Which capabilities address these different risks? Select TWO.",
+    "options": [
+      {
+        "key": "A",
+        "text": "Backups and point-in-time recovery with a tested restore-and-cutover procedure.",
+        "correct": true,
+        "explanation": "PITR menyediakan state historis sebelum drop; restore biasanya menghasilkan target pemulihan tersendiri."
+      },
+      {
+        "key": "B",
+        "text": "Only Multi-AZ, because the standby permanently rejects every accidental table drop.",
+        "correct": false,
+        "explanation": "Perubahan SQL yang valid dapat direplikasi ke standby."
+      },
+      {
+        "key": "C",
+        "text": "A supported Multi-AZ availability deployment for infrastructure failover.",
+        "correct": true,
+        "explanation": "Multi-AZ menyasar kegagalan instance/AZ dan jalur failover."
+      },
+      {
+        "key": "D",
+        "text": "Only asynchronous read replicas, without a managed availability deployment or historical recovery procedure.",
+        "correct": false,
+        "explanation": "Read scaling/replikasi saja tidak memenuhi kedua mekanisme pemulihan yang diminta."
+      },
+      {
+        "key": "E",
+        "text": "Only daily snapshots, with no automatic availability deployment.",
+        "correct": false,
+        "explanation": "Snapshot membantu recovery data, tetapi tidak menyediakan failover AZ otomatis yang diminta."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "relational-availability",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "RDS Multi-AZ DB instance with one standby",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-096",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A fixed analytics consumer must reprocess last week of archived EventBridge events. The original bus also triggers customer emails and charges. What should the replay plan include?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase archive retention but leave replay routing and consumer side effects unchanged.",
+        "correct": false,
+        "explanation": "Retensi menambah jangkauan replay, bukan membatasi efek yang dipicu ulang."
+      },
+      {
+        "key": "B",
+        "text": "Send replay events to every original rule and generate a new payment identifier for each delivery.",
+        "correct": false,
+        "explanation": "Identifier baru menghindari deduplikasi bisnis dan dapat mengulang charge yang tidak diminta."
+      },
+      {
+        "key": "C",
+        "text": "Replay into every original consumer blindly and assume replay events are automatically harmless.",
+        "correct": false,
+        "explanation": "Consumer lain dapat menjalankan tindakan lagi jika tidak dilindungi."
+      },
+      {
+        "key": "D",
+        "text": "Control replay routing/consumer behavior and use idempotency so only intended reprocessing occurs without repeating external effects.",
+        "correct": true,
+        "explanation": "Replay mengirim event kembali; destination dan efek samping harus dirancang agar tidak memicu tindakan bisnis ulang."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "EventBridge archives",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-archive.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-097",
+    "concept": "saa-server-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A company uses AWS Transform MGN, formerly Application Migration Service, to rehost supported servers. Test instances boot successfully, but the application cannot reach its existing directory and licensing services. The migration team planned to cut over based only on replication health. What should the plan add?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Validate DNS, routes, security rules, identity, licensing, and end-to-end transactions in the target environment before approving cutover.",
+        "correct": true,
+        "explanation": "Boot dan replikasi tidak membuktikan dependency aplikasi tersedia; test launch perlu memvalidasi fungsi bisnis serta jalur kembali."
+      },
+      {
+        "key": "B",
+        "text": "Reduce the source replication interval and skip application testing once the lag is low.",
+        "correct": false,
+        "explanation": "Lag rendah tidak memperbaiki DNS, izin, route, atau ketersediaan layanan eksternal."
+      },
+      {
+        "key": "C",
+        "text": "Replace server replication with DMS while leaving directory and licensing connectivity unchanged.",
+        "correct": false,
+        "explanation": "DMS memigrasikan data database yang didukung, bukan mengatasi dependency server ini."
+      },
+      {
+        "key": "D",
+        "text": "Approve cutover immediately because successful boot guarantees every application dependency is replicated with the OS disk.",
+        "correct": false,
+        "explanation": "Dependency eksternal tidak otomatis ikut berpindah bersama disk server."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "server-migration",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS Transform MGN (Application Migration Service)",
+      "url": "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-098",
+    "concept": "saa-managed-data-integration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Partners upload files through SFTP and cannot change clients. Downstream processing sometimes pauses for an hour. Uploaded files must remain durable and be processed later without requiring partners to reconnect. Which design fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep each SFTP connection open until the entire downstream workflow completes and discard incomplete sessions.",
+        "correct": false,
+        "explanation": "Coupling session dan processing memperbesar risiko saat downstream berhenti."
+      },
+      {
+        "key": "B",
+        "text": "Use Transfer Family backed by S3, and trigger buffered/idempotent processing from durable stored objects.",
+        "correct": true,
+        "explanation": "Upload diselesaikan ke storage durabel; processing dipisahkan sehingga outage consumer tidak memaksa upload ulang."
+      },
+      {
+        "key": "C",
+        "text": "Write uploads to temporary processing storage and delete them immediately after sending a non-durable notification.",
+        "correct": false,
+        "explanation": "Durabilitas dan kemampuan pemrosesan setelah outage tidak terjamin."
+      },
+      {
+        "key": "D",
+        "text": "Require partners to replace SFTP clients with a synchronous custom HTTPS API that waits for processing.",
+        "correct": false,
+        "explanation": "Ini melanggar kompatibilitas client dan mempertahankan coupling dengan downstream."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-data-integration",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Transfer Family SFTP",
+      "url": "https://docs.aws.amazon.com/transfer/latest/userguide/create-server-sftp.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-099",
+    "concept": "saa-operational-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "New Auto Scaling instances need to register with an internal dependency and load a model before serving requests. The process varies in duration. Which design prevents premature traffic while preserving automated replacement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Register instances as healthy before initialization and retry failed user requests until initialization finishes.",
+        "correct": false,
+        "explanation": "Pengguna menerima trafik ke instance yang belum siap."
+      },
+      {
+        "key": "B",
+        "text": "Increase only the health-check grace period and assume it prevents all load-balancer traffic before readiness.",
+        "correct": false,
+        "explanation": "Grace period Auto Scaling tidak dengan sendirinya menjadi kontrol admission traffic berdasarkan readiness aplikasi."
+      },
+      {
+        "key": "C",
+        "text": "Use suitable lifecycle/readiness controls and target health checks, with bounded failure handling for initialization.",
+        "correct": true,
+        "explanation": "Instance tidak boleh dianggap siap hanya karena proses launch selesai; readiness dan timeout perlu dibatasi."
+      },
+      {
+        "key": "D",
+        "text": "Use a fixed short startup delay independent of model-loading time and then force every target healthy.",
+        "correct": false,
+        "explanation": "Durasi startup berubah, sehingga timer pendek tetap dapat membuka trafik terlalu dini."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.2",
+      "operational-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Auto Scaling lifecycle hooks",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-100",
+    "concept": "saa-queue-decoupling",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A workflow stores large payloads in S3 and sends SQS messages containing object references. Some messages are delayed or redriven days later. Which lifecycle design prevents valid references from becoming unusable?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase only the queue visibility timeout while object retention remains shorter than all delays.",
+        "correct": false,
+        "explanation": "Visibility tidak memperpanjang umur objek S3."
+      },
+      {
+        "key": "B",
+        "text": "Retain and authorize payload objects for the full processing/retry window, and clean them up only according to verified completion and retention policy.",
+        "correct": true,
+        "explanation": "Durabilitas queue saja tidak menjaga objek yang dirujuk; lifecycle dua komponen harus selaras."
+      },
+      {
+        "key": "C",
+        "text": "Use a short-lived presigned URL as the permanent reference and assume it never expires in a DLQ.",
+        "correct": false,
+        "explanation": "URL dapat kedaluwarsa sebelum retry; referensi dan otorisasi perlu dirancang ulang."
+      },
+      {
+        "key": "D",
+        "text": "Delete every S3 object immediately after sending its reference to SQS.",
+        "correct": false,
+        "explanation": "Consumer belum tentu sudah mengambil payload."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "queue-decoupling",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Large SQS payloads",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-managing-large-messages.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-101",
+    "concept": "saa-workflow-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A document workflow sometimes waits three days for human approval, then resumes automated steps. The team wants durable workflow state without a running instance or Lambda invocation waiting throughout. Which approach fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the workflow state only in the approver browser and restart automated steps after the tab reconnects.",
+        "correct": false,
+        "explanation": "Browser bukan penyimpanan state durabel untuk workflow berhari-hari."
+      },
+      {
+        "key": "B",
+        "text": "Use a suitable Step Functions Standard workflow with a callback/task-token integration and appropriate timeouts.",
+        "correct": true,
+        "explanation": "Workflow dapat menunggu callback secara durabel tanpa mempertahankan worker aktif selama seluruh penantian."
+      },
+      {
+        "key": "C",
+        "text": "Treat an approval timeout as approval and continue without a persisted human decision.",
+        "correct": false,
+        "explanation": "Timeout tidak memenuhi persyaratan persetujuan manusia."
+      },
+      {
+        "key": "D",
+        "text": "Use a Step Functions Express execution as the three-day waiting container.",
+        "correct": false,
+        "explanation": "Durasi dan integration support Express tidak sesuai penantian callback panjang ini."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "workflow-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Step Functions integration patterns",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-102",
+    "concept": "saa-managed-execution-and-migration",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Background Lambda jobs sometimes consume account concurrency and starve a critical API function. The critical function needs a reserved allocation, but the database can support only a bounded number of its concurrent invocations. Which control is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase provisioned concurrency indefinitely and ignore database connection capacity.",
+        "correct": false,
+        "explanation": "Pre-initialization bukan alasan mengabaikan kapasitas downstream atau quota."
+      },
+      {
+        "key": "B",
+        "text": "Set suitable reserved concurrency for the critical function, accounting for account quota and database capacity.",
+        "correct": true,
+        "explanation": "Reserved concurrency mengalokasikan sekaligus membatasi concurrency fungsi; angka harus sesuai dependency."
+      },
+      {
+        "key": "C",
+        "text": "Increase the account concurrency quota but leave both functions unrestricted against the same database.",
+        "correct": false,
+        "explanation": "Kuota lebih besar tidak menjamin alokasi critical API dan dapat melampaui kapasitas DB."
+      },
+      {
+        "key": "D",
+        "text": "Set only a larger client timeout without allocating concurrency to the critical function.",
+        "correct": false,
+        "explanation": "Timeout tidak mencadangkan slot eksekusi atau melindungi database."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "managed-execution-and-migration",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Lambda reserved concurrency",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-103",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A third-party API returns throttling responses. Hundreds of workers immediately retry in lockstep, increasing failures. The jobs are durable and tolerate delayed completion. Which recovery policy fits?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Increase consumer concurrency whenever throttling rises, without limiting outbound request rate.",
+        "correct": false,
+        "explanation": "Respons ini memperbesar beban saat dependency sudah membatasi traffic."
+      },
+      {
+        "key": "B",
+        "text": "Use bounded exponential backoff with jitter and concurrency/rate controls, then route persistent failures for later handling.",
+        "correct": true,
+        "explanation": "Jitter menyebarkan retry dan pembatasan melindungi dependency; retry harus memiliki budget dan observability."
+      },
+      {
+        "key": "C",
+        "text": "Use the same fixed retry delay for all workers without a cap on concurrent retries.",
+        "correct": false,
+        "explanation": "Fixed delay yang sama dapat mempertahankan lockstep dan kembali membebani dependency."
+      },
+      {
+        "key": "D",
+        "text": "Retry immediately with no limit from every worker until the provider recovers.",
+        "correct": false,
+        "explanation": "Retry storm dapat memperburuk overload."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "AWS SDK retry behavior",
+      "url": "https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-RES-104",
+    "concept": "saa-backpressure-and-stream-recovery",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A search index is updated from S3 object-created notifications. Events can arrive out of order, and an older event for the same object key sometimes overwrites newer index metadata. Which design handles event ordering without assuming that delivery order matches object-change order?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Compare every object sequencer against one global maximum for the whole bucket.",
+        "correct": false,
+        "explanation": "Sequencer tidak dapat dibandingkan untuk menentukan urutan event pada key berbeda."
+      },
+      {
+        "key": "B",
+        "text": "Use the time at which the consumer receives each notification as the authoritative order of object changes.",
+        "correct": false,
+        "explanation": "Waktu penerimaan mencerminkan keterlambatan delivery, bukan urutan perubahan sumber."
+      },
+      {
+        "key": "C",
+        "text": "Track the latest processed sequencer for each object key and atomically reject older or duplicate updates, following the documented comparison rules.",
+        "correct": true,
+        "explanation": "Penyimpanan state per key dan conditional update mencegah event lama menggantikan state baru; sequencer tidak memberi urutan lintas key."
+      },
+      {
+        "key": "D",
+        "text": "Increase queue retention and process every arriving event unconditionally in arrival order.",
+        "correct": false,
+        "explanation": "Retention membantu replay, tetapi tidak mengoreksi event yang sudah datang di luar urutan."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-2.1",
+      "backpressure-and-stream-recovery",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "S3 event notification structure and sequencing",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-content-structure.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  }
+]

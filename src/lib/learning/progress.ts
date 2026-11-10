@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "./question-pools";
 
 export async function certificationProgress(code: string) {
   const certification = await prisma.certification.findUnique({
@@ -10,7 +11,7 @@ export async function certificationProgress(code: string) {
           concepts: {
             where: { active: true },
             orderBy: { order: "asc" },
-            include: { progress: true, _count: { select: { questions: true } } },
+            include: { progress: true, _count: { select: { questions: { where: trainingQuestionWhere } } } },
           },
         },
       },

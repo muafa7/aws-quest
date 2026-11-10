@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "@/lib/learning/question-pools";
 import { nextReviewStage, reviewDateForStage } from "@/lib/learning/review";
 import type { Confidence, LearningMode } from "@/lib/learning/types";
 
@@ -104,7 +105,7 @@ export async function submitLearningAnswer(formData: FormData) {
   const conceptSlug = typeof formData.get("conceptSlug") === "string" ? String(formData.get("conceptSlug")) : null;
 
   const question = await prisma.question.findUnique({
-    where: { id: questionId, active: true },
+    where: { id: questionId, ...trainingQuestionWhere },
     include: { options: true, concept: true },
   });
   if (!question) throw new Error("Question not found");

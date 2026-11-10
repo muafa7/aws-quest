@@ -294,7 +294,7 @@ CCP-<PREFIX>-<NNN>
 ```
 
 - `CCP` is the CLF-C02 certification prefix. SAA-C03 uses `SAA`.
-- `<PREFIX>` is 2–5 uppercase letters or digits, registered per concept in the tables above. One prefix belongs to exactly one concept.
+- `<PREFIX>` is 2–5 uppercase letters or digits, registered per concept in the tables above. In CLF-C02 one prefix belongs to exactly one concept. (SAA-C03 uses shared domain-family prefixes; validation only requires every prefix to stay inside one topic.)
 - `<NNN>` is a 3-digit sequence per prefix, starting at `001`.
 - Numbering is serving order: Learn and Practice show the lowest unseen code first, so `001` should be the easy entry question.
 - Never rename or reuse a code. Retire a question with `"active": false` instead of deleting it.
@@ -439,10 +439,11 @@ Question (`questions/<topic-slug>.json`, an array of these; example only, not se
 | `difficulty` | `EASY`, `MEDIUM`, `HARD`. Describes cognitive difficulty, not length. |
 | `style` | `BASIC`, `UNDERSTANDING`, `COMPARISON`, `SCENARIO`, `ARCHITECTURE`. |
 | `question` | English. MULTIPLE_CHOICE prompts end with `(Select TWO.)`, `(Select THREE.)`, etc., matching the number of correct options. |
-| `options` | Keys `A`, `B`, `C`, ... in display order. English. |
+| `options` | Keys `A`, `B`, `C`, ... are canonical identities. English. Optional per-option `explanation` in Bahasa Indonesia. |
 | `tags` | Optional, lowercase kebab-case, no duplicates. |
 | `source` | Recommended. Official AWS documentation the answer can be checked against. |
 | `active` | Optional, defaults to `true`. |
+| `assessmentPack` | Only in `*.reserved.json`. Marks a sealed mock-exam question; CLF-C02 has no packs yet. |
 
 Concept (`concepts.json`):
 

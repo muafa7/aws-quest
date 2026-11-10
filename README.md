@@ -47,7 +47,19 @@ pnpm dev
 
 Then open `http://localhost:3000`.
 
-`pnpm db:setup` generates Prisma Client, syncs the local SQLite schema, and runs the idempotent seed pipeline.
+`pnpm db:setup` generates Prisma Client, applies the migrations in `prisma/migrations`, and runs the idempotent seed pipeline.
+
+### Upgrading a database created with `db push`
+
+Databases created before migrations existed have the `0_init` schema but no migration history. Stop the app, back up the SQLite file, then mark the baseline as applied and deploy the additive migrations:
+
+```bash
+pnpm exec prisma migrate resolve --applied 0_init
+pnpm db:deploy
+pnpm db:seed
+```
+
+All migrations after `0_init` only add nullable or defaulted columns and indexes; existing attempts, progress and mock history are kept.
 
 ## Useful commands
 
@@ -56,9 +68,12 @@ pnpm dev          # start Next.js in development
 pnpm build        # production build
 pnpm lint         # ESLint
 pnpm typecheck    # TypeScript check
-pnpm test:learning # learning-engine unit tests
+pnpm test         # unit + content-validation tests
+pnpm test:learning # learning-engine unit tests only
+pnpm test:db      # migrations + seed + selection checks on a throwaway SQLite file
 pnpm db:generate  # generate Prisma Client
-pnpm db:setup     # generate + db push + seed
+pnpm db:deploy    # apply pending migrations
+pnpm db:setup     # generate + migrate deploy + seed
 pnpm db:seed      # re-run idempotent content seeds
 pnpm content:validate # validate seed JSON and print coverage stats (no database writes)
 pnpm db:studio    # Prisma Studio
@@ -85,7 +100,7 @@ pnpm db:studio    # Prisma Studio
 
 Learning content lives under `prisma/seeds/` and is committed to Git. Stable certification codes, concept slugs, and question codes are used so the seeder can safely upsert content.
 
-The included content is only a **development starter bank**. The product target remains roughly 400 CLF-C02 questions and 800 SAA-C03 questions, with quality and concept coverage taking priority over raw count.
+The bank contains 415 CLF-C02 questions and 400 SAA-C03 questions. SAA-C03 splits into 270 training questions and 130 reserved questions in two sealed 65-question assessment packs, which never appear in Learn, Practice or standard mocks. The product target remains roughly 800 SAA-C03 questions; 19 SAA concepts still have fewer than 3 training questions and cannot reach mastery until expanded.
 
 See:
 

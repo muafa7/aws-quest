@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "@/lib/learning/question-pools";
 
 function requiredString(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -39,7 +40,7 @@ export async function startMockExam(formData: FormData) {
             orderBy: { order: "asc" },
             include: {
               questions: {
-                where: { active: true },
+                where: trainingQuestionWhere,
                 orderBy: { code: "asc" },
                 select: { id: true, options: { where: { isCorrect: true }, select: { key: true } } },
               },

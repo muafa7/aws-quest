@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { startMockExam } from "@/app/_actions/mock";
 import { Eyebrow, RetroPanel, StatusBadge } from "@/components/retro-panel";
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "@/lib/learning/question-pools";
 
 export default async function MockCertificationPage({ params }: { params: Promise<{ certification: string }> }) {
   const { certification: code } = await params;
@@ -14,7 +15,7 @@ export default async function MockCertificationPage({ params }: { params: Promis
     include: { _count: { select: { mockExams: true } } },
   });
   if (!certification) notFound();
-  const availableQuestions = await prisma.question.count({ where: { active: true, concept: { topic: { certificationId: certification.id } } } });
+  const availableQuestions = await prisma.question.count({ where: { ...trainingQuestionWhere, concept: { topic: { certificationId: certification.id } } } });
   const recent = await prisma.mockExam.findMany({ where: { certificationId: certification.id }, orderBy: { startedAt: "desc" }, take: 5 });
 
   return (
