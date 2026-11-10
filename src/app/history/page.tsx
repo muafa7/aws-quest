@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel, StatusBadge } from "@/components/retro-panel";
 
 export const metadata = { title: "History" };
+export const dynamic = "force-dynamic";
 
 export default async function HistoryPage() {
   const [attempts, exams, sessions] = await Promise.all([

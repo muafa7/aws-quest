@@ -10,6 +10,8 @@ import { recommendNext } from "@/lib/learning/recommendation";
 import { Eyebrow, RetroPanel, StatusBadge } from "@/components/retro-panel";
 import { CampaignMeters } from "@/components/progress-bar";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });
   const [progress, openSessions, lastLesson, activeExams] = await Promise.all([

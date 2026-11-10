@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel } from "@/components/retro-panel";
 
 export const metadata = { title: "Practice" };
+export const dynamic = "force-dynamic";
 
 export default async function PracticePage() {
   const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });

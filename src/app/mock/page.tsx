@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel, StatusBadge } from "@/components/retro-panel";
 
 export const metadata = { title: "Mock Exam" };
+export const dynamic = "force-dynamic";
 
 export default async function MockPage() {
   const certifications = await prisma.certification.findMany({
