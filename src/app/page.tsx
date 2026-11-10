@@ -12,7 +12,7 @@ import { CampaignMeters } from "@/components/progress-bar";
 
 export default async function HomePage() {
   const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });
-  const [progress, openSessions, lastLesson] = await Promise.all([
+  const [progress, openSessions, lastLesson, activeExams] = await Promise.all([
     Promise.all(certifications.map((certification) => certificationProgress(certification.code))),
     prisma.practiceSession.findMany({
       where: { endedAt: null, certification: { active: true } },
@@ -24,9 +24,20 @@ export default async function HomePage() {
       orderBy: { answeredAt: "desc" },
       select: { question: { select: { concept: { select: { slug: true, name: true, topic: { select: { certification: { select: { code: true } } } } } } } } },
     }),
+    prisma.mockExam.findMany({
+      where: { status: "IN_PROGRESS", certification: { active: true } },
+      include: { certification: { select: { code: true } } },
+      orderBy: { startedAt: "desc" },
+    }),
   ]);
   const openSessionFor = (code: string) => openSessions.find((session) => session.certification.code === code) ?? null;
   const resumable = [
+    ...activeExams.map((exam) => ({
+      key: `exam-${exam.id}`,
+      href: `/mock/${exam.certification.code}/${exam.id}`,
+      title: `Resume ${exam.assessmentMode === "FRESH" ? "fresh exam" : "mock exam"} #${exam.id}`,
+      detail: `${exam.certification.code} \u00b7 the timer keeps running while you are away`,
+    })),
     ...openSessions.filter((session) => session.questionCount > 0).map((session) => ({
       key: `session-${session.id}`,
       href: `/practice/${session.certification.code}?session=${session.id}`,

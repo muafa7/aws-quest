@@ -526,4 +526,5 @@ Good candidates for comparison questions and for checking that explanations name
 - Feedback shows the original question, both answers, the concept's `generalExplanation` and `keyNote`, and every option with its `explanation` when present. It opens automatically for wrong or LOW-confidence answers and stays one click away otherwise.
 - Practice shows the concept name above each question.
 - Options are shuffled per display with positional letters. The shown order and the option wording are stored on each attempt, so later edits do not change past reviews.
-- Mock exams currently take the first questions of each domain in concept and code order, so every mock contains the same questions. Fixing this is outside the content work.
+- Standard mocks sample training questions by the domain blueprint (largest remainder). Within a domain, never-answered questions come first, then questions seen only in Learn or Practice, then questions already shown in a mock; each tier is shuffled, and the final order and option positions are shuffled too. A domain with too few training questions gives its seats to the others.
+- Sealed fresh mocks use one `*.reserved.json` pack as-is: the whole pack, once. A pack is offered only while it is complete and none of its questions has been shown anywhere in the app.

@@ -170,6 +170,14 @@ model MockExam {
   durationMinutes Int
   questionCount   Int
   correctCount    Int                @default(0)
+  /// Certification code while IN_PROGRESS, null afterwards: at most one active exam per certification
+  activeKey       String?            @unique
+  /// STANDARD draws from the training bank; FRESH uses one sealed assessment pack
+  assessmentMode  String             @default("STANDARD")
+  /// A sealed pack can be started once
+  assessmentPackId String?           @unique
+  /// VALID or EXPIRED, checked on the server at submit; null for exams taken before this was recorded
+  timeValidity    String?
   certification   Certification      @relation(fields: [certificationId], references: [id], onDelete: Cascade)
   questions       MockExamQuestion[]
 
@@ -184,6 +192,16 @@ model MockExamQuestion {
   selectedOptionsSnapshot String?
   correctOptionsSnapshot  String
   isCorrect               Boolean?
+  /// JSON array of canonical option keys in the order they are shown
+  optionOrderSnapshot     String?
+  /// JSON array of { key, text, explanation } as the options read when the exam started
+  optionsSnapshot         String?
+  questionTextSnapshot    String?
+  /// Autosaved answer while the exam is in progress; never graded until submit
+  selectedDraftSnapshot   String?
+  flagged                 Boolean  @default(false)
+  /// Whether the question had never been answered in AWS Quest when the exam started; null for older exams
+  wasUnseenAtStart        Boolean?
   mockExam                MockExam @relation(fields: [mockExamId], references: [id], onDelete: Cascade)
   question                Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
 

@@ -120,7 +120,7 @@ export default async function MistakesPage({ searchParams }: { searchParams: Pro
           where: mockWhere,
           orderBy: [{ mockExam: { endedAt: "desc" } }, { position: "asc" }],
           take,
-          include: { mockExam: { select: { id: true, startedAt: true, endedAt: true } }, question: { select: { prompt: true, sourceUrl: true, options: optionSelect, concept: conceptSelect } } },
+          include: { mockExam: { select: { id: true, startedAt: true, endedAt: true, assessmentMode: true } }, question: { select: { prompt: true, sourceUrl: true, options: optionSelect, concept: conceptSelect } } },
         })
       : [],
   ]);
@@ -141,9 +141,16 @@ export default async function MistakesPage({ searchParams }: { searchParams: Pro
       id: `mock-${item.id}`,
       at: item.mockExam.endedAt ?? item.mockExam.startedAt,
       source: "MOCK",
-      context: `Mock #${item.mockExam.id}, Q${item.position}`,
-      prompt: item.question.prompt,
-      record: { isCorrect: false, confidence: null, selectedOptionsSnapshot: item.selectedOptionsSnapshot, correctOptionsSnapshot: item.correctOptionsSnapshot },
+      context: `${item.mockExam.assessmentMode === "FRESH" ? "Fresh mock" : "Mock"} #${item.mockExam.id}, Q${item.position}`,
+      prompt: item.questionTextSnapshot ?? item.question.prompt,
+      record: {
+        isCorrect: false,
+        confidence: null,
+        selectedOptionsSnapshot: item.selectedOptionsSnapshot,
+        correctOptionsSnapshot: item.correctOptionsSnapshot,
+        optionOrderSnapshot: item.optionOrderSnapshot,
+        optionsSnapshot: item.optionsSnapshot,
+      },
       options: item.question.options,
       concept: item.question.concept,
       sourceUrl: item.question.sourceUrl ?? item.question.concept.referenceUrl,

@@ -41,7 +41,7 @@ export default async function HistoryPage() {
           </RetroPanel>
           <RetroPanel tone="violet">
             <div className="panel-heading"><ArcadeIcon name="mock" /><h2>Mock exams</h2></div>
-            <div>{exams.map((exam) => <Link key={exam.id} href={`/mock/${exam.certification.code}/${exam.id}`} className="log-row"><div className="log-row__top"><span>{exam.certification.code} #{exam.id}</span><span>{exam.status === "COMPLETED" ? `${exam.correctCount}/${exam.questionCount}` : "IN PROGRESS"}</span></div><p className="activity-meta">{exam.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
+            <div>{exams.map((exam) => <Link key={exam.id} href={`/mock/${exam.certification.code}/${exam.id}`} className="log-row"><div className="log-row__top"><span>{exam.certification.code} {exam.assessmentMode === "FRESH" ? "fresh " : ""}#{exam.id}</span><span>{exam.status === "COMPLETED" ? `${exam.correctCount}/${exam.questionCount}` : "IN PROGRESS"}</span></div><p className="activity-meta">{exam.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
             {exams.length === 0 ? <p className="empty-plate">No mock exams recorded yet.</p> : null}
           </RetroPanel>
         </div>

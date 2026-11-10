@@ -15,7 +15,8 @@ AWS Quest currently implements the V1 application shell for:
 - a mistakes page filtered by certification, domain, source, session and confidence
 - concept-level spaced review
 - concept mastery tracking
-- timed mock exams with blueprint-aware topic weighting
+- timed mock exams sampled by the domain blueprint, with shuffled questions and options, autosaved answers and flags, a question map, resume, a submit confirmation, and a full answer review
+- one-time sealed fresh mocks built from reserved assessment packs
 - certification progress and activity history
 
 The app intentionally has **no runtime AI dependency**, no separate backend service, and no authentication in V1.
@@ -125,6 +126,8 @@ Regular practice prioritizes, in broad order:
 Question selection prefers an unseen question from the chosen concept, then a question outside the recent-question window, before allowing an exact repeat.
 
 The spaced-review MVP uses stages of 1, 3, 7, 14, 30, and 60 days. A correct answer before the review is due keeps the current stage and due date, so answering several questions in one sitting cannot inflate the interval. A wrong answer lowers the stage and never pushes a pending review later.
+
+Mock exams allow one active exam per certification, enforced by a unique key in the database. Answers and flags autosave; the server checks the submit time against the deadline (30-second grace) and records the exam as on time or late, and only the first submission is graded. Each mock question records whether it had never been answered in AWS Quest when the exam started, so first-sight accuracy can be separated from repeats. A sealed pack can be started once and is refused if any of its questions was already shown.
 
 A concept is cleared only from Practice, where the lesson is not on screen: the last three Practice answers must be correct, not LOW confidence, on three different questions, and span at least two days. Learn answers still schedule reviews but never clear a concept. Concepts cleared under the earlier rule keep their status until the next wrong answer.
 
