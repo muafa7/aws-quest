@@ -187,7 +187,8 @@
       "AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency information untuk migration planning.",
       "AWS Migration Hub mengagregasi migration information sehingga progress dapat dilihat dan dilacak dari satu tempat.",
       "Migration Evaluator membantu assessment dan directional business case menggunakan inventory serta utilization data.",
-      "Database migration memiliki tools khusus seperti AWS DMS; jangan menyamakan server rehosting dengan database migration."
+      "Database migration memiliki tools khusus seperti AWS DMS; jangan menyamakan server rehosting dengan database migration.",
+      "Discovery Service dan Migration Hub ditutup bagi pelanggan baru sejak 7 November 2025. Bedakan pengenalan fungsi untuk ujian dari rekomendasi implementasi baru; periksa AWS Transform untuk kebutuhan baru."
     ],
     "order": 1
   },
@@ -269,13 +270,14 @@
   {
     "concept": "clf-root-user",
     "title": "AWS Account Root User",
-    "summary": "Root user memiliki complete access ke AWS account sehingga harus diperlakukan sebagai emergency/highly privileged identity, bukan identity untuk pekerjaan harian.",
+    "summary": "Root adalah identitas sangat berprivilege dalam AWS account dan bukan identity untuk pekerjaan harian.",
     "keyPoints": [
       "Gunakan root user hanya untuk tasks yang benar-benar membutuhkan root credentials.",
       "Aktifkan MFA dan lindungi account-recovery mechanisms.",
       "Jangan membuat long-term access keys untuk root user.",
       "Gunakan IAM Identity Center atau administrative roles/users yang sesuai untuk day-to-day administration.",
-      "Monitor penggunaan root credentials dan simpan credentials dengan kontrol yang ketat."
+      "Monitor penggunaan root credentials dan simpan credentials dengan kontrol yang ketat.",
+      "Root pada member account dapat dibatasi oleh SCP. Gunakan istilah highly privileged, bukan selalu unrestricted."
     ],
     "order": 1
   },
@@ -472,9 +474,10 @@
     "keyPoints": [
       "CloudTrail records events dari console, CLI, SDK/API, dan AWS services.",
       "Event history menyediakan 90 hari management events di Region.",
-      "Trails atau CloudTrail Lake digunakan untuk ongoing collection/retention dan analysis.",
+      "Trail yang dikonfigurasi dapat mengirim event ke S3 untuk retensi di luar 90 hari; kebutuhan retensi dan analisis harus dikonfigurasi.",
       "CloudTrail berfokus pada account/API activity; CloudWatch berfokus pada operational metrics/logs/alarms.",
-      "CloudTrail records mendukung security investigation, governance, dan audit use cases."
+      "CloudTrail records mendukung security investigation, governance, dan audit use cases.",
+      "CloudTrail Lake tidak menerima pelanggan baru sejak 31 Mei 2026; jangan merekomendasikannya sebagai opsi terbuka untuk semua akun baru."
     ],
     "order": 1
   },
@@ -530,7 +533,7 @@
     ],
     "order": 1
   },
-{
+  {
     "concept": "clf-aws-access-methods",
     "title": "Ways to Access AWS",
     "summary": "AWS menyediakan web console dan programmatic interfaces. Pilih interface berdasarkan apakah pekerjaan bersifat interaktif, scripted, atau tertanam langsung dalam aplikasi.",
@@ -637,7 +640,8 @@
       "ELB dapat route traffic ke targets seperti EC2 instances, containers, dan IP addresses.",
       "Health checks membantu menghindari routing traffic ke unhealthy targets.",
       "Load balancer dapat bekerja across multiple Availability Zones untuk meningkatkan availability.",
-      "ELB mendistribusikan traffic; EC2 Auto Scaling menambah atau mengurangi compute capacity."
+      "ELB mendistribusikan traffic; EC2 Auto Scaling menambah atau mengurangi compute capacity.",
+      "Jangan menghafal \"unhealthy target tidak pernah menerima traffic\": ALB dapat fail open jika seluruh target tidak sehat."
     ],
     "order": 1
   },
@@ -754,7 +758,7 @@
     ],
     "order": 1
   },
-{
+  {
     "concept": "clf-cloudfront",
     "title": "Amazon CloudFront",
     "summary": "CloudFront adalah AWS content delivery network yang mempercepat static dan dynamic content dengan edge locations di seluruh dunia.",
@@ -814,7 +818,8 @@
       "EBS cocok untuk boot volumes, databases, dan data yang harus persisten.",
       "Instance store adalah temporary block storage physically attached ke instance host.",
       "Instance-store data dapat hilang ketika instance stops, hibernates, terminates, atau underlying host fails.",
-      "Instance store cocok untuk caches, buffers, scratch data, dan replicated data yang dapat dibuat ulang."
+      "Instance store cocok untuk caches, buffers, scratch data, dan replicated data yang dapat dibuat ulang.",
+      "EBS bertahan saat stop/start, tetapi dapat terhapus saat termination jika DeleteOnTermination aktif. Simpan backup untuk data penting."
     ],
     "order": 1
   },
@@ -914,7 +919,8 @@
       "OpenSearch Service menyediakan managed search dan log analytics.",
       "Amazon QuickSight evolved into Amazon Quick; its BI capability is now called Amazon Quick Sight.",
       "Quick Sight digunakan untuk interactive visualizations, dashboards, dan business intelligence.",
-      "Pilih Kinesis untuk streams, OpenSearch untuk search/log analytics, dan Quick Sight untuk BI."
+      "Pilih Kinesis untuk streams, OpenSearch untuk search/log analytics, dan Quick Sight untuk BI.",
+      "Kinesis menggunakan shards; jangan menganggap seluruh stream multi-shard memiliki satu urutan global."
     ],
     "order": 1
   },
@@ -961,11 +967,11 @@
     "title": "AWS End-User Computing",
     "summary": "AWS menyediakan managed virtual desktops, application streaming, dan isolated browser access untuk end users.",
     "keyPoints": [
-      "Amazon WorkSpaces provides managed virtual desktop experiences.",
-      "Amazon WorkSpaces Applications, formerly AppStream 2.0, streams desktop applications to users without local installation.",
-      "WorkSpaces Secure Browser provides isolated browser sessions for internal web and SaaS applications.",
-      "AWS announced WorkSpaces Secure Browser will close to new customers starting October 29, 2026; existing customers can continue using it.",
-      "Choose full desktop, streamed application, or browser-only access based on the user requirement."
+      "WorkSpaces Personal menyediakan desktop persisten; WorkSpaces Pools menyediakan desktop non-persisten.",
+      "WorkSpaces Applications, sebelumnya AppStream 2.0, melakukan streaming aplikasi desktop tanpa pemasangan lokal.",
+      "Secure Browser menyediakan hosted browser khusus untuk akses web terisolasi.",
+      "Secure Browser tidak menerima pelanggan baru sejak 29 Oktober 2026; pelanggan lama dapat tetap menggunakannya.",
+      "WorkSpaces Applications dengan image browser yang dikelola sendiri adalah alternatif, tetapi berbeda dari layanan hosted browser khusus."
     ],
     "order": 1
   },
@@ -981,7 +987,7 @@
     ],
     "order": 1
   },
-{
+  {
     "concept": "clf-on-demand-spot",
     "title": "On-Demand and Spot Instances",
     "summary": "On-Demand dan Spot adalah dua EC2 purchasing options dengan trade-off utama antara flexibility dan interruption risk.",
@@ -1080,7 +1086,8 @@
       "Business Support+ menambahkan 24/7 technical support, full Trusted Advisor checks, dan faster response untuk critical cases.",
       "Enterprise Support menambahkan designated TAM, strategic guidance, dan faster production-critical response.",
       "Unified Operations menambahkan designated specialist team, proactive workload monitoring, personalized runbooks/reviews, dan rapid incident engagement.",
-      "Developer Support, Business Support, dan Enterprise On-Ramp adalah transitional legacy plans yang dijadwalkan end-of-support 1 Januari 2027."
+      "Developer Support, Business Support, dan Enterprise On-Ramp adalah transitional legacy plans yang dijadwalkan end-of-support 1 Januari 2027.",
+      "Tanggal 1 Januari 2027 bukan penghapusan universal di semua Region: paket lama tetap tersedia di AWS GovCloud (US). Initial response bukan resolution SLA."
     ],
     "order": 1
   },
@@ -1106,7 +1113,8 @@
       "Signed-in Health Dashboard menampilkan account-specific events dan affected resources ketika available.",
       "Scheduled changes membantu customer menyiapkan maintenance atau lifecycle events.",
       "AWS Health API memberikan programmatic access dan memerlukan eligible paid support plan.",
-      "AWS Health memberi event context; Trusted Advisor memberi best-practice recommendations."
+      "AWS Health memberi event context; Trusted Advisor memberi best-practice recommendations.",
+      "Business/Enterprise On-Ramp/Enterprise legacy dapat memenuhi syarat API dalam kondisi transisi atau Region tertentu; tidak semua paid plan otomatis memenuhi syarat."
     ],
     "order": 1
   },

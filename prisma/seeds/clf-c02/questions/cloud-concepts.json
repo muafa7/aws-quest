@@ -5,26 +5,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "A startup wants to avoid purchasing servers before it knows how much capacity customers will require. Which AWS Cloud benefit MOST directly addresses this goal?",
+    "question": "A startup wants to pay for compute as it uses it rather than buy servers before launching its application. Which cloud benefit most directly meets this goal?",
     "options": [
       {
         "key": "A",
-        "text": "Require hardware purchases sized for peak demand",
+        "text": "Benefit from lower unit costs through provider purchasing scale",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Trade large upfront fixed expenses for variable, usage-based expenses",
+        "text": "Replace upfront infrastructure purchases with usage-based spending",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Use only long-term hardware contracts",
+        "text": "Provision development environments more quickly",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Keep spare physical servers in a company-owned data center",
+        "text": "Deploy applications closer to users in other countries",
         "correct": false
       }
     ],
@@ -49,12 +49,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Dedicated tenancy",
+        "text": "Economies of scale",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Data sovereignty",
+        "text": "High availability",
         "correct": false
       },
       {
@@ -64,7 +64,7 @@
       },
       {
         "key": "D",
-        "text": "Long-term capacity reservation",
+        "text": "Global reach",
         "correct": false
       }
     ],
@@ -89,22 +89,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Reduce the undifferentiated work of running data centers",
+        "text": "Reduce the work of operating physical data centers",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Increase the number of physical servers the company owns",
+        "text": "Reduce user latency by deploying in additional Regions",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Require every workload to use dedicated hardware",
+        "text": "Reduce unit costs through aggregated purchasing power",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Replace variable costs with larger capital purchases",
+        "text": "Improve availability through redundant application components",
         "correct": false
       }
     ],
@@ -129,22 +129,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Using only one Availability Zone",
+        "text": "Trade fixed expenses for variable expenses",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Purchasing hardware several years in advance",
+        "text": "Benefit from economies of scale",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Keeping all workloads in a single physical facility",
+        "text": "Improve fault tolerance within one location",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Expanding globally using AWS infrastructure in multiple geographic areas",
+        "text": "Deploy globally without building local data centers",
         "correct": true
       }
     ],
@@ -169,22 +169,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Owning spare servers permanently",
+        "text": "Reserve peak capacity for the entire year",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Accessing capacity as needed instead of guessing far in advance",
+        "text": "Provision capacity when it is needed",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Using fixed hardware capacity for the life of the application",
+        "text": "Move peak capacity to dedicated hardware",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Purchasing a second company-owned data center",
+        "text": "Commit to fixed capacity before measuring demand",
         "correct": false
       }
     ],
@@ -209,22 +209,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS requires customers to buy all hardware before deployment",
+        "text": "Cloud usage requires a fixed hardware purchase before resources can be provisioned",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Traditional infrastructure always charges only for resources that are actively consumed",
+        "text": "On-premises server purchases vary automatically with daily utilization",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS can use variable, usage-based spending instead of requiring the same large fixed investment before capacity is needed",
+        "text": "Cloud consumption can replace large upfront purchases with usage-based spending",
         "correct": true
       },
       {
         "key": "D",
-        "text": "AWS removes all operating costs regardless of how many resources are used",
+        "text": "Cloud consumption guarantees a fixed monthly bill regardless of resource use",
         "correct": false
       }
     ],
@@ -254,12 +254,12 @@
       },
       {
         "key": "B",
-        "text": "Own and maintain every physical server used by the workload",
+        "text": "Avoid paying for resources that remain provisioned but idle",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Purchase enough hardware for several years of peak demand before launch",
+        "text": "Receive unlimited capacity at a fixed monthly price",
         "correct": false
       },
       {
@@ -269,7 +269,7 @@
       },
       {
         "key": "E",
-        "text": "Use a fixed amount of capacity that cannot be changed after deployment",
+        "text": "Transfer responsibility for application access permissions to AWS",
         "correct": false
       }
     ],
@@ -294,22 +294,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Each customer must purchase separate AWS data centers",
+        "text": "Each customer reserves a separate data center",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS limits every customer to the same fixed capacity",
+        "text": "Customers must purchase the same amount of capacity",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Customers are required to own the physical hardware they use",
+        "text": "All customers receive the same service quotas",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS aggregates usage across many customers and operates infrastructure at very large scale",
+        "text": "AWS combines demand and purchasing power across many customers",
         "correct": true
       }
     ],
@@ -338,17 +338,17 @@
       },
       {
         "key": "B",
-        "text": "A requirement to purchase all capacity as capital expenditure",
+        "text": "Spending automatically stays below a monthly budget",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Capacity that grows and shrinks automatically as application demand changes",
+        "text": "Application capacity automatically follows changes in demand",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A requirement to use only dedicated physical hosts",
+        "text": "Workloads automatically recover from an Availability Zone failure",
         "correct": false
       }
     ],
@@ -373,22 +373,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Economies of scale adjust capacity as demand changes, while elasticity lowers unit cost through provider scale",
+        "text": "Economies of scale: capacity adjustments as demand changes; Elasticity: lower unit costs through provider scale.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Economies of scale keep a workload available during a component failure, while elasticity trades a fixed expense for a variable expense",
+        "text": "Economies of scale: lower unit costs through provider scale; Elasticity: continued service during component failures.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Economies of scale can reduce unit costs through provider scale, while elasticity adjusts capacity as demand changes",
+        "text": "Economies of scale: lower unit costs through provider scale; Elasticity: capacity adjustments as demand changes.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Economies of scale and elasticity mean exactly the same thing",
+        "text": "Economies of scale: continued service during component failures; Elasticity: capacity adjustments as demand changes.",
         "correct": false
       }
     ],
@@ -413,7 +413,7 @@
     "options": [
       {
         "key": "A",
-        "text": "The provider avoids using physical infrastructure",
+        "text": "Each customer commits to purchasing a dedicated physical server",
         "correct": false
       },
       {
@@ -423,12 +423,12 @@
       },
       {
         "key": "C",
-        "text": "The provider keeps every customer's hardware permanently idle",
+        "text": "Each workload runs continuously at its peak capacity",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The provider requires every workload to run at peak capacity",
+        "text": "Customers perform their own hardware maintenance",
         "correct": false
       }
     ],
@@ -453,7 +453,7 @@
     "options": [
       {
         "key": "A",
-        "text": "They guarantee that application demand never changes",
+        "text": "A customer must buy its own infrastructure to share provider efficiencies",
         "correct": false
       },
       {
@@ -463,12 +463,12 @@
       },
       {
         "key": "C",
-        "text": "They require customers to maintain unused peak capacity",
+        "text": "Lower unit prices remove the need to monitor resource consumption",
         "correct": false
       },
       {
         "key": "D",
-        "text": "They automatically make every workload highly available",
+        "text": "Provider scale guarantees a lower total bill for every possible workload",
         "correct": false
       },
       {
@@ -508,12 +508,12 @@
       },
       {
         "key": "C",
-        "text": "A workload can grow over time but must keep all added capacity permanently",
+        "text": "Capacity can support increased workloads by adding resources",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Data is retained for a specified period regardless of access pattern",
+        "text": "Stored data remains intact despite failures of storage components",
         "correct": false
       }
     ],
@@ -553,7 +553,7 @@
       },
       {
         "key": "D",
-        "text": "Dedicated tenancy",
+        "text": "Economies of scale",
         "correct": false
       }
     ],
@@ -578,22 +578,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Elasticity keeps a workload available during a component failure, while high availability adjusts capacity as demand changes",
+        "text": "Elasticity: minimizing service interruption during failures; High availability: adjusting capacity to changing demand.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Elasticity is only for databases, while high availability is only for compute",
+        "text": "Elasticity: adjusting capacity to changing demand; High availability: preserving stored data over time.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Elasticity requires multiple AWS Regions, while high availability requires only one server",
+        "text": "Elasticity: preserving stored data over time; High availability: minimizing service interruption during failures.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Elasticity adjusts capacity as demand changes, while high availability focuses on keeping a workload available during failures",
+        "text": "Elasticity: adjusting capacity to changing demand; High availability: minimizing service interruption during failures.",
         "correct": true
       }
     ],
@@ -618,7 +618,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Keep the peak capacity running continuously",
+        "text": "Reserve the annual peak capacity for a three-year term",
         "correct": false
       },
       {
@@ -628,12 +628,12 @@
       },
       {
         "key": "C",
-        "text": "Move the application to a single larger physical server",
+        "text": "Switch the peak capacity to Dedicated Hosts",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Disable scaling so the capacity never changes",
+        "text": "Keep fixed capacity but enable more detailed monitoring",
         "correct": false
       }
     ],
@@ -663,7 +663,7 @@
       },
       {
         "key": "B",
-        "text": "Keeping maximum capacity running permanently regardless of demand",
+        "text": "Reserve a fixed number of servers for a three-year term",
         "correct": false
       },
       {
@@ -678,7 +678,7 @@
       },
       {
         "key": "E",
-        "text": "Deploying the same fixed capacity in every environment",
+        "text": "Replicate a fixed-capacity application to a second Availability Zone",
         "correct": false
       }
     ],
@@ -743,22 +743,22 @@
     "options": [
       {
         "key": "A",
-        "text": "High availability adjusts capacity as demand changes, while elasticity keeps a workload available during failures",
+        "text": "High availability: adjusting capacity to changing demand; Elasticity: maintaining service during component failures.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "High availability and elasticity are two names for the same behavior",
+        "text": "High availability: maintaining service during component failures; Elasticity: lowering unit prices through provider purchasing scale.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "High availability changes capacity only for cost reasons, while elasticity handles hardware failures",
+        "text": "High availability: lowering unit prices through provider purchasing scale; Elasticity: adjusting capacity to changing demand.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "High availability focuses on continuing service through failures, while elasticity adjusts capacity to changing demand",
+        "text": "High availability: maintaining service during component failures; Elasticity: adjusting capacity to changing demand.",
         "correct": true
       }
     ],
@@ -788,17 +788,17 @@
       },
       {
         "key": "B",
-        "text": "Run all components on one large instance",
+        "text": "Choose a larger instance for the only application server",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Keep only one active copy of each critical component",
+        "text": "Create more frequent backups of the only application server",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Place all compute resources in the same Availability Zone",
+        "text": "Purchase a longer reservation for the existing instance",
         "correct": false
       }
     ],
@@ -823,12 +823,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Create backups less frequently",
+        "text": "Create a longer-term compute commitment",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Store the backups for a longer retention period",
+        "text": "Increase the retention period for database backups",
         "correct": false
       },
       {
@@ -864,7 +864,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Depend on a single active resource with no replacement",
+        "text": "Increase the size of the only application instance",
         "correct": false
       },
       {
@@ -874,12 +874,12 @@
       },
       {
         "key": "C",
-        "text": "Keep all resources in one failure location",
+        "text": "Purchase a three-year pricing commitment",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Provision only enough capacity for normal demand and ignore failures",
+        "text": "Retain more historical application logs",
         "correct": false
       },
       {
@@ -909,22 +909,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Automatically modify every AWS resource without customer review",
+        "text": "Estimate charges for a proposed set of AWS resources",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Provide a legal compliance certification for every workload",
+        "text": "Assess organizational skills and business readiness for cloud adoption",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Provide a consistent way to evaluate workloads against AWS architectural best practices and identify improvements",
+        "text": "Review workload architecture against AWS best practices",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Replace the need to define business requirements",
+        "text": "Track server migration progress across applications",
         "correct": false
       }
     ],
@@ -1028,7 +1028,7 @@
     "options": [
       {
         "key": "A",
-        "text": "A guarantee that the workload will never fail",
+        "text": "A price estimate for every service the team might deploy",
         "correct": false
       },
       {
@@ -1038,12 +1038,12 @@
       },
       {
         "key": "C",
-        "text": "Automatic replacement of all resources with the cheapest alternatives",
+        "text": "An inventory of software licenses across accounts",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A certification that removes the need for future architecture reviews",
+        "text": "An organization-wide assessment of employee cloud skills",
         "correct": false
       }
     ],
@@ -1113,17 +1113,17 @@
       },
       {
         "key": "B",
-        "text": "Minimizing environmental impact regardless of operational process",
+        "text": "Reducing the environmental impact of resource consumption",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Selecting only the lowest-priced AWS resources",
+        "text": "Delivering required business outcomes at an appropriate cost",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Protecting data by replacing all operational procedures with encryption",
+        "text": "Protecting data and systems from unauthorized access",
         "correct": false
       }
     ],
@@ -1187,22 +1187,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Operational Excellence focuses only on reducing cost, while Reliability focuses only on encryption",
+        "text": "Operational Excellence: performing consistently and recovering from disruptions; Reliability: improving operational processes and learning from events.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Operational Excellence and Reliability are different names for the same pillar",
+        "text": "Operational Excellence: improving operational processes and learning from events; Reliability: reducing environmental impact per unit of work.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Operational Excellence focuses on how teams operate and continuously improve workloads, while Reliability focuses on workloads performing their intended function and recovering from disruptions",
+        "text": "Operational Excellence: improving operational processes and learning from events; Reliability: performing consistently and recovering from disruptions.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Operational Excellence focuses on environmental impact, while Reliability focuses on purchasing models",
+        "text": "Operational Excellence: reducing environmental impact per unit of work; Reliability: performing consistently and recovering from disruptions.",
         "correct": false
       }
     ],
@@ -1233,7 +1233,7 @@
       },
       {
         "key": "B",
-        "text": "Depend on undocumented manual steps known only by one operator",
+        "text": "Use manually repeated procedures without versioned documentation",
         "correct": false
       },
       {
@@ -1243,12 +1243,12 @@
       },
       {
         "key": "D",
-        "text": "Combine many unrelated changes into large releases to reduce deployment frequency",
+        "text": "Combine unrelated changes into one large release to minimize deployments",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Avoid reviewing operational events after they are resolved",
+        "text": "Limit incident reviews to confirming that service has been restored",
         "correct": false
       }
     ],
@@ -1274,17 +1274,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Reducing environmental impact by maximizing resource utilization",
+        "text": "Reducing environmental impact per unit of work",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Ensuring every resource uses the least expensive pricing option",
+        "text": "Achieving required business outcomes at an appropriate cost",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Increasing application throughput without considering access controls",
+        "text": "Choosing resources that meet performance requirements efficiently",
         "correct": false
       },
       {
@@ -1318,17 +1318,17 @@
       },
       {
         "key": "B",
-        "text": "Maximum utilization",
+        "text": "Separation of duties",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Horizontal scaling",
+        "text": "Defense in depth",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Economies of scale",
+        "text": "Traceability",
         "correct": false
       }
     ],
@@ -1353,22 +1353,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Security focuses on reducing cost, while Reliability focuses on license management",
+        "text": "Security: maintaining correct operation and recovering from disruptions; Reliability: protecting data, systems, and assets.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Security focuses on protecting data, systems, and assets, while Reliability focuses on consistent operation and recovery from disruptions",
+        "text": "Security: protecting data, systems, and assets; Reliability: maintaining correct operation and recovering from disruptions.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Security focuses on resource utilization, while Reliability focuses on carbon intensity",
+        "text": "Security: protecting data, systems, and assets; Reliability: minimizing expenditure for required business outcomes.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Security and Reliability have identical goals and practices",
+        "text": "Security: minimizing expenditure for required business outcomes; Reliability: maintaining correct operation and recovering from disruptions.",
         "correct": false
       }
     ],
@@ -1394,7 +1394,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Grant permanent administrator permissions to every developer",
+        "text": "Assign broad permissions to avoid repeated access requests",
         "correct": false
       },
       {
@@ -1404,7 +1404,7 @@
       },
       {
         "key": "C",
-        "text": "Disable logging to reduce storage usage",
+        "text": "Rely on encryption instead of reviewing access policies",
         "correct": false
       },
       {
@@ -1414,7 +1414,7 @@
       },
       {
         "key": "E",
-        "text": "Treat security incidents as impossible once encryption is enabled",
+        "text": "Use a shared administrative identity to simplify activity tracking",
         "correct": false
       }
     ],
@@ -1440,12 +1440,12 @@
     "options": [
       {
         "key": "A",
-        "text": "A workload always using the newest instance family",
+        "text": "Selecting resource configurations that meet performance targets",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A workload always choosing the lowest possible monthly cost",
+        "text": "Delivering required business outcomes at an appropriate cost",
         "correct": false
       },
       {
@@ -1455,7 +1455,7 @@
       },
       {
         "key": "D",
-        "text": "A workload minimizing environmental impact regardless of business requirements",
+        "text": "Reducing the environmental impact of resource consumption",
         "correct": false
       }
     ],
@@ -1519,22 +1519,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Reliability emphasizes correct, consistent operation and recovery, while Performance Efficiency emphasizes efficient use of resources to meet performance requirements",
+        "text": "Reliability: consistent operation and recovery from disruptions; Performance Efficiency: efficient resource choices that meet performance requirements.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Reliability is about software licensing, while Performance Efficiency is about physical security",
+        "text": "Reliability: efficient resource choices that meet performance requirements; Performance Efficiency: consistent operation and recovery from disruptions.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reliability is about minimizing environmental impact, while Performance Efficiency is about account governance",
+        "text": "Reliability: consistent operation and recovery from disruptions; Performance Efficiency: protecting data from unauthorized access.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Reliability and Performance Efficiency are identical because both use computing resources",
+        "text": "Reliability: protecting data from unauthorized access; Performance Efficiency: efficient resource choices that meet performance requirements.",
         "correct": false
       }
     ],
@@ -1560,12 +1560,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Assume failures will not occur in managed cloud services",
+        "text": "Treat backups as sufficient without testing restoration",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Keep all critical dependencies on one component to simplify operations",
+        "text": "Concentrate critical components on one larger server",
         "correct": false
       },
       {
@@ -1575,7 +1575,7 @@
       },
       {
         "key": "D",
-        "text": "Avoid monitoring service quotas because capacity never affects reliability",
+        "text": "Plan capacity without reviewing applicable service quotas",
         "correct": false
       },
       {
@@ -1606,7 +1606,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Purchase maximum capacity regardless of utilization",
+        "text": "Recovering the workload from infrastructure disruptions",
         "correct": false
       },
       {
@@ -1616,12 +1616,12 @@
       },
       {
         "key": "C",
-        "text": "Minimize cost even when performance requirements are not met",
+        "text": "Delivering required business value at an appropriate cost",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Replace all managed services with self-managed infrastructure",
+        "text": "Improving how operational procedures are performed",
         "correct": false
       }
     ],
@@ -1685,22 +1685,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Performance Efficiency always means selecting the cheapest resource, while Cost Optimization always means selecting the fastest resource",
+        "text": "Performance Efficiency: delivering required business value at an appropriate cost; Cost Optimization: using resources efficiently to meet performance requirements.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Performance Efficiency is about identity controls, while Cost Optimization is about disaster recovery",
+        "text": "Performance Efficiency: using resources efficiently to meet performance requirements; Cost Optimization: protecting data through identity and access controls.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Performance Efficiency and Cost Optimization cannot influence the same design decision",
+        "text": "Performance Efficiency: protecting data through identity and access controls; Cost Optimization: delivering required business value at an appropriate cost.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Performance Efficiency focuses on efficient resource use to meet performance requirements, while Cost Optimization focuses on delivering business value at the appropriate lowest price point",
+        "text": "Performance Efficiency: using resources efficiently to meet performance requirements; Cost Optimization: delivering required business value at an appropriate cost.",
         "correct": true
       }
     ],
@@ -1731,12 +1731,12 @@
       },
       {
         "key": "B",
-        "text": "Keep the original resource choice permanently even when requirements change",
+        "text": "Use the original resource configuration without further measurement",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Provision the largest possible resource for every workload without testing",
+        "text": "Use only a resource price comparison when selecting an instance",
         "correct": false
       },
       {
@@ -1746,7 +1746,7 @@
       },
       {
         "key": "E",
-        "text": "Choose resources only by monthly price and ignore performance requirements",
+        "text": "Add capacity before checking which resource limits performance",
         "correct": false
       }
     ],
@@ -1777,17 +1777,17 @@
       },
       {
         "key": "B",
-        "text": "Maximize resource size regardless of utilization",
+        "text": "Recovering service after infrastructure failures",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Minimize environmental impact as the only design objective",
+        "text": "Reducing the environmental impact per unit of work",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Require all workloads to use dedicated hardware",
+        "text": "Improving incident-response procedures",
         "correct": false
       }
     ],
@@ -1811,7 +1811,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Increasing fixed capacity for every possible peak",
+        "text": "Purchasing peak capacity before measuring demand",
         "correct": false
       },
       {
@@ -1821,12 +1821,12 @@
       },
       {
         "key": "C",
-        "text": "Disabling cost visibility to reduce administrative work",
+        "text": "Replacing usage measurement with a fixed annual estimate",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Prioritizing the highest-priced resource for every workload",
+        "text": "Selecting capacity based only on its advertised performance",
         "correct": false
       }
     ],
@@ -1851,12 +1851,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Cost Optimization requires minimizing cost even when the workload can no longer meet requirements",
+        "text": "Select the lowest-priced resource before considering requirements",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Cost Optimization means every AWS resource should be purchased with the same pricing model",
+        "text": "Apply one purchasing option to workloads with different demand patterns",
         "correct": false
       },
       {
@@ -1866,7 +1866,7 @@
       },
       {
         "key": "D",
-        "text": "Cost Optimization is complete once a workload is initially deployed",
+        "text": "Complete the review at deployment and retain the original configuration",
         "correct": false
       }
     ],
@@ -1891,7 +1891,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Keep idle resources indefinitely because they might be needed someday",
+        "text": "Keep idle resources until the next annual purchasing cycle",
         "correct": false
       },
       {
@@ -1901,12 +1901,12 @@
       },
       {
         "key": "C",
-        "text": "Choose the cheapest option even when it cannot meet required performance",
+        "text": "Select the least expensive option before evaluating performance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Stop reviewing costs after the initial architecture is deployed",
+        "text": "Use the launch budget instead of reviewing actual usage",
         "correct": false
       },
       {
@@ -1937,17 +1937,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Guarantee the lowest possible monthly bill",
+        "text": "Reducing expenditure while meeting business requirements",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Replace all security controls with managed services",
+        "text": "Protecting workloads through access control and encryption",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Run maximum capacity at all times regardless of demand",
+        "text": "Recovering from disruptions within required recovery targets",
         "correct": false
       },
       {
@@ -1981,17 +1981,17 @@
       },
       {
         "key": "B",
-        "text": "Keep the unused capacity running to avoid any scaling activity",
+        "text": "Retain peak capacity to minimize the number of scaling events",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Duplicate every idle resource in another Region regardless of requirements",
+        "text": "Duplicate the same idle capacity in another Region",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Increase resource size so utilization becomes even lower",
+        "text": "Increase instance sizes without changing the workload",
         "correct": false
       }
     ],
@@ -2016,22 +2016,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Sustainability is only about software licenses, while Cost Optimization is only about security",
+        "text": "Sustainability: delivering required business value cost-effectively; Cost Optimization: reducing environmental impact per unit of work.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Sustainability focuses on reducing environmental impact, while Cost Optimization focuses on delivering business value with cost-efficient resource use",
+        "text": "Sustainability: reducing environmental impact per unit of work; Cost Optimization: delivering required business value cost-effectively.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Sustainability and Cost Optimization always require exactly the same decision",
+        "text": "Sustainability: reducing environmental impact per unit of work; Cost Optimization: preventing unauthorized access to application data.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Sustainability focuses only on availability, while Cost Optimization focuses only on latency",
+        "text": "Sustainability: preventing unauthorized access to application data; Cost Optimization: delivering required business value cost-effectively.",
         "correct": false
       }
     ],
@@ -2062,7 +2062,7 @@
       },
       {
         "key": "B",
-        "text": "Run peak capacity continuously even when usage is low",
+        "text": "Reserve peak capacity throughout low-demand periods",
         "correct": false
       },
       {
@@ -2072,12 +2072,12 @@
       },
       {
         "key": "D",
-        "text": "Keep obsolete components active because they have already been deployed",
+        "text": "Retain unused data and resources without a retention review",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Ignore workload demand when selecting resource quantities",
+        "text": "Increase instance sizes without considering utilization",
         "correct": false
       }
     ],
@@ -2103,22 +2103,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Provide a certification that guarantees every AWS workload is secure",
+        "text": "Review the technical architecture of an individual workload",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Automatically migrate every on-premises server to Amazon EC2",
+        "text": "Automate replication and cutover of application servers",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Help organizations improve cloud readiness and guide cloud-enabled business transformation",
+        "text": "Develop organizational capabilities for cloud-enabled transformation",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Replace the AWS Well-Architected Framework for workload architecture reviews",
+        "text": "Estimate the monthly charges for proposed AWS resources",
         "correct": false
       }
     ],
@@ -2182,22 +2182,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS CAF guides organizational cloud readiness and transformation capabilities, while Well-Architected evaluates workloads against architectural best practices",
+        "text": "AWS CAF: organizational readiness and cloud transformation; AWS Well-Architected Framework: workload architecture reviews against best practices.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "AWS CAF is only a pricing framework, while Well-Architected is only a migration tool",
+        "text": "AWS CAF: workload architecture reviews against best practices; AWS Well-Architected Framework: organizational readiness and cloud transformation.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS CAF reviews individual IAM permissions, while Well-Architected only manages invoices",
+        "text": "AWS CAF: organizational readiness and cloud transformation; AWS Well-Architected Framework: automated server replication and cutover.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS CAF and Well-Architected are identical frameworks with different names",
+        "text": "AWS CAF: automated server replication and cutover; AWS Well-Architected Framework: workload architecture reviews against best practices.",
         "correct": false
       }
     ],
@@ -2262,7 +2262,7 @@
     "options": [
       {
         "key": "A",
-        "text": "It is primarily a service for replicating servers to Amazon EC2",
+        "text": "It is primarily an automated migration execution service",
         "correct": false
       },
       {
@@ -2272,7 +2272,7 @@
       },
       {
         "key": "C",
-        "text": "It guarantees that a workload meets every Well-Architected best practice",
+        "text": "Its perspectives are the same as the Well-Architected pillars",
         "correct": false
       },
       {
@@ -2282,7 +2282,7 @@
       },
       {
         "key": "E",
-        "text": "It replaces the need to define business outcomes for cloud transformation",
+        "text": "It focuses only on infrastructure, not business and people capabilities",
         "correct": false
       }
     ],
@@ -2303,26 +2303,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "Which list contains only AWS migration strategies from the 7 Rs?",
+    "question": "Which migration strategy keeps an application in its current environment because it is not ready to move?",
     "options": [
       {
         "key": "A",
-        "text": "Rehost, reserve, replicate, resize, recover, report, and review",
+        "text": "Rehost",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Build, test, deploy, monitor, scale, patch, and archive",
+        "text": "Retire",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Rehost, relocate, replatform, refactor, repurchase, retain, and retire",
+        "text": "Retain",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Assess, secure, encrypt, route, cache, balance, and optimize",
+        "text": "Repurchase",
         "correct": false
       }
     ],
@@ -2386,22 +2386,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Replatform makes limited optimizations without a major redesign, while refactor substantially changes the application architecture",
+        "text": "Replatform: limited optimizations without a major redesign; Refactor: substantial changes to application architecture.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Replatform means decommission the application, while refactor means leave it on premises",
+        "text": "Replatform: substantial changes to application architecture; Refactor: limited optimizations without a major redesign.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Replatform means replace the application with SaaS, while refactor means move it unchanged",
+        "text": "Replatform: limited optimizations without a major redesign; Refactor: replacement of the application with a SaaS product.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Replatform and refactor both require no application changes",
+        "text": "Replatform: replacement of the application with a SaaS product; Refactor: substantial changes to application architecture.",
         "correct": false
       }
     ],
@@ -2507,17 +2507,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Converting relational database schemas between database engines",
+        "text": "Assess server inventory and utilization to build a migration business case",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Managing software license entitlements across AWS accounts",
+        "text": "Track migration status across multiple tools",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Delivering cached web content from edge locations",
+        "text": "Collect application dependencies for migration planning",
         "correct": false
       },
       {
@@ -2543,7 +2543,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "UNDERSTANDING",
-    "question": "What is the primary role of AWS Application Discovery Service in a migration?",
+    "question": "For an existing eligible customer, what is the primary role of AWS Application Discovery Service in migration planning?",
     "options": [
       {
         "key": "A",
@@ -2557,12 +2557,12 @@
       },
       {
         "key": "C",
-        "text": "Purchase Reserved Instances for migrated workloads",
+        "text": "Track migration progress across multiple migration tools",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Provide DNS routing after the migration",
+        "text": "Convert database schemas between different engines",
         "correct": false
       }
     ],
@@ -2583,26 +2583,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement BEST distinguishes AWS Migration Hub from AWS Transform MGN?",
+    "question": "For an organization that already uses AWS Migration Hub, which statement best distinguishes Migration Hub from AWS Transform MGN?",
     "options": [
       {
         "key": "A",
-        "text": "Migration Hub performs block-level server replication, while AWS Transform MGN only displays migration status",
+        "text": "AWS Migration Hub: server replication and rehosting cutover; AWS Transform MGN: centralized migration progress tracking.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Migration Hub provides centralized migration visibility and tracking, while AWS Transform MGN performs server rehosting through replication and cutover",
+        "text": "AWS Migration Hub: centralized migration progress tracking; AWS Transform MGN: server replication and rehosting cutover.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Migration Hub manages software licenses, while AWS Transform MGN creates cost budgets",
+        "text": "AWS Migration Hub: centralized migration progress tracking; AWS Transform MGN: software license entitlement management.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Migration Hub and AWS Transform MGN are both database schema-conversion tools",
+        "text": "AWS Migration Hub: software license entitlement management; AWS Transform MGN: server replication and rehosting cutover.",
         "correct": false
       }
     ],
@@ -2624,7 +2624,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "A company wants an assessment based on server inventory and utilization data to build a directional business case for moving to AWS. Which tool is MOST appropriate?",
+    "question": "A company wants a migration assessment that uses server inventory and utilization to build a cost-based business case for AWS. Which service is designed for this purpose?",
     "options": [
       {
         "key": "A",
@@ -2633,7 +2633,7 @@
       },
       {
         "key": "B",
-        "text": "AWS License Manager",
+        "text": "AWS Application Discovery Service",
         "correct": false
       },
       {
@@ -2643,7 +2643,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon CloudFront",
+        "text": "AWS Migration Hub",
         "correct": false
       }
     ],
@@ -2654,8 +2654,8 @@
       "business-case"
     ],
     "source": {
-      "title": "Discover on-premises resources using AWS Migration Hub discovery tools",
-      "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/gs-new-user-discovery.html"
+      "title": "Migration Evaluator",
+      "url": "https://aws.amazon.com/migration-evaluator/"
     },
     "active": true
   },
@@ -2669,12 +2669,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Configure CloudFront cache behaviors for the future application",
+        "text": "Perform the final production cutover before mapping dependencies",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Purchase Dedicated Hosts before determining migration requirements",
+        "text": "Reserve migration capacity before assessing the existing estate",
         "correct": false
       },
       {
@@ -2684,7 +2684,7 @@
       },
       {
         "key": "D",
-        "text": "Use a server rehosting cutover as the primary method for discovering application dependencies",
+        "text": "Decommission the source servers before completing the assessment",
         "correct": false
       },
       {
@@ -2715,22 +2715,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Purchase enough hardware for peak demand several years in advance",
+        "text": "Exchange hardware purchases for a fixed-size, prepaid cloud fleet",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Replace all operating expenses with mandatory capital purchases",
+        "text": "Replace operating expenses with purchases of dedicated servers",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Pay the same amount regardless of how many cloud resources are used",
+        "text": "Pay a fixed monthly infrastructure charge regardless of usage",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Pay for resources as they are consumed instead of making the same large upfront infrastructure investment before demand is known",
+        "text": "Replace large upfront infrastructure purchases with usage-based spending",
         "correct": true
       }
     ],
@@ -2795,22 +2795,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Fixed-to-variable cost is about high availability, while economies of scale is about encryption",
+        "text": "Fixed-to-variable spending: reducing unit costs through large-scale provider operations; Economies of scale: changing how the customer pays for consumed capacity.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Fixed-to-variable cost describes how the customer pays for capacity, while economies of scale describes cost efficiencies AWS gains by operating at large scale",
+        "text": "Fixed-to-variable spending: changing how the customer pays for consumed capacity; Economies of scale: reducing unit costs through large-scale provider operations.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Fixed-to-variable cost and economies of scale are exactly the same cloud characteristic",
+        "text": "Fixed-to-variable spending: changing how the customer pays for consumed capacity; Economies of scale: adjusting application capacity automatically as demand changes.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Fixed-to-variable cost describes application latency, while economies of scale describes software licensing",
+        "text": "Fixed-to-variable spending: adjusting application capacity automatically as demand changes; Economies of scale: reducing unit costs through large-scale provider operations.",
         "correct": false
       }
     ],
@@ -2836,12 +2836,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Purchase even more hardware before launch",
+        "text": "Commit to fixed peak capacity for three years",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Keep all capacity fixed for the full three years",
+        "text": "Replace owned servers with a fixed-capacity dedicated lease",
         "correct": false
       },
       {
@@ -2851,7 +2851,7 @@
       },
       {
         "key": "D",
-        "text": "Use a larger company-owned data center with the same upfront purchasing model",
+        "text": "Move the same pre-purchased servers to a colocation facility",
         "correct": false
       }
     ],
@@ -2876,17 +2876,17 @@
     "options": [
       {
         "key": "A",
-        "text": "It guarantees every AWS service will have zero operating cost",
+        "text": "It guarantees that the total cloud bill is always lower",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It requires the customer to own the physical infrastructure",
+        "text": "It eliminates the need to monitor resource usage",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It fixes monthly spending at the same amount regardless of usage",
+        "text": "It fixes the monthly bill despite changes in consumption",
         "correct": false
       },
       {
@@ -2912,26 +2912,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "What does BYOL mean in an AWS software licensing context?",
+    "question": "A company plans to use eligible software licenses it already owns when deploying on AWS. Which licensing model does this describe?",
     "options": [
       {
         "key": "A",
-        "text": "Bring Your Own License, using eligible software licenses the customer already owns according to vendor terms",
+        "text": "Bring Your Own License (BYOL)",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Buy Your Own Location, selecting the physical AWS data center",
+        "text": "License-included pricing",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Balance Your Online Load, distributing traffic between Regions",
+        "text": "Subscription bundled with every EC2 instance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Build Your Own Lambda, packaging every application as a function",
+        "text": "A software trial entitlement",
         "correct": false
       }
     ],
@@ -2955,7 +2955,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Automatically convert every BYOL agreement into an AWS-owned license",
+        "text": "Purchase additional licenses from every software vendor automatically",
         "correct": false
       },
       {
@@ -2965,12 +2965,12 @@
       },
       {
         "key": "C",
-        "text": "Replace software vendor licensing terms",
+        "text": "Replace the software vendor's license agreement with AWS terms",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Provide application load balancing for licensed software",
+        "text": "Include the price of every third-party license in EC2 charges",
         "correct": false
       }
     ],
@@ -2995,22 +2995,22 @@
     "options": [
       {
         "key": "A",
-        "text": "BYOL always includes the software license in AWS usage charges, while license-included requires a separate customer entitlement",
+        "text": "BYOL: software license cost included in the selected offering; License-included pricing: eligible existing customer license entitlements.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "BYOL can be used without considering vendor terms, while license-included always requires Dedicated Hosts",
+        "text": "BYOL: eligible existing customer license entitlements; License-included pricing: an automatic exemption from software vendor terms.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "BYOL uses eligible license entitlement owned by the customer, while license-included pricing includes the software license with the selected offering",
+        "text": "BYOL: eligible existing customer license entitlements; License-included pricing: software license cost included in the selected offering.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "BYOL and license-included are identical billing labels",
+        "text": "BYOL: an automatic exemption from software vendor terms; License-included pricing: software license cost included in the selected offering.",
         "correct": false
       }
     ],
@@ -3081,17 +3081,17 @@
       },
       {
         "key": "B",
-        "text": "Running every resource at the largest available size",
+        "text": "Changing instance counts automatically as demand fluctuates",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Deploying every workload in every AWS Region",
+        "text": "Committing to a consistent amount of compute spending",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Keeping resource configuration unchanged for the life of the application",
+        "text": "Distributing application traffic across healthy instances",
         "correct": false
       }
     ],
@@ -3115,7 +3115,7 @@
     "options": [
       {
         "key": "A",
-        "text": "It automatically rewrites application source code",
+        "text": "Select the cheapest instance without using workload metrics",
         "correct": false
       },
       {
@@ -3125,12 +3125,12 @@
       },
       {
         "key": "C",
-        "text": "It replaces vendor software license agreements",
+        "text": "Reserve capacity in a specified Availability Zone",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It guarantees that every recommendation has zero performance risk",
+        "text": "Purchase compute commitments on behalf of the customer",
         "correct": false
       }
     ],
@@ -3155,22 +3155,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Rightsizing handles security events, while elasticity manages software licenses",
+        "text": "Rightsizing: adjusting capacity as demand changes; Elasticity: matching resource size or configuration to workload needs.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Rightsizing and elasticity both mean permanently running maximum capacity",
+        "text": "Rightsizing: matching resource size or configuration to workload needs; Elasticity: reserving capacity in a specific Availability Zone.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Rightsizing chooses an appropriate resource size or configuration, while elasticity changes capacity as demand rises or falls",
+        "text": "Rightsizing: matching resource size or configuration to workload needs; Elasticity: adjusting capacity as demand changes.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Rightsizing is only for storage, while elasticity is only for databases",
+        "text": "Rightsizing: reserving capacity in a specific Availability Zone; Elasticity: adjusting capacity as demand changes.",
         "correct": false
       }
     ],
@@ -3195,17 +3195,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Moving the workload to the largest available EC2 instance",
+        "text": "A longer commitment for the same oversized instance",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Adding more unused instances without reviewing utilization",
+        "text": "Additional instances using the current configuration",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Buying additional on-premises hardware for the same workload",
+        "text": "Dedicated tenancy without changing resource size",
         "correct": false
       },
       {
@@ -3240,17 +3240,17 @@
       },
       {
         "key": "B",
-        "text": "A guarantee that failures can never occur",
+        "text": "Removing the need to review change outcomes",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A requirement to perform every change manually",
+        "text": "Making application capacity follow demand in every deployment",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Permanent elimination of all operational costs",
+        "text": "Transferring application security responsibilities to AWS",
         "correct": false
       }
     ],
@@ -3274,7 +3274,7 @@
     "options": [
       {
         "key": "A",
-        "text": "It prevents infrastructure from ever changing",
+        "text": "It prevents all differences between deployed resources and templates",
         "correct": false
       },
       {
@@ -3284,12 +3284,12 @@
       },
       {
         "key": "C",
-        "text": "It requires every resource to be created manually after the template is written",
+        "text": "It makes version control unnecessary for infrastructure changes",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It replaces the need for access control and monitoring",
+        "text": "It grants deployment permissions independently of IAM policies",
         "correct": false
       }
     ],
@@ -3314,22 +3314,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Automation and elasticity are two names for the same cloud characteristic",
+        "text": "Automation: adjusting capacity to changes in workload demand; Elasticity: executing repeatable processes with less manual intervention.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Automation is only about reducing storage cost, while elasticity is only about software licensing",
+        "text": "Automation: executing repeatable processes with less manual intervention; Elasticity: reducing per-unit infrastructure prices through provider scale.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Automation executes processes consistently with reduced manual intervention, while elasticity adjusts capacity as workload demand changes",
+        "text": "Automation: executing repeatable processes with less manual intervention; Elasticity: adjusting capacity to changes in workload demand.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Automation changes physical AWS Regions automatically, while elasticity performs security auditing",
+        "text": "Automation: reducing per-unit infrastructure prices through provider scale; Elasticity: adjusting capacity to changes in workload demand.",
         "correct": false
       }
     ],
@@ -3354,17 +3354,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Continue the manual process but add more operators",
+        "text": "Create a separate console checklist for each operator",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Create larger instances so configuration differences are less visible",
+        "text": "Create environments manually from screenshots of the previous setup",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Disable version control for infrastructure definitions",
+        "text": "Copy application code without defining its infrastructure dependencies",
         "correct": false
       },
       {

@@ -143,7 +143,7 @@
     "topic": "cloud-concepts",
     "slug": "clf-migration-services",
     "name": "Migration Services (AWS Transform MGN, Application Discovery Service, Migration Hub, Migration Evaluator)",
-    "generalExplanation": "AWS menyediakan tools untuk tahap migration yang berbeda. AWS Transform MGN, yang sebelumnya bernama AWS Application Migration Service, digunakan untuk rehost server ke AWS dengan replication dan cutover. AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency data untuk membantu migration planning. AWS Migration Hub memberikan tempat terpusat untuk melihat dan melacak migration information. Migration Evaluator membantu assessment dan directional business case dengan data inventory dan utilization. Service ini berbeda dari AWS DMS/SCT yang berfokus pada database migration.",
+    "generalExplanation": "AWS menyediakan tools untuk tahap migration yang berbeda. AWS Transform MGN, yang sebelumnya bernama AWS Application Migration Service, digunakan untuk rehost server ke AWS dengan replication dan cutover. AWS Application Discovery Service mengumpulkan configuration, utilization, process, dan dependency data untuk membantu migration planning. AWS Migration Hub memberikan tempat terpusat untuk melihat dan melacak migration information. Migration Evaluator membantu assessment dan directional business case dengan data inventory dan utilization. Service ini berbeda dari AWS DMS/SCT yang berfokus pada database migration. AWS Application Discovery Service dan AWS Migration Hub tidak menerima pelanggan baru sejak 7 November 2025; pelanggan yang sudah menggunakan layanan tersebut dapat melanjutkan sesuai ketentuan AWS. AWS merekomendasikan AWS Transform untuk kebutuhan baru. Nama/fungsi layanan lama tetap dipelajari karena masih disebut dalam daftar layanan CLF-C02 yang ditinjau.",
     "keyNote": "MGN = rehost server; Discovery Service = discovery; Migration Hub = tracking; Migration Evaluator = assessment/business case.",
     "referenceUrl": "https://aws.amazon.com/application-migration-service/",
     "order": 14,
@@ -213,7 +213,7 @@
     "topic": "security-compliance",
     "slug": "clf-root-user",
     "name": "AWS Account Root User",
-    "generalExplanation": "AWS account root user dibuat bersama account dan memiliki complete access ke services, resources, dan billing. AWS merekomendasikan agar root user tidak dipakai untuk pekerjaan sehari-hari dan hanya digunakan untuk task yang memang memerlukan root credentials. Root user harus diamankan dengan MFA dan recovery mechanisms yang kuat; jangan membuat long-term access keys untuk root user. Untuk administrasi harian gunakan workforce access melalui IAM Identity Center atau identity/role yang sesuai.",
+    "generalExplanation": "AWS account root user dibuat bersama account dan merupakan identitas sangat berprivilege untuk services, resources, dan billing dalam account, dengan batasan yang tetap dapat berlaku sesuai konteks organisasi. AWS merekomendasikan agar root user tidak dipakai untuk pekerjaan sehari-hari dan hanya digunakan untuk task yang memang memerlukan root credentials. Root user harus diamankan dengan MFA dan recovery mechanisms yang kuat; jangan membuat long-term access keys untuk root user. Untuk administrasi harian gunakan workforce access melalui IAM Identity Center atau identity/role yang sesuai. Akses root tidak berarti tanpa semua batasan: SCP dapat membatasi root user pada member account AWS Organizations. Ini tidak mengubah prinsip bahwa root harus dilindungi dan tidak dipakai untuk pekerjaan rutin.",
     "keyNote": "Root user sangat privileged: jangan gunakan untuk daily administration, aktifkan MFA, dan hindari root access keys.",
     "referenceUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html",
     "order": 4,
@@ -373,7 +373,7 @@
     "topic": "security-compliance",
     "slug": "clf-cloudtrail",
     "name": "AWS CloudTrail",
-    "generalExplanation": "AWS CloudTrail merekam activity di AWS account sebagai events, termasuk actions dari console, CLI, SDKs, APIs, dan AWS services. Event history menyediakan searchable record 90 hari untuk management events di Region, sedangkan trails atau CloudTrail Lake dapat digunakan untuk ongoing retention/analysis. CloudTrail terutama menjawab siapa melakukan apa, kapan, dan dari mana; CloudWatch berfokus pada operational telemetry seperti metrics, logs, alarms, dan observability.",
+    "generalExplanation": "AWS CloudTrail merekam activity di AWS account sebagai events, termasuk actions dari console, CLI, SDKs, APIs, dan AWS services. Event history menyediakan searchable record 90 hari untuk management events di Region, sedangkan trail yang dikonfigurasi dapat mengirim event ke S3 untuk retensi melampaui jendela Event history. CloudTrail terutama menjawab siapa melakukan apa, kapan, dan dari mana; CloudWatch berfokus pada operational telemetry seperti metrics, logs, alarms, dan observability. Catatan per 10 November 2026: CloudTrail Lake tidak menerima pelanggan baru sejak 31 Mei 2026. Pelanggan yang sudah memenuhi syarat dapat tetap menggunakannya. Untuk kebutuhan audit baru, pertimbangkan trail dengan delivery ke S3 dan retensi yang dikonfigurasi sesuai kebutuhan.",
     "keyNote": "CloudTrail = audit/API activity history; CloudWatch = operational monitoring, metrics, logs, dan alarms.",
     "referenceUrl": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html",
     "order": 20,
@@ -419,7 +419,7 @@
     "order": 24,
     "active": true
   },
-{
+  {
     "topic": "cloud-technology-services",
     "slug": "clf-aws-access-methods",
     "name": "Ways to Access AWS (Console, CLI, SDKs, APIs)",
@@ -503,7 +503,7 @@
     "topic": "cloud-technology-services",
     "slug": "clf-elastic-load-balancing",
     "name": "Elastic Load Balancing",
-    "generalExplanation": "Elastic Load Balancing (ELB) mendistribusikan incoming traffic ke multiple healthy targets seperti EC2 instances, containers, dan IP addresses, termasuk across multiple Availability Zones. ELB melakukan health checks dan menghindari targets yang unhealthy. ELB meningkatkan availability dan membantu mencegah satu target menerima seluruh traffic. ELB tidak menambah jumlah EC2 instances; kapasitas compute biasanya disesuaikan oleh EC2 Auto Scaling.",
+    "generalExplanation": "Elastic Load Balancing (ELB) mendistribusikan incoming traffic ke multiple healthy targets seperti EC2 instances, containers, dan IP addresses, termasuk across multiple Availability Zones. Health checks membantu mengarahkan traffic ke healthy targets ketika tersedia. ELB meningkatkan availability dan membantu mencegah satu target menerima seluruh traffic. ELB tidak menambah jumlah EC2 instances; kapasitas compute biasanya disesuaikan oleh EC2 Auto Scaling. Pernyataan healthy-target routing bukan jaminan mutlak. Contohnya, Application Load Balancer dapat fail open dan tetap mengirim request ke target ketika semua target dalam target group tidak sehat.",
     "keyNote": "ELB = satu entry point yang mendistribusikan traffic ke healthy targets; Auto Scaling mengubah jumlah compute.",
     "referenceUrl": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
     "order": 9,
@@ -599,7 +599,7 @@
     "order": 18,
     "active": true
   },
-{
+  {
     "topic": "cloud-technology-services",
     "slug": "clf-cloudfront",
     "name": "Amazon CloudFront",
@@ -643,7 +643,7 @@
     "topic": "cloud-technology-services",
     "slug": "clf-ebs-instance-store",
     "name": "Block Storage (Amazon EBS, Instance Store)",
-    "generalExplanation": "Amazon EBS menyediakan persistent block storage volumes untuk EC2 instances. EBS volume memiliki lifecycle yang terpisah dari host hardware dan dapat digunakan untuk data yang harus bertahan melampaui stop/start atau replacement instance sesuai configuration. EC2 instance store menyediakan temporary block storage yang physically attached ke host; datanya dapat hilang ketika underlying instance is stopped, hibernated, terminated, atau host fails. Instance store cocok untuk temporary buffers, caches, scratch data, atau replicated data yang dapat dibuat ulang.",
+    "generalExplanation": "Amazon EBS menyediakan persistent block storage volumes untuk EC2 instances. EBS volume memiliki lifecycle yang terpisah dari host hardware dan dapat digunakan untuk data yang harus bertahan melampaui stop/start atau replacement instance sesuai configuration. EC2 instance store menyediakan temporary block storage yang physically attached ke host; datanya dapat hilang ketika underlying instance is stopped, hibernated, terminated, atau host fails. Instance store cocok untuk temporary buffers, caches, scratch data, atau replicated data yang dapat dibuat ulang. Saat instance dihentikan permanen (terminated), EBS tidak selalu dipertahankan: perilakunya ditentukan oleh DeleteOnTermination untuk masing-masing volume. Persistent storage bukan pengganti backup.",
     "keyNote": "EBS = persistent EC2 block storage; instance store = ephemeral host-attached storage untuk temporary/re-creatable data.",
     "referenceUrl": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html",
     "order": 23,
@@ -723,9 +723,9 @@
     "topic": "cloud-technology-services",
     "slug": "clf-streaming-search-bi",
     "name": "Streaming, Search, and BI (Kinesis, OpenSearch Service, Amazon Quick Sight)",
-    "generalExplanation": "Amazon Kinesis Data Streams digunakan untuk collect dan process real-time streaming data. Amazon OpenSearch Service adalah managed service untuk search, log analytics, observability, dan related use cases menggunakan OpenSearch. Amazon Quick Sight adalah BI capability dalam Amazon Quick, evolusi dari Amazon QuickSight, untuk interactive visualizations, dashboards, dan analytics. Kinesis menangani streaming ingestion, OpenSearch menangani search/log analytics, dan Quick Sight menyajikan business intelligence visualizations.",
+    "generalExplanation": "Amazon Kinesis Data Streams digunakan untuk collect dan process real-time streaming data. Amazon OpenSearch Service adalah managed service untuk search, log analytics, observability, dan related use cases menggunakan OpenSearch. Amazon Quick Sight adalah BI capability dalam Amazon Quick, evolusi dari Amazon QuickSight, untuk interactive visualizations, dashboards, dan analytics. Kinesis menangani streaming ingestion, OpenSearch menangani search/log analytics, dan Quick Sight menyajikan business intelligence visualizations. Pada Kinesis Data Streams, urutan sequence number berlaku dalam shard, bukan jaminan satu urutan global untuk semua shard.",
     "keyNote": "Kinesis=real-time streams; OpenSearch=search/log analytics; Amazon Quick Sight=BI dashboards dan visualizations.",
-    "referenceUrl": "https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html",
+    "referenceUrl": "https://docs.aws.amazon.com/quick/latest/userguide/",
     "order": 31,
     "active": true
   },
@@ -763,7 +763,7 @@
     "topic": "cloud-technology-services",
     "slug": "clf-end-user-computing",
     "name": "End-User Computing (WorkSpaces, WorkSpaces Applications / AppStream 2.0, WorkSpaces Secure Browser)",
-    "generalExplanation": "Amazon WorkSpaces menyediakan managed virtual desktops. Amazon WorkSpaces Applications (formerly Amazon AppStream 2.0) streams desktop applications from AWS to users without requiring those applications to be installed locally. Amazon WorkSpaces Secure Browser provides isolated browser sessions for accessing web-based internal or SaaS applications. AWS announced that WorkSpaces Secure Browser will no longer be open to new customers starting October 29, 2026; existing customers can continue to use it. Choose the service based on whether users need a full desktop, streamed applications, or browser-only access.",
+    "generalExplanation": "Amazon WorkSpaces menyediakan virtual desktops terkelola. WorkSpaces Personal memberikan desktop persisten yang dialokasikan kepada pengguna, sedangkan WorkSpaces Pools menyediakan desktop non-persisten. Amazon WorkSpaces Applications (sebelumnya Amazon AppStream 2.0) melakukan streaming aplikasi tanpa pemasangan lokal. WorkSpaces Secure Browser adalah layanan hosted browser khusus untuk akses web terisolasi. Sejak 29 Oktober 2026, Secure Browser tidak menerima pelanggan baru; pelanggan lama dapat melanjutkan penggunaannya. Untuk kebutuhan baru, WorkSpaces Applications dengan image browser yang dikelola sendiri merupakan salah satu alternatif yang didokumentasikan AWS.",
     "keyNote": "WorkSpaces=virtual desktop; WorkSpaces Applications (formerly AppStream 2.0)=application streaming; Secure Browser=isolated browser access.",
     "referenceUrl": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html",
     "order": 35,
@@ -779,7 +779,7 @@
     "order": 36,
     "active": true
   },
-{
+  {
     "topic": "billing-pricing-support",
     "slug": "clf-on-demand-spot",
     "name": "On-Demand and Spot Instances",
@@ -853,7 +853,7 @@
     "topic": "billing-pricing-support",
     "slug": "clf-support-plans",
     "name": "AWS Support Plans",
-    "generalExplanation": "Current AWS Support lineup mencakup Basic Support, AWS Business Support+, AWS Enterprise Support, dan AWS Unified Operations. Basic tersedia untuk semua customers dan mencakup account/billing support, service health, documentation, dan service quota increase requests, tetapi bukan technical support cases. Business Support+ menambahkan 24/7 technical support dan full Trusted Advisor checks. Enterprise Support menambahkan designated Technical Account Manager (TAM), faster critical response, dan strategic guidance. Unified Operations adalah tier paling proactive dengan designated specialist team, workload monitoring, deep operational guidance, dan rapid incident engagement. Developer Support, Business Support, dan Enterprise On-Ramp masih transitional sampai end-of-support pada 1 Januari 2027 dan bukan target lineup utama bank ini.",
+    "generalExplanation": "Current AWS Support lineup mencakup Basic Support, AWS Business Support+, AWS Enterprise Support, dan AWS Unified Operations. Basic tersedia untuk semua customers dan mencakup account/billing support, service health, documentation, dan service quota increase requests, tetapi bukan technical support cases. Business Support+ menambahkan 24/7 technical support dan full Trusted Advisor checks. Enterprise Support menambahkan designated Technical Account Manager (TAM), faster critical response, dan strategic guidance. Unified Operations adalah tier paling proactive dengan designated specialist team, workload monitoring, deep operational guidance, dan rapid incident engagement. Developer Support, Business Support, dan Enterprise On-Ramp masih transitional sampai end-of-support pada 1 Januari 2027 dan bukan target lineup utama bank ini. Catatan per 10 November 2026: transisi paket dan ketersediaannya dapat berbeda menurut Region. Developer Support, Business Support, dan Enterprise On-Ramp tetap tersedia di AWS GovCloud (US). Target initial response mengukur tanggapan awal berdasarkan severity, bukan jaminan waktu penyelesaian insiden.",
     "keyNote": "Basic < Business Support+ < Enterprise Support < Unified Operations; capability dan proactive guidance meningkat di tier lebih tinggi.",
     "referenceUrl": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     "order": 8,
@@ -873,7 +873,7 @@
     "topic": "billing-pricing-support",
     "slug": "clf-health-dashboard",
     "name": "AWS Health Dashboard and AWS Health API",
-    "generalExplanation": "AWS Health Dashboard menampilkan public service events dan, ketika signed in, account-specific events serta scheduled changes yang dapat memengaruhi resources. Public service-health events tidak spesifik ke account; account-specific events dapat menyebut affected resources dan recommended actions. AWS Health API memungkinkan programmatic access ke health information tetapi memerlukan eligible paid support plan seperti Business Support+, Enterprise Support, atau Unified Operations. AWS Health berbeda dari Trusted Advisor: Health berfokus pada AWS service/account events, sedangkan Trusted Advisor memberikan best-practice recommendations.",
+    "generalExplanation": "AWS Health Dashboard menampilkan public service events dan, ketika signed in, account-specific events serta scheduled changes yang dapat memengaruhi resources. Public service-health events tidak spesifik ke account; account-specific events dapat menyebut affected resources dan recommended actions. AWS Health API memungkinkan programmatic access ke health information tetapi memerlukan eligible paid support plan seperti Business Support+, Enterprise Support, atau Unified Operations. AWS Health berbeda dari Trusted Advisor: Health berfokus pada AWS service/account events, sedangkan Trusted Advisor memberikan best-practice recommendations. Paket legacy tertentu juga masih dapat memenuhi syarat API selama transisi atau di Region yang tidak menawarkan lineup baru. Eligibility harus dicek pada dokumentasi AWS Health API, bukan disimpulkan dari istilah paid support saja.",
     "keyNote": "AWS Health = service/account events dan scheduled changes; Trusted Advisor = recommendations terhadap environment.",
     "referenceUrl": "https://docs.aws.amazon.com/health/latest/ug/aws-health-account-views.html",
     "order": 10,
