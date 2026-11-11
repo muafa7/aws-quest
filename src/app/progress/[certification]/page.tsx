@@ -41,7 +41,7 @@ export default async function CertificationProgressPage({ params }: { params: Pr
       </Suspense>
       <section>
         <Eyebrow>CONCEPT STATUS</Eyebrow>
-        <p className="panel-meta mt-2">Cleared means the last three Practice answers were correct, not low confidence, on three different questions, across at least two days.{data.smallBank > 0 ? " Small bank: fewer than 3 practice questions, so the concept cannot be cleared yet." : ""}</p>
+        <p className="panel-meta mt-2">Cleared means every challenge in the concept has been answered.</p>
         {data.topics.map((topic, topicIndex) => (
           <section className="domain-band" data-tone={domainTone(topicIndex)} key={topic.id}>
             <div className="domain-band__heading"><span className="domain-band__index">{String(topicIndex + 1).padStart(2, "0")}</span><h2>{topic.name}</h2></div>
@@ -53,7 +53,7 @@ export default async function CertificationProgressPage({ params }: { params: Pr
                     <div className="progress-row__heading">
                       <Link className="progress-row__title" href={`/learn/${code}/${concept.slug}`}>{concept.name}</Link>
                       <p className="progress-row__topic">{topic.name}</p>
-                      <ClearMeter state={concept.state} clear={concept.clear} />
+                      <ClearMeter clear={concept.clear} />
                       <ConceptStatusBadges state={concept.state} />
                     </div>
                     <dl className="progress-row__meta">

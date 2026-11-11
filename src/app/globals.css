@@ -215,11 +215,8 @@
   .concept-card .clear-meter { margin-top: 12px; }
   .clear-meter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 12px; line-height: 1.5; color: var(--muted); }
   .clear-meter strong { color: var(--foreground); font-variant-numeric: tabular-nums; }
-  .clear-meter__pips { display: inline-flex; gap: 3px; }
-  .clear-meter__pips > span { width: 14px; height: 8px; border: 1px solid var(--line-strong); background: var(--surface-inset); }
-  .clear-meter__pips > span[data-on] { border-color: var(--tone); background: var(--tone); }
   .clear-meter[data-cleared] { color: var(--success); }
-  .clear-meter[data-cleared] .clear-meter__pips > span { border-color: var(--success); background: var(--success); }
+  .clear-meter[data-cleared] strong { color: var(--success); }
   .challenge-status { display: grid; gap: 10px; padding: 16px 18px; border: 1px solid var(--line); border-left: 3px solid var(--teal); background: var(--surface); }
   .challenge-status__lead { color: var(--foreground); font-size: 14px; font-weight: 600; }
   .challenge-status__seen { color: var(--muted); font-size: 13px; }
@@ -523,5 +520,4 @@
 @media (forced-colors: active) {
   .answer-option:has(input:checked),.confidence-option:has(input:checked),.site-nav__link[aria-current="page"],.filter-chip[aria-current="true"],.exam-nav__item[data-answered="true"] { outline: 2px solid Highlight; outline-offset: -3px; }
   .progress-meter__fill { forced-color-adjust: none; background: Highlight; }
-  .clear-meter__pips > span[data-on],.clear-meter[data-cleared] .clear-meter__pips > span { forced-color-adjust: none; background: Highlight; }
 }

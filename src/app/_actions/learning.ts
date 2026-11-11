@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { isExactPermutation, isValidSelection, sameAnswers, snapshotOptions } from "@/lib/learning/answers";
-import { meetsMastery } from "@/lib/learning/mastery";
+import { challengeProgress } from "@/lib/learning/mastery";
 import { trainingQuestionWhere } from "@/lib/learning/question-pools";
 import { scheduleReview } from "@/lib/learning/review";
 import type { Confidence, LearningMode } from "@/lib/learning/types";
@@ -135,13 +135,17 @@ export async function submitLearningAnswer(formData: FormData) {
       },
     });
 
-    // Only Practice answers count toward clearing: Learn answers are made with the lesson open.
-    const practiceAttempts = await tx.attempt.findMany({
-      where: { mode: "PRACTICE", question: { conceptId: question.conceptId } },
-      select: { questionId: true, isCorrect: true, confidence: true, answeredAt: true },
-      orderBy: [{ answeredAt: "asc" }, { id: "asc" }],
+    const trainingQuestions = await tx.question.findMany({
+      where: { conceptId: question.conceptId, ...trainingQuestionWhere },
+      select: { id: true },
     });
-    const masteredAt = !isCorrect ? null : existing?.masteredAt ?? (mode === "PRACTICE" && meetsMastery(practiceAttempts) ? now : null);
+    const answered = await tx.attempt.findMany({
+      where: { mode: { in: ["LEARN", "PRACTICE"] }, questionId: { in: trainingQuestions.map((item) => item.id) } },
+      select: { questionId: true },
+      distinct: ["questionId"],
+    });
+    const covered = challengeProgress(trainingQuestions.map((item) => item.id), answered.map((item) => item.questionId));
+    const masteredAt = covered.cleared ? (existing?.masteredAt ?? now) : null;
 
     await tx.conceptProgress.upsert({
       where: { conceptId: question.conceptId },

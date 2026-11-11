@@ -54,7 +54,7 @@ export default async function LearnConceptPage({
   const total = concept.questions.length;
   const seen = concept.questions.filter((item) => lastAnswered.has(item.id)).length;
   const questionIsNew = questionId !== undefined && !lastAnswered.has(questionId);
-  const { state, clear } = await conceptClearStatus(concept.id);
+  const { clear } = await conceptClearStatus(concept.id);
   const attemptId = Number(attemptParam);
   const attempt = Number.isInteger(attemptId)
     ? await prisma.attempt.findFirst({
@@ -114,7 +114,7 @@ export default async function LearnConceptPage({
               <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={concept.generalExplanation} keyNote={concept.keyNote} sourceUrl={attempt.question.sourceUrl ?? concept.referenceUrl} />
               <div className="challenge-status">
                 <p className="challenge-status__seen">{seenSummary(seen, total)}</p>
-                <ClearMeter state={state} clear={clear} />
+                <ClearMeter clear={clear} />
               </div>
               {nextConcept || concept.questions.length > 1 ? (
                 <div className="session-actions !mt-0">
@@ -130,8 +130,8 @@ export default async function LearnConceptPage({
               <div className="panel-heading"><ArcadeIcon name="practice" /><h2>{recall ? "Recall challenge" : "Challenge"}</h2><span className="panel-meta ml-auto">{questionIsNew ? `${seen + 1} of ${total}` : `Repeat · all ${total} seen`}</span></div>
               <QuestionForm question={question} certification={certification} conceptSlug={conceptSlug} mode="LEARN" recall={recall} />
               <div className="mt-5 grid gap-2">
-                <ClearMeter state={state} clear={clear} />
-                <p className="panel-meta">Learn answers schedule reviews but never clear a stage. Clearing happens in <Link href={`/practice/${certification}`} className="underline underline-offset-4 hover:text-[var(--amber)]">Practice</Link>, answered without the lesson.</p>
+                <ClearMeter clear={clear} />
+                <p className="panel-meta">Answering a challenge counts toward clearing this stage. Learn answers also schedule reviews.</p>
               </div>
             </RetroPanel>
           ) : (

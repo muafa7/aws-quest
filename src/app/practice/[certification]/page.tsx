@@ -15,12 +15,10 @@ import { selectPracticeQuestion } from "@/lib/learning/selector";
 
 const CHECKPOINT_EVERY = 10;
 
-function practiceOutcome(attempt: { isCorrect: boolean; confidence: string | null; answeredAt: Date }, masteredAt: Date | null) {
+function practiceOutcome(attempt: { answeredAt: Date }, masteredAt: Date | null, remaining: number) {
   if (masteredAt?.getTime() === attempt.answeredAt.getTime()) return "Concept cleared!";
   if (masteredAt) return "Concept stays cleared.";
-  if (!attempt.isCorrect) return "Missed, so the clear streak starts over.";
-  if (attempt.confidence === "LOW") return "Correct, but low-confidence answers don't count toward clearing.";
-  return "Counts toward clearing.";
+  return `${remaining} challenge${remaining === 1 ? "" : "s"} left`;
 }
 
 function StartForm({ code, fresh, label, variant }: { code: string; fresh?: boolean; label: string; variant?: "primary" | "secondary" }) {
@@ -117,7 +115,7 @@ export default async function PracticeCertificationPage({
           <div className="session-hero__icon"><ArcadeIcon name="practice" width={28} height={28} /></div>
           <Eyebrow>PRACTICE // {code}</Eyebrow>
           <h1>Unlimited adaptive session</h1>
-          <p className="session-hero__description">No fixed daily limit. A checkpoint appears every 10 questions, but you decide when the session ends. Practice is answered from memory, and it is the only mode that can clear a concept.</p>
+          <p className="session-hero__description">No fixed daily limit. A checkpoint appears every 10 questions, but you decide when the session ends. Practice is answered from memory. Answering a challenge here counts toward clearing its concept.</p>
           {open && open.questionCount > 0 ? (
             <>
               <p className="session-hero__description">Session #{open.id} is still open with {open.correctCount}/{open.questionCount} correct, started {open.startedAt.toLocaleString("en-GB")}.</p>
@@ -153,8 +151,8 @@ export default async function PracticeCertificationPage({
         <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
           <header className="session-hud"><div><Eyebrow>PRACTICE // Q{session.questionCount}</Eyebrow><h1>Answer feedback</h1></div><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge></header>
           <div className="challenge-status mb-5">
-            <p className="challenge-status__lead">{practiceOutcome(attempt, status.progress?.masteredAt ?? null)}</p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2"><p className="panel-meta">Concept // {attempt.question.concept.name}</p><ClearMeter state={status.state} clear={status.clear} practice /></div>
+            <p className="challenge-status__lead">{practiceOutcome(attempt, status.progress?.masteredAt ?? null, status.clear.remaining)}</p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2"><p className="panel-meta">Concept // {attempt.question.concept.name}</p><ClearMeter clear={status.clear} /></div>
           </div>
           <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={attempt.question.concept.generalExplanation} keyNote={attempt.question.concept.keyNote} sourceUrl={attempt.question.sourceUrl ?? attempt.question.concept.referenceUrl} />
           <Link href={`/practice/${code}?session=${session.id}`} className={buttonClassName("primary", "mt-5 w-full")}>Continue <ArcadeIcon name="arrow" width={18} height={18} /></Link>
@@ -201,7 +199,7 @@ export default async function PracticeCertificationPage({
       </header>
       {question ? (
         <RetroPanel accent>
-          <div className="panel-heading flex-wrap"><ArcadeIcon name="practice" /><p className="panel-meta">Concept // {question.concept.name}</p>{status ? <div className="ml-auto"><ClearMeter state={status.state} clear={status.clear} practice /></div> : null}</div>
+          <div className="panel-heading flex-wrap"><ArcadeIcon name="practice" /><p className="panel-meta">Concept // {question.concept.name}</p>{status ? <div className="ml-auto"><ClearMeter clear={status.clear} /></div> : null}</div>
           <QuestionForm question={question} certification={code} mode="PRACTICE" sessionId={session.id} />
         </RetroPanel>
       ) : <RetroPanel><p className="empty-plate">No active questions are available yet.</p></RetroPanel>}

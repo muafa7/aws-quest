@@ -8,10 +8,6 @@ import { RetroPanel } from "@/components/retro-panel";
 import { CampaignMeters } from "@/components/progress-bar";
 import { ClearMeter, ConceptStatusBadges } from "@/components/concept-status";
 
-function seenLabel(seen: number, total: number) {
-  return total === 0 ? "No challenges yet" : `${seen}/${total} challenge${total === 1 ? "" : "s"} seen`;
-}
-
 export default async function LearnCertificationPage({ params }: { params: Promise<{ certification: string }> }) {
   const { certification: code } = await params;
   const data = await certificationProgress(code);
@@ -19,7 +15,7 @@ export default async function LearnCertificationPage({ params }: { params: Promi
 
   return (
     <main id="main-content" tabIndex={-1} className="page-wrap">
-      <PageHeader eyebrow={<>CAMPAIGN // {data.certification.code}</>} title={data.certification.name} description={`Concept stages remain open. Learn in any order. A stage clears after 3 correct, confident Practice answers on different questions, across at least two days.${data.smallBank > 0 ? ` SMALL BANK marks concepts with fewer than 3 practice questions, which cannot be cleared yet.` : ""}`} icon="learn" action={<CampaignMeters introduced={data.introduced} mastered={data.mastered} total={data.concepts.length} masteryLabel="Campaign mastery" />} />
+      <PageHeader eyebrow={<>CAMPAIGN // {data.certification.code}</>} title={data.certification.name} description="Concept stages remain open. Learn in any order. A stage clears once every challenge has been answered." icon="learn" action={<CampaignMeters introduced={data.introduced} mastered={data.mastered} total={data.concepts.length} masteryLabel="Campaign mastery" />} />
       <div>
         {data.topics.map((topic, topicIndex) => (
           <section key={topic.id} className="domain-band" data-tone={domainTone(topicIndex)}>
@@ -34,8 +30,8 @@ export default async function LearnCertificationPage({ params }: { params: Promi
                         <ConceptStatusBadges state={concept.state} />
                       </div>
                       <h3>{concept.name}</h3>
-                      <ClearMeter state={concept.state} clear={concept.clear} />
-                      <div className="concept-card__footer"><span>{seenLabel(concept.seen, concept._count.questions)}</span><ArcadeIcon name="arrow" width={17} height={17} /></div>
+                      <ClearMeter clear={concept.clear} />
+                      <div className="concept-card__footer"><span /><ArcadeIcon name="arrow" width={17} height={17} /></div>
                     </RetroPanel>
                   </Link>
                 );
