@@ -8,8 +8,20 @@ import { finishPracticeSession, startPracticeSession } from "@/app/_actions/lear
 import { AttemptFeedback } from "@/components/feedback";
 import { QuestionForm } from "@/components/question-form";
 import { Eyebrow, RetroPanel, StatusBadge } from "@/components/retro-panel";
+import { ClearMeter } from "@/components/concept-status";
 import { prisma } from "@/lib/prisma";
+import { conceptClearStatus } from "@/lib/learning/progress";
 import { selectPracticeQuestion } from "@/lib/learning/selector";
+
+const CHECKPOINT_EVERY = 10;
+
+function practiceOutcome(attempt: { isCorrect: boolean; confidence: string | null; answeredAt: Date }, masteredAt: Date | null) {
+  if (masteredAt?.getTime() === attempt.answeredAt.getTime()) return "Concept cleared!";
+  if (masteredAt) return "Concept stays cleared.";
+  if (!attempt.isCorrect) return "Missed, so the clear streak starts over.";
+  if (attempt.confidence === "LOW") return "Correct, but low-confidence answers don't count toward clearing.";
+  return "Counts toward clearing.";
+}
 
 function StartForm({ code, fresh, label, variant }: { code: string; fresh?: boolean; label: string; variant?: "primary" | "secondary" }) {
   return (
@@ -136,9 +148,14 @@ export default async function PracticeCertificationPage({
       include: { question: { include: { concept: true, options: { select: { key: true, text: true, explanation: true }, orderBy: { key: "asc" } } } } },
     });
     if (attempt) {
+      const status = await conceptClearStatus(attempt.question.conceptId);
       return (
         <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
           <header className="session-hud"><div><Eyebrow>PRACTICE // Q{session.questionCount}</Eyebrow><h1>Answer feedback</h1></div><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge></header>
+          <div className="challenge-status mb-5">
+            <p className="challenge-status__lead">{practiceOutcome(attempt, status.progress?.masteredAt ?? null)}</p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2"><p className="panel-meta">Concept // {attempt.question.concept.name}</p><ClearMeter state={status.state} clear={status.clear} practice /></div>
+          </div>
           <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={attempt.question.concept.generalExplanation} keyNote={attempt.question.concept.keyNote} sourceUrl={attempt.question.sourceUrl ?? attempt.question.concept.referenceUrl} />
           <Link href={`/practice/${code}?session=${session.id}`} className={buttonClassName("primary", "mt-5 w-full")}>Continue <ArcadeIcon name="arrow" width={18} height={18} /></Link>
         </main>
@@ -146,7 +163,7 @@ export default async function PracticeCertificationPage({
     }
   }
 
-  const showCheckpoint = session.questionCount > 0 && session.questionCount % 10 === 0 && query.checkpoint !== String(session.questionCount);
+  const showCheckpoint = session.questionCount > 0 && session.questionCount % CHECKPOINT_EVERY === 0 && query.checkpoint !== String(session.questionCount);
   if (showCheckpoint) {
     const accuracy = percentOf(session.correctCount, session.questionCount);
     return (
@@ -175,15 +192,16 @@ export default async function PracticeCertificationPage({
   }
 
   const question = await selectPracticeQuestion(code);
+  const status = question ? await conceptClearStatus(question.concept.id) : null;
   return (
     <main id="main-content" tabIndex={-1} className="page-wrap page-wrap--reading">
       <header className="session-hud">
         <div><Eyebrow>PRACTICE // {code}</Eyebrow><h1>Adaptive encounter</h1></div>
-        <div className="session-hud__badges"><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge><StatusBadge>SESSION #{session.id}</StatusBadge></div>
+        <div className="session-hud__badges"><StatusBadge>{session.correctCount}/{session.questionCount} CORRECT</StatusBadge><StatusBadge>{CHECKPOINT_EVERY - (session.questionCount % CHECKPOINT_EVERY)} TO CHECKPOINT</StatusBadge><StatusBadge>SESSION #{session.id}</StatusBadge></div>
       </header>
       {question ? (
         <RetroPanel accent>
-          <div className="panel-heading"><ArcadeIcon name="practice" /><p className="panel-meta">Concept // {question.concept.name}</p></div>
+          <div className="panel-heading flex-wrap"><ArcadeIcon name="practice" /><p className="panel-meta">Concept // {question.concept.name}</p>{status ? <div className="ml-auto"><ClearMeter state={status.state} clear={status.clear} practice /></div> : null}</div>
           <QuestionForm question={question} certification={code} mode="PRACTICE" sessionId={session.id} />
         </RetroPanel>
       ) : <RetroPanel><p className="empty-plate">No active questions are available yet.</p></RetroPanel>}

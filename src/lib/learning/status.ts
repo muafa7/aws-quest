@@ -1,4 +1,4 @@
-import { MASTERY_WINDOW } from "./mastery";
+import { MASTERY_WINDOW, clearProgress, type ClearProgress, type MasteryAttempt } from "./mastery";
 
 export type ConceptProgressLike = {
   totalAttempts: number;
@@ -19,4 +19,13 @@ export function conceptState(progress: ConceptProgressLike, trainingQuestions: n
     // Mastery needs answers on three different questions; smaller banks cannot get there yet.
     smallBank: trainingQuestions < MASTERY_WINDOW,
   };
+}
+
+export type ConceptClear = ClearProgress & { cleared: boolean; practiced: boolean };
+
+/** The stored clear wins: it survives later answers that would not clear on their own. */
+export function conceptClear(progress: ConceptProgressLike, practiceAttempts: readonly MasteryAttempt[], now = new Date()): ConceptClear {
+  const practiced = practiceAttempts.length > 0;
+  if (progress?.masteredAt) return { cleared: true, practiced, counted: MASTERY_WINDOW, remaining: 0, notBefore: null };
+  return { cleared: false, practiced, ...clearProgress(practiceAttempts, now) };
 }

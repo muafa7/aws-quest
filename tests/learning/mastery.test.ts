@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { meetsMastery, type MasteryAttempt } from "../../src/lib/learning/mastery";
-import { conceptState } from "../../src/lib/learning/status";
+import { clearProgress, meetsMastery, type MasteryAttempt } from "../../src/lib/learning/mastery";
+import { conceptClear, conceptState } from "../../src/lib/learning/status";
 
 const day = (n: number, hour = 9) => new Date(Date.UTC(2026, 10, n, hour));
 const attempt = (questionId: number, answeredAt: Date, overrides: Partial<MasteryAttempt> = {}): MasteryAttempt => ({
@@ -51,4 +51,37 @@ test("concept state separates status, due reviews, and small banks", () => {
 test("a concept answered only in Practice still counts as started", () => {
   const progress = { totalAttempts: 1, introducedAt: null, nextReviewAt: null, masteredAt: null };
   assert.equal(conceptState(progress, 4, now).status, "IN_PROGRESS");
+});
+
+test("clear progress counts the latest qualifying answers on different questions", () => {
+  assert.deepEqual(clearProgress([], now), { counted: 0, remaining: 3, notBefore: null });
+  assert.deepEqual(clearProgress([attempt(1, day(10)), attempt(2, day(11))], now), { counted: 2, remaining: 1, notBefore: null });
+  assert.equal(clearProgress([attempt(1, day(10)), attempt(2, day(11)), attempt(1, day(12))], now).counted, 2);
+});
+
+test("a miss or a low-confidence answer resets clear progress", () => {
+  assert.equal(clearProgress([attempt(1, day(10)), attempt(2, day(11), { isCorrect: false })], now).counted, 0);
+  assert.equal(clearProgress([attempt(1, day(10)), attempt(2, day(11), { confidence: "LOW" })], now).counted, 0);
+  assert.equal(clearProgress([attempt(9, day(10), { isCorrect: false }), attempt(1, day(11))], now).counted, 1);
+});
+
+test("the last answer waits for the next UTC day when the others were all today", () => {
+  const sitting = [attempt(1, day(15, 8)), attempt(2, day(15, 9))];
+  assert.deepEqual(clearProgress(sitting, day(15, 10)), { counted: 2, remaining: 1, notBefore: day(16, 0) });
+  assert.equal(clearProgress(sitting, day(16, 1)).notBefore, null);
+});
+
+test("a full window that has not cleared still needs one more answer", () => {
+  const oneSitting = [attempt(1, day(15, 8)), attempt(2, day(15, 9)), attempt(3, day(15, 10))];
+  assert.ok(!meetsMastery(oneSitting));
+  assert.deepEqual(clearProgress(oneSitting, day(15, 11)), { counted: 2, remaining: 1, notBefore: day(16, 0) });
+  const resetByLearnMiss = [attempt(1, day(10)), attempt(2, day(11)), attempt(3, day(12))];
+  assert.deepEqual(clearProgress(resetByLearnMiss, now), { counted: 2, remaining: 1, notBefore: null });
+});
+
+test("a stored clear wins over the current Practice streak", () => {
+  const cleared = { totalAttempts: 4, introducedAt: day(9), nextReviewAt: day(20), masteredAt: day(12) };
+  assert.deepEqual(conceptClear(cleared, [attempt(1, day(13), { confidence: "LOW" })], now), { cleared: true, practiced: true, counted: 3, remaining: 0, notBefore: null });
+  const learnOnly = { ...cleared, masteredAt: null };
+  assert.deepEqual(conceptClear(learnOnly, [], now), { cleared: false, practiced: false, counted: 0, remaining: 3, notBefore: null });
 });

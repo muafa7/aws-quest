@@ -10,6 +10,14 @@ import { AttemptFeedback } from "@/components/feedback";
 import { QuestionForm } from "@/components/question-form";
 import { RetroPanel } from "@/components/retro-panel";
 import { ProgressBar, percentOf } from "@/components/progress-bar";
+import { ClearMeter } from "@/components/concept-status";
+import { conceptClearStatus } from "@/lib/learning/progress";
+
+function seenSummary(seen: number, total: number) {
+  if (seen < total) return `${seen} of ${total} challenges seen · ${total - seen} new left`;
+  if (total === 1) return "1 of 1 challenge seen";
+  return `All ${total} challenges seen. Another question repeats the one you answered longest ago.`;
+}
 
 export default async function LearnConceptPage({
   params,
@@ -43,6 +51,10 @@ export default async function LearnConceptPage({
     concept.questions.find((question) => !lastAnswered.has(question.id))?.id ??
     [...concept.questions].sort((a, b) => (lastAnswered.get(a.id) ?? 0) - (lastAnswered.get(b.id) ?? 0))[0]?.id;
   const question = questionId ? await getSafeQuestionById(questionId) : null;
+  const total = concept.questions.length;
+  const seen = concept.questions.filter((item) => lastAnswered.has(item.id)).length;
+  const questionIsNew = questionId !== undefined && !lastAnswered.has(questionId);
+  const { state, clear } = await conceptClearStatus(concept.id);
   const attemptId = Number(attemptParam);
   const attempt = Number.isInteger(attemptId)
     ? await prisma.attempt.findFirst({
@@ -96,14 +108,18 @@ export default async function LearnConceptPage({
             </div>
           ) : lessonBody}
         </RetroPanel>
-        <div className="min-w-0">
+        <div id="challenge" className="min-w-0">
           {attempt ? (
             <div className="space-y-5">
               <AttemptFeedback attempt={attempt} options={attempt.question.options} explanation={concept.generalExplanation} keyNote={concept.keyNote} sourceUrl={attempt.question.sourceUrl ?? concept.referenceUrl} />
+              <div className="challenge-status">
+                <p className="challenge-status__seen">{seenSummary(seen, total)}</p>
+                <ClearMeter state={state} clear={clear} />
+              </div>
               {nextConcept || concept.questions.length > 1 ? (
                 <div className="session-actions !mt-0">
                   {nextConcept ? <Link href={`/learn/${certification}/${nextConcept.slug}${recall ? "?recall=1" : ""}`} className={buttonClassName("primary")}>Next lesson <ArcadeIcon name="arrow" width={17} height={17} /></Link> : <Link href={`/learn/${certification}`} className={buttonClassName("primary")}>Back to stage map <ArcadeIcon name="arrow" width={17} height={17} /></Link>}
-                  {concept.questions.length > 1 ? <Link href={recall ? `${conceptHref}?recall=1` : conceptHref} className={buttonClassName("secondary")}>Another question</Link> : <Link href={`/learn/${certification}`} className={buttonClassName("secondary")}>Stage map</Link>}
+                  {concept.questions.length > 1 ? <Link href={`${conceptHref}${recall ? "?recall=1" : ""}#challenge`} className={buttonClassName("secondary")}>Another question</Link> : <Link href={`/learn/${certification}`} className={buttonClassName("secondary")}>Stage map</Link>}
                 </div>
               ) : (
                 <Link href={`/learn/${certification}`} className={buttonClassName("primary", "w-full")}>Back to stage map <ArcadeIcon name="arrow" width={17} height={17} /></Link>
@@ -111,9 +127,12 @@ export default async function LearnConceptPage({
             </div>
           ) : question ? (
             <RetroPanel accent>
-              <div className="panel-heading"><ArcadeIcon name="practice" /><h2>{recall ? "Recall challenge" : "Challenge"}</h2></div>
+              <div className="panel-heading"><ArcadeIcon name="practice" /><h2>{recall ? "Recall challenge" : "Challenge"}</h2><span className="panel-meta ml-auto">{questionIsNew ? `${seen + 1} of ${total}` : `Repeat · all ${total} seen`}</span></div>
               <QuestionForm question={question} certification={certification} conceptSlug={conceptSlug} mode="LEARN" recall={recall} />
-              <p className="panel-meta mt-5">Learn answers schedule reviews. A concept is cleared in Practice, where you answer without the lesson.</p>
+              <div className="mt-5 grid gap-2">
+                <ClearMeter state={state} clear={clear} />
+                <p className="panel-meta">Learn answers schedule reviews but never clear a stage. Clearing happens in <Link href={`/practice/${certification}`} className="underline underline-offset-4 hover:text-[var(--amber)]">Practice</Link>, answered without the lesson.</p>
+              </div>
             </RetroPanel>
           ) : (
             <RetroPanel><p className="empty-plate">No challenge has been seeded for this concept yet.</p></RetroPanel>

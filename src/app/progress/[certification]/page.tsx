@@ -6,10 +6,9 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { certificationReadiness } from "@/lib/learning/analytics";
 import { certificationProgress } from "@/lib/learning/progress";
-import { conceptState } from "@/lib/learning/status";
 import { Eyebrow, RetroPanel } from "@/components/retro-panel";
 import { CampaignMeters } from "@/components/progress-bar";
-import { ConceptStatusBadges } from "@/components/concept-status";
+import { ClearMeter, ConceptStatusBadges } from "@/components/concept-status";
 import { ReadinessPanel, ReadinessPanelLoading } from "@/components/readiness-panel";
 
 function accuracy(correct: number, total: number) {
@@ -25,7 +24,6 @@ export default async function CertificationProgressPage({ params }: { params: Pr
   const { certification: code } = await params;
   const data = await certificationProgress(code);
   if (!data) return notFound();
-  const now = new Date();
 
   return (
     <main id="main-content" tabIndex={-1} className="page-wrap">
@@ -44,7 +42,7 @@ export default async function CertificationProgressPage({ params }: { params: Pr
       <section>
         <Eyebrow>CONCEPT STATUS</Eyebrow>
         <p className="panel-meta mt-2">Cleared means the last three Practice answers were correct, not low confidence, on three different questions, across at least two days.{data.smallBank > 0 ? " Small bank: fewer than 3 practice questions, so the concept cannot be cleared yet." : ""}</p>
-        {data.certification.topics.map((topic, topicIndex) => (
+        {data.topics.map((topic, topicIndex) => (
           <section className="domain-band" data-tone={domainTone(topicIndex)} key={topic.id}>
             <div className="domain-band__heading"><span className="domain-band__index">{String(topicIndex + 1).padStart(2, "0")}</span><h2>{topic.name}</h2></div>
             <div className="progress-list">
@@ -55,7 +53,8 @@ export default async function CertificationProgressPage({ params }: { params: Pr
                     <div className="progress-row__heading">
                       <Link className="progress-row__title" href={`/learn/${code}/${concept.slug}`}>{concept.name}</Link>
                       <p className="progress-row__topic">{topic.name}</p>
-                      <ConceptStatusBadges state={conceptState(progress, concept._count.questions, now)} />
+                      <ClearMeter state={concept.state} clear={concept.clear} />
+                      <ConceptStatusBadges state={concept.state} />
                     </div>
                     <dl className="progress-row__meta">
                       <div><dt>Attempts</dt><dd>{progress?.totalAttempts ?? 0}</dd></div>

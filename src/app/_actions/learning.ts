@@ -130,6 +130,8 @@ export async function submitLearningAnswer(formData: FormData) {
         optionOrderSnapshot: JSON.stringify(optionOrder),
         optionsSnapshot: snapshotOptions(question.options),
         isFirstRecordedAttempt: earlierAttempts + mockShows === 0,
+        // Shared with masteredAt below, so feedback can tell which answer cleared the concept.
+        answeredAt: now,
       },
     });
 
@@ -189,5 +191,6 @@ export async function submitLearningAnswer(formData: FormData) {
     redirect(`/practice/${certificationCode}?session=${practiceSessionId}&attempt=${attempt.id}`);
   }
 
-  redirect(`/learn/${certificationCode}/${question.concept.slug}?attempt=${attempt.id}${recall ? "&recall=1" : ""}`);
+  // The hash makes the router scroll to the feedback instead of the top of the page.
+  redirect(`/learn/${certificationCode}/${question.concept.slug}?attempt=${attempt.id}${recall ? "&recall=1" : ""}#challenge`);
 }
