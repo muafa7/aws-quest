@@ -11,25 +11,25 @@
         "key": "A",
         "text": "Make the upload request wait synchronously for a larger worker instance to finish.",
         "correct": false,
-        "explanation": "Tetap mengikat latency dan keberhasilan intake ke worker."
+        "explanation": "Remains ties latency and success intake to worker."
       },
       {
         "key": "B",
         "text": "Send each task to a random worker over HTTP without persisting it.",
         "correct": false,
-        "explanation": "Pekerjaan dapat hilang saat worker tidak tersedia."
+        "explanation": "Work can lost when worker not available."
       },
       {
         "key": "C",
         "text": "Cache completed responses in CloudFront but keep all processing synchronous.",
         "correct": false,
-        "explanation": "Cache hasil tidak menyediakan backlog untuk pekerjaan baru."
+        "explanation": "Cache result does not provide backlog for work new."
       },
       {
         "key": "D",
         "text": "Store uploaded images in S3, enqueue object references in SQS, and let workers process the queue asynchronously.",
         "correct": true,
-        "explanation": "S3 menyimpan payload, sementara SQS menahan pekerjaan sampai worker siap."
+        "explanation": "S3 stores payload, temporary SQS holds work until worker ready."
       }
     ],
     "tags": [
@@ -55,25 +55,25 @@
         "key": "A",
         "text": "Set an appropriate visibility timeout, extend it for long jobs, and keep processing idempotent.",
         "correct": true,
-        "explanation": "Pesan tidak terlalu cepat terlihat lagi; idempotency tetap penting saat retry terjadi."
+        "explanation": "Message not too fast appears again; idempotency remains important when retry occurs."
       },
       {
         "key": "B",
         "text": "Add a delivery delay to every new message but leave visibility at 30 seconds.",
         "correct": false,
-        "explanation": "Delay awal tidak mengatasi redelivery saat pekerjaan sedang berjalan."
+        "explanation": "Delay initial not overcomes redelivery when work currently operates."
       },
       {
         "key": "C",
         "text": "Delete each message immediately after receiving it, before processing succeeds.",
         "correct": false,
-        "explanation": "Ini dapat kehilangan pekerjaan jika worker gagal setelah delete."
+        "explanation": "this can loss work if worker fails after delete."
       },
       {
         "key": "D",
         "text": "Increase only the message retention period from one day to seven days.",
         "correct": false,
-        "explanation": "Retention tidak menentukan invisibility saat sedang diproses."
+        "explanation": "Retention not determines invisibility when currently processed."
       }
     ],
     "tags": [
@@ -99,25 +99,25 @@
         "key": "A",
         "text": "Increase message retention only, without limiting the receives of repeatedly failing messages.",
         "correct": false,
-        "explanation": "Retention lebih panjang menahan pesan lebih lama tetapi tidak memisahkan poison messages setelah jumlah kegagalan tertentu."
+        "explanation": "Retention more long holds message more long but not separates poison messages after number failure specific."
       },
       {
         "key": "B",
         "text": "Increase the visibility timeout for the entire queue but never move repeatedly failing messages elsewhere.",
         "correct": false,
-        "explanation": "Timeout lebih lama dapat menunda retry tetapi tidak membuat isolasi DLQ yang diminta."
+        "explanation": "Timeout more long can delays retry but not creates isolation DLQ that is requested."
       },
       {
         "key": "C",
         "text": "Configure a dead-letter queue and a redrive policy with an appropriate maxReceiveCount.",
         "correct": true,
-        "explanation": "Pesan bermasalah dipisah setelah batas percobaan yang ditetapkan."
+        "explanation": "Message problematic dipisah after limit percobaan that defined."
       },
       {
         "key": "D",
         "text": "Delete every message after its first failed processing attempt and keep no failure record.",
         "correct": false,
-        "explanation": "Ini menghilangkan kesempatan retry/investigasi dan tidak memenuhi isolasi pesan gagal untuk diperiksa."
+        "explanation": "this eliminates kesempatan retry/investigation and does not meet isolation message fails for checked."
       }
     ],
     "tags": [
@@ -143,25 +143,25 @@
         "key": "A",
         "text": "Use a FIFO queue with one MessageGroupId shared by every account.",
         "correct": false,
-        "explanation": "Urutan terjaga tetapi seluruh akun diserialkan tanpa kebutuhan."
+        "explanation": "Order terjaga but all accounts diserialkan without requirements."
       },
       {
         "key": "B",
         "text": "Use a new random MessageGroupId for every message from the same account.",
         "correct": false,
-        "explanation": "Pesan satu akun tidak lagi berada dalam grup urutan yang sama."
+        "explanation": "Message one account not again is located within group order that same."
       },
       {
         "key": "C",
         "text": "Use a FIFO queue with the customer account ID as MessageGroupId.",
         "correct": true,
-        "explanation": "Urutan dijaga per akun, sedangkan grup akun lain dapat berjalan paralel."
+        "explanation": "Order dijaga per account, whereas group other account can operates parallel."
       },
       {
         "key": "D",
         "text": "Use a standard queue and assume MessageGroupId enforces FIFO ordering.",
         "correct": false,
-        "explanation": "MessageGroupId pada standard queue bukan jaminan urutan FIFO."
+        "explanation": "MessageGroupId on standard queue does not guarantee order FIFO."
       }
     ],
     "tags": [
@@ -187,25 +187,25 @@
         "key": "A",
         "text": "Generate a new payment idempotency key for every retry.",
         "correct": false,
-        "explanation": "Key baru membuat retry tampak sebagai charge yang berbeda."
+        "explanation": "Key new creates retry appears as charge that different."
       },
       {
         "key": "B",
         "text": "Delete every message before contacting the payment provider.",
         "correct": false,
-        "explanation": "Crash setelah delete dapat membuat charge yang diperlukan tidak pernah dilakukan."
+        "explanation": "Crash after delete can create charge that is required not ever performed."
       },
       {
         "key": "C",
         "text": "Switch to FIFO and assume a successful external charge can never be executed twice.",
         "correct": false,
-        "explanation": "FIFO tidak mengatomikkan efek eksternal dengan delete pesan."
+        "explanation": "FIFO not mengatomikkan effect external with delete message."
       },
       {
         "key": "D",
         "text": "Use a stable business operation ID with the provider's idempotency feature and persist processing state safely.",
         "correct": true,
-        "explanation": "Retry merujuk operasi bisnis yang sama, sehingga efek charge tidak harus diulang."
+        "explanation": "Retry references operation business that same, so that effect charge not must repeated."
       }
     ],
     "tags": [
@@ -231,31 +231,31 @@
         "key": "A",
         "text": "Generate a new MessageDeduplicationId on every network retry.",
         "correct": false,
-        "explanation": "ID baru menandai kiriman sebagai berbeda."
+        "explanation": "ID new menandai delivery as different."
       },
       {
         "key": "B",
         "text": "Use an SQS FIFO queue.",
         "correct": true,
-        "explanation": "Deduplikasi kiriman yang dimaksud merupakan kemampuan FIFO."
+        "explanation": "Deduplication delivery that intended is capability FIFO."
       },
       {
         "key": "C",
         "text": "Assume the deduplication window also makes all downstream database writes atomic.",
         "correct": false,
-        "explanation": "Deduplikasi pengiriman tidak memberi transaksi lintas sistem."
+        "explanation": "Deduplication delivery not gives transaction across system."
       },
       {
         "key": "D",
         "text": "Reuse a stable MessageDeduplicationId for retries of the same event.",
         "correct": true,
-        "explanation": "ID yang sama menghubungkan kiriman ulang dengan event yang sama."
+        "explanation": "ID that same connects delivery again with event that same."
       },
       {
         "key": "E",
         "text": "Use only a longer message retention period on a standard queue.",
         "correct": false,
-        "explanation": "Retention bukan deduplication identifier."
+        "explanation": "Retention is not deduplication identifier."
       }
     ],
     "tags": [
@@ -281,25 +281,25 @@
         "key": "A",
         "text": "Route each event to exactly one target using an ALB round-robin algorithm.",
         "correct": false,
-        "explanation": "Load balancing satu target tidak menghasilkan fanout ke tiga layanan."
+        "explanation": "Load balancing one target not produces fanout to three service."
       },
       {
         "key": "B",
         "text": "Call all services synchronously in series before accepting the order.",
         "correct": false,
-        "explanation": "Semua layanan menjadi ketergantungan sinkron tanpa backlog mandiri."
+        "explanation": "All service becomes dependency synchronous without backlog mandiri."
       },
       {
         "key": "C",
         "text": "Publish to SNS and subscribe a separate SQS queue for each service.",
         "correct": true,
-        "explanation": "Setiap layanan menerima salinan melalui queue-nya sendiri dan tidak saling mengambil pekerjaan."
+        "explanation": "Each service receives copy through queue-nya itself and does not mutually takes work."
       },
       {
         "key": "D",
         "text": "Let all three services poll one shared SQS queue.",
         "correct": false,
-        "explanation": "Satu queue membagi pekerjaan, bukan menjamin semua layanan menerima tiap event."
+        "explanation": "One queue divides work, is not guarantees all service receives each event."
       }
     ],
     "tags": [
@@ -325,25 +325,25 @@
         "key": "A",
         "text": "Use Route 53 weighted DNS records to inspect event JSON fields.",
         "correct": false,
-        "explanation": "DNS tidak memeriksa isi JSON event."
+        "explanation": "DNS not checks contents JSON event."
       },
       {
         "key": "B",
         "text": "Use an ALB listener to periodically poll SaaS audit APIs.",
         "correct": false,
-        "explanation": "ALB tidak menjadi integrator polling SaaS atau event bus."
+        "explanation": "ALB not becomes integrator polling SaaS or event bus."
       },
       {
         "key": "C",
         "text": "Use one SQS queue and require every target to discard unrelated messages after receiving them.",
         "correct": false,
-        "explanation": "Consumer dapat mengambil pesan yang dibutuhkan consumer lain; routing juga tidak terpusat."
+        "explanation": "Consumer can take message that is required consumer other; routing also not centralized."
       },
       {
         "key": "D",
         "text": "Use EventBridge event buses and event-pattern rules with the required targets.",
         "correct": true,
-        "explanation": "EventBridge menyediakan integrasi event dan routing berdasarkan isi."
+        "explanation": "EventBridge provides integration event and routing based on contents."
       }
     ],
     "tags": [
@@ -369,31 +369,31 @@
         "key": "A",
         "text": "Have each downstream service consume its own subscribed queue.",
         "correct": true,
-        "explanation": "Queue terpisah mempertahankan backlog dan retry masing-masing."
+        "explanation": "Queue separate maintains backlog and retry each."
       },
       {
         "key": "B",
         "text": "Make both services compete for only one of the two queues.",
         "correct": false,
-        "explanation": "Ini menghilangkan fanout independen ke semua layanan."
+        "explanation": "this eliminates fanout independent to all service."
       },
       {
         "key": "C",
         "text": "Replace the subscriptions with a single synchronous call to one service.",
         "correct": false,
-        "explanation": "Layanan kedua tidak lagi mendapat salinan independen."
+        "explanation": "Service both not again gets copy independent."
       },
       {
         "key": "D",
         "text": "Allow anonymous SendMessage from every principal without a source restriction.",
         "correct": false,
-        "explanation": "Izin lebih luas dari topic yang diperlukan."
+        "explanation": "permissions broader from topic that is required."
       },
       {
         "key": "E",
         "text": "Allow the SNS service to send messages with a condition restricting the source to the intended topic ARN.",
         "correct": true,
-        "explanation": "Policy membatasi pengirim layanan pada topic yang dipercaya."
+        "explanation": "Policy restricts pengirim service on topic that trusted."
       }
     ],
     "tags": [
@@ -419,25 +419,25 @@
         "key": "A",
         "text": "Use a Step Functions Express workflow for the two-day callback wait.",
         "correct": false,
-        "explanation": "Express tidak mendukung pola wait-for-callback yang diminta."
+        "explanation": "Express does not support pattern wait-for-callback that is requested."
       },
       {
         "key": "B",
         "text": "Use a synchronous ALB request with a two-day idle connection as the workflow state.",
         "correct": false,
-        "explanation": "Koneksi terbuka bukan penyimpanan progres yang andal."
+        "explanation": "Connection open is not storage progress that andal."
       },
       {
         "key": "C",
         "text": "Use a Step Functions Standard workflow with a supported callback task-token pattern.",
         "correct": true,
-        "explanation": "Workflow menyimpan state dan melanjutkan setelah callback, tanpa menahan compute aktif."
+        "explanation": "Workflow stores state and continues after callback, without holds compute active."
       },
       {
         "key": "D",
         "text": "Keep a single Lambda invocation sleeping until the approver responds.",
         "correct": false,
-        "explanation": "Invocation biasa tidak dapat menunggu dua hari."
+        "explanation": "Invocation ordinary cannot waits two day."
       }
     ],
     "tags": [
@@ -463,25 +463,25 @@
         "key": "A",
         "text": "Delete the state machine whenever one request is throttled.",
         "correct": false,
-        "explanation": "Menghapus definisi bukan strategi recovery pekerjaan."
+        "explanation": "Deletes definition is not strategy recovery work."
       },
       {
         "key": "B",
         "text": "Retry every error forever with no delay.",
         "correct": false,
-        "explanation": "Error permanen tidak selesai dan retry agresif memperberat layanan."
+        "explanation": "Error permanent not completed and retry aggressive memperberat service."
       },
       {
         "key": "C",
         "text": "Use bounded retries with backoff for retryable errors and a Catch transition for remaining failures.",
         "correct": true,
-        "explanation": "Jeda dan batas retry mengurangi tekanan; Catch memberi jalur kegagalan yang eksplisit."
+        "explanation": "Pause and limit retry reduces pressure; Catch gives path failure that explicit."
       },
       {
         "key": "D",
         "text": "Ignore every failure and mark the task successful.",
         "correct": false,
-        "explanation": "Workflow dapat mengklaim hasil yang belum terjadi."
+        "explanation": "Workflow can claims result that not yet occurs."
       }
     ],
     "tags": [
@@ -507,31 +507,31 @@
         "key": "A",
         "text": "Use idempotent operation identifiers for retried external steps.",
         "correct": true,
-        "explanation": "Retry tidak seharusnya menggandakan efek bisnis yang sama."
+        "explanation": "Retry not should duplicates effect business that same."
       },
       {
         "key": "B",
         "text": "Define an explicit compensation step that releases inventory when payment cannot complete.",
         "correct": true,
-        "explanation": "Compensation mengembalikan hasil bisnis sesuai jalur kegagalan."
+        "explanation": "Compensation returns result business appropriate path failure."
       },
       {
         "key": "C",
         "text": "Record the order as paid before sending the payment request.",
         "correct": false,
-        "explanation": "State sukses mendahului bukti pembayaran dan dapat salah."
+        "explanation": "State sukses mendahului evidence pembayaran and can wrong."
       },
       {
         "key": "D",
         "text": "Retry all declined payments indefinitely without checking the failure type.",
         "correct": false,
-        "explanation": "Kegagalan permanen tidak selesai hanya dengan retry."
+        "explanation": "Failure permanent not completed only with retry."
       },
       {
         "key": "E",
         "text": "Assume Step Functions automatically rolls back every external service side effect.",
         "correct": false,
-        "explanation": "Orkestrasi tidak memberi transaksi database lintas seluruh layanan."
+        "explanation": "Orchestration not gives transaction database across all service."
       }
     ],
     "tags": [
@@ -557,25 +557,25 @@
         "key": "A",
         "text": "Increase the Auto Scaling maximum without changing session storage.",
         "correct": false,
-        "explanation": "Lebih banyak instance tidak membagi state secara otomatis."
+        "explanation": "More instance not divides state automatically."
       },
       {
         "key": "B",
         "text": "Enable sticky sessions and continue storing the only copy of session data locally.",
         "correct": false,
-        "explanation": "Affinity tidak memulihkan data setelah instance hilang."
+        "explanation": "Affinity not restores data after instance lost."
       },
       {
         "key": "C",
         "text": "Use one very large instance and disable replacements permanently.",
         "correct": false,
-        "explanation": "Ini mengurangi ketahanan dan tidak menyelesaikan ketergantungan state."
+        "explanation": "this reduces ketahanan and does not solve dependency state."
       },
       {
         "key": "D",
         "text": "Store session state in an appropriate shared service and let any application instance retrieve it.",
         "correct": true,
-        "explanation": "Session tidak lagi melekat pada memori instance yang dapat diganti."
+        "explanation": "Session not again melekat on memory instance that can replaced."
       }
     ],
     "tags": [
@@ -601,25 +601,25 @@
         "key": "A",
         "text": "Enable load-balancer stickiness while keeping the only document copy on local scratch storage.",
         "correct": false,
-        "explanation": "Stickiness mengarahkan request, bukan melindungi file ketika instance atau storage ephemeral hilang."
+        "explanation": "Stickiness routes request, is not protects file when instances or storage ephemeral lost."
       },
       {
         "key": "B",
         "text": "Store uploaded documents in S3 and persist their object references in the application data model.",
         "correct": true,
-        "explanation": "S3 memisahkan dokumen dari lifecycle instance dan cocok dengan antarmuka object API yang diminta."
+        "explanation": "S3 separates document from lifecycle instance and suitable with interface object API that is requested."
       },
       {
         "key": "C",
         "text": "Keep documents only in each server's memory and rebuild instances more frequently.",
         "correct": false,
-        "explanation": "Memori instance bersifat ephemeral; replace instance tidak boleh menghilangkan satu-satunya salinan dokumen."
+        "explanation": "Memory instance is ephemeral; replace instance not may eliminate the only copy document."
       },
       {
         "key": "D",
         "text": "Store each document only on the local instance that first receives its upload.",
         "correct": false,
-        "explanation": "Data lokal saja tidak mempertahankan akses saat instance diganti dan tidak dibagikan secara durable antar-instance."
+        "explanation": "Data local only not maintains access when instance replaced and does not shared in a manner durable antar-instance."
       }
     ],
     "tags": [
@@ -645,31 +645,31 @@
         "key": "A",
         "text": "Assume all instance shutdowns will run the application's cleanup script successfully.",
         "correct": false,
-        "explanation": "Gangguan dapat terjadi tanpa cleanup yang selesai."
+        "explanation": "Disruption can occurs without cleanup that completed."
       },
       {
         "key": "B",
         "text": "Keep the only completion record in the worker's memory.",
         "correct": false,
-        "explanation": "Record hilang saat instance diganti."
+        "explanation": "Record lost when instance replaced."
       },
       {
         "key": "C",
         "text": "Make retried processing idempotent using a stable job identifier.",
         "correct": true,
-        "explanation": "Redelivery setelah kegagalan tidak menggandakan efek bisnis."
+        "explanation": "Redelivery after failure not duplicates effect business."
       },
       {
         "key": "D",
         "text": "Persist the completed business result before acknowledging or deleting the corresponding message.",
         "correct": true,
-        "explanation": "Hasil durable harus ada sebelum pekerjaan dianggap selesai."
+        "explanation": "Result durable must exists before work considered completed."
       },
       {
         "key": "E",
         "text": "Delete messages immediately on receipt to prevent all retries.",
         "correct": false,
-        "explanation": "Kegagalan setelah delete kehilangan pekerjaan."
+        "explanation": "Failure after delete loss work."
       }
     ],
     "tags": [
@@ -695,25 +695,25 @@
         "key": "A",
         "text": "Deploy an EKS cluster with self-managed nodes solely to avoid managing compute hosts.",
         "correct": false,
-        "explanation": "Self-managed nodes tetap memerlukan pengelolaan host dan menambah komponen."
+        "explanation": "Self-managed nodes remains requires management host and adds component."
       },
       {
         "key": "B",
         "text": "Use an SQS queue as the HTTP server without any compute consumers.",
         "correct": false,
-        "explanation": "Queue menyimpan pesan, bukan menjalankan container HTTP."
+        "explanation": "Queue stores message, is not runs container HTTP."
       },
       {
         "key": "C",
         "text": "Run the container manually on one EC2 instance with no service scheduler.",
         "correct": false,
-        "explanation": "Instance tunggal dan operasi manual tidak memenuhi replacement multi-AZ."
+        "explanation": "Instance single and operation manual not meets replacement multi-AZ."
       },
       {
         "key": "D",
         "text": "Run an ECS service on Fargate across multiple subnets behind an ALB.",
         "correct": true,
-        "explanation": "Fargate menghilangkan manajemen host; ECS service menjaga task yang diperlukan."
+        "explanation": "Fargate eliminates manajemen host; ECS service maintains task that is required."
       }
     ],
     "tags": [
@@ -739,25 +739,25 @@
         "key": "A",
         "text": "Remove all concurrency controls so Lambda consumes the backlog as fast as possible.",
         "correct": false,
-        "explanation": "Ini memperbesar beban yang sudah melampaui database."
+        "explanation": "this increases load that already goes beyond database."
       },
       {
         "key": "B",
         "text": "Limit consumer concurrency to the tested downstream capacity and retain queued work for later processing.",
         "correct": true,
-        "explanation": "Backpressure membatasi tekanan; queue menyerap backlog yang dapat ditunda."
+        "explanation": "Backpressure restricts pressure; queue menyerap backlog that can ditunda."
       },
       {
         "key": "C",
         "text": "Reduce queue retention below the expected backlog processing time.",
         "correct": false,
-        "explanation": "Pekerjaan dapat kedaluwarsa sebelum diproses."
+        "explanation": "Work can expired before processed."
       },
       {
         "key": "D",
         "text": "Delete excess messages whenever the database refuses a connection.",
         "correct": false,
-        "explanation": "Menghapus pekerjaan bukan pemulihan yang andal."
+        "explanation": "Deletes work is not recovery that andal."
       }
     ],
     "tags": [
@@ -783,25 +783,25 @@
         "key": "A",
         "text": "Amazon SQS as a drop-in JMS broker replacement without reviewing client compatibility.",
         "correct": false,
-        "explanation": "SQS memiliki API dan semantik berbeda; bukan pengganti transparan semua fitur broker."
+        "explanation": "SQS has API and semantik different; is not a substitute for transparent all feature broker."
       },
       {
         "key": "B",
         "text": "Amazon MQ with a compatible ActiveMQ engine and deployment mode.",
         "correct": true,
-        "explanation": "Amazon MQ mempertahankan ekosistem broker dan protokol yang sudah digunakan."
+        "explanation": "Amazon MQ maintains ecosystem broker and protocol that already used."
       },
       {
         "key": "C",
         "text": "Amazon EventBridge while retaining every broker-specific operation unchanged.",
         "correct": false,
-        "explanation": "Event bus bukan implementasi transparan seluruh API broker lama."
+        "explanation": "Event bus is not implementation transparent all API broker long."
       },
       {
         "key": "D",
         "text": "Amazon Kinesis Data Streams as a protocol-identical ActiveMQ broker.",
         "correct": false,
-        "explanation": "Streaming Kinesis bukan broker ActiveMQ/JMS yang sama."
+        "explanation": "Streaming Kinesis is not broker ActiveMQ/JMS that same."
       }
     ],
     "tags": [
@@ -827,25 +827,25 @@
         "key": "A",
         "text": "Use an Auto Scaling group restricted to one AZ and increase its maximum size.",
         "correct": false,
-        "explanation": "Group tetap tidak dapat melayani dari AZ lain."
+        "explanation": "Group remains cannot serves from other AZ."
       },
       {
         "key": "B",
         "text": "Use an ALB and an Auto Scaling group spanning multiple AZs, with capacity planning for the surviving AZs.",
         "correct": true,
-        "explanation": "Distribusi dan headroom memungkinkan layanan bertahan saat kapasitas satu AZ hilang."
+        "explanation": "Distribution and headroom enables service persists when capacity one AZ lost."
       },
       {
         "key": "C",
         "text": "Use two EC2 instances in different subnets within the same AZ.",
         "correct": false,
-        "explanation": "Subnet berbeda tidak menghilangkan kegagalan bersama satu AZ."
+        "explanation": "Subnet different does not eliminate failure shared one AZ."
       },
       {
         "key": "D",
         "text": "Use one large instance with an Elastic IP and a daily snapshot.",
         "correct": false,
-        "explanation": "Snapshot membantu recovery, bukan kontinuitas request saat AZ gagal."
+        "explanation": "Snapshot helps recovery, is not kontinuitas request when AZ fails."
       }
     ],
     "tags": [
@@ -871,25 +871,25 @@
         "key": "A",
         "text": "Increase the instance's DNS TTL so health status changes less often.",
         "correct": false,
-        "explanation": "TTL tidak membuat Auto Scaling memakai health check ALB."
+        "explanation": "TTL not creates Auto Scaling uses health check ALB."
       },
       {
         "key": "B",
         "text": "Increase maximum group size but keep the unhealthy instance permanently in service.",
         "correct": false,
-        "explanation": "Kapasitas maksimum bukan sinyal replacement."
+        "explanation": "Capacity maximum is not sinyal replacement."
       },
       {
         "key": "C",
         "text": "Disable ALB health checks so the application always appears healthy.",
         "correct": false,
-        "explanation": "Ini menyembunyikan kegagalan alih-alih memulihkan layanan."
+        "explanation": "this menyembunyikan failure instead of restores service."
       },
       {
         "key": "D",
         "text": "Enable load balancer health checks for the Auto Scaling group and configure suitable health-check grace behavior.",
         "correct": true,
-        "explanation": "Auto Scaling harus menggunakan sinyal kesehatan aplikasi yang relevan."
+        "explanation": "Auto Scaling must use sinyal kesehatan application that relevant."
       }
     ],
     "tags": [
@@ -915,25 +915,25 @@
         "key": "A",
         "text": "Deploy a zonal NAT gateway in AZ B and route each AZ's private subnets through its local NAT gateway.",
         "correct": true,
-        "explanation": "Kegagalan AZ A tidak lagi memutus jalur egress subnet AZ B."
+        "explanation": "Failure AZ A not again breaks path egress subnet AZ B."
       },
       {
         "key": "B",
         "text": "Replace the private route with an internet gateway route while leaving instances without public IPv4 addresses.",
         "correct": false,
-        "explanation": "Ini bukan pengganti NAT untuk akses internet IPv4 dari instance tersebut."
+        "explanation": "this is not replacement NAT for access internet IPv4 from instance that."
       },
       {
         "key": "C",
         "text": "Attach a second Elastic IP to the existing NAT gateway and treat it as cross-AZ failover.",
         "correct": false,
-        "explanation": "Alamat tambahan tidak memindahkan resource zonal ke AZ lain."
+        "explanation": "Address additional not moves resource zonal to other AZ."
       },
       {
         "key": "D",
         "text": "Add a second zonal NAT gateway in AZ A and keep all routes pointing into AZ A.",
         "correct": false,
-        "explanation": "AZ A tetap menjadi dependency bersama."
+        "explanation": "AZ A remains becomes dependency shared."
       }
     ],
     "tags": [
@@ -959,25 +959,25 @@
         "key": "A",
         "text": "Use a larger Single-AZ primary for both transactions and reports.",
         "correct": false,
-        "explanation": "Kapasitas lebih besar tidak menambah failover AZ atau memisahkan reporting."
+        "explanation": "Capacity larger not adds failover AZ or separates reporting."
       },
       {
         "key": "B",
         "text": "Use a Multi-AZ DB instance deployment with one standby and add a separate read replica for reporting.",
         "correct": true,
-        "explanation": "Standby menangani failover; read replica menangani query reporting."
+        "explanation": "Standby handles failover; read replica handles query reporting."
       },
       {
         "key": "C",
         "text": "Use a Multi-AZ DB instance deployment with one standby and send reports to that standby.",
         "correct": false,
-        "explanation": "Standby jenis deployment ini tidak melayani query baca."
+        "explanation": "Standby type deployment this does not serves query baca."
       },
       {
         "key": "D",
         "text": "Keep a Single-AZ primary and rely only on manual promotion of its read replica.",
         "correct": false,
-        "explanation": "Manual promotion tidak memenuhi automatic failover yang diminta."
+        "explanation": "Manual promotion not meets automatic failover that is requested."
       }
     ],
     "tags": [
@@ -1003,25 +1003,25 @@
         "key": "A",
         "text": "Increase database storage capacity to reconstruct deleted rows automatically.",
         "correct": false,
-        "explanation": "Kapasitas storage tidak menjadi rollback data."
+        "explanation": "Capacity storage not becomes rollback data."
       },
       {
         "key": "B",
         "text": "Add another read replica after the deletion and expect it to recover the lost rows.",
         "correct": false,
-        "explanation": "Replica baru berasal dari state saat ini, bukan otomatis sebelum incident."
+        "explanation": "Replica new originates from state when this, does not automatically before incident."
       },
       {
         "key": "C",
         "text": "Restore to a new DB instance at a valid time before the deletion, validate it, and plan the application cutover.",
         "correct": true,
-        "explanation": "PITR mengembalikan state historis; failover saja tidak membatalkan delete yang sudah direplikasi."
+        "explanation": "PITR returns state historical; failover only not cancels delete that already replicated."
       },
       {
         "key": "D",
         "text": "Fail over to the standby and assume it contains the pre-deletion data.",
         "correct": false,
-        "explanation": "Standby sudah menerima perubahan yang salah."
+        "explanation": "Standby already receives changes that wrong."
       }
     ],
     "tags": [
@@ -1047,25 +1047,25 @@
         "key": "A",
         "text": "Keep the only compute instance in the writer AZ and shorten the backup interval instead of adding a replica.",
         "correct": false,
-        "explanation": "Backup lebih sering dapat memperbaiki recovery point, tetapi bukan compute standby yang sudah berjalan untuk dipromosikan."
+        "explanation": "Backup more frequently can improve recovery point, but is not compute standby that already operates for dipromosikan."
       },
       {
         "key": "B",
         "text": "Add a reader in the same AZ only and declare the design AZ-independent.",
         "correct": false,
-        "explanation": "Reader masih memiliki dependency AZ yang sama."
+        "explanation": "Reader still has dependency AZ that same."
       },
       {
         "key": "C",
         "text": "Rely only on the replicated cluster storage and assume a second running compute instance already exists.",
         "correct": false,
-        "explanation": "Durability storage tidak berarti ada reader compute siap pakai."
+        "explanation": "Durability storage does not mean exists reader compute ready use."
       },
       {
         "key": "D",
         "text": "Add an appropriately sized Aurora Replica in another AZ and configure promotion priorities as needed.",
         "correct": true,
-        "explanation": "Replica compute di AZ lain menyediakan kandidat failover yang siap."
+        "explanation": "Replica compute in other AZ provides candidate failover that ready."
       }
     ],
     "tags": [
@@ -1091,25 +1091,25 @@
         "key": "A",
         "text": "Run a full-capacity active-active deployment in two Regions.",
         "correct": false,
-        "explanation": "Bisa resilient, tetapi lebih banyak infrastruktur berjalan daripada yang diperlukan."
+        "explanation": "Can resilient, but more infrastructure operates rather than that is required."
       },
       {
         "key": "B",
         "text": "Use backup and restore with tested infrastructure automation and cross-Region backups.",
         "correct": true,
-        "explanation": "Hasil uji memenuhi tujuan tanpa menjalankan aplikasi standby sepanjang waktu."
+        "explanation": "Result test meets destination without runs application standby throughout time."
       },
       {
         "key": "C",
         "text": "Keep backups only in the primary Region and plan to use them when that entire Region is unavailable.",
         "correct": false,
-        "explanation": "Recovery regional memerlukan salinan/dependensi yang tersedia di luar failure scope tersebut."
+        "explanation": "Recovery regional requires copy/dependencies that is available in outside failure scope that."
       },
       {
         "key": "D",
         "text": "Run a full-capacity warm standby permanently even though restore already meets the targets.",
         "correct": false,
-        "explanation": "Kapasitas standby tidak diperlukan oleh batasan yang diberikan."
+        "explanation": "Capacity standby is not required by limitations that granted."
       }
     ],
     "tags": [
@@ -1135,25 +1135,25 @@
         "key": "A",
         "text": "Warm standby.",
         "correct": true,
-        "explanation": "Sistem sekunder sudah fungsional tetapi kapasitasnya lebih kecil."
+        "explanation": "System secondary already functional but its capacity smaller."
       },
       {
         "key": "B",
         "text": "Full-capacity active-active with both Regions continuously serving production traffic.",
         "correct": false,
-        "explanation": "Sekunder belum aktif melayani trafik produksi dan belum full capacity."
+        "explanation": "Secondary not yet active serves traffic production and not yet full capacity."
       },
       {
         "key": "C",
         "text": "Pilot light with only core data services running and no functional application tier.",
         "correct": false,
-        "explanation": "Soal menyatakan aplikasi sekunder sudah fungsional, bukan hanya komponen inti."
+        "explanation": "Question states application secondary already functional, is not just component inti."
       },
       {
         "key": "D",
         "text": "Backup and restore only.",
         "correct": false,
-        "explanation": "Pola itu membangun kembali lingkungan dari backup, bukan menjalankan salinan fungsional."
+        "explanation": "Pattern that builds back environment from backup, is not runs copy functional."
       }
     ],
     "tags": [
@@ -1179,25 +1179,25 @@
         "key": "A",
         "text": "Create independent DynamoDB tables in each Region and configure only cross-Region backup copies.",
         "correct": false,
-        "explanation": "Backup copies bukan active read/write replication antara kedua tabel untuk operasi aplikasi sehari-hari."
+        "explanation": "Backup copies is not active read/write replication between both table for operation application sehari-hari."
       },
       {
         "key": "B",
         "text": "Use latency-based DNS to send requests to independent tables without any data replication.",
         "correct": false,
-        "explanation": "Routing memilih endpoint tetapi tidak menyinkronkan data yang ditulis pada tabel terpisah."
+        "explanation": "Routing selects endpoint but not menyinkronkan data that ditulis on table separate."
       },
       {
         "key": "C",
         "text": "Use a single-Region DynamoDB table with a GSI and treat the index as a writable cross-Region replica.",
         "correct": false,
-        "explanation": "GSI bukan independently writable cross-Region table replica."
+        "explanation": "GSI is not independently writable cross-Region table replica."
       },
       {
         "key": "D",
         "text": "Use DynamoDB global tables configured for multi-Region eventual consistency and design application conflict handling appropriately.",
         "correct": true,
-        "explanation": "Global tables menyediakan replica multi-active; model data harus menerima semantik MREC."
+        "explanation": "Global tables provides replica multi-active; model data must receive semantik MREC."
       }
     ],
     "tags": [
@@ -1223,25 +1223,25 @@
         "key": "A",
         "text": "Copy backups to another vault in the same production account while keeping unrestricted production deletion permissions.",
         "correct": false,
-        "explanation": "Menambah vault tanpa pemisahan ownership/permission tidak membentuk perlindungan dari operator production yang diminta."
+        "explanation": "Adds vault without separation ownership/permission not forms protection from operator production that is requested."
       },
       {
         "key": "B",
         "text": "Store every backup in the production account under the same unrestricted operator role.",
         "correct": false,
-        "explanation": "Kompromi atau kesalahan role yang sama tetap memengaruhi backup."
+        "explanation": "Compromise or mistake role that same remains affects backup."
       },
       {
         "key": "C",
         "text": "Copy backups into a dedicated backup account and restrict destination vault and key permissions separately.",
         "correct": true,
-        "explanation": "Salinan dan kontrol akses tidak lagi seluruhnya berada di akun produksi."
+        "explanation": "Copy and access control not again entirely is located in account production."
       },
       {
         "key": "D",
         "text": "Create read replicas only and treat them as immutable historical backups.",
         "correct": false,
-        "explanation": "Replica dapat menerima perubahan salah dan bukan histori immutable."
+        "explanation": "Replica can receive changes wrong rather than history immutable."
       }
     ],
     "tags": [
@@ -1267,25 +1267,25 @@
         "key": "A",
         "text": "Restore to a new table at the selected available recovery time, validate settings and data, and update application references.",
         "correct": true,
-        "explanation": "PITR menghasilkan tabel baru; aplikasi dan konfigurasi pendukung perlu disesuaikan."
+        "explanation": "PITR produces table new; application and configuration pendukung needs to adjusted."
       },
       {
         "key": "B",
         "text": "Restore the latest table schema only and expect indexes to reconstruct deleted item values.",
         "correct": false,
-        "explanation": "Schema/index definition bukan salinan historis data item yang telah dihapus."
+        "explanation": "Schema/index definition is not copy historical data item that has deleted."
       },
       {
         "key": "C",
         "text": "Enable PITR only after the deletion and recover any historical time from before it was enabled.",
         "correct": false,
-        "explanation": "Fitur tidak menciptakan histori yang sebelumnya tidak dicadangkan."
+        "explanation": "Feature not creates history that previously not backed up."
       },
       {
         "key": "D",
         "text": "Expect PITR to rewind the existing table in place without a new table.",
         "correct": false,
-        "explanation": "Restore yang didokumentasikan membuat tabel baru."
+        "explanation": "Restore that documented creates table new."
       }
     ],
     "tags": [
@@ -1311,31 +1311,31 @@
         "key": "A",
         "text": "Disable source versioning after configuring replication to improve correctness.",
         "correct": false,
-        "explanation": "Ini bertentangan dengan prasyarat replication versioning."
+        "explanation": "this conflicts with prerequisite replication versioning."
       },
       {
         "key": "B",
         "text": "Replace replication with an HTTP redirect to the source bucket.",
         "correct": false,
-        "explanation": "Redirect tidak menyimpan salinan data di destination."
+        "explanation": "Redirect not stores copy data in destination."
       },
       {
         "key": "C",
         "text": "Assume enabling live replication automatically copies every pre-existing object.",
         "correct": false,
-        "explanation": "Live replication bukan backfill seluruh objek historis."
+        "explanation": "Live replication is not backfill all object historical."
       },
       {
         "key": "D",
         "text": "Use S3 Batch Replication for eligible objects that existed before live replication was enabled.",
         "correct": true,
-        "explanation": "Batch Replication menangani objek lama yang tidak dicakup live replication retroaktif."
+        "explanation": "Batch Replication handles object long that not dicakup live replication retroactive."
       },
       {
         "key": "E",
         "text": "Configure the required versioning, replication permissions, and live replication rules for eligible new writes.",
         "correct": true,
-        "explanation": "Live replication menangani objek baru sesuai rule dan prasyarat."
+        "explanation": "Live replication handles object new appropriate rule and prerequisite."
       }
     ],
     "tags": [
@@ -1361,25 +1361,25 @@
         "key": "A",
         "text": "Use equal weighted records for both deployments even while the primary remains healthy.",
         "correct": false,
-        "explanation": "Equal weighting menjalankan pembagian traffic, bukan prefer-primary/failover-only behavior yang diminta."
+        "explanation": "Equal weighting runs division traffic, is not prefer-primary/failover-only behavior that is requested."
       },
       {
         "key": "B",
         "text": "Route 53 failover records with suitable health evaluation for the endpoints.",
         "correct": true,
-        "explanation": "Failover policy sesuai pola primary-secondary."
+        "explanation": "Failover policy according to the pattern primary-secondary."
       },
       {
         "key": "C",
         "text": "Route 53 simple routing to the primary only, with no standby record or health evaluation.",
         "correct": false,
-        "explanation": "DNS tidak memiliki jalur secondary untuk dipilih."
+        "explanation": "DNS does not have path secondary for chosen."
       },
       {
         "key": "D",
         "text": "Keep the standby DNS record but omit health evaluation and always return the primary answer.",
         "correct": false,
-        "explanation": "Record standby saja tidak membuat health-based failover bekerja."
+        "explanation": "Record standby only not creates health-based failover works."
       }
     ],
     "tags": [
@@ -1405,25 +1405,25 @@
         "key": "A",
         "text": "The ALB can fail open and route requests to the unhealthy registered targets.",
         "correct": true,
-        "explanation": "Dokumentasi menyebut fail-open pada kondisi semua target unhealthy."
+        "explanation": "Documentation mentions fail-open under conditions all target unhealthy."
       },
       {
         "key": "B",
         "text": "The ALB automatically launches healthy replacements even without a scaling service integration.",
         "correct": false,
-        "explanation": "Load balancer tidak otomatis menjadi compute fleet manager; provisioning replacement membutuhkan mekanisme lain seperti Auto Scaling."
+        "explanation": "Load balancer does not automatically becomes compute fleet manager; provisioning replacement requires mechanism other such as Auto Scaling."
       },
       {
         "key": "C",
         "text": "The ALB guarantees that no request can reach any unhealthy target under any circumstance.",
         "correct": false,
-        "explanation": "Klaim absolut ini bertentangan dengan perilaku fail-open."
+        "explanation": "Klaim absolut this conflicts with behavior fail-open."
       },
       {
         "key": "D",
         "text": "The ALB always returns HTTP 503 whenever any unhealthy target remains registered.",
         "correct": false,
-        "explanation": "Kondisi no registered targets berbeda dari all unhealthy; asumsi selalu 503 tidak menggambarkan fail-open yang didokumentasikan."
+        "explanation": "Condition no registered targets different from all unhealthy; assumption always 503 not describes fail-open that documented."
       }
     ],
     "tags": [
@@ -1449,25 +1449,25 @@
         "key": "A",
         "text": "Create an origin group with primary and secondary origins and configure the applicable failover status codes.",
         "correct": true,
-        "explanation": "Origin group memberi jalur failover untuk request yang memenuhi kriteria."
+        "explanation": "Origin group gives path failover for request that meets kriteria."
       },
       {
         "key": "B",
         "text": "Increase cache TTLs and assume uncached files can always be retrieved when the primary origin fails.",
         "correct": false,
-        "explanation": "Cache tidak menjamin setiap objek ada di edge; uncached requests tetap membutuhkan origin yang tersedia."
+        "explanation": "Cache does not guarantee each object exists in edge; uncached requests remains requires origin that is available."
       },
       {
         "key": "C",
         "text": "Use a custom error page from the primary origin as the only recovery mechanism.",
         "correct": false,
-        "explanation": "Custom error response bukan konfigurasi secondary origin failover yang melayani file yang diminta."
+        "explanation": "Custom error response is not configuration secondary origin failover that serves file that is requested."
       },
       {
         "key": "D",
         "text": "Add a second origin but never reference an origin group in cache behaviors.",
         "correct": false,
-        "explanation": "Origin kedua saja tidak mengaktifkan mekanisme failover."
+        "explanation": "Origin both only not enables mechanism failover."
       }
     ],
     "tags": [
@@ -1493,25 +1493,25 @@
         "key": "A",
         "text": "EFS Regional with mount targets in the application AZs.",
         "correct": true,
-        "explanation": "Regional EFS menyimpan data lintas AZ dan mount targets menyediakan akses klien."
+        "explanation": "Regional EFS stores data cross-AZ and mount targets provides access client."
       },
       {
         "key": "B",
         "text": "EFS One Zone located only in the first application AZ.",
         "correct": false,
-        "explanation": "One Zone tidak memberi ketahanan data lintas AZ yang diminta."
+        "explanation": "One Zone not gives ketahanan data cross-AZ that is requested."
       },
       {
         "key": "C",
         "text": "One EBS volume in the first AZ attached as a cross-AZ NFS filesystem automatically.",
         "correct": false,
-        "explanation": "EBS tidak otomatis menjadi layanan NFS lintas AZ."
+        "explanation": "EBS does not automatically becomes service NFS cross-AZ."
       },
       {
         "key": "D",
         "text": "A single NFS server on EC2 with all data on local instance store.",
         "correct": false,
-        "explanation": "Server dan media lokal menjadi dependency tunggal."
+        "explanation": "Server and media local becomes dependency single."
       }
     ],
     "tags": [
@@ -1537,25 +1537,25 @@
         "key": "A",
         "text": "An EFS mount exposed directly as native SMB without an SMB server.",
         "correct": false,
-        "explanation": "EFS menyediakan NFS, bukan native SMB endpoint seperti yang diminta."
+        "explanation": "EFS provides NFS, is not native SMB endpoint such as that is requested."
       },
       {
         "key": "B",
         "text": "A Single-AZ FSx for Windows file system and a promise that snapshots provide uninterrupted failover.",
         "correct": false,
-        "explanation": "Snapshot bukan standby lintas AZ yang melayani failover otomatis."
+        "explanation": "Snapshot is not standby cross-AZ that serves failover automatically."
       },
       {
         "key": "C",
         "text": "Amazon FSx for Windows File Server with a Multi-AZ deployment.",
         "correct": true,
-        "explanation": "Layanan dan deployment sesuai SMB, integrasi Windows, dan failover AZ."
+        "explanation": "Service and deployment appropriate SMB, integration Windows, and failover AZ."
       },
       {
         "key": "D",
         "text": "An S3 bucket mounted through custom software while assuming all SMB locking semantics are identical.",
         "correct": false,
-        "explanation": "Gateway custom bukan pengganti teruji untuk kebutuhan SMB yang disebut."
+        "explanation": "Gateway custom is not a substitute for tested for requirements SMB that called."
       }
     ],
     "tags": [
@@ -1581,25 +1581,25 @@
         "key": "A",
         "text": "Periodically write checkpoints to durable storage and recreate local scratch data when resuming.",
         "correct": true,
-        "explanation": "Checkpoint durable memungkinkan melanjutkan tanpa mengandalkan disk instance lama."
+        "explanation": "Checkpoint durable enables continues without relies on disk instance long."
       },
       {
         "key": "B",
         "text": "Keep the only checkpoint on the same local scratch volume.",
         "correct": false,
-        "explanation": "Kehilangan instance dapat menghilangkan scratch dan checkpoint sekaligus."
+        "explanation": "Loss instance can eliminate scratch and checkpoint simultaneously."
       },
       {
         "key": "C",
         "text": "Create a checkpoint only after the entire job finishes, leaving no progress recoverable during execution.",
         "correct": false,
-        "explanation": "Checkpoint akhir tidak memberi resume point untuk kegagalan di tengah job."
+        "explanation": "Checkpoint end not gives resume point for failure in tengah job."
       },
       {
         "key": "D",
         "text": "Copy the checkpoint to another directory on the same instance store device.",
         "correct": false,
-        "explanation": "Direktori berbeda pada perangkat ephemeral yang sama tidak mengubah failure domain."
+        "explanation": "Directory different on device ephemeral that same does not change failure domain."
       }
     ],
     "tags": [
@@ -1625,25 +1625,25 @@
         "key": "A",
         "text": "Provision redundant connectivity through separate Direct Connect locations with independent on-premises paths.",
         "correct": true,
-        "explanation": "Lokasi dan path berbeda mengurangi dependency fasilitas yang sama."
+        "explanation": "Location and path different reduces dependency facility that same."
       },
       {
         "key": "B",
         "text": "Increase bandwidth on the existing connection without adding an alternate path.",
         "correct": false,
-        "explanation": "Kapasitas lebih besar tidak menambah redundansi lokasi."
+        "explanation": "Capacity larger not adds redundancy location."
       },
       {
         "key": "C",
         "text": "Add another connection to the same device at the same Direct Connect location only.",
         "correct": false,
-        "explanation": "Kegagalan lokasi masih dapat memutus kedua connection."
+        "explanation": "Failure location still can breaks both connection."
       },
       {
         "key": "D",
         "text": "Add a second VLAN over the existing single physical connection.",
         "correct": false,
-        "explanation": "VLAN tambahan berbagi link fisik yang sama."
+        "explanation": "VLAN additional shares link physical that same."
       }
     ],
     "tags": [
@@ -1669,25 +1669,25 @@
         "key": "A",
         "text": "Configure both tunnels and verify routing and failover behavior on the customer gateway.",
         "correct": true,
-        "explanation": "Dua tunnel baru berguna jika konfigurasi dan routing benar-benar dapat memakai keduanya."
+        "explanation": "Two tunnel new useful if configuration and routing truly can use both."
       },
       {
         "key": "B",
         "text": "Create an additional VPC route to the same tunnel but leave the second tunnel unconfigured.",
         "correct": false,
-        "explanation": "Rute tambahan ke tunnel yang sama tidak menyediakan jalur tunnel kedua ketika maintenance terjadi."
+        "explanation": "Route additional to tunnel that same does not provide path tunnel both when maintenance occurs."
       },
       {
         "key": "C",
         "text": "Use only DNS failover between two names that both resolve to the same configured tunnel.",
         "correct": false,
-        "explanation": "Nama berbeda tidak menyediakan tunnel independen yang sudah dikonfigurasi dan siap dirutekan."
+        "explanation": "Name different does not provide tunnel independent that already configured and ready dirutekan."
       },
       {
         "key": "D",
         "text": "Keep one tunnel and only increase its idle timeout.",
         "correct": false,
-        "explanation": "Timeout tidak memberi jalur saat endpoint tunnel tidak tersedia."
+        "explanation": "Timeout not gives path when endpoint tunnel not available."
       }
     ],
     "tags": [
@@ -1713,31 +1713,31 @@
         "key": "A",
         "text": "Treat the number of connections as proof of zero downtime without testing.",
         "correct": false,
-        "explanation": "Jumlah link tidak menjamin semua konfigurasi dan dependency benar."
+        "explanation": "Number link does not guarantee all configuration and dependency correct."
       },
       {
         "key": "B",
         "text": "Test only a DNS change without checking application dependencies or the backup path.",
         "correct": false,
-        "explanation": "DNS switch saja tidak membuktikan aplikasi, data, dan dependency dapat pulih sesuai RTO/RPO."
+        "explanation": "DNS switch only does not prove application, data, and dependency can recovers appropriate RTO/RPO."
       },
       {
         "key": "C",
         "text": "Assume replication makes any future recovery point objective automatically zero.",
         "correct": false,
-        "explanation": "RPO bergantung pada teknologi dan keadaan, bukan sekadar kata replication."
+        "explanation": "RPO depends on technology and keadaan, is more than just word replication."
       },
       {
         "key": "D",
         "text": "Run controlled failover exercises and measure application recovery and data loss against the stated objectives.",
         "correct": true,
-        "explanation": "Pengukuran menguji hasil end-to-end, bukan hanya keberadaan resource."
+        "explanation": "Measurement menguji result end-to-end, is not just existence resource."
       },
       {
         "key": "E",
         "text": "Verify backup-path capacity, routing, credentials, and dependencies during the exercises.",
         "correct": true,
-        "explanation": "Jalur hidup tetapi terlalu kecil atau kehilangan dependency belum memenuhi tujuan aplikasi."
+        "explanation": "Path life but too small or loss dependency not yet meets destination application."
       }
     ],
     "tags": [
@@ -1763,25 +1763,25 @@
         "key": "A",
         "text": "AWS Batch as a replacement for all Kubernetes operators.",
         "correct": false,
-        "explanation": "Scheduler batch bukan pengganti control plane Kubernetes untuk aplikasi umum."
+        "explanation": "Scheduler batch is not a substitute for control plane Kubernetes for applications general."
       },
       {
         "key": "B",
         "text": "Amazon EKS with a suitable worker-compute model.",
         "correct": true,
-        "explanation": "EKS mempertahankan Kubernetes API; pilihan node tetap disesuaikan kebutuhan aplikasi."
+        "explanation": "FORMER maintains Kubernetes API; choice node remains adjusted application requirements."
       },
       {
         "key": "C",
         "text": "Amazon ECS after importing the Kubernetes manifests without conversion.",
         "correct": false,
-        "explanation": "ECS memakai model task dan service sendiri, bukan API Kubernetes yang sama."
+        "explanation": "ECS uses model task and service itself, is not API Kubernetes that same."
       },
       {
         "key": "D",
         "text": "Amazon EC2 Auto Scaling alone as the Kubernetes control plane.",
         "correct": false,
-        "explanation": "Auto Scaling hanya mengelola kapasitas instance, bukan control plane Kubernetes."
+        "explanation": "Auto Scaling only manages capacity instance, is not control plane Kubernetes."
       }
     ],
     "tags": [
@@ -1808,25 +1808,25 @@
         "key": "A",
         "text": "The ECS deployment circuit breaker with rollback enabled.",
         "correct": true,
-        "explanation": "Mekanisme ini menilai steady state dan dapat kembali ke deployment completed sebelumnya."
+        "explanation": "Mechanism this assesses steady state and can back to deployment completed previously."
       },
       {
         "key": "B",
         "text": "A higher desired task count while ignoring target health.",
         "correct": false,
-        "explanation": "Menambah task gagal tidak menjamin pemulihan versi yang sehat."
+        "explanation": "Adds task fails does not guarantee recovery version that healthy."
       },
       {
         "key": "C",
         "text": "Longer DNS TTL values for the service endpoint.",
         "correct": false,
-        "explanation": "Cache DNS tidak mengatasi kegagalan startup task baru."
+        "explanation": "Cache DNS not overcomes failure startup task new."
       },
       {
         "key": "D",
         "text": "An SQS dead-letter queue as the ECS deployment controller.",
         "correct": false,
-        "explanation": "DLQ menyimpan pesan gagal, bukan mengembalikan revision service."
+        "explanation": "DLQ stores message fails, is not returns revision service."
       }
     ],
     "tags": [
@@ -1853,25 +1853,25 @@
         "key": "A",
         "text": "The DynamoDB table resource policy exclusively.",
         "correct": false,
-        "explanation": "Policy tabel tidak memberikan izin menarik image ECR."
+        "explanation": "Policy table does not grant permissions menarik image ECR."
       },
       {
         "key": "B",
         "text": "The task execution role used by the ECS/Fargate agent.",
         "correct": true,
-        "explanation": "Agent memakai execution role untuk pull image; role aplikasi bukan jalur izin tersebut."
+        "explanation": "Agent uses execution role for pull image; application role is not path permissions that."
       },
       {
         "key": "C",
         "text": "The application task role only, because no separate agent role exists.",
         "correct": false,
-        "explanation": "ECS membedakan task role dari task execution role."
+        "explanation": "ECS distinguishes task role from task execution role."
       },
       {
         "key": "D",
         "text": "The ALB listener certificate policy.",
         "correct": false,
-        "explanation": "Sertifikat frontend tidak memberi izin ECR pada agent."
+        "explanation": "Certificate frontend not gives permissions ECR on agent."
       }
     ],
     "tags": [
@@ -1898,25 +1898,25 @@
         "key": "A",
         "text": "Disable all retries and rely on the visibility timeout to store permanent results.",
         "correct": false,
-        "explanation": "Visibility timeout bukan penyimpanan hasil atau pengganti penanganan gagal."
+        "explanation": "Visibility timeout is not storage result or replacement handling fails."
       },
       {
         "key": "B",
         "text": "Return success for the whole batch even when one record failed.",
         "correct": false,
-        "explanation": "Pesan gagal dapat dianggap selesai dan hilang dari pemrosesan."
+        "explanation": "Message fails can considered completed and lost from processing."
       },
       {
         "key": "C",
         "text": "Enable partial batch responses and return identifiers of failed records while keeping processing idempotent.",
         "correct": true,
-        "explanation": "Lambda dapat mengulang item gagal saja; duplicate delivery tetap mungkin sehingga idempotensi tetap perlu."
+        "explanation": "Lambda can repeats item fails only; duplicate delivery remains may so that idempotency remains needs to."
       },
       {
         "key": "D",
         "text": "Increase the batch size so more successful records share each failure.",
         "correct": false,
-        "explanation": "Batch lebih besar dapat menambah pekerjaan yang terulang."
+        "explanation": "Batch larger can add work that terulang."
       }
     ],
     "tags": [
@@ -1943,25 +1943,25 @@
         "key": "A",
         "text": "Validate representative messages, redrive at a controlled rate, and monitor the downstream service and duplicate effects.",
         "correct": true,
-        "explanation": "Redrive terkendali memulihkan pekerjaan tanpa langsung membanjiri dependency; idempotensi tetap dibutuhkan."
+        "explanation": "Redrive terkendali restores work without directly membanjiri dependency; idempotency remains required."
       },
       {
         "key": "B",
         "text": "Move all messages back immediately and remove downstream concurrency limits.",
         "correct": false,
-        "explanation": "Lonjakan ulang dapat membuat dependency gagal lagi."
+        "explanation": "Spike again can create dependency fails again."
       },
       {
         "key": "C",
         "text": "Increase the maximum receive count without inspecting or replaying stored messages.",
         "correct": false,
-        "explanation": "Perubahan policy tidak otomatis menyelesaikan backlog yang sudah di DLQ."
+        "explanation": "Changes policy does not automatically solve backlog that already in DLQ."
       },
       {
         "key": "D",
         "text": "Delete the dead-letter queue because the worker code is now fixed.",
         "correct": false,
-        "explanation": "Perbaikan kode tidak memproses kembali pesan yang masih tersimpan."
+        "explanation": "Improvement code not processes back message that still stored."
       }
     ],
     "tags": [
@@ -1988,25 +1988,25 @@
         "key": "A",
         "text": "2 messages per worker.",
         "correct": false,
-        "explanation": "Waktu proses per pesan bukan langsung jumlah backlog yang memenuhi 60 detik."
+        "explanation": "Time process per message is not directly number backlog that meets 60 second."
       },
       {
         "key": "B",
         "text": "60 messages per worker regardless of processing time.",
         "correct": false,
-        "explanation": "Mengabaikan durasi pekerjaan membuat perkiraan waktu tunggu keliru."
+        "explanation": "Ignores duration work creates estimate wait time incorrect."
       },
       {
         "key": "C",
         "text": "30 messages per worker.",
         "correct": true,
-        "explanation": "60 detik dibagi 2 detik per pesan menghasilkan 30 pesan; startup dan variasi waktu tetap perlu diuji."
+        "explanation": "60 second divided 2 second per message produces 30 message; startup and variation time remains needs to tested."
       },
       {
         "key": "D",
         "text": "120 messages per worker.",
         "correct": false,
-        "explanation": "Mengalikan waktu menghasilkan satuan yang salah untuk panjang antrean target."
+        "explanation": "Mengalikan time produces satuan that wrong for long queue target."
       }
     ],
     "tags": [
@@ -2033,25 +2033,25 @@
         "key": "A",
         "text": "An EventBridge archive with suitable retention, followed by a controlled replay to the source bus.",
         "correct": true,
-        "explanation": "Archive menyimpan event untuk replay setelah pengiriman awal; efek samping replay harus dikendalikan."
+        "explanation": "Archive stores event for replay after delivery initial; effect side replay must controlled."
       },
       {
         "key": "B",
         "text": "Only a target dead-letter queue for events that failed delivery.",
         "correct": false,
-        "explanation": "Event yang berhasil dikirim tetapi salah diproses tidak otomatis ada di delivery DLQ."
+        "explanation": "Event that succeeds dikirim but wrong processed does not automatically exists in delivery DLQ."
       },
       {
         "key": "C",
         "text": "Only a longer API timeout on producers.",
         "correct": false,
-        "explanation": "Timeout tidak menyediakan arsip event historis."
+        "explanation": "Timeout does not provide archive event historical."
       },
       {
         "key": "D",
         "text": "Only CloudWatch metrics for the count of events.",
         "correct": false,
-        "explanation": "Jumlah event tidak menyimpan payload bisnis yang diperlukan."
+        "explanation": "Number event not stores payload business that is required."
       }
     ],
     "tags": [
@@ -2078,25 +2078,25 @@
         "key": "A",
         "text": "AWS DataSync pointed at a Salesforce HTTPS API as an NFS source.",
         "correct": false,
-        "explanation": "DataSync bukan konektor API Salesforce dengan model sumber NFS tersebut."
+        "explanation": "DataSync is not connector API Salesforce with model source NFS that."
       },
       {
         "key": "B",
         "text": "Amazon AppFlow.",
         "correct": true,
-        "explanation": "AppFlow menyediakan konektor SaaS dan flow terjadwal tanpa membangun seluruh integrasi sendiri."
+        "explanation": "AppFlow provides connector SaaS and flow scheduled without builds all integration itself."
       },
       {
         "key": "C",
         "text": "AWS Application Migration Service to replicate Salesforce-managed servers.",
         "correct": false,
-        "explanation": "Rehosting server tidak berlaku pada layanan SaaS yang tidak dikelola pelanggan."
+        "explanation": "Rehosting server not applies in the service SaaS that not managed customer."
       },
       {
         "key": "D",
         "text": "Amazon SQS alone polling Salesforce automatically.",
         "correct": false,
-        "explanation": "Queue tidak otomatis menjadi konektor SaaS."
+        "explanation": "Queue does not automatically becomes connector SaaS."
       }
     ],
     "tags": [
@@ -2123,25 +2123,25 @@
         "key": "A",
         "text": "A DataSync task that accepts inbound SFTP user sessions directly.",
         "correct": false,
-        "explanation": "Task transfer bukan endpoint SFTP untuk sesi partner."
+        "explanation": "Task transfer is not endpoint SFTP for session partner."
       },
       {
         "key": "B",
         "text": "An S3 static website endpoint with SFTP enabled on port 22.",
         "correct": false,
-        "explanation": "Website endpoint S3 bukan server SFTP."
+        "explanation": "Website endpoint S3 is not server SFTP."
       },
       {
         "key": "C",
         "text": "An AWS Transfer Family SFTP endpoint backed by S3 with appropriate user access mappings.",
         "correct": true,
-        "explanation": "Transfer Family mempertahankan protokol partner dan mengelola endpoint transfer."
+        "explanation": "Transfer Family maintains protocol partner and manages endpoint transfer."
       },
       {
         "key": "D",
         "text": "An S3 File Gateway SMB share without changing partner clients.",
         "correct": false,
-        "explanation": "SMB bukan protokol SFTP yang diwajibkan."
+        "explanation": "SMB is not protocol SFTP that is required."
       }
     ],
     "tags": [
@@ -2168,25 +2168,25 @@
         "key": "A",
         "text": "Amazon Transcribe batch jobs on the image files.",
         "correct": false,
-        "explanation": "Transcribe berfokus pada audio ucapan."
+        "explanation": "Transcribe focuses on audio ucapan."
       },
       {
         "key": "B",
         "text": "Amazon Comprehend sentiment analysis on the raw image bytes.",
         "correct": false,
-        "explanation": "Analisis sentimen bukan ekstraksi struktur invoice dari citra."
+        "explanation": "Analysis sentimen is not extraction structure invoice from citra."
       },
       {
         "key": "C",
         "text": "Amazon Polly text-to-speech on the scanned invoice.",
         "correct": false,
-        "explanation": "Polly menghasilkan audio dari teks, bukan membaca tabel hasil scan."
+        "explanation": "Polly produces audio from text, is not reads table result scan."
       },
       {
         "key": "D",
         "text": "Amazon Textract document analysis.",
         "correct": true,
-        "explanation": "Textract mengekstrak struktur dokumen seperti form dan tabel, bukan hanya menyimpan gambar."
+        "explanation": "Textract extracts structure document such as form and table, is not just stores image."
       }
     ],
     "tags": [
@@ -2213,25 +2213,25 @@
         "key": "A",
         "text": "Amazon Comprehend.",
         "correct": true,
-        "explanation": "Comprehend menyediakan analisis bahasa alami pada teks yang sudah tersedia."
+        "explanation": "Comprehend provides analysis language alami on text that already available."
       },
       {
         "key": "B",
         "text": "Amazon Transcribe speech recognition.",
         "correct": false,
-        "explanation": "Input bukan audio yang perlu ditranskripsi."
+        "explanation": "Input is not audio that needs to ditranskripsi."
       },
       {
         "key": "C",
         "text": "Amazon Polly speech synthesis.",
         "correct": false,
-        "explanation": "Sintesis ucapan tidak menghasilkan sentimen dan entitas."
+        "explanation": "Sintesis ucapan not produces sentimen and entity."
       },
       {
         "key": "D",
         "text": "Amazon Textract table extraction.",
         "correct": false,
-        "explanation": "Tidak perlu OCR atau deteksi tabel untuk komentar yang sudah berupa teks."
+        "explanation": "does not need to OCR or detection table for komentar that already in the form of text."
       }
     ],
     "tags": [
@@ -2258,25 +2258,25 @@
         "key": "A",
         "text": "AWS Transfer Family as an automated operating-system converter.",
         "correct": false,
-        "explanation": "Endpoint transfer file tidak menyediakan rehosting server."
+        "explanation": "Endpoint transfer file does not provide rehosting server."
       },
       {
         "key": "B",
         "text": "Amazon AppFlow as a hypervisor replication service.",
         "correct": false,
-        "explanation": "AppFlow memindahkan data SaaS, bukan disk VM."
+        "explanation": "AppFlow moves data SaaS, is not disk VM."
       },
       {
         "key": "C",
         "text": "AWS Application Migration Service (MGN, now documented as AWS Transform MGN).",
         "correct": true,
-        "explanation": "MGN mereplikasi server untuk rehost; aplikasi tetap perlu pengujian saat cutover."
+        "explanation": "MGN replicates server for rehost; application remains needs to testing when cutover."
       },
       {
         "key": "D",
         "text": "AWS DMS Schema Conversion alone.",
         "correct": false,
-        "explanation": "Konversi skema tidak mereplikasi OS dan aplikasi seluruh server."
+        "explanation": "Conversion schema not replicates OS and application all server."
       }
     ],
     "tags": [
@@ -2303,25 +2303,25 @@
         "key": "A",
         "text": "Increase backup frequency but continue rebuilding all infrastructure from memory.",
         "correct": false,
-        "explanation": "Backup data tidak menghilangkan variasi konfigurasi manual."
+        "explanation": "Backup data does not eliminate variation configuration manual."
       },
       {
         "key": "B",
         "text": "Use a larger instance in the recovery Region without testing permissions.",
         "correct": false,
-        "explanation": "Ukuran instance tidak memperbaiki reproduksibilitas jaringan dan IAM."
+        "explanation": "Size instance not improves reproduksibilitas network and IAM."
       },
       {
         "key": "C",
         "text": "Maintain tested infrastructure-as-code templates and combine deployment with a documented data-restore procedure.",
         "correct": true,
-        "explanation": "Template memulihkan konfigurasi; backup memulihkan state. Keduanya memiliki peran berbeda."
+        "explanation": "Template restores configuration; backup restores state. Both has role different."
       },
       {
         "key": "D",
         "text": "Copy production instance names into a spreadsheet as the full recovery mechanism.",
         "correct": false,
-        "explanation": "Nama tidak mendeskripsikan dependency dan konfigurasi resource."
+        "explanation": "Name not describes dependency and configuration resource."
       }
     ],
     "tags": [
@@ -2348,25 +2348,25 @@
         "key": "A",
         "text": "Increase the function timeout so recursion finishes in one invocation.",
         "correct": false,
-        "explanation": "Setiap penulisan tetap dapat menghasilkan event baru."
+        "explanation": "Each writing remains can produces event new."
       },
       {
         "key": "B",
         "text": "Trigger only on an input prefix and write to a different output prefix, or use separate buckets.",
         "correct": true,
-        "explanation": "Output tidak lagi memenuhi filter event input sehingga rantai pemanggilan berhenti."
+        "explanation": "Output not again meets filter event input so that rantai pemanggilan stops."
       },
       {
         "key": "C",
         "text": "Disable all S3 event notifications and manually invoke every future job.",
         "correct": false,
-        "explanation": "Menghentikan otomatisasi seluruh input tidak diperlukan untuk memisahkan sumber dan hasil."
+        "explanation": "Stops otomatisasi all input is not required to separate source and result."
       },
       {
         "key": "D",
         "text": "Increase Lambda concurrency to process the recursive backlog faster.",
         "correct": false,
-        "explanation": "Memperbesar kapasitas tidak menghilangkan penyebab recursion."
+        "explanation": "Increases capacity does not eliminate cause recursion."
       }
     ],
     "tags": [
@@ -2393,25 +2393,25 @@
         "key": "A",
         "text": "Change the SQS visibility timeout based on the region attribute.",
         "correct": false,
-        "explanation": "Visibility timeout tidak memilih subscription penerima."
+        "explanation": "Visibility timeout not selects subscription penerima."
       },
       {
         "key": "B",
         "text": "Apply subscription filter policies for the region attribute to each SNS subscription.",
         "correct": true,
-        "explanation": "Filter subscription memisahkan distribusi tanpa membuat routing khusus pada producer."
+        "explanation": "Filter subscription separates distribution without creates routing specific on producer."
       },
       {
         "key": "C",
         "text": "Use one shared SQS queue and let consumers delete messages for other regions.",
         "correct": false,
-        "explanation": "Consumer dapat menghapus pesan yang dibutuhkan consumer lain."
+        "explanation": "Consumer can delete message that is required consumer other."
       },
       {
         "key": "D",
         "text": "Create a producer IAM user for every message and use the username as routing.",
         "correct": false,
-        "explanation": "Identitas IAM bukan mekanisme filter subscription dan menambah administrasi."
+        "explanation": "identity IAM is not mechanism filter subscription and adds administration."
       }
     ],
     "tags": [
@@ -2438,25 +2438,25 @@
         "key": "A",
         "text": "Increase the SQS visibility timeout until a 500 MB message is accepted.",
         "correct": false,
-        "explanation": "Timeout tidak mengubah batas ukuran payload."
+        "explanation": "Timeout does not change limit size payload."
       },
       {
         "key": "B",
         "text": "Store each document in S3 and queue a reference with controlled access and coordinated retention.",
         "correct": true,
-        "explanation": "Queue memuat pointer kecil; payload tetap tahan lama dan dapat diambil ulang oleh worker."
+        "explanation": "Queue contains pointer small; payload remains tahan long and can taken again by worker."
       },
       {
         "key": "C",
         "text": "Base64-encode the document and send it as one ordinary SQS message.",
         "correct": false,
-        "explanation": "Encoding biasanya menambah ukuran dan tidak menghilangkan batas."
+        "explanation": "Encoding typically adds size and does not eliminate limit."
       },
       {
         "key": "D",
         "text": "Store the only copy in producer memory and queue its process ID.",
         "correct": false,
-        "explanation": "Memory dan process ID tidak memberi payload durable bagi worker lain."
+        "explanation": "Memory and process ID not gives payload durable for worker other."
       }
     ],
     "tags": [
@@ -2483,25 +2483,25 @@
         "key": "A",
         "text": "Use a stable operation ID with idempotent processing and configure bounded retries plus a failure destination.",
         "correct": true,
-        "explanation": "Retry dapat terjadi setelah commit; ID operasi membantu mendeteksi hasil yang sudah tercatat."
+        "explanation": "Retry can occurs after commit; ID operation helps detects result that already tercatat."
       },
       {
         "key": "B",
         "text": "Use a new random operation ID on every retry to avoid conflicts.",
         "correct": false,
-        "explanation": "ID baru membuat satu operasi terlihat seperti operasi bisnis baru."
+        "explanation": "ID new creates one operation appears such as operation business new."
       },
       {
         "key": "C",
         "text": "Assume scheduled invocations can never be duplicated.",
         "correct": false,
-        "explanation": "Asumsi exactly-once end-to-end tidak aman untuk pengiriman dengan retry."
+        "explanation": "Assumption exactly-once end-to-end is not secure for delivery with retry."
       },
       {
         "key": "D",
         "text": "Disable persistence until the scheduler confirms delivery.",
         "correct": false,
-        "explanation": "Konfirmasi jaringan tidak menjamin efek bisnis selesai tepat sekali."
+        "explanation": "Konfirmasi network does not guarantee effect business completed appropriate once."
       }
     ],
     "tags": [
@@ -2528,25 +2528,25 @@
         "key": "A",
         "text": "Reduce potential data loss with more frequent protection or replication; the measured recovery time already meets the RTO.",
         "correct": true,
-        "explanation": "40 menit memenuhi RTO 60 menit, tetapi kehilangan hampir 4 jam melampaui RPO 30 menit."
+        "explanation": "40 minutes meets RTO 60 minutes, but loss almost 4 hour goes beyond RPO 30 minutes."
       },
       {
         "key": "B",
         "text": "Increase the backup interval to reduce backup overhead.",
         "correct": false,
-        "explanation": "Interval lebih panjang memperbesar potensi kehilangan data."
+        "explanation": "Interval more long increases potential loss data."
       },
       {
         "key": "C",
         "text": "Nothing, because RTO and RPO are interchangeable measurements.",
         "correct": false,
-        "explanation": "Kedua target mengukur hal berbeda dan harus dipenuhi terpisah."
+        "explanation": "Both target measures matter different and must fulfilled separate."
       },
       {
         "key": "D",
         "text": "Only shorten recovery time to 20 minutes; the backup interval already meets the RPO.",
         "correct": false,
-        "explanation": "RPO berkaitan dengan data yang hilang, bukan durasi restore."
+        "explanation": "RPO relates with data that lost, is not duration restore."
       }
     ],
     "tags": [
@@ -2573,25 +2573,25 @@
         "key": "A",
         "text": "Warm standby with a fully functional reduced-capacity application.",
         "correct": false,
-        "explanation": "Warm standby biasanya sudah memiliki aplikasi fungsional dalam skala kecil."
+        "explanation": "Warm standby typically already has application functional within scale small."
       },
       {
         "key": "B",
         "text": "Backup and restore with no continuously maintained core components.",
         "correct": false,
-        "explanation": "Deskripsi menyebut komponen data inti terus dipelihara, bukan hanya arsip backup."
+        "explanation": "Description mentions component data inti continually dipelihara, is not just archive backup."
       },
       {
         "key": "C",
         "text": "Active-active because the database exists in two Regions.",
         "correct": false,
-        "explanation": "Keberadaan data tidak berarti kedua Region melayani workload aktif."
+        "explanation": "Existence data does not mean both Region serves workload active."
       },
       {
         "key": "D",
         "text": "Pilot light.",
         "correct": true,
-        "explanation": "Komponen inti dipertahankan; tier aplikasi dinyalakan ketika pemulihan diperlukan."
+        "explanation": "Component inti retained; tier application dinyalakan when recovery required."
       }
     ],
     "tags": [
@@ -2618,25 +2618,25 @@
         "key": "A",
         "text": "Use a shorter DNS TTL while leaving capacity unchanged.",
         "correct": false,
-        "explanation": "TTL tidak menyediakan kapasitas compute atau IP tambahan."
+        "explanation": "TTL does not provide capacity compute or IP additional."
       },
       {
         "key": "B",
         "text": "Replicate the same data more frequently without testing scale-up.",
         "correct": false,
-        "explanation": "Replikasi data tidak menyelesaikan batas resource."
+        "explanation": "Replication data does not solve limit resource."
       },
       {
         "key": "C",
         "text": "Validate target-Region quotas, network capacity, and scale-up procedures at the required recovery load.",
         "correct": true,
-        "explanation": "Konfigurasi kecil yang berhasil tidak membuktikan kapasitas saat failover penuh."
+        "explanation": "Configuration small that succeeds does not prove capacity when failover full."
       },
       {
         "key": "D",
         "text": "Assume quota increases in the primary Region automatically apply everywhere.",
         "correct": false,
-        "explanation": "Kuota sering memiliki cakupan akun/Region dan harus diperiksa sesuai layanan."
+        "explanation": "Quota often has scope account/Region and must checked appropriate service."
       }
     ],
     "tags": [
@@ -2663,25 +2663,25 @@
         "key": "A",
         "text": "Only a daily email reminder about retention.",
         "correct": false,
-        "explanation": "Pengingat tidak menegakkan immutability."
+        "explanation": "Pengingat not enforces immutability."
       },
       {
         "key": "B",
         "text": "Governance mode while giving every administrator permission to remove the lock.",
         "correct": false,
-        "explanation": "Mode governance dapat dilepas oleh principal dengan izin yang cukup."
+        "explanation": "Mode governance can detached by principal with permissions that enough."
       },
       {
         "key": "C",
         "text": "AWS Backup Vault Lock in compliance mode, allowing its grace period to expire after validation.",
         "correct": true,
-        "explanation": "Compliance lock menjadi tidak dapat dilepas setelah grace period sesuai ketentuan; salah konfigurasi berdampak panjang."
+        "explanation": "Compliance lock becomes cannot detached after grace period appropriate provisions; wrong configuration berdampak long."
       },
       {
         "key": "D",
         "text": "An IAM Allow policy granting administrators full backup access.",
         "correct": false,
-        "explanation": "Allow luas tidak mencegah penghapusan recovery point."
+        "explanation": "Allow broad not prevents removal recovery point."
       }
     ],
     "tags": [
@@ -2708,25 +2708,25 @@
         "key": "A",
         "text": "Use a closer Region and omit restore tests.",
         "correct": false,
-        "explanation": "Jarak tidak membuktikan pemulihan kesalahan logis."
+        "explanation": "Distance does not prove recovery mistake logis."
       },
       {
         "key": "B",
         "text": "Configure and test version retention, delete-marker behavior, and protected recovery access rather than treating replication alone as a backup.",
         "correct": true,
-        "explanation": "Replikasi dan perilaku delete harus dinilai; salinan yang mengikuti kesalahan tidak otomatis menjadi titik pemulihan."
+        "explanation": "Replication and behavior delete must assessed; copy that follows mistake does not automatically becomes point recovery."
       },
       {
         "key": "C",
         "text": "Assume every replication destination automatically retains all versions forever.",
         "correct": false,
-        "explanation": "Lifecycle dan penghapusan tetap menentukan retensi."
+        "explanation": "Lifecycle and removal remains determines retention."
       },
       {
         "key": "D",
         "text": "Disable versioning at the destination to ensure the newest delete always wins.",
         "correct": false,
-        "explanation": "Menghilangkan versi justru melemahkan pemulihan."
+        "explanation": "Eliminates version instead melemahkan recovery."
       }
     ],
     "tags": [
@@ -2753,25 +2753,25 @@
         "key": "A",
         "text": "Aurora Global Database with a secondary regional cluster and a tested promotion/failover procedure.",
         "correct": true,
-        "explanation": "Replica regional mendukung baca lokal dan recovery; lag serta prosedur cutover tetap perlu diuji."
+        "explanation": "Replica regional supports baca local and recovery; lag and procedure cutover remains needs to tested."
       },
       {
         "key": "B",
         "text": "An Aurora reader endpoint assumed to spread a regional cluster across the world automatically.",
         "correct": false,
-        "explanation": "Endpoint reader tidak otomatis membuat cluster lintas Region."
+        "explanation": "Endpoint reader does not automatically create cluster across Regions."
       },
       {
         "key": "C",
         "text": "A single-AZ Aurora writer with a DNS alias in another Region.",
         "correct": false,
-        "explanation": "DNS tidak menciptakan salinan database regional."
+        "explanation": "DNS not creates copy database regional."
       },
       {
         "key": "D",
         "text": "An RDS Proxy in another Region as the only stored copy.",
         "correct": false,
-        "explanation": "Proxy tidak menyimpan replika data untuk pemulihan."
+        "explanation": "Proxy not stores replica data for recovery."
       }
     ],
     "tags": [
@@ -2798,25 +2798,25 @@
         "key": "A",
         "text": "Add replicas in other AZs and enable supported Multi-AZ automatic failover; ensure clients reconnect correctly.",
         "correct": true,
-        "explanation": "Replica siap dapat dipromosikan; aplikasi tetap harus menangani transisi koneksi."
+        "explanation": "Replica ready can dipromosikan; application remains must handle transition connection."
       },
       {
         "key": "B",
         "text": "Increase the cache TTL and assume it prevents node failures.",
         "correct": false,
-        "explanation": "TTL tidak meningkatkan ketersediaan compute."
+        "explanation": "TTL not increases availability compute."
       },
       {
         "key": "C",
         "text": "Use a larger single cache node with no replicas.",
         "correct": false,
-        "explanation": "Kapasitas bertambah tetapi single point of failure tetap ada."
+        "explanation": "Capacity bertambah but single point of failure remains exists."
       },
       {
         "key": "D",
         "text": "Only enable an RDS Multi-AZ standby for an unrelated database.",
         "correct": false,
-        "explanation": "Itu tidak menyediakan pengganti primary cache."
+        "explanation": "that does not provide replacement primary cache."
       }
     ],
     "tags": [
@@ -2843,25 +2843,25 @@
         "key": "A",
         "text": "Increasing the TTL makes cross-Region writes strongly consistent.",
         "correct": false,
-        "explanation": "TTL adalah penghapusan kedaluwarsa, bukan protokol konsistensi."
+        "explanation": "TTL is removal expired, is not protocol consistency."
       },
       {
         "key": "B",
         "text": "A condition evaluated in one Region does not by itself enforce a single global stock decision across concurrent regional writes.",
         "correct": true,
-        "explanation": "MREC mereplikasi asynchronous; validasi lokal tidak otomatis memberi serialisasi global untuk inventori."
+        "explanation": "MREC replicates asynchronous; validation local does not automatically give serialisasi global for inventori."
       },
       {
         "key": "C",
         "text": "Storing the item in an S3 cache removes all write conflicts.",
         "correct": false,
-        "explanation": "Cache tidak mengoordinasikan keputusan transaksi lintas Region."
+        "explanation": "Cache not mengoordinasikan decision transaction across Regions."
       },
       {
         "key": "D",
         "text": "Every conditional write automatically locks the item in all Regions before returning.",
         "correct": false,
-        "explanation": "Itu bukan jaminan mode eventual consistency yang disebutkan."
+        "explanation": "that does not guarantee mode eventual consistency that mentioned."
       }
     ],
     "tags": [
@@ -2888,25 +2888,25 @@
         "key": "A",
         "text": "Change EFS to One Zone storage while keeping the single pinned endpoint.",
         "correct": false,
-        "explanation": "Mengurangi redundansi tidak memperbaiki akses lintas AZ."
+        "explanation": "Reduces redundancy not improves access cross-AZ."
       },
       {
         "key": "B",
         "text": "Increase file permissions to 777 to bypass an AZ outage.",
         "correct": false,
-        "explanation": "Izin POSIX tidak memperbaiki kegagalan jaringan atau AZ."
+        "explanation": "permissions POSIX not improves failure network or AZ."
       },
       {
         "key": "C",
         "text": "Copy the mount-target IP into more configuration files.",
         "correct": false,
-        "explanation": "Menyalin dependency yang sama tidak menciptakan jalur independen."
+        "explanation": "Copies dependency that same not creates path independent."
       },
       {
         "key": "D",
         "text": "Create appropriate mount targets in the application AZs and use supported mount/DNS behavior instead of pinning every client to one target.",
         "correct": true,
-        "explanation": "Storage regional tetap membutuhkan jalur mount yang benar; endpoint tunggal dapat menjadi dependency akses."
+        "explanation": "Storage regional remains requires path mount that correct; endpoint single can becomes dependency access."
       }
     ],
     "tags": [
@@ -2933,25 +2933,25 @@
         "key": "A",
         "text": "Delete each queue message before work begins to prevent redelivery.",
         "correct": false,
-        "explanation": "Pekerjaan hilang bila instance gagal sebelum selesai."
+        "explanation": "Work lost if instance fails before completed."
       },
       {
         "key": "B",
         "text": "Use a termination lifecycle hook to stop taking new jobs and finish or checkpoint work, while retaining retry-safe queue processing.",
         "correct": true,
-        "explanation": "Hook memberi waktu terbatas untuk shutdown terencana; crash tetap harus ditangani dengan retry dan checkpoint."
+        "explanation": "Hook gives time limited for shutdown planned; crash remains must handled with retry and checkpoint."
       },
       {
         "key": "C",
         "text": "Use a lifecycle hook and remove all job retry logic permanently.",
         "correct": false,
-        "explanation": "Hook tidak menjamin instance selalu tersedia sampai pekerjaan selesai."
+        "explanation": "Hook does not guarantee instance always available until work completed."
       },
       {
         "key": "D",
         "text": "Raise minimum capacity indefinitely so no instance is ever replaced.",
         "correct": false,
-        "explanation": "Itu tidak mengatasi failure atau deployment dan dapat memboroskan kapasitas."
+        "explanation": "that not overcomes failure or deployment and can memboroskan capacity."
       }
     ],
     "tags": [
@@ -2978,25 +2978,25 @@
         "key": "A",
         "text": "Route 53 always terminates every old TCP connection immediately.",
         "correct": false,
-        "explanation": "DNS tidak mengendalikan socket aplikasi yang sudah terbentuk."
+        "explanation": "DNS not controls socket application that already formed."
       },
       {
         "key": "B",
         "text": "Health checks automatically replicate application sessions between endpoints.",
         "correct": false,
-        "explanation": "Health check tidak menyalin state aplikasi."
+        "explanation": "Health check not copies state application."
       },
       {
         "key": "C",
         "text": "A lower TTL guarantees zero downtime for every client.",
         "correct": false,
-        "explanation": "TTL lebih rendah membantu sebagian cache, bukan jaminan semua perilaku client."
+        "explanation": "TTL lower helps some cache, does not guarantee all behavior client."
       },
       {
         "key": "D",
         "text": "Resolvers may retain answers until TTL expiry, and existing connections or client caches also affect failover time.",
         "correct": true,
-        "explanation": "Perubahan jawaban DNS tidak langsung memindahkan semua koneksi aktif."
+        "explanation": "Changes answer DNS not directly moves all connection active."
       }
     ],
     "tags": [
@@ -3023,25 +3023,25 @@
         "key": "A",
         "text": "Increase shard count and assume the existing poison record disappears.",
         "correct": false,
-        "explanation": "Penambahan kapasitas tidak memperbaiki record yang selalu gagal."
+        "explanation": "Addition capacity not improves record that always fails."
       },
       {
         "key": "B",
         "text": "Disable all monitoring because retries ensure eventual correctness.",
         "correct": false,
-        "explanation": "Retry tanpa batas dapat menghambat kemajuan hingga data melewati retention."
+        "explanation": "Retry without limit can menghambat progress hingga data exceeds retention."
       },
       {
         "key": "C",
         "text": "Return success for all records even when no processing completed.",
         "correct": false,
-        "explanation": "Checkpoint maju sambil menghilangkan pekerjaan yang belum berhasil."
+        "explanation": "Checkpoint maju while eliminates work that not yet succeeds."
       },
       {
         "key": "D",
         "text": "Configure supported partial-batch/bisect behavior, bounded retries or record age, and an appropriate failure destination.",
         "correct": true,
-        "explanation": "Mekanisme ini mengurangi blokade batch; konfigurasi destination menentukan data kegagalan yang dapat diperiksa."
+        "explanation": "Mechanism this reduces blokade batch; configuration destination determines data failure that can checked."
       }
     ],
     "tags": [
@@ -3068,25 +3068,25 @@
         "key": "A",
         "text": "Assume API usage-plan quotas are exact hard limits and remove worker controls.",
         "correct": false,
-        "explanation": "Usage-plan throttling bersifat best effort, bukan jaminan batas keras bisnis."
+        "explanation": "Usage-plan throttling is best effort, does not guarantee limit keras business."
       },
       {
         "key": "B",
         "text": "Increase every client retry rate when throttling occurs.",
         "correct": false,
-        "explanation": "Retry serentak dapat memperbesar beban."
+        "explanation": "Retry serentak can increases load."
       },
       {
         "key": "C",
         "text": "Acknowledge accepted asynchronous work, buffer it durably, and limit worker concurrency with overload handling.",
         "correct": true,
-        "explanation": "Queue dan batas worker memisahkan burst intake dari kemampuan dependency."
+        "explanation": "Queue and limit worker separates burst intake from capability dependency."
       },
       {
         "key": "D",
         "text": "Scale only the public DNS service while leaving processing unbounded.",
         "correct": false,
-        "explanation": "DNS tidak membatasi transaksi ke dependency."
+        "explanation": "DNS does not restrict transaction to dependency."
       }
     ],
     "tags": [
@@ -3113,25 +3113,25 @@
         "key": "A",
         "text": "Distributed tracing with AWS X-Ray using supported instrumentation and correlation.",
         "correct": true,
-        "explanation": "Trace menghubungkan bagian request sehingga waktu pada dependency dapat dibandingkan."
+        "explanation": "Trace connects part request so that time on dependency can compared with."
       },
       {
         "key": "B",
         "text": "Only an S3 inventory of static website objects.",
         "correct": false,
-        "explanation": "Inventori objek tidak melacak panggilan antarservice."
+        "explanation": "Inventori object not tracks call antarservice."
       },
       {
         "key": "C",
         "text": "Only more frequent database backups.",
         "correct": false,
-        "explanation": "Backup tidak mengidentifikasi titik lambat request."
+        "explanation": "Backup not identifies point slow request."
       },
       {
         "key": "D",
         "text": "Only AWS Cost Explorer grouped by service.",
         "correct": false,
-        "explanation": "Biaya tidak menunjukkan jalur latency per request."
+        "explanation": "Cost not shows path latency per request."
       }
     ],
     "tags": [

@@ -11,25 +11,25 @@
         "key": "A",
         "text": "Move both services to Fargate while keeping one task role with the same combined permissions.",
         "correct": false,
-        "explanation": "Perubahan compute tidak otomatis memperbaiki policy identitas bersama."
+        "explanation": "Changes compute does not automatically improve identity policy shared."
       },
       {
         "key": "B",
         "text": "Assign a distinct least-privilege task role to each service and keep host/agent permissions in the appropriate infrastructure roles.",
         "correct": true,
-        "explanation": "Task role membatasi hak aplikasi per workload; role host dan execution tidak menggantikan pemisahan itu."
+        "explanation": "Task role restricts rights application per workload; role host and execution does not replace separation that."
       },
       {
         "key": "C",
         "text": "Put long-lived access keys with both permissions into the shared container image.",
         "correct": false,
-        "explanation": "Kredensial tetap dan hak gabungan mempertahankan akses berlebih serta memperburuk rotasi."
+        "explanation": "Credentials remains and rights gabungan maintains access excessive and worsens rotation."
       },
       {
         "key": "D",
         "text": "Create two security groups but continue giving both services the same broadly privileged task role.",
         "correct": false,
-        "explanation": "Segmentasi jaringan tidak memisahkan izin API S3 dan SNS pada role bersama."
+        "explanation": "Segmentation network not separates permissions API S3 and SNS on role shared."
       }
     ],
     "tags": [
@@ -58,31 +58,31 @@
         "key": "A",
         "text": "Configure a role trust policy for the OIDC provider and restrict the expected subject and audience claims.",
         "correct": true,
-        "explanation": "Trust condition membatasi identitas workload yang dapat memperoleh sesi role."
+        "explanation": "Trust condition restricts identity workload that can obtains session role."
       },
       {
         "key": "B",
         "text": "Put an administrator IAM user key in each branch secret.",
         "correct": false,
-        "explanation": "Ini menggunakan kredensial jangka panjang yang dilarang."
+        "explanation": "this uses credentials long-term that prohibited."
       },
       {
         "key": "C",
         "text": "Restrict the role to the CI provider account but omit repository and branch claim conditions.",
         "correct": false,
-        "explanation": "Kepercayaan provider tidak otomatis membatasi repository serta branch yang diizinkan."
+        "explanation": "Trust provider does not automatically restrict repository and branch that allowed."
       },
       {
         "key": "D",
         "text": "Trust every subject issued by the CI provider without repository restrictions.",
         "correct": false,
-        "explanation": "Repository lain dari provider sama bisa menjadi principal yang tidak dimaksud."
+        "explanation": "Repository other from provider same can becomes principal that not intended."
       },
       {
         "key": "E",
         "text": "Give the role only the deployment permissions required for its target environment.",
         "correct": true,
-        "explanation": "Federasi menghindari key tetap, tetapi role session tetap perlu least privilege."
+        "explanation": "Federation avoids key remains, but role session remains needs to least privilege."
       }
     ],
     "tags": [
@@ -111,25 +111,25 @@
         "key": "A",
         "text": "Allow developers to edit principal tags but freeze resource tags after creation.",
         "correct": false,
-        "explanation": "Principal tag masih dapat diubah untuk meniru project yang sudah ada."
+        "explanation": "Principal tag still can changed for meniru project that already exists."
       },
       {
         "key": "B",
         "text": "Allow resource retagging only through a shared developer role whose Project tag is unrestricted.",
         "correct": false,
-        "explanation": "Jalur retagging masih memungkinkan resource atau sesi mendapat atribut yang memperluas akses."
+        "explanation": "Path retagging still enables resource or session gets attribute that expands access."
       },
       {
         "key": "C",
         "text": "Enforce presence of the Project tag but allow any value chosen by the developer.",
         "correct": false,
-        "explanation": "Keberadaan tag saja tidak memastikan nilai otorisasi berasal dari sumber terpercaya."
+        "explanation": "Existence tag only not ensures value authorization originates from source terpercaya."
       },
       {
         "key": "D",
         "text": "Restrict who can set or change authorization-related tags and validate tag propagation into sessions and resources.",
         "correct": true,
-        "explanation": "Tag yang menentukan akses tidak boleh dapat dipalsukan bebas oleh pengguna yang dibatasi."
+        "explanation": "Tag that determines access not may dipalsukan free by user that restricted."
       }
     ],
     "tags": [
@@ -158,25 +158,25 @@
         "key": "A",
         "text": "An identity policy in account A allowing sts:AssumeRole on the intended role ARN.",
         "correct": true,
-        "explanation": "Untuk alur lintas akun ini, trust target dan izin caller harus saling melengkapi."
+        "explanation": "For flow across accounts this, trust target and permissions caller must mutually complements."
       },
       {
         "key": "B",
         "text": "Add sts:AssumeRole only to the permissions policy of the target role in account B.",
         "correct": false,
-        "explanation": "Izin sesudah target role diasumsikan tidak memberi caller A hak memulai AssumeRole."
+        "explanation": "permissions after target role assumed not gives caller A rights starts AssumeRole."
       },
       {
         "key": "C",
         "text": "Replace the target role policy with AdministratorAccess while leaving the caller unchanged.",
         "correct": false,
-        "explanation": "Hak sesudah asumsi tidak menyelesaikan kegagalan mendapatkan sesi."
+        "explanation": "Rights after assumption does not solve failure gets session."
       },
       {
         "key": "D",
         "text": "Add the caller to a security group used by resources in account B.",
         "correct": false,
-        "explanation": "Security group mengatur jaringan, bukan izin STS untuk identitas caller."
+        "explanation": "Security group manages network, is not permissions STS for identity caller."
       }
     ],
     "tags": [
@@ -205,25 +205,25 @@
         "key": "A",
         "text": "Attach an Allow-only SCP and remove every IAM permission policy because the SCP grants execution rights.",
         "correct": false,
-        "explanation": "SCP bukan pengganti pemberian izin melalui IAM."
+        "explanation": "SCP is not a substitute for granting permissions through IAM."
       },
       {
         "key": "B",
         "text": "Place all resources in one VPC and assume this blocks control-plane creation in other Regions.",
         "correct": false,
-        "explanation": "VPC tidak menjadi guardrail organisasi atas seluruh layanan dan Region."
+        "explanation": "VPC not becomes guardrail organization over all service and Region."
       },
       {
         "key": "C",
         "text": "Use AWS Config rules to detect disallowed-Region resources after creation, with no preventive guardrail.",
         "correct": false,
-        "explanation": "Deteksi setelah resource dibuat tidak menjadi batas izin maksimum yang diminta."
+        "explanation": "Detection after resource created not becomes limit permissions maximum that is requested."
       },
       {
         "key": "D",
         "text": "Use appropriately scoped SCP guardrails, and separately grant workload permissions through IAM.",
         "correct": true,
-        "explanation": "SCP membatasi izin maksimum akun anggota; ia tidak memberi hak menjalankan API dengan sendirinya."
+        "explanation": "SCP restricts permissions maximum account member; ia not gives rights runs API with itself."
       }
     ],
     "tags": [
@@ -252,25 +252,25 @@
         "key": "A",
         "text": "Place the functions in private subnets while retaining unrestricted PassRole.",
         "correct": false,
-        "explanation": "Isolasi jaringan tidak membatasi privilege control plane ini."
+        "explanation": "isolation network does not restrict privilege control plane this."
       },
       {
         "key": "B",
         "text": "Scope iam:PassRole to approved role ARNs and the intended service, alongside appropriate function-creation permissions.",
         "correct": true,
-        "explanation": "PassRole yang dibatasi mencegah pemilihan sembarang role berprivilege tinggi untuk layanan."
+        "explanation": "PassRole that restricted prevents selection sembarang role privileged high for service."
       },
       {
         "key": "C",
         "text": "Allow PassRole on every role and rely only on the function name prefix.",
         "correct": false,
-        "explanation": "Nama fungsi tidak membatasi execution role yang dapat diberikan."
+        "explanation": "Name function does not restrict execution role that can granted."
       },
       {
         "key": "D",
         "text": "Attach a restrictive S3 policy to the deployer while leaving PassRole unrestricted.",
         "correct": false,
-        "explanation": "Kode Lambda memakai execution role, sehingga hak deployer yang dipersempit tidak menutup PassRole ke admin role."
+        "explanation": "Code Lambda uses execution role, so that rights deployer that dipersempit not closes PassRole to admin role."
       }
     ],
     "tags": [
@@ -299,25 +299,25 @@
         "key": "A",
         "text": "Use an API key as the sole authentication mechanism for the sensitive method.",
         "correct": false,
-        "explanation": "API key/usage plan bukan pengganti authentication dan authorization yang kuat."
+        "explanation": "API key/usage plan is not a substitute for authentication and authorization that strong."
       },
       {
         "key": "B",
         "text": "Restrict API access by endpoint/resource policy and require IAM authorization with scoped invoke permissions for the application role.",
         "correct": true,
-        "explanation": "Akses jaringan privat dan otorisasi principal saling melengkapi untuk membatasi pemanggil method."
+        "explanation": "Access network private and authorization principal mutually complements to restrict caller method."
       },
       {
         "key": "C",
         "text": "Require a resource policy allowing every principal that reaches the shared endpoint, with no method-level authorizer.",
         "correct": false,
-        "explanation": "Klien lain di endpoint yang sama tetap mendapat akses; requirement hanya satu role tidak terpenuhi."
+        "explanation": "Client other in endpoint that same remains gets access; requirement only one role not met."
       },
       {
         "key": "D",
         "text": "Use only the shared endpoint ID as proof of the individual caller identity.",
         "correct": false,
-        "explanation": "Klien lain di jalur endpoint yang sama tidak dibedakan oleh ID endpoint saja."
+        "explanation": "Client other in path endpoint that same not dibedakan by ID endpoint only."
       }
     ],
     "tags": [
@@ -346,25 +346,25 @@
         "key": "A",
         "text": "Increase the appliance instance size while keeping return routes on the bypass path.",
         "correct": false,
-        "explanation": "Kapasitas tambahan tidak memperbaiki asimetri aliran."
+        "explanation": "Capacity additional not improves asimetri flow."
       },
       {
         "key": "B",
         "text": "Ensure routing provides the required symmetric inspection path, using the relevant transit gateway appliance-mode and routing configuration where applicable.",
         "correct": true,
-        "explanation": "Firewall stateful harus melihat alur yang konsisten; routing dan attachment behavior perlu mendukung simetri."
+        "explanation": "Firewall stateful must sees flow that consistent; routing and attachment behavior needs to support symmetry."
       },
       {
         "key": "C",
         "text": "Propagate every spoke route into every Transit Gateway table without distinguishing inspection and workload paths.",
         "correct": false,
-        "explanation": "Propagasi tanpa desain jalur dapat tetap membypass inspeksi; simetri perlu diatur."
+        "explanation": "Propagation without design path can remains membypass inspection; symmetry needs to be configured."
       },
       {
         "key": "D",
         "text": "Allow every inbound source in application security groups so firewall state is no longer relevant.",
         "correct": false,
-        "explanation": "Membuka SG melemahkan kontrol tanpa memperbaiki jalur stateful."
+        "explanation": "Opens SG melemahkan control without improves path stateful."
       }
     ],
     "tags": [
@@ -393,25 +393,25 @@
         "key": "A",
         "text": "Replace the WAF rule with an ALB security group that examines SQL query text.",
         "correct": false,
-        "explanation": "Security group tidak menginspeksi payload HTTP seperti WAF."
+        "explanation": "Security group not menginspeksi payload HTTP such as WAF."
       },
       {
         "key": "B",
         "text": "Disable the entire web ACL permanently for every path and client.",
         "correct": false,
-        "explanation": "Ini menghapus perlindungan lebih luas dari masalah yang diketahui."
+        "explanation": "this deletes protection broader from problem that known."
       },
       {
         "key": "C",
         "text": "Increase CloudFront TTL for checkout responses to hide the blocked transactions.",
         "correct": false,
-        "explanation": "Caching transaksi bukan perbaikan rule dan dapat membahayakan correctness."
+        "explanation": "Caching transaction is not improvement rule and can membahayakan correctness."
       },
       {
         "key": "D",
         "text": "Inspect the matching rule and logs, test a narrowly scoped exception or rule override, and retain the other protections.",
         "correct": true,
-        "explanation": "Perubahan spesifik mengurangi false positive tanpa menonaktifkan seluruh lapisan pertahanan."
+        "explanation": "Changes specific reduces false positive without disables all layer defense."
       }
     ],
     "tags": [
@@ -440,31 +440,31 @@
         "key": "A",
         "text": "Rely only on unguessable segment object names in a public bucket.",
         "correct": false,
-        "explanation": "Nama sulit ditebak bukan otorisasi."
+        "explanation": "Name difficult guessed is not authorization."
       },
       {
         "key": "B",
         "text": "Use CloudFront signed cookies with an appropriate policy for the lesson resources.",
         "correct": true,
-        "explanation": "Cookie terotorisasi dapat mencakup banyak objek yang sesuai policy."
+        "explanation": "Cookie terotorisasi can include many object that appropriate policy."
       },
       {
         "key": "C",
         "text": "Use a public S3 website endpoint because OAC protects every website endpoint automatically.",
         "correct": false,
-        "explanation": "Website endpoint bukan S3 REST origin yang didukung OAC dengan cara itu."
+        "explanation": "Website endpoint is not S3 REST origin that is supported OAC by that."
       },
       {
         "key": "D",
         "text": "Use a private S3 REST origin with OAC and a scoped bucket policy.",
         "correct": true,
-        "explanation": "OAC membatasi akses origin melalui distribution yang disetujui."
+        "explanation": "OAC restricts access origin through distribution that approved."
       },
       {
         "key": "E",
         "text": "Include one permanent administrator AWS key in the video player.",
         "correct": false,
-        "explanation": "Kredensial permanen berprivilege tinggi tidak boleh dibagikan ke klien."
+        "explanation": "Permanent credentials privileged high not may shared to client."
       }
     ],
     "tags": [
@@ -493,25 +493,25 @@
         "key": "A",
         "text": "Grant the database security group access to Secrets Manager on behalf of the application.",
         "correct": false,
-        "explanation": "Security group tidak mengambil atau memperbarui credential aplikasi."
+        "explanation": "Security group not takes or updates credential application."
       },
       {
         "key": "B",
         "text": "Disable rotation and store the original password in the container image.",
         "correct": false,
-        "explanation": "Ini menghindari tujuan rotasi dan memperluas paparan secret."
+        "explanation": "this avoids destination rotation and expands paparan secret."
       },
       {
         "key": "C",
         "text": "Keep the old secret forever and increase the RDS connection timeout.",
         "correct": false,
-        "explanation": "Timeout tidak membuat password yang tidak valid diterima kembali."
+        "explanation": "Timeout not creates password that not valid received back."
       },
       {
         "key": "D",
         "text": "Use a bounded credential cache with refresh/retry behavior and reconnect using the current authorized secret.",
         "correct": true,
-        "explanation": "Rotasi memerlukan aplikasi memperbarui kredensial; cache tanpa batas menahan nilai lama."
+        "explanation": "Rotation requires application updates credentials; cache without limit holds value long."
       }
     ],
     "tags": [
@@ -540,25 +540,25 @@
         "key": "A",
         "text": "AWS Security Hub CSPM with the relevant integrations and organizational configuration.",
         "correct": true,
-        "explanation": "Security Hub CSPM mengonsolidasikan findings dan pemeriksaan posture; sumber deteksi tetap memiliki perannya."
+        "explanation": "Security Hub CSPM consolidates findings and inspection posture; source detection remains has perannya."
       },
       {
         "key": "B",
         "text": "S3 Inventory alone because object counts represent all security findings.",
         "correct": false,
-        "explanation": "Inventaris objek tidak mencakup posture seluruh layanan."
+        "explanation": "inventory object does not include posture all service."
       },
       {
         "key": "C",
         "text": "AWS Budgets alone with a zero-cost threshold.",
         "correct": false,
-        "explanation": "Biaya bukan indikator lengkap keamanan dan tidak mengagregasi findings tersebut."
+        "explanation": "Cost is not indikator lengkap security and does not aggregates findings that."
       },
       {
         "key": "D",
         "text": "CloudTrail event history alone with no security-service integration.",
         "correct": false,
-        "explanation": "Audit API bukan kumpulan semua hasil pemeriksaan posture dan threat findings."
+        "explanation": "Audit API is not kumpulan all result inspection posture and threat findings."
       }
     ],
     "tags": [
@@ -587,25 +587,25 @@
         "key": "A",
         "text": "IAM users imported into local Windows groups as automatic forest trust.",
         "correct": false,
-        "explanation": "IAM user bukan objek AD yang membentuk trust forest."
+        "explanation": "IAM user is not object AD that forms trust forest."
       },
       {
         "key": "B",
         "text": "AWS Managed Microsoft AD with an appropriate trust and network/DNS configuration.",
         "correct": true,
-        "explanation": "Directory terkelola menyediakan domain AD di AWS dan trust yang didukung."
+        "explanation": "Directory managed provides domain AD in AWS and trust that is supported."
       },
       {
         "key": "C",
         "text": "AD Connector as a new directory that stores its own replicated directory database.",
         "correct": false,
-        "explanation": "AD Connector adalah proxy ke directory yang ada, bukan domain baru dengan database replika sendiri."
+        "explanation": "AD Connector is proxy to directory that exists, is not domain new with database replica itself."
       },
       {
         "key": "D",
         "text": "Amazon Cognito user pools as a domain-controller replacement for Group Policy.",
         "correct": false,
-        "explanation": "User pool aplikasi tidak menyediakan domain AD Windows."
+        "explanation": "User pool application does not provide domain AD Windows."
       }
     ],
     "tags": [
@@ -634,25 +634,25 @@
         "key": "A",
         "text": "Use Lake Formation data filters and compatible governed access, while preventing a direct S3 permission path that bypasses those restrictions.",
         "correct": true,
-        "explanation": "Filter dapat membatasi row/column; izin langsung ke file mentah tidak boleh melewati governance yang dimaksud."
+        "explanation": "Filter can restrict row/column; permissions directly to file raw not may exceeds governance that intended."
       },
       {
         "key": "B",
         "text": "Use only a bucket-level allow policy because S3 evaluates SQL predicates for each row.",
         "correct": false,
-        "explanation": "S3 policy tidak menjadi filter row dan column SQL Athena."
+        "explanation": "S3 policy not becomes filter row and column SQL Athena."
       },
       {
         "key": "C",
         "text": "Give every analyst unrestricted GetObject and rely only on a dashboard hiding the column.",
         "correct": false,
-        "explanation": "Pengguna dapat membaca data mentah di luar dashboard."
+        "explanation": "User can read data raw in outside dashboard."
       },
       {
         "key": "D",
         "text": "Create a public Athena result bucket so users can share filtered and unfiltered results freely.",
         "correct": false,
-        "explanation": "Result bucket juga harus dikontrol agar data sensitif tidak bocor."
+        "explanation": "Result bucket also must dikontrol so that data sensitive not bocor."
       }
     ],
     "tags": [
@@ -681,25 +681,25 @@
         "key": "A",
         "text": "Create a supported snapshot copy encrypted with a customer managed key, share the copy, and authorize the destination to use that key.",
         "correct": true,
-        "explanation": "Snapshot dengan AWS managed key tidak langsung dibagikan seperti CMK yang policy-nya dikelola pelanggan."
+        "explanation": "Snapshot with AWS managed key not directly shared such as CMK that policy-nya managed customer."
       },
       {
         "key": "B",
         "text": "Make the encrypted snapshot public to avoid cross-account key authorization.",
         "correct": false,
-        "explanation": "Snapshot terenkripsi tidak dipublikasikan sebagai solusi aman lintas akun."
+        "explanation": "Snapshot encrypted not dipublikasikan as solution secure across accounts."
       },
       {
         "key": "C",
         "text": "Share only the AWS managed key policy by editing it to trust the destination account.",
         "correct": false,
-        "explanation": "Pelanggan tidak mengedit policy AWS managed key seperti customer managed key."
+        "explanation": "Customer not mengedit policy AWS managed key such as customer managed key."
       },
       {
         "key": "D",
         "text": "Grant destination IAM access to RDS APIs only and ignore the source encryption key.",
         "correct": false,
-        "explanation": "Akses snapshot terenkripsi juga bergantung pada otorisasi KMS yang tepat."
+        "explanation": "Access snapshot encrypted also depends on authorization KMS that appropriate."
       }
     ],
     "tags": [
@@ -728,25 +728,25 @@
         "key": "A",
         "text": "Any new KMS key with the same alias can automatically decrypt all historical backups.",
         "correct": false,
-        "explanation": "Alias yang sama tidak membuat material kriptografi berbeda menjadi key lama."
+        "explanation": "Alias that same not creates material cryptography different becomes key long."
       },
       {
         "key": "B",
         "text": "CloudTrail logs contain the plaintext needed to reconstruct every deleted key.",
         "correct": false,
-        "explanation": "Audit log bukan escrow material key."
+        "explanation": "Audit log is not escrow material key."
       },
       {
         "key": "C",
         "text": "Backup retention automatically prevents every possible KMS key deletion in the account.",
         "correct": false,
-        "explanation": "Jangan mengasumsikan kontrol retensi backup menggantikan governance lifecycle key."
+        "explanation": "Do not assumes control retention backup replaces governance lifecycle key."
       },
       {
         "key": "D",
         "text": "Deleting required key material can make retained encrypted backups unusable; align key lifecycle and permissions with retention and restore requirements.",
         "correct": true,
-        "explanation": "Menyimpan ciphertext saja tidak cukup bila key untuk pemulihan tidak lagi tersedia."
+        "explanation": "Stores ciphertext only is not sufficient to if key for recovery not again available."
       }
     ],
     "tags": [
@@ -775,25 +775,25 @@
         "key": "A",
         "text": "Change the bucket display name because encryption keys are selected by bucket name only.",
         "correct": false,
-        "explanation": "Nama tidak mengganti metadata dan ciphertext objek lama."
+        "explanation": "Name not replaces metadata and ciphertext object long."
       },
       {
         "key": "B",
         "text": "Rotate the new key once and assume it re-encrypts objects still using another key.",
         "correct": false,
-        "explanation": "Rotasi material suatu key tidak memindahkan objek dari key lain."
+        "explanation": "Rotation material a key not moves object from key other."
       },
       {
         "key": "C",
         "text": "Re-encrypt existing objects through a controlled copy or supported batch operation, with validation and version/retention considerations.",
         "correct": true,
-        "explanation": "Default berlaku untuk write baru; objek lama harus diproses ulang untuk mengganti enkripsinya."
+        "explanation": "Default applies for write new; object long must processed again for replaces enkripsinya."
       },
       {
         "key": "D",
         "text": "Wait for a lifecycle transition and assume it always changes every object to the new default key.",
         "correct": false,
-        "explanation": "Perubahan kelas storage bukan jaminan penggantian key sesuai default baru."
+        "explanation": "Changes class storage does not guarantee replacement key appropriate default new."
       }
     ],
     "tags": [
@@ -822,25 +822,25 @@
         "key": "A",
         "text": "Use governance mode and give all administrators BypassGovernanceRetention.",
         "correct": false,
-        "explanation": "Hak bypass memungkinkan pihak tersebut melewati perlindungan governance."
+        "explanation": "Rights bypass enables party that exceeds protection governance."
       },
       {
         "key": "B",
         "text": "Use lifecycle expiration at seven years without any immutability control.",
         "correct": false,
-        "explanation": "Lifecycle bukan pencegah admin menghapus lebih awal."
+        "explanation": "Lifecycle is not pencegah admin deletes more initial."
       },
       {
         "key": "C",
         "text": "Enable versioning and Object Lock compliance-mode retention for the relevant object versions.",
         "correct": true,
-        "explanation": "Compliance mode mencegah pemendekan/penghapusan versi terlindungi selama retention, termasuk oleh root."
+        "explanation": "Compliance mode prevents pemendekan/removal version terlindungi while retention, including by root."
       },
       {
         "key": "D",
         "text": "Use versioning alone with unrestricted DeleteObjectVersion.",
         "correct": false,
-        "explanation": "Versi masih dapat dihapus oleh principal yang memiliki izin."
+        "explanation": "Version still can be deleted by principal that has permissions."
       }
     ],
     "tags": [
@@ -869,25 +869,25 @@
         "key": "A",
         "text": "Enable Macie and assume its sensitive-data classification is a complete access log.",
         "correct": false,
-        "explanation": "Klasifikasi data bukan catatan setiap principal yang membaca objek."
+        "explanation": "Classification data is not notes each principal that reads object."
       },
       {
         "key": "B",
         "text": "Use only CloudWatch bucket size metrics as user-level evidence.",
         "correct": false,
-        "explanation": "Metrik ukuran tidak mengidentifikasi pembaca objek."
+        "explanation": "Metrics size not identifies reader object."
       },
       {
         "key": "C",
         "text": "Enable appropriate S3 object-level CloudTrail data events and protect the log destination with suitable retention.",
         "correct": true,
-        "explanation": "GetObject termasuk data event; scope dan retensi menentukan evidence yang tersedia."
+        "explanation": "GetObject including data event; scope and retention determines evidence that is available."
       },
       {
         "key": "D",
         "text": "Increase only the retention of management events and expect past object reads to appear retroactively.",
         "correct": false,
-        "explanation": "Retensi tidak menciptakan data event yang tidak pernah dicatat."
+        "explanation": "Retention not creates data event that not ever dicatat."
       }
     ],
     "tags": [
@@ -916,25 +916,25 @@
         "key": "A",
         "text": "Create only a member-account Config aggregator for resource inventory, without an organization trail.",
         "correct": false,
-        "explanation": "Inventaris konfigurasi tidak menggantikan pencatatan management API di seluruh akun."
+        "explanation": "inventory configuration does not replace logging management API in all accounts."
       },
       {
         "key": "B",
         "text": "A multi-Region organization trail administered centrally, with verified destination and encryption permissions.",
         "correct": true,
-        "explanation": "Organization trail mencakup akun anggota termasuk yang ditambahkan; delivery dan proteksi log tetap harus dikonfigurasi."
+        "explanation": "Organization trail includes account member including that added; delivery and protection log remains must configured."
       },
       {
         "key": "C",
         "text": "A trail in the management account only, configured not to apply to the organization.",
         "correct": false,
-        "explanation": "Trail lokal tidak otomatis mencatat seluruh member account."
+        "explanation": "Trail local does not automatically mencatat all member account."
       },
       {
         "key": "D",
         "text": "An independent local trail in each account that every local administrator may disable.",
         "correct": false,
-        "explanation": "Ini tidak memberi kontrol sentral dan onboarding otomatis yang diminta."
+        "explanation": "this does not provide control sentral and onboarding automatically that is requested."
       }
     ],
     "tags": [
@@ -963,25 +963,25 @@
         "key": "A",
         "text": "Provision separate IAM users in every account and synchronize their passwords manually from the IdP.",
         "correct": false,
-        "explanation": "Ini tidak memenuhi akses sementara dan lifecycle terpusat tanpa user IAM per akun."
+        "explanation": "this does not meet access temporary and lifecycle centralized without user IAM per account."
       },
       {
         "key": "B",
         "text": "Connect the workforce identity source to IAM Identity Center and assign account permission sets to appropriate groups.",
         "correct": true,
-        "explanation": "Akses sementara dan mapping grup terpusat mengurangi user IAM terpisah serta memudahkan lifecycle tenaga kerja."
+        "explanation": "Access temporary and mapping group centralized reduces user IAM separate and makes easier lifecycle tenaga work."
       },
       {
         "key": "C",
         "text": "Use Cognito identity pools as the primary multi-account workforce permission-set manager.",
         "correct": false,
-        "explanation": "Cognito menangani identitas aplikasi, bukan pengganti model workforce permission set lintas akun."
+        "explanation": "Cognito handles identity application, is not a substitute for model workforce permission sets across accounts."
       },
       {
         "key": "D",
         "text": "Create one shared IAM user per team and distribute its password and access key.",
         "correct": false,
-        "explanation": "Identitas bersama menyulitkan audit individu dan memakai credential jangka panjang."
+        "explanation": "identity shared menyulitkan audit individu and uses credential long-term."
       }
     ],
     "tags": [
@@ -1010,25 +1010,25 @@
         "key": "A",
         "text": "The request is denied because the applicable explicit deny limits the role despite its identity-policy allow.",
         "correct": true,
-        "explanation": "Allow admin tidak mengalahkan deny eksplisit dari guardrail yang berlaku."
+        "explanation": "Allow admin not overrides deny explicit from guardrail that applies."
       },
       {
         "key": "B",
         "text": "The request succeeds because AdministratorAccess always overrides organization policies.",
         "correct": false,
-        "explanation": "AdministratorAccess tetap tunduk pada batas dan deny yang berlaku."
+        "explanation": "AdministratorAccess remains tunduk on limit and deny that applies."
       },
       {
         "key": "C",
         "text": "The request is permitted because the role policy contains an explicit Allow for the same action.",
         "correct": false,
-        "explanation": "Explicit allow tidak mengalahkan explicit deny yang berlaku."
+        "explanation": "Explicit allow not overrides explicit deny that applies."
       },
       {
         "key": "D",
         "text": "The request succeeds because SCPs restrict IAM users but do not affect assumed-role sessions in member accounts.",
         "correct": false,
-        "explanation": "SCP yang relevan juga membatasi principal role anggota dalam lingkupnya; role bukan pengecualian umum."
+        "explanation": "SCP that relevant also restricts principal role member within its scope; role is not pengecualian general."
       }
     ],
     "tags": [
@@ -1057,25 +1057,25 @@
         "key": "A",
         "text": "Grant the provider role trust to every AWS principal to simplify tenant mapping.",
         "correct": false,
-        "explanation": "Trust wildcard memperluas akses tanpa kontrol identitas."
+        "explanation": "Trust wildcard expands access without control identity."
       },
       {
         "key": "B",
         "text": "Require the same external ID for every customer and assume it uniquely identifies each tenant.",
         "correct": false,
-        "explanation": "Nilai bersama tidak membedakan tenant yang hendak dilindungi."
+        "explanation": "Value shared not distinguishes tenant that hendak protected."
       },
       {
         "key": "C",
         "text": "Use the customer account number as a public role description without a trust condition.",
         "correct": false,
-        "explanation": "Deskripsi tidak dievaluasi sebagai syarat AssumeRole."
+        "explanation": "Description not evaluated as requirement AssumeRole."
       },
       {
         "key": "D",
         "text": "Require the provider-assigned unique external ID in addition to trusting the intended provider principal.",
         "correct": true,
-        "explanation": "External ID membantu provider membedakan pelanggan dan mencegah confused-deputy lintas tenant."
+        "explanation": "External ID helps provider distinguishes customer and prevents confused-deputy across tenant."
       }
     ],
     "tags": [
@@ -1104,25 +1104,25 @@
         "key": "A",
         "text": "Add lambda:InvokeFunction to the execution role and leave the function resource policy unchanged.",
         "correct": false,
-        "explanation": "Execution role mengatur aksi kode fungsi, bukan izin service S3 untuk memanggilnya."
+        "explanation": "Execution role manages aksi code function, is not permissions service S3 for memanggilnya."
       },
       {
         "key": "B",
         "text": "Grant the bucket public GetObject access and rely on the event configuration to authorize invocation.",
         "correct": false,
-        "explanation": "Akses object dan izin invocation adalah lapisan berbeda; bucket publik juga tidak diperlukan."
+        "explanation": "Access object and permissions invocation is layer different; bucket public also is not required."
       },
       {
         "key": "C",
         "text": "Add a function resource-policy permission for the S3 service, scoped to the bucket ARN and its source account.",
         "correct": true,
-        "explanation": "S3 memerlukan izin untuk InvokeFunction; SourceArn dan SourceAccount membatasi bucket serta pemilik sumber."
+        "explanation": "S3 requires permissions for InvokeFunction; SourceArn and SourceAccount restricts bucket and owner source."
       },
       {
         "key": "D",
         "text": "Allow s3.amazonaws.com to invoke the function from any bucket because its execution role is bucket-scoped.",
         "correct": false,
-        "explanation": "Role runtime tidak membatasi bucket yang boleh memicu fungsi; policy perlu membatasi sumber invocation."
+        "explanation": "Role runtime does not restrict bucket that may triggers function; policy need to limit source invocation."
       }
     ],
     "tags": [
@@ -1151,31 +1151,31 @@
         "key": "A",
         "text": "Use AWS Organizations consolidated billing alone as the account baseline and subnet-sharing mechanism.",
         "correct": false,
-        "explanation": "Billing konsolidasi tidak otomatis menyiapkan baseline controls atau berbagi subnet."
+        "explanation": "Billing consolidation does not automatically prepares baseline controls or shares subnet."
       },
       {
         "key": "B",
         "text": "Use AWS Control Tower for the governed landing-zone/account-provisioning baseline.",
         "correct": true,
-        "explanation": "Control Tower membantu setup dan governance multi-account yang konsisten."
+        "explanation": "Control Tower helps setup and governance multi-account that consistent."
       },
       {
         "key": "C",
         "text": "Use VPC peering alone as a mechanism to share subnet ownership with participant accounts.",
         "correct": false,
-        "explanation": "Peering menghubungkan jaringan, bukan mekanisme VPC subnet sharing."
+        "explanation": "Peering connects network, is not mechanism VPC subnet sharing."
       },
       {
         "key": "D",
         "text": "Use only IAM Identity Center permission sets to provision network subnets in participant accounts.",
         "correct": false,
-        "explanation": "Permission set memberi akses workforce, bukan pengganti landing-zone orchestration dan RAM subnet sharing."
+        "explanation": "permission sets gives access workforce, is not a substitute for landing-zone orchestration and RAM subnet sharing."
       },
       {
         "key": "E",
         "text": "Use AWS RAM for supported sharing such as VPC subnets within the organization.",
         "correct": true,
-        "explanation": "RAM membagikan resource yang didukung tanpa memindahkan seluruh ownership aplikasi."
+        "explanation": "RAM shares resource that is supported without moves all ownership application."
       }
     ],
     "tags": [
@@ -1204,25 +1204,25 @@
         "key": "A",
         "text": "AD Connector does not maintain an independent directory copy; authentication depends on reachable domain controllers, so the directory and connectivity failure paths need a recovery design.",
         "correct": true,
-        "explanation": "Connector adalah gateway, bukan database identitas offline; ketersediaannya sendiri tidak menjamin autentikasi ketika sumber tidak dapat dihubungi."
+        "explanation": "Connector is gateway, is not database identity offline; ketersediaannya itself does not guarantee authentication when source cannot dihubungi."
       },
       {
         "key": "B",
         "text": "AD Connector continues authenticating all new users from a complete local directory replica until the link returns.",
         "correct": false,
-        "explanation": "Connector tidak menyediakan salinan direktori lokal seperti yang diasumsikan."
+        "explanation": "Connector does not provide copy directory local such as that assumed."
       },
       {
         "key": "C",
         "text": "An IAM permission set automatically becomes a replacement Active Directory domain for the application during the outage.",
         "correct": false,
-        "explanation": "Izin AWS tidak menggantikan layanan autentikasi AD yang dibutuhkan aplikasi."
+        "explanation": "permissions AWS does not replace service authentication AD that is required application."
       },
       {
         "key": "D",
         "text": "Adding a second Connector with the same unreachable domain controllers makes authentication independent of on-premises availability.",
         "correct": false,
-        "explanation": "Redundansi gateway tidak menghapus dependency bersama yang sedang gagal."
+        "explanation": "Redundancy gateway not deletes dependency shared that currently fails."
       }
     ],
     "tags": [
@@ -1251,25 +1251,25 @@
         "key": "A",
         "text": "Publish an appropriate endpoint service through AWS PrivateLink and let customers create interface endpoints.",
         "correct": true,
-        "explanation": "PrivateLink memberi akses ke layanan tertentu tanpa routing umum antar seluruh CIDR."
+        "explanation": "PrivateLink gives access to service specific without routing general across all CIDR."
       },
       {
         "key": "B",
         "text": "Assign a public IP and describe it as private because TLS is enabled.",
         "correct": false,
-        "explanation": "Enkripsi tidak mengubah endpoint publik menjadi konektivitas privat."
+        "explanation": "Encryption does not change endpoint public becomes connectivity private."
       },
       {
         "key": "C",
         "text": "Create VPC peering between every overlapping VPC and route all provider subnets.",
         "correct": false,
-        "explanation": "Overlap menghalangi model peering ini dan aksesnya terlalu luas."
+        "explanation": "Overlap menghalangi model peering this and aksesnya too broad."
       },
       {
         "key": "D",
         "text": "Attach all overlapping networks to one transit route table without address translation or isolation design.",
         "correct": false,
-        "explanation": "Ini tidak menyelesaikan konflik alamat atau pembatasan hanya satu layanan."
+        "explanation": "this does not solve konflik address or restriction only one service."
       }
     ],
     "tags": [
@@ -1298,25 +1298,25 @@
         "key": "A",
         "text": "Allow the database port from the application security group on the database security group.",
         "correct": true,
-        "explanation": "Referensi SG mengikuti membership instance aplikasi tanpa whitelist alamat yang berubah."
+        "explanation": "Reference SG follows membership instance application without whitelist address that changes."
       },
       {
         "key": "B",
         "text": "Add every current application public IP to a fixed inbound rule and never update it.",
         "correct": false,
-        "explanation": "Instance baru dan koneksi privat tidak mengikuti daftar public IP statis tersebut."
+        "explanation": "Instance new and connection private not follows list public IP static that."
       },
       {
         "key": "C",
         "text": "Allow the database port from the entire internet because the subnet is private.",
         "correct": false,
-        "explanation": "Subnet privat tidak membenarkan rule terlalu luas; jalur lain dapat muncul."
+        "explanation": "private subnet not justifies rule too broad; path other can appears."
       },
       {
         "key": "D",
         "text": "Allow the database port from the ALB security group only, even though the ALB never connects to the database.",
         "correct": false,
-        "explanation": "Sumber koneksi database adalah aplikasi, bukan ALB."
+        "explanation": "Source connection database is application, is not ALB."
       }
     ],
     "tags": [
@@ -1345,25 +1345,25 @@
         "key": "A",
         "text": "Retain only CloudTrail StartSession and TerminateSession events as the complete shell transcript.",
         "correct": false,
-        "explanation": "Metadata API menunjukkan aktivitas sesi, bukan seluruh command dan output."
+        "explanation": "Metadata API shows activity session, is not all command and output."
       },
       {
         "key": "B",
         "text": "Enable Session Manager preferences logging but continue to allow SSH tunneling as the sole administrative mode.",
         "correct": false,
-        "explanation": "Preferences logging tidak dapat membaca isi trafik SSH yang ditunnel."
+        "explanation": "Preferences logging cannot read contents traffic SSH that ditunnel."
       },
       {
         "key": "C",
         "text": "Require supported Session Manager shell sessions with S3 or CloudWatch Logs output logging, and restrict unlogged SSH/port-forwarding session paths.",
         "correct": true,
-        "explanation": "Session logging tidak mencakup konten sesi SSH atau port forwarding; kontrol mode akses diperlukan agar jalur wajib audit tidak dibypass."
+        "explanation": "Session logging does not include content session SSH or port forwarding; control mode access required so that path required audit not dibypass."
       },
       {
         "key": "D",
         "text": "Record VPC Flow Logs for the instances and use the accepted connection records as command-level evidence.",
         "correct": false,
-        "explanation": "Flow Logs tidak merekam konten command shell."
+        "explanation": "Flow Logs not records content command shell."
       }
     ],
     "tags": [
@@ -1392,25 +1392,25 @@
         "key": "A",
         "text": "Block port 443 in every security group and continue serving the HTTPS application unchanged.",
         "correct": false,
-        "explanation": "Ini memblokir pengguna sah dan bukan mitigasi selektif."
+        "explanation": "this blocks user valid rather than mitigation selektif."
       },
       {
         "key": "B",
         "text": "Increase database storage capacity as the sole defense against request abuse.",
         "correct": false,
-        "explanation": "Storage tambahan tidak menolak request berbahaya atau membatasi rate login."
+        "explanation": "Storage additional not rejects request dangerous or restricts rate login."
       },
       {
         "key": "C",
         "text": "Apply appropriate AWS WAF inspection and rate-based controls at a supported frontend, and retain application-side authentication protections.",
         "correct": true,
-        "explanation": "WAF memahami request HTTP; kontrol aplikasi tetap diperlukan agar mitigasi tidak bergantung jaringan saja."
+        "explanation": "WAF understands request HTTP; control application remains required so that mitigation not depends network only."
       },
       {
         "key": "D",
         "text": "Use only network ACL rules matching the malicious SQL text.",
         "correct": false,
-        "explanation": "NACL tidak memeriksa isi HTTP."
+        "explanation": "NACL not checks contents HTTP."
       }
     ],
     "tags": [
@@ -1439,25 +1439,25 @@
         "key": "A",
         "text": "Put the API key in a public documentation example and rely only on obscured method names.",
         "correct": false,
-        "explanation": "Secret tersebar dan nama method bukan identitas terverifikasi."
+        "explanation": "Secret distributed and name method is not identity terverifikasi."
       },
       {
         "key": "B",
         "text": "Increase the length of the API key and treat its quota setting as IAM authorization.",
         "correct": false,
-        "explanation": "Usage plan tidak berubah menjadi model otorisasi IAM."
+        "explanation": "Usage plan not changes becomes model authorization IAM."
       },
       {
         "key": "C",
         "text": "Require IAM-authorized signed requests with scoped invoke permissions; keep usage plans only for their separate metering/throttling purpose.",
         "correct": true,
-        "explanation": "API key bukan authentication utama; IAM signature dan policy membatasi principal serta method."
+        "explanation": "API key is not authentication primary; IAM signature and policy restricts principal and method."
       },
       {
         "key": "D",
         "text": "Enable a larger stage cache and assume each cached response authenticates the caller.",
         "correct": false,
-        "explanation": "Caching bukan autentikasi dan memerlukan isolasi yang benar."
+        "explanation": "Caching is not authentication and requires isolation that correct."
       }
     ],
     "tags": [
@@ -1486,25 +1486,25 @@
         "key": "A",
         "text": "A Cost Explorer saved report used as a preventive security policy.",
         "correct": false,
-        "explanation": "Laporan biaya tidak menerapkan kontrol firewall."
+        "explanation": "Report cost not applies control firewall."
       },
       {
         "key": "B",
         "text": "A single security group in the management account attached to all cross-account public APIs.",
         "correct": false,
-        "explanation": "SG bukan mekanisme general attachment lintas layanan seperti WAF."
+        "explanation": "SG is not mechanism general attachment across services such as WAF."
       },
       {
         "key": "C",
         "text": "AWS Network Firewall alone automatically creating every WAF web ACL in every organization account.",
         "correct": false,
-        "explanation": "Network Firewall adalah kontrol inspeksi jaringan, bukan pengelola seluruh WAF policy organisasi."
+        "explanation": "Network Firewall is control inspection network, is not pengelola all WAF policy organization."
       },
       {
         "key": "D",
         "text": "AWS Firewall Manager with the required organization and service configuration.",
         "correct": true,
-        "explanation": "Firewall Manager mengelola penerapan policy keamanan yang didukung secara terpusat."
+        "explanation": "Firewall Manager manages implementation policy security that is supported in a manner centralized."
       }
     ],
     "tags": [
@@ -1533,25 +1533,25 @@
         "key": "A",
         "text": "Give the application kms:* so decryption works and rely on its role name to prevent administration.",
         "correct": false,
-        "explanation": "Wildcard memberikan operasi di luar decrypt; nama role bukan pembatas."
+        "explanation": "Wildcard provides operation in outside decrypt; name role is not restriction."
       },
       {
         "key": "B",
         "text": "Remove all key policies because IAM identity policies alone always authorize every KMS key.",
         "correct": false,
-        "explanation": "Otorisasi KMS bergantung pada model key policy dan IAM yang sesuai."
+        "explanation": "Authorization KMS depends on model key policy and IAM that appropriate."
       },
       {
         "key": "C",
         "text": "Give administrators only Decrypt and applications only ScheduleKeyDeletion.",
         "correct": false,
-        "explanation": "Ini membalik tanggung jawab yang diminta."
+        "explanation": "this membalik responsibility that is requested."
       },
       {
         "key": "D",
         "text": "Define separate key-administration and key-usage permissions for the appropriate principals, and evaluate both IAM and key policies.",
         "correct": true,
-        "explanation": "Administrasi key dan operasi kriptografi dapat dibatasi ke principal berbeda sesuai kebutuhan."
+        "explanation": "Administration key and operation cryptography can restricted to principal different as needed."
       }
     ],
     "tags": [
@@ -1580,25 +1580,25 @@
         "key": "A",
         "text": "Change the volume tag to Encrypted=true and skip a storage migration.",
         "correct": false,
-        "explanation": "Tag bukan operasi enkripsi."
+        "explanation": "Tag is not operation encryption."
       },
       {
         "key": "B",
         "text": "Create a consistent snapshot, create an encrypted replacement volume through a supported snapshot flow, and switch after validation.",
         "correct": true,
-        "explanation": "Enkripsi existing volume tidak diubah in-place dengan toggle; penggantian harus menjaga konsistensi data."
+        "explanation": "Encryption existing volume not changed in-place with toggle; replacement must maintains consistency data."
       },
       {
         "key": "C",
         "text": "Enable account default encryption and assume the attached existing volume is immediately re-encrypted.",
         "correct": false,
-        "explanation": "Default memengaruhi resource baru, bukan mengubah volume lama secara otomatis."
+        "explanation": "Default affects resource new, is not changes volume long automatically."
       },
       {
         "key": "D",
         "text": "Rotate an unrelated KMS key without creating an encrypted volume.",
         "correct": false,
-        "explanation": "Rotasi tidak mengenkripsi volume yang sebelumnya plaintext."
+        "explanation": "Rotation not encrypts volume that previously plaintext."
       }
     ],
     "tags": [
@@ -1627,25 +1627,25 @@
         "key": "A",
         "text": "Increase Athena query timeout to prevent unauthorized S3 reads.",
         "correct": false,
-        "explanation": "Timeout eksekusi tidak membatasi GetObject hasil."
+        "explanation": "Timeout execution does not restrict GetObject result."
       },
       {
         "key": "B",
         "text": "Restrict and encrypt the results location with permissions and workgroup settings appropriate to the sensitivity of the output.",
         "correct": true,
-        "explanation": "Hasil query adalah salinan data yang juga perlu dilindungi; governance tabel sumber tidak otomatis menyelesaikan semua izin bucket hasil."
+        "explanation": "Result query is copy data that also must be protected; governance table source does not automatically solve all permissions bucket result."
       },
       {
         "key": "C",
         "text": "Keep the results bucket broadly readable because row filters on the source protect every future copy.",
         "correct": false,
-        "explanation": "Output yang sudah dihasilkan dapat diakses melalui jalur berbeda."
+        "explanation": "Output that already produced can accessed through path different."
       },
       {
         "key": "D",
         "text": "Disable source permissions and rely on a random results filename only.",
         "correct": false,
-        "explanation": "Kerahasiaan nama bukan pengganti otorisasi."
+        "explanation": "Kerahasiaan name is not a substitute for authorization."
       }
     ],
     "tags": [
@@ -1674,25 +1674,25 @@
         "key": "A",
         "text": "The first successful GET invalidates the URL automatically, so no additional state is needed.",
         "correct": false,
-        "explanation": "S3 mengizinkan URL dipakai beberapa kali sampai expiry sesuai izin yang berlaku."
+        "explanation": "S3 allows URL used several times until expiry appropriate permissions that applies."
       },
       {
         "key": "B",
         "text": "Setting a one-second expiry guarantees exactly one request can use the URL during that second.",
         "correct": false,
-        "explanation": "Beberapa request masih dapat dilakukan dalam interval yang sama; waktu tidak sama dengan jumlah penggunaan."
+        "explanation": "Several request still can performed within interval that same; time not the same as number usage."
       },
       {
         "key": "C",
         "text": "A presigned URL is reusable until expiry; a one-redemption requirement needs an application-controlled redemption and delivery design rather than relying on the URL alone.",
         "correct": true,
-        "explanation": "Presigned URL adalah bearer access terbatas waktu, bukan token single-use; state redemption dan jalur delivery perlu mengendalikan penggunaan ulang."
+        "explanation": "Presigned URL is bearer access limited time, is not token single-use; state redemption and path delivery needs to controls usage again."
       },
       {
         "key": "D",
         "text": "Changing the object storage class makes each presigned URL usable only once.",
         "correct": false,
-        "explanation": "Storage class tidak mengubah presigned authorization menjadi single-use."
+        "explanation": "Storage class does not change presigned authorization becomes single-use."
       }
     ],
     "tags": [
@@ -1721,25 +1721,25 @@
         "key": "A",
         "text": "Use HTTP-only to the origin because the viewer TLS session is automatically tunneled unchanged end to end.",
         "correct": false,
-        "explanation": "CloudFront membuat koneksi origin terpisah."
+        "explanation": "CloudFront creates connection origin separate."
       },
       {
         "key": "B",
         "text": "Install only a self-signed unmatched origin certificate and assume all origins are trusted.",
         "correct": false,
-        "explanation": "Validasi certificate/hostname origin tetap diperlukan."
+        "explanation": "Validation certificate/hostname origin remains required."
       },
       {
         "key": "C",
         "text": "Enforce HTTPS for viewers but retain HTTP-only connections from CloudFront to the custom origin.",
         "correct": false,
-        "explanation": "Kebijakan viewer tidak memenuhi enkripsi untuk hop CloudFront ke origin."
+        "explanation": "Policy viewer not meets encryption for hop CloudFront to origin."
       },
       {
         "key": "D",
         "text": "Enforce HTTPS viewer behavior and configure the origin HTTPS policy with a valid certificate matching the origin hostname.",
         "correct": true,
-        "explanation": "Kedua koneksi TLS terpisah; sertifikat viewer tidak otomatis mengamankan koneksi origin."
+        "explanation": "Both connection TLS separate; certificate viewer does not automatically secures connection origin."
       }
     ],
     "tags": [
@@ -1768,25 +1768,25 @@
         "key": "A",
         "text": "IAM Access Analyzer external-access analysis with the intended zone of trust.",
         "correct": true,
-        "explanation": "Analisis policy mengidentifikasi akses yang mungkin ke principal di luar batas trust yang ditentukan."
+        "explanation": "Analysis policy identifies access that may to principal in outside limit trust that determined."
       },
       {
         "key": "B",
         "text": "CloudTrail management event lookup alone.",
         "correct": false,
-        "explanation": "Riwayat aktivitas tidak menunjukkan semua akses yang diizinkan tetapi belum digunakan."
+        "explanation": "History activity not shows all access that allowed but not yet used."
       },
       {
         "key": "C",
         "text": "Amazon Macie content classification alone.",
         "correct": false,
-        "explanation": "Klasifikasi data sensitif tidak menggantikan analisis policy resource yang didukung."
+        "explanation": "Classification data sensitive does not replace analysis resource policy that is supported."
       },
       {
         "key": "D",
         "text": "Amazon Inspector vulnerability scanning alone.",
         "correct": false,
-        "explanation": "Vulnerability scanning bukan analisis exposure resource policy lintas trust."
+        "explanation": "Vulnerability scanning is not analysis exposure resource policy across trust."
       }
     ],
     "tags": [
@@ -1815,31 +1815,31 @@
         "key": "A",
         "text": "Allow the role to replicate to the destination and use the destination key through destination policies.",
         "correct": true,
-        "explanation": "Otorisasi tujuan mencakup bucket dan key; izin sumber saja tidak cukup."
+        "explanation": "Authorization destination includes bucket and key; permissions source only is not sufficient to."
       },
       {
         "key": "B",
         "text": "Grant only ListBucket on the source and assume all object and KMS operations follow automatically.",
         "correct": false,
-        "explanation": "ListBucket tidak mencakup seluruh operasi object replication atau kriptografi."
+        "explanation": "ListBucket does not include all operation object replication or cryptography."
       },
       {
         "key": "C",
         "text": "Use an AWS managed key and edit its policy arbitrarily to trust any external account.",
         "correct": false,
-        "explanation": "AWS managed key tidak dikelola pelanggan seperti CMK."
+        "explanation": "AWS managed key not managed customer such as CMK."
       },
       {
         "key": "D",
         "text": "Allow the replication role to read/decrypt the required source data through appropriate S3 and source-key permissions.",
         "correct": true,
-        "explanation": "Role harus dapat membaca versi sumber dan menggunakan key untuk alur yang diperlukan."
+        "explanation": "Role must can reads version source and uses key for flow that is required."
       },
       {
         "key": "E",
         "text": "Remove versioning after the first object is copied to simplify continuous replication.",
         "correct": false,
-        "explanation": "Versioning merupakan prasyarat mekanisme replication yang digunakan."
+        "explanation": "Versioning is prerequisite mechanism replication that used."
       }
     ],
     "tags": [

@@ -2,1060 +2,1060 @@
   {
     "concept": "saa-workforce-federation",
     "title": "Workforce federation and account access",
-    "summary": "Untuk karyawan yang mengakses banyak akun AWS, pisahkan identitas organisasi dari izin pada setiap akun. IAM Identity Center menghubungkan direktori atau identity provider dengan akses berbasis peran.",
+    "summary": "For employees who access multiple AWS accounts, separate organizational identity from permissions for each account. IAM Identity Center connects directory or identity provider with role-based access.",
     "keyPoints": [
-      "Gunakan grup dan permission set untuk memberi akses sesuai pekerjaan, bukan satu akun bersama.",
-      "Federasi memberi sesi sementara; access key jangka panjang bukan syarat akses CLI.",
-      "Penghapusan assignment mencegah akses baru, tetapi jangan menganggap sesi yang sudah aktif langsung hilang.",
-      "Cognito ditujukan terutama untuk identitas pengguna aplikasi, bukan pengelolaan akses staf ke banyak akun AWS."
+      "Use groups and permission sets to grant access according to job responsibilities, rather than a single shared account.",
+      "Federation provides temporary sessions; long-term access keys are not required for CLI access.",
+      "Removing assignments prevents new access, but do not assume existing sessions terminate immediately.",
+      "Cognito is intended especially for application-user identities, rather than managing staff access to multiple AWS accounts."
     ],
     "order": 1
   },
   {
     "concept": "saa-workload-roles",
     "title": "Temporary credentials for workloads",
-    "summary": "Aplikasi juga membutuhkan identitas. Berikan role kepada unit eksekusi yang tepat agar SDK dapat memakai kredensial sementara tanpa menanam access key pada image atau source code.",
+    "summary": "Application also requires identity. Provide role to execution unit that appropriate so that SDK can use temporary credentials without embedding access key on image or source code.",
     "keyPoints": [
-      "EC2 memakai instance profile untuk menyediakan IAM role kepada aplikasi.",
-      "ECS task role mengatur panggilan AWS oleh kode aplikasi; task execution role dipakai oleh infrastruktur ECS untuk pekerjaan seperti mengambil image.",
-      "Batasi action dan resource sesuai kebutuhan, misalnya satu prefix S3.",
-      "Rotasi secret bukan pengganti pemilihan role ketika layanan mendukung identitas workload."
+      "EC2 uses instance profile for provides IAM role to application.",
+      "ECS task role manages call AWS by code application; task execution role used by infrastructure ECS for work such as takes image.",
+      "Limit action and resource as needed, for example one prefix S3.",
+      "Rotation secret is not a substitute for selection role when the service supports identity workload."
     ],
     "order": 1
   },
   {
     "concept": "saa-cross-account-access",
     "title": "Cross-account delegation and trust",
-    "summary": "Akses lintas akun memerlukan hubungan kepercayaan dan izin operasi yang tepat. Role target menentukan siapa yang boleh mengambil sesi; policy izin menentukan apa yang boleh dilakukan sesi tersebut.",
+    "summary": "Access across accounts requires relationship trust and permissions operation that appropriate. Target role determines who that may take session; policy permissions determines what that may performed session that.",
     "keyPoints": [
-      "AssumeRole lintas akun memerlukan izin caller dan trust pada role tujuan.",
-      "Gunakan external ID yang ditetapkan penyedia untuk membatasi skenario confused deputy pihak ketiga.",
-      "Jangan mengirim access key permanen agar partner bisa bertindak atas nama akun.",
-      "Akses objek S3 terenkripsi lintas akun juga dapat memerlukan otorisasi KMS tersendiri."
+      "AssumeRole across accounts requires permissions caller and trust on role destination.",
+      "Use external ID that defined provider to restrict scenario confused deputy party third.",
+      "Do not send access key permanent so that partner can acts on behalf of account.",
+      "Access object S3 encrypted across accounts also can require authorization KMS separate."
     ],
     "order": 1
   },
   {
     "concept": "saa-guardrails-permissions",
     "title": "Organization guardrails and delegated permissions",
-    "summary": "Bedakan pemberian izin dari pembatasan izin. SCP menetapkan guardrail akun anggota, sedangkan permissions boundary membatasi izin yang dapat diberikan identity policy kepada sebuah role atau user.",
+    "summary": "Distinguish granting permissions from permission restrictions. SCP sets guardrail account member, whereas permissions boundary restricts permissions that can granted identity policy to a role or user.",
     "keyPoints": [
-      "SCP tidak memberikan izin dan tidak membatasi identitas management account.",
-      "Explicit deny yang berlaku tidak dikalahkan oleh allow tambahan.",
-      "Boundary berguna saat developer boleh membuat role tetapi tidak boleh melewati batas yang ditetapkan.",
-      "Evaluasi izin juga dapat melibatkan resource policy dan sesi; hindari rumus sederhana yang mengabaikan konteks principal."
+      "SCP does not grant permissions and does not restrict identity management account.",
+      "Explicit deny that applies not overridden by allow additional.",
+      "Boundary useful when developer may create role but not may exceeds limit that defined.",
+      "Evaluation permissions also can melibatkan resource policy and session; avoid formula simple that ignores context principal."
     ],
     "order": 1
   },
   {
     "concept": "saa-private-service-connectivity",
     "title": "Private service access and endpoint selection",
-    "summary": "Pilih jalur jaringan berdasarkan layanan tujuan dan siapa yang mengaksesnya. Endpoint memberi jalur privat, tetapi aplikasi tetap memerlukan otorisasi dan konfigurasi DNS serta security group yang benar.",
+    "summary": "Choose path network based on service destination and who that mengaksesnya. Endpoint gives path private, but application remains requires authorization and configuration DNS and security group that correct.",
     "keyPoints": [
-      "Gateway endpoint mendukung S3 dan DynamoDB tanpa biaya tambahan endpoint.",
-      "Interface endpoint menyediakan network interface privat untuk layanan yang mendukung PrivateLink.",
-      "Endpoint service dapat mengekspos satu layanan tanpa memberikan konektivitas penuh antar-VPC.",
-      "Endpoint policy membatasi penggunaan endpoint; bukan otomatis memberikan izin resource."
+      "Gateway endpoint supports S3 and DynamoDB without additional costs endpoint.",
+      "Interface endpoint provides network interface private for service that supports PrivateLink.",
+      "Endpoint service can expose one service without provides connectivity full between VPCs.",
+      "Endpoint policy restricts usage endpoint; does not automatically provide permissions resource."
     ],
     "order": 1
   },
   {
     "concept": "saa-network-segmentation",
     "title": "Network segmentation with security groups and ACLs",
-    "summary": "Batasi jalur antar-tier sesuai aliran aplikasi. Security group dapat merujuk grup sumber di dalam VPC, sehingga perubahan alamat instance tidak memerlukan daftar IP manual.",
+    "summary": "Limit paths between tiers according to the flow of application. Security group can reference source security groups within the VPC, so changing instance addresses does not require manually maintaining IP lists.",
     "keyPoints": [
-      "Izinkan port database hanya dari security group aplikasi yang memerlukannya.",
-      "Network ACL bekerja pada subnet dan mendukung allow serta deny dengan urutan rule.",
-      "ACL stateless memerlukan aturan arah balik; security group melacak state koneksi.",
-      "Subnet privat tidak otomatis meniadakan seluruh akses dari resource lain di jaringan."
+      "Allow database ports only from the application's security group that requires it.",
+      "Network ACL works at the subnet level and supports allow and deny with rule evaluation order.",
+      "Stateless ACLs requires rules for return traffic; security groups track connection state.",
+      "a private subnet does not automatically block all access from other resource in network."
     ],
     "order": 1
   },
   {
     "concept": "saa-application-edge-protection",
     "title": "HTTP protection and DDoS defenses",
-    "summary": "Kontrol jaringan, firewall aplikasi, dan pertahanan DDoS memecahkan masalah yang berbeda. Pilih berdasarkan lapisan trafik dan kemampuan respons yang dibutuhkan.",
+    "summary": "Control network, firewall application, and defense DDoS solves problem that different. Choose based on layer traffic and capability response that is required.",
     "keyPoints": [
-      "WAF memeriksa HTTP(S), misalnya pola SQL injection atau aturan request rate.",
-      "WAF rate-based rules bukan jaminan batas transaksi tepat per detik.",
-      "Shield Advanced menambah kemampuan proteksi dan respons DDoS; tetap periksa prasyarat dukungan yang berlaku.",
-      "Security group tidak membaca query string HTTP untuk memilih request yang berbahaya."
+      "WAF checks HTTP(S), for example pattern SQL injection or rules request rate.",
+      "WAF rate-based rules does not guarantee limit transaction appropriate per second.",
+      "Shield Advanced adds capability protection and response DDoS; remains check prerequisite support that applies.",
+      "Security group not reads query string HTTP to choose request that dangerous."
     ],
     "order": 1
   },
   {
     "concept": "saa-secrets-lifecycle",
     "title": "Secrets, configuration, and rotation",
-    "summary": "Bedakan menyimpan konfigurasi terenkripsi dari mengelola siklus hidup credential. Rotasi harus memperbarui secret dan sistem yang menerima credential tersebut.",
+    "summary": "Distinguish stores configuration encrypted from manages lifecycle credential. Rotation must update secret and the system receiving credential that.",
     "keyPoints": [
-      "Secrets Manager mendukung rotasi; mekanismenya bergantung pada jenis secret dan integrasi layanan.",
-      "Parameter Store cocok untuk konfigurasi hierarkis dan SecureString yang tidak memerlukan lifecycle secret kompleks.",
-      "Mengubah nilai secret saja tidak otomatis mengubah password database eksternal.",
-      "Aplikasi perlu strategi membaca nilai terbaru agar rotasi tidak memutus akses."
+      "Secrets Manager supports rotation; its mechanism depends on type secret and integration service.",
+      "Parameter Store suitable for configuration hierarkis and SecureString that does not require lifecycle secret complex.",
+      "Changes value secret only does not automatically change password database external.",
+      "Application needs to strategy reads value latest so that rotation not breaks access."
     ],
     "order": 1
   },
   {
     "concept": "saa-customer-identity",
     "title": "Application users and temporary AWS access",
-    "summary": "Login aplikasi dan izin API AWS adalah dua kebutuhan berbeda. Cognito user pool mengelola autentikasi aplikasi; identity pool menukar identitas yang didukung menjadi kredensial AWS sementara.",
+    "summary": "Login application and permissions API AWS is two requirements different. Cognito user pool manages authentication application; identity pool exchanges identity that is supported becomes credentials AWS temporary.",
     "keyPoints": [
-      "User pool dapat mengeluarkan token untuk aplikasi web dan mobile.",
-      "Identity pool memakai IAM role untuk membatasi API AWS yang boleh dipanggil pengguna.",
-      "Token login bukan izin otomatis ke semua objek S3.",
-      "Pisahkan data per pengguna melalui policy resource yang sesuai, bukan hanya aturan pada UI."
+      "User pool can issues token for applications web and mobile.",
+      "Identity pool uses IAM role to restrict API AWS that may dipanggil user.",
+      "Token login is not permissions automatically to all object S3.",
+      "Separate data per user through resource policy that appropriate, is not just rules on UI."
     ],
     "order": 1
   },
   {
     "concept": "saa-encryption-key-control",
     "title": "Encryption and KMS authorization",
-    "summary": "Data terenkripsi tetap memerlukan desain siapa yang dapat menggunakannya. Customer managed KMS key memungkinkan kontrol policy, administrasi, dan penggunaan key yang lebih spesifik.",
+    "summary": "Data encrypted remains requires design who that can using it. Customer managed KMS key enables control policy, administration, and usage key that more specific.",
     "keyPoints": [
-      "Pisahkan izin administrasi key dari izin operasi kriptografi.",
-      "Key policy menentukan jalur otorisasi KMS; IAM Allow saja tidak selalu cukup.",
-      "Izin membaca objek dan izin decrypt dapat diperiksa secara terpisah.",
-      "Jangan menganggap penyimpanan terenkripsi otomatis membatasi siapa yang berhak membaca plaintext."
+      "Separate permissions administration key from permissions operation cryptography.",
+      "Key policy determines path authorization KMS; IAM Allow only does not always enough.",
+      "permissions reads object and permissions decrypt can checked separately.",
+      "Do not assume storage encrypted automatically restricts who that entitled reads plaintext."
     ],
     "order": 1
   },
   {
     "concept": "saa-private-content-delivery",
     "title": "Private S3 content through controlled delivery",
-    "summary": "Pisahkan akses origin dari otorisasi viewer. OAC melindungi jalur CloudFront ke S3, sementara signed URL atau signed cookie mengendalikan akses pengguna ke konten tertentu.",
+    "summary": "Separate access origin from authorization viewer. OAC protects path CloudFront to S3, temporary signed URL or signed cookie controls access user to content specific.",
     "keyPoints": [
-      "Gunakan S3 bucket origin biasa untuk OAC, bukan website endpoint.",
-      "Batasi bucket policy ke distribusi yang dimaksud dan pertahankan bucket privat.",
-      "Presigned URL memberi akses terbatas berdasarkan izin signer dan masa berlaku credential.",
-      "Signed cookies cocok untuk banyak file terbatas tanpa mengubah setiap URL."
+      "Use S3 bucket origin ordinary for OAC, is not website endpoint.",
+      "Limit bucket policy to distribution that intended and maintain bucket private.",
+      "Presigned URL gives access limited based on permissions signer and masa applies credential.",
+      "Signed cookies suitable for many file limited without changes each URL."
     ],
     "order": 1
   },
   {
     "concept": "saa-immutable-retention",
     "title": "Immutable retention and object recovery",
-    "summary": "Versioning membantu pemulihan, sedangkan Object Lock mengendalikan apakah versi tertentu boleh dihapus. Pilih retention mode berdasarkan pihak yang masih boleh melewati perlindungan.",
+    "summary": "Versioning helps recovery, whereas Object Lock controls whether version specific may deleted. Choose retention mode based on party that still may exceeds protection.",
     "keyPoints": [
-      "Compliance mode melindungi versi selama retention, termasuk dari root account.",
-      "Governance mode dapat dilewati oleh principal dengan izin bypass yang sesuai.",
-      "Legal hold tidak memiliki tanggal berakhir otomatis; pelepasannya memerlukan izin.",
-      "Object Lock melindungi versi, bukan melarang pembuatan versi baru pada nama objek yang sama."
+      "Compliance mode protects version while retention, including from root account.",
+      "Governance mode can bypassed by principal with permissions bypass that appropriate.",
+      "Legal hold does not have date ends automatically; pelepasannya requires permissions.",
+      "Object Lock protects version, is not prohibits creation version new on name object that same."
     ],
     "order": 1
   },
   {
     "concept": "saa-discovery-audit-detection",
     "title": "Sensitive data, API audit, and threat detection",
-    "summary": "Tiga kebutuhan yang sering tertukar adalah menemukan data sensitif, merekam operasi API, dan mendeteksi ancaman. Pilih layanan berdasarkan bukti yang dibutuhkan, bukan kemiripan istilah security.",
+    "summary": "Three requirements that often tertukar is finds data sensitive, records operation API, and detects threat. Choose service based on evidence that is required, is not kemiripan term security.",
     "keyPoints": [
-      "Macie menemukan dan melaporkan data sensitif pada S3 yang didukung.",
-      "CloudTrail data events merekam operasi objek seperti GetObject jika logging tersebut dikonfigurasi.",
-      "GuardDuty menganalisis sumber data untuk menemukan aktivitas mencurigakan.",
-      "Deteksi atau logging tidak otomatis memperbaiki setiap temuan; rancang respons dan hak akses terpisah."
+      "Macie finds and reports data sensitive on S3 that is supported.",
+      "CloudTrail data events records operation object such as GetObject if logging that configured.",
+      "GuardDuty analyzes source data for finds activity suspicious.",
+      "Detection or logging does not automatically improve each findings; design response and access rights separate."
     ],
     "order": 1
   },
   {
     "concept": "saa-secure-remote-connectivity",
     "title": "Secure hybrid and administrative connectivity",
-    "summary": "Jalur privat dan enkripsi bukan hal yang identik. Pilih koneksi berdasarkan siapa yang terhubung, protokol yang dibutuhkan, dan apakah enkripsi harus diterapkan sepanjang jalur.",
+    "summary": "Path private and encryption is not matter that identical. Choose connection based on who that connected, protocol that is required, and whether encryption must applied throughout path.",
     "keyPoints": [
-      "Direct Connect tidak otomatis mengenkripsi trafik; gunakan opsi seperti IPsec atau MACsec yang sesuai cakupan.",
-      "Client VPN ditujukan untuk perangkat pengguna jarak jauh.",
-      "Session Manager dapat memberi akses shell tanpa membuka inbound SSH ketika prasyarat agent, IAM, dan konektivitas tersedia.",
-      "Menghapus inbound SSH tidak menghilangkan kebutuhan otorisasi administrator dan jalur ke layanan Systems Manager."
+      "Direct Connect does not automatically encrypts traffic; use option such as IPsec or MACsec that appropriate scope.",
+      "Client VPN intended for device user remote.",
+      "Session Manager can give access shell without opens inbound SSH when prerequisite agent, IAM, and connectivity available.",
+      "Deletes inbound SSH does not eliminate requirements authorization administrator and path to service Systems Manager."
     ],
     "order": 1
   },
   {
     "concept": "saa-tls-and-transport-controls",
     "title": "TLS termination and transport requirements",
-    "summary": "Tentukan di mana TLS berakhir dan di mana plaintext boleh ada. Sertifikat, listener, origin protocol, dan bucket policy harus sesuai dengan batas kepercayaan yang diminta.",
+    "summary": "Determine where TLS terminates and where plaintext may exist. Certificate, listener, origin protocol, and bucket policy must align with limit trust that is requested.",
     "keyPoints": [
-      "ALB HTTPS listener melakukan terminasi TLS; enkripsi ke target perlu dikonfigurasi terpisah.",
-      "NLB TCP listener dapat meneruskan TLS tanpa mendekripsinya pada load balancer.",
-      "Sertifikat ACM untuk viewer CloudFront harus berada di us-east-1.",
-      "S3 bucket policy dapat menolak akses tanpa secure transport; enkripsi at rest tidak menggantikan aturan ini."
+      "ALB HTTPS listener performs TLS termination; encryption to the target must be configured separately.",
+      "NLB TCP listener can forward TLS without decrypting it at load balancer.",
+      "An ACM certificate for CloudFront viewers must reside in us-east-1.",
+      "S3 bucket policy can rejects access without secure transport; encryption at rest does not replace rules this."
     ],
     "order": 1
   },
   {
     "concept": "saa-queue-decoupling",
     "title": "Buffering work and handling failed messages",
-    "summary": "Queue memisahkan penerimaan pekerjaan dari pemrosesannya. Producer tidak perlu menunggu semua proses selesai, tetapi consumer harus memiliki retry, idempotency, dan batas retensi yang sesuai.",
+    "summary": "Queue separates receipt work from pemrosesannya. Producer does not need to waits all process completed, but consumer must have retry, idempotency, and limit retention that appropriate.",
     "keyPoints": [
-      "SQS menahan backlog saat producer lebih cepat dari consumer.",
-      "Visibility timeout mengatur kapan pesan yang belum selesai bisa diterima kembali.",
-      "DLQ memisahkan pesan gagal berulang; perbaikan dan redrive tetap perlu prosedur.",
-      "Memperbesar server saja tidak menghilangkan ketergantungan sinkron antara layanan."
+      "SQS holds backlog when producer faster from consumer.",
+      "Visibility timeout manages when message that not yet completed can be received back.",
+      "DLQ separates message fails repeated; improvement and redrive remains needs to procedure.",
+      "Increases server only does not eliminate dependency synchronous between service."
     ],
     "order": 1
   },
   {
     "concept": "saa-ordering-and-idempotency",
     "title": "Ordering, deduplication, and idempotent effects",
-    "summary": "Urutan pesan, duplikasi kiriman, dan duplikasi efek bisnis adalah tiga masalah terpisah. FIFO membantu pengurutan serta deduplikasi pengiriman, tetapi aplikasi tetap perlu menangani retry dengan aman.",
+    "summary": "Order message, duplication delivery, and duplication effect business is three problem separate. FIFO helps pengurutan and deduplication delivery, but application remains need to handle retry with secure.",
     "keyPoints": [
-      "MessageGroupId membatasi urutan pada satu grup, bukan memaksa semua entitas berbagi satu jalur serial.",
-      "Gunakan event ID yang stabil saat mengulangi kiriman agar deduplication bermakna.",
-      "Jangan menjanjikan exactly-once pada perubahan eksternal hanya karena menggunakan FIFO.",
-      "Desain idempotency harus atomik terhadap efek bisnis atau menggunakan mekanisme transaksi yang tepat."
+      "MessageGroupId restricts order in a single group, is not forces all entity shares one path serial.",
+      "Use event ID that stable when mengulangi delivery so that deduplication meaningful.",
+      "Do not promises exactly-once on changes external only because uses FIFO.",
+      "Design idempotency must atomic against effect business or uses mechanism transaction that appropriate."
     ],
     "order": 1
   },
   {
     "concept": "saa-fanout-and-event-routing",
     "title": "Independent consumers and event routing",
-    "summary": "Bedakan berbagi pekerjaan dengan menyiarkan event. Consumer yang membaca satu queue bersaing mengambil pekerjaan; subscriber yang masing-masing memiliki queue dapat memproses setiap event secara independen.",
+    "summary": "Distinguish shares work with menyiarkan event. Consumer that reads one queue compete takes work; subscriber that each has queue can process each event independently.",
     "keyPoints": [
-      "SNS dengan satu SQS queue per subscriber cocok untuk fanout dan backlog terpisah.",
-      "EventBridge memilih target berdasarkan event pattern yang sesuai.",
-      "Queue policy harus mengizinkan sumber layanan yang memang dipercaya.",
-      "Event routing tidak membuat subscriber otomatis idempotent atau menyimpan state bisnisnya."
+      "SNS with one SQS queue per subscriber suitable for fanout and backlog separate.",
+      "EventBridge selects target based on event pattern that appropriate.",
+      "Queue policy must allow source service that indeed trusted.",
+      "Event routing not creates subscriber automatically idempotent or stores state bisnisnya."
     ],
     "order": 1
   },
   {
     "concept": "saa-workflow-recovery",
     "title": "Durable workflows, retries, and compensation",
-    "summary": "Workflow terkelola menyimpan progres langkah dan mengatur kegagalan. Pisahkan retry error sementara dari penanganan kegagalan permanen dan dari pembatalan efek bisnis yang sudah terjadi.",
+    "summary": "Workflow managed stores progress step and manages failure. Separate retry error temporary from handling failure permanent and from cancellation effect business that already occurs.",
     "keyPoints": [
-      "Standard workflows mendukung pola callback untuk menunggu respons eksternal.",
-      "Retry dan Catch memungkinkan retry terkontrol serta jalur kegagalan.",
-      "Retry tanpa batas atau tanpa jeda dapat memperburuk gangguan downstream.",
-      "Efek lintas layanan memerlukan idempotency dan kadang compensation; bukan rollback database otomatis."
+      "Standard workflows supports pattern callback to wait for response external.",
+      "Retry and Catch enables retry controlled and path failure.",
+      "Retry without limit or without pause can worsens disruption downstream.",
+      "Effect across services requires idempotency and sometimes compensation; is not rollback database automatically."
     ],
     "order": 1
   },
   {
     "concept": "saa-stateless-application-tiers",
     "title": "Stateless application instances",
-    "summary": "Horizontal scaling aman jika resource yang dapat diganti tidak menjadi satu-satunya tempat state penting. Pisahkan session, file, dan progres pekerjaan dari disk atau memori satu instance.",
+    "summary": "Horizontal scaling secure if resource that can replaced not becomes the only place state important. Separate session, file, and progress work from disk or memory one instance.",
     "keyPoints": [
-      "Session store bersama membuat request tidak bergantung pada instance login awal.",
-      "Sticky session dapat membantu affinity, tetapi tidak menyelamatkan state pada instance yang gagal.",
-      "File bersama yang membutuhkan NFS dapat ditempatkan pada EFS Regional.",
-      "Pekerjaan queue harus selesai dan tersimpan sebelum pesan dihapus; retry perlu aman."
+      "Session store shared creates request not depends on instance login initial.",
+      "Sticky session can help affinity, but not saves state on instance that fails.",
+      "File shared that requires NFS can placed on EFS Regional.",
+      "Work queue must completed and stored before message deleted; retry needs to secure."
     ],
     "order": 1
   },
   {
     "concept": "saa-managed-execution-and-migration",
     "title": "Managed execution and protocol-compatible migration",
-    "summary": "Kurangi pekerjaan operasional dengan memilih unit eksekusi yang cocok, bukan memaksa semua workload ke satu layanan. Pertimbangkan model request, container, batas downstream, dan protokol yang sudah dipakai.",
+    "summary": "Reduce work operational with selects execution unit that suitable, is not forces all workload to one service. Consider model request, container, limit downstream, and protocol that already used.",
     "keyPoints": [
-      "ECS pada Fargate menjalankan container tanpa mengelola host EC2.",
-      "Pembatasan concurrency membantu melindungi database yang kapasitasnya terbatas.",
-      "Migrasi broker yang memerlukan kompatibilitas ActiveMQ atau RabbitMQ dapat cocok dengan Amazon MQ.",
-      "Managed compute tetap memerlukan health checks, izin, state management, dan kapasitas yang dirancang."
+      "ECS on Fargate runs container without manages host EC2.",
+      "Restriction concurrency helps protects database that its capacity limited.",
+      "Migration broker that requires compatibility ActiveMQ or RabbitMQ can suitable with Amazon MQ.",
+      "Managed compute remains requires health checks, permissions, state management, and capacity that designed."
     ],
     "order": 1
   },
   {
     "concept": "saa-multi-az-application-availability",
     "title": "Multi-AZ application and egress design",
-    "summary": "Availability bergantung pada seluruh dependency path. Penyebaran instance pada banyak AZ tidak cukup jika database, file store, atau egress masih bergantung pada satu AZ.",
+    "summary": "Availability depends on all dependency path. Distribution instance on many AZ is not sufficient to if database, file store, or egress still depends on one AZ.",
     "keyPoints": [
-      "Sebarkan kapasitas aplikasi dan load balancer ke lebih dari satu AZ.",
-      "Gunakan health checks yang mencerminkan kesiapan aplikasi, bukan hanya host hidup.",
-      "Jika mempertahankan zonal NAT, rute lokal-AZ menghindari ketergantungan egress pada AZ lain.",
-      "Regional NAT adalah pilihan lain pada dokumentasi terkini; jangan menyatakan semua NAT gateway selalu zonal."
+      "Distribute capacity application and load balancer to more than one AZ.",
+      "Use health checks that reflects readiness application, is not just host life.",
+      "If maintains zonal NAT, route lokal-AZ avoids dependency egress on other AZ.",
+      "Regional NAT is choice other on documentation current; do not states all NAT gateway always zonal."
     ],
     "order": 1
   },
   {
     "concept": "saa-relational-availability",
     "title": "Database failover versus recovery and read scaling",
-    "summary": "High availability, kapasitas baca, dan pemulihan logical error tidak dapat disamakan. Pilih fitur database berdasarkan kegagalan yang harus ditangani.",
+    "summary": "High availability, capacity baca, and recovery logical error cannot disamakan. Choose feature database based on failure that must be handled.",
     "keyPoints": [
-      "Multi-AZ DB instance dengan satu standby memberi failover; standby itu tidak melayani reporting.",
-      "Read replica dapat mengurangi beban baca, tetapi replication lag harus diterima.",
-      "Replication juga dapat menyalin perubahan data yang keliru; backup/PITR diperlukan untuk kembali ke kondisi sebelumnya.",
-      "Aurora memiliki layer storage dan compute yang terpisah; replica compute di AZ lain meningkatkan kesiapan failover."
+      "Multi-AZ DB instance with one standby gives failover; standby that not serves reporting.",
+      "Read replica can reduce load baca, but replication lag must received.",
+      "Replication also can copies changes data that incorrect; backup/PITR required for back to condition previously.",
+      "Aurora has layer storage and compute that separate; replica compute in other AZ increases readiness failover."
     ],
     "order": 1
   },
   {
     "concept": "saa-disaster-recovery-strategies",
     "title": "Recovery objectives and cross-Region design",
-    "summary": "RPO menentukan toleransi kehilangan data, sedangkan RTO menentukan target waktu pemulihan. Pilih strategi DR dari hasil uji dan kebutuhan, bukan menghafal bahwa satu pola selalu memiliki angka yang sama.",
+    "summary": "RPO determines tolerance loss data, whereas RTO determines target recovery time. Choose strategy DR from result test and requirements, is not memorizes that one pattern always has number that same.",
     "keyPoints": [
-      "Backup-and-restore cocok ketika recovery lebih lambat masih diterima dan biaya standby harus kecil.",
-      "Pilot light menyiapkan komponen inti; warm standby menjalankan sistem fungsional dengan kapasitas kecil.",
-      "Replikasi tidak otomatis memindahkan trafik aplikasi atau memastikan semua dependensi siap.",
-      "DynamoDB global tables memiliki pilihan consistency mode; jangan menyamakan semuanya dengan eventual consistency."
+      "Backup-and-restore suitable when recovery slower still received and cost standby must small.",
+      "Pilot light prepares component inti; warm standby runs system functional with capacity small.",
+      "Replication does not automatically moves traffic application or ensures all dependencies ready.",
+      "DynamoDB global tables has choice consistency mode; do not equate everything with eventual consistency."
     ],
     "order": 1
   },
   {
     "concept": "saa-backup-and-logical-recovery",
     "title": "Independent backups and recoverable state",
-    "summary": "Backup melindungi dari kelas kegagalan yang berbeda dari replica aktif. Desain recovery perlu mempertimbangkan isolasi akun, hak akses, enkripsi, dan konfigurasi resource setelah restore.",
+    "summary": "Backup protects from class failure that different from replica active. Design recovery need to consider isolation account, access rights, encryption, and configuration resource after restore.",
     "keyPoints": [
-      "Copy backup lintas akun mengurangi ketergantungan pada izin operasional akun sumber.",
-      "Dukungan AWS Backup dan syarat enkripsi berbeda per jenis resource; periksa matriks fitur.",
-      "DynamoDB PITR mengembalikan data ke tabel baru dan memerlukan verifikasi konfigurasi lanjutan.",
-      "S3 live replication tidak menyalin seluruh objek lama secara retroaktif; gunakan Batch Replication bila perlu."
+      "Copy backup across accounts reduces dependency on permissions operational account source.",
+      "Support AWS Backup and requirement encryption different per type resource; check matriks feature.",
+      "DynamoDB PITR returns data to table new and requires verification configuration lanjutan.",
+      "S3 live replication not copies all object long in a manner retroactive; use Batch Replication if needs to."
     ],
     "order": 1
   },
   {
     "concept": "saa-health-routing-and-failover",
     "title": "Health-aware routing and failover limits",
-    "summary": "Health-based routing memilih tujuan, bukan memperbaiki data atau menjalankan seluruh prosedur DR. Pahami batas DNS caching dan perilaku saat semua target dianggap tidak sehat.",
+    "summary": "Health-based routing selects destination, is not improves data or runs all procedure DR. Understand limit DNS caching and behavior when all target considered not healthy.",
     "keyPoints": [
-      "Route 53 dapat mengarahkan jawaban DNS berdasarkan health dan routing policy.",
-      "ALB dapat fail open ketika seluruh target terdaftar tidak sehat.",
-      "CloudFront origin failover perlu origin group, error criteria, dan metode HTTP yang didukung.",
-      "Data, otorisasi, dan kapasitas secondary harus sudah siap; routing saja tidak menyiapkannya."
+      "Route 53 can route answer DNS based on health and routing policy.",
+      "ALB can fail open when all target registered not healthy.",
+      "CloudFront origin failover needs to origin group, error criteria, and method HTTP that is supported.",
+      "Data, authorization, and capacity secondary must already ready; routing only not menyiapkannya."
     ],
     "order": 1
   },
   {
     "concept": "saa-durable-shared-storage",
     "title": "Shared files and recoverable temporary compute",
-    "summary": "Tentukan protokol file serta kegagalan yang harus ditahan. Penyimpanan sementara boleh dipakai untuk performa, tetapi state yang diperlukan untuk recovery harus berada di tempat yang durable.",
+    "summary": "Determine protocol file and failure that must ditahan. Storage temporary may used for performance, but state that is required for recovery must be located in place that durable.",
     "keyPoints": [
-      "EFS Regional menyediakan file storage lintas AZ untuk akses NFS.",
-      "FSx for Windows File Server Multi-AZ cocok untuk file share SMB dengan kebutuhan availability.",
-      "Mount target atau endpoint perlu dirancang untuk klien di AZ yang digunakan.",
-      "Checkpoint tidak harus berada pada media yang sama dengan scratch data yang cepat."
+      "EFS Regional provides file storage cross-AZ for access NFS.",
+      "FSx for Windows File Server Multi-AZ suitable for file share SMB with requirements availability.",
+      "Mount target or endpoint needs to designed for client in AZ that used.",
+      "Checkpoint not must be located on media that the same as scratch data that is fast."
     ],
     "order": 1
   },
   {
     "concept": "saa-hybrid-connectivity-resilience",
     "title": "Independent hybrid paths and failover testing",
-    "summary": "Redundansi harus menghindari titik kegagalan bersama. Dua link yang melewati fasilitas atau perangkat yang sama belum tentu bertahan saat fasilitas tersebut gagal.",
+    "summary": "Redundancy must avoids point failure shared. Two link that exceeds facility or device that same does not necessarily persists when facility that fails.",
     "keyPoints": [
-      "Untuk kebutuhan lokasi gagal, gunakan jalur dan Direct Connect location yang independen.",
-      "Site-to-Site VPN menyediakan dua tunnel yang perlu dikonfigurasi dan diuji.",
-      "Perangkat customer, provider, routing, DNS, dan kapasitas backup juga bagian availability.",
-      "Uji failover diperlukan untuk mengetahui apakah rancangan benar-benar memenuhi tujuan recovery."
+      "For requirements location fails, use path and Direct Connect location that independent.",
+      "Site-to-Site VPN provides two tunnel that must be configured and tested.",
+      "Device customer, provider, routing, DNS, and capacity backup also part availability.",
+      "Test failover required for knows whether design truly meets destination recovery."
     ],
     "order": 1
   },
   {
     "concept": "saa-storage-workload-fit",
     "title": "Choose storage for the access pattern",
-    "summary": "Pilih storage dari protokol, pola I/O, dan kebutuhan berbagi data, bukan hanya besar kapasitasnya.",
+    "summary": "Choose storage from protocol, pattern I/O, and requirements shares data, is not just large its capacity.",
     "keyPoints": [
-      "EBS menyediakan block storage untuk EC2; jenis volume menentukan karakteristik I/O.",
-      "FSx for Lustre cocok untuk parallel file access pada komputasi berperforma tinggi.",
-      "Kebutuhan SMB dan integrasi Windows berbeda dari kebutuhan NFS pada aplikasi Linux.",
-      "Periksa juga bandwidth instance dan jaringan; storage yang lebih cepat belum tentu menghilangkan bottleneck lain."
+      "EBS provides block storage for EC2; type volume determines characteristics I/O.",
+      "FSx for Lustre suitable for parallel file access on compute performant high.",
+      "Requirements SMB and integration Windows different from requirements NFS in the application Linux.",
+      "Check also bandwidth instance and network; storage that faster does not necessarily eliminates bottleneck other."
     ],
     "order": 1
   },
   {
     "concept": "saa-large-data-movement",
     "title": "Move data without changing its intended access model",
-    "summary": "Bedakan transfer objek besar, migrasi dataset file, dan akses file hybrid yang berlangsung terus-menerus.",
+    "summary": "Distinguish transfer object large, migration dataset file, and access file hybrid that takes place terus-menerus.",
     "keyPoints": [
-      "Multipart upload membagi objek besar menjadi bagian yang dapat diunggah dan diulang terpisah.",
-      "DataSync membantu transfer data online dengan penjadwalan dan pemeriksaan integritas yang dapat dikonfigurasi.",
-      "S3 File Gateway menyediakan akses NFS/SMB dengan cache lokal dan penyimpanan objek S3.",
-      "Bandwidth dan jumlah file memengaruhi waktu transfer; tidak ada layanan yang menghapus batas jaringan fisik."
+      "Multipart upload divides object large becomes part that can uploaded and repeated separate.",
+      "DataSync helps transfer data online with scheduling and inspection integritas that can configured.",
+      "S3 File Gateway provides access NFS/SMB with cache local and storage object S3.",
+      "Bandwidth and number file affects time transfer; not exists service that deletes limit network physical."
     ],
     "order": 1
   },
   {
     "concept": "saa-compute-scaling-and-latency",
     "title": "Scale compute for demand and latency",
-    "summary": "Strategi scaling harus mempertimbangkan kapan beban muncul dan berapa lama kapasitas baru siap dipakai.",
+    "summary": "Strategy scaling must considers when load appears and berapa long capacity new ready used.",
     "keyPoints": [
-      "Scheduled scaling membantu menyediakan kapasitas sebelum lonjakan yang waktunya diketahui.",
-      "Cluster placement group menargetkan kedekatan jaringan untuk workload tightly coupled dalam satu AZ.",
-      "Lambda provisioned concurrency menyiapkan execution environment; reserved concurrency mengatur alokasi/batas concurrency.",
-      "Optimasi latensi dapat memiliki biaya atau kompromi fault isolation."
+      "Scheduled scaling helps provides capacity before spike that the time known.",
+      "Cluster placement group targets proximity network for workloads tightly coupled in a single AZ.",
+      "Lambda provisioned concurrency prepares execution environment; reserved concurrency manages allocation/limit concurrency.",
+      "Optimization latency can have cost or compromise fault isolation."
     ],
     "order": 1
   },
   {
     "concept": "saa-execution-model-fit",
     "title": "Select an execution model for the job",
-    "summary": "Pilih runtime dari durasi, hardware, dan cara orkestrasi workload, bukan dari label serverless saja.",
+    "summary": "Choose runtime from duration, hardware, and way orchestration workload, is not from label serverless only.",
     "keyPoints": [
-      "Task container yang panjang dapat dijalankan dengan ECS/Fargate tanpa batas durasi invocation Lambda biasa.",
-      "AWS Batch menangani antrean dan penjadwalan batch jobs; kebutuhan GPU memengaruhi compute environment.",
-      "Fargate mengurangi pengelolaan host, tetapi bukan pengganti semua fitur EC2.",
-      "Benchmark workload nyata sebelum mengganti instance family atau ukuran."
+      "Task container that long can run with ECS/Fargate without limit duration invocation Lambda ordinary.",
+      "AWS Batch handles queue and scheduling batch jobs; requirements GPU affects compute environment.",
+      "Fargate reduces management host, but is not a substitute for all feature EC2.",
+      "Benchmark workload real before replaces instance family or size."
     ],
     "order": 1
   },
   {
     "concept": "saa-database-read-and-connection-scaling",
     "title": "Separate read scaling from connection management",
-    "summary": "Beban query, jumlah koneksi, dan high availability adalah masalah yang berbeda dan dapat memerlukan komponen berbeda.",
+    "summary": "Load query, number connection, and high availability is problem that different and can require component different.",
     "keyPoints": [
-      "Read replica membantu read scaling jika aplikasi dapat menerima lag yang mungkin terjadi.",
-      "Aurora reader endpoint membagi koneksi ke reader, bukan membagi setiap query dalam satu koneksi.",
-      "RDS Proxy membantu mengelola pool koneksi; layanan ini tidak otomatis membuat query mahal menjadi murah.",
-      "Traditional Multi-AZ DB instance standby bukan read replica untuk query aplikasi."
+      "Read replica helps read scaling if application can receive lag that may occurs.",
+      "Aurora reader endpoint divides connection to reader, is not divides each query in a single connection.",
+      "RDS Proxy helps manages pool connection; this service does not automatically create query expensive becomes cheap.",
+      "Traditional Multi-AZ DB instance standby is not read replica for query application."
     ],
     "order": 1
   },
   {
     "concept": "saa-dynamodb-access-patterns",
     "title": "Design DynamoDB keys and read paths",
-    "summary": "Desain DynamoDB dimulai dari pola akses yang diketahui; tambahan kapasitas tidak selalu memperbaiki distribusi key yang buruk.",
+    "summary": "Design DynamoDB started from pattern access that known; additional capacity does not always improves distribution key that poor.",
     "keyPoints": [
-      "Partition key dengan distribusi nilai dan traffic yang baik membantu menyebarkan workload.",
-      "Sort key dapat mendukung urutan dan rentang dalam satu partition key.",
-      "GSI menyediakan pola query dengan key alternatif, tetapi update dan konsistensinya harus dipahami.",
-      "DAX cocok untuk pola read yang dapat memakai cache; tidak mengubah strongly consistent read menjadi cache hit."
+      "Partition key with distribution value and traffic that good helps distributes workload.",
+      "Sort key can support order and range in a single partition key.",
+      "GSI provides pattern query with key alternative, but update and konsistensinya must dipahami.",
+      "DAX suitable for pattern read that can use cache; does not change strongly consistent read becomes cache hit."
     ],
     "order": 1
   },
   {
     "concept": "saa-cache-correctness",
     "title": "Cache without breaking freshness or isolation",
-    "summary": "Cache yang cepat tetap salah jika menampilkan data tenant lain atau mempertahankan nilai yang sudah tidak berlaku.",
+    "summary": "Cache that is fast remains wrong if displays data other tenant or maintains value that already not applies.",
     "keyPoints": [
-      "Cache-aside membaca cache dahulu dan mengambil data dari sumber ketika cache miss.",
-      "TTL membatasi masa cache, tetapi tidak menjamin setiap perubahan langsung terlihat.",
-      "Key cache harus memasukkan dimensi yang benar-benar mengubah respons, termasuk tenant bila relevan.",
-      "Data yang memerlukan konsistensi langsung membutuhkan invalidation, write coordination, atau jalur tanpa cache."
+      "Cache-aside reads cache previously and takes data from source when cache miss.",
+      "TTL restricts masa cache, but does not guarantee each changes directly appears.",
+      "Key cache must inserts dimension that truly changes response, including tenant if relevant.",
+      "Data that requires consistency directly requires invalidation, write coordination, or path without cache."
     ],
     "order": 1
   },
   {
     "concept": "saa-load-balancer-fit",
     "title": "Match the load balancer to the traffic",
-    "summary": "ALB, NLB, dan GWLB memiliki tujuan yang berbeda; pemilihan dimulai dari protokol dan fungsi yang diperlukan.",
+    "summary": "ALB, NLB, and GWLB has destination that different; selection started from protocol and function that is required.",
     "keyPoints": [
-      "ALB mendukung routing HTTP berdasarkan host atau path.",
-      "NLB cocok untuk kebutuhan layer-4 seperti TCP/UDP dan alamat IP statis per AZ yang dikonfigurasi.",
-      "GWLB membantu integrasi dan scaling virtual network appliances.",
-      "Port 443 saja belum cukup untuk memilih: pertimbangkan di mana TLS dihentikan dan apakah inspeksi HTTP dibutuhkan."
+      "ALB supports routing HTTP based on host or path.",
+      "NLB suitable for requirements layer-4 such as TCP/UDP and address IP static per AZ that configured.",
+      "GWLB helps integration and scaling virtual network appliances.",
+      "Port 443 only not yet enough to choose: consider in which TLS stopped and whether inspection HTTP required."
     ],
     "order": 1
   },
   {
     "concept": "saa-global-delivery-and-dns",
     "title": "Choose global delivery and hybrid DNS",
-    "summary": "Cache konten, optimasi rute jaringan, dan resolusi DNS adalah fungsi berbeda walaupun semuanya dapat memengaruhi pengalaman pengguna.",
+    "summary": "Cache content, optimization route network, and resolution DNS is function different although everything can affects experience user.",
     "keyPoints": [
-      "CloudFront menempatkan cache HTTP dekat pengguna dan dapat mengurangi request berulang ke origin.",
-      "Global Accelerator menyediakan static anycast IP dan routing ke endpoint regional untuk TCP/UDP yang didukung.",
-      "Resolver inbound endpoints membantu jaringan luar VPC melakukan resolusi melalui VPC Resolver.",
-      "Resolver outbound endpoints dan rules meneruskan query dari VPC ke DNS eksternal yang sesuai."
+      "CloudFront places cache HTTP near user and can reduce request repeated to origin.",
+      "Global Accelerator provides static anycast IP and routing to endpoint regional for TCP/UDP that is supported.",
+      "Resolver inbound endpoints helps network outside VPC performs resolution through VPC Resolver.",
+      "Resolver outbound endpoints and rules forwards query from VPC to DNS external that appropriate."
     ],
     "order": 1
   },
   {
     "concept": "saa-network-routing-topology",
     "title": "Build the routing topology the workload needs",
-    "summary": "Konektivitas VPC harus dirancang dari pola komunikasi dan pertumbuhan, bukan menganggap setiap koneksi dapat menjadi transit.",
+    "summary": "Connectivity VPC must designed from pattern communication and growth, is not assumes each connection can becomes transit.",
     "keyPoints": [
-      "Transit Gateway mendukung hub untuk banyak VPC dan koneksi on-premises.",
-      "VPC peering tidak menyediakan transitive routing.",
-      "CIDR overlap harus ditangani sesuai layanan; menambah route tidak menghapus overlap.",
-      "Latency routing menggunakan estimasi latensi jaringan, bukan sekadar jarak geografis."
+      "Transit Gateway supports hub for many VPC and connection on-premises.",
+      "VPC peering does not provide transitive routing.",
+      "CIDR overlap must handled appropriate service; adds route not deletes overlap.",
+      "Latency routing uses estimate latency network, is more than just distance geografis."
     ],
     "order": 1
   },
   {
     "concept": "saa-stream-ingestion-patterns",
     "title": "Separate replayable streams from managed delivery",
-    "summary": "Pilih ingestion dari kebutuhan konsumsi, replay, ekosistem, dan seberapa banyak pipeline harus dikelola.",
+    "summary": "Choose ingestion from requirements consumption, replay, ecosystem, and how much many pipeline must managed.",
     "keyPoints": [
-      "Kinesis Data Streams menyediakan stream dengan retention dan consumer yang dapat membaca data.",
-      "Amazon Data Firehose mengelola delivery dengan buffering ke destination yang didukung.",
-      "Amazon MSK cocok ketika kompatibilitas Apache Kafka menjadi kebutuhan.",
-      "Ordering, retry, dan throughput harus dinilai per partition/shard atau konfigurasi layanan terkait."
+      "Kinesis Data Streams provides stream with retention and consumer that can read data.",
+      "Amazon Data Firehose manages delivery with buffering to destination that is supported.",
+      "Amazon MSK suitable when compatibility Apache Kafka becomes requirements.",
+      "Ordering, retry, and throughput must assessed per partition/shard or configuration service related."
     ],
     "order": 1
   },
   {
     "concept": "saa-analytics-and-transformation",
     "title": "Design a usable analytics data path",
-    "summary": "Cataloging metadata, mentransformasi data, dan menjalankan analitik adalah pekerjaan yang berbeda dalam pipeline.",
+    "summary": "Cataloging metadata, transforms data, and runs analytics is work that different within pipeline.",
     "keyPoints": [
-      "Glue Data Catalog menyimpan metadata; Glue jobs dapat menjalankan ETL.",
-      "Format columnar dan partition pruning dapat mengurangi data yang dibaca Athena.",
-      "Crawler tidak otomatis membersihkan atau mentransformasi semua isi dataset.",
-      "Redshift dirancang untuk analitik warehouse; database OLTP melayani pola transaksi berbeda."
+      "Glue Data Catalog stores metadata; Glue jobs can run ETL.",
+      "Format columnar and partition pruning can reduce data that read Athena.",
+      "Crawler does not automatically cleans or transforms all contents dataset.",
+      "Redshift designed for analytics warehouse; database OLTP serves pattern transaction different."
     ],
     "order": 1
   },
   {
     "concept": "saa-s3-access-and-retention-cost",
     "title": "Match S3 cost to access and retention",
-    "summary": "Biaya storage harus dinilai bersama frekuensi akses, waktu retrieval, ukuran objek, dan lama penyimpanan.",
+    "summary": "Cost storage must assessed shared frequency access, time retrieval, size object, and long storage.",
     "keyPoints": [
-      "Intelligent-Tiering membantu akses yang berubah tanpa perlu menebak setiap objek, tetapi monitoring dan ukuran objek perlu diperhitungkan.",
-      "Optional archive tiers berbeda dari access tiers yang tetap menyediakan akses milidetik.",
-      "Deep Archive sesuai untuk retensi panjang dengan retrieval jarang dan delay yang diperbolehkan.",
-      "Lifecycle yang terlalu agresif dapat menambah retrieval, transition, dan early-deletion charges."
+      "Intelligent-Tiering helps access that changes without needs to guesses each object, but monitoring and size object needs to accounted for.",
+      "Optional archive tiers different from access tiers that remains provides access milliseconds.",
+      "Deep Archive appropriate for retention long with retrieval rarely and delay that diperbolehkan.",
+      "Lifecycle that too aggressive can add retrieval, transition, and early-deletion charges."
     ],
     "order": 1
   },
   {
     "concept": "saa-storage-utilization-efficiency",
     "title": "Avoid paying for unused storage characteristics",
-    "summary": "Optimasi storage dapat berasal dari konfigurasi yang tepat dan cleanup, bukan hanya mengganti kelas penyimpanan.",
+    "summary": "Optimization storage can originates from configuration that appropriate and cleanup, is not just replaces class storage.",
     "keyPoints": [
-      "gp3 memisahkan provisioning performa tertentu dari kapasitas sehingga tidak harus selalu menambah GiB demi IOPS.",
-      "EFS Lifecycle dapat menempatkan file eligible yang dingin pada kelas yang lebih ekonomis sambil mempertahankan namespace.",
-      "Multipart uploads yang tidak diselesaikan dapat meninggalkan bagian yang tetap memakan biaya.",
-      "Penghematan harus tetap mempertahankan kebutuhan durability dan latency aplikasi."
+      "gp3 separates provisioning performance specific from capacity so that not must always adds GiB for IOPS.",
+      "EFS Lifecycle can places file eligible that cold on class that more ekonomis while maintains namespace.",
+      "Multipart uploads that not resolved can leaves part that remains memakan cost.",
+      "Savings must remains maintains requirements durability and latency application."
     ],
     "order": 1
   },
   {
     "concept": "saa-compute-pricing-and-capacity",
     "title": "Separate discounts from capacity and interruption",
-    "summary": "Pilihan pembelian compute memiliki dimensi berbeda: komitmen biaya, fleksibilitas, kapasitas, dan risiko interupsi.",
+    "summary": "Choice purchase compute has dimension different: commitment cost, flexibility, capacity, and risk interruption.",
     "keyPoints": [
-      "Compute Savings Plans memberi diskon penggunaan eligible dengan komitmen pengeluaran per jam, termasuk layanan compute yang didukung.",
-      "Spot sesuai untuk pekerjaan yang dapat menghadapi interupsi dan variasi kapasitas.",
-      "Diskon Savings Plans sendiri bukan reservasi kapasitas pada AZ tertentu.",
-      "Capacity Reservation dan rencana diskon dapat dipertimbangkan bersama jika persyaratan cocok."
+      "Compute Savings Plans gives discount usage eligible with commitment expenditure per hour, including service compute that is supported.",
+      "Spot appropriate for work that can faces interruption and variation capacity.",
+      "Discount Savings Plans itself is not reservation capacity on AZ specific.",
+      "Capacity Reservation and plan discount can dipertimbangkan shared if requirements suitable."
     ],
     "order": 1
   },
   {
     "concept": "saa-compute-utilization-and-rightsizing",
     "title": "Reduce idle compute without losing required capacity",
-    "summary": "Penghematan compute paling sederhana sering berasal dari jadwal pemakaian, model eksekusi, dan sizing yang terukur.",
+    "summary": "Savings compute simplest often originates from schedule usage, model execution, and sizing that measurable.",
     "keyPoints": [
-      "Instance EC2 yang dihentikan tidak memakai running compute, tetapi storage dan resource lain masih dapat berbiaya.",
-      "Serverless sesuai untuk sebagian workload bursty, bukan otomatis termurah pada semua pola.",
-      "Rightsizing harus melihat peak, memory, dan kebutuhan latency selain CPU rata-rata.",
-      "Perubahan perlu diuji dan dipantau sebelum diberi komitmen jangka panjang."
+      "Instance EC2 that stopped not uses running compute, but storage and other resource still can costing.",
+      "Serverless appropriate for some workload bursty, does not automatically cheapest on all pattern.",
+      "Rightsizing must sees peak, memory, and requirements latency besides CPU average.",
+      "Changes needs to tested and monitored before given commitment long-term."
     ],
     "order": 1
   },
   {
     "concept": "saa-database-capacity-cost",
     "title": "Match database capacity to demand",
-    "summary": "Pilih model kapasitas database dari karakter beban dan hasil perhitungan, bukan slogan provisioned atau serverless.",
+    "summary": "Choose model capacity database from character load and result calculation, is not slogan provisioned or serverless.",
     "keyPoints": [
-      "DynamoDB on-demand mengurangi capacity planning untuk permintaan yang berubah.",
-      "Provisioned capacity dapat layak untuk beban yang stabil dan dapat diprediksi; bandingkan biaya aktual.",
-      "Aurora Serverless menyesuaikan compute capacity dalam rentang yang dikonfigurasi untuk engine/version yang didukung.",
-      "Autoscaling bukan kapasitas tanpa batas atau jaminan biaya nol saat idle."
+      "DynamoDB on-demand reduces capacity planning for request that changes.",
+      "Provisioned capacity can eligible for load that stable and can predicted; compare cost actual.",
+      "Aurora Serverless adjusts compute capacity within range that configured for engine/version that is supported.",
+      "Autoscaling is not capacity without limit or guarantee cost zero when idle."
     ],
     "order": 1
   },
   {
     "concept": "saa-database-retention-and-commitment",
     "title": "Optimize database commitments and retained data",
-    "summary": "Biaya database dipengaruhi compute yang selalu aktif, data yang tidak lagi dibutuhkan, dan recovery policy.",
+    "summary": "Cost database dipengaruhi compute that always active, data that not again required, and recovery policy.",
     "keyPoints": [
-      "Reserved DB pricing memberi diskon penggunaan yang cocok tanpa memindahkan data ke instance baru.",
-      "DynamoDB TTL membersihkan expired items secara asinkron; bukan batas waktu otorisasi yang presisi.",
-      "Retensi backup harus mengikuti recovery requirement, bukan dihapus seluruhnya demi tagihan kecil.",
-      "Perubahan biaya perlu mempertahankan batas konsistensi, recovery, dan keamanan."
+      "Reserved DB pricing gives discount usage that suitable without moves data to instance new.",
+      "DynamoDB TTL cleans expired items asynchronously; is not limit time authorization that presisi.",
+      "Retention backup must follow recovery requirement, is not deleted entirely for bill small.",
+      "Changes cost needs to maintains limit consistency, recovery, and security."
     ],
     "order": 1
   },
   {
     "concept": "saa-private-network-transfer-cost",
     "title": "Reduce unnecessary network processing paths",
-    "summary": "Jalur yang dilalui byte dapat menambah biaya meskipun aplikasi dan datanya tidak berubah.",
+    "summary": "Path that dilalui byte can increases costs although application and the data not changes.",
     "keyPoints": [
-      "Gateway endpoint untuk akses S3 yang sesuai dapat menghindari NAT processing pada traffic tersebut.",
-      "Pada desain zonal NAT, jalur lintas AZ dapat menambah transfer charges.",
-      "Peering langsung dapat sederhana untuk dua VPC tanpa kebutuhan transit.",
-      "Pengurangan biaya jaringan harus tetap mempertimbangkan availability dan akses yang dibutuhkan."
+      "Gateway endpoint for access S3 that appropriate can avoids NAT processing on traffic that.",
+      "On design zonal NAT, path cross-AZ can add transfer charges.",
+      "Peering directly can simple for two VPC without requirements transit.",
+      "Reduction cost network must remains considers availability and access that is required."
     ],
     "order": 1
   },
   {
     "concept": "saa-delivery-and-shared-front-door-cost",
     "title": "Reuse delivery infrastructure safely",
-    "summary": "Mengurangi origin work dan berbagi komponen frontend dapat menghemat biaya bila batas isolasi dan workload mengizinkan.",
+    "summary": "Reduces origin work and shares component frontend can saves cost if limit isolation and workload allows.",
     "keyPoints": [
-      "Cache hit mengurangi fetch ke origin, tetapi biaya CDN harus tetap masuk model.",
-      "ALB dapat merutekan beberapa host/path ke target group berbeda.",
-      "Cache key yang memasukkan dimensi tidak relevan dapat memecah cache dan menurunkan hit ratio.",
-      "Jangan menghapus dimensi autentikasi atau personalisasi yang diperlukan demi cache hit."
+      "Cache hit reduces fetch to origin, but cost CDN must remains incoming model.",
+      "ALB can route several host/path to target group different.",
+      "Cache key that inserts dimension is not relevant can splits cache and reduces hit ratio.",
+      "Do not remove dimension authentication or personalisasi that is required for cache hit."
     ],
     "order": 1
   },
   {
     "concept": "saa-archive-query-and-snapshot-economics",
     "title": "Reduce retained bytes and unnecessary scanning",
-    "summary": "Cost optimization storage mencakup query layout, salinan yang bisa dibuat ulang, dan hubungan antar snapshot.",
+    "summary": "Cost optimization storage includes query layout, copy that can be created again, and relationship across snapshot.",
     "keyPoints": [
-      "Athena dapat mengurangi scan bila query dan layout memungkinkan partition/column pruning.",
-      "One Zone-IA mengurangi redundansi lokasi sehingga sesuai hanya jika kehilangan satu AZ dapat diterima atau data dapat dibuat ulang.",
-      "EBS snapshots incremental tetap dapat direstore tanpa pengguna mempertahankan setiap snapshot terdahulu secara manual.",
-      "Menghapus snapshot hanya membebaskan data yang tidak lagi dibutuhkan snapshot lain."
+      "Athena can reduce scan if query and layout enables partition/column pruning.",
+      "One Zone-IA reduces redundancy location so that appropriate only if loss one AZ can be received or data can be created again.",
+      "EBS snapshots incremental remains can be restored without user maintains each snapshot previous manually.",
+      "Deletes snapshot only frees data that not again required other snapshot."
     ],
     "order": 1
   },
   {
     "concept": "saa-hybrid-and-regional-cost-tradeoffs",
     "title": "Meet network requirements without unnecessary infrastructure",
-    "summary": "Pilihan koneksi dan lokasi pemrosesan memengaruhi biaya tetap, transfer, dan karakteristik performa.",
+    "summary": "Choice connection and location processing affects cost remains, transfer, and characteristics performance.",
     "keyPoints": [
-      "VPN dapat cocok untuk hybrid traffic kecil ketika koneksi internet dan karakteristiknya dapat diterima.",
-      "Direct Connect memberi koneksi dedicated yang manfaat dan biayanya harus cocok dengan kebutuhan.",
-      "Memproses data dekat sumber dapat mengurangi transfer data mentah lintas Region.",
-      "Asumsi harga dalam latihan arsitektur harus dipisahkan dari daftar harga AWS aktual."
+      "VPN can suitable for hybrid traffic small when connection internet and its characteristics can be received.",
+      "Direct Connect gives connection dedicated that benefit and its cost must suitable with requirements.",
+      "Processes data near source can reduce transfer data raw across Regions.",
+      "Assumption price within practice architecture must separated from list price AWS actual."
     ],
     "order": 1
   },
   {
     "concept": "saa-policy-evaluation-abac",
     "title": "Policy evaluation, boundaries, and ABAC",
-    "summary": "Izin efektif tidak ditentukan oleh satu policy yang tampak paling luas. Mulai dari principal, action, resource, dan kondisi request, lalu evaluasi jenis policy yang berlaku. Explicit deny yang cocok tetap mengalahkan allow. Permissions boundary dan session policy membatasi izin dalam lingkupnya, bukan memberikan izin baru. ABAC mengurangi daftar resource dalam policy dengan membandingkan atribut, tetapi hanya aman bila pengguna tidak dapat mengubah atribut otorisasi untuk memberi dirinya akses tambahan.",
+    "summary": "permissions effective not determined by one policy that appears most broad. Start from principal, action, resource, and condition request, then evaluation type policy that applies. Explicit deny that suitable remains overrides allow. Permissions boundary and session policy restricts permissions within its scope, is not provides new permissions. ABAC reduces list resource within policy with compares attribute, but only secure if user cannot change attribute authorization to grant dirinya access additional.",
     "keyPoints": [
-      "Pisahkan identity policy, resource policy, session policy, dan guardrail; jangan menganggap semuanya selalu dievaluasi dengan rumus irisan yang sama.",
-      "Untuk soal yang menyatakan tidak ada resource-policy grant tambahan, boundary atau session policy tidak dapat memperluas izin identity policy.",
-      "Batasi izin membuat, melepas, dan mengganti permissions boundary ketika mendelegasikan pembuatan role.",
-      "Tag yang dipakai untuk otorisasi harus dikelola; tag untuk laporan biaya saja tidak membatasi akses.",
-      "Tinjau explicit deny sebelum menambahkan AdministratorAccess atau allow baru."
+      "Separate identity policy, resource policy, session policy, and guardrail; do not assume everything always evaluated with formula intersection that same.",
+      "For question that states not exists resource-policy grant additional, boundary or session policy cannot expands permissions identity policy.",
+      "Limit permissions creates, melepas, and replaces permissions boundary when mendelegasikan creation role.",
+      "Tag that used for authorization must managed; tag for report cost only does not restrict access.",
+      "Review explicit deny before adds AdministratorAccess or allow new."
     ],
     "order": 16
   },
   {
     "concept": "saa-service-to-service-authorization",
     "title": "Federation and service-to-service authorization",
-    "summary": "Bedakan siapa yang memanggil layanan dan siapa yang menjalankan kode setelahnya. Role CI memakai federasi untuk memperoleh kredensial sementara, sedangkan execution role menentukan izin aplikasi saat berjalan. iam:PassRole mengizinkan pemanggil memasangkan role ke layanan; izin ini perlu dibatasi agar tidak menjadi jalur eskalasi. Ketika policy mempercayai service principal, batasi resource dan akun sumber yang boleh membuat layanan itu bertindak atas nama mereka.",
+    "summary": "Distinguish who that calls service and who that runs code afterwards. Role CI uses federation to obtain temporary credentials, whereas execution role determines application permissions when operates. Iam:PassRole allows caller assigns role to service; permissions this needs to restricted so that not becomes path escalation. When policy mempercayai service principal, limit resource and account source that may create service that acts on behalf of they.",
     "keyPoints": [
-      "Untuk OIDC, periksa issuer, audience, dan subject yang mewakili repository atau lingkungan yang disetujui.",
-      "Role trust policy dan izin operasi deployment menyelesaikan masalah yang berbeda.",
-      "Batasi PassRole ke role aplikasi yang disetujui, bukan semua role dalam akun.",
-      "Pada resource policy layanan, gunakan kondisi sumber yang didukung, seperti aws:SourceArn dan aws:SourceAccount.",
-      "Jangan menyamakan izin execution role untuk mengakses S3 dengan izin S3 untuk memanggil Lambda."
+      "For OIDC, check issuer, audience, and subject that represents repository or environment that approved.",
+      "Role trust policy and permissions operation deployment solves problem that different.",
+      "Limit PassRole to application role that approved, is not all role within account.",
+      "On resource service policy, use condition source that is supported, such as aws:SourceArn and aws:SourceAccount.",
+      "Do not equate permissions execution role to access S3 with permissions S3 for calls Lambda."
     ],
     "order": 17
   },
   {
     "concept": "saa-central-account-governance",
     "title": "Governed accounts and shared infrastructure",
-    "summary": "Pemisahan akun memberi batas administrasi dan membantu membatasi dampak kesalahan, tetapi perlu provisioning, logging, dan kontrol yang konsisten. Control Tower mengorkestrasi landing zone berbasis Organizations. RAM membagikan resource yang didukung kepada akun lain; VPC sharing memungkinkan aplikasi peserta menggunakan subnet terpusat sambil mempertahankan kepemilikan resource aplikasi. Konektivitas antar-VPC tidak dengan sendirinya memberikan hak memakai subnet atau mengubah kepemilikan resource.",
+    "summary": "Separation account gives limit administration and helps restricts impact mistake, but requires provisioning, logging, and control that consistent. Control Tower orchestrates landing zone based Organizations. RAM shares resource that is supported to other account; VPC sharing enables application participant uses subnet centralized while maintains ownership resource application. Connectivity between VPCs not with itself provides rights uses subnet or changes ownership resource.",
     "keyPoints": [
-      "Pilih landing zone untuk baseline akun dan kontrol, bukan hanya dashboard tagihan.",
-      "Pada VPC sharing, pemilik jaringan dan pemilik resource aplikasi tetap memiliki tanggung jawab yang berbeda.",
-      "RAM tidak memberikan akses universal ke seluruh resource dalam organisasi.",
-      "SCP adalah guardrail; administrator masih perlu memberikan izin IAM yang sesuai.",
-      "Pisahkan akun audit/log dari akun workload, dengan policy dan perlindungan data yang sesuai."
+      "Choose landing zone for baseline account and control, is not just dashboard bill.",
+      "On VPC sharing, owner network and owner resource application remains has responsibility that different.",
+      "RAM does not grant access universal to all resource within organization.",
+      "SCP is guardrail; administrator still need to provide permissions IAM that appropriate.",
+      "Separate account audit/log from account workload, with policy and protection data that appropriate."
     ],
     "order": 18
   },
   {
     "concept": "saa-directory-integration",
     "title": "Directory gateways and managed Active Directory",
-    "summary": "Kebutuhan direktori ditentukan oleh tempat identitas otoritatif berada dan fungsi direktori yang diperlukan. AD Connector meneruskan autentikasi ke AD yang sudah ada melalui konektivitas yang sesuai; ia bukan domain controller baru. AWS Managed Microsoft AD menyediakan direktori terkelola untuk kebutuhan domain, group policy, dan trust yang didukung. Identity Center menangani akses workforce ke akun dan aplikasi, sedangkan Cognito terutama menangani identitas pengguna aplikasi.",
+    "summary": "Requirements directory determined by place identity authoritative is located and function directory that is required. AD Connector forwards authentication to AD that already exists through connectivity that appropriate; ia is not domain controller new. AWS Managed Microsoft AD provides directory managed for requirements domain, group policy, and trust that is supported. Identity Center handles access workforce to the account and application, whereas Cognito especially handles application-user identities.",
     "keyPoints": [
-      "Pilih connector ketika ingin memakai direktori yang sama tanpa membuat direktori cloud baru.",
-      "Pilih managed AD bila workload membutuhkan domain controller terkelola dan fungsi AD.",
-      "Rancang DNS dan konektivitas dua arah yang diperlukan untuk integrasi direktori.",
-      "Jangan menganggap user pool menyediakan LDAP, domain join, atau group-policy processing.",
-      "Pengguna yang berhasil login masih memerlukan otorisasi yang tepat di resource tujuan."
+      "Choose connector when wants uses directory that same without creates directory cloud new.",
+      "Choose managed AD if workload requires domain controller managed and function AD.",
+      "Design DNS and connectivity two direction that is required for integration directory.",
+      "Do not assume user pool provides LDAP, domain join, or group-policy processing.",
+      "User that succeeds login still requires authorization that appropriate in resource destination."
     ],
     "order": 19
   },
   {
     "concept": "saa-private-api-auth",
     "title": "Private APIs and application authorization",
-    "summary": "Endpoint privat membatasi jalur jaringan, bukan membuktikan bahwa setiap request berhak mengakses semua data. Untuk private REST API, rancang interface endpoint, endpoint policy, dan API resource policy, kemudian tambahkan otorisasi aplikasi yang sesuai. API key dan usage plan berguna untuk identifikasi penggunaan serta pembatasan best effort, tetapi bukan pengganti autentikasi dan otorisasi. Persyaratan kuota bisnis yang ketat membutuhkan kontrol aplikasi tambahan.",
+    "summary": "Endpoint private restricts path network, is does not prove that each request entitled accesses all data. For private REST API, design interface endpoint, endpoint policy, and API resource policy, then tambahkan authorization application that appropriate. API key and usage plan useful for identification usage and restriction best effort, but is not a substitute for authentication and authorization. Requirements quota business that strict requires control application additional.",
     "keyPoints": [
-      "Bedakan pembatasan jaringan, autentikasi pemanggil, dan izin terhadap data bisnis.",
-      "Gunakan kondisi endpoint atau VPC yang didukung sesuai batas jaringan yang diminta.",
-      "Endpoint policy tidak secara otomatis memberikan izin yang tidak dimiliki principal.",
-      "API key bukan secret otorisasi pengguna untuk data sensitif.",
-      "Jangan menjanjikan hard spending cap atau batas transaksi tepat hanya dari usage plan."
+      "Distinguish restriction network, authentication caller, and permissions against data business.",
+      "Use condition endpoint or VPC that is supported within the limits network that is requested.",
+      "Endpoint policy not automatically provides permissions that not owned principal.",
+      "API key is not secret authorization user for data sensitive.",
+      "Do not promises hard spending cap or limit transaction appropriate only from usage plan."
     ],
     "order": 20
   },
   {
     "concept": "saa-network-inspection",
     "title": "Network inspection and organization-wide controls",
-    "summary": "Pilih titik inspeksi sesuai protokol dan jalur trafik. WAF memeriksa request web di integrasi yang didukung, sedangkan Network Firewall menyediakan inspeksi jaringan stateful melalui routing yang dirancang. Firewall Manager membantu mengelola kebijakan perlindungan lintas akun. Pada arsitektur inspeksi terpusat, jalur pergi dan kembali harus tetap konsisten terhadap appliance stateful; keterhubungan saja tidak menjamin simetri aliran.",
+    "summary": "Choose point inspection appropriate protocol and path traffic. WAF checks request web in integration that is supported, whereas Network Firewall provides inspection network stateful through routing that designed. Firewall Manager helps manages policy protection across accounts. On architecture inspection centralized, path goes and back must remains consistent against appliance stateful; keterhubungan only does not guarantee symmetry flow.",
     "keyPoints": [
-      "Routing menentukan apakah trafik benar-benar melewati firewall.",
-      "Pertimbangkan appliance mode pada attachment Transit Gateway yang sesuai untuk menjaga flow affinity.",
-      "Security group, WAF, dan network firewall memiliki lapisan serta lingkup berbeda.",
-      "Firewall Manager mengelola kebijakan pada resource yang didukung, bukan mengganti routing jaringan.",
-      "Uji kegagalan AZ serta jalur kembali sebelum menganggap inspeksi terpusat highly available."
+      "Routing determines whether traffic truly exceeds firewall.",
+      "Consider appliance mode on attachment Transit Gateway that appropriate to maintain flow affinity.",
+      "Security group, WAF, and network firewall has layer and scope different.",
+      "Firewall Manager manages policy on resource that is supported, is not replaces routing network.",
+      "Test failure AZ and path back before assumes inspection centralized highly available."
     ],
     "order": 21
   },
   {
     "concept": "saa-security-posture",
     "title": "Vulnerabilities, posture, and access exposure",
-    "summary": "Tentukan jenis pertanyaan keamanan sebelum memilih layanan. Inspector menilai kerentanan workload yang didukung. GuardDuty mencari indikasi ancaman dari sumber telemetri yang didukung. Security Hub CSPM mengonsolidasikan temuan dan pemeriksaan posture. Config merekam konfigurasi dan mengevaluasi aturan; remediation adalah tindakan terpisah. Access Analyzer membantu menganalisis akses dalam policy. Satu dashboard tidak berarti semua fungsi tersebut saling menggantikan.",
+    "summary": "Determine type question security before choosing service. Inspector assesses vulnerability workload that is supported. GuardDuty searches indikasi threat from source telemetri that is supported. Security Hub CSPM consolidates findings and inspection posture. Config records configuration and evaluates rules; remediation is action separate. Access Analyzer helps analyzes access within policy. One dashboard does not mean all function that mutually replaces.",
     "keyPoints": [
-      "Kerentanan software berbeda dari bukti aktivitas berbahaya.",
-      "Konfigurasi noncompliant tidak otomatis diperbaiki hanya karena ditemukan.",
-      "External-access analysis menilai izin yang mungkin tersedia, bukan hanya akses yang pernah digunakan.",
-      "Riwayat API dari CloudTrail membantu investigasi tetapi bukan vulnerability scanner.",
-      "Gunakan tujuan kontrol untuk membedakan layanan yang tampak sama-sama menyediakan findings."
+      "Vulnerability software different from evidence activity dangerous.",
+      "Configuration noncompliant does not automatically improved only because ditemukan.",
+      "External-access analysis assesses permissions that may available, is not just access that ever used.",
+      "History API from CloudTrail helps investigation but is not vulnerability scanner.",
+      "Use destination control for distinguishes service that appears both provides findings."
     ],
     "order": 22
   },
   {
     "concept": "saa-data-lake-governance",
     "title": "Fine-grained data-lake governance",
-    "summary": "Analitik sering membutuhkan pembatasan tabel, kolom, atau baris tanpa menggandakan seluruh dataset. Lake Formation menyediakan kontrol terperinci untuk integrasi yang didukung. Desain harus mencakup identitas, metadata katalog, izin query, dan akses storage. Bila pengguna masih dapat membaca object mentah langsung dengan izin S3 yang terlalu luas, pembatasan pada jalur query tidak menjadi batas keamanan menyeluruh.",
+    "summary": "Analytics often requires restriction table, column, or baris without duplicates all dataset. Lake Formation provides control detailed for integration that is supported. Design must include identity, metadata catalog, permissions query, and access storage. If user still can read object raw directly with permissions S3 that too broad, restriction on path query not becomes limit security menyeluruh.",
     "keyPoints": [
-      "Pilih column atau row filter berdasarkan data yang benar-benar boleh dilihat pengguna.",
-      "Pastikan engine dan mode akses mendukung kontrol yang dipilih.",
-      "Periksa jalur bypass ke object S3 dan salinan hasil query.",
-      "Izin KMS dan S3 tetap relevan meskipun katalog menggunakan Lake Formation.",
-      "Gunakan least privilege pada data sumber dan lokasi hasil, bukan hanya tampilan dashboard."
+      "Choose column or row filter based on data that truly may seen user.",
+      "Ensure engine and mode access supports control that chosen.",
+      "Check path bypass to object S3 and copy result query.",
+      "permissions KMS and S3 remains relevant although catalog uses Lake Formation.",
+      "Use least privilege on data source and location result, is not just tampilan dashboard."
     ],
     "order": 23
   },
   {
     "concept": "saa-encryption-lifecycle",
     "title": "Encryption migration and key lifecycle",
-    "summary": "Pengaturan enkripsi baru tidak selalu mengubah data lama. Rotasi material kunci KMS berbeda dari mengenkripsi ulang ciphertext. Migrasi EBS, EFS, dan RDS memiliki mekanisme masing-masing; jangan menganggap setiap resource memiliki tombol untuk mengubah enkripsi secara langsung. Rencanakan salinan atau restore ke resource terenkripsi, validasi data, izin kunci, dan cutover aplikasi. Penghapusan kunci juga dapat menghilangkan kemampuan membaca backup yang masih dibutuhkan.",
+    "summary": "Configuration encryption new does not always changes data long. Rotation material key KMS different from encrypts again ciphertext. Migration EBS, EFS, and RDS has mechanism each; do not assume each resource has tombol to change encryption directly. Plan copy or restore to resource encrypted, validation data, permissions key, and cutover application. Removal key also can eliminate capability reads backup that still required.",
     "keyPoints": [
-      "Default encryption S3 mengatur penulisan baru; object lama memerlukan proses penulisan ulang yang sesuai bila standarnya berubah.",
-      "Rotasi KMS mempertahankan kemampuan decrypt ciphertext lama tanpa otomatis menulis ulang semua object.",
-      "Untuk EFS yang belum terenkripsi, migrasikan ke file system baru yang terenkripsi.",
-      "Untuk database RDS yang belum terenkripsi, periksa alur snapshot terenkripsi dan restore yang didukung.",
-      "Uji kebutuhan decrypt pada backup sebelum menjadwalkan penghapusan key."
+      "Default encryption S3 manages writing new; object long requires process writing again that appropriate if standarnya changes.",
+      "Rotation KMS maintains capability decrypt ciphertext long without automatically writes again all object.",
+      "For EFS that not yet encrypted, migrasikan to file system new that encrypted.",
+      "For database RDS that not yet encrypted, check flow snapshot encrypted and restore that is supported.",
+      "Test requirements decrypt on backup before menjadwalkan removal key."
     ],
     "order": 24
   },
   {
     "concept": "saa-container-orchestration",
     "title": "Container orchestration and safe releases",
-    "summary": "Container adalah format workload, bukan keputusan orchestration. EKS cocok ketika Kubernetes API, operator, atau scheduler menjadi kebutuhan; ECS sering mengurangi kompleksitas ketika ketergantungan itu tidak ada. Rancang health checks, kapasitas deployment, dan rollback. Rollback trafik tidak membalikkan schema database secara otomatis. Pisahkan task execution role yang dipakai platform untuk startup dari task role yang dipakai kode aplikasi.",
+    "summary": "Container is format workload, is not decision orchestration. FORMER suitable when Kubernetes API, operator, or scheduler becomes requirements; ECS often reduces complexity when dependency that not exists. Design health checks, capacity deployment, and rollback. Rollback traffic not membalikkan schema database automatically. Separate task execution role that used platform for startup from task role that used code application.",
     "keyPoints": [
-      "Identifikasi ketergantungan Kubernetes sebelum memilih orchestration.",
-      "Health check harus mendeteksi readiness yang relevan, bukan hanya process hidup.",
-      "ECS deployment circuit breaker dapat membantu mendeteksi deployment gagal dan melakukan rollback dalam konfigurasi yang didukung.",
-      "Gunakan perubahan schema yang kompatibel ketika versi lama dan baru dapat berjalan bersamaan.",
-      "Least privilege berlaku terpisah pada izin startup platform dan izin runtime aplikasi."
+      "identification dependency Kubernetes before choosing orchestration.",
+      "Health check must detects readiness that relevant, is not just process life.",
+      "ECS deployment circuit breaker can help detects deployment fails and performs rollback within configuration that is supported.",
+      "Use changes schema that compatible when version long and new can operates simultaneous.",
+      "Least privilege applies separate on permissions startup platform and permissions runtime application."
     ],
     "order": 14
   },
   {
     "concept": "saa-backpressure-and-stream-recovery",
     "title": "Backpressure, retries, and poison records",
-    "summary": "Sistem asynchronous tetap membutuhkan batas beban dan strategi kegagalan. Penambahan consumer dapat mempercepat queue tetapi juga membebani database. Gunakan ukuran backlog yang mempertimbangkan kapasitas worker, batas concurrency, dan retry dengan backoff. Partial batch response mengurangi pengulangan record yang sudah berhasil, tetapi tidak menghapus kebutuhan idempotensi. Poison record perlu retry yang dibatasi dan jalur investigasi atau pemulihan agar kemajuan tidak berhenti selamanya.",
+    "summary": "System asynchronous remains requires limit load and strategy failure. Addition consumer can accelerates queue but also burdens database. Use size backlog that considers capacity worker, limit concurrency, and retry with backoff. Partial batch response reduces repetition record that already succeeds, but not deletes requirements idempotency. Poison record needs to retry that restricted and path investigation or recovery so that progress not stops forever.",
     "keyPoints": [
-      "Visibility timeout harus sesuai durasi kerja; heartbeat membantu pekerjaan yang durasinya berubah.",
-      "Kegagalan batch tidak selalu berarti semua record perlu diulang.",
-      "Gunakan DLQ atau destination yang sesuai, serta proses redrive setelah akar masalah diperbaiki.",
-      "Backoff dengan jitter menghindari banyak client mengulang request pada waktu yang sama.",
-      "Jangan menyamakan concurrency tertinggi dengan throughput bisnis terbaik.",
-      "Transactional outbox menyimpan perubahan bisnis dan niat publikasi dalam transaksi database yang sama; publisher serta consumer masih harus menangani delivery berulang.",
-      "Notifikasi S3 dapat tiba di luar urutan. Simpan sequencer per object key dengan update atomik; jangan membandingkan sequencer lintas key."
+      "Visibility timeout must appropriate duration work; heartbeat helps work that durasinya changes.",
+      "Failure batch does not always means all record needs to repeated.",
+      "Use DLQ or destination that appropriate, and process redrive after root problem improved.",
+      "Backoff with jitter avoids many client repeats request on the same time.",
+      "Do not equate concurrency tertinggi with throughput business best.",
+      "Transactional outbox stores changes business and niat publication within transaction database that same; publisher and consumer still must handle delivery repeated.",
+      "Notification S3 can tiba in outside order. Store sequencer per object key with update atomic; do not compares sequencer across key."
     ],
     "order": 15
   },
   {
     "concept": "saa-managed-data-integration",
     "title": "Managed SaaS and partner file integration",
-    "summary": "Memindahkan data, mempertahankan interface file, dan menerima file dari partner adalah keputusan berbeda. AppFlow menyediakan integrasi dengan aplikasi SaaS yang didukung. Transfer Family memungkinkan protokol transfer seperti SFTP menuju storage AWS tanpa mengoperasikan server SFTP sendiri. Setelah file diterima secara durabel, pemrosesan downstream dapat dipisahkan dengan event dan queue agar gangguan consumer tidak menggagalkan seluruh jalur ingest.",
+    "summary": "Moves data, maintains interface file, and receives file from partner is decision different. AppFlow provides integration with application SaaS that is supported. Transfer Family enables protocol transfer such as SFTP toward storage AWS without operates server SFTP itself. After file received in a manner durable, processing downstream can separated with event and queue so that disruption consumer not undermines all path ingest.",
     "keyPoints": [
-      "Periksa connector dan arah transfer AppFlow yang benar-benar didukung.",
-      "Gunakan Transfer Family bila partner harus mempertahankan client/protokol transfer yang kompatibel.",
-      "DataSync memindahkan dataset; File Gateway menyediakan akses file berkelanjutan.",
-      "Pisahkan keberhasilan menerima object dari keberhasilan memproses isi object.",
-      "Rancang idempotensi, retry, izin storage, dan autentikasi partner."
+      "Check connector and direction transfer AppFlow that truly supported.",
+      "Use Transfer Family if partner must maintains client/protocol transfer that compatible.",
+      "DataSync moves dataset; File Gateway provides access file continuous.",
+      "Separate success receives object from success processes contents object.",
+      "Design idempotency, retry, permissions storage, and authentication partner."
     ],
     "order": 16
   },
   {
     "concept": "saa-managed-ai-integration",
     "title": "Managed document and text analysis",
-    "summary": "Pilih layanan berdasarkan bentuk input dan hasil yang diperlukan. Textract menganalisis dokumen, termasuk struktur seperti tabel dan form pada kemampuan yang didukung. Comprehend menganalisis teks yang sudah tersedia untuk menghasilkan insight bahasa. Menggunakan API terkelola mengurangi operasi model dan server, tetapi workflow tetap membutuhkan izin, penyimpanan hasil, penanganan kegagalan, serta pilihan synchronous atau asynchronous yang sesuai.",
+    "summary": "Choose service based on bentuk input and result that is required. Textract analyzes document, including structure such as table and form on capability that is supported. Comprehend analyzes text that already available for produces insight language. Uses API managed reduces operation model and server, but workflow remains requires permissions, storage result, handling failure, and choice synchronous or asynchronous that appropriate.",
     "keyPoints": [
-      "Jangan memakai text analytics sebagai pengganti ekstraksi teks dari gambar dokumen.",
-      "Periksa bahasa, format, ukuran, dan fitur yang didukung sebelum menetapkan layanan.",
-      "Pisahkan penyimpanan dokumen sensitif dari izin pemanggilan API.",
-      "Pekerjaan panjang sebaiknya tidak bergantung pada satu koneksi frontend yang terus terbuka.",
-      "Validasi hasil analisis terhadap kebutuhan bisnis; layanan terkelola tidak berarti hasil selalu sempurna."
+      "Do not uses text analytics as a substitute for extraction text from image document.",
+      "Check language, format, size, and feature that is supported before sets service.",
+      "Separate storage document sensitive from permissions pemanggilan API.",
+      "Work long should not depends on one connection frontend that continually open.",
+      "Validation result analysis against business needs; managed service does not mean result always sempurna."
     ],
     "order": 17
   },
   {
     "concept": "saa-server-migration",
     "title": "Server replication and controlled cutover",
-    "summary": "Rehosting server mempertahankan sebagian besar sistem operasi dan aplikasi, berbeda dari konversi engine database atau refactoring aplikasi. AWS Transform MGN, sebelumnya Application Migration Service, membantu replikasi dan peluncuran server yang didukung di AWS. Perencanaan tetap mencakup prasyarat, dependensi, uji peluncuran, networking, dan cutover. Keberadaan replika tidak membuktikan aplikasi akan berfungsi bila DNS, secrets, lisensi, atau kapasitas target belum siap.",
+    "summary": "Rehosting server maintains most operating system and application, different from conversion engine database or refactoring application. AWS Transform MGN, previously Application Migration Service, helps replication and launch server that is supported in AWS. Planning remains includes prerequisite, dependencies, test launch, networking, and cutover. Existence replica does not prove application will functions if DNS, secrets, license, or capacity target not yet ready.",
     "keyPoints": [
-      "Gunakan tujuan migrasi untuk membedakan rehost server dari migrasi schema/data database.",
-      "Test launch memungkinkan validasi sebelum perpindahan trafik produksi.",
-      "Rencanakan penghentian penulisan dan sinkronisasi akhir sesuai kebutuhan konsistensi.",
-      "Verifikasi dependency eksternal dan rollback, bukan hanya status replikasi.",
-      "Dukungan platform dan Region perlu dikonfirmasi saat implementasi."
+      "Use destination migration for distinguishes rehost server from migration schema/data database.",
+      "Test launch enables validation before movement traffic production.",
+      "Plan penghentian writing and synchronization end as needed consistency.",
+      "Verification dependency external and rollback, is not just status replication.",
+      "Support platform and Region needs to dikonfirmasi when implementation."
     ],
     "order": 18
   },
   {
     "concept": "saa-operational-recovery",
     "title": "Recovery validation and operational dependencies",
-    "summary": "Infrastructure as code dapat membuat ulang resource, tetapi tidak otomatis memulihkan data, kapasitas, atau akses aplikasi. Uji recovery sebagai transaksi bisnis end to end: jaringan, identitas, DNS, database, worker, dan layanan eksternal. Kuota, kapasitas instance, serta izin key dapat menjadi penghambat walaupun template berhasil divalidasi. Lifecycle hook membantu koordinasi startup dan shutdown, tetapi bukan jaminan bahwa setiap kegagalan menyediakan waktu cleanup.",
+    "summary": "Infrastructure as code can create again resource, but does not automatically restores data, capacity, or access application. Test recovery as transaction business end to end: network, identity, DNS, database, worker, and service external. Quota, capacity instance, and permissions key can becomes penghambat although template succeeds divalidasi. Lifecycle hook helps coordination startup and shutdown, but does not guarantee that each failure provides time cleanup.",
     "keyPoints": [
-      "Pisahkan provisioning resource dari restore state dan cutover trafik.",
-      "RTO dihitung sampai layanan bisnis kembali, bukan sampai instance berstatus running.",
-      "Uji kuota dan kapasitas target sebelum insiden, terutama untuk recovery lintas Region.",
-      "Pantau request terdistribusi untuk menemukan dependency yang menentukan latency atau kegagalan.",
-      "Pastikan instance siap sebelum menerima trafik; rancang recovery untuk penghentian mendadak juga.",
-      "Untuk target pemulihan langsung, sediakan kapasitas siap pakai yang cukup setelah satu AZ hilang; maximum Auto Scaling bukan kapasitas yang sudah berjalan."
+      "Separate resource provisioning from restore state and cutover traffic.",
+      "RTO calculated until service business back, is not until instance berstatus running.",
+      "Test quota and capacity target before incident, especially for recovery across Regions.",
+      "Pantau request terdistribusi for finds dependency that determines latency or failure.",
+      "Ensure instance ready before receives traffic; design recovery for penghentian mendadak also.",
+      "For target recovery directly, sediakan capacity ready use that enough after one AZ lost; maximum Auto Scaling is not capacity that already operates."
     ],
     "order": 19
   },
   {
     "concept": "saa-multiregion-data",
     "title": "Multi-Region replication and write ownership",
-    "summary": "Replikasi memperbaiki kedekatan data dan kemampuan recovery, tetapi bukan pengganti backup historis. Aurora Global Database menggunakan replikasi lintas Region dengan sifat yang perlu diperhitungkan ketika merencanakan failover. Untuk DynamoDB global tables, sebutkan mode konsistensi yang digunakan; aturan multi-Region eventual consistency tidak boleh digeneralisasi ke mode strong consistency. Operasi bisnis seperti reservasi unik memerlukan strategi ownership atau koordinasi yang sesuai.",
+    "summary": "Replication improves proximity data and capability recovery, but is not a substitute for backup historical. Aurora Global Database uses replication across Regions with nature that needs to accounted for when plans failover. For DynamoDB global tables, sebutkan mode consistency that used; rules multi-Region eventual consistency not may digeneralisasi to mode strong consistency. Operation business such as reservation unique requires strategy ownership or coordination that appropriate.",
     "keyPoints": [
-      "RPO dan RTO adalah batas berbeda; replikasi cepat tidak membuktikan keduanya nol.",
-      "Replikasi dapat meneruskan perubahan yang salah atau penghapusan yang sah menurut sistem.",
-      "Pada MREC, conditional write lokal bukan jaminan keunikan global terhadap write bersamaan di Region lain.",
-      "Tentukan lokasi writer otoritatif atau mekanisme koordinasi untuk invariant bisnis penting.",
-      "Uji failover dan failback, bukan hanya pembuatan replika."
+      "RPO and RTO is limit different; replication fast does not prove both zero.",
+      "Replication can forwards changes that wrong or removal that valid according to system.",
+      "On MREC, conditional write local does not guarantee uniqueness global against write simultaneous in other Region.",
+      "Determine location writer authoritative or mechanism coordination for invariant business important.",
+      "Test failover and failback, is not just creation replica."
     ],
     "order": 20
   },
   {
     "concept": "saa-stateful-service-failover",
     "title": "Cache failover and graceful degradation",
-    "summary": "Cache membantu performa tetapi dapat menjadi sumber kegagalan bila aplikasi bergantung padanya tanpa batas. Replika lintas AZ dan automatic failover meningkatkan ketersediaan pada konfigurasi ElastiCache yang didukung. Aplikasi tetap perlu reconnect, timeout, serta strategi ketika cache kosong atau tidak tersedia. Mengalihkan semua traffic sekaligus ke database saat cache gagal dapat membuat database ikut jatuh, sehingga fallback perlu dibatasi dan diprioritaskan.",
+    "summary": "Cache helps performance but can becomes source failure if application depends padanya without limit. Replica cross-AZ and automatic failover increases availability on configuration ElastiCache that is supported. Application remains needs to reconnect, timeout, and strategy when cache empty or not available. Redirects all traffic simultaneously to database when cache fails can create database also jatuh, so that fallback needs to restricted and prioritized.",
     "keyPoints": [
-      "Tentukan apakah cache boleh dibangun ulang dari sumber data otoritatif.",
-      "High availability cache tidak sama dengan durability semua data bisnis.",
-      "Gunakan timeout dan pembatasan concurrency pada jalur fallback.",
-      "Hindari synchronized cache misses dengan request coalescing atau strategi refresh yang tepat.",
-      "Client harus mengikuti endpoint dan menangani reconnect setelah failover."
+      "Determine whether cache may built again from source data authoritative.",
+      "High availability cache not the same as durability all data business.",
+      "Use timeout and restriction concurrency on path fallback.",
+      "Avoid synchronized cache misses with request coalescing or strategy refresh that appropriate.",
+      "Client must follow endpoint and handles reconnect after failover."
     ],
     "order": 21
   },
   {
     "concept": "saa-advanced-file-storage",
     "title": "Managed file-system compatibility",
-    "summary": "Jangan memilih storage hanya karena semuanya menyimpan file. Workload dapat mensyaratkan SMB dan integrasi AD, fitur NetApp ONTAP, snapshot atau clone ZFS, atau throughput paralel untuk HPC. Pahami protokol, operasi metadata, durabilitas, throughput, dan cara dataset masuk atau keluar. FSx menawarkan beberapa keluarga file system dengan perilaku berbeda; sebuah nama layanan tidak membuat semua fitur tersedia di setiap engine.",
+    "summary": "Do not choose storage only because everything stores file. Workload can require SMB and integration AD, feature NetApp ONTAP, snapshot or clone ZFS, or throughput parallel for HPC. Understand protocol, operation metadata, durability, throughput, and way dataset incoming or out. FSx offers several keluarga file system with behavior different; a name service not creates all feature available in each engine.",
     "keyPoints": [
-      "FSx for Windows File Server melayani kebutuhan SMB dan integrasi Windows yang didukung.",
-      "FSx for NetApp ONTAP mempertahankan fitur pengelolaan data dan protokol ONTAP yang relevan.",
-      "FSx for OpenZFS menyediakan storage NFS dengan kemampuan ZFS yang didukung.",
-      "FSx for Lustre cocok untuk workload paralel; rancang hubungan dataset dengan S3 secara eksplisit.",
-      "Periksa mode deployment, kapasitas, dan kebutuhan akses lintas AZ."
+      "FSx for Windows File Server serves requirements SMB and integration Windows that is supported.",
+      "FSx for NetApp ONTAP maintains feature data management and protocol ONTAP that relevant.",
+      "FSx for OpenZFS provides storage NFS with capability ZFS that is supported.",
+      "FSx for Lustre suitable for workloads parallel; design relationship dataset with S3 explicitly.",
+      "Check mode deployment, capacity, and requirements access cross-AZ."
     ],
     "order": 13
   },
   {
     "concept": "saa-storage-throughput-diagnostics",
     "title": "Storage bottlenecks and throughput modes",
-    "summary": "Bottleneck dapat berada di volume, instance, network, atau pola request. Menambah IOPS volume tidak membantu jika batas throughput EBS instance sudah tercapai. Untuk EFS, mode throughput menentukan bagaimana kapasitas throughput diperoleh; jumlah byte tersimpan bukan satu-satunya pertimbangan. Gunakan metrik dan ukuran I/O untuk memisahkan IOPS, bandwidth, dan latency sebelum menaikkan kapasitas atau mengganti kelas storage.",
+    "summary": "Bottleneck can be located in volume, instance, network, or pattern request. Adds IOPS volume not helps if limit throughput EBS instance already achieved. For EFS, mode throughput determines how capacity throughput diperoleh; number byte stored rather than a single-satunya consideration. Use metrics and size I/O to separate IOPS, bandwidth, and latency before raises capacity or replaces class storage.",
     "keyPoints": [
-      "Hitung kebutuhan operasi per detik dan byte per detik secara terpisah.",
-      "Periksa batas agregat instance terhadap semua volume EBS yang terpasang.",
-      "Pertimbangkan gp3 ketika IOPS/throughput perlu diatur tanpa menambah kapasitas semata.",
-      "Elastic throughput EFS dapat sesuai untuk beban yang berubah; validasi biaya dan dukungannya.",
-      "Kapasitas lebih besar tidak otomatis menyelesaikan setiap masalah latency."
+      "Calculate requirements operation per second and byte per second separately.",
+      "Check limit aggregate instance against all volume EBS that terpasang.",
+      "Consider gp3 when IOPS/throughput needs to be configured without adds capacity semata.",
+      "Elastic throughput EFS can appropriate for load that changes; validation cost and dukungannya.",
+      "Capacity larger does not automatically solve each problem latency."
     ],
     "order": 14
   },
   {
     "concept": "saa-hpc-and-compute-initialization",
     "title": "Parallel compute and startup latency",
-    "summary": "Untuk HPC, komunikasi antar-node dapat sama pentingnya dengan CPU. EFA dan placement yang sesuai membantu workload tightly coupled yang mendukungnya. Untuk aplikasi biasa, startup lambat dapat membuat scaling tertinggal meskipun kapasitas akhirnya cukup; warm pool menyiapkan EC2 lebih awal. Pada Lambda, penambahan memory juga memengaruhi CPU yang tersedia sehingga evaluasi harus memakai pengukuran latency dan biaya, bukan asumsi memory terkecil selalu terbaik.",
+    "summary": "For HPC, communication between nodes can same its importance with CPU. EFA and placement that appropriate helps workload tightly coupled that supports it. For applications ordinary, startup slow can create scaling tertinggal although capacity finally enough; warm pool prepares EC2 more initial. On Lambda, addition memory also affects CPU that is available so that evaluation must use measurement latency and cost, is not assumption memory terkecil always best.",
     "keyPoints": [
-      "Bedakan latency antar-node HPC dari latency publik ke aplikasi.",
-      "Warm pool menyiapkan kapasitas, bukan mengganti kebutuhan scaling policy dan readiness.",
-      "Periksa kompatibilitas instance, software, serta Region untuk EFA.",
-      "Bandingkan konfigurasi Lambda berdasarkan duration, error, dan biaya per pekerjaan.",
-      "Checkpoint diperlukan bila pekerjaan panjang menggunakan kapasitas yang dapat terinterupsi."
+      "Distinguish latency between nodes HPC from latency public to application.",
+      "Warm pool prepares capacity, is not replaces requirements scaling policy and readiness.",
+      "Check compatibility instance, software, and Region for EFA.",
+      "Compare configuration Lambda based on duration, error, and cost per work.",
+      "Checkpoint required if work long uses capacity that can terinterupsi."
     ],
     "order": 15
   },
   {
     "concept": "saa-container-compute-fit",
     "title": "Container runtime and batch compute selection",
-    "summary": "Workload menentukan runtime. Container tanpa ketergantungan Kubernetes dapat memakai ECS; kebutuhan Kubernetes API mengarah ke EKS. AWS Batch menyediakan penjadwalan pekerjaan, termasuk array jobs dan resource khusus yang didukung. Batas durasi Lambda dan keterbatasan Fargate berarti tidak setiap container atau job cocok pada semua opsi serverless. Pilih berdasarkan durasi, GPU, kebutuhan OS, concurrency, dan tingkat pengelolaan yang dapat diterima.",
+    "summary": "Workload determines runtime. Container without dependency Kubernetes can use ECS; requirements Kubernetes API points to FORMER. AWS Batch provides scheduling work, including array jobs and resource specific that is supported. Limit duration Lambda and keterbatasan Fargate means not each container or job suitable on all option serverless. Choose based on duration, GPU, requirements OS, concurrency, and level management that can be received.",
     "keyPoints": [
-      "GPU pada EKS memerlukan compute yang mendukungnya; jangan menganggap semua mode Fargate mendukung GPU.",
-      "Batch array jobs membantu banyak pekerjaan independen tanpa membangun scheduler sendiri.",
-      "Job berjam-jam tidak boleh dipaksakan ke satu invocation Lambda yang melampaui batas.",
-      "Pisahkan pilihan orchestration dari pilihan kapasitas EC2 atau Fargate.",
-      "Uji image, arsitektur CPU, izin startup, dan resource limits."
+      "GPU on FORMER requires compute that supports it; do not assume all mode Fargate supports GPU.",
+      "Batch array jobs helps many work independent without builds scheduler itself.",
+      "Job berjam-jam not may dipaksakan to one invocation Lambda that goes beyond limit.",
+      "Separate choice orchestration from choice capacity EC2 or Fargate.",
+      "Test image, architecture CPU, permissions startup, and resource limits."
     ],
     "order": 16
   },
   {
     "concept": "saa-database-migration",
     "title": "Schema conversion, CDC, and database cutover",
-    "summary": "Migrasi database heterogen mencakup dua pekerjaan: menyesuaikan schema serta kode yang bergantung pada engine, dan memindahkan data. DMS Schema Conversion membantu penilaian dan konversi yang didukung; temuan yang tidak otomatis terkonversi tetap perlu ditangani. Full load dan change data capture dapat mengurangi downtime, tetapi cutover masih membutuhkan validasi, sinkronisasi akhir, pengalihan koneksi, serta penanganan writer lama.",
+    "summary": "Migration database heterogeneous includes two work: adjusts schema and code that depends on engine, and moves data. DMS Schema Conversion helps assessment and conversion that is supported; findings that does not automatically terkonversi remains needs to handled. Full load and change data capture can reduce downtime, but cutover still requires validation, synchronization end, switch connection, and handling writer long.",
     "keyPoints": [
-      "Jangan menganggap DMS data replication otomatis mengonversi semua stored procedure.",
-      "Periksa prasyarat log sumber, tipe data, primary key, dan batas engine.",
-      "CDC membantu mengejar perubahan selama sumber masih berjalan.",
-      "Sebelum cutover, verifikasi data dan lag, lalu kendalikan write agar tidak terjadi dua sumber yang bertentangan.",
-      "Rencanakan rollback dan perubahan aplikasi secara eksplisit."
+      "Do not assume DMS data replication automatically convert all stored procedure.",
+      "Check prerequisite log source, type data, primary key, and limit engine.",
+      "CDC helps pursues changes while source still operates.",
+      "Before cutover, verification data and lag, then kendalikan write so that not occurs two source that conflicts.",
+      "Plan rollback and changes application explicitly."
     ],
     "order": 17
   },
   {
     "concept": "saa-purpose-built-databases",
     "title": "Database engines and access-pattern fit",
-    "summary": "Pilih engine berdasarkan operasi yang dominan dan kompatibilitas yang harus dipertahankan. Traversal hubungan multi-hop berbeda dari full-text search, key-value lookup, document access, dan Cassandra-compatible APIs. Neptune, OpenSearch, DocumentDB, dan Keyspaces menjawab kebutuhan berbeda. Mempertahankan API yang mirip mengurangi perubahan aplikasi, tetapi bukan bukti semua fitur engine asal identik. Search index sering menjadi salinan turunan, bukan sumber transaksi otoritatif.",
+    "summary": "Choose engine based on operation that dominant and compatibility that must retained. Traversal relationship multi-hop different from full-text search, key-value lookup, document access, and Cassandra-compatible APIs. Neptune, OpenSearch, DocumentDB, and Keyspaces answers requirements different. Maintains API that mirip reduces changes application, but is not evidence all feature engine source identical. Search index often becomes copy derived, is not source transaction authoritative.",
     "keyPoints": [
-      "Neptune menargetkan graph relationship traversal.",
-      "OpenSearch menyediakan indexing dan pencarian; sinkronisasi index perlu dirancang.",
-      "Verifikasi operator, driver, dan fitur sebelum migrasi ke DocumentDB.",
-      "Keyspaces cocok untuk kebutuhan Cassandra-compatible yang didukung, bukan join relational umum.",
-      "Perhitungkan konsistensi dan lag antara sumber data dengan index turunan."
+      "Neptune targets graph relationship traversal.",
+      "OpenSearch provides indexing and search; synchronization index needs to designed.",
+      "Verification operator, driver, and feature before migration to DocumentDB.",
+      "Keyspaces suitable for requirements Cassandra-compatible that is supported, is not join relational general.",
+      "Perhitungkan consistency and lag between source data with index derived."
     ],
     "order": 18
   },
   {
     "concept": "saa-database-access-correctness",
     "title": "Key design, indexes, and read consistency",
-    "summary": "Performa DynamoDB bergantung pada access pattern dan distribusi key, bukan hanya total kapasitas. Partition key yang terkonsentrasi dapat menciptakan hot key. GSI membantu query dengan alternate key tetapi tidak menyediakan strongly consistent reads. Bila bisnis memerlukan verifikasi segera setelah write, pilih jalur read atau model data yang mendukung konsistensi tersebut. Scan atau filter bukan pengganti desain key yang tepat.",
+    "summary": "Performance DynamoDB depends on access pattern and distribution key, is not just total capacity. Partition key that concentrated can create hot key. GSI helps query with alternate key but does not provide strongly consistent reads. If business requires verification immediately after write, choose path read or model data that supports consistency that. Scan or filter is not a substitute for design key that appropriate.",
     "keyPoints": [
-      "Identifikasi partition key, sort key, dan rentang query sebelum memilih index.",
-      "Write sharding dapat menyebarkan load tetapi menambah pekerjaan agregasi read.",
-      "GSI selalu dibaca eventually consistent; jangan menjanjikan read-after-write kuat melalui GSI.",
-      "Filter diterapkan setelah data dibaca sehingga bukan jaminan penghematan read capacity.",
-      "Conditional write dan transaction memiliki lingkup yang perlu dibedakan dari replikasi global."
+      "identification partition key, sort key, and range query before choosing index.",
+      "Write sharding can distributes load but adds work agregasi read.",
+      "GSI always read eventually consistent; do not promises read-after-write strong through GSI.",
+      "Filter applied after data read so that does not guarantee savings read capacity.",
+      "Conditional write and transaction has scope that needs to dibedakan from replication global."
     ],
     "order": 19
   },
   {
     "concept": "saa-hybrid-dns-decisions",
     "title": "Hybrid DNS direction and namespace ownership",
-    "summary": "Koneksi jaringan yang berhasil tidak otomatis membuat nama privat dapat di-resolve. Inbound Resolver endpoint menerima query dari on premises menuju resolusi VPC. Outbound endpoint dan forwarding rule mengarahkan query domain tertentu dari VPC ke DNS di luar VPC. Untuk banyak akun, rule sharing dapat mengurangi duplikasi. Split-view DNS membutuhkan perencanaan namespace karena private hosted zone yang cocok dapat mengambil prioritas tanpa fallback otomatis untuk record yang tidak ada.",
+    "summary": "Connection network that succeeds does not automatically create name private can di-resolve. Inbound Resolver endpoint receives query from on premises toward resolution VPC. Outbound endpoint and forwarding rule routes query domain specific from VPC to DNS in outside VPC. For multiple accounts, rule sharing can reduce duplication. Split-view DNS requires planning namespace because private hosted zone that suitable can take priority without fallback automatically for record that not exists.",
     "keyPoints": [
-      "Gambar arah query sebelum memilih inbound atau outbound.",
-      "Sediakan route dan aturan jaringan untuk endpoint dan DNS target.",
-      "Batasi forwarding ke suffix domain yang memang dikelola di sisi tersebut.",
-      "Hindari loop forwarding dua arah untuk namespace yang sama.",
-      "Jika private hosted zone cocok tetapi record tidak ada, jangan berasumsi resolver akan mencari public zone secara otomatis.",
-      "Private hosted zone harus tersedia bagi VPC yang menjawab query inbound; peering atau Direct Connect tidak otomatis membuat association lintas akun."
+      "Image direction query before choosing inbound or outbound.",
+      "Sediakan route and rules network for endpoint and DNS target.",
+      "Limit forwarding to suffix domain that indeed managed in side that.",
+      "Avoid loop forwarding two direction for namespace that same.",
+      "If private hosted zone suitable but record not exists, do not berasumsi resolver will searches public zone automatically.",
+      "Private hosted zone must available for VPC that answers query inbound; peering or Direct Connect does not automatically create association across accounts."
     ],
     "order": 20
   },
   {
     "concept": "saa-network-protocol-and-segmentation",
     "title": "IPv6 egress and routed network segmentation",
-    "summary": "Protokol dan route table menentukan desain jaringan. Egress-only internet gateway menyediakan akses IPv6 keluar tanpa mengizinkan koneksi internet baru masuk melalui gateway itu. NAT IPv4 bukan jawaban universal untuk trafik IPv6. Pada Transit Gateway, asosiasi dan propagasi route table dapat memisahkan lingkungan sambil memberi akses ke shared services. Shared hub tidak berarti setiap attachment harus dapat berkomunikasi dengan semua yang lain.",
+    "summary": "Protocol and route table determines design network. Egress-only internet gateway provides access IPv6 out without allows connection internet new incoming through gateway that. NAT IPv4 is not answer universal for traffic IPv6. On Transit Gateway, association and propagation route table can separates environment while gives access to shared services. Shared hub does not mean each attachment must can communicate with all that other.",
     "keyPoints": [
-      "Bedakan IPv4 NAT, IPv6 egress-only, dan akses privat ke layanan.",
-      "Route table dan security policy harus sama-sama memenuhi tujuan segmentasi.",
-      "Gunakan domain routing yang sesuai untuk memisahkan production dan development.",
-      "Jangan menganggap VPC peering menyediakan transit melalui VPC perantara.",
-      "Validasi jalur balik dan akses shared services setelah segmentasi."
+      "Distinguish IPv4 NAT, IPv6 egress-only, and access private to service.",
+      "Route table and security policy must both meets destination segmentation.",
+      "Use domain routing that appropriate to separate production and development.",
+      "Do not assume VPC peering provides transit through VPC perantara.",
+      "Validation path return and access shared services after segmentation."
     ],
     "order": 21
   },
   {
     "concept": "saa-distributed-analytics-and-bi",
     "title": "Data-lake processing and dashboard freshness",
-    "summary": "Pipeline analitik memiliki tahapan berbeda: ingest, katalog, transformasi, query, dan visualisasi. EMR Serverless dapat menjalankan framework seperti Spark yang didukung tanpa mengelola cluster secara langsung. Athena menjalankan SQL pada data S3; Glue Data Catalog membantu metadata, bukan otomatis memperbaiki kualitas data. Quick Sight menyediakan visualisasi; SPICE mengurangi query ke sumber melalui penyimpanan analitik in-memory dengan refresh yang perlu sesuai target freshness.",
+    "summary": "Pipeline analytics has tahapan different: ingest, catalog, transformation, query, and visualization. EMR Serverless can run framework such as Spark that is supported without manages cluster directly. Athena runs SQL on data S3; Glue Data Catalog helps metadata, does not automatically improve quality data. Quick Sight provides visualization; SPICE reduces query to source through storage analytics in-memory with refresh that needs to appropriate target freshness.",
     "keyPoints": [
-      "Pilih engine sesuai pipeline dan framework yang sudah diperlukan.",
-      "Columnar format dan partition pruning mengurangi data scan pada query yang sesuai.",
-      "Katalog schema tidak membersihkan record salah secara otomatis.",
-      "Bandingkan direct query dengan SPICE berdasarkan freshness, load sumber, dan biaya.",
-      "Terapkan governance sumber serta hasil query, bukan hanya dashboard."
+      "Choose engine appropriate pipeline and framework that already required.",
+      "Columnar format and partition pruning reduces data scan on query that appropriate.",
+      "Catalog schema not cleans record wrong automatically.",
+      "Compare direct query with SPICE based on freshness, load source, and cost.",
+      "Apply governance source and result query, is not just dashboard."
     ],
     "order": 22
   },
   {
     "concept": "saa-stream-scaling-and-checkpoints",
     "title": "Stream ordering, partitioning, and checkpoints",
-    "summary": "Streaming memerlukan keputusan tentang unit ordering, throughput, dan recovery. Partition key mendistribusikan record ke shard; memakai satu key untuk semua device dapat menciptakan bottleneck. Ordering per device tidak berarti seluruh stream membutuhkan urutan global. Consumer perlu checkpoint atau posisi baca dan strategi untuk record gagal. Glue job bookmark membantu melacak data yang telah diproses pada sumber yang didukung, tetapi tidak otomatis menjadikan semua efek downstream exactly once.",
+    "summary": "Streaming requires decision about unit ordering, throughput, and recovery. Partition key distributes record to shard; uses one key for all device can create bottleneck. Ordering per device does not mean all stream requires order global. Consumer needs to checkpoint or posisi baca and strategy for record fails. Glue job bookmark helps tracks data that has processed on source that is supported, but does not automatically make all effect downstream exactly once.",
     "keyPoints": [
-      "Tentukan apakah urutan dibutuhkan per entity, per shard, atau global.",
-      "Distribusikan entity independen tanpa merusak ordering yang benar-benar diperlukan.",
-      "Consumer yang berbeda dapat membutuhkan checkpoint dan replay position berbeda.",
-      "Bookmark dan checkpoint bukan pengganti idempotensi saat write downstream diulang.",
-      "Rencanakan retention agar cukup untuk durasi outage serta replay yang ditargetkan."
+      "Determine whether order required per entity, per shard, or global.",
+      "Distribusikan entity independent without damages ordering that truly required.",
+      "Consumer that different can require checkpoint and replay position different.",
+      "Bookmark and checkpoint is not a substitute for idempotency when write downstream repeated.",
+      "Plan retention so that enough for duration outage and replay that targeted."
     ],
     "order": 23
   },
   {
     "concept": "saa-cost-attribution-and-controls",
     "title": "Cost attribution, budgets, and control boundaries",
-    "summary": "Optimasi dimulai dari atribusi dan metrik yang benar. Tag biaya perlu diaktifkan dan dikelola agar laporan bermakna; dukungan backfill memiliki ketentuan tersendiri. Cost and Usage Reports membantu analisis detail, sedangkan Budgets memberi monitoring dan tindakan yang dikonfigurasi. Alarm anggaran bukan jaminan layanan berhenti tepat sebelum satu dolar berikutnya ditagih. Bedakan visibility, alerting, approval, dan enforcement aplikasi.",
+    "summary": "Optimization started from atribusi and metrics that correct. Tag cost needs to enabled and managed so that report meaningful; support backfill has provisions separate. Cost and Usage Reports helps analysis detail, whereas Budgets gives monitoring and action that configured. Alarm anggaran does not guarantee service stops appropriate before one dolar next ditagih. Distinguish visibility, alerting, approval, and enforcement application.",
     "keyPoints": [
-      "Gunakan label bisnis yang konsisten sebelum membandingkan biaya antar tim.",
-      "Periksa waktu aktivasi dan kelayakan backfill tag, jangan menganggap semua data historis langsung tersedia.",
-      "Budget alert dapat terlambat terhadap penggunaan yang sedang terjadi.",
-      "Tindakan otomatis membutuhkan izin dan konfigurasi serta tidak menghapus biaya yang sudah timbul.",
-      "Bandingkan biaya per transaksi atau unit bisnis, bukan hanya total tagihan."
+      "Use label business that consistent before compares cost across teams.",
+      "Check time aktivasi and kelayakan backfill tag, do not assume all data historical directly available.",
+      "Budget alert can late against usage that currently occurs.",
+      "Action automatically requires permissions and configuration and not deletes cost that already arises.",
+      "Compare cost per transaction or unit business, is not just total bill."
     ],
     "order": 11
   },
   {
     "concept": "saa-storage-request-economics",
     "title": "Storage, request, retrieval, and encryption costs",
-    "summary": "Biaya storage tidak berhenti pada harga per GB. Pertimbangkan durasi minimum, ukuran minimum yang relevan, request, retrieval, metadata, serta kebutuhan availability dan retention. S3 Bucket Keys dapat mengurangi request KMS pada workload SSE-KMS yang memenuhi syarat, tetapi tingkat penghematan bergantung pada pola penggunaan. Object versioning, log retention, dan multipart uploads juga dapat menyimpan data yang tidak terlihat dari versi aktif aplikasi.",
+    "summary": "Cost storage not stops on price per GB. Consider duration minimum, size minimum that relevant, request, retrieval, metadata, and requirements availability and retention. S3 Bucket Keys can reduce request KMS on workload SSE-KMS that meets requirement, but level savings depends on pattern usage. Object versioning, log retention, and multipart uploads also can store data that not appears from version active application.",
     "keyPoints": [
-      "Hitung total biaya sepanjang siklus hidup data, termasuk cara data akan diambil kembali.",
-      "Terapkan aturan noncurrent version sesuai recovery window, bukan menghapus seluruh sejarah tanpa evaluasi.",
-      "Pisahkan retention log operasional dari arsip jangka panjang dengan jalur delivery yang sesuai.",
-      "Gunakan Bucket Keys hanya setelah memeriksa kebutuhan keamanan dan kompatibilitas.",
-      "Pada Requester Pays, bedakan siapa membayar request/transfer dan siapa tetap membayar storage."
+      "Calculate total cost throughout lifecycle data, including way data will taken back.",
+      "Apply rules noncurrent version appropriate recovery window, is not deletes all sejarah without evaluation.",
+      "Separate retention log operational from archive long-term with path delivery that appropriate.",
+      "Use Bucket Keys only after checks requirements security and compatibility.",
+      "On Requester Pays, distinguish who pays request/transfer and who remains pays storage."
     ],
     "order": 12
   },
   {
     "concept": "saa-measured-compute-economics",
     "title": "Compute cost per successful unit of work",
-    "summary": "Pilih konfigurasi compute berdasarkan pekerjaan yang selesai dengan SLO yang setara. Memory Lambda lebih besar dapat mempercepat CPU dan mengurangi durasi sehingga biaya perlu dihitung, bukan ditebak. Migrasi ke Graviton memerlukan kompatibilitas arsitektur serta benchmark. Menghentikan instance development mengurangi compute tetapi storage dan resource terkait tetap dapat menimbulkan biaya. Semua perbandingan numerik dalam soal menggunakan asumsi eksplisit, bukan harga AWS saat ini.",
+    "summary": "Choose configuration compute based on work that completed with SLO that equivalent. Memory Lambda larger can accelerates CPU and reduces duration so that cost needs to calculated, is not guessed. Migration to Graviton requires compatibility architecture and benchmark. Stops instance development reduces compute but storage and resource related remains can causes cost. All comparison numerik within question uses assumption explicit, is not price AWS when this.",
     "keyPoints": [
-      "Gunakan biaya per transaksi berhasil atau per job selesai.",
-      "Periksa latency, throughput, error, dan kualitas hasil saat membandingkan konfigurasi.",
-      "Jangan memindahkan binary x86 ke Arm tanpa validasi dependensi.",
-      "Total biaya desain dapat mencakup networking, observability, dan operasional yang disebutkan soal.",
-      "Bedakan stop compute dengan delete storage; masing-masing memiliki konsekuensi recovery.",
-      "Long polling SQS mengurangi empty receives; atur HTTP timeout di atas wait time agar tidak menimbulkan retry yang tidak diperlukan."
+      "Use cost per transaction succeeds or per job completed.",
+      "Check latency, throughput, error, and quality result when compares configuration.",
+      "Do not moves binary x86 to Arm without validation dependencies.",
+      "Total cost design can include networking, observability, and operational that mentioned question.",
+      "Distinguish stop compute with delete storage; each has consequence recovery.",
+      "Long polling SQS reduces empty receives; atur HTTP timeout in over wait time so that not causes retry that is not required."
     ],
     "order": 13
   },
   {
     "concept": "saa-commitment-and-capacity-planning",
     "title": "Commitments, utilization, and capacity assurance",
-    "summary": "Diskon penggunaan dan kepastian kapasitas menyelesaikan masalah berbeda. Savings Plans merupakan komitmen penggunaan yang memenuhi ketentuan; penghematan bergantung pada utilisasi komitmen tersebut. Capacity Reservation berkaitan dengan tersedianya kapasitas dalam lingkup yang dipilih dan mempunyai konsekuensi biaya sendiri. Kapasitas Spot dapat diinterupsi, sehingga gabungkan dengan kebutuhan baseline, checkpoint, dan rencana ketika kapasitas tidak tersedia.",
+    "summary": "Discount usage and kepastian capacity solves problem different. Savings Plans is commitment usage that meets provisions; savings depends on utilization commitment that. Capacity Reservation relates with tersedianya capacity within scope that chosen and mempunyai consequence cost itself. Capacity Spot can interrupted, so that gabungkan with requirements baseline, checkpoint, and plan when capacity not available.",
     "keyPoints": [
-      "Ukur baseline yang cukup stabil sebelum membuat komitmen jangka panjang.",
-      "Komitmen yang tidak terpakai tetap dapat menimbulkan biaya.",
-      "Jangan menganggap semua diskon reservasi menjamin kapasitas di AZ tertentu.",
-      "Pada Fargate capacity providers, tidak ada jaminan otomatis bahwa Spot yang tidak tersedia akan diganti On-Demand.",
-      "Untuk workload singkat yang belum terbukti, fleksibilitas dapat lebih bernilai daripada diskon nominal."
+      "Ukur baseline that enough stable before creates commitment long-term.",
+      "Commitment that not used remains can causes cost.",
+      "Do not assume all discount reservation guarantees capacity in AZ specific.",
+      "On Fargate capacity providers, not exists guarantee automatically that Spot that not available will replaced On-Demand.",
+      "For workloads short that not yet proven, flexibility can more bernilai rather than discount nominal."
     ],
     "order": 14
   },
   {
     "concept": "saa-database-request-economics",
     "title": "Database access cost and storage configuration",
-    "summary": "Optimasi database harus mempertahankan access pattern dan reliability. Query DynamoDB yang membaca banyak data lalu memfilternya masih membayar read yang dilakukan; index yang sesuai dapat mengurangi pekerjaan tersebut tetapi menambah write/storage. Aurora menawarkan konfigurasi biaya I/O yang perlu dibandingkan terhadap workload, bukan dipilih berdasarkan nama. RDS storage autoscaling melindungi kapasitas yang menipis namun bukan mekanisme otomatis untuk mengecilkan storage setelah lonjakan.",
+    "summary": "Optimization database must maintains access pattern and reliability. Query DynamoDB that reads many data then memfilternya still pays read that performed; index that appropriate can reduce work that but adds write/storage. Aurora offers configuration cost I/O that needs to compared with against workload, is not chosen based on name. RDS storage autoscaling protects capacity that menipis however is not mechanism automatically for shrinks storage after spike.",
     "keyPoints": [
-      "Hitung beban baca dan tulis, bukan hanya jumlah record yang dikembalikan.",
-      "GSI menambah write maintenance dan storage; proyeksikan atribut yang diperlukan.",
-      "Evaluasi steady provisioned demand dan on-demand demand dengan asumsi biaya yang setara.",
-      "Bandingkan biaya instance, storage, dan I/O yang relevan secara bersamaan.",
-      "Pengurangan kapasitas storage dapat membutuhkan migrasi; periksa dukungan tiap layanan."
+      "Calculate load baca and write, is not just number record that returned.",
+      "GSI adds write maintenance and storage; proyeksikan attribute that is required.",
+      "Evaluation steady provisioned demand and on-demand demand with assumption cost that equivalent.",
+      "Compare cost instance, storage, and I/O that relevant simultaneously.",
+      "Reduction capacity storage can require migration; check support each service."
     ],
     "order": 15
   },
   {
     "concept": "saa-network-cost-models",
     "title": "Network path and incremental cost modeling",
-    "summary": "Jalur trafik menentukan komponen biaya. Saat mengevaluasi endpoint, NAT, Transit Gateway, atau lokasi resource, hitung biaya tetap yang benar-benar bisa dihapus dan biaya variabel yang berubah. Jika NAT tetap dibutuhkan untuk trafik lain, biaya tetapnya bukan penghematan yang dapat diklaim dari memindahkan sebagian trafik ke endpoint. Jangan menukar target availability atau security demi biaya lebih rendah tanpa menyatakan bahwa persyaratan berubah.",
+    "summary": "Path traffic determines component cost. When evaluates endpoint, NAT, Transit Gateway, or location resource, calculate cost remains that truly can be deleted and cost variable that changes. If NAT remains required for traffic other, cost fixed portion is not savings that can claimed from moves some traffic to endpoint. Do not exchanges target availability or security for cost lower without states that requirements changes.",
     "keyPoints": [
-      "Pisahkan biaya per jam, per GB, cross-AZ, dan lintas Region sesuai skenario.",
-      "Gunakan break-even hanya dengan asumsi yang dinyatakan, bukan harga yang dihafal.",
-      "Hitung jumlah endpoint dan AZ yang benar-benar dibutuhkan.",
-      "Pertimbangkan locality pemrosesan untuk mengurangi pemindahan dataset berulang.",
-      "Seluruh angka pada latihan adalah model hipotetis kecuali dinyatakan sebaliknya."
+      "Separate cost per hour, per GB, cross-AZ, and across Regions appropriate scenario.",
+      "Use break-even only with assumption that stated, is not price that dihafal.",
+      "Calculate number endpoint and AZ that truly required.",
+      "Consider locality processing to reduce migration dataset repeated.",
+      "All number on practice is model hipotetis except stated conversely."
     ],
     "order": 16
   },
   {
     "concept": "saa-delivery-cache-economics",
     "title": "Delivery-path cost and cache efficiency",
-    "summary": "Cache hit ratio memengaruhi beban origin dan biaya, tetapi cache key harus tetap memisahkan variasi respons yang sah. Parameter analytics yang tidak mengubah isi dapat menurunkan hit ratio bila dimasukkan tanpa alasan. Origin Shield dapat mengurangi origin fetch lintas lokasi edge pada pola yang sesuai, tetapi memiliki komponen biaya sendiri. Bandingkan total jalur delivery dan kebutuhan freshness, bukan hanya satu metrik yang membaik.",
+    "summary": "Cache hit ratio affects load origin and cost, but cache key must remains separates variation response that valid. Parameter analytics that does not change contents can reduce hit ratio if inserted without reason. Origin Shield can reduce origin fetch across location edge on pattern that appropriate, but has component cost itself. Compare total path delivery and requirements freshness, is not just one metrics that membaik.",
     "keyPoints": [
-      "Keluarkan atribut yang tidak memengaruhi respons dari cache key hanya setelah memeriksa correctness.",
-      "Jangan mencampur respons personal atau authorization-sensitive antar pengguna.",
-      "Pengurangan origin request tidak menjamin total biaya turun bila biaya layer baru lebih besar.",
-      "Validasi latency dan TTL terhadap kebutuhan freshness.",
-      "Kalkulasi latihan menggunakan komponen biaya yang secara eksplisit diberikan."
+      "Keluarkan attribute that not affects response from cache key only after checks correctness.",
+      "Do not mencampur response personal or authorization-sensitive across user.",
+      "Reduction origin request does not guarantee total cost decreases if cost layer new larger.",
+      "Validation latency and TTL against requirements freshness.",
+      "Kalkulasi practice uses component cost that explicitly granted."
     ],
     "order": 17
   }

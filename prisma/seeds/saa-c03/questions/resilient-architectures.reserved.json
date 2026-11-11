@@ -11,25 +11,25 @@
         "key": "A",
         "text": "Enqueue the job but keep its only progress state in the original frontend process.",
         "correct": false,
-        "explanation": "Queue memperbaiki durabilitas pekerjaan tetapi status tetap hilang saat frontend restart."
+        "explanation": "Queue improves job durability but the status is still lost when the frontend restarts."
       },
       {
         "key": "B",
         "text": "Persist a job identifier/status, enqueue durable work, return an accepted response, and let clients query status or receive completion notifications.",
         "correct": true,
-        "explanation": "Pemrosesan dipisahkan dari koneksi HTTP; status durabel memungkinkan pelacakan setelah restart."
+        "explanation": "Processing separated from connection HTTP; status durable enables pelacakan after restart."
       },
       {
         "key": "C",
         "text": "Use sticky sessions and local disk job files on frontend instances without shared durable job state.",
         "correct": false,
-        "explanation": "Penggantian instance atau hilangnya instance masih membuat job/status terikat pada host tertentu."
+        "explanation": "Replacement instance or hilangnya instance still creates job/status bound on host specific."
       },
       {
         "key": "D",
         "text": "Increase the synchronous API timeout and retain all job state in the frontend process.",
         "correct": false,
-        "explanation": "State masih hilang saat restart, meskipun timeout dibuat lebih panjang."
+        "explanation": "State still lost when restart, although timeout created more long."
       }
     ],
     "tags": [
@@ -58,25 +58,25 @@
         "key": "A",
         "text": "Commit the order and an outbox record in one database transaction, then publish the outbox asynchronously with idempotent consumers.",
         "correct": true,
-        "explanation": "Outbox mengikat intent event pada commit bisnis; publisher dan consumer tetap menangani duplicate delivery."
+        "explanation": "Outbox ties intent event on commit business; publisher and consumer remains handles duplicate delivery."
       },
       {
         "key": "B",
         "text": "Switch the broker to FIFO and keep the two independent writes unchanged.",
         "correct": false,
-        "explanation": "FIFO tidak membuat commit database dan publish menjadi satu transaksi atomik."
+        "explanation": "FIFO not creates commit database and publish becomes one transaction atomic."
       },
       {
         "key": "C",
         "text": "Retry event publication only in process memory, without storing publication intent with the order.",
         "correct": false,
-        "explanation": "Retry in-memory hilang saat crash; gap setelah commit tetap ada."
+        "explanation": "Retry in-memory lost when crash; gap after commit remains exists."
       },
       {
         "key": "D",
         "text": "Publish first and assume a later failed database transaction can never leave a misleading event.",
         "correct": false,
-        "explanation": "Urutan dibalik memindahkan gap menjadi event untuk transaksi yang gagal."
+        "explanation": "Order dibalik moves gap becomes event for transaction that fails."
       }
     ],
     "tags": [
@@ -105,25 +105,25 @@
         "key": "A",
         "text": "Increase the consumer count on the same queue and assume every consumer receives every message.",
         "correct": false,
-        "explanation": "Competing consumers membagi pekerjaan, bukan broadcast ke setiap layanan."
+        "explanation": "Competing consumers divides work, is not broadcast to each service."
       },
       {
         "key": "B",
         "text": "Use a single FIFO message group and require billing to wait until analytics returns.",
         "correct": false,
-        "explanation": "Ini menambah coupling dan melanggar independensi yang diminta."
+        "explanation": "this adds coupling and violates independence that is requested."
       },
       {
         "key": "C",
         "text": "Remove the queues and send both requests sequentially inside the upload transaction.",
         "correct": false,
-        "explanation": "Kegagalan analytics dapat menghambat jalur lain dan tidak memberi backlog mandiri."
+        "explanation": "Failure analytics can menghambat path other and does not give backlog mandiri."
       },
       {
         "key": "D",
         "text": "Fan out through SNS to a separate SQS queue for each service, with appropriate delivery permissions and retry handling.",
         "correct": true,
-        "explanation": "Queue per subscriber menjaga backlog independen; shared queue membuat consumer bersaing atas pesan."
+        "explanation": "Queue per subscriber maintains backlog independent; shared queue creates consumer compete over message."
       }
     ],
     "tags": [
@@ -152,25 +152,25 @@
         "key": "A",
         "text": "Retry the payment step with a newly generated idempotency key on every workflow attempt.",
         "correct": false,
-        "explanation": "Key baru membuat retry tampak sebagai transaksi baru sehingga tidak melindungi dari charge ulang."
+        "explanation": "Key new creates retry appears as transaction new so that not protects from charge again."
       },
       {
         "key": "B",
         "text": "Retry only at the HTTP client layer while restarting the entire workflow with no persisted step outcomes.",
         "correct": false,
-        "explanation": "Boundary retry masih terlalu luas dan tidak melindungi efek bisnis yang sudah berhasil."
+        "explanation": "Boundary retry still too broad and does not protect effect business that already succeeds."
       },
       {
         "key": "C",
         "text": "Scope retries to appropriate steps and use stable idempotency keys or recorded outcomes for irreversible operations.",
         "correct": true,
-        "explanation": "Retry harus sesuai failure boundary; efek seperti charge perlu perlindungan duplikasi bisnis."
+        "explanation": "Retry must appropriate failure boundary; effect such as charge needs to protection duplication business."
       },
       {
         "key": "D",
         "text": "Use FIFO delivery as the sole protection against duplicated external payment effects after retries.",
         "correct": false,
-        "explanation": "Deduplication delivery tidak menjamin efek eksternal hanya dijalankan sekali dalam seluruh failure window."
+        "explanation": "Deduplication delivery does not guarantee effect external only run once within all failure window."
       }
     ],
     "tags": [
@@ -199,25 +199,25 @@
         "key": "A",
         "text": "Store required cart/session state in an appropriately durable shared store and make application instances replaceable.",
         "correct": true,
-        "explanation": "State tidak lagi bergantung pada instance yang mungkin dihentikan; durability store disesuaikan kebutuhan."
+        "explanation": "State not again depends on instance that may stopped; durability store adjusted requirements."
       },
       {
         "key": "B",
         "text": "Use an instance snapshot taken nightly as the only recovery mechanism for active shopping carts.",
         "correct": false,
-        "explanation": "Snapshot malam tidak mempertahankan semua cart aktif ketika instance gagal di antara backup."
+        "explanation": "Snapshot malam not maintains all cart active when instances fails in between backup."
       },
       {
         "key": "C",
         "text": "Increase cookie stickiness duration and keep all state only in failed instance memory.",
         "correct": false,
-        "explanation": "Cookie tidak dapat memulihkan memori instance yang hilang."
+        "explanation": "Cookie cannot restores memory instance that lost."
       },
       {
         "key": "D",
         "text": "Spread instances across more AZs but keep independent cart state only in each instance memory.",
         "correct": false,
-        "explanation": "Placement meningkatkan resiliency compute tetapi tidak menghilangkan kehilangan state lokal."
+        "explanation": "Placement increases resiliency compute but does not eliminate loss state local."
       }
     ],
     "tags": [
@@ -246,25 +246,25 @@
         "key": "A",
         "text": "Connect directly to the single standby address for writes before every failover.",
         "correct": false,
-        "explanation": "Standby pada deployment ini bukan writer terpisah yang dilayani aplikasi."
+        "explanation": "The standby in this deployment is not separate writer that serving the application."
       },
       {
         "key": "B",
         "text": "Extend connection-pool lifetimes and DNS caching so every process keeps using the pre-failover address.",
         "correct": false,
-        "explanation": "Kebijakan itu mempertahankan endpoint hasil resolusi lama dan memperlambat recovery koneksi."
+        "explanation": "Policy that maintains endpoint result resolution long and slows recovery connection."
       },
       {
         "key": "C",
         "text": "Use the database endpoint, refresh DNS as appropriate, discard failed connections, and retry safe operations with bounded backoff.",
         "correct": true,
-        "explanation": "Failover layanan tidak menyelamatkan semua koneksi lama; aplikasi perlu reconnect tanpa mengulang efek secara tidak aman."
+        "explanation": "Failover service not saves all connection long; application needs to reconnect without repeats effect in a manner is not secure."
       },
       {
         "key": "D",
         "text": "Hard-code the original primary IP into every connection pool.",
         "correct": false,
-        "explanation": "IP lama dapat tetap menunjuk target yang tidak lagi melayani write."
+        "explanation": "IP long can remains menunjuk target that not again serves write."
       }
     ],
     "tags": [
@@ -293,25 +293,25 @@
         "key": "A",
         "text": "A tested recovery path to an appropriate point before the corruption, with validation and application cutover.",
         "correct": true,
-        "explanation": "Replica mempertahankan perubahan termasuk yang salah; recovery historis menyediakan state sebelum insiden."
+        "explanation": "Replica maintains changes including that wrong; recovery historical provides state before incident."
       },
       {
         "key": "B",
         "text": "Increase read-replica count and balance queries across the replicas after they catch up.",
         "correct": false,
-        "explanation": "Menambah replika data yang sudah korup tidak menyediakan titik pemulihan historis."
+        "explanation": "Adds replica data that already korup does not provide point recovery historical."
       },
       {
         "key": "C",
         "text": "Promote a replica after verifying it has already applied every corrupt change.",
         "correct": false,
-        "explanation": "Replica yang sudah korup tidak mengembalikan state lama."
+        "explanation": "Replica that already korup not returns state long."
       },
       {
         "key": "D",
         "text": "Add another synchronous standby after the corrupt writes have been applied.",
         "correct": false,
-        "explanation": "Standby baru mengikuti state yang sudah salah; ia bukan sejarah data sebelum insiden."
+        "explanation": "Standby new follows state that already wrong; ia is not sejarah data before incident."
       }
     ],
     "tags": [
@@ -340,25 +340,25 @@
         "key": "A",
         "text": "Active-active.",
         "correct": false,
-        "explanation": "Memenuhi target tetapi bukan biaya terendah dari opsi yang juga memenuhi."
+        "explanation": "Meets target but is not cost lowest from option that also meets."
       },
       {
         "key": "B",
         "text": "Backup and restore.",
         "correct": false,
-        "explanation": "RTO 4 jam dan RPO 1 jam melampaui kedua batas."
+        "explanation": "RTO 4 hour and RPO 1 hour goes beyond both limit."
       },
       {
         "key": "C",
         "text": "Pilot light.",
         "correct": false,
-        "explanation": "RPO cukup tetapi RTO 50 menit melampaui 30 menit."
+        "explanation": "RPO enough but RTO 50 minutes goes beyond 30 minutes."
       },
       {
         "key": "D",
         "text": "Warm standby.",
         "correct": true,
-        "explanation": "15 menit RTO dan 2 menit RPO memenuhi dua batas; opsi lebih murah gagal setidaknya satu."
+        "explanation": "15 minutes RTO and 2 minutes RPO meets two limit; option cheaper fails at least one."
       }
     ],
     "tags": [
@@ -387,25 +387,25 @@
         "key": "A",
         "text": "Only upload one new test object and assume all older versions followed automatically.",
         "correct": false,
-        "explanation": "Sampel objek baru tidak menguji salinan data historis."
+        "explanation": "Sampel object new not menguji copy data historical."
       },
       {
         "key": "B",
         "text": "Disable source versioning immediately to accelerate the backlog.",
         "correct": false,
-        "explanation": "Ini tidak memenuhi prasyarat replication dan tidak memindahkan backlog."
+        "explanation": "this does not meet prerequisite replication and does not moves backlog."
       },
       {
         "key": "C",
         "text": "Use the destination bucket creation date as proof of object completeness.",
         "correct": false,
-        "explanation": "Metadata bucket tidak menunjukkan isi dan status semua objek."
+        "explanation": "Metadata bucket not shows contents and status all object."
       },
       {
         "key": "D",
         "text": "Plan replication of eligible existing objects with a supported batch mechanism and validate coverage plus ongoing replication status.",
         "correct": true,
-        "explanation": "Rule baru tidak membuktikan backlog historis sudah diproses; validasi perlu mencakup kedua kelompok."
+        "explanation": "Rule new does not prove backlog historical already processed; validation needs to include both kelompok."
       }
     ],
     "tags": [
@@ -434,25 +434,25 @@
         "key": "A",
         "text": "Store shared mutable files independently on each application instance without synchronization.",
         "correct": false,
-        "explanation": "Salinan lokal independen tidak menyediakan shared state yang konsisten."
+        "explanation": "Copy local independent does not provide shared state that consistent."
       },
       {
         "key": "B",
         "text": "Keep the single NFS server and attach its one EBS volume to arbitrary instances in any AZ simultaneously.",
         "correct": false,
-        "explanation": "EBS terikat AZ dan tidak menjadi filesystem lintas-AZ otomatis."
+        "explanation": "EBS bound AZ and does not becomes filesystem lintas-AZ automatically."
       },
       {
         "key": "C",
         "text": "Use a Regional EFS file system with appropriate mount targets and client/network configuration across the application AZs.",
         "correct": true,
-        "explanation": "Regional EFS menghilangkan satu server NFS sebagai titik kegagalan; mount dan akses tiap AZ tetap dikonfigurasi."
+        "explanation": "Regional EFS eliminates one server NFS as point failure; mount and access each AZ remains configured."
       },
       {
         "key": "D",
         "text": "Use EFS One Zone and assume it has the same AZ-failure properties as Regional EFS.",
         "correct": false,
-        "explanation": "One Zone memiliki failure scope berbeda dari Regional."
+        "explanation": "One Zone has failure scope different from Regional."
       }
     ],
     "tags": [
@@ -481,25 +481,25 @@
         "key": "A",
         "text": "Place five instances in one AZ and one in the other to minimize steady-state capacity.",
         "correct": false,
-        "explanation": "Kegagalan AZ berisi lima instance menyisakan hanya 100 request/detik."
+        "explanation": "Failure AZ contains lima instance leaves only 100 request/second."
       },
       {
         "key": "B",
         "text": "Keep five instances total, split three and two across the AZs.",
         "correct": false,
-        "explanation": "Kapasitas total normal cukup, tetapi AZ yang tersisa hanya menyediakan 200 atau 300 request/detik."
+        "explanation": "Capacity total normal enough, but AZ that remaining only provides 200 or 300 request/second."
       },
       {
         "key": "C",
         "text": "Maintain at least five ready instances in each AZ and verify traffic can reach all surviving instances.",
         "correct": true,
-        "explanation": "Setelah satu AZ hilang, lima instance tersisa menyediakan 5 x 100 = 500 request/detik sesuai model."
+        "explanation": "After one AZ lost, lima instance remaining provides 5 x 100 = 500 request/second appropriate model."
       },
       {
         "key": "D",
         "text": "Keep three instances in each AZ and raise the Auto Scaling maximum to ten.",
         "correct": false,
-        "explanation": "Maximum capacity tidak berarti instance tambahan sudah siap saat AZ gagal."
+        "explanation": "Maximum capacity does not mean instance additional already ready when AZ fails."
       }
     ],
     "tags": [
@@ -528,31 +528,31 @@
         "key": "A",
         "text": "Validate and request required Regional service quotas before an incident.",
         "correct": true,
-        "explanation": "Quota berbeda menurut scope; persiapan harus dilakukan sebelum recovery kritis."
+        "explanation": "Quota different according to scope; persiapan must performed before recovery critical."
       },
       {
         "key": "B",
         "text": "Assume a successful CloudFormation validation reserves all future capacity.",
         "correct": false,
-        "explanation": "Validasi template tidak mencadangkan resource fisik."
+        "explanation": "Validation template not backs up physical resources."
       },
       {
         "key": "C",
         "text": "Increase backup retention only and leave the failed provisioning path unchanged.",
         "correct": false,
-        "explanation": "Retensi tidak menyelesaikan quota atau ketersediaan kapasitas."
+        "explanation": "Retention does not solve quota or availability capacity."
       },
       {
         "key": "D",
         "text": "Assess capacity needs and appropriate reservation or alternative-instance strategies, then test recovery at realistic scale.",
         "correct": true,
-        "explanation": "Quota approval bukan jaminan physical capacity; pengujian dan strategi kapasitas keduanya diperlukan."
+        "explanation": "Quota approval does not guarantee physical capacity; testing and strategy capacity both required."
       },
       {
         "key": "E",
         "text": "Purchase a Savings Plan and assume it guarantees every instance type is available during failover.",
         "correct": false,
-        "explanation": "Komitmen diskon bukan reservasi kapasitas umum."
+        "explanation": "Commitment discount is not reservation capacity general."
       }
     ],
     "tags": [
@@ -581,25 +581,25 @@
         "key": "A",
         "text": "Use EventBridge as a drop-in ActiveMQ wire-protocol server.",
         "correct": false,
-        "explanation": "EventBridge bukan implementasi broker ActiveMQ."
+        "explanation": "EventBridge is not implementation broker ActiveMQ."
       },
       {
         "key": "B",
         "text": "Replace the broker endpoint with an SQS URL and assume all ActiveMQ clients work unchanged.",
         "correct": false,
-        "explanation": "SQS memiliki API dan semantics berbeda."
+        "explanation": "SQS has API and semantics different."
       },
       {
         "key": "C",
         "text": "Evaluate Amazon MQ for ActiveMQ with an appropriate availability configuration and compatibility tests.",
         "correct": true,
-        "explanation": "Managed broker mempertahankan protokol yang didukung tanpa langsung menulis ulang ke SQS."
+        "explanation": "Managed broker maintains protocol that is supported without directly writes again to SQS."
       },
       {
         "key": "D",
         "text": "Keep one unmanaged broker with no backup solely because managed services require total rewrites.",
         "correct": false,
-        "explanation": "Amazon MQ menyediakan opsi kompatibilitas yang justru perlu dievaluasi."
+        "explanation": "Amazon MQ provides option compatibility that instead must be evaluated."
       }
     ],
     "tags": [
@@ -628,25 +628,25 @@
         "key": "A",
         "text": "Always use the largest timeout even for jobs that fail instantly.",
         "correct": false,
-        "explanation": "Ini menunda pemulihan dan mengabaikan variasi durasi."
+        "explanation": "this delays recovery and ignores variation duration."
       },
       {
         "key": "B",
         "text": "Start with a suitable timeout and extend visibility for work that is still progressing, while retaining idempotency and failure handling.",
         "correct": true,
-        "explanation": "Heartbeat visibility memberi waktu pada pekerjaan aktif tanpa menyamakan semua job dengan timeout sangat panjang."
+        "explanation": "Heartbeat visibility gives time on work active without equates all job with timeout very long."
       },
       {
         "key": "C",
         "text": "Assume increasing receive count makes standard queues guarantee no duplicate delivery.",
         "correct": false,
-        "explanation": "At-least-once tetap memerlukan idempotensi."
+        "explanation": "At-least-once remains requires idempotency."
       },
       {
         "key": "D",
         "text": "Delete the message immediately before processing so no retry is ever possible.",
         "correct": false,
-        "explanation": "Crash sesudah delete dapat kehilangan pekerjaan."
+        "explanation": "Crash after delete can loss work."
       }
     ],
     "tags": [
@@ -675,25 +675,25 @@
         "key": "A",
         "text": "Treat a successful Lambda invocation count as proof every record produced its intended effect.",
         "correct": false,
-        "explanation": "Metric invocation tidak membuktikan correctness per record."
+        "explanation": "Invocation metrics do not prove correctness per record."
       },
       {
         "key": "B",
         "text": "Change to a larger batch and guarantee that a poison record becomes valid.",
         "correct": false,
-        "explanation": "Ukuran batch tidak memperbaiki data salah."
+        "explanation": "Size batch not improves data wrong."
       },
       {
         "key": "C",
         "text": "Use supported partial-batch/checkpoint and retry controls, isolate persistent failures, and make processing idempotent.",
         "correct": true,
-        "explanation": "Kontrol failure boundary membantu kemajuan; urutan dan efek duplikat tetap harus dianalisis."
+        "explanation": "Control failure boundary helps progress; order and effect duplicate remains must analyzed."
       },
       {
         "key": "D",
         "text": "Discard the entire stream whenever one record fails validation.",
         "correct": false,
-        "explanation": "Ini kehilangan semua pekerjaan yang sah."
+        "explanation": "this loss all work that valid."
       }
     ],
     "tags": [
@@ -722,25 +722,25 @@
         "key": "A",
         "text": "Increase DNS TTL so clients retain the same failed network path.",
         "correct": false,
-        "explanation": "DNS cache tidak menyediakan konektivitas pengganti."
+        "explanation": "DNS cache does not provide connectivity replacement."
       },
       {
         "key": "B",
         "text": "Double the bandwidth of the existing shared-path connections only.",
         "correct": false,
-        "explanation": "Bandwidth lebih besar tidak menambah keragaman failure domain."
+        "explanation": "Bandwidth larger not adds keragaman failure domain."
       },
       {
         "key": "C",
         "text": "Create a second virtual interface on the same physical connection only.",
         "correct": false,
-        "explanation": "Logical interface tambahan tidak menghilangkan kegagalan lokasi fisik."
+        "explanation": "Logical interface additional does not eliminate failure location physical."
       },
       {
         "key": "D",
         "text": "Use an appropriate redundant design across separate Direct Connect locations and paths, with routing/failover testing.",
         "correct": true,
-        "explanation": "Dua koneksi tidak menghilangkan kegagalan bersama jika lokasi atau jalurnya sama."
+        "explanation": "Two connection does not eliminate failure shared if location or jalurnya same."
       }
     ],
     "tags": [
@@ -769,25 +769,25 @@
         "key": "A",
         "text": "Green CPU metrics prove the recovery time objective is met regardless of failed transactions.",
         "correct": false,
-        "explanation": "RTO mengukur kemampuan layanan pulih, bukan hanya metric infrastruktur."
+        "explanation": "RTO measures capability service recovers, is not just metric infrastructure."
       },
       {
         "key": "B",
         "text": "Recovery validation must include dependencies, configuration, permissions, and representative business transactions, not resource health alone.",
         "correct": true,
-        "explanation": "Resource hidup belum membuktikan layanan dapat menjalankan alur bisnis; dependency perlu diuji."
+        "explanation": "Resource life not yet proves service can run flow business; dependency needs to tested."
       },
       {
         "key": "C",
         "text": "A database restore should automatically update all external integrations and IAM policies.",
         "correct": false,
-        "explanation": "Restore data tidak mengubah semua dependency eksternal."
+        "explanation": "Restore data does not change all dependency external."
       },
       {
         "key": "D",
         "text": "All backups should be deleted because configuration errors imply every backup is corrupt.",
         "correct": false,
-        "explanation": "Masalah konfigurasi perlu diperbaiki tanpa kesimpulan korupsi semua backup."
+        "explanation": "Problem configuration needs to improved without conclusion korupsi all backup."
       }
     ],
     "tags": [
@@ -816,25 +816,25 @@
         "key": "A",
         "text": "A failover routing policy forcibly terminates all client TCP connections and rewrites their cached DNS immediately.",
         "correct": false,
-        "explanation": "Route 53 tidak mengendalikan seluruh koneksi dan cache klien."
+        "explanation": "Route 53 not controls all connection and cache client."
       },
       {
         "key": "B",
         "text": "Setting a high TTL makes cached clients discover changes faster.",
         "correct": false,
-        "explanation": "TTL lebih tinggi biasanya mempertahankan jawaban lebih lama."
+        "explanation": "TTL higher typically maintains answer more long."
       },
       {
         "key": "C",
         "text": "As long as a secondary record exists, data recovery and application capacity are irrelevant.",
         "correct": false,
-        "explanation": "Routing ke endpoint belum menjamin endpoint memiliki data dan kapasitas yang benar."
+        "explanation": "Routing to endpoint not yet guarantees endpoint has data and capacity that correct."
       },
       {
         "key": "D",
         "text": "Health detection, DNS caching, client behavior, and connection recovery all affect observed failover; test the complete path against the target.",
         "correct": true,
-        "explanation": "Record failover tidak memberi jaminan satu detik untuk seluruh cache dan koneksi klien."
+        "explanation": "Record failover not gives guarantee one second for all cache and connection client."
       }
     ],
     "tags": [
@@ -863,25 +863,25 @@
         "key": "A",
         "text": "Replace the retained event stream with only periodic summary objects.",
         "correct": false,
-        "explanation": "Ringkasan tidak mempertahankan payload event yang perlu direplay secara independen."
+        "explanation": "Ringkasan not maintains payload event that needs to direplay independently."
       },
       {
         "key": "B",
         "text": "Use a stream such as Kinesis with independent consumer processing positions and a retention period that covers replay needs.",
         "correct": true,
-        "explanation": "Consumer dapat mengelola kemajuan masing-masing; retention menentukan history yang masih tersedia."
+        "explanation": "Consumer can manage progress each; retention determines history that still available."
       },
       {
         "key": "C",
         "text": "Use one SQS queue with both services as competing consumers and assume each sees every event.",
         "correct": false,
-        "explanation": "Queue bersama membagi pesan dan tidak menyediakan replay log bagi semua consumer."
+        "explanation": "Queue shared divides message and does not provide replay log for all consumer."
       },
       {
         "key": "D",
         "text": "Reset the single shared consumer checkpoint whenever analytics needs replay.",
         "correct": false,
-        "explanation": "Checkpoint bersama menyebabkan pemrosesan fraud terpengaruh replay analytics."
+        "explanation": "Checkpoint shared causes processing fraud terpengaruh replay analytics."
       }
     ],
     "tags": [
@@ -910,25 +910,25 @@
         "key": "A",
         "text": "Vault Lock in compliance mode, with carefully reviewed retention settings and grace-period behavior.",
         "correct": true,
-        "explanation": "Setelah cooling-off selesai, compliance lock membatasi perubahan/penghapusan sesuai ketentuan; salah konfigurasi berdampak serius."
+        "explanation": "After cooling-off completed, compliance lock restricts changes/removal appropriate provisions; wrong configuration berdampak serius."
       },
       {
         "key": "B",
         "text": "Use a vault access policy but retain an unrestricted path for the same administrators to remove the policy and delete recovery points.",
         "correct": false,
-        "explanation": "Policy yang dapat dilepas oleh administrator tersebut tidak memberikan immutability yang diminta."
+        "explanation": "Policy that can detached by administrator that not provides immutability that is requested."
       },
       {
         "key": "C",
         "text": "Set a long backup-plan retention period without preventing an administrator from deleting recovery points early.",
         "correct": false,
-        "explanation": "Retensi rencana saja tidak mencegah deletion berprivilege sebelum waktunya."
+        "explanation": "Retention plan only not prevents deletion privileged before the time."
       },
       {
         "key": "D",
         "text": "Use governance-mode locking while allowing administrators to remove the lock configuration.",
         "correct": false,
-        "explanation": "Persyaratan menghalangi admin setelah cooling-off memerlukan perilaku compliance lock yang sesuai."
+        "explanation": "Requirements menghalangi admin after cooling-off requires behavior compliance lock that appropriate."
       }
     ],
     "tags": [
@@ -957,25 +957,25 @@
         "key": "A",
         "text": "Plan backward-compatible schema evolution and an explicit data-migration/rollback strategy in addition to traffic deployment controls.",
         "correct": true,
-        "explanation": "Routing rollback tidak otomatis membatalkan perubahan data atau menjaga kompatibilitas versi lama."
+        "explanation": "Routing rollback does not automatically cancels changes data or maintains compatibility version long."
       },
       {
         "key": "B",
         "text": "Add more application health checks but leave the old revision incompatible with the migrated schema.",
         "correct": false,
-        "explanation": "Health checks mendeteksi gejala, bukan mengubah kompatibilitas schema."
+        "explanation": "Health checks detects gejala, is not changes compatibility schema."
       },
       {
         "key": "C",
         "text": "Assume blue/green traffic routing makes every database migration automatically reversible.",
         "correct": false,
-        "explanation": "Perubahan skema memiliki lifecycle dan risiko tersendiri."
+        "explanation": "Changes schema has lifecycle and risk separate."
       },
       {
         "key": "D",
         "text": "Keep independent application environments but let either version perform arbitrary destructive schema changes during traffic shifting.",
         "correct": false,
-        "explanation": "Environment compute terpisah tetap berbagi data; perubahan schema harus kompatibel atau dipulihkan secara terencana."
+        "explanation": "Environment compute separate remains shares data; changes schema must compatible or dipulihkan in a manner planned."
       }
     ],
     "tags": [
@@ -1004,25 +1004,25 @@
         "key": "A",
         "text": "Retry cache reads at a fixed short interval from every client without jitter or a retry budget.",
         "correct": false,
-        "explanation": "Pola ini dapat mempertahankan retry storm dan tidak memberi fallback terkontrol."
+        "explanation": "Pattern this can maintains retry storm and does not give fallback controlled."
       },
       {
         "key": "B",
         "text": "Queue all requests indefinitely behind cache recovery, even though the source database is available.",
         "correct": false,
-        "explanation": "Ini menghilangkan kemampuan degradasi yang dapat memenuhi layanan dengan latency sedikit lebih tinggi."
+        "explanation": "this eliminates capability degradasi that can meet service with latency few higher."
       },
       {
         "key": "C",
         "text": "Immediately send every cache miss and retry to the database with no concurrency limit.",
         "correct": false,
-        "explanation": "Fallback tak terbatas dapat menimbulkan surge yang dilarang requirement."
+        "explanation": "Fallback tak limited can causes surge that prohibited requirement."
       },
       {
         "key": "D",
         "text": "Implement bounded cache-error fallback to the source with concurrency protection, timeouts, and recovery monitoring.",
         "correct": true,
-        "explanation": "Fallback mempertahankan fungsi saat cache gagal; pembatasan mencegah database dibanjiri."
+        "explanation": "Fallback maintains function when cache fails; restriction prevents database dibanjiri."
       }
     ],
     "tags": [
@@ -1051,25 +1051,25 @@
         "key": "A",
         "text": "Set a low DNS TTL and treat faster endpoint switching as proof that all commits reached the other Region.",
         "correct": false,
-        "explanation": "DNS mempercepat discovery endpoint, bukan menyelesaikan replikasi transaksi."
+        "explanation": "DNS accelerates discovery endpoint, is not solves replication transaction."
       },
       {
         "key": "B",
         "text": "Review asynchronous replication behavior, lag and supported recovery controls against the requirement; do not equate regional replicas with an unconditional zero-RPO guarantee.",
         "correct": true,
-        "explanation": "Replikasi lintas Region perlu dianalisis terhadap data yang belum sampai; target bisnis bukan otomatis jaminan produk."
+        "explanation": "Replication across Regions needs to analyzed against data that not yet until; target business does not automatically guarantee product."
       },
       {
         "key": "C",
         "text": "Promise zero data loss because any service named Global synchronously commits to every Region.",
         "correct": false,
-        "explanation": "Nama global tidak membuktikan mode commit sinkron di semua Region."
+        "explanation": "Name global does not prove mode commit synchronous in all Region."
       },
       {
         "key": "D",
         "text": "Add more read replicas within the primary Region and regard this as a cross-Region zero-loss guarantee.",
         "correct": false,
-        "explanation": "Replica regional tidak mengubah jaminan durability cross-Region untuk semua skenario failure."
+        "explanation": "Replica regional does not change guarantee durability cross-Region for all scenario failure."
       }
     ],
     "tags": [
@@ -1098,25 +1098,25 @@
         "key": "A",
         "text": "Assume last-writer-wins reconciliation automatically preserves every decrement without conflicts.",
         "correct": false,
-        "explanation": "Rekonsiliasi nilai bukan jaminan konservasi seluruh operasi counter bisnis."
+        "explanation": "Rekonsiliasi value does not guarantee konservasi all operation counter business."
       },
       {
         "key": "B",
         "text": "Assign a different client token per Region and assume this prevents two Regions from decrementing the same last item.",
         "correct": false,
-        "explanation": "Token terpisah tidak mengoordinasikan invariant stok global."
+        "explanation": "Token separate not mengoordinasikan invariant stok global."
       },
       {
         "key": "C",
         "text": "Use a strongly consistent local read in each Region and assume the two local write decisions are globally serialized.",
         "correct": false,
-        "explanation": "Konsistensi lokal tidak membuat conditional write antar Region MREC menjadi satu keputusan serial global."
+        "explanation": "Consistency local not creates conditional write between Regions MREC becomes one decision serial global."
       },
       {
         "key": "D",
         "text": "Redesign conflict/ownership semantics or choose a suitable consistency model; regional conditional success alone is not a globally serialized inventory guarantee in MREC.",
         "correct": true,
-        "explanation": "Mode MREC memiliki replikasi dan resolusi konflik; constraint bisnis perlu model write yang sesuai."
+        "explanation": "Mode MREC has replication and resolution konflik; constraint business needs to model write that appropriate."
       }
     ],
     "tags": [
@@ -1145,31 +1145,31 @@
         "key": "A",
         "text": "Backups and point-in-time recovery with a tested restore-and-cutover procedure.",
         "correct": true,
-        "explanation": "PITR menyediakan state historis sebelum drop; restore biasanya menghasilkan target pemulihan tersendiri."
+        "explanation": "PITR provides state historical before drop; restore typically produces target recovery separate."
       },
       {
         "key": "B",
         "text": "Only Multi-AZ, because the standby permanently rejects every accidental table drop.",
         "correct": false,
-        "explanation": "Perubahan SQL yang valid dapat direplikasi ke standby."
+        "explanation": "Changes SQL that valid can replicated to standby."
       },
       {
         "key": "C",
         "text": "A supported Multi-AZ availability deployment for infrastructure failover.",
         "correct": true,
-        "explanation": "Multi-AZ menyasar kegagalan instance/AZ dan jalur failover."
+        "explanation": "Multi-AZ targets failure instance/AZ and path failover."
       },
       {
         "key": "D",
         "text": "Only asynchronous read replicas, without a managed availability deployment or historical recovery procedure.",
         "correct": false,
-        "explanation": "Read scaling/replikasi saja tidak memenuhi kedua mekanisme pemulihan yang diminta."
+        "explanation": "Read scaling/replication only not meets both mechanism recovery that is requested."
       },
       {
         "key": "E",
         "text": "Only daily snapshots, with no automatic availability deployment.",
         "correct": false,
-        "explanation": "Snapshot membantu recovery data, tetapi tidak menyediakan failover AZ otomatis yang diminta."
+        "explanation": "Snapshot helps recovery data, but does not provide failover AZ automatically that is requested."
       }
     ],
     "tags": [
@@ -1198,25 +1198,25 @@
         "key": "A",
         "text": "Increase archive retention but leave replay routing and consumer side effects unchanged.",
         "correct": false,
-        "explanation": "Retensi menambah jangkauan replay, bukan membatasi efek yang dipicu ulang."
+        "explanation": "Retention adds jangkauan replay, is not restricts effect that dipicu again."
       },
       {
         "key": "B",
         "text": "Send replay events to every original rule and generate a new payment identifier for each delivery.",
         "correct": false,
-        "explanation": "Identifier baru menghindari deduplikasi bisnis dan dapat mengulang charge yang tidak diminta."
+        "explanation": "Identifier new avoids deduplication business and can repeats charge that not requested."
       },
       {
         "key": "C",
         "text": "Replay into every original consumer blindly and assume replay events are automatically harmless.",
         "correct": false,
-        "explanation": "Consumer lain dapat menjalankan tindakan lagi jika tidak dilindungi."
+        "explanation": "Consumer other can run action again otherwise protected."
       },
       {
         "key": "D",
         "text": "Control replay routing/consumer behavior and use idempotency so only intended reprocessing occurs without repeating external effects.",
         "correct": true,
-        "explanation": "Replay mengirim event kembali; destination dan efek samping harus dirancang agar tidak memicu tindakan bisnis ulang."
+        "explanation": "Replay sends event back; destination and effect side must designed so that not triggers action business again."
       }
     ],
     "tags": [
@@ -1245,25 +1245,25 @@
         "key": "A",
         "text": "Validate DNS, routes, security rules, identity, licensing, and end-to-end transactions in the target environment before approving cutover.",
         "correct": true,
-        "explanation": "Boot dan replikasi tidak membuktikan dependency aplikasi tersedia; test launch perlu memvalidasi fungsi bisnis serta jalur kembali."
+        "explanation": "Boot and replication does not prove dependency application available; test launch needs to memvalidasi function business and path back."
       },
       {
         "key": "B",
         "text": "Reduce the source replication interval and skip application testing once the lag is low.",
         "correct": false,
-        "explanation": "Lag rendah tidak memperbaiki DNS, izin, route, atau ketersediaan layanan eksternal."
+        "explanation": "Lag low not improves DNS, permissions, route, or availability service external."
       },
       {
         "key": "C",
         "text": "Replace server replication with DMS while leaving directory and licensing connectivity unchanged.",
         "correct": false,
-        "explanation": "DMS memigrasikan data database yang didukung, bukan mengatasi dependency server ini."
+        "explanation": "DMS memigrasikan data database that is supported, is not overcomes dependency server this."
       },
       {
         "key": "D",
         "text": "Approve cutover immediately because successful boot guarantees every application dependency is replicated with the OS disk.",
         "correct": false,
-        "explanation": "Dependency eksternal tidak otomatis ikut berpindah bersama disk server."
+        "explanation": "Dependency external does not automatically also moves shared disk server."
       }
     ],
     "tags": [
@@ -1292,25 +1292,25 @@
         "key": "A",
         "text": "Keep each SFTP connection open until the entire downstream workflow completes and discard incomplete sessions.",
         "correct": false,
-        "explanation": "Coupling session dan processing memperbesar risiko saat downstream berhenti."
+        "explanation": "Coupling session and processing increases risk when downstream stops."
       },
       {
         "key": "B",
         "text": "Use Transfer Family backed by S3, and trigger buffered/idempotent processing from durable stored objects.",
         "correct": true,
-        "explanation": "Upload diselesaikan ke storage durabel; processing dipisahkan sehingga outage consumer tidak memaksa upload ulang."
+        "explanation": "Upload resolved to storage durable; processing separated so that outage consumer not forces upload again."
       },
       {
         "key": "C",
         "text": "Write uploads to temporary processing storage and delete them immediately after sending a non-durable notification.",
         "correct": false,
-        "explanation": "Durabilitas dan kemampuan pemrosesan setelah outage tidak terjamin."
+        "explanation": "Durability and capability processing after outage not guaranteed."
       },
       {
         "key": "D",
         "text": "Require partners to replace SFTP clients with a synchronous custom HTTPS API that waits for processing.",
         "correct": false,
-        "explanation": "Ini melanggar kompatibilitas client dan mempertahankan coupling dengan downstream."
+        "explanation": "this violates compatibility client and maintains coupling with downstream."
       }
     ],
     "tags": [
@@ -1339,25 +1339,25 @@
         "key": "A",
         "text": "Register instances as healthy before initialization and retry failed user requests until initialization finishes.",
         "correct": false,
-        "explanation": "Pengguna menerima trafik ke instance yang belum siap."
+        "explanation": "User receives traffic to instance that not yet ready."
       },
       {
         "key": "B",
         "text": "Increase only the health-check grace period and assume it prevents all load-balancer traffic before readiness.",
         "correct": false,
-        "explanation": "Grace period Auto Scaling tidak dengan sendirinya menjadi kontrol admission traffic berdasarkan readiness aplikasi."
+        "explanation": "Grace period Auto Scaling not with itself becomes control admission traffic based on readiness application."
       },
       {
         "key": "C",
         "text": "Use suitable lifecycle/readiness controls and target health checks, with bounded failure handling for initialization.",
         "correct": true,
-        "explanation": "Instance tidak boleh dianggap siap hanya karena proses launch selesai; readiness dan timeout perlu dibatasi."
+        "explanation": "Instance not may considered ready only because process launch completed; readiness and timeout needs to restricted."
       },
       {
         "key": "D",
         "text": "Use a fixed short startup delay independent of model-loading time and then force every target healthy.",
         "correct": false,
-        "explanation": "Durasi startup berubah, sehingga timer pendek tetap dapat membuka trafik terlalu dini."
+        "explanation": "Duration startup changes, so that timer short remains can opens traffic too dini."
       }
     ],
     "tags": [
@@ -1386,25 +1386,25 @@
         "key": "A",
         "text": "Increase only the queue visibility timeout while object retention remains shorter than all delays.",
         "correct": false,
-        "explanation": "Visibility tidak memperpanjang umur objek S3."
+        "explanation": "Visibility not extends age object S3."
       },
       {
         "key": "B",
         "text": "Retain and authorize payload objects for the full processing/retry window, and clean them up only according to verified completion and retention policy.",
         "correct": true,
-        "explanation": "Durabilitas queue saja tidak menjaga objek yang dirujuk; lifecycle dua komponen harus selaras."
+        "explanation": "Durability queue only not maintains object that dirujuk; lifecycle two component must selaras."
       },
       {
         "key": "C",
         "text": "Use a short-lived presigned URL as the permanent reference and assume it never expires in a DLQ.",
         "correct": false,
-        "explanation": "URL dapat kedaluwarsa sebelum retry; referensi dan otorisasi perlu dirancang ulang."
+        "explanation": "URL can expired before retry; reference and authorization needs to designed again."
       },
       {
         "key": "D",
         "text": "Delete every S3 object immediately after sending its reference to SQS.",
         "correct": false,
-        "explanation": "Consumer belum tentu sudah mengambil payload."
+        "explanation": "Consumer does not necessarily already takes payload."
       }
     ],
     "tags": [
@@ -1433,25 +1433,25 @@
         "key": "A",
         "text": "Keep the workflow state only in the approver browser and restart automated steps after the tab reconnects.",
         "correct": false,
-        "explanation": "Browser bukan penyimpanan state durabel untuk workflow berhari-hari."
+        "explanation": "Browser is not storage state durable for workflow berhari-hari."
       },
       {
         "key": "B",
         "text": "Use a suitable Step Functions Standard workflow with a callback/task-token integration and appropriate timeouts.",
         "correct": true,
-        "explanation": "Workflow dapat menunggu callback secara durabel tanpa mempertahankan worker aktif selama seluruh penantian."
+        "explanation": "Workflow can waits callback in a manner durable without maintains worker active while all penantian."
       },
       {
         "key": "C",
         "text": "Treat an approval timeout as approval and continue without a persisted human decision.",
         "correct": false,
-        "explanation": "Timeout tidak memenuhi persyaratan persetujuan manusia."
+        "explanation": "Timeout not meets requirements approval manusia."
       },
       {
         "key": "D",
         "text": "Use a Step Functions Express execution as the three-day waiting container.",
         "correct": false,
-        "explanation": "Durasi dan integration support Express tidak sesuai penantian callback panjang ini."
+        "explanation": "Duration and integration support Express not appropriate penantian callback long this."
       }
     ],
     "tags": [
@@ -1480,25 +1480,25 @@
         "key": "A",
         "text": "Increase provisioned concurrency indefinitely and ignore database connection capacity.",
         "correct": false,
-        "explanation": "Pre-initialization bukan alasan mengabaikan kapasitas downstream atau quota."
+        "explanation": "Pre-initialization is not reason ignores capacity downstream or quota."
       },
       {
         "key": "B",
         "text": "Set suitable reserved concurrency for the critical function, accounting for account quota and database capacity.",
         "correct": true,
-        "explanation": "Reserved concurrency mengalokasikan sekaligus membatasi concurrency fungsi; angka harus sesuai dependency."
+        "explanation": "Reserved concurrency allocates simultaneously restricts concurrency function; number must appropriate dependency."
       },
       {
         "key": "C",
         "text": "Increase the account concurrency quota but leave both functions unrestricted against the same database.",
         "correct": false,
-        "explanation": "Kuota lebih besar tidak menjamin alokasi critical API dan dapat melampaui kapasitas DB."
+        "explanation": "Quota larger does not guarantee allocation critical API and can goes beyond capacity DB."
       },
       {
         "key": "D",
         "text": "Set only a larger client timeout without allocating concurrency to the critical function.",
         "correct": false,
-        "explanation": "Timeout tidak mencadangkan slot eksekusi atau melindungi database."
+        "explanation": "Timeout not backs up slot execution or protects database."
       }
     ],
     "tags": [
@@ -1527,25 +1527,25 @@
         "key": "A",
         "text": "Increase consumer concurrency whenever throttling rises, without limiting outbound request rate.",
         "correct": false,
-        "explanation": "Respons ini memperbesar beban saat dependency sudah membatasi traffic."
+        "explanation": "Response this increases load when dependency already restricts traffic."
       },
       {
         "key": "B",
         "text": "Use bounded exponential backoff with jitter and concurrency/rate controls, then route persistent failures for later handling.",
         "correct": true,
-        "explanation": "Jitter menyebarkan retry dan pembatasan melindungi dependency; retry harus memiliki budget dan observability."
+        "explanation": "Jitter distributes retry and restriction protects dependency; retry must have budget and observability."
       },
       {
         "key": "C",
         "text": "Use the same fixed retry delay for all workers without a cap on concurrent retries.",
         "correct": false,
-        "explanation": "Fixed delay yang sama dapat mempertahankan lockstep dan kembali membebani dependency."
+        "explanation": "Fixed delay that same can maintains lockstep and back burdens dependency."
       },
       {
         "key": "D",
         "text": "Retry immediately with no limit from every worker until the provider recovers.",
         "correct": false,
-        "explanation": "Retry storm dapat memperburuk overload."
+        "explanation": "Retry storm can worsens overload."
       }
     ],
     "tags": [
@@ -1574,25 +1574,25 @@
         "key": "A",
         "text": "Compare every object sequencer against one global maximum for the whole bucket.",
         "correct": false,
-        "explanation": "Sequencer tidak dapat dibandingkan untuk menentukan urutan event pada key berbeda."
+        "explanation": "Sequencer cannot compared with for determines order event on key different."
       },
       {
         "key": "B",
         "text": "Use the time at which the consumer receives each notification as the authoritative order of object changes.",
         "correct": false,
-        "explanation": "Waktu penerimaan mencerminkan keterlambatan delivery, bukan urutan perubahan sumber."
+        "explanation": "Time receipt reflects delay delivery, is not order changes source."
       },
       {
         "key": "C",
         "text": "Track the latest processed sequencer for each object key and atomically reject older or duplicate updates, following the documented comparison rules.",
         "correct": true,
-        "explanation": "Penyimpanan state per key dan conditional update mencegah event lama menggantikan state baru; sequencer tidak memberi urutan lintas key."
+        "explanation": "Storage state per key and conditional update prevents event long replaces state new; sequencer not gives order across key."
       },
       {
         "key": "D",
         "text": "Increase queue retention and process every arriving event unconditionally in arrival order.",
         "correct": false,
-        "explanation": "Retention membantu replay, tetapi tidak mengoreksi event yang sudah datang di luar urutan."
+        "explanation": "Retention helps replay, but not corrects event that already arrives in outside order."
       }
     ],
     "tags": [

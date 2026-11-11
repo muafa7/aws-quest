@@ -11,25 +11,25 @@
         "key": "A",
         "text": "Amazon EBS st1 volumes sized for the same capacity",
         "correct": false,
-        "explanation": "st1 berorientasi throughput HDD untuk akses sekuensial, bukan pilihan utama untuk random I/O transaksi yang sangat sensitif terhadap latensi."
+        "explanation": "st1 oriented throughput HDD for access sekuensial, is not the primary choice for random I/O transaction that very sensitive against latency."
       },
       {
         "key": "B",
         "text": "EC2 instance store volumes with no external replication",
         "correct": false,
-        "explanation": "Instance store dapat cepat, tetapi tidak memenuhi kebutuhan data persisten ketika instance dihentikan atau perangkat gagal."
+        "explanation": "Instance store can fast, but not meets requirements data persistent when instances stopped or device fails."
       },
       {
         "key": "C",
         "text": "Amazon S3 Standard accessed through a file-system adapter",
         "correct": false,
-        "explanation": "Adapter tidak mengubah object storage menjadi pengganti block device database dengan karakteristik I/O yang diminta."
+        "explanation": "Adapter does not change object storage becomes replacement block device database with characteristics I/O that is requested."
       },
       {
         "key": "D",
         "text": "Amazon EBS io2 Block Express volumes on compatible EC2 instances",
         "correct": true,
-        "explanation": "io2 Block Express menyediakan block storage dengan provisioned IOPS untuk beban transaksi yang sensitif terhadap latensi. Kompatibilitas dan kemampuan instance tetap harus diperiksa."
+        "explanation": "io2 Block Express provides block storage with provisioned IOPS for load transaction that sensitive against latency. Compatibility and capability instance remains must checked."
       }
     ],
     "tags": [
@@ -55,25 +55,25 @@
         "key": "A",
         "text": "Amazon FSx for Lustre linked to the S3 dataset",
         "correct": true,
-        "explanation": "FSx for Lustre ditujukan untuk parallel file processing berperforma tinggi dan dapat menghubungkan file system dengan dataset S3."
+        "explanation": "FSx for Lustre intended for parallel file processing performant high and can connect file system with dataset S3."
       },
       {
         "key": "B",
         "text": "Amazon S3 File Gateway with its cache hosted on a small gateway instance",
         "correct": false,
-        "explanation": "File Gateway ditujukan untuk akses file hybrid dengan cache lokal; bukan parallel file system HPC yang diprioritaskan di sini."
+        "explanation": "File Gateway intended for access file hybrid with cache local; is not parallel file system HPC that prioritized in sini."
       },
       {
         "key": "C",
         "text": "One EBS volume attached to a file-server instance used by the entire cluster",
         "correct": false,
-        "explanation": "File server tunggal menambah administrasi dan dapat menjadi bottleneck; opsi ini tidak menyediakan kemampuan parallel managed file system yang diminta."
+        "explanation": "File server single adds administration and can becomes bottleneck; this option does not provide capability parallel managed file system that is requested."
       },
       {
         "key": "D",
         "text": "Amazon EFS selected only because it supports NFS",
         "correct": false,
-        "explanation": "EFS menyediakan shared file storage, tetapi kebutuhan parallel HPC dan integrasi dataset S3 pada soal lebih spesifik cocok dengan FSx for Lustre."
+        "explanation": "EFS provides shared file storage, but requirements parallel HPC and integration dataset S3 on question more specific suitable with FSx for Lustre."
       }
     ],
     "tags": [
@@ -99,25 +99,25 @@
         "key": "A",
         "text": "Amazon FSx for Windows File Server",
         "correct": true,
-        "explanation": "Layanan ini menyediakan Windows file shares melalui SMB dan integrasi Active Directory untuk izin file Windows."
+        "explanation": "This service provides Windows file shares through SMB and integration Active Directory for permissions file Windows."
       },
       {
         "key": "B",
         "text": "Amazon S3 exposed directly to the application as object URLs",
         "correct": false,
-        "explanation": "Object URLs bukan SMB shares dan mengharuskan perubahan pola akses aplikasi."
+        "explanation": "Object URLs is not SMB shares and requires changes pattern access application."
       },
       {
         "key": "C",
         "text": "Amazon EFS with an NFS mount target for each server",
         "correct": false,
-        "explanation": "EFS menggunakan NFS; aplikasi yang tetap membutuhkan SMB dan Windows ACL tidak cocok dengan opsi ini tanpa perubahan tambahan."
+        "explanation": "EFS uses NFS; application that remains requires SMB and Windows ACL is not suitable with this option without changes additional."
       },
       {
         "key": "D",
         "text": "Amazon FSx for Lustre with an S3 data repository association",
         "correct": false,
-        "explanation": "Lustre berfokus pada parallel Linux/HPC, bukan Windows SMB dan Windows ACL pada soal."
+        "explanation": "Lustre focuses on parallel Linux/HPC, is not Windows SMB and Windows ACL on question."
       }
     ],
     "tags": [
@@ -143,25 +143,25 @@
         "key": "A",
         "text": "Use S3 multipart upload and retry only failed parts before completing the upload",
         "correct": true,
-        "explanation": "Multipart memungkinkan bagian diunggah paralel dan bagian gagal diulang tanpa mengirim ulang seluruh objek."
+        "explanation": "Multipart enables part uploaded parallel and part fails repeated without sends again all object."
       },
       {
         "key": "B",
         "text": "Enable Cross-Region Replication before the client uploads the object",
         "correct": false,
-        "explanation": "Replication bekerja setelah data tersedia untuk direplikasi; bukan mekanisme upload client yang dapat dilanjutkan per bagian."
+        "explanation": "Replication works after data available for replicated; is not mechanism upload client that can continued per part."
       },
       {
         "key": "C",
         "text": "Use a single PUT request and increase the object retention period",
         "correct": false,
-        "explanation": "Retention mengatur penyimpanan, bukan pemulihan bagian transfer yang gagal."
+        "explanation": "Retention manages storage, is not recovery part transfer that fails."
       },
       {
         "key": "D",
         "text": "Enable S3 Versioning and repeat the entire single-request upload on each failure",
         "correct": false,
-        "explanation": "Versioning melindungi versi objek, tetapi tidak menghindari pengulangan seluruh request upload."
+        "explanation": "Versioning protects version object, but not avoids repetition all request upload."
       }
     ],
     "tags": [
@@ -187,25 +187,25 @@
         "key": "A",
         "text": "Mount S3 File Gateway and assume it will automatically discover and migrate the existing NFS server",
         "correct": false,
-        "explanation": "File Gateway menyediakan file shares tersendiri; memasangnya bukan task migrasi otomatis seluruh server NFS yang sudah ada."
+        "explanation": "File Gateway provides file shares separate; memasangnya is not task migration automatically all server NFS that already exists."
       },
       {
         "key": "B",
         "text": "Configure an AWS DataSync task between the NFS location and S3",
         "correct": true,
-        "explanation": "DataSync dirancang untuk transfer data, termasuk task terjadwal dan verifikasi sesuai opsi yang dipilih."
+        "explanation": "DataSync designed for transfer data, including task scheduled and verification appropriate option that chosen."
       },
       {
         "key": "C",
         "text": "Use AWS DMS to copy the NFS directory tree as database tables",
         "correct": false,
-        "explanation": "DMS ditujukan untuk migrasi database, bukan transfer file tree NFS umum ke S3."
+        "explanation": "DMS intended for migration database, is not transfer file tree NFS general to S3."
       },
       {
         "key": "D",
         "text": "Enable S3 Cross-Region Replication with the NFS server as its source",
         "correct": false,
-        "explanation": "S3 replication bekerja antara sumber dan tujuan S3 yang didukung, bukan server NFS sebagai bucket sumber."
+        "explanation": "S3 replication works between source and destination S3 that is supported, is not server NFS as bucket source."
       }
     ],
     "tags": [
@@ -231,25 +231,25 @@
         "key": "A",
         "text": "Deploy Amazon S3 File Gateway and configure an SMB file share",
         "correct": true,
-        "explanation": "File Gateway mempertahankan antarmuka file untuk aplikasi lokal sambil menyimpan data sebagai objek S3 dan menyediakan cache lokal."
+        "explanation": "File Gateway maintains interface file for applications local while stores data as object S3 and provides cache local."
       },
       {
         "key": "B",
         "text": "Schedule AWS DataSync every night and point the application at its task ARN",
         "correct": false,
-        "explanation": "DataSync memindahkan data; task ARN bukan SMB share yang dapat digunakan aplikasi."
+        "explanation": "DataSync moves data; task ARN is not SMB share that can be used application."
       },
       {
         "key": "C",
         "text": "Enable an S3 gateway VPC endpoint in the AWS VPC and mount it from the application as a share",
         "correct": false,
-        "explanation": "Gateway endpoint menyediakan rute privat ke S3 bagi jaringan VPC yang sesuai, bukan file server SMB atau cache on-premises."
+        "explanation": "Gateway endpoint provides route private to S3 for network VPC that appropriate, is not file server SMB or cache on-premises."
       },
       {
         "key": "D",
         "text": "Configure S3 Transfer Acceleration and use the accelerated endpoint as an SMB server",
         "correct": false,
-        "explanation": "Transfer Acceleration mengoptimalkan transfer ke endpoint S3, bukan menyediakan protokol SMB."
+        "explanation": "Transfer Acceleration optimizes transfer to endpoint S3, is not provides protocol SMB."
       }
     ],
     "tags": [
@@ -275,25 +275,25 @@
         "key": "A",
         "text": "Add scheduled scaling to increase ready capacity before 09:00, while retaining target tracking for demand changes",
         "correct": true,
-        "explanation": "Scheduled scaling mengantisipasi waktu lonjakan dan startup delay; target tracking masih berguna untuk penyesuaian setelahnya."
+        "explanation": "Scheduled scaling anticipates time spike and startup delay; target tracking still useful for adjustment afterwards."
       },
       {
         "key": "B",
         "text": "Set a longer scale-out cooldown so scaling decisions are less frequent",
         "correct": false,
-        "explanation": "Menunda penambahan kapasitas justru tidak menyelesaikan keterlambatan startup."
+        "explanation": "Delays addition capacity instead does not solve delay startup."
       },
       {
         "key": "C",
         "text": "Retain the current desired capacity and scale only after average CPU remains high for an hour",
         "correct": false,
-        "explanation": "Respons yang lebih lambat memperpanjang kekurangan kapasitas pada awal lonjakan."
+        "explanation": "Response that slower extends shortage capacity on initial spike."
       },
       {
         "key": "D",
         "text": "Decrease the health-check interval without changing desired capacity",
         "correct": false,
-        "explanation": "Pemeriksaan lebih sering tidak menyiapkan kapasitas sebelum beban datang."
+        "explanation": "Inspection more frequently not prepares capacity before load arrives."
       }
     ],
     "tags": [
@@ -319,25 +319,25 @@
         "key": "A",
         "text": "Use a partition placement group to maximize hardware separation between communicating nodes",
         "correct": false,
-        "explanation": "Partition membantu distribusi fault domain, bukan tujuan utama latensi antar-node paling rendah."
+        "explanation": "Partition helps distribution fault domain, is not destination primary latency between nodes lowest."
       },
       {
         "key": "B",
         "text": "Place each worker in a different Region and connect the VPCs",
         "correct": false,
-        "explanation": "Jarak lintas Region bertentangan dengan kebutuhan komunikasi berlatensi sangat rendah."
+        "explanation": "Distance across Regions conflicts with requirements communication berlatensi very low."
       },
       {
         "key": "C",
         "text": "Use a spread placement group across multiple Availability Zones",
         "correct": false,
-        "explanation": "Spread meningkatkan pemisahan perangkat dan fault isolation, bukan kedekatan jaringan maksimal untuk job ini."
+        "explanation": "Spread increases separation device and fault isolation, is not proximity network maximum for job this."
       },
       {
         "key": "D",
         "text": "Use a cluster placement group with compatible instance types in one Availability Zone",
         "correct": true,
-        "explanation": "Cluster placement mengelompokkan instance untuk meningkatkan karakteristik jaringan workload tightly coupled dalam satu AZ."
+        "explanation": "Cluster placement groups instance to improve characteristics network workload tightly coupled in a single AZ."
       }
     ],
     "tags": [
@@ -363,25 +363,25 @@
         "key": "A",
         "text": "Configure provisioned concurrency for the version or alias that receives the requests",
         "correct": true,
-        "explanation": "Provisioned concurrency menyiapkan environment sebelum invocation sehingga mengurangi latensi inisialisasi untuk kapasitas yang disediakan."
+        "explanation": "Provisioned concurrency prepares environment before invocation so that reduces latency initialization for capacity that disediakan."
       },
       {
         "key": "B",
         "text": "Increase the function timeout while leaving initialization unchanged",
         "correct": false,
-        "explanation": "Timeout yang lebih panjang tidak mengurangi waktu tunggu pengguna akibat inisialisasi."
+        "explanation": "Timeout that more long not reduces wait time user consequence initialization."
       },
       {
         "key": "C",
         "text": "Increase asynchronous retry attempts for this synchronous API",
         "correct": false,
-        "explanation": "Retry asynchronous tidak menyelesaikan cold initialization pada jalur request sinkron."
+        "explanation": "Retry asynchronous does not solve cold initialization on path request synchronous."
       },
       {
         "key": "D",
         "text": "Configure only reserved concurrency for the function",
         "correct": false,
-        "explanation": "Reserved concurrency mencadangkan dan membatasi concurrency, tetapi tidak dengan sendirinya memanaskan execution environment."
+        "explanation": "Reserved concurrency backs up and restricts concurrency, but not with itself memanaskan execution environment."
       }
     ],
     "tags": [
@@ -407,25 +407,25 @@
         "key": "A",
         "text": "Run the entire program in one standard Lambda invocation with a two-hour timeout",
         "correct": false,
-        "explanation": "Invocation Lambda biasa tidak mendukung timeout dua jam; mengganti nilai timeout tidak menghapus batas layanan."
+        "explanation": "Invocation Lambda ordinary does not support timeout two hour; replaces value timeout not deletes limit service."
       },
       {
         "key": "B",
         "text": "Run each job as an Amazon ECS task on AWS Fargate",
         "correct": true,
-        "explanation": "Fargate menjalankan container tanpa pengguna mengelola host EC2 dan cocok untuk job yang lebih panjang daripada invocation Lambda biasa."
+        "explanation": "Fargate runs container without user manages host EC2 and suitable for job that more long rather than invocation Lambda ordinary."
       },
       {
         "key": "C",
         "text": "Run the program inside an API Gateway integration and keep the HTTP request open",
         "correct": false,
-        "explanation": "API Gateway bukan runtime umum untuk proses container dua jam; memegang request bukan orkestrasi batch yang tepat."
+        "explanation": "API Gateway is not runtime general for process container two hour; memegang request is not orchestration batch that appropriate."
       },
       {
         "key": "D",
         "text": "Configure Step Functions to execute the container code directly without a compute service",
         "correct": false,
-        "explanation": "Step Functions mengorkestrasi task; layanan tersebut tidak mengeksekusi kode container tanpa layanan compute terkait."
+        "explanation": "Step Functions orchestrates task; service that not executes code container without service compute related."
       }
     ],
     "tags": [
@@ -451,25 +451,25 @@
         "key": "A",
         "text": "AWS Batch with an EC2 compute environment using supported GPU instance types",
         "correct": true,
-        "explanation": "Batch mengatur antrean/scheduling, sedangkan compute environment EC2 dapat menyediakan hardware GPU yang dibutuhkan."
+        "explanation": "Batch manages queue/scheduling, whereas compute environment EC2 can provide hardware GPU that is required."
       },
       {
         "key": "B",
         "text": "An ECS service on Fargate with a larger memory reservation",
         "correct": false,
-        "explanation": "Memori lebih besar bukan pengganti dukungan hardware GPU."
+        "explanation": "Memory larger is not a substitute for support hardware GPU."
       },
       {
         "key": "C",
         "text": "AWS Batch with a Fargate compute environment and a GPU requirement in every job",
         "correct": false,
-        "explanation": "Fargate tidak menyediakan GPU untuk kebutuhan Batch ini; menambahkan deklarasi GPU tidak membuat hardware tersedia."
+        "explanation": "Fargate does not provide GPU for requirements Batch this; adds deklarasi GPU not creates hardware available."
       },
       {
         "key": "D",
         "text": "A standard Lambda function with additional ephemeral storage instead of a GPU",
         "correct": false,
-        "explanation": "Ephemeral storage menambah ruang disk, bukan akselerator GPU."
+        "explanation": "Ephemeral storage adds space disk, is not akselerator GPU."
       }
     ],
     "tags": [
@@ -495,31 +495,31 @@
         "key": "A",
         "text": "Purchase a three-year commitment for the existing size before measuring the workload",
         "correct": false,
-        "explanation": "Komitmen sebelum evaluasi dapat mengunci biaya konfigurasi yang tidak sesuai."
+        "explanation": "Commitment before evaluation can locks cost configuration that not appropriate."
       },
       {
         "key": "B",
         "text": "Evaluate a memory-optimized instance family using the actual application workload",
         "correct": true,
-        "explanation": "Family memory-optimized sesuai hipotesis bottleneck RAM, tetapi harus diuji dengan workload nyata."
+        "explanation": "Family memory-optimized appropriate hipotesis bottleneck RAM, but must tested with workload real."
       },
       {
         "key": "C",
         "text": "Collect representative memory and performance metrics, including peak periods",
         "correct": true,
-        "explanation": "Data yang mencakup puncak dibutuhkan agar rekomendasi tidak hanya didasarkan pada CPU rata-rata."
+        "explanation": "Data that includes puncak required so that recommendation not only didasarkan on CPU average."
       },
       {
         "key": "D",
         "text": "Move to a compute-optimized instance solely because CPU utilization is low",
         "correct": false,
-        "explanation": "CPU rendah tidak menunjukkan kebutuhan CPU lebih tinggi; rasio memori justru menjadi fokus masalah."
+        "explanation": "CPU low not shows requirements CPU higher; ratio memory instead becomes focus problem."
       },
       {
         "key": "E",
         "text": "Reduce memory because low CPU always means the entire instance is oversized",
         "correct": false,
-        "explanation": "Bottleneck memori dapat terjadi ketika CPU rendah; metrik satu dimensi tidak cukup."
+        "explanation": "Bottleneck memory can occurs when CPU low; metrics one dimension is not sufficient to."
       }
     ],
     "tags": [
@@ -545,25 +545,25 @@
         "key": "A",
         "text": "Increase automated-backup retention to distribute read queries across backup copies",
         "correct": false,
-        "explanation": "Backup bukan endpoint query aktif untuk membagi beban aplikasi."
+        "explanation": "Backup is not endpoint query active for divides load application."
       },
       {
         "key": "B",
         "text": "Convert to a Multi-AZ DB instance with one standby and send catalog queries to that standby",
         "correct": false,
-        "explanation": "Standby dari deployment ini tidak melayani read traffic; manfaatnya availability, bukan read scaling."
+        "explanation": "Standby from deployment this does not serves read traffic; manfaatnya availability, is not read scaling."
       },
       {
         "key": "C",
         "text": "Add RDS Proxy and assume all repeated SELECT statements will be cached automatically",
         "correct": false,
-        "explanation": "RDS Proxy mengelola koneksi, bukan query result cache yang menghilangkan biaya SELECT tersebut."
+        "explanation": "RDS Proxy manages connection, is not query result cache that eliminates cost SELECT that."
       },
       {
         "key": "D",
         "text": "Create a read replica and route eligible catalog queries to its endpoint",
         "correct": true,
-        "explanation": "Read replica mengalihkan query baca dari primary. Toleransi lag membuat asynchronous replication sesuai dengan kebutuhan ini."
+        "explanation": "Read replica redirects query baca from primary. Tolerance lag creates asynchronous replication according to these requirements."
       }
     ],
     "tags": [
@@ -589,25 +589,25 @@
         "key": "A",
         "text": "The reader endpoint balances only write statements, so all SELECT queries must use the writer endpoint",
         "correct": false,
-        "explanation": "Endpoint reader digunakan untuk read connections; memindahkan semua SELECT ke writer bukan solusi read distribution."
+        "explanation": "Endpoint reader used for read connections; moves all SELECT to writer is not a solution read distribution."
       },
       {
         "key": "B",
         "text": "The reader endpoint sends every query to every reader and selects the fastest result",
         "correct": false,
-        "explanation": "Reader endpoint bukan mekanisme speculative execution yang mengeksekusi tiap query di semua reader."
+        "explanation": "Reader endpoint is not mechanism speculative execution that executes each query in all reader."
       },
       {
         "key": "C",
         "text": "Increase the number of reader instances while keeping the single connection and expecting it to migrate between them per query.",
         "correct": false,
-        "explanation": "Menambah reader tidak mengubah balancing level koneksi; satu koneksi tetap tidak otomatis berpindah per query."
+        "explanation": "Adds reader does not change balancing level connection; one connection remains does not automatically moves per query."
       },
       {
         "key": "D",
         "text": "The reader endpoint balances connections; use an appropriate pool of connections rather than expecting per-query balancing on one connection",
         "correct": true,
-        "explanation": "Reader endpoint mendistribusikan koneksi. Semua query dalam koneksi yang sama tidak otomatis dibagi ke semua reader."
+        "explanation": "Reader endpoint distributes connection. All query within connection that same does not automatically divided to all reader."
       }
     ],
     "tags": [
@@ -633,25 +633,25 @@
         "key": "A",
         "text": "Amazon RDS Proxy between the application and the database",
         "correct": true,
-        "explanation": "RDS Proxy menyediakan pengelolaan dan penggunaan ulang koneksi database sehingga cocok untuk lonjakan koneksi dari aplikasi serverless."
+        "explanation": "RDS Proxy provides management and usage again connection database so that suitable for spike connection from application serverless."
       },
       {
         "key": "B",
         "text": "Increase only the database connection timeout without changing pooling or connection volume.",
         "correct": false,
-        "explanation": "Timeout lebih lama tidak mengurangi churn atau jumlah koneksi yang dibutuhkan saat burst."
+        "explanation": "Timeout more long not reduces churn or number connection that is required when burst."
       },
       {
         "key": "C",
         "text": "An additional RDS read replica without changing the connection behavior of writes",
         "correct": false,
-        "explanation": "Replica dapat membantu read load, tetapi tidak langsung menyelesaikan churn koneksi ke writer yang dijelaskan."
+        "explanation": "Replica can help read load, but not directly solves churn connection to writer that explained."
       },
       {
         "key": "D",
         "text": "Increase Lambda concurrency while keeping one new direct database connection per invocation.",
         "correct": false,
-        "explanation": "Ini dapat menambah tekanan connection limit yang sudah menjadi bottleneck, bukan mengelola pool koneksi."
+        "explanation": "this can add pressure connection limit that already becomes bottleneck, is not manages pool connection."
       }
     ],
     "tags": [
@@ -677,25 +677,25 @@
         "key": "A",
         "text": "Use the current month as the partition key and omit customerId from all keys",
         "correct": false,
-        "explanation": "Partition bulanan tidak langsung memberi query per pelanggan tanpa membaca data pelanggan lain."
+        "explanation": "Partition monthly not directly gives query per customer without reads data customer other."
       },
       {
         "key": "B",
         "text": "Use customerId as the partition key and orderTimestamp plus a unique order identifier as the sort key",
         "correct": true,
-        "explanation": "Query dapat menentukan customerId dan rentang sort key. Identifier tambahan menghindari benturan jika waktu order sama."
+        "explanation": "Query can determines customerId and range sort key. Identifier additional avoids benturan if time order same."
       },
       {
         "key": "C",
         "text": "Use one constant partition key for every order and a random sort key",
         "correct": false,
-        "explanation": "Satu key konstan memusatkan workload dan sort key acak tidak mendukung rentang waktu yang diminta."
+        "explanation": "One key konstan centralizes workload and sort key random does not support range time that is requested."
       },
       {
         "key": "D",
         "text": "Use a random partition key for each order and keep customerId as a non-key attribute only",
         "correct": false,
-        "explanation": "Query pelanggan akan membutuhkan index tambahan atau scan karena customerId bukan key yang dapat ditargetkan pada desain ini."
+        "explanation": "Query customer will require index additional or scan because customerId is not key that can targeted on design this."
       }
     ],
     "tags": [
@@ -721,25 +721,25 @@
         "key": "A",
         "text": "Use a Scan with a customerId filter and assume the filter avoids reading unrelated items",
         "correct": false,
-        "explanation": "Filter scan tidak mengubah operasi tersebut menjadi Query pada partition key; item tetap dibaca sebelum penyaringan yang relevan."
+        "explanation": "Filter scan does not change operation that becomes Query on partition key; item remains read before filtering that relevant."
       },
       {
         "key": "B",
         "text": "Add a local secondary index whose partition key is customerId instead of orderId",
         "correct": false,
-        "explanation": "LSI mempertahankan partition key tabel; tidak menyediakan partition key baru customerId."
+        "explanation": "LSI maintains partition key table; does not provide partition key new customerId."
       },
       {
         "key": "C",
         "text": "Add an index that retains orderId as its partition key and stores customerId only as a projected non-key attribute.",
         "correct": false,
-        "explanation": "Projected attribute bukan key yang dapat ditargetkan Query untuk pola customerId; masih belum menyediakan alternate partition key."
+        "explanation": "Projected attribute is not key that can targeted Query for pattern customerId; still not yet provides alternate partition key."
       },
       {
         "key": "D",
         "text": "Add a global secondary index with customerId as its partition key and an appropriate sort key",
         "correct": true,
-        "explanation": "GSI menyediakan key alternatif di luar partition key tabel. Toleransi keterlambatan cocok dengan karakteristik eventual consistency GSI."
+        "explanation": "GSI provides key alternative in outside partition key table. Tolerance delay suitable with characteristics eventual consistency GSI."
       }
     ],
     "tags": [
@@ -765,25 +765,25 @@
         "key": "A",
         "text": "Amazon DynamoDB Accelerator (DAX)",
         "correct": true,
-        "explanation": "DAX ditujukan untuk akselerasi pola baca DynamoDB melalui cache dan sesuai untuk read yang dapat menerima hasil eventually consistent."
+        "explanation": "DAX intended for akselerasi pattern baca DynamoDB through cache and appropriate for read that can receive result eventually consistent."
       },
       {
         "key": "B",
         "text": "Enable strongly consistent reads for all requests to force DAX cache hits",
         "correct": false,
-        "explanation": "Strongly consistent reads tidak dilayani sebagai cache hit DAX; pola ini tidak mencapai tujuan caching yang diminta."
+        "explanation": "Strongly consistent reads not served as cache hit DAX; pattern this does not achieves destination caching that is requested."
       },
       {
         "key": "C",
         "text": "Add a global secondary index with the same keys solely to cache every GetItem response",
         "correct": false,
-        "explanation": "GSI menyediakan jalur index, bukan cache transparan untuk request GetItem yang sama."
+        "explanation": "GSI provides path index, is not cache transparent for request GetItem that same."
       },
       {
         "key": "D",
         "text": "Increase write capacity only, without changing the repeated-read access path.",
         "correct": false,
-        "explanation": "Penambahan kapasitas write tidak menghilangkan repeated read work atau memberikan cache."
+        "explanation": "Addition capacity write does not eliminate repeated read work or provides cache."
       }
     ],
     "tags": [
@@ -809,25 +809,25 @@
         "key": "A",
         "text": "Store every product record only in the cache and remove the durable database copy",
         "correct": false,
-        "explanation": "Cache bukan otomatis pengganti sumber data durable; kehilangan cache dapat menghilangkan data."
+        "explanation": "Cache does not automatically replacement source data durable; loss cache can eliminate data."
       },
       {
         "key": "B",
         "text": "Keep product records in cache forever and refresh only when the cache cluster restarts",
         "correct": false,
-        "explanation": "Tidak ada batas staleness lima menit pada pola ini."
+        "explanation": "Not exists limit staleness lima minutes on pattern this."
       },
       {
         "key": "C",
         "text": "Cache product records with an appropriate TTL, populate on misses, and invalidate relevant keys when product updates are processed",
         "correct": true,
-        "explanation": "TTL dan invalidation memberi batas serta jalur penyegaran. Cache miss tetap mengambil data dari database sebagai sumber kebenaran."
+        "explanation": "TTL and invalidation gives limit and path penyegaran. Cache miss remains takes data from database as a source correctness."
       },
       {
         "key": "D",
         "text": "Read the database for every request and never reuse cached responses",
         "correct": false,
-        "explanation": "Cara ini tidak mencapai tujuan mengurangi beban database lewat cache."
+        "explanation": "Way this does not achieves destination reduces load database via cache."
       }
     ],
     "tags": [
@@ -853,31 +853,31 @@
         "key": "A",
         "text": "Perform authorization for the requesting user before returning the cached invoice",
         "correct": true,
-        "explanation": "Cache hit tidak menghapus kewajiban otorisasi; akses harus tetap diperiksa untuk data yang diminta."
+        "explanation": "Cache hit not deletes kewajiban authorization; access must remains checked for data that is requested."
       },
       {
         "key": "B",
         "text": "Use a larger cache node while retaining the same keys and authorization behavior",
         "correct": false,
-        "explanation": "Kapasitas bukan akar masalah kebocoran data antar-tenant."
+        "explanation": "Capacity is not root problem kebocoran data antar-tenant."
       },
       {
         "key": "C",
         "text": "Include the tenant identity in the cache key and other dimensions that change the response",
         "correct": true,
-        "explanation": "Tenant harus menjadi bagian identitas key agar objek milik tenant berbeda tidak bertabrakan."
+        "explanation": "Tenant must becomes part identity key so that object milik tenant different not bertabrakan."
       },
       {
         "key": "D",
         "text": "Increase the cache TTL so each tenant's data stays cached longer",
         "correct": false,
-        "explanation": "TTL lebih lama tidak menyelesaikan benturan key atau kontrol akses."
+        "explanation": "TTL more long does not solve benturan key or access control."
       },
       {
         "key": "E",
         "text": "Cache only the first tenant's version of each invoice number",
         "correct": false,
-        "explanation": "Menyimpan satu versi global tetap salah ketika tenant memiliki nomor yang sama."
+        "explanation": "Stores one version global remains wrong when tenant has nomor that same."
       }
     ],
     "tags": [
@@ -903,25 +903,25 @@
         "key": "A",
         "text": "Serve whichever value is returned fastest from the cache or database",
         "correct": false,
-        "explanation": "Memilih hasil tercepat tanpa aturan konsistensi dapat mengembalikan saldo lama."
+        "explanation": "Selects result tercepat without rules consistency can returns saldo long."
       },
       {
         "key": "B",
         "text": "Increase the cache TTL so the balance stays available longer",
         "correct": false,
-        "explanation": "TTL lebih panjang dapat memperpanjang staleness, bukan membuat data terbaru tersedia."
+        "explanation": "TTL more long can extend staleness, is not creates data latest available."
       },
       {
         "key": "C",
         "text": "Add more cache replicas and assume replication guarantees the newest database value",
         "correct": false,
-        "explanation": "Replica cache tidak memperbaiki lag antara database dan cache secara otomatis."
+        "explanation": "Replica cache not improves lag between database and cache automatically."
       },
       {
         "key": "D",
         "text": "Use the authoritative data store with the required consistency for this operation, while keeping caching for eligible stale-tolerant reads",
         "correct": true,
-        "explanation": "Jalur kritis harus memenuhi konsistensi yang diperlukan. Cache masih dapat digunakan untuk bagian lain yang toleran terhadap staleness."
+        "explanation": "Path critical must meet consistency that is required. Cache still can be used for part other that tolerant against staleness."
       }
     ],
     "tags": [
@@ -947,25 +947,25 @@
         "key": "A",
         "text": "A Network Load Balancer with a listener rule that matches HTTP path strings",
         "correct": false,
-        "explanation": "NLB bekerja pada layer-4 dan tidak menyediakan path-based HTTP listener rules seperti ALB."
+        "explanation": "NLB works on layer-4 and does not provide path-based HTTP listener rules such as ALB."
       },
       {
         "key": "B",
         "text": "An Application Load Balancer with path-based listener rules and separate target groups",
         "correct": true,
-        "explanation": "ALB memahami HTTP path sehingga dapat merutekan request ke target group layanan terkait."
+        "explanation": "ALB understands HTTP path so that can route request to target group service related."
       },
       {
         "key": "C",
         "text": "Route 53 records that choose a target based on the URL path after the hostname",
         "correct": false,
-        "explanation": "DNS menentukan nama host, bukan path HTTP di dalam request."
+        "explanation": "DNS determines name host, is not path HTTP within request."
       },
       {
         "key": "D",
         "text": "A Gateway Load Balancer that selects application targets from URL paths",
         "correct": false,
-        "explanation": "GWLB ditujukan untuk network appliances, bukan routing URL aplikasi."
+        "explanation": "GWLB intended for network appliances, is not routing URL application."
       }
     ],
     "tags": [
@@ -991,25 +991,25 @@
         "key": "A",
         "text": "A Gateway Load Balancer configured as a general-purpose public UDP application endpoint",
         "correct": false,
-        "explanation": "GWLB menyediakan alur virtual appliances melalui mekanisme khusus, bukan pilihan umum untuk endpoint aplikasi UDP publik ini."
+        "explanation": "GWLB provides flow virtual appliances through mechanism specific, is not choice general for endpoint application UDP public this."
       },
       {
         "key": "B",
         "text": "An internet-facing Network Load Balancer with static addresses, using Elastic IP addresses where required",
         "correct": true,
-        "explanation": "NLB mendukung UDP serta static IP per enabled AZ; EIP dapat digunakan untuk alamat yang dikelola pada skenario internet-facing yang didukung."
+        "explanation": "NLB supports UDP and static IP per enabled AZ; EIP can be used for address that managed on scenario internet-facing that is supported."
       },
       {
         "key": "C",
         "text": "An Application Load Balancer with an HTTPS listener",
         "correct": false,
-        "explanation": "ALB tidak melayani UDP hanya dengan konfigurasi listener HTTPS."
+        "explanation": "ALB not serves UDP only with configuration listener HTTPS."
       },
       {
         "key": "D",
         "text": "A Route 53 alias to changing EC2 public IP addresses without a load balancer",
         "correct": false,
-        "explanation": "Alias/DNS tidak dengan sendirinya menyediakan fixed load-balanced endpoint atau health-based target distribution yang diminta."
+        "explanation": "Alias/DNS not with itself provides fixed load-balanced endpoint or health-based target distribution that is requested."
       }
     ],
     "tags": [
@@ -1035,25 +1035,25 @@
         "key": "A",
         "text": "Amazon CloudFront with an appliance configured as a cache behavior",
         "correct": false,
-        "explanation": "CloudFront adalah layanan delivery/cache HTTP, bukan mekanisme penyisipan appliance pada jalur VPC umum."
+        "explanation": "CloudFront is service delivery/cache HTTP, is not mechanism penyisipan appliance on path VPC general."
       },
       {
         "key": "B",
         "text": "AWS Gateway Load Balancer",
         "correct": true,
-        "explanation": "GWLB dirancang untuk men-deploy, menskalakan, dan mengintegrasikan virtual network appliances dalam jalur traffic."
+        "explanation": "GWLB designed for men-deploy, menskalakan, and mengintegrasikan virtual network appliances within path traffic."
       },
       {
         "key": "C",
         "text": "An Application Load Balancer with host-based rules for every IP packet",
         "correct": false,
-        "explanation": "ALB bukan load balancer transparan untuk seluruh protokol network traffic menuju appliance."
+        "explanation": "ALB is not load balancer transparent for all protocol network traffic toward appliance."
       },
       {
         "key": "D",
         "text": "Route 53 weighted records pointing to appliance management interfaces without a traffic-insertion mechanism.",
         "correct": false,
-        "explanation": "DNS ke management endpoints bukan penyisipan dan distribusi traffic transparan melalui inspection appliance fleet."
+        "explanation": "DNS to management endpoints is not penyisipan and distribution traffic transparent through inspection appliance fleet."
       }
     ],
     "tags": [
@@ -1079,25 +1079,25 @@
         "key": "A",
         "text": "Replicate assets to another Region but keep every viewer requesting the original endpoint without cache or routing changes.",
         "correct": false,
-        "explanation": "Replikasi tidak dimanfaatkan oleh request path yang masih sama dan tidak mengurangi repeat origin requests."
+        "explanation": "Replication not dimanfaatkan by request path that still same and does not reduce repeat origin requests."
       },
       {
         "key": "B",
         "text": "Use CloudFront with cacheable object responses and appropriate cache policies",
         "correct": true,
-        "explanation": "CloudFront menyimpan konten yang dapat di-cache dekat pengguna dan mengurangi request berulang ke origin."
+        "explanation": "CloudFront stores content that can di-cache near user and reduces request repeated to origin."
       },
       {
         "key": "C",
         "text": "Use Global Accelerator as an object cache in front of the S3 bucket",
         "correct": false,
-        "explanation": "Global Accelerator tidak menyediakan object caching seperti CloudFront."
+        "explanation": "Global Accelerator does not provide object caching such as CloudFront."
       },
       {
         "key": "D",
         "text": "Use Route 53 latency routing to the same single S3 origin without a cache",
         "correct": false,
-        "explanation": "DNS routing sendiri tidak menyimpan respons dekat pengguna atau menghilangkan repeat origin fetch."
+        "explanation": "DNS routing itself not stores response near user or eliminates repeat origin fetch."
       }
     ],
     "tags": [
@@ -1123,25 +1123,25 @@
         "key": "A",
         "text": "A single Regional NAT gateway used as a public inbound load balancer",
         "correct": false,
-        "explanation": "NAT gateway ditujukan untuk koneksi keluar yang sesuai, bukan public inbound global application load balancing."
+        "explanation": "NAT gateway intended for connection out that appropriate, is not public inbound global application load balancing."
       },
       {
         "key": "B",
         "text": "Route 53 latency routing alone, because its answers are fixed global anycast application IPs",
         "correct": false,
-        "explanation": "Route 53 memilih jawaban DNS; layanan ini tidak dengan sendirinya menyediakan static anycast application IP seperti Global Accelerator."
+        "explanation": "Route 53 selects answer DNS; this service not with itself provides static anycast application IP such as Global Accelerator."
       },
       {
         "key": "C",
         "text": "AWS Global Accelerator with the regional load balancers as endpoints",
         "correct": true,
-        "explanation": "Global Accelerator mendukung static anycast IP dan endpoint regional untuk traffic TCP/UDP yang sesuai."
+        "explanation": "Global Accelerator supports static anycast IP and endpoint regional for traffic TCP/UDP that appropriate."
       },
       {
         "key": "D",
         "text": "Amazon CloudFront configured to cache the UDP packets",
         "correct": false,
-        "explanation": "CloudFront bukan layanan general-purpose UDP packet delivery/cache."
+        "explanation": "CloudFront is not service general-purpose UDP packet delivery/cache."
       }
     ],
     "tags": [
@@ -1167,31 +1167,31 @@
         "key": "A",
         "text": "An inbound endpoint alone, without an outbound rule, for all queries from EC2 to corporate DNS",
         "correct": false,
-        "explanation": "Inbound endpoint tidak menggantikan outbound forwarding untuk domain yang di-host di on-premises."
+        "explanation": "Inbound endpoint does not replace outbound forwarding for domain that di-host in-premises."
       },
       {
         "key": "B",
         "text": "Only an internet gateway, because it automatically replicates private hosted zones to on-premises DNS",
         "correct": false,
-        "explanation": "Internet gateway tidak mereplikasi zona DNS privat atau menyediakan conditional forwarding."
+        "explanation": "Internet gateway not replicates zona DNS private or provides conditional forwarding."
       },
       {
         "key": "C",
         "text": "Resolver outbound endpoints and forwarding rules for the corporate domain",
         "correct": true,
-        "explanation": "Outbound endpoint dan rules meneruskan query dari VPC ke DNS korporat yang berwenang."
+        "explanation": "Outbound endpoint and rules forwards query from VPC to DNS corporate that authorized."
       },
       {
         "key": "D",
         "text": "A public hosted zone containing the same private records, without access controls",
         "correct": false,
-        "explanation": "Mempublikasikan record bukan solusi hybrid private resolution yang diminta dan dapat mengekspos informasi."
+        "explanation": "Mempublikasikan record is not a solution hybrid private resolution that is requested and can expose informasi."
       },
       {
         "key": "E",
         "text": "Resolver inbound endpoints, with on-premises DNS forwarding the AWS private domain to them",
         "correct": true,
-        "explanation": "Inbound endpoint menerima query dari jaringan on-premises menuju VPC Resolver untuk domain privat yang relevan."
+        "explanation": "Inbound endpoint receives query from network on-premises toward VPC Resolver for domain private that relevant."
       }
     ],
     "tags": [
@@ -1217,25 +1217,25 @@
         "key": "A",
         "text": "Use one central peered VPC as a router for all other peered VPCs without a supported transit service.",
         "correct": false,
-        "explanation": "Peering tidak transitif; central topology visual saja tidak menyediakan transit routing."
+        "explanation": "Peering not transitif; central topology visual only does not provide transit routing."
       },
       {
         "key": "B",
         "text": "Connect the VPCs and supported on-premises attachments through AWS Transit Gateway and configure its route tables",
         "correct": true,
-        "explanation": "Transit Gateway menyediakan hub routing dan route tables untuk banyak attachment, mengurangi kompleksitas full-mesh."
+        "explanation": "Transit Gateway provides hub routing and route tables for many attachment, reduces complexity full-mesh."
       },
       {
         "key": "C",
         "text": "Add one more VPC peering connection and assume all existing peers become transitively connected",
         "correct": false,
-        "explanation": "Peering tidak transitif, sehingga satu koneksi tambahan tidak membuat semua peer dapat melewati hub secara otomatis."
+        "explanation": "Peering not transitif, so that one connection additional not creates all peer can exceeds hub automatically."
       },
       {
         "key": "D",
         "text": "Create separate interface endpoints for unrelated AWS services and treat them as general VPC-to-VPC routes.",
         "correct": false,
-        "explanation": "Interface endpoints menghubungkan layanan yang dipublikasikan, bukan general routed hub untuk seluruh CIDR dan on-premises connectivity."
+        "explanation": "Interface endpoints connects service that dipublikasikan, is not general routed hub for all CIDR and on-premises connectivity."
       }
     ],
     "tags": [
@@ -1261,25 +1261,25 @@
         "key": "A",
         "text": "A security-group reference across one peering connection creates a network route to every other peer.",
         "correct": false,
-        "explanation": "Security-group authorization tidak menciptakan routing transit yang tidak didukung."
+        "explanation": "Security-group authorization not creates routing transit that not supported."
       },
       {
         "key": "B",
         "text": "VPC peering is non-transitive; create a direct A-to-C peering connection or use a supported transit design",
         "correct": true,
-        "explanation": "Peering A-B dan B-C tidak membentuk transit A-C. Konektivitas langsung atau layanan transit yang sesuai diperlukan."
+        "explanation": "Peering A-B and B-C not forms transit A-C. Connectivity directly or service transit that appropriate required."
       },
       {
         "key": "C",
         "text": "VPC peering is transitive whenever all three VPCs use non-overlapping CIDRs.",
         "correct": false,
-        "explanation": "Non-overlapping CIDR adalah syarat relevan tetapi tidak mengubah sifat non-transitive peering."
+        "explanation": "Non-overlapping CIDR is requirement relevant but does not change nature non-transitive peering."
       },
       {
         "key": "D",
         "text": "An accepted peering request automatically propagates all routes through every other peer.",
         "correct": false,
-        "explanation": "Peering tidak otomatis membentuk route propagation transit melalui VPC B."
+        "explanation": "Peering does not automatically forms route propagation transit through VPC B."
       }
     ],
     "tags": [
@@ -1305,25 +1305,25 @@
         "key": "A",
         "text": "Geolocation routing, because the nearest country always has the lowest network latency",
         "correct": false,
-        "explanation": "Geolocation memilih berdasarkan lokasi pengguna, bukan jaminan rute dengan latensi terendah."
+        "explanation": "Geolocation selects based on location user, does not guarantee route with latency lowest."
       },
       {
         "key": "B",
         "text": "Weighted routing with equal weights, because it measures each user's live response time",
         "correct": false,
-        "explanation": "Weighted routing membagi berdasarkan bobot, bukan mengukur response time setiap user untuk pemilihan tersebut."
+        "explanation": "Weighted routing divides based on bobot, is not measures response time each user for selection that."
       },
       {
         "key": "C",
         "text": "Failover routing with one permanent primary, regardless of latency",
         "correct": false,
-        "explanation": "Failover berfokus pada primary/secondary health, bukan memilih deployment berlatensi lebih rendah saat keduanya sehat."
+        "explanation": "Failover focuses on primary/secondary health, is not selects deployment berlatensi lower when both healthy."
       },
       {
         "key": "D",
         "text": "Latency-based routing, with health evaluation configured as appropriate",
         "correct": true,
-        "explanation": "Latency routing menggunakan pengukuran latensi AWS untuk memilih Region yang relevan; health evaluation perlu dirancang agar endpoint gagal tidak diprioritaskan."
+        "explanation": "Latency routing uses measurement latency AWS to choose Region that relevant; health evaluation needs to designed so that endpoint fails not prioritized."
       }
     ],
     "tags": [
@@ -1349,25 +1349,25 @@
         "key": "A",
         "text": "One SQS queue shared by both applications so every event is guaranteed to reach both",
         "correct": false,
-        "explanation": "Consumer pada satu queue bersaing mengambil pekerjaan; pola itu tidak memberikan salinan independen setiap event ke kedua aplikasi."
+        "explanation": "Consumer in a single queue compete takes work; pattern that not provides copy independent each event to both application."
       },
       {
         "key": "B",
         "text": "Amazon Data Firehose alone, treating it as a general-purpose consumer-controlled replay log",
         "correct": false,
-        "explanation": "Firehose berfokus pada delivery terkelola; bukan pengganti umum stream replay yang consumer baca dengan checkpoint sendiri."
+        "explanation": "Firehose focuses on delivery managed; is not a substitute for general stream replay that consumer baca with checkpoint itself."
       },
       {
         "key": "C",
         "text": "Amazon Kinesis Data Streams with appropriate retention and separate consumers",
         "correct": true,
-        "explanation": "Data Streams menyediakan retained stream yang dapat dibaca consumer independen dan di-replay selama data masih dalam retention."
+        "explanation": "Data Streams provides retained stream that can read consumer independent and di-replay while data still within retention."
       },
       {
         "key": "D",
         "text": "An SNS topic with no subscriptions or durable downstream storage",
         "correct": false,
-        "explanation": "Topic tanpa subscriber tidak menyediakan pipeline pemrosesan dan retained log yang dapat dibaca seperti yang diminta."
+        "explanation": "Topic without subscriber does not provide pipeline processing and retained log that can read such as that is requested."
       }
     ],
     "tags": [
@@ -1393,25 +1393,25 @@
         "key": "A",
         "text": "Amazon Data Firehose with S3 as the destination",
         "correct": true,
-        "explanation": "Firehose menyediakan buffering dan delivery terkelola ke S3 sehingga tim tidak perlu membangun consumer delivery sendiri."
+        "explanation": "Firehose provides buffering and delivery managed to S3 so that teams does not need to builds consumer delivery itself."
       },
       {
         "key": "B",
         "text": "Kinesis Data Streams without any consumer that writes to S3",
         "correct": false,
-        "explanation": "Membuat stream saja tidak melaksanakan delivery data ke S3."
+        "explanation": "Creates stream only not melaksanakan delivery data to S3."
       },
       {
         "key": "C",
         "text": "An EventBridge bus with no configured target that writes the logs to S3.",
         "correct": false,
-        "explanation": "Event bus tanpa delivery target/integrasi tidak melaksanakan penyimpanan log ke destination."
+        "explanation": "Event bus without delivery target/integration not melaksanakan storage log to destination."
       },
       {
         "key": "D",
         "text": "An SQS queue without a worker or integration that persists messages to S3",
         "correct": false,
-        "explanation": "Queue menyimpan pesan untuk diproses; tanpa consumer/integrasi, delivery ke S3 tidak terjadi."
+        "explanation": "Queue stores message for processed; without consumer/integration, delivery to S3 not occurs."
       }
     ],
     "tags": [
@@ -1437,25 +1437,25 @@
         "key": "A",
         "text": "Amazon Kinesis Data Streams with the Kafka clients left unchanged",
         "correct": false,
-        "explanation": "Kinesis bukan protokol Kafka; migrasi biasanya memerlukan adaptasi client atau integrasi."
+        "explanation": "Kinesis is not protocol Kafka; migration typically requires adaptasi client or integration."
       },
       {
         "key": "B",
         "text": "Amazon Managed Streaming for Apache Kafka (Amazon MSK)",
         "correct": true,
-        "explanation": "MSK menyediakan layanan Kafka terkelola sehingga cocok untuk kebutuhan kompatibilitas Kafka yang eksplisit."
+        "explanation": "MSK provides service Kafka managed so that suitable for requirements compatibility Kafka that explicit."
       },
       {
         "key": "C",
         "text": "Amazon EventBridge with the existing Kafka broker addresses reused as event buses",
         "correct": false,
-        "explanation": "EventBridge tidak otomatis berubah menjadi Kafka broker karena nama/alamat client dipertahankan."
+        "explanation": "EventBridge does not automatically change becomes Kafka broker because name/address client retained."
       },
       {
         "key": "D",
         "text": "Amazon SQS FIFO with no changes to Kafka clients",
         "correct": false,
-        "explanation": "SQS memiliki API dan model konsumsi berbeda; bukan endpoint Kafka drop-in."
+        "explanation": "SQS has API and model consumption different; is not endpoint Kafka drop-in."
       }
     ],
     "tags": [
@@ -1481,25 +1481,25 @@
         "key": "A",
         "text": "Use AWS Glue ETL jobs to transform the data and maintain table metadata in the Glue Data Catalog",
         "correct": true,
-        "explanation": "ETL jobs melakukan transformasi; Data Catalog menyediakan metadata untuk penemuan dan query melalui layanan yang terkait."
+        "explanation": "ETL jobs performs transformation; Data Catalog provides metadata for penemuan and query through service that related."
       },
       {
         "key": "B",
         "text": "Change the S3 object filename suffix from .json to .parquet without rewriting the file contents.",
         "correct": false,
-        "explanation": "Nama file tidak mengubah encoding/struktur menjadi Parquet; transformasi data sebenarnya diperlukan."
+        "explanation": "Name file does not change encoding/structure becomes Parquet; transformation data actually required."
       },
       {
         "key": "C",
         "text": "Use the Glue Data Catalog to store metadata, but perform no transformation of the raw JSON content.",
         "correct": false,
-        "explanation": "Cataloging menyediakan metadata tetapi tidak sendiri membersihkan tipe dan menulis dataset Parquet."
+        "explanation": "Cataloging provides metadata but not itself cleans type and writes dataset Parquet."
       },
       {
         "key": "D",
         "text": "Run only a Glue crawler and assume it rewrites every JSON file as Parquet",
         "correct": false,
-        "explanation": "Crawler menemukan schema/metadata; fungsi ini tidak otomatis melakukan ETL dan menulis semua data sebagai Parquet."
+        "explanation": "Crawler finds schema/metadata; function this does not automatically perform ETL and writes all data as Parquet."
       }
     ],
     "tags": [
@@ -1525,31 +1525,31 @@
         "key": "A",
         "text": "Combine all dates into one unpartitioned CSV object and always use SELECT *",
         "correct": false,
-        "explanation": "Pola ini memperluas pembacaan kolom/baris yang tidak diperlukan."
+        "explanation": "Pattern this expands reading column/baris that is not required."
       },
       {
         "key": "B",
         "text": "Partition only by a random upload identifier that queries never filter on.",
         "correct": false,
-        "explanation": "Partitioning yang tidak sesuai predicate query tidak membatasi scan ke tanggal yang relevan."
+        "explanation": "Partitioning that not appropriate predicate query does not restrict scan to date that relevant."
       },
       {
         "key": "C",
         "text": "Partition by a useful date field and include that partition key in query predicates",
         "correct": true,
-        "explanation": "Partition pruning membutuhkan layout dan query yang sesuai agar partisi di luar tanggal target dapat diabaikan."
+        "explanation": "Partition pruning requires layout and query that appropriate so that partition in outside date target can ignored."
       },
       {
         "key": "D",
         "text": "Store the data in an appropriate compressed columnar format such as Parquet",
         "correct": true,
-        "explanation": "Columnar memungkinkan pembacaan kolom yang relevan dan compression dapat mengurangi byte yang diproses."
+        "explanation": "Columnar enables reading column that relevant and compression can reduce byte that processed."
       },
       {
         "key": "E",
         "text": "Keep data as CSV and project all columns in every query, relying only on table metadata to skip bytes.",
         "correct": false,
-        "explanation": "Metadata saja tidak memberi columnar pruning yang sama jika format dan query tetap membaca semua kolom."
+        "explanation": "Metadata only not gives columnar pruning that same if format and query remains reads all column."
       }
     ],
     "tags": [
@@ -1575,25 +1575,25 @@
         "key": "A",
         "text": "Amazon RDS optimized for short per-order OLTP transactions, selected solely because it also accepts SQL.",
         "correct": false,
-        "explanation": "Kemampuan SQL tidak berarti karakteristik paling sesuai untuk warehouse analitik skala besar; workload pada soal adalah OLAP."
+        "explanation": "Capability SQL does not mean characteristics most appropriate for warehouse analytics scale large; workload on question is OLAP."
       },
       {
         "key": "B",
         "text": "Amazon Redshift",
         "correct": true,
-        "explanation": "Redshift ditujukan untuk data warehousing dan analytical SQL workloads, berbeda dari jalur transaksi checkout."
+        "explanation": "Redshift intended for data warehousing and analytical SQL workloads, different from path transaction checkout."
       },
       {
         "key": "C",
         "text": "Amazon DynamoDB with no change to existing relational SQL queries",
         "correct": false,
-        "explanation": "DynamoDB bukan pengganti transparan relational SQL warehouse dengan join kompleks."
+        "explanation": "DynamoDB is not a substitute for transparent relational SQL warehouse with join complex."
       },
       {
         "key": "D",
         "text": "Amazon OpenSearch Service chosen solely to avoid modeling the required relational joins and warehouse aggregations.",
         "correct": false,
-        "explanation": "Search/analytics engine memiliki use case berbeda; penggantian tanpa desain untuk relational warehouse joins tidak memenuhi alasan pemilihan soal."
+        "explanation": "Search/analytics engine has use case different; replacement without design for relational warehouse joins not meets reason selection question."
       }
     ],
     "tags": [
@@ -1619,25 +1619,25 @@
         "key": "A",
         "text": "Amazon S3 File Gateway as a replacement for all ONTAP volume features.",
         "correct": false,
-        "explanation": "Gateway menyediakan antarmuka file ke objek tetapi tidak mempertahankan seluruh kemampuan volume ONTAP."
+        "explanation": "Gateway provides interface file to object but not maintains all capability volume ONTAP."
       },
       {
         "key": "B",
         "text": "Amazon EFS with an SMB listener enabled.",
         "correct": false,
-        "explanation": "EFS menyediakan NFS, bukan SMB native dan fitur administrasi ONTAP."
+        "explanation": "EFS provides NFS, is not SMB native and feature administration ONTAP."
       },
       {
         "key": "C",
         "text": "Amazon FSx for Windows File Server as an ONTAP replication target.",
         "correct": false,
-        "explanation": "FSx Windows bukan sistem ONTAP meskipun cocok untuk SMB."
+        "explanation": "FSx Windows is not system ONTAP although suitable for SMB."
       },
       {
         "key": "D",
         "text": "Amazon FSx for NetApp ONTAP.",
         "correct": true,
-        "explanation": "Layanan ini menyediakan kemampuan ONTAP serta akses multiprotokol; validasi versi dan fitur yang dibutuhkan."
+        "explanation": "This service provides capability ONTAP and access multiprotokol; validation version and feature that is required."
       }
     ],
     "tags": [
@@ -1664,25 +1664,25 @@
         "key": "A",
         "text": "Amazon FSx for OpenZFS.",
         "correct": true,
-        "explanation": "OpenZFS menyediakan NFS serta snapshot dan cloning berbasis ZFS yang diminta."
+        "explanation": "OpenZFS provides NFS and snapshot and cloning based ZFS that is requested."
       },
       {
         "key": "B",
         "text": "Amazon EFS because all NFS systems expose ZFS clones.",
         "correct": false,
-        "explanation": "Kesamaan protokol tidak berarti fitur penyimpanan ZFS ikut tersedia."
+        "explanation": "Kesamaan protocol does not mean feature storage ZFS also available."
       },
       {
         "key": "C",
         "text": "Amazon FSx for Windows File Server using its default SMB shares.",
         "correct": false,
-        "explanation": "Antarmuka dan fitur yang dipilih tidak cocok dengan NFS/ZFS."
+        "explanation": "Interface and feature that chosen is not suitable with NFS/ZFS."
       },
       {
         "key": "D",
         "text": "Amazon S3 with versioning as a native NFS volume.",
         "correct": false,
-        "explanation": "Versioning objek bukan volume NFS dengan writable ZFS clone."
+        "explanation": "Versioning object is not volume NFS with writable ZFS clone."
       }
     ],
     "tags": [
@@ -1709,25 +1709,25 @@
         "key": "A",
         "text": "Increase only the provisioned volume throughput again.",
         "correct": false,
-        "explanation": "Volume tidak dapat melewati batas agregat koneksi EBS instance."
+        "explanation": "Volume cannot exceeds limit aggregate connection EBS instance."
       },
       {
         "key": "B",
         "text": "Increase the snapshot retention period.",
         "correct": false,
-        "explanation": "Retensi backup tidak meningkatkan bandwidth I/O instance."
+        "explanation": "Retention backup not increases bandwidth I/O instance."
       },
       {
         "key": "C",
         "text": "Add an S3 gateway endpoint to the application subnet.",
         "correct": false,
-        "explanation": "Jalur API S3 bukan jalur block I/O antara EC2 dan EBS."
+        "explanation": "Path API S3 is not path block I/O between EC2 and EBS."
       },
       {
         "key": "D",
         "text": "Use an EC2 configuration with sufficient EBS bandwidth, then benchmark the complete I/O path.",
         "correct": true,
-        "explanation": "Batas instance tetap membatasi volume; pengujian memastikan bottleneck tidak berpindah ke komponen lain."
+        "explanation": "Limit instance remains restricts volume; testing ensures bottleneck not moves to other component."
       }
     ],
     "tags": [
@@ -1754,25 +1754,25 @@
         "key": "A",
         "text": "Elastic throughput, after checking workload suitability and cost.",
         "correct": true,
-        "explanation": "Elastic menyesuaikan throughput dengan aktivitas tanpa mengandalkan ukuran data sebagai sumber burst credit."
+        "explanation": "Elastic adjusts throughput with activity without relies on size data as a source burst credit."
       },
       {
         "key": "B",
         "text": "General Purpose performance mode alone without choosing a throughput mode.",
         "correct": false,
-        "explanation": "Performance mode dan throughput mode adalah keputusan berbeda."
+        "explanation": "Performance mode and throughput mode is decision different."
       },
       {
         "key": "C",
         "text": "Bursting throughput while reducing stored data as far as possible.",
         "correct": false,
-        "explanation": "Bursting mengaitkan baseline dan credit dengan storage; mengecilkan data bukan solusi untuk kebutuhan ini."
+        "explanation": "Bursting mengaitkan baseline and credit with storage; shrinks data is not a solution for these requirements."
       },
       {
         "key": "D",
         "text": "Provisioned throughput fixed permanently at the largest imaginable peak.",
         "correct": false,
-        "explanation": "Dapat memenuhi kapasitas tetapi tidak menyesuaikan otomatis dengan aktivitas seperti yang diminta."
+        "explanation": "Can meet capacity but not adjusts automatically with activity such as that is requested."
       }
     ],
     "tags": [
@@ -1799,25 +1799,25 @@
         "key": "A",
         "text": "Move the object to a colder archive tier before every read.",
         "correct": false,
-        "explanation": "Restore dan akses arsip tidak mempercepat pembacaan aktif ini."
+        "explanation": "Restore and access archive not accelerates reading active this."
       },
       {
         "key": "B",
         "text": "Use multipart upload to retrieve the existing object.",
         "correct": false,
-        "explanation": "Multipart upload membagi pengiriman ke S3, bukan mekanisme membaca rentang objek."
+        "explanation": "Multipart upload divides delivery to S3, is not mechanism reads range object."
       },
       {
         "key": "C",
         "text": "Enable versioning so each GET returns only modified bytes.",
         "correct": false,
-        "explanation": "Versioning menyimpan versi, tidak mengubah GET menjadi delta otomatis."
+        "explanation": "Versioning stores version, does not change GET becomes delta automatically."
       },
       {
         "key": "D",
         "text": "Use concurrent byte-range GET requests for the required ranges.",
         "correct": true,
-        "explanation": "Aplikasi hanya mengambil rentang yang diperlukan dan dapat memparalelkan permintaan."
+        "explanation": "Application only takes range that is required and can memparalelkan request."
       }
     ],
     "tags": [
@@ -1844,25 +1844,25 @@
         "key": "A",
         "text": "S3 Transfer Acceleration for MPI collective operations.",
         "correct": false,
-        "explanation": "Fitur transfer objek bukan transport komunikasi antarproses MPI."
+        "explanation": "Feature transfer object is not transport communication antarproses MPI."
       },
       {
         "key": "B",
         "text": "An internet-facing Application Load Balancer between MPI ranks.",
         "correct": false,
-        "explanation": "ALB menangani HTTP dan bukan interkoneksi komunikasi MPI."
+        "explanation": "ALB handles HTTP rather than interkoneksi communication MPI."
       },
       {
         "key": "C",
         "text": "A NAT gateway for every MPI message.",
         "correct": false,
-        "explanation": "Jalur translasi internet bukan optimasi komunikasi internal HPC."
+        "explanation": "Path translasi internet is not optimization communication internal HPC."
       },
       {
         "key": "D",
         "text": "Elastic Fabric Adapter with supported instances and software configuration.",
         "correct": true,
-        "explanation": "EFA ditujukan untuk komunikasi antar-node HPC dengan integrasi software yang sesuai."
+        "explanation": "EFA intended for communication between nodes HPC with integration software that appropriate."
       }
     ],
     "tags": [
@@ -1889,25 +1889,25 @@
         "key": "A",
         "text": "A scheduled scaling action at one fixed time each day only.",
         "correct": false,
-        "explanation": "Lonjakan tidak memiliki jadwal yang dapat diandalkan."
+        "explanation": "Spike does not have schedule that can diandalkan."
       },
       {
         "key": "B",
         "text": "A larger health-check grace period without preparing any capacity.",
         "correct": false,
-        "explanation": "Grace period mencegah pemeriksaan terlalu dini tetapi tidak menghilangkan waktu inisialisasi."
+        "explanation": "Grace period prevents inspection too dini but does not eliminate time initialization."
       },
       {
         "key": "C",
         "text": "A warm pool of preinitialized instances with an appropriate lifecycle and readiness checks.",
         "correct": true,
-        "explanation": "Warm pool mempersiapkan instance sebelum dibutuhkan; biaya storage dan proses start tetap diperhitungkan."
+        "explanation": "Warm pool prepares instance before required; cost storage and process start remains accounted for."
       },
       {
         "key": "D",
         "text": "A lower CPU alarm threshold while retaining the full 12-minute startup path.",
         "correct": false,
-        "explanation": "Trigger lebih dini belum menjamin kesiapan menghadapi lonjakan tak terduga."
+        "explanation": "Trigger more dini not yet guarantees readiness faces spike tak terduga."
       }
     ],
     "tags": [
@@ -1934,25 +1934,25 @@
         "key": "A",
         "text": "Increase the timeout only and assume execution becomes faster.",
         "correct": false,
-        "explanation": "Timeout mengubah batas waktu, bukan kemampuan CPU."
+        "explanation": "Timeout changes limit time, is not capability CPU."
       },
       {
         "key": "B",
         "text": "Increase reserved concurrency to give each invocation more CPU.",
         "correct": false,
-        "explanation": "Reserved concurrency membatasi atau menjamin jumlah invocation, bukan CPU per invocation."
+        "explanation": "Reserved concurrency restricts or guarantees number invocation, is not CPU per invocation."
       },
       {
         "key": "C",
         "text": "Reduce memory to the smallest value because CPU allocation is independent of memory.",
         "correct": false,
-        "explanation": "Asumsi independensi CPU dan memori tidak benar untuk Lambda."
+        "explanation": "Assumption independence CPU and memory not correct for Lambda."
       },
       {
         "key": "D",
         "text": "Benchmark several memory allocations and compare duration, latency, and total compute cost.",
         "correct": true,
-        "explanation": "Memori memengaruhi CPU yang tersedia; durasi yang berubah menentukan hasil biaya sebenarnya."
+        "explanation": "Memory affects CPU that is available; duration that changes determines result cost actually."
       }
     ],
     "tags": [
@@ -1979,25 +1979,25 @@
         "key": "A",
         "text": "Amazon ECS on Fargate while retaining Kubernetes operators unchanged.",
         "correct": false,
-        "explanation": "Pilihan ini tidak mempertahankan Kubernetes API dan tidak menyediakan GPU Fargate."
+        "explanation": "This choice not maintains Kubernetes API and does not provide GPU Fargate."
       },
       {
         "key": "B",
         "text": "Amazon EKS with suitable GPU-backed EC2 worker nodes.",
         "correct": true,
-        "explanation": "EKS menyediakan control plane terkelola; worker EC2 yang sesuai menyediakan GPU."
+        "explanation": "FORMER provides control plane managed; worker EC2 that appropriate provides GPU."
       },
       {
         "key": "C",
         "text": "Amazon EKS with CPU-only workers and a GPU limit in the pod manifest.",
         "correct": false,
-        "explanation": "Deklarasi resource tidak menciptakan hardware GPU yang tidak tersedia."
+        "explanation": "Deklarasi resource not creates hardware GPU that not available."
       },
       {
         "key": "D",
         "text": "Amazon EKS using only Fargate profiles for the GPU pods.",
         "correct": false,
-        "explanation": "GPU tidak tersedia pada EKS Fargate dalam dokumentasi yang diperiksa."
+        "explanation": "GPU not available on FORMER Fargate within documentation that checked."
       }
     ],
     "tags": [
@@ -2024,25 +2024,25 @@
         "key": "A",
         "text": "An ALB listener rule for each simulation parameter set.",
         "correct": false,
-        "explanation": "Routing HTTP bukan scheduler pekerjaan batch."
+        "explanation": "Routing HTTP is not scheduler work batch."
       },
       {
         "key": "B",
         "text": "A single EC2 startup script that treats all simulations as one inseparable job.",
         "correct": false,
-        "explanation": "Kegagalan dan penjadwalan tetap harus dikelola sebagai pekerjaan besar sendiri."
+        "explanation": "Failure and scheduling remains must managed as work large itself."
       },
       {
         "key": "C",
         "text": "One Lambda invocation that sequentially executes all simulations regardless of duration.",
         "correct": false,
-        "explanation": "Pemrosesan serial tidak memanfaatkan independensi pekerjaan dan dibatasi durasi Lambda."
+        "explanation": "Processing serial not leverages independence work and restricted duration Lambda."
       },
       {
         "key": "D",
         "text": "An AWS Batch array job that maps the child-job index to a parameter set.",
         "correct": true,
-        "explanation": "Array job menjalankan banyak child job dengan indeks yang dapat dipakai memilih input."
+        "explanation": "Array job runs many child job with index that can be used selects input."
       }
     ],
     "tags": [
@@ -2069,25 +2069,25 @@
         "key": "A",
         "text": "Run DMS change data capture and assume it automatically rewrites every stored procedure.",
         "correct": false,
-        "explanation": "CDC mereplikasi perubahan data; tidak menjamin konversi seluruh logika dan objek."
+        "explanation": "CDC replicates changes data; does not guarantee conversion all logika and object."
       },
       {
         "key": "B",
         "text": "Assess and convert the schema with AWS DMS Schema Conversion, and resolve unsupported objects before replication.",
         "correct": true,
-        "explanation": "Konversi heterogen perlu assessment dan perbaikan objek yang tidak dapat dikonversi otomatis."
+        "explanation": "Conversion heterogeneous needs to assessment and improvement object that cannot converted automatically."
       },
       {
         "key": "C",
         "text": "Restore the source engine binary backup directly into Aurora PostgreSQL.",
         "correct": false,
-        "explanation": "Backup native engine berbeda bukan format pemulihan langsung yang kompatibel."
+        "explanation": "Backup native engine different is not format recovery directly that compatible."
       },
       {
         "key": "D",
         "text": "Enable Multi-AZ on the source to convert its SQL dialect.",
         "correct": false,
-        "explanation": "HA tidak mengubah dialek atau skema database."
+        "explanation": "HA does not change dialek or schema database."
       }
     ],
     "tags": [
@@ -2114,31 +2114,31 @@
         "key": "A",
         "text": "Delete source transaction logs before CDC reads them.",
         "correct": false,
-        "explanation": "Log diperlukan untuk menangkap perubahan yang belum direplikasi."
+        "explanation": "Log required for menangkap changes that not yet replicated."
       },
       {
         "key": "B",
         "text": "At cutover, stop or redirect source writes, let replication catch up, validate, and switch the application.",
         "correct": true,
-        "explanation": "Cutover terkontrol mencegah kehilangan perubahan terakhir dan split writing."
+        "explanation": "Cutover controlled prevents loss changes last and split writing."
       },
       {
         "key": "C",
         "text": "Immediately write to both independent databases without conflict handling.",
         "correct": false,
-        "explanation": "Dual write tanpa desain konsistensi dapat membuat data berbeda."
+        "explanation": "Dual write without design consistency can create data different."
       },
       {
         "key": "D",
         "text": "Perform a full load with change data capture while monitoring replication health.",
         "correct": true,
-        "explanation": "Full load membawa baseline dan CDC meneruskan perubahan yang terjadi selama migrasi."
+        "explanation": "Full load carries baseline and CDC forwards changes that occurs while migration."
       },
       {
         "key": "E",
         "text": "Assume successful endpoint creation proves every table and application query is compatible.",
         "correct": false,
-        "explanation": "Koneksi bukan bukti kompatibilitas skema, data, atau aplikasi."
+        "explanation": "Connection is not evidence compatibility schema, data, or application."
       }
     ],
     "tags": [
@@ -2165,25 +2165,25 @@
         "key": "A",
         "text": "Amazon S3 Glacier Deep Archive queried interactively for every relationship.",
         "correct": false,
-        "explanation": "Arsip dengan restore tidak cocok untuk query traversal interaktif."
+        "explanation": "Archive with restore is not suitable for query traversal interactive."
       },
       {
         "key": "B",
         "text": "Amazon ElastiCache as the only durable relationship system of record without persistence planning.",
         "correct": false,
-        "explanation": "Cache saja tidak memenuhi kebutuhan sistem data utama yang dijelaskan."
+        "explanation": "Cache only not meets requirements system data primary that explained."
       },
       {
         "key": "C",
         "text": "Amazon Neptune graph databases.",
         "correct": true,
-        "explanation": "Model graph cocok untuk hubungan dan traversal multi-hop yang menjadi operasi utama."
+        "explanation": "Model graph suitable for relationship and traversal multi-hop that becomes operation primary."
       },
       {
         "key": "D",
         "text": "Amazon RDS solely because every relationship query must use SQL joins.",
         "correct": false,
-        "explanation": "Relasional tetap mungkin, tetapi tidak menjadi pilihan paling langsung untuk kebutuhan graph dominan."
+        "explanation": "Relasional remains may, but not becomes choice most directly for requirements graph dominant."
       }
     ],
     "tags": [
@@ -2210,25 +2210,25 @@
         "key": "A",
         "text": "Choose RDS PostgreSQL without evaluating the existing driver and command requirements.",
         "correct": false,
-        "explanation": "Engine relasional tidak mempertahankan API MongoDB begitu saja."
+        "explanation": "Engine relasional not maintains API MongoDB once only."
       },
       {
         "key": "B",
         "text": "Choose DocumentDB and skip compatibility tests because the engine is identical to MongoDB.",
         "correct": false,
-        "explanation": "DocumentDB adalah layanan berbeda dengan cakupan kompatibilitas tertentu."
+        "explanation": "DocumentDB is service different from scope compatibility specific."
       },
       {
         "key": "C",
         "text": "Choose Neptune because every JSON document is automatically a graph query.",
         "correct": false,
-        "explanation": "Format dokumen tidak otomatis menunjukkan kebutuhan graph."
+        "explanation": "Format document does not automatically show requirements graph."
       },
       {
         "key": "D",
         "text": "Evaluate Amazon DocumentDB and test the required API features and behavior before migration.",
         "correct": true,
-        "explanation": "Kompatibilitas MongoDB tidak berarti seluruh fitur dan perilaku identik; pengujian aplikasi tetap wajib."
+        "explanation": "Compatibility MongoDB does not mean all feature and behavior identical; testing application remains required."
       }
     ],
     "tags": [
@@ -2255,25 +2255,25 @@
         "key": "A",
         "text": "Amazon DynamoDB as a native CQL endpoint without application changes.",
         "correct": false,
-        "explanation": "DynamoDB menggunakan API dan model operasinya sendiri."
+        "explanation": "DynamoDB uses API and model operasinya itself."
       },
       {
         "key": "B",
         "text": "Amazon Keyspaces.",
         "correct": true,
-        "explanation": "Keyspaces menyediakan layanan database kompatibel Cassandra; validasi fitur yang digunakan tetap diperlukan."
+        "explanation": "Keyspaces provides service database compatible Cassandra; validation feature that used remains required."
       },
       {
         "key": "C",
         "text": "Amazon DocumentDB as a Cassandra wire-protocol implementation.",
         "correct": false,
-        "explanation": "DocumentDB berorientasi kompatibilitas MongoDB, bukan CQL."
+        "explanation": "DocumentDB oriented compatibility MongoDB, is not CQL."
       },
       {
         "key": "D",
         "text": "Amazon Neptune because all NoSQL protocols are interchangeable.",
         "correct": false,
-        "explanation": "Kategori NoSQL tidak berarti protokolnya sama."
+        "explanation": "Kategori NoSQL does not mean protokolnya same."
       }
     ],
     "tags": [
@@ -2300,25 +2300,25 @@
         "key": "A",
         "text": "A larger S3 object containing every product, downloaded for each query.",
         "correct": false,
-        "explanation": "Membaca seluruh katalog per pencarian tidak memberi indeks pencarian yang sesuai."
+        "explanation": "Reads all catalog per search not gives index search that appropriate."
       },
       {
         "key": "B",
         "text": "A DynamoDB TTL attribute to rank documents by relevance.",
         "correct": false,
-        "explanation": "TTL mengatur penghapusan item, bukan ranking teks."
+        "explanation": "TTL manages removal item, is not ranking text."
       },
       {
         "key": "C",
         "text": "An RDS standby used as a full-text relevance engine without changes.",
         "correct": false,
-        "explanation": "Standby HA bukan otomatis indeks pencarian khusus."
+        "explanation": "Standby HA does not automatically index search specific."
       },
       {
         "key": "D",
         "text": "An Amazon OpenSearch Service index fed from the source with an explicit freshness strategy.",
         "correct": true,
-        "explanation": "Search index melayani pencarian dan agregasi; sinkronisasi dan lag harus dirancang."
+        "explanation": "Search index serves search and agregasi; synchronization and lag must designed."
       }
     ],
     "tags": [
@@ -2345,25 +2345,25 @@
         "key": "A",
         "text": "Increase only total table capacity indefinitely without changing the concentrated access pattern.",
         "correct": false,
-        "explanation": "Kapasitas tabel tidak otomatis mengatasi batas akses yang sangat terkonsentrasi."
+        "explanation": "Capacity table does not automatically overcomes limit access that very concentrated."
       },
       {
         "key": "B",
         "text": "Distribute writes using a suitable key or sharding strategy and account for read aggregation.",
         "correct": true,
-        "explanation": "Key yang menyebarkan trafik mengurangi konsentrasi; biaya fan-out baca harus diperhitungkan."
+        "explanation": "Key that distributes traffic reduces konsentrasi; cost fan-out baca must accounted for."
       },
       {
         "key": "C",
         "text": "Use the same constant partition key in a new GSI for all items.",
         "correct": false,
-        "explanation": "Indeks dengan konsentrasi identik mempertahankan masalah hotspot."
+        "explanation": "index with konsentrasi identical maintains problem hotspot."
       },
       {
         "key": "D",
         "text": "Add a filter expression to every read so partition-key writes become distributed.",
         "correct": false,
-        "explanation": "Filter baca tidak mengubah lokasi atau pola write."
+        "explanation": "Filter baca does not change location or pattern write."
       }
     ],
     "tags": [
@@ -2390,25 +2390,25 @@
         "key": "A",
         "text": "Read the base table using its primary key with a strongly consistent read.",
         "correct": true,
-        "explanation": "Tabel mendukung strong read; GSI tidak menawarkan pilihan strong read."
+        "explanation": "Table supports strong read; GSI not offers choice strong read."
       },
       {
         "key": "B",
         "text": "Set ConsistentRead to true on the GSI query.",
         "correct": false,
-        "explanation": "GSI hanya menyediakan eventually consistent reads."
+        "explanation": "GSI only provides eventually consistent reads."
       },
       {
         "key": "C",
         "text": "Increase GSI provisioned capacity as a guarantee of zero propagation lag.",
         "correct": false,
-        "explanation": "Kapasitas tambahan bukan jaminan sinkronisasi kuat."
+        "explanation": "Capacity additional does not guarantee synchronization strong."
       },
       {
         "key": "D",
         "text": "Add a TTL attribute to make the GSI update synchronous.",
         "correct": false,
-        "explanation": "TTL tidak mengubah konsistensi propagasi indeks."
+        "explanation": "TTL does not change consistency propagation index."
       }
     ],
     "tags": [
@@ -2435,25 +2435,25 @@
         "key": "A",
         "text": "Remove all expiry and retain every cached value permanently.",
         "correct": false,
-        "explanation": "Menghindari miss dengan data abadi melanggar batas freshness."
+        "explanation": "Avoids miss with data abadi violates limit freshness."
       },
       {
         "key": "B",
         "text": "Coalesce concurrent refreshes for the key and use a controlled refresh/expiry policy within the freshness bound.",
         "correct": true,
-        "explanation": "Satu refresh terkoordinasi mencegah banyak query identik sekaligus; freshness tetap dibatasi."
+        "explanation": "One refresh terkoordinasi prevents many query identical simultaneously; freshness remains restricted."
       },
       {
         "key": "C",
         "text": "Give each simultaneous client a separate cache key for the same item.",
         "correct": false,
-        "explanation": "Ini mengurangi reuse dan mempertahankan banyak query sumber."
+        "explanation": "this reduces reuse and maintains many query source."
       },
       {
         "key": "D",
         "text": "Bypass the cache whenever many clients arrive.",
         "correct": false,
-        "explanation": "Permintaan terkonsentrasi langsung dibebankan ke database."
+        "explanation": "Request concentrated directly dibebankan to database."
       }
     ],
     "tags": [
@@ -2480,25 +2480,25 @@
         "key": "A",
         "text": "Use VPC peering alone without configuring any DNS forwarding.",
         "correct": false,
-        "explanation": "Konektivitas jaringan saja tidak membuat server DNS korporat mengetahui private zone."
+        "explanation": "Connectivity network only not creates server DNS corporate knows private zone."
       },
       {
         "key": "B",
         "text": "Create Route 53 Resolver inbound endpoints and forward the relevant corporate DNS queries to them.",
         "correct": true,
-        "explanation": "Query dari luar VPC masuk melalui inbound endpoint untuk resolusi nama VPC."
+        "explanation": "Query from outside VPC incoming through inbound endpoint for resolution name VPC."
       },
       {
         "key": "C",
         "text": "Create only outbound endpoints and send corporate queries to arbitrary EC2 instance addresses.",
         "correct": false,
-        "explanation": "Outbound melayani arah VPC menuju DNS eksternal, bukan endpoint penerima ini."
+        "explanation": "Outbound serves direction VPC toward DNS external, is not endpoint penerima this."
       },
       {
         "key": "D",
         "text": "Publish the private application records in a public hosted zone as the only solution.",
         "correct": false,
-        "explanation": "Kebutuhan tidak mengharuskan publikasi nama ke publik."
+        "explanation": "Requirements not requires publication name to public."
       }
     ],
     "tags": [
@@ -2525,25 +2525,25 @@
         "key": "A",
         "text": "Associate a private hosted zone without records and expect automatic corporate forwarding.",
         "correct": false,
-        "explanation": "Zone kosong bukan forwarding rule ke server korporat."
+        "explanation": "Zone empty is not forwarding rule to server corporate."
       },
       {
         "key": "B",
         "text": "Use Resolver outbound endpoints, a rule for corp.example, and shared rule associations for the participating VPCs.",
         "correct": true,
-        "explanation": "Outbound rule memilih domain yang diteruskan; sharing dan association memperluas penggunaan ke VPC yang diizinkan."
+        "explanation": "Outbound rule selects domain that forwarded; sharing and association expands usage to VPC that allowed."
       },
       {
         "key": "C",
         "text": "Create only inbound endpoints and expect them to initiate all VPC-to-corporate DNS forwarding.",
         "correct": false,
-        "explanation": "Arah inbound tidak menggantikan outbound rule."
+        "explanation": "Direction inbound does not replace outbound rule."
       },
       {
         "key": "D",
         "text": "Copy every corporate DNS record to a public hosted zone daily.",
         "correct": false,
-        "explanation": "Ini mempublikasikan data internal dan menambah sinkronisasi manual."
+        "explanation": "this mempublikasikan data internal and adds synchronization manual."
       }
     ],
     "tags": [
@@ -2570,25 +2570,25 @@
         "key": "A",
         "text": "The resolver always falls back to the public zone, so only an ALB health check can cause this.",
         "correct": false,
-        "explanation": "Asumsi fallback tersebut tidak berlaku pada kondisi ini."
+        "explanation": "Assumption fallback that not applies under conditions this."
       },
       {
         "key": "B",
         "text": "Increase the EC2 security-group outbound HTTP timeout.",
         "correct": false,
-        "explanation": "Ketiadaan record pada zone yang dipilih bukan masalah timeout HTTP."
+        "explanation": "Ketiadaan record on zone that chosen is not problem timeout HTTP."
       },
       {
         "key": "C",
         "text": "Enable S3 versioning to synchronize the two DNS zones.",
         "correct": false,
-        "explanation": "Tidak ada hubungan sinkronisasi DNS melalui versioning S3."
+        "explanation": "Not exists relationship synchronization DNS through versioning S3."
       },
       {
         "key": "D",
         "text": "The matching private zone takes precedence; add the required private record or redesign zone scope.",
         "correct": true,
-        "explanation": "Resolver tidak otomatis mencari public zone ketika matching private zone tidak memiliki record yang diminta."
+        "explanation": "Resolver does not automatically searches public zone when matching private zone does not have record that is requested."
       }
     ],
     "tags": [
@@ -2615,25 +2615,25 @@
         "key": "A",
         "text": "A NAT gateway selected solely to translate IPv6-to-IPv6 traffic.",
         "correct": false,
-        "explanation": "Egress-only IGW adalah mekanisme yang tepat untuk IPv6-ke-IPv6 outbound-only."
+        "explanation": "Egress-only IGW is mechanism that appropriate for IPv6-to-IPv6 outbound-only."
       },
       {
         "key": "B",
         "text": "An internet gateway alone while assuming IPv6 addresses are translated like private IPv4.",
         "correct": false,
-        "explanation": "IPv6 routing melalui IGW tidak memberi asumsi NAT IPv4 tersebut."
+        "explanation": "IPv6 routing through IGW not gives assumption NAT IPv4 that."
       },
       {
         "key": "C",
         "text": "An egress-only internet gateway with appropriate IPv6 routes and security rules.",
         "correct": true,
-        "explanation": "Gateway ini stateful untuk outbound IPv6 dan mencegah inisiasi koneksi dari internet."
+        "explanation": "Gateway this stateful for outbound IPv6 and prevents inisiasi connection from internet."
       },
       {
         "key": "D",
         "text": "A virtual private gateway with no VPN or private connection.",
         "correct": false,
-        "explanation": "Gateway VPN bukan jalur internet IPv6 outbound yang diminta."
+        "explanation": "Gateway VPN is not path internet IPv6 outbound that is requested."
       }
     ],
     "tags": [
@@ -2660,25 +2660,25 @@
         "key": "A",
         "text": "Disable every route to shared services while leaving dev-prod routes present.",
         "correct": false,
-        "explanation": "Ini kebalikan dari konektivitas yang diminta."
+        "explanation": "this kebalikan from connectivity that is requested."
       },
       {
         "key": "B",
         "text": "Create public DNS names only for shared services.",
         "correct": false,
-        "explanation": "DNS tidak menghilangkan route jaringan dev-prod."
+        "explanation": "DNS does not eliminate route network dev-prod."
       },
       {
         "key": "C",
         "text": "Use distinct transit gateway route tables with deliberate attachment associations and limited propagation/routes.",
         "correct": true,
-        "explanation": "Pemisahan route table mengontrol jaringan mana yang dapat dicapai setiap attachment."
+        "explanation": "Separation route table controls network which that can achieved each attachment."
       },
       {
         "key": "D",
         "text": "Propagate all VPC routes into one route table and rely on naming conventions for isolation.",
         "correct": false,
-        "explanation": "Nama tidak mencegah routing antar-environment."
+        "explanation": "Name not prevents routing antar-environment."
       }
     ],
     "tags": [
@@ -2705,25 +2705,25 @@
         "key": "A",
         "text": "Amazon Quick Sight as the engine for executing arbitrary Spark transformations.",
         "correct": false,
-        "explanation": "Layanan BI bukan runtime Spark untuk pipeline ini."
+        "explanation": "Service BI is not runtime Spark for pipeline this."
       },
       {
         "key": "B",
         "text": "Amazon Athena as a guarantee that all existing Spark job code runs unchanged as SQL.",
         "correct": false,
-        "explanation": "Athena SQL tidak otomatis menjalankan sembarang program Spark yang ada."
+        "explanation": "Athena SQL does not automatically run sembarang program Spark that exists."
       },
       {
         "key": "C",
         "text": "Amazon EMR Serverless with a supported release and suitable job runtime roles.",
         "correct": true,
-        "explanation": "EMR Serverless menjalankan Spark tanpa mengoperasikan cluster; kompatibilitas release dan izin data tetap dicek."
+        "explanation": "EMR Serverless runs Spark without operates cluster; compatibility release and permissions data remains dicek."
       },
       {
         "key": "D",
         "text": "An EMR on EC2 cluster kept at peak size between every job.",
         "correct": false,
-        "explanation": "Dapat menjalankan Spark, tetapi tidak memenuhi tujuan menghindari cluster yang selalu dikelola."
+        "explanation": "Can run Spark, but not meets destination avoids cluster that always managed."
       }
     ],
     "tags": [
@@ -2750,25 +2750,25 @@
         "key": "A",
         "text": "Run an appropriately configured Glue crawler to populate the Glue Data Catalog.",
         "correct": true,
-        "explanation": "Crawler menemukan metadata; transformasi data dan izin akses tetap diatur terpisah."
+        "explanation": "Crawler finds metadata; transformation data and access permissions remains configured separately."
       },
       {
         "key": "B",
         "text": "Create a Quick Sight dashboard and assume it becomes the authoritative S3 storage engine.",
         "correct": false,
-        "explanation": "Visualisasi tidak menggantikan storage atau katalog metadata."
+        "explanation": "Visualization does not replace storage or catalog metadata."
       },
       {
         "key": "C",
         "text": "Create a Lake Formation permission and assume it infers all new table schemas automatically.",
         "correct": false,
-        "explanation": "Permission mengendalikan akses, bukan menggantikan discovery metadata."
+        "explanation": "Permission controls access, is not replaces discovery metadata."
       },
       {
         "key": "D",
         "text": "Run only a Glue crawler and assume all malformed records are rewritten automatically.",
         "correct": false,
-        "explanation": "Discovery metadata bukan proses ETL yang membersihkan setiap record."
+        "explanation": "Discovery metadata is not process ETL that cleans each record."
       }
     ],
     "tags": [
@@ -2795,25 +2795,25 @@
         "key": "A",
         "text": "Enable S3 versioning on an unrelated bucket instead of selecting a query mode.",
         "correct": false,
-        "explanation": "Versioning tidak menentukan bagaimana dashboard membaca data sumber."
+        "explanation": "Versioning not determines how dashboard reads data source."
       },
       {
         "key": "B",
         "text": "Use direct queries for every viewer and assume source load is eliminated.",
         "correct": false,
-        "explanation": "Direct query tetap mengeksekusi query pada sumber sesuai pola penggunaan."
+        "explanation": "Direct query remains executes query on source according to the pattern usage."
       },
       {
         "key": "C",
         "text": "Import the dataset into SPICE and schedule refreshes that satisfy the freshness requirement.",
         "correct": true,
-        "explanation": "SPICE melayani analitik dari data yang diimpor; refresh mengatur seberapa baru data tersedia."
+        "explanation": "SPICE serves analytics from data that diimpor; refresh manages how much new data available."
       },
       {
         "key": "D",
         "text": "Import once into SPICE and never refresh because the source is changing.",
         "correct": false,
-        "explanation": "Tanpa refresh, data akan melewati batas umur satu jam."
+        "explanation": "Without refresh, data will exceeds limit age one hour."
       }
     ],
     "tags": [
@@ -2840,25 +2840,25 @@
         "key": "A",
         "text": "Increase only the event retention period.",
         "correct": false,
-        "explanation": "Retensi tidak menyebarkan key yang panas."
+        "explanation": "Retention not distributes key that panas."
       },
       {
         "key": "B",
         "text": "Add more consumers but keep every write on the same partition key.",
         "correct": false,
-        "explanation": "Reader tambahan tidak mengubah distribusi write producer."
+        "explanation": "Reader additional does not change distribution write producer."
       },
       {
         "key": "C",
         "text": "Place every event into one larger payload and assume ordering and size constraints disappear.",
         "correct": false,
-        "explanation": "Batching tidak menghilangkan seluruh batas maupun kebutuhan desain partition key."
+        "explanation": "Batching does not eliminate all limit as well as requirements design partition key."
       },
       {
         "key": "D",
         "text": "Choose a more distributed partition-key scheme consistent with the required ordering scope.",
         "correct": true,
-        "explanation": "Distribusi key menyebarkan write; perubahan urutan harus dinilai sebelum menerapkannya."
+        "explanation": "Distribution key distributes write; changes order must assessed before menerapkannya."
       }
     ],
     "tags": [
@@ -2885,25 +2885,25 @@
         "key": "A",
         "text": "Disable all job state and identify new data only by the number of output files.",
         "correct": false,
-        "explanation": "Jumlah file output bukan penanda kemajuan input yang andal."
+        "explanation": "Number file output is not penanda progress input that andal."
       },
       {
         "key": "B",
         "text": "Reset the bookmark every day and assume the job will read only new input.",
         "correct": false,
-        "explanation": "Reset justru menghapus kemajuan yang dipakai membedakan input lama."
+        "explanation": "Reset instead deletes progress that used distinguishes input long."
       },
       {
         "key": "C",
         "text": "Use job bookmarks for incremental input and design idempotent output handling for deliberate reprocessing.",
         "correct": true,
-        "explanation": "Bookmark melacak input; reset atau rewind tidak otomatis membersihkan output lama."
+        "explanation": "Bookmark tracks input; reset or rewind does not automatically cleans output long."
       },
       {
         "key": "D",
         "text": "Use bookmarks as a guarantee that destination tables can never contain duplicates.",
         "correct": false,
-        "explanation": "Output dan efek samping tetap membutuhkan desain idempotensi."
+        "explanation": "Output and effect side remains requires design idempotency."
       }
     ],
     "tags": [

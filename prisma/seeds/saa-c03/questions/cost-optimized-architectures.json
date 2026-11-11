@@ -11,25 +11,25 @@
         "key": "A",
         "text": "Move all objects to S3 Standard-IA solely because current-day access is low",
         "correct": false,
-        "explanation": "Pola satu hari tidak cukup menentukan cocoknya IA untuk pola berubah; retrieval dan minimum charges dapat mengurangi penghematan."
+        "explanation": "Pattern one day is not sufficient to determines suitability IA for pattern changes; retrieval and minimum charges can reduce savings."
       },
       {
         "key": "B",
         "text": "Enable Intelligent-Tiering Archive Access and Deep Archive Access for every object",
         "correct": false,
-        "explanation": "Optional archive tiers membutuhkan restore dan tidak sesuai dengan kebutuhan setiap objek selalu dapat diakses dalam milidetik."
+        "explanation": "Optional archive tiers requires restore and does not according to requirements each object always can accessed within milliseconds."
       },
       {
         "key": "C",
         "text": "Transition all objects to S3 Glacier Deep Archive after one day",
         "correct": false,
-        "explanation": "Deep Archive tidak memberi retrieval langsung dan pola akses tidak diketahui."
+        "explanation": "Deep Archive not gives retrieval directly and pattern access not known."
       },
       {
         "key": "D",
         "text": "Use S3 Intelligent-Tiering without enabling its optional asynchronous archive-access tiers",
         "correct": true,
-        "explanation": "Automatic tiers dapat menyesuaikan pola akses, sementara tidak mengaktifkan optional archive tiers mempertahankan jalur akses langsung yang diminta."
+        "explanation": "Automatic tiers can adjust pattern access, temporary not enables optional archive tiers maintains path access directly that is requested."
       }
     ],
     "tags": [
@@ -55,25 +55,25 @@
         "key": "A",
         "text": "S3 Standard",
         "correct": false,
-        "explanation": "Standard mempertahankan akses sering dengan latency rendah; fitur tersebut tidak diperlukan untuk arsip jarang diakses pada soal."
+        "explanation": "Standard maintains access often with latency low; feature that is not required for archive rarely accessed on question."
       },
       {
         "key": "B",
         "text": "S3 Glacier Deep Archive",
         "correct": true,
-        "explanation": "Deep Archive ditujukan untuk retensi panjang dengan akses sangat jarang dan retrieval yang tidak harus instan."
+        "explanation": "Deep Archive intended for retention long with access very rarely and retrieval that not must instan."
       },
       {
         "key": "C",
         "text": "S3 Glacier Instant Retrieval",
         "correct": false,
-        "explanation": "Instant Retrieval sesuai jika objek arsip harus langsung dibaca, bukan tujuan biaya storage paling rendah dengan toleransi restore dua hari."
+        "explanation": "Instant Retrieval appropriate if object archive must directly read, is not destination cost storage lowest with tolerance restore two day."
       },
       {
         "key": "D",
         "text": "S3 Standard-IA",
         "correct": false,
-        "explanation": "Standard-IA menyediakan akses langsung yang tidak diperlukan, sehingga bukan tier penyimpanan arsip terendah di antara opsi ini."
+        "explanation": "Standard-IA provides access directly that is not required, so that is not tier storage archive lowest in between this option."
       }
     ],
     "tags": [
@@ -99,25 +99,25 @@
         "key": "A",
         "text": "Standard-IA removes all minimum-duration and retrieval charges when lifecycle performs the transition",
         "correct": false,
-        "explanation": "Lifecycle tidak menghapus ketentuan biaya kelas tujuan."
+        "explanation": "Lifecycle not deletes provisions cost class destination."
       },
       {
         "key": "B",
         "text": "Moving the objects to Deep Archive on day 10 guarantees free retrieval and immediate deletion with no remaining charges",
         "correct": false,
-        "explanation": "Deep Archive bukan retrieval gratis-instans dan memiliki ketentuan minimum penyimpanan yang lebih panjang."
+        "explanation": "Deep Archive is not retrieval gratis-instans and has provisions minimum storage that more long."
       },
       {
         "key": "C",
         "text": "Standard-IA transition eligibility and minimum-duration charges make this proposed short-lived lifecycle unsuitable; compare the full cost before changing classes",
         "correct": true,
-        "explanation": "Transisi lifecycle ke Standard-IA memiliki batas usia objek dan kelas tersebut memiliki minimum storage duration; biaya tidak ditentukan oleh harga per-GB saja."
+        "explanation": "Transition lifecycle to Standard-IA has limit usia object and class that has minimum storage duration; cost not determined by price per-GB only."
       },
       {
         "key": "D",
         "text": "Any lower advertised storage rate guarantees a lower total cost even for objects deleted soon afterward",
         "correct": false,
-        "explanation": "Minimum charges, transisi, dan retrieval dapat membuat total biaya lebih tinggi."
+        "explanation": "Minimum charges, transition, and retrieval can create total cost higher."
       }
     ],
     "tags": [
@@ -143,25 +143,25 @@
         "key": "A",
         "text": "Move the database files to an S3 Glacier class while keeping the same block-device interface",
         "correct": false,
-        "explanation": "Glacier bukan pengganti block device aktif dengan latency I/O yang sama."
+        "explanation": "Glacier is not a substitute for block device active with latency I/O that same."
       },
       {
         "key": "B",
         "text": "Evaluate gp3 with storage capacity, IOPS, and throughput configured to the measured requirements",
         "correct": true,
-        "explanation": "gp3 memungkinkan konfigurasi performa terpisah dari kapasitas sehingga tidak perlu membeli kapasitas besar hanya untuk menaikkan baseline IOPS gp2."
+        "explanation": "gp3 enables configuration performance separate from capacity so that does not need to buys capacity large only for raises baseline IOPS gp2."
       },
       {
         "key": "C",
         "text": "Use an st1 volume and assume HDD random-I/O behavior is identical to SSD",
         "correct": false,
-        "explanation": "Mengganti ke HDD tanpa melihat pola I/O dapat melanggar kebutuhan performa database."
+        "explanation": "Replaces to HDD without sees pattern I/O can violates requirements performance database."
       },
       {
         "key": "D",
         "text": "Keep increasing gp2 capacity even though the application does not need additional storage",
         "correct": false,
-        "explanation": "Ini mempertahankan pembelian kapasitas tidak terpakai yang ingin dikurangi."
+        "explanation": "this maintains purchase capacity not used that wants dikurangi."
       }
     ],
     "tags": [
@@ -187,25 +187,25 @@
         "key": "A",
         "text": "Move all files to S3 Deep Archive and expect existing NFS mounts to work unchanged",
         "correct": false,
-        "explanation": "S3 tidak mempertahankan antarmuka EFS NFS hanya karena data dipindahkan."
+        "explanation": "S3 not maintains interface EFS NFS only because data moved."
       },
       {
         "key": "B",
         "text": "Configure EFS Lifecycle management for appropriate infrequent-access or archive classes after evaluating access costs and latency",
         "correct": true,
-        "explanation": "Lifecycle mempertahankan akses melalui file system sambil memindahkan file eligible berdasarkan policy; pola cold files sesuai untuk evaluasi ini."
+        "explanation": "Lifecycle maintains access through file system while moves file eligible based on policy; pattern cold files appropriate for evaluation this."
       },
       {
         "key": "C",
         "text": "Delete the mount targets but leave the file system intact",
         "correct": false,
-        "explanation": "Menghilangkan mount targets dapat memutus akses tanpa menghapus biaya data yang tetap tersimpan."
+        "explanation": "Eliminates mount targets can breaks access without deletes cost data that remains stored."
       },
       {
         "key": "D",
         "text": "Increase EFS throughput settings even though cold-file storage dominates the bill",
         "correct": false,
-        "explanation": "Menambah throughput tidak menurunkan biaya penyimpanan file dingin."
+        "explanation": "Adds throughput not reduces storage costs file cold."
       }
     ],
     "tags": [
@@ -231,31 +231,31 @@
         "key": "A",
         "text": "Have clients explicitly abort multipart uploads that they intentionally abandon",
         "correct": true,
-        "explanation": "Abort pada sisi client membersihkan parts ketika proses upload diputuskan tidak akan dilanjutkan."
+        "explanation": "Abort on the side of client cleans parts when process upload diputuskan not will continued."
       },
       {
         "key": "B",
         "text": "Enable S3 Versioning and assume it automatically removes all uncommitted parts",
         "correct": false,
-        "explanation": "Versioning bukan mekanisme cleanup incomplete multipart uploads."
+        "explanation": "Versioning is not mechanism cleanup incomplete multipart uploads."
       },
       {
         "key": "C",
         "text": "Expire every completed object after one day regardless of retention requirements",
         "correct": false,
-        "explanation": "Ini melanggar kebutuhan menjaga completed objects dan bukan cleanup yang ditargetkan."
+        "explanation": "this violates requirements maintains completed objects rather than cleanup that targeted."
       },
       {
         "key": "D",
         "text": "Configure a lifecycle rule to abort incomplete multipart uploads after an appropriate number of days",
         "correct": true,
-        "explanation": "Rule ini menargetkan parts dari upload yang belum selesai, bukan menghapus completed objects."
+        "explanation": "Rule this targets parts from upload that not yet completed, is not deletes completed objects."
       },
       {
         "key": "E",
         "text": "Transition incomplete parts to Deep Archive without aborting the upload",
         "correct": false,
-        "explanation": "Lifecycle abort adalah mekanisme yang sesuai; mengarsipkan parts tidak menyelesaikan abandoned uploads."
+        "explanation": "Lifecycle abort is mechanism that appropriate; mengarsipkan parts does not solve abandoned uploads."
       }
     ],
     "tags": [
@@ -281,25 +281,25 @@
         "key": "A",
         "text": "An EC2 Instance Savings Plan tied to one instance family and Region as the discount for all three services",
         "correct": false,
-        "explanation": "EC2 Instance Savings Plans memiliki cakupan lebih spesifik dan bukan diskon untuk seluruh Fargate/Lambda seperti Compute Savings Plans."
+        "explanation": "EC2 Instance Savings Plans has scope more specific rather than discount for all Fargate/Lambda such as Compute Savings Plans."
       },
       {
         "key": "B",
         "text": "An EC2 Capacity Reservation assumed to discount all Lambda invocations",
         "correct": false,
-        "explanation": "Capacity Reservation bukan rencana diskon lintas ketiga layanan tersebut."
+        "explanation": "Capacity Reservation is not plan discount across third service that."
       },
       {
         "key": "C",
         "text": "A Compute Savings Plan sized to the eligible hourly baseline",
         "correct": true,
-        "explanation": "Compute Savings Plans memiliki fleksibilitas lintas penggunaan eligible EC2, Fargate, dan Lambda dengan komitmen pengeluaran per jam."
+        "explanation": "Compute Savings Plans has flexibility across usage eligible EC2, Fargate, and Lambda with commitment expenditure per hour."
       },
       {
         "key": "D",
         "text": "A Reserved DB Instance covering the application compute spend",
         "correct": false,
-        "explanation": "Reserved DB pricing berlaku untuk penggunaan database yang cocok, bukan baseline EC2/Fargate/Lambda umum."
+        "explanation": "Reserved DB pricing applies for usage database that suitable, is not baseline EC2/Fargate/Lambda general."
       }
     ],
     "tags": [
@@ -325,25 +325,25 @@
         "key": "A",
         "text": "Use a single fixed Spot capacity pool and assume it guarantees availability for the entire completion window",
         "correct": false,
-        "explanation": "Satu pool tanpa fleksibilitas meningkatkan risiko kapasitas dan Spot bukan jaminan kapasitas."
+        "explanation": "One pool without flexibility increases risk capacity and Spot does not guarantee capacity."
       },
       {
         "key": "B",
         "text": "Buy dedicated physical hosts solely because the workload is interruptible",
         "correct": false,
-        "explanation": "Dedicated Hosts menjawab kebutuhan isolasi/licensing tertentu, bukan diskon yang berasal dari toleransi interupsi."
+        "explanation": "Dedicated Hosts answers requirements isolation/licensing specific, is not discount that originates from tolerance interruption."
       },
       {
         "key": "C",
         "text": "Use a diversified Spot fleet with checkpointing, retry logic, and an appropriate capacity-aware allocation strategy",
         "correct": true,
-        "explanation": "Sifat tugas yang bisa dilanjutkan dan fleksibilitas tipe cocok dengan Spot; diversifikasi dan recovery mengurangi dampak interupsi."
+        "explanation": "Nature duties that can continued and flexibility type suitable with Spot; diversifikasi and recovery reduces impact interruption."
       },
       {
         "key": "D",
         "text": "Use Spot but disable retries because interrupted instances always finish their tasks first",
         "correct": false,
-        "explanation": "Spot dapat terinterupsi; tidak ada jaminan job selesai sebelum interupsi."
+        "explanation": "Spot can terinterupsi; not exists guarantee job completed before interruption."
       }
     ],
     "tags": [
@@ -369,25 +369,25 @@
         "key": "A",
         "text": "The Savings Plan discounts eligible usage; a suitable Capacity Reservation is a separate mechanism for reserving matching EC2 capacity",
         "correct": true,
-        "explanation": "Komitmen diskon tidak sama dengan kapasitas AZ yang dicadangkan. Reservasi harus sesuai atribut dan ketentuan yang relevan."
+        "explanation": "Commitment discount not the same as capacity AZ that backed up. Reservation must appropriate attribute and provisions that relevant."
       },
       {
         "key": "B",
         "text": "Any Savings Plan automatically reserves every discounted instance type in every Availability Zone",
         "correct": false,
-        "explanation": "Cakupan diskon tidak berarti kapasitas fisik otomatis tersedia di semua lokasi."
+        "explanation": "Scope discount does not mean physical capacity automatically available in all location."
       },
       {
         "key": "C",
         "text": "A Spot interruption notice can be used as a long-term capacity reservation",
         "correct": false,
-        "explanation": "Notice interupsi bukan kontrak untuk menyediakan kapasitas yang diminta."
+        "explanation": "Notice interruption is not kontrak for provides capacity that is requested."
       },
       {
         "key": "D",
         "text": "Purchasing a larger Savings Plan always resolves a capacity shortage",
         "correct": false,
-        "explanation": "Menambah komitmen biaya tidak menambah kapasitas yang dicadangkan."
+        "explanation": "Adds commitment cost not adds capacity that backed up."
       }
     ],
     "tags": [
@@ -413,31 +413,31 @@
         "key": "A",
         "text": "Terminate all instances without preserving the required data or a rebuild plan",
         "correct": false,
-        "explanation": "Ini tidak memenuhi kebutuhan data dan kesiapan lingkungan development."
+        "explanation": "this does not meet requirements data and readiness environment development."
       },
       {
         "key": "B",
         "text": "Account for continuing storage and other retained-resource charges while instances are stopped",
         "correct": true,
-        "explanation": "Stopping tidak berarti seluruh resource terkait menjadi gratis; EBS dan resource lain tetap harus dihitung."
+        "explanation": "Stopping does not mean all resource related becomes gratis; EBS and other resource remains must calculated."
       },
       {
         "key": "C",
         "text": "Leave every instance running and only reduce CloudWatch dashboard refresh frequency",
         "correct": false,
-        "explanation": "Frekuensi dashboard tidak menghilangkan biaya compute idle utama."
+        "explanation": "Frequency dashboard does not eliminate cost compute idle primary."
       },
       {
         "key": "D",
         "text": "Assume stopping an instance deletes all attached EBS volumes and their backups",
         "correct": false,
-        "explanation": "Stop tidak sama dengan menghapus instance dan volume; asumsi ini salah untuk rencana retensi."
+        "explanation": "Stop not the same as deletes instance and volume; assumption this wrong for plan retention."
       },
       {
         "key": "E",
         "text": "Automate stopping and starting the instances around the approved working schedule",
         "correct": true,
-        "explanation": "Schedule mengurangi waktu compute berjalan saat tidak diperlukan sambil mempertahankan EBS yang perlu disimpan."
+        "explanation": "Schedule reduces time compute operates when is not required while maintains EBS that needs to stored."
       }
     ],
     "tags": [
@@ -463,25 +463,25 @@
         "key": "A",
         "text": "Invoke Lambda on demand for each event, with retries and permissions configured for the event source",
         "correct": true,
-        "explanation": "Model on-demand menghindari worker yang selalu berjalan untuk pola yang sebagian besar idle, selama batas dan semantics event dipenuhi."
+        "explanation": "Model on-demand avoids worker that always operates for pattern that most idle, while limit and semantics event fulfilled."
       },
       {
         "key": "B",
         "text": "Configure substantial Lambda provisioned concurrency for the entire day despite no initialization-latency requirement",
         "correct": false,
-        "explanation": "Provisioned concurrency menambah kapasitas berbayar yang tidak diperlukan berdasarkan kebutuhan soal."
+        "explanation": "Provisioned concurrency adds capacity berbayar that is not required based on requirements question."
       },
       {
         "key": "C",
         "text": "Run the handler in an always-on dedicated host solely to avoid per-request charges",
         "correct": false,
-        "explanation": "Dedicated host selalu aktif tidak sesuai tujuan menghindari biaya idle untuk fungsi ringan."
+        "explanation": "Dedicated host always active not according to the intended purpose avoids cost idle for function light."
       },
       {
         "key": "D",
         "text": "Keep a large EC2 worker running continuously even when no events arrive",
         "correct": false,
-        "explanation": "Ini mempertahankan idle compute yang menjadi sasaran pengurangan."
+        "explanation": "this maintains idle compute that becomes sasaran reduction."
       }
     ],
     "tags": [
@@ -507,25 +507,25 @@
         "key": "A",
         "text": "Buy a three-year commitment for a smaller type before running any validation",
         "correct": false,
-        "explanation": "Komitmen lebih awal dapat mengunci keputusan yang melanggar kebutuhan performa."
+        "explanation": "Commitment more initial can locks decision that violates requirements performance."
       },
       {
         "key": "B",
         "text": "Remove monitoring to lower cost before establishing whether the smaller size works",
         "correct": false,
-        "explanation": "Menghilangkan observabilitas mengurangi kemampuan memvalidasi perubahan dan risiko."
+        "explanation": "Eliminates observabilitas reduces capability memvalidasi changes and risk."
       },
       {
         "key": "C",
         "text": "Review representative CPU, memory, and latency data, evaluate Compute Optimizer recommendations, and load-test the proposed size",
         "correct": true,
-        "explanation": "Rightsizing perlu mempertimbangkan peak dan metrik selain rata-rata CPU. Rekomendasi menjadi input yang diuji, bukan keputusan otomatis."
+        "explanation": "Rightsizing need to consider peak and metrics besides average CPU. Recommendation becomes input that tested, is not decision automatically."
       },
       {
         "key": "D",
         "text": "Choose the smallest available instance solely from average CPU utilization",
         "correct": false,
-        "explanation": "CPU rata-rata mengabaikan kebutuhan RAM dan peak yang dapat menyebabkan kegagalan atau latency tinggi."
+        "explanation": "CPU average ignores requirements RAM and peak that can causes failure or latency high."
       }
     ],
     "tags": [
@@ -551,25 +551,25 @@
         "key": "A",
         "text": "Keep on-demand solely because it must always be cheaper regardless of utilization",
         "correct": false,
-        "explanation": "Tidak ada model yang selalu termurah; soal memberikan hasil perhitungan workload ini."
+        "explanation": "Not exists model that always cheapest; question provides result calculation workload this."
       },
       {
         "key": "B",
         "text": "Provision far below the sustained request rate and disable throttling alarms",
         "correct": false,
-        "explanation": "Pengurangan biaya yang mengorbankan kebutuhan throughput bukan solusi yang memenuhi workload."
+        "explanation": "Reduction cost that sacrifices requirements throughput is not a solution that meets workload."
       },
       {
         "key": "C",
         "text": "Provision for a hypothetical hundredfold peak indefinitely without checking demand",
         "correct": false,
-        "explanation": "Overprovisioning besar bertentangan dengan data steady load dan tujuan cost optimization."
+        "explanation": "Overprovisioning large conflicts with data steady load and destination cost optimization."
       },
       {
         "key": "D",
         "text": "Use provisioned capacity sized for the workload, with suitable auto scaling, alarms, and periodic review",
         "correct": true,
-        "explanation": "Hasil model dan pola stabil mendukung provisioned; auto scaling dan monitoring membantu mengelola perubahan tanpa menganggap sizing awal selalu benar."
+        "explanation": "Result model and pattern stable supports provisioned; auto scaling and monitoring helps manages changes without assumes sizing initial always correct."
       }
     ],
     "tags": [
@@ -595,25 +595,25 @@
         "key": "A",
         "text": "Provisioned mode with a fixed small capacity and no monitoring or scaling",
         "correct": false,
-        "explanation": "Beban tak terduga dapat melebihi kapasitas kecil dan menyebabkan throttling."
+        "explanation": "Load tak terduga can melebihi capacity small and causes throttling."
       },
       {
         "key": "B",
         "text": "On-demand capacity mode, while still monitoring quotas, partition-key distribution, and any configured throughput limits",
         "correct": true,
-        "explanation": "On-demand mengurangi kebutuhan provisioning manual dengan request-based billing, tetapi batas layanan dan hot keys tetap relevan."
+        "explanation": "On-demand reduces requirements provisioning manual with request-based billing, but limit service and hot keys remains relevant."
       },
       {
         "key": "C",
         "text": "On-demand mode with the assumption that it eliminates all throttling and quota constraints",
         "correct": false,
-        "explanation": "Mode on-demand tidak menghapus seluruh limits atau masalah distribusi key."
+        "explanation": "Mode on-demand not deletes all limits or problem distribution key."
       },
       {
         "key": "D",
         "text": "A fixed provisioned allocation equal to the largest imaginable traffic spike for every hour",
         "correct": false,
-        "explanation": "Ini membeli kapasitas idle berdasarkan hipotesis yang tidak tervalidasi."
+        "explanation": "this buys capacity idle based on hipotesis that not tervalidasi."
       }
     ],
     "tags": [
@@ -639,25 +639,25 @@
         "key": "A",
         "text": "A read replica used as the only autoscaling control for write capacity",
         "correct": false,
-        "explanation": "Replica baca tidak otomatis menskalakan kapasitas writer untuk workload write."
+        "explanation": "Replica baca does not automatically menskalakan capacity writer for workloads write."
       },
       {
         "key": "B",
         "text": "An oversized fixed provisioned writer kept at peak capacity at all times",
         "correct": false,
-        "explanation": "Model ini tidak menyesuaikan compute secara elastis sesuai pola yang diminta."
+        "explanation": "Model this does not adjust compute in a manner elastis according to the pattern that is requested."
       },
       {
         "key": "C",
         "text": "RDS Proxy alone, because pooling automatically changes the database instance size",
         "correct": false,
-        "explanation": "Proxy mengelola koneksi; tidak menjadi mekanisme autoscaling compute database sendiri."
+        "explanation": "Proxy manages connection; not becomes mechanism autoscaling compute database itself."
       },
       {
         "key": "D",
         "text": "Aurora Serverless capacity with suitable minimum and maximum settings and a workload cost test",
         "correct": true,
-        "explanation": "Aurora Serverless menyesuaikan kapasitas compute terhadap kebutuhan dalam batas yang dikonfigurasi; uji biaya dan performa tetap diperlukan."
+        "explanation": "Aurora Serverless adjusts capacity compute against requirements within limit that configured; test cost and performance remains required."
       }
     ],
     "tags": [
@@ -683,25 +683,25 @@
         "key": "A",
         "text": "Create an additional standby solely because a second instance always reduces the total bill",
         "correct": false,
-        "explanation": "Tambahan kapasitas/availability tidak otomatis mengurangi total biaya."
+        "explanation": "Additional capacity/availability does not automatically reduce total cost."
       },
       {
         "key": "B",
         "text": "Purchase a Compute Savings Plan and assume it covers ordinary RDS DB instance charges",
         "correct": false,
-        "explanation": "Compute Savings Plans bukan diskon untuk ordinary RDS DB instance usage yang ditanyakan."
+        "explanation": "Compute Savings Plans is not discount for ordinary RDS DB instance usage that ditanyakan."
       },
       {
         "key": "C",
         "text": "Stop the production database nightly even though it must operate continuously",
         "correct": false,
-        "explanation": "Ini melanggar kebutuhan availability operasional 24 jam."
+        "explanation": "this violates requirements availability operational 24 hour."
       },
       {
         "key": "D",
         "text": "Purchase an appropriately matched Reserved DB Instance offering after reviewing its term and payment options",
         "correct": true,
-        "explanation": "Reserved DB Instance adalah mekanisme billing discount untuk penggunaan yang memenuhi atribut/ketentuan, bukan migrasi data ke mesin terpisah."
+        "explanation": "Reserved DB Instance is mechanism billing discount for usage that meets attribute/provisions, is not migration data to mesin separate."
       }
     ],
     "tags": [
@@ -727,25 +727,25 @@
         "key": "A",
         "text": "Enable TTL for cleanup and have the application independently reject sessions whose expiration timestamp has passed",
         "correct": true,
-        "explanation": "TTL menghapus item expired secara asinkron. Aplikasi harus menegakkan expiry tepat waktu, bukan menunggu penghapusan fisik."
+        "explanation": "TTL deletes item expired asynchronously. Application must enforces expiry appropriate time, is not waits removal physical."
       },
       {
         "key": "B",
         "text": "Enable TTL and keep accepting a session until the item disappears",
         "correct": false,
-        "explanation": "Item expired dapat tetap ada beberapa waktu, sehingga akses dapat diterima melewati expiry."
+        "explanation": "Item expired can remains exists several time, so that access can be received exceeds expiry."
       },
       {
         "key": "C",
         "text": "Remove expiration timestamps and periodically delete random records to keep the table small",
         "correct": false,
-        "explanation": "Penghapusan acak tidak mempertahankan semantics session atau batas expiry."
+        "explanation": "Removal random not maintains semantics session or limit expiry."
       },
       {
         "key": "D",
         "text": "Disable the application expiration check because TTL deletion is guaranteed at the exact second",
         "correct": false,
-        "explanation": "Tidak ada jaminan penghapusan TTL tepat pada detik expiry."
+        "explanation": "Not exists guarantee removal TTL appropriate on second expiry."
       }
     ],
     "tags": [
@@ -771,31 +771,31 @@
         "key": "A",
         "text": "Assume retained snapshots become free as soon as the source DB instance is deleted",
         "correct": false,
-        "explanation": "Storage backup yang tetap disimpan tidak otomatis menjadi gratis hanya karena source dihapus."
+        "explanation": "Storage backup that remains stored does not automatically becomes gratis only because source deleted."
       },
       {
         "key": "B",
         "text": "Delete every snapshot regardless of policy because the source database no longer runs",
         "correct": false,
-        "explanation": "Database berhenti tidak berarti semua snapshot tidak dibutuhkan."
+        "explanation": "Database stops does not mean all snapshot not required."
       },
       {
         "key": "C",
         "text": "Remove snapshots that are confirmed unnecessary and automate future retention review or lifecycle where supported",
         "correct": true,
-        "explanation": "Cleanup ditargetkan pada data yang sudah tidak diperlukan, lalu proses dibuat berulang agar pemborosan tidak kembali."
+        "explanation": "Cleanup targeted on data that already is not required, then process created repeated so that waste not back."
       },
       {
         "key": "D",
         "text": "Disable all production backups to offset charges from unused test snapshots",
         "correct": false,
-        "explanation": "Ini memindahkan risiko ke production, bukan memperbaiki sumber pemborosan yang diidentifikasi."
+        "explanation": "this moves risk to production, is not improves source waste that diidentifikasi."
       },
       {
         "key": "E",
         "text": "Inventory snapshot ownership and retention requirements before identifying deletable snapshots",
         "correct": true,
-        "explanation": "Ownership dan kebutuhan recovery menentukan snapshot mana yang aman dihapus."
+        "explanation": "Ownership and requirements recovery determines snapshot which that secure deleted."
       }
     ],
     "tags": [
@@ -821,25 +821,25 @@
         "key": "A",
         "text": "Increase the NAT gateway's traffic volume so its per-GB processing becomes automatically free",
         "correct": false,
-        "explanation": "Volume lebih besar tidak otomatis membuat processing charges NAT hilang."
+        "explanation": "Volume larger does not automatically create processing charges NAT lost."
       },
       {
         "key": "B",
         "text": "Keep the NAT route and enable S3 Versioning",
         "correct": false,
-        "explanation": "Versioning tidak mengubah jalur jaringan ke S3."
+        "explanation": "Versioning does not change path network to S3."
       },
       {
         "key": "C",
         "text": "Create an S3 gateway endpoint and associate the appropriate subnet route tables",
         "correct": true,
-        "explanation": "Gateway endpoint mengarahkan traffic S3 yang cocok tanpa NAT dan tidak mengenakan endpoint hourly/processing charges seperti yang dijelaskan dalam pricing AWS."
+        "explanation": "Gateway endpoint routes traffic S3 that suitable without NAT and does not mengenakan endpoint hourly/processing charges such as that explained within pricing AWS."
       },
       {
         "key": "D",
         "text": "Add an interface endpoint solely on the assumption that all endpoint types have identical zero processing cost",
         "correct": false,
-        "explanation": "Interface dan gateway endpoint memiliki model biaya serta kemampuan berbeda; asumsi semua endpoint gratis tidak benar."
+        "explanation": "Interface and gateway endpoint has model cost and capability different; assumption all endpoint gratis not correct."
       }
     ],
     "tags": [
@@ -865,25 +865,25 @@
         "key": "A",
         "text": "Route each private subnet to the existing NAT gateway in its own Availability Zone",
         "correct": true,
-        "explanation": "Pada desain zonal, memakai gateway lokal menghindari traversal lintas AZ yang tidak perlu dan mengurangi ketergantungan jalur egress pada AZ pertama."
+        "explanation": "On design zonal, uses gateway local avoids traversal cross-AZ that does not need to and reduces dependency path egress on AZ first."
       },
       {
         "key": "B",
         "text": "Replace all default routes with S3 gateway endpoint routes for arbitrary internet destinations",
         "correct": false,
-        "explanation": "Gateway endpoint S3 bukan jalur untuk seluruh tujuan internet."
+        "explanation": "Gateway endpoint S3 is not path for all destination internet."
       },
       {
         "key": "C",
         "text": "Delete the second NAT gateway and keep both AZs dependent on the first",
         "correct": false,
-        "explanation": "Ini mengubah availability dependency dan bukan mempertahankan desain dua-AZ yang diberikan."
+        "explanation": "this changes availability dependency rather than maintains design dua-AZ that granted."
       },
       {
         "key": "D",
         "text": "Route both private subnets through the gateway in a third AZ",
         "correct": false,
-        "explanation": "Ini masih membuat traversal lintas AZ dan menambah ketergantungan."
+        "explanation": "this still creates traversal cross-AZ and adds dependency."
       }
     ],
     "tags": [
@@ -909,25 +909,25 @@
         "key": "A",
         "text": "A direct VPC peering connection with the required routes and security rules",
         "correct": true,
-        "explanation": "Untuk dua VPC langsung tanpa transit, peering menghindari komponen TGW yang tidak dibutuhkan; transfer charges yang berlaku tetap harus dihitung."
+        "explanation": "For two VPC directly without transit, peering avoids component TGW that not required; transfer charges that applies remains must calculated."
       },
       {
         "key": "B",
         "text": "A public internet path with no encryption or access controls because it has fewer route tables",
         "correct": false,
-        "explanation": "Mengurangi komponen tidak membenarkan menghilangkan kebutuhan private connectivity."
+        "explanation": "Reduces component not justifies eliminates requirements private connectivity."
       },
       {
         "key": "C",
         "text": "A Transit Gateway deployed solely because every VPC connection requires transitive routing",
         "correct": false,
-        "explanation": "Soal secara eksplisit tidak memerlukan transit; kebutuhan tidak boleh ditambah tanpa alasan."
+        "explanation": "Question explicitly does not require transit; requirements not may added without reason."
       },
       {
         "key": "D",
         "text": "Two NAT gateways used as bidirectional private routers between the VPC CIDRs",
         "correct": false,
-        "explanation": "NAT bukan pengganti peering private connectivity dua arah untuk kasus ini."
+        "explanation": "NAT is not a substitute for peering private connectivity two direction for this case."
       }
     ],
     "tags": [
@@ -953,25 +953,25 @@
         "key": "A",
         "text": "Use Global Accelerator and assume it caches every asset at the edge",
         "correct": false,
-        "explanation": "Global Accelerator memperbaiki jalur jaringan yang sesuai, bukan CDN cache untuk objek."
+        "explanation": "Global Accelerator improves path network that appropriate, is not CDN cache for object."
       },
       {
         "key": "B",
         "text": "Configure the caching-disabled policy for every immutable asset.",
         "correct": false,
-        "explanation": "Mematikan caching tidak mengurangi repeated origin fetch; aset identik justru cocok dievaluasi untuk caching."
+        "explanation": "Shuts down caching not reduces repeated origin fetch; asset identical instead suitable evaluated for caching."
       },
       {
         "key": "C",
         "text": "Add more origin instances but force every user request to bypass all caches",
         "correct": false,
-        "explanation": "Ini dapat meningkatkan kapasitas tetapi tidak mengurangi repeat origin work."
+        "explanation": "this can increases capacity but not reduces repeat origin work."
       },
       {
         "key": "D",
         "text": "Cache the assets in CloudFront with suitable TTLs and cache policies, then measure total delivery cost",
         "correct": true,
-        "explanation": "Cache hits mengurangi fetch dan kerja origin. Biaya CloudFront serta pola akses tetap harus dimasukkan ke perhitungan total."
+        "explanation": "Cache hits reduces fetch and work origin. Cost CloudFront and pattern access remains must inserted to calculation total."
       }
     ],
     "tags": [
@@ -997,25 +997,25 @@
         "key": "A",
         "text": "Replace the ALBs with one NLB and expect native HTTP path-based rules",
         "correct": false,
-        "explanation": "NLB tidak menyediakan routing layer-7 path seperti ALB."
+        "explanation": "NLB does not provide routing layer-7 path such as ALB."
       },
       {
         "key": "B",
         "text": "Create an additional ALB for every URL path to minimize fixed components",
         "correct": false,
-        "explanation": "Ini menambah duplikasi resource, berlawanan dengan tujuan soal."
+        "explanation": "this adds duplication resource, berlawanan with destination question."
       },
       {
         "key": "C",
         "text": "Use one ALB with host- or path-based rules and separate target groups for the services",
         "correct": true,
-        "explanation": "ALB mendukung routing beberapa layanan; berbagi frontend dapat mengurangi resource per-load-balancer yang diduplikasi ketika batas isolasi memungkinkan."
+        "explanation": "ALB supports routing several service; shares frontend can reduce resource per-load-balancer that diduplikasi when limit isolation enables."
       },
       {
         "key": "D",
         "text": "Place all services into one target group and remove any way to distinguish their host/path requirements",
         "correct": false,
-        "explanation": "Penggabungan tidak boleh menghilangkan routing ke service yang benar."
+        "explanation": "Combination not may eliminate routing to service that correct."
       }
     ],
     "tags": [
@@ -1041,31 +1041,31 @@
         "key": "A",
         "text": "Reuse the same policy for personalized invoice responses without checking authorization or response variation",
         "correct": false,
-        "explanation": "Aturan untuk public identical assets tidak otomatis aman untuk data personal."
+        "explanation": "Rules for public identical assets does not automatically secure for data personal."
       },
       {
         "key": "B",
         "text": "Exclude irrelevant cookies from the cache key for this public-image behavior",
         "correct": true,
-        "explanation": "Cookie yang tidak mengubah respons memecah key tanpa manfaat; menghilangkannya meningkatkan peluang cache hit."
+        "explanation": "Cookie that does not change response splits key without benefit; menghilangkannya increases opportunity cache hit."
       },
       {
         "key": "C",
         "text": "Exclude every parameter, including the version that changes the image",
         "correct": false,
-        "explanation": "Ini dapat menyatukan respons berbeda dan mengirim versi gambar salah."
+        "explanation": "this can menyatukan response different and sends version image wrong."
       },
       {
         "key": "D",
         "text": "Set the TTL to zero for all image responses to increase cache hits",
         "correct": false,
-        "explanation": "TTL nol mengurangi kegunaan cache reuse, bukan meningkatkan cache hits."
+        "explanation": "TTL zero reduces kegunaan cache reuse, is not increases cache hits."
       },
       {
         "key": "E",
         "text": "Include the image-version parameter but exclude query parameters that do not affect the response",
         "correct": true,
-        "explanation": "Key tetap membedakan versi yang benar sambil menghindari fragmentasi dari parameter tak relevan."
+        "explanation": "Key remains distinguishes version that correct while avoids fragmentasi from parameter tak relevant."
       }
     ],
     "tags": [
@@ -1091,25 +1091,25 @@
         "key": "A",
         "text": "Keep the CSV layout and increase S3 Versioning retention",
         "correct": false,
-        "explanation": "Retention versi tidak mengurangi byte yang perlu dibaca query."
+        "explanation": "Retention version not reduces byte that needs to read query."
       },
       {
         "key": "B",
         "text": "Convert to a suitable compressed columnar format, partition by date, and query with partition predicates",
         "correct": true,
-        "explanation": "Kombinasi ini memungkinkan pembacaan kolom dan partisi relevan, bukan seluruh histori CSV."
+        "explanation": "Combination this enables reading column and partition relevant, is not all history CSV."
       },
       {
         "key": "C",
         "text": "Move all files into Deep Archive and assume Athena restores them transparently for instant queries",
         "correct": false,
-        "explanation": "Archived objects membutuhkan restore dan bukan solusi instant query yang diasumsikan opsi ini."
+        "explanation": "Archived objects requires restore rather than solution instant query that assumed this option."
       },
       {
         "key": "D",
         "text": "Merge the entire history into one unpartitioned file and continue SELECT *",
         "correct": false,
-        "explanation": "Ini mengurangi kemampuan membatasi scan pada tanggal dan kolom yang relevan."
+        "explanation": "this reduces capability restricts scan on date and column that relevant."
       }
     ],
     "tags": [
@@ -1135,25 +1135,25 @@
         "key": "A",
         "text": "S3 Glacier Flexible Retrieval as an always-online millisecond-access class",
         "correct": false,
-        "explanation": "Flexible Retrieval memerlukan restore untuk akses dan tidak memenuhi pola immediate reads."
+        "explanation": "Flexible Retrieval requires restore for access and does not meet pattern immediate reads."
       },
       {
         "key": "B",
         "text": "S3 One Zone-IA",
         "correct": true,
-        "explanation": "One Zone-IA menyediakan akses langsung dengan penyimpanan dalam satu AZ; risiko tersebut sesuai hanya karena derived copies dapat dibuat ulang dan loss diterima."
+        "explanation": "One Zone-IA provides access directly with storage in a single AZ; risk that appropriate only because derived copies can be created again and loss received."
       },
       {
         "key": "C",
         "text": "S3 Standard solely because every reproducible object requires multi-AZ storage",
         "correct": false,
-        "explanation": "Multi-AZ dapat tepat pada banyak kasus, tetapi soal menerima risiko satu AZ untuk salinan yang dapat dibuat ulang."
+        "explanation": "Multi-AZ can appropriate on many case, but question receives risk one AZ for copy that can be created again."
       },
       {
         "key": "D",
         "text": "S3 Glacier Deep Archive without a restore process",
         "correct": false,
-        "explanation": "Tidak memenuhi kebutuhan millisecond access saat thumbnail diminta."
+        "explanation": "Not meets requirements millisecond access when thumbnail requested."
       }
     ],
     "tags": [
@@ -1179,25 +1179,25 @@
         "key": "A",
         "text": "Snapshot deletion also deletes the live source EBS volume",
         "correct": false,
-        "explanation": "Menghapus snapshot bukan menghapus volume live sumber."
+        "explanation": "Deletes snapshot is not deletes volume live source."
       },
       {
         "key": "B",
         "text": "Deleting any snapshot immediately frees the full provisioned size of its source volume",
         "correct": false,
-        "explanation": "Biaya snapshot berdasarkan data tersimpan/referensi, bukan otomatis seluruh provisioned volume size."
+        "explanation": "Cost snapshot based on data stored/reference, does not automatically all provisioned volume size."
       },
       {
         "key": "C",
         "text": "EBS preserves blocks required by retained snapshots; deleting an old snapshot does not make a retained snapshot unrestorable, but savings depend on blocks no longer referenced",
         "correct": true,
-        "explanation": "AWS mengelola referensi data antar snapshot. Hanya blocks yang tidak dibutuhkan snapshot lain yang dibebaskan sehingga savings tidak selalu sebesar ukuran volume."
+        "explanation": "AWS manages reference data across snapshot. Only blocks that not required other snapshot that dibebaskan so that savings does not always sebesar size volume."
       },
       {
         "key": "D",
         "text": "Users must always retain the first snapshot forever or all later snapshots become unusable",
         "correct": false,
-        "explanation": "Pengguna tidak perlu mempertahankan snapshot pertama selamanya agar snapshot retained dapat direstore."
+        "explanation": "User does not need to maintains snapshot first forever so that snapshot retained can be restored."
       }
     ],
     "tags": [
@@ -1223,25 +1223,25 @@
         "key": "A",
         "text": "A single public unencrypted application endpoint in place of the required encrypted network connection",
         "correct": false,
-        "explanation": "Ini tidak memenuhi kebutuhan koneksi jaringan terenkripsi yang dinyatakan."
+        "explanation": "this does not meet requirements connection network encrypted that stated."
       },
       {
         "key": "B",
         "text": "A dedicated Direct Connect circuit solely because all encrypted hybrid connections require one",
         "correct": false,
-        "explanation": "Enkripsi hybrid tidak mensyaratkan Direct Connect; dedicated connectivity adalah kebutuhan terpisah."
+        "explanation": "Encryption hybrid not requires Direct Connect; dedicated connectivity is requirements separate."
       },
       {
         "key": "C",
         "text": "Multiple dedicated circuits before measuring bandwidth or availability requirements",
         "correct": false,
-        "explanation": "Menambah circuit tanpa kebutuhan terukur dapat menciptakan biaya tetap yang tidak relevan."
+        "explanation": "Adds circuit without requirements measurable can create cost remains that is not relevant."
       },
       {
         "key": "D",
         "text": "AWS Site-to-Site VPN using the existing internet connection and properly configured tunnels",
         "correct": true,
-        "explanation": "VPN memenuhi kebutuhan enkripsi dan konektivitas dengan memanfaatkan internet yang sudah tersedia; dedicated circuit tidak diwajibkan."
+        "explanation": "VPN meets requirements encryption and connectivity with leverages internet that already available; dedicated circuit not required."
       }
     ],
     "tags": [
@@ -1267,25 +1267,25 @@
         "key": "A",
         "text": "Keep downloading the entire dataset but increase DNS TTL",
         "correct": false,
-        "explanation": "TTL DNS tidak mengurangi ukuran payload data yang ditransfer."
+        "explanation": "TTL DNS not reduces size payload data that ditransfer."
       },
       {
         "key": "B",
         "text": "Use a NAT gateway for the same transfer and assume it eliminates inter-Region charges",
         "correct": false,
-        "explanation": "NAT tidak menghapus charges transfer lintas Region dan dapat menambah processing charges."
+        "explanation": "NAT not deletes charges transfer across Regions and can add processing charges."
       },
       {
         "key": "C",
         "text": "Process the raw dataset in Region A and transfer only the required summary to Region B",
         "correct": true,
-        "explanation": "Memindahkan komputasi ke dekat sumber menghindari transfer seluruh raw dataset ketika hasil yang dibutuhkan jauh lebih kecil."
+        "explanation": "Moves compute to near source avoids transfer all raw dataset when result that is required far smaller."
       },
       {
         "key": "D",
         "text": "Replicate the raw dataset twice to Region B before processing it",
         "correct": false,
-        "explanation": "Duplikasi transfer memperbesar byte lintas Region tanpa memenuhi kebutuhan tambahan."
+        "explanation": "Duplication transfer increases byte across Regions without meets requirements additional."
       }
     ],
     "tags": [
@@ -1311,25 +1311,25 @@
         "key": "A",
         "text": "$80",
         "correct": true,
-        "explanation": "Biaya yang dihindari = 1.000 x $0,05 + $30 = $80. Ini hanya model hipotetis dan asumsi NAT benar-benar dapat dihapus."
+        "explanation": "Cost that avoided = 1.000 x $0,05 + $30 = $80. This only model hipotetis and assumption NAT truly can be deleted."
       },
       {
         "key": "B",
         "text": "$50",
         "correct": false,
-        "explanation": "Ini hanya menghitung komponen per-GB dan melewatkan $30 biaya bulanan yang juga dihindari karena NAT dihapus."
+        "explanation": "this only calculates component per-GB and melewatkan $30 cost monthly that also avoided because NAT deleted."
       },
       {
         "key": "C",
         "text": "$130",
         "correct": false,
-        "explanation": "Tidak ada komponen tambahan $50 pada model yang diberikan; jumlah tersebut menghitung biaya terlalu besar."
+        "explanation": "Not exists component additional $50 on model that granted; number that calculates cost too large."
       },
       {
         "key": "D",
         "text": "$30",
         "correct": false,
-        "explanation": "Ini hanya menghitung komponen bulanan dan mengabaikan processing 1.000 GB."
+        "explanation": "this only calculates component monthly and ignores processing 1.000 GB."
       }
     ],
     "tags": [
@@ -1355,25 +1355,25 @@
         "key": "A",
         "text": "Use a bucket policy that grants GetObject and assume that permission alone changes billing.",
         "correct": false,
-        "explanation": "Izin akses dan penetapan pihak pembayar adalah pengaturan berbeda."
+        "explanation": "access permissions and penetapan party pembayar is configuration different."
       },
       {
         "key": "B",
         "text": "Make the bucket public and rely on anonymous access to identify the payer.",
         "correct": false,
-        "explanation": "Requester Pays tidak mendukung request anonim; bucket publik tidak otomatis mengalihkan biaya."
+        "explanation": "Requester Pays does not support request anonim; bucket public does not automatically redirects cost."
       },
       {
         "key": "C",
         "text": "Enable S3 Requester Pays and require clients to acknowledge requester charges.",
         "correct": true,
-        "explanation": "Requester Pays mengalihkan biaya request dan download ke requester yang terautentikasi; storage tetap dibayar pemilik."
+        "explanation": "Requester Pays redirects cost request and download to requester that terautentikasi; storage remains paid owner."
       },
       {
         "key": "D",
         "text": "Enable versioning and assume the latest reader pays all bucket storage.",
         "correct": false,
-        "explanation": "Versioning tidak mengubah pemilik biaya penyimpanan."
+        "explanation": "Versioning does not change owner storage costs."
       }
     ],
     "tags": [
@@ -1400,25 +1400,25 @@
         "key": "A",
         "text": "Whether the tag value is an EC2 instance type name rather than a department.",
         "correct": false,
-        "explanation": "Nilai tag tidak harus memakai nama tipe instance."
+        "explanation": "Value tag not must use name type instance."
       },
       {
         "key": "B",
         "text": "Whether the Department tag is used only in an IAM authorization condition without cost-allocation activation.",
         "correct": false,
-        "explanation": "Tag IAM dapat mengatur akses tetapi tidak otomatis aktif sebagai cost-allocation tag."
+        "explanation": "Tag IAM can manage access but does not automatically active as cost-allocation tag."
       },
       {
         "key": "C",
         "text": "Whether Department has been activated as a cost allocation tag in Billing and Cost Management.",
         "correct": true,
-        "explanation": "Tag pada resource perlu diaktifkan sebagai cost allocation tag agar tersedia untuk alokasi biaya."
+        "explanation": "Tag on resource needs to enabled as cost allocation tag so that is available for allocation cost."
       },
       {
         "key": "D",
         "text": "Whether the report groups only by linked account instead of the activated Department dimension.",
         "correct": false,
-        "explanation": "Grouping harus menggunakan dimensi yang diminta; account saja tidak memisahkan departemen dalam akun yang sama."
+        "explanation": "Grouping must use dimension that is requested; account only not separates departemen within account that same."
       }
     ],
     "tags": [
@@ -1445,25 +1445,25 @@
         "key": "A",
         "text": "A cost budget automatically stops every AWS resource at the exact threshold without configuration.",
         "correct": false,
-        "explanation": "Budget bukan pemutus universal realtime untuk semua biaya."
+        "explanation": "Budget is not pemutus universal realtime for all cost."
       },
       {
         "key": "B",
         "text": "Only EC2 utilization alarms can provide cost-threshold notifications, so a monetary budget cannot be used.",
         "correct": false,
-        "explanation": "Metrik utilization bukan satu-satunya mekanisme; AWS Budgets mendukung threshold biaya."
+        "explanation": "Metrics utilization rather than a single-satunya mechanism; AWS Budgets supports threshold cost."
       },
       {
         "key": "C",
         "text": "Cost alerts require removing all IAM permissions from the account owner first.",
         "correct": false,
-        "explanation": "Notifikasi tidak memerlukan penghapusan seluruh akses pemilik."
+        "explanation": "Notification does not require removal all access owner."
       },
       {
         "key": "D",
         "text": "Budgets can notify and support configured actions, but billing updates and actions are not an instantaneous universal spending cap.",
         "correct": true,
-        "explanation": "Biaya diperbarui berkala; kontrol tambahan dan tindakan terencana diperlukan untuk membatasi penggunaan."
+        "explanation": "Cost updated berkala; control additional and action planned required to restrict usage."
       }
     ],
     "tags": [
@@ -1490,25 +1490,25 @@
         "key": "A",
         "text": "Export detailed cost-and-usage data to S3 and query it with Athena using the appropriate schema.",
         "correct": true,
-        "explanation": "Data biaya terperinci memungkinkan analisis SQL berulang; pastikan format export dan schema sesuai."
+        "explanation": "Data cost detailed enables analysis SQL repeated; ensure format export and schema appropriate."
       },
       {
         "key": "B",
         "text": "Use only an AWS Pricing Calculator estimate as the actual historical usage ledger.",
         "correct": false,
-        "explanation": "Estimate konfigurasi bukan catatan pemakaian aktual."
+        "explanation": "Estimate configuration is not notes usage actual."
       },
       {
         "key": "C",
         "text": "Use only CloudTrail management events as a complete invoice replacement.",
         "correct": false,
-        "explanation": "Log API tidak memuat seluruh perhitungan biaya dan line item billing."
+        "explanation": "Log API not contains all calculation cost and line item billing."
       },
       {
         "key": "D",
         "text": "Use only a monthly budget notification email as a queryable resource-level dataset.",
         "correct": false,
-        "explanation": "Notifikasi agregat bukan dataset detail untuk analisis SQL."
+        "explanation": "Notification aggregate is not dataset detail for analysis SQL."
       }
     ],
     "tags": [
@@ -1535,25 +1535,25 @@
         "key": "A",
         "text": "Enable S3 versioning as the mechanism that caches KMS data keys.",
         "correct": false,
-        "explanation": "Versioning tidak menyediakan optimasi request KMS yang dimaksud."
+        "explanation": "Versioning does not provide optimization request KMS that intended."
       },
       {
         "key": "B",
         "text": "Switch to DSSE-KMS and assume S3 Bucket Keys support that mode.",
         "correct": false,
-        "explanation": "Bucket Keys tidak didukung untuk DSSE-KMS dalam dokumentasi yang diperiksa."
+        "explanation": "Bucket Keys not supported for DSSE-KMS within documentation that checked."
       },
       {
         "key": "C",
         "text": "Disable all encryption because reducing KMS requests requires plaintext objects.",
         "correct": false,
-        "explanation": "Bucket Keys tidak mengharuskan penghapusan enkripsi."
+        "explanation": "Bucket Keys not requires removal encryption."
       },
       {
         "key": "D",
         "text": "S3 Bucket Keys for supported SSE-KMS objects.",
         "correct": true,
-        "explanation": "Bucket Keys mengurangi traffic request ke KMS sambil tetap memakai SSE-KMS; objek lama perlu penanganan tersendiri."
+        "explanation": "Bucket Keys reduces traffic request to KMS while remains uses SSE-KMS; object long needs to handling separate."
       }
     ],
     "tags": [
@@ -1580,25 +1580,25 @@
         "key": "A",
         "text": "Configure noncurrent-version expiration consistent with the 30-day recovery requirement.",
         "correct": true,
-        "explanation": "Aturan noncurrent mengatur versi lama tanpa menganggap penghapusan current object membersihkan seluruh history."
+        "explanation": "Rules noncurrent manages version long without assumes removal current object cleans all history."
       },
       {
         "key": "B",
         "text": "Expire only current objects and assume all noncurrent versions are immediately removed.",
         "correct": false,
-        "explanation": "Delete marker dan versi noncurrent dapat tetap tersimpan."
+        "explanation": "Delete marker and version noncurrent can remains stored."
       },
       {
         "key": "C",
         "text": "Disable access logging and leave every noncurrent version untouched.",
         "correct": false,
-        "explanation": "Ini tidak menyasar storage versi lama yang menjadi masalah."
+        "explanation": "this does not targets storage version long that becomes problem."
       },
       {
         "key": "D",
         "text": "Add replication to another Region as the primary way to remove old versions.",
         "correct": false,
-        "explanation": "Replikasi menambah salinan dan tidak menggantikan lifecycle history."
+        "explanation": "Replication adds copy and does not replace lifecycle history."
       }
     ],
     "tags": [
@@ -1625,31 +1625,31 @@
         "key": "A",
         "text": "Only the number of IAM users that can view the bucket console.",
         "correct": false,
-        "explanation": "Jumlah pengguna bukan faktor utama biaya object/request dalam skenario ini."
+        "explanation": "Number user is not factor primary cost object/request in a scenario this."
       },
       {
         "key": "B",
         "text": "Assume every archive tier provides instant access without retrieval charges.",
         "correct": false,
-        "explanation": "Karakter restore, minimum durasi, dan biaya berbeda antar kelas."
+        "explanation": "Character restore, minimum duration, and cost different across class."
       },
       {
         "key": "C",
         "text": "Assume compaction is always correct even if individual records must be deleted independently.",
         "correct": false,
-        "explanation": "Kebutuhan retensi dan penghapusan dapat membuat penggabungan tidak sesuai."
+        "explanation": "Requirements retention and removal can create combination not appropriate."
       },
       {
         "key": "D",
         "text": "Per-object/request charges, minimum billable sizes or durations where applicable, and retrieval patterns.",
         "correct": true,
-        "explanation": "Biaya tidak hanya per GB; objek kecil dan umur singkat dapat mengubah hasil total."
+        "explanation": "Cost not only per GB; object small and age short can change result total."
       },
       {
         "key": "E",
         "text": "Whether compaction still permits the required lookup, retention, and deletion behavior.",
         "correct": true,
-        "explanation": "Penggabungan objek dapat mengurangi overhead tetapi mengubah granularitas akses dan penghapusan."
+        "explanation": "Combination object can reduce overhead but changes granularitas access and removal."
       }
     ],
     "tags": [
@@ -1676,25 +1676,25 @@
         "key": "A",
         "text": "Provisioned IOPS SSD solely because all block workloads need maximum random IOPS.",
         "correct": false,
-        "explanation": "Kebutuhan adalah throughput sequential, bukan IOPS random maksimum."
+        "explanation": "Requirements is throughput sequential, is not IOPS random maximum."
       },
       {
         "key": "B",
         "text": "S3 Glacier Deep Archive mounted as an EBS volume without restore.",
         "correct": false,
-        "explanation": "Object archive bukan perangkat block EBS siap pakai."
+        "explanation": "Object archive is not device block EBS ready use."
       },
       {
         "key": "C",
         "text": "Throughput Optimized HDD (st1), sized and benchmarked for the required throughput.",
         "correct": true,
-        "explanation": "st1 ditujukan untuk I/O besar berurutan; batas volume dan instance tetap diperiksa."
+        "explanation": "st1 intended for I/O large berurutan; limit volume and instance remains checked."
       },
       {
         "key": "D",
         "text": "An st1 volume used as the EC2 boot volume.",
         "correct": false,
-        "explanation": "st1 tidak mendukung boot volume."
+        "explanation": "st1 does not support boot volume."
       }
     ],
     "tags": [
@@ -1721,25 +1721,25 @@
         "key": "A",
         "text": "2 GB, because 2 x 0.8 = 1.6 GB-seconds instead of 2 GB-seconds.",
         "correct": true,
-        "explanation": "Perhitungan memakai alokasi dikali durasi; konfigurasi memori lebih besar dapat lebih murah per pekerjaan."
+        "explanation": "Calculation uses allocation dikali duration; configuration memory larger can cheaper per work."
       },
       {
         "key": "B",
         "text": "Both settings have equal compute cost because each uses a different amount of memory.",
         "correct": false,
-        "explanation": "Bandingkan memory dikali duration yang diberikan; jumlah memory berbeda saja tidak membuktikan biaya sama."
+        "explanation": "Compare memory dikali duration that granted; number memory different only does not prove cost same."
       },
       {
         "key": "C",
         "text": "1 GB, because a smaller memory setting always costs less regardless of duration.",
         "correct": false,
-        "explanation": "Durasi 2 detik membuat compute 2 GB-detik, lebih besar dari 1,6."
+        "explanation": "Duration 2 second creates compute 2 GB-detik, larger from 1,6."
       },
       {
         "key": "D",
         "text": "2 GB, because its billed compute is 0.8 GB-seconds rather than 2 GB-seconds.",
         "correct": false,
-        "explanation": "Duration 0.8 detik harus dikalikan memory 2 GB; hasilnya 1.6 GB-seconds, bukan 0.8."
+        "explanation": "Duration 0.8 second must dikalikan memory 2 GB; hasilnya 1.6 GB-seconds, is not 0.8."
       }
     ],
     "tags": [
@@ -1766,25 +1766,25 @@
         "key": "A",
         "text": "Disable checkpoint writes so interrupted tasks are guaranteed to resume from memory.",
         "correct": false,
-        "explanation": "Memori task yang berhenti bukan checkpoint durabel."
+        "explanation": "Memory task that stops is not checkpoint durable."
       },
       {
         "key": "B",
         "text": "Fargate Spot for every noncheckpointed critical request with no retry design.",
         "correct": false,
-        "explanation": "Kondisi toleransi pada batch tidak berlaku otomatis untuk semua request kritis."
+        "explanation": "Condition tolerance on batch not applies automatically for all request critical."
       },
       {
         "key": "C",
         "text": "Fargate Spot for suitable tasks, with interruption handling and a fallback policy if deadlines require it.",
         "correct": true,
-        "explanation": "Spot cocok untuk pekerjaan toleran interupsi; kapasitas tidak dijamin selalu tersedia."
+        "explanation": "Spot suitable for work tolerant interruption; capacity not dijamin always available."
       },
       {
         "key": "D",
         "text": "A Compute Savings Plan as a reservation guaranteeing immediate Fargate Spot capacity.",
         "correct": false,
-        "explanation": "Diskon komitmen bukan jaminan kapasitas Spot."
+        "explanation": "Discount commitment does not guarantee capacity Spot."
       }
     ],
     "tags": [
@@ -1811,25 +1811,25 @@
         "key": "A",
         "text": "Commit the entire peak spend before testing libraries or demand.",
         "correct": false,
-        "explanation": "Komitmen tanpa bukti kompatibilitas dan utilisasi berisiko pemborosan."
+        "explanation": "Commitment without evidence compatibility and utilization risky waste."
       },
       {
         "key": "B",
         "text": "Build a compatible Arm artifact and benchmark correctness, throughput, latency, and cost per unit of work.",
         "correct": true,
-        "explanation": "Kompatibilitas native dependency dan hasil workload menentukan manfaat, bukan label prosesor saja."
+        "explanation": "Compatibility native dependency and result workload determines benefit, is not label prosesor only."
       },
       {
         "key": "C",
         "text": "Launch the existing x86-only binary on Arm and assume automatic instruction compatibility.",
         "correct": false,
-        "explanation": "Arsitektur binary perlu kompatibel dengan hardware tujuan."
+        "explanation": "Architecture binary needs to compatible with hardware destination."
       },
       {
         "key": "D",
         "text": "Compare hourly prices only while ignoring that throughput may differ.",
         "correct": false,
-        "explanation": "Harga per jam tidak menunjukkan biaya per transaksi yang berhasil."
+        "explanation": "Price per hour not shows cost per transaction that succeeds."
       }
     ],
     "tags": [
@@ -1856,25 +1856,25 @@
         "key": "A",
         "text": "Evaluate a commitment around dependable baseline usage and cover uncertain peaks with flexible capacity.",
         "correct": true,
-        "explanation": "Komitmen harus dinilai terhadap penggunaan yang konsisten, bukan puncak yang jarang terjadi."
+        "explanation": "Commitment must assessed against usage that consistent, is not puncak that rarely occurs."
       },
       {
         "key": "B",
         "text": "Assume unused hourly commitment can always be banked indefinitely for next week.",
         "correct": false,
-        "explanation": "Komitmen per jam bukan tabungan kapasitas lintas waktu yang tak terbatas."
+        "explanation": "Commitment per hour is not tabungan capacity across time that tak limited."
       },
       {
         "key": "C",
         "text": "Remove all monitoring once the commitment is purchased.",
         "correct": false,
-        "explanation": "Utilisasi dan perubahan workload tetap perlu dipantau."
+        "explanation": "Utilization and changes workload remains needs to monitored."
       },
       {
         "key": "D",
         "text": "Commit to the weekly maximum for every hour of the term.",
         "correct": false,
-        "explanation": "Jam sepi tetap menanggung komitmen yang tidak termanfaatkan."
+        "explanation": "Hour sepi remains menanggung commitment that not termanfaatkan."
       }
     ],
     "tags": [
@@ -1901,25 +1901,25 @@
         "key": "A",
         "text": "Delete the persistent database every evening regardless of retention requirements.",
         "correct": false,
-        "explanation": "Tujuannya mengurangi compute idle tanpa kehilangan data."
+        "explanation": "Tujuannya reduces compute idle without loss data."
       },
       {
         "key": "B",
         "text": "Keep the fleet at its measured peak count and reduce only its storage allocation.",
         "correct": false,
-        "explanation": "Pemborosan compute saat idle tetap ada; perubahan storage tidak mengurangi jam instance."
+        "explanation": "Waste compute when idle remains exists; changes storage not reduces hour instance."
       },
       {
         "key": "C",
         "text": "Purchase maximum long-term capacity before testing the weekday schedule.",
         "correct": false,
-        "explanation": "Komitmen maksimum dapat mengunci biaya yang seharusnya dihilangkan."
+        "explanation": "Commitment maximum can locks cost that should dihilangkan."
       },
       {
         "key": "D",
         "text": "Schedule the disposable service capacity to zero outside working hours and restore it before use.",
         "correct": true,
-        "explanation": "Mematikan kapasitas idle mengurangi compute; data eksternal dan automation memungkinkan pemulihan."
+        "explanation": "Shuts down capacity idle reduces compute; data external and automation enables recovery."
       }
     ],
     "tags": [
@@ -1946,25 +1946,25 @@
         "key": "A",
         "text": "Use eventual reads for balance settlement too, without checking correctness requirements.",
         "correct": false,
-        "explanation": "Toleransi katalog tidak berlaku otomatis untuk operasi finansial."
+        "explanation": "Tolerance catalog not applies automatically for operation finansial."
       },
       {
         "key": "B",
         "text": "Use eventually consistent reads for this display path while retaining stronger reads where required elsewhere.",
         "correct": true,
-        "explanation": "Eventual read mengonsumsi lebih sedikit read unit untuk ukuran data yang sama; hanya dipakai pada jalur yang menerima stale data."
+        "explanation": "Eventual read mengonsumsi fewer read unit for size data that same; only used on path that receives stale data."
       },
       {
         "key": "C",
         "text": "Add a filter expression and assume filtered-out items consume no read capacity.",
         "correct": false,
-        "explanation": "Filter diterapkan setelah data dibaca dan bukan cara menghapus konsumsi tersebut."
+        "explanation": "Filter applied after data read rather than way deletes consumption that."
       },
       {
         "key": "D",
         "text": "Enable a strongly consistent GSI read as the cheaper alternative.",
         "correct": false,
-        "explanation": "GSI tidak mendukung strong read."
+        "explanation": "GSI does not support strong read."
       }
     ],
     "tags": [
@@ -1991,25 +1991,25 @@
         "key": "A",
         "text": "Use an appropriate key/index access pattern that narrows the items selected before filtering.",
         "correct": true,
-        "explanation": "Key condition dan indeks yang tepat mengurangi data yang dibaca, bukan hanya hasil yang dikembalikan."
+        "explanation": "Key condition and index that appropriate reduces data that read, is not just result that returned."
       },
       {
         "key": "B",
         "text": "Keep the same scan and add a client-side filter after the response arrives.",
         "correct": false,
-        "explanation": "Filter client tidak mengurangi data yang sudah dibaca DynamoDB."
+        "explanation": "Filter client not reduces data that already read DynamoDB."
       },
       {
         "key": "C",
         "text": "Add more filter predicates and assume capacity is charged only for final output.",
         "correct": false,
-        "explanation": "Konsumsi read dihitung sebelum filter hasil."
+        "explanation": "Consumption read calculated before filter result."
       },
       {
         "key": "D",
         "text": "Increase the response page size so all discarded items are always read together.",
         "correct": false,
-        "explanation": "Membaca lebih banyak kandidat tidak menyelesaikan biaya seleksi buruk."
+        "explanation": "Reads more candidate does not solve cost seleksi poor."
       }
     ],
     "tags": [
@@ -2036,31 +2036,31 @@
         "key": "A",
         "text": "Replace all key queries with full table scans without measuring.",
         "correct": false,
-        "explanation": "Scan dapat meningkatkan biaya baca dan latency."
+        "explanation": "Scan can increases cost baca and latency."
       },
       {
         "key": "B",
         "text": "Add every table attribute to additional duplicate indexes.",
         "correct": false,
-        "explanation": "Ini meningkatkan storage dan pemeliharaan indeks."
+        "explanation": "this improves storage and maintenance index."
       },
       {
         "key": "C",
         "text": "Assume GSI updates never consume write resources.",
         "correct": false,
-        "explanation": "Write ke indeks turut memengaruhi biaya dan kapasitas."
+        "explanation": "Write to index turut affects cost and capacity."
       },
       {
         "key": "D",
         "text": "Remove indexes confirmed unnecessary for application access patterns.",
         "correct": true,
-        "explanation": "Indeks tidak terpakai dapat menambah biaya tanpa manfaat; pastikan tidak ada consumer tersembunyi."
+        "explanation": "index not used can increases costs without benefit; ensure not exists consumer tersembunyi."
       },
       {
         "key": "E",
         "text": "Limit projections to the attributes needed by remaining index access patterns.",
         "correct": true,
-        "explanation": "Proyeksi tepat dapat mengurangi storage dan write yang terkait perubahan atribut."
+        "explanation": "Proyeksi appropriate can reduce storage and write that related changes attribute."
       }
     ],
     "tags": [
@@ -2087,25 +2087,25 @@
         "key": "A",
         "text": "Standard, because $800 is lower than $1,100 regardless of I/O charges.",
         "correct": false,
-        "explanation": "Biaya I/O 500 harus dimasukkan dalam total Standard."
+        "explanation": "Cost I/O 500 must inserted within total Standard."
       },
       {
         "key": "B",
         "text": "Both always cost the same because storage modes only change availability.",
         "correct": false,
-        "explanation": "Mode biaya I/O dan total perkiraan berbeda."
+        "explanation": "Mode cost I/O and total estimate different."
       },
       {
         "key": "C",
         "text": "I/O-Optimized by $500 because its compute and storage charges must be ignored.",
         "correct": false,
-        "explanation": "Penghematan dibandingkan total lengkap, bukan menghapus komponen biaya lainnya."
+        "explanation": "Savings compared with total lengkap, is not deletes component cost others."
       },
       {
         "key": "D",
         "text": "I/O-Optimized, by $200 per month.",
         "correct": true,
-        "explanation": "Standard berjumlah 1.300; I/O-Optimized 1.100, sehingga selisihnya 200 dengan asumsi soal."
+        "explanation": "Standard berjumlah 1.300; I/O-Optimized 1.100, so that selisihnya 200 with assumption question."
       }
     ],
     "tags": [
@@ -2132,25 +2132,25 @@
         "key": "A",
         "text": "Switch to Multi-AZ and assume it halves primary storage allocation.",
         "correct": false,
-        "explanation": "HA tidak mengubah kebutuhan alokasi dengan cara tersebut."
+        "explanation": "HA does not change requirements allocation by that."
       },
       {
         "key": "B",
         "text": "RDS storage autoscaling increases allocated storage; reducing allocation requires a supported migration/recreation approach, not automatic shrink.",
         "correct": true,
-        "explanation": "Menghapus row tidak otomatis mengecilkan alokasi; rencanakan strategi pemindahan jika pengurangan layak."
+        "explanation": "Deletes row does not automatically shrinks allocation; plan strategy migration if reduction eligible."
       },
       {
         "key": "C",
         "text": "Delete every automated backup to force the primary volume to shrink.",
         "correct": false,
-        "explanation": "Backup terpisah dari alokasi storage instance utama."
+        "explanation": "Backup separate from allocation storage instance primary."
       },
       {
         "key": "D",
         "text": "Disable autoscaling and expect existing allocated storage to shrink immediately.",
         "correct": false,
-        "explanation": "Menonaktifkan fitur tidak mengurangi alokasi yang sudah ada."
+        "explanation": "Disables feature not reduces allocation that already exists."
       }
     ],
     "tags": [
@@ -2177,25 +2177,25 @@
         "key": "A",
         "text": "The endpoint saves the entire NAT monthly bill even though NAT must remain.",
         "correct": false,
-        "explanation": "Biaya tetap NAT untuk trafik lain bukan penghematan yang tersedia."
+        "explanation": "Cost remains NAT for traffic other is not savings that is available."
       },
       {
         "key": "B",
         "text": "The interface endpoint: $30 versus $45.",
         "correct": true,
-        "explanation": "20 ditambah 10 sama dengan 30; NAT incremental 45. Biaya NAT tetap tidak hilang."
+        "explanation": "20 added 10 the same as 30; NAT incremental 45. Cost NAT remains not lost."
       },
       {
         "key": "C",
         "text": "Both cost the same because they transfer the same number of gigabytes.",
         "correct": false,
-        "explanation": "Biaya per GB dan biaya tetap masing-masing jalur berbeda pada model soal."
+        "explanation": "Cost per GB and cost remains each path different on model question."
       },
       {
         "key": "D",
         "text": "The NAT path: $10 versus $45.",
         "correct": false,
-        "explanation": "Ini mengabaikan biaya tetap endpoint dan salah memberi tarif NAT."
+        "explanation": "this ignores cost remains endpoint and wrong gives rate NAT."
       }
     ],
     "tags": [
@@ -2222,25 +2222,25 @@
         "key": "A",
         "text": "Route all intra-Region traffic through a distant Region.",
         "correct": false,
-        "explanation": "Jalur lebih jauh menambah latency dan potensi biaya."
+        "explanation": "Path more far increases latency and potential cost."
       },
       {
         "key": "B",
         "text": "Enable DNS health checks as a guarantee that all data-transfer charges disappear.",
         "correct": false,
-        "explanation": "Health routing tidak menghapus model penagihan transfer."
+        "explanation": "Health routing not deletes model penagihan transfer."
       },
       {
         "key": "C",
         "text": "Move every worker and durable data copy into one AZ with no recovery plan.",
         "correct": false,
-        "explanation": "Ini mengorbankan syarat bertahan dari kegagalan AZ."
+        "explanation": "this sacrifices requirement persists from failure AZ."
       },
       {
         "key": "D",
         "text": "Place chatty worker pairs together where feasible while retaining redundant capacity and failover across AZs.",
         "correct": true,
-        "explanation": "Locality mengurangi transfer rutin; desain redundansi tetap mempertahankan kebutuhan availability."
+        "explanation": "Locality reduces transfer routine; design redundancy remains maintains requirements availability."
       }
     ],
     "tags": [
@@ -2267,25 +2267,25 @@
         "key": "A",
         "text": "Disable all caching so every viewer reaches the origin directly.",
         "correct": false,
-        "explanation": "Ini menambah pekerjaan rendering origin."
+        "explanation": "this adds work rendering origin."
       },
       {
         "key": "B",
         "text": "Enable S3 Transfer Acceleration on an unrelated upload bucket.",
         "correct": false,
-        "explanation": "Fitur upload tersebut tidak mengonsolidasikan request ke origin rendering."
+        "explanation": "Feature upload that not consolidates request to origin rendering."
       },
       {
         "key": "C",
         "text": "Add a unique random query parameter to every cache key.",
         "correct": false,
-        "explanation": "Key unik menghancurkan reuse objek yang sama."
+        "explanation": "Key unique destroys reuse object that same."
       },
       {
         "key": "D",
         "text": "CloudFront Origin Shield.",
         "correct": true,
-        "explanation": "Lapisan ini dapat menyatukan miss untuk objek yang sama dan menurunkan beban origin; ada biaya tambahan."
+        "explanation": "Layer this can menyatukan miss for object that same and reduces load origin; exists additional costs."
       }
     ],
     "tags": [
@@ -2312,25 +2312,25 @@
         "key": "A",
         "text": "Keep short polling but increase the message retention period.",
         "correct": false,
-        "explanation": "Retention tidak mengurangi request polling ketika queue kosong."
+        "explanation": "Retention not reduces request polling when queue empty."
       },
       {
         "key": "B",
         "text": "Enable SQS long polling with an appropriate wait time and a client HTTP timeout longer than that wait.",
         "correct": true,
-        "explanation": "Long polling menunggu pesan saat queue kosong dan dapat kembali saat pesan tersedia, sehingga mengurangi empty receives."
+        "explanation": "Long polling waits message when queue empty and can back when message available, so that reduces empty receives."
       },
       {
         "key": "C",
         "text": "Wait a fixed several minutes before every ReceiveMessage request.",
         "correct": false,
-        "explanation": "Ini mengurangi request tetapi menambah delay tetap yang tidak diperlukan saat pekerjaan tersedia."
+        "explanation": "this reduces request but adds delay remains that is not required when work available."
       },
       {
         "key": "D",
         "text": "Keep short polling and reduce the visibility timeout of every message.",
         "correct": false,
-        "explanation": "Visibility timeout memengaruhi pesan yang sedang diproses, bukan frekuensi receive kosong."
+        "explanation": "Visibility timeout affects message that currently processed, is not frequency receive empty."
       }
     ],
     "tags": [
@@ -2357,25 +2357,25 @@
         "key": "A",
         "text": "Apply a very long shared TTL because a cheaper origin always outweighs user isolation.",
         "correct": false,
-        "explanation": "TTL panjang memperpanjang risiko konten salah dibagikan."
+        "explanation": "TTL long extends risk content wrong shared."
       },
       {
         "key": "B",
         "text": "Reject shared caching for those responses unless isolation and cache policy correctly preserve user-specific authorization; optimize public assets separately.",
         "correct": true,
-        "explanation": "Penghematan tidak boleh membocorkan data antar-user; cache key dan behavior harus mencerminkan variasi yang aman."
+        "explanation": "Savings not may membocorkan data antar-user; cache key and behavior must reflects variation that secure."
       },
       {
         "key": "C",
         "text": "Enable gzip as the only control preventing one user from receiving another user data.",
         "correct": false,
-        "explanation": "Kompresi bukan isolasi cache atau otorisasi."
+        "explanation": "Compression is not isolation cache or authorization."
       },
       {
         "key": "D",
         "text": "Remove authorization headers from the origin request and assume identity is still preserved.",
         "correct": false,
-        "explanation": "Menghilangkan konteks dapat merusak otorisasi aplikasi."
+        "explanation": "Eliminates context can damages authorization application."
       }
     ],
     "tags": [
@@ -2402,25 +2402,25 @@
         "key": "A",
         "text": "Choose the coldest tier because minimum-duration charges never apply to deleted objects.",
         "correct": false,
-        "explanation": "Beberapa kelas memiliki minimum durasi yang dapat menimbulkan biaya walau objek dihapus lebih awal."
+        "explanation": "Several class has minimum duration that can causes cost walau object deleted more initial."
       },
       {
         "key": "B",
         "text": "Count only compressed bytes and ignore frequency of reads.",
         "correct": false,
-        "explanation": "Pola akses adalah komponen utama ekonomi workload ini."
+        "explanation": "Pattern access is component primary ekonomi workload this."
       },
       {
         "key": "C",
         "text": "Compare request, retrieval, minimum-duration, and access-latency terms against a frequently accessed storage class before choosing.",
         "correct": true,
-        "explanation": "Umur singkat dan banyak download dapat menghapus keuntungan tarif storage murah serta menambah delay."
+        "explanation": "Age short and many download can delete keuntungan rate storage cheap and adds delay."
       },
       {
         "key": "D",
         "text": "Assume every archive object is readable immediately using a normal GET without restore.",
         "correct": false,
-        "explanation": "Sebagian kelas arsip memerlukan restore sebelum akses."
+        "explanation": "Some class archive requires restore before access."
       }
     ],
     "tags": [
