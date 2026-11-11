@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel, StatusBadge } from "@/components/retro-panel";
 
 export const metadata = { title: "History" };
+export const dynamic = "force-dynamic";
 
 export default async function HistoryPage() {
   const [attempts, exams, sessions] = await Promise.all([
@@ -36,12 +37,12 @@ export default async function HistoryPage() {
         <div className="space-y-6">
           <RetroPanel tone="teal">
             <div className="panel-heading"><ArcadeIcon name="practice" /><h2>Practice sessions</h2></div>
-            <div>{sessions.map((session) => <div key={session.id} className="log-row"><div className="log-row__top"><span>{session.certification.code} #{session.id}</span><span className="text-[var(--teal)]">{session.correctCount}/{session.questionCount}</span></div><p className="activity-meta">{session.startedAt.toLocaleString("en-GB")}</p></div>)}</div>
+            <div>{sessions.map((session) => <Link key={session.id} href={`/practice/${session.certification.code}?session=${session.id}`} className="log-row"><div className="log-row__top"><span>{session.certification.code} #{session.id}</span><span className="text-[var(--teal)]">{session.endedAt ? "" : "OPEN \u00b7 "}{session.correctCount}/{session.questionCount}</span></div><p className="activity-meta">{session.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
             {sessions.length === 0 ? <p className="empty-plate">No practice sessions recorded yet.</p> : null}
           </RetroPanel>
           <RetroPanel tone="violet">
             <div className="panel-heading"><ArcadeIcon name="mock" /><h2>Mock exams</h2></div>
-            <div>{exams.map((exam) => <Link key={exam.id} href={`/mock/${exam.certification.code}/${exam.id}`} className="log-row"><div className="log-row__top"><span>{exam.certification.code} #{exam.id}</span><span>{exam.status === "COMPLETED" ? `${exam.correctCount}/${exam.questionCount}` : "IN PROGRESS"}</span></div><p className="activity-meta">{exam.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
+            <div>{exams.map((exam) => <Link key={exam.id} href={`/mock/${exam.certification.code}/${exam.id}`} className="log-row"><div className="log-row__top"><span>{exam.certification.code} {exam.assessmentMode === "FRESH" ? "fresh " : ""}#{exam.id}</span><span>{exam.status === "COMPLETED" ? `${exam.correctCount}/${exam.questionCount}` : "IN PROGRESS"}</span></div><p className="activity-meta">{exam.startedAt.toLocaleString("en-GB")}</p></Link>)}</div>
             {exams.length === 0 ? <p className="empty-plate">No mock exams recorded yet.</p> : null}
           </RetroPanel>
         </div>

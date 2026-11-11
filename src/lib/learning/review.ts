@@ -22,6 +22,22 @@ export function reviewDateForStage(stage: number, from = new Date()) {
   return next;
 }
 
+/**
+ * Spaced review only advances when the concept is actually due. Answering again before
+ * the due date (for example several questions of one concept in the same session) can
+ * reinforce recall but must not stretch the interval. A wrong answer always reschedules,
+ * and never later than the review that was already pending.
+ */
+export function scheduleReview(stage: number, isCorrect: boolean, confidence: Confidence, now: Date, currentDue: Date | null) {
+  const early = currentDue !== null && currentDue.getTime() > now.getTime();
+  if (early && isCorrect) return { stage, nextReviewAt: currentDue };
+
+  const nextStage = nextReviewStage(stage, isCorrect, confidence);
+  const scheduled = reviewDateForStage(nextStage, now);
+  const nextReviewAt = early && scheduled.getTime() > currentDue.getTime() ? currentDue : scheduled;
+  return { stage: nextStage, nextReviewAt };
+}
+
 export function confidencePriority(isCorrect: boolean, confidence: Confidence) {
   if (!isCorrect && confidence === "HIGH") return 10;
   if (!isCorrect && confidence === "MEDIUM") return 8;

@@ -8,6 +8,7 @@ import { RetroPanel, StatusBadge } from "@/components/retro-panel";
 import { CampaignMeters } from "@/components/progress-bar";
 
 export const metadata = { title: "Progress" };
+export const dynamic = "force-dynamic";
 
 export default async function ProgressPage() {
   const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });

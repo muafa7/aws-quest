@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { trainingQuestionWhere } from "./question-pools";
 import { confidencePriority } from "./review";
 import type { Confidence, SafeQuestion } from "./types";
 
@@ -16,13 +17,13 @@ async function loadCandidates(certificationCode: string) {
     where: {
       active: true,
       topic: { certification: { code: certificationCode, active: true } },
-      questions: { some: { active: true } },
+      questions: { some: trainingQuestionWhere },
     },
     include: {
       progress: true,
       topic: { select: { id: true, order: true, slug: true } },
       questions: {
-        where: { active: true },
+        where: trainingQuestionWhere,
         include: { options: { orderBy: { key: "asc" } } },
         orderBy: { code: "asc" },
       },
@@ -146,7 +147,7 @@ export async function selectPracticeQuestion(certificationCode: string): Promise
 
 export async function getSafeQuestionById(questionId: number): Promise<SafeQuestion | null> {
   const question = await prisma.question.findUnique({
-    where: { id: questionId, active: true },
+    where: { id: questionId, ...trainingQuestionWhere },
     include: {
       options: { orderBy: { key: "asc" } },
       concept: true,

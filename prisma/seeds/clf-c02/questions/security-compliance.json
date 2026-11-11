@@ -9,22 +9,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS, because AWS manages the physical hosts that run EC2",
+        "text": "AWS, as part of maintaining the EC2 hypervisor",
         "correct": false
       },
       {
         "key": "B",
-        "text": "The customer",
+        "text": "The customer, as part of securing the EC2 guest operating system",
         "correct": true
       },
       {
         "key": "C",
-        "text": "AWS and the customer jointly patch the same guest operating system",
+        "text": "AWS, as part of maintaining the instance's physical host",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The operating system vendor automatically patches every EC2 guest operating system",
+        "text": "The operating-system vendor, as part of providing the software license",
         "correct": false
       }
     ],
@@ -54,17 +54,17 @@
       },
       {
         "key": "B",
-        "text": "AWS, because Amazon S3 is a managed service",
+        "text": "AWS, through the service's storage infrastructure controls",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS and the customer must approve every bucket permission change together",
+        "text": "AWS, through the default encryption configuration",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The identity provider that authenticates the company's workforce users",
+        "text": "The identity provider, without any customer-defined S3 permissions",
         "correct": false
       }
     ],
@@ -209,22 +209,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The customer becomes responsible for the physical data center in addition to the application",
+        "text": "The customer takes over physical host maintenance but no longer manages database access",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS becomes responsible for all customer data classification and user permissions",
+        "text": "AWS takes over both host maintenance and the customer's data classification decisions",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS manages more of the underlying platform, while the customer still manages data, access, and customer-controlled configuration",
+        "text": "AWS manages more of the platform; the customer retains data and access responsibilities",
         "correct": true
       },
       {
         "key": "D",
-        "text": "The shared responsibility model no longer applies to managed services",
+        "text": "The customer keeps all EC2 operating-system tasks and additionally patches RDS hosts",
         "correct": false
       }
     ],
@@ -250,7 +250,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS is responsible for every security configuration after a workload is deployed to AWS",
+        "text": "A managed service transfers all application permission decisions to AWS",
         "correct": false
       },
       {
@@ -260,12 +260,12 @@
       },
       {
         "key": "C",
-        "text": "Customers are always responsible for patching the physical hosts used by AWS services",
+        "text": "Customers patch the virtualization software on AWS physical hosts",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The division of responsibility is identical for Amazon EC2, Amazon RDS, AWS Lambda, and Amazon S3",
+        "text": "The customer manages the same operating-system layers in EC2 and RDS",
         "correct": false
       }
     ],
@@ -335,22 +335,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Store application passwords and database credentials",
+        "text": "Authenticate an identity and issue a sign-in session",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Monitor CPU utilization and create performance alarms",
+        "text": "Store and rotate application credentials",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Distribute incoming application traffic across servers",
+        "text": "Record the configuration history of AWS resources",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Define which actions are allowed or denied on AWS resources under specified conditions",
+        "text": "Define permissions for actions and resources under specified conditions",
         "correct": true
       }
     ],
@@ -380,17 +380,17 @@
       },
       {
         "key": "B",
-        "text": "Provide temporary credentials directly to AWS services",
+        "text": "Collect IAM roles so they can all be assumed at once",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Create a separate AWS account for every employee",
+        "text": "Represent a principal that can sign in using group credentials",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Store encryption keys for application data",
+        "text": "Organize multiple AWS accounts for consolidated billing",
         "correct": false
       }
     ],
@@ -415,12 +415,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Attach AdministratorAccess so future requests will not require policy changes",
+        "text": "Grant read access to every S3 bucket in the account",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Grant full access to all S3 buckets in the account",
+        "text": "Grant all S3 actions on the specified bucket",
         "correct": false
       },
       {
@@ -430,7 +430,7 @@
       },
       {
         "key": "D",
-        "text": "Give the developer the root user credentials for temporary use",
+        "text": "Grant account-wide administrative access for a limited period",
         "correct": false
       }
     ],
@@ -455,22 +455,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS managed policies can only be attached to root users, while customer managed policies can only be attached to groups",
+        "text": "AWS managed policies are maintained by customers; customer managed policies are maintained by AWS",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS manages and updates AWS managed policies, while the customer creates and maintains customer managed policies",
+        "text": "AWS maintains AWS managed policies; customers maintain customer managed policies",
         "correct": true
       },
       {
         "key": "C",
-        "text": "AWS managed policies contain only deny statements, while customer managed policies contain only allow statements",
+        "text": "AWS managed policies cannot be shared among identities; customer managed policies can",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Customer managed policies are created automatically by AWS and cannot be edited by customers",
+        "text": "Customer managed policies apply only to groups; AWS managed policies apply only to users",
         "correct": false
       }
     ],
@@ -496,17 +496,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon CloudWatch dashboard",
+        "text": "IAM Access Analyzer policy generation",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Config conformance pack",
+        "text": "AWS CloudTrail Event history",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Artifact report",
+        "text": "AWS Organizations service control policies",
         "correct": false
       },
       {
@@ -541,17 +541,17 @@
       },
       {
         "key": "B",
-        "text": "Replace all customer managed policies with AdministratorAccess",
+        "text": "Keep existing permissions and shorten the console session duration",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Create additional access keys for each IAM user before reviewing permissions",
+        "text": "Rotate access keys without changing attached permissions",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Move all permissions to the root user so they are managed in one place",
+        "text": "Move the same broad permissions into an IAM group",
         "correct": false
       }
     ],
@@ -576,12 +576,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Use wildcard administrator permissions for every identity",
+        "text": "Grant broad access until an unauthorized action is reported",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Share one IAM user's credentials across an entire team",
+        "text": "Use the same permissions for every user with the same email domain",
         "correct": false
       },
       {
@@ -591,7 +591,7 @@
       },
       {
         "key": "D",
-        "text": "Create root access keys for routine automation",
+        "text": "Rotate credentials instead of removing unnecessary permissions",
         "correct": false
       },
       {
@@ -621,22 +621,22 @@
     "options": [
       {
         "key": "A",
-        "text": "It must have a long-term password and access key",
+        "text": "It is a named workforce user with a permanent console password",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It provides permissions through temporary security credentials when assumed",
+        "text": "It provides temporary credentials when assumed",
         "correct": true
       },
       {
         "key": "C",
-        "text": "It can only be used by the AWS account root user",
+        "text": "It is a collection of IAM users with shared permissions",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It permanently transfers ownership of AWS resources to another account",
+        "text": "It is an organization policy that limits member-account permissions",
         "correct": false
       }
     ],
@@ -661,17 +661,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Hard-code an IAM user's access key in the application source code",
+        "text": "Store an IAM user access key in the application package",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Store root user access keys in an environment variable",
+        "text": "Store an IAM user access key in the instance image",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Share one developer's long-term credentials with the instance",
+        "text": "Pass a developer's long-term credentials to every instance",
         "correct": false
       },
       {
@@ -702,22 +702,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A role is intended to be assumed and provides temporary credentials, while an IAM user can have long-term credentials",
+        "text": "IAM role: assumable permissions with temporary session credentials; IAM user: an identity that can have long-term credentials.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "A role can have permissions, while an IAM user cannot have permissions",
+        "text": "IAM role: an identity that can have long-term credentials; IAM user: assumable permissions with temporary session credentials.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "An IAM user can be used across accounts, while a role can never be used across accounts",
+        "text": "IAM role: assumable permissions with temporary session credentials; IAM user: a collection of IAM users sharing permissions.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A role is only for billing access, while an IAM user is only for application access",
+        "text": "IAM role: a collection of IAM users sharing permissions; IAM user: an identity that can have long-term credentials.",
         "correct": false
       }
     ],
@@ -743,12 +743,12 @@
     "options": [
       {
         "key": "A",
-        "text": "A new root user for Account A inside Account B",
+        "text": "An IAM group that contains the external users from Account A",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A shared long-term access key stored in both accounts",
+        "text": "A long-term IAM user key shared by both accounts",
         "correct": false
       },
       {
@@ -758,7 +758,7 @@
       },
       {
         "key": "D",
-        "text": "An IAM group in Account B with no role or trust relationship",
+        "text": "An SCP that directly grants Account A permission to assume any role",
         "correct": false
       }
     ],
@@ -784,7 +784,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Every role must have a console password",
+        "text": "A role has a permanent password used for every session",
         "correct": false
       },
       {
@@ -794,12 +794,12 @@
       },
       {
         "key": "C",
-        "text": "Roles require permanent access keys to be stored with the application",
+        "text": "A role session uses the same credentials indefinitely",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A role can only be used within the account where the calling user was originally created",
+        "text": "A role can be assumed only by principals in its own account",
         "correct": false
       },
       {
@@ -829,7 +829,7 @@
     "options": [
       {
         "key": "A",
-        "text": "For routine application deployments",
+        "text": "For deployments that create multiple AWS services",
         "correct": false
       },
       {
@@ -839,12 +839,12 @@
       },
       {
         "key": "C",
-        "text": "For every administrator's daily console access",
+        "text": "For routine changes to IAM permissions",
         "correct": false
       },
       {
         "key": "D",
-        "text": "As the shared identity for all developers",
+        "text": "For automated tasks that need administrator access",
         "correct": false
       }
     ],
@@ -865,21 +865,21 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "Which control is strongly recommended to protect the AWS account root user?",
+    "question": "Which control adds another authentication factor to a password-based AWS account root-user sign-in?",
     "options": [
       {
         "key": "A",
-        "text": "Create several root access keys and distribute them to administrators",
+        "text": "Apply an IAM user password policy to the root user",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Disable account recovery mechanisms",
+        "text": "Create separate root access keys for each administrator",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Use the root user for all automation so credentials stay centralized",
+        "text": "Share the root password through a team account",
         "correct": false
       },
       {
@@ -909,22 +909,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Use an appropriately secured administrative identity or workforce access method instead of the root user",
+        "text": "Use a secured administrative role or workforce identity instead of root credentials",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Use the root user because administrative work always requires root credentials",
+        "text": "Use root credentials whenever more than one service is involved",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Create and share a root access key among the operations team",
+        "text": "Share one root access key among the administrators",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Disable MFA on the root user to reduce sign-in friction",
+        "text": "Use root credentials only from the office network, without MFA",
         "correct": false
       }
     ],
@@ -949,22 +949,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Root access keys can only read billing information and cannot access resources",
+        "text": "Root access keys provide only billing access",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Root access keys expire automatically after each API call",
+        "text": "Root access keys expire after each API call",
         "correct": false
       },
       {
         "key": "C",
-        "text": "They would provide programmatic credentials with the root user's unrestricted privileges",
+        "text": "They expose highly privileged programmatic access to the account",
         "correct": true
       },
       {
         "key": "D",
-        "text": "AWS services cannot authenticate requests made with root access keys",
+        "text": "Root access keys receive fewer permissions than administrator IAM roles",
         "correct": false
       }
     ],
@@ -989,7 +989,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Use an employee's personal email address as the permanent root contact",
+        "text": "Use the original account creator's personal email for recovery",
         "correct": false
       },
       {
@@ -999,12 +999,12 @@
       },
       {
         "key": "C",
-        "text": "Store the root password in the source code repository",
+        "text": "Keep the only MFA device with one administrator",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Remove all monitoring of root-user activity",
+        "text": "Store the only recovery information in a service that requires the same locked account to access",
         "correct": false
       }
     ],
@@ -1025,26 +1025,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "What security benefit does multi-factor authentication (MFA) provide?",
+    "question": "What protection does MFA add to a password-based sign-in?",
     "options": [
       {
         "key": "A",
-        "text": "It replaces authorization policies with network rules",
+        "text": "It determines which resources a signed-in user may access",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It automatically encrypts every object stored in Amazon S3",
+        "text": "It automatically rotates all IAM access keys",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It removes the need to protect access keys",
+        "text": "It replaces the need to authorize AWS API requests",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It requires an additional authentication factor beyond the password",
+        "text": "It requires an additional authentication factor",
         "correct": true
       }
     ],
@@ -1069,22 +1069,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Password requirements for IAM users who use console passwords",
+        "text": "Password requirements for IAM users with console passwords",
         "correct": true
       },
       {
         "key": "B",
-        "text": "The encryption algorithm used for Amazon S3 objects",
+        "text": "The permissions of an IAM role session",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The allowed inbound ports for EC2 instances",
+        "text": "The password requirements of the account root user",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The maximum permissions allowed by AWS Organizations",
+        "text": "The permissions boundary for all users in an organization",
         "correct": false
       }
     ],
@@ -1109,12 +1109,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Create a root user access key for the task",
+        "text": "Create a new long-term access key for every execution",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Hard-code a permanent IAM access key in the application",
+        "text": "Embed a long-term access key in the deployment package",
         "correct": false
       },
       {
@@ -1124,7 +1124,7 @@
       },
       {
         "key": "D",
-        "text": "Share another developer's long-term access key",
+        "text": "Reuse a team member's long-term credentials",
         "correct": false
       }
     ],
@@ -1149,12 +1149,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Commit access keys to a private source-code repository",
+        "text": "Keep application access keys in a private source repository",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Share one IAM user's password among team members",
+        "text": "Reuse one named IAM user across all team members",
         "correct": false
       },
       {
@@ -1164,12 +1164,12 @@
       },
       {
         "key": "D",
-        "text": "Create root access keys for routine scripts",
+        "text": "Create root access keys for administrative scripts",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Disable or rotate long-term credentials that are no longer needed",
+        "text": "Deactivate and delete long-term credentials that are no longer needed",
         "correct": true
       }
     ],
@@ -1234,17 +1234,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Cognito",
+        "text": "Amazon Cognito user pools",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Macie",
+        "text": "AWS Secrets Manager",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Certificate Manager",
+        "text": "AWS Organizations consolidated billing",
         "correct": false
       },
       {
@@ -1274,22 +1274,22 @@
     "options": [
       {
         "key": "A",
-        "text": "IAM Identity Center focuses on workforce access to AWS accounts and applications, while Cognito focuses on identity for web and mobile application users",
+        "text": "IAM Identity Center: workforce access to AWS accounts and applications; Amazon Cognito: sign-up and sign-in for application users.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "IAM Identity Center stores encryption keys, while Cognito manages TLS certificates",
+        "text": "IAM Identity Center: sign-up and sign-in for application users; Amazon Cognito: workforce access to AWS accounts and applications.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "IAM Identity Center monitors CPU metrics, while Cognito records API audit events",
+        "text": "IAM Identity Center: workforce access to AWS accounts and applications; Amazon Cognito: maximum permission boundaries across organization accounts.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "IAM Identity Center is only for root users, while Cognito is only for AWS services",
+        "text": "IAM Identity Center: maximum permission boundaries across organization accounts; Amazon Cognito: sign-up and sign-in for application users.",
         "correct": false
       }
     ],
@@ -1314,12 +1314,12 @@
     "options": [
       {
         "key": "A",
-        "text": "S3 bucket policies",
+        "text": "Service control policies",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Network ACLs",
+        "text": "IAM user groups",
         "correct": false
       },
       {
@@ -1329,7 +1329,7 @@
       },
       {
         "key": "D",
-        "text": "CloudWatch metric filters",
+        "text": "Resource-based bucket policies",
         "correct": false
       }
     ],
@@ -1354,7 +1354,7 @@
     "options": [
       {
         "key": "A",
-        "text": "A centralized workforce portal for administrators of many AWS accounts",
+        "text": "A workforce access portal for managing multiple AWS accounts",
         "correct": false
       },
       {
@@ -1364,12 +1364,12 @@
       },
       {
         "key": "C",
-        "text": "A vulnerability scanner for container images",
+        "text": "A broker of temporary AWS credentials for identified application users",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A service for managing SSL/TLS certificates",
+        "text": "An organization-wide permissions boundary",
         "correct": false
       }
     ],
@@ -1394,22 +1394,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Permanent root user credentials",
+        "text": "Long-term IAM user access keys",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Dedicated hardware security modules",
+        "text": "A permanent password for a shared IAM user",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Service control policies for AWS Organizations",
+        "text": "An AWS Organizations service control policy",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Temporary AWS credentials for accessing permitted AWS resources",
+        "text": "Temporary AWS credentials for permitted resources",
         "correct": true
       }
     ],
@@ -1434,22 +1434,22 @@
     "options": [
       {
         "key": "A",
-        "text": "User pools authenticate application users and issue tokens, while identity pools can exchange identities for temporary AWS credentials",
+        "text": "Cognito user pools: application-user authentication and tokens; Cognito identity pools: temporary AWS credentials for permitted resources.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "User pools store encryption keys, while identity pools store TLS certificates",
+        "text": "Cognito user pools: temporary AWS credentials for permitted resources; Cognito identity pools: application-user authentication and tokens.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "User pools manage AWS Organizations, while identity pools manage security groups",
+        "text": "Cognito user pools: application-user authentication and tokens; Cognito identity pools: organization-wide maximum permission boundaries.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "User pools are for EC2 patching, while identity pools are for S3 lifecycle policies",
+        "text": "Cognito user pools: organization-wide maximum permission boundaries; Cognito identity pools: temporary AWS credentials for permitted resources.",
         "correct": false
       }
     ],
@@ -1490,7 +1490,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Artifact",
+        "text": "AWS Directory Service",
         "correct": false
       }
     ],
@@ -1556,17 +1556,17 @@
     "options": [
       {
         "key": "A",
-        "text": "SCPs are attached to individual EC2 instances as stateful firewalls",
+        "text": "SCPs directly attach permissions to individual EC2 instances",
         "correct": false
       },
       {
         "key": "B",
-        "text": "SCPs replace all IAM policies in member accounts",
+        "text": "SCPs grant the same permissions as AdministratorAccess",
         "correct": false
       },
       {
         "key": "C",
-        "text": "SCPs provide temporary credentials to workforce users",
+        "text": "SCPs provide temporary credentials to users",
         "correct": false
       },
       {
@@ -1601,17 +1601,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Resource Access Manager",
+        "text": "AWS Organizations consolidated billing alone",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Cognito",
+        "text": "AWS Service Catalog",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Certificate Manager",
+        "text": "AWS Resource Access Manager",
         "correct": false
       }
     ],
@@ -1636,22 +1636,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Service Catalog sets organization-wide maximum IAM permissions, while AWS RAM creates workforce identities",
+        "text": "AWS Service Catalog: sharing supported resources across AWS accounts; AWS RAM: approved products for self-service provisioning.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Service Catalog detects threats, while AWS RAM scans software vulnerabilities",
+        "text": "AWS Service Catalog: approved products for self-service provisioning; AWS RAM: setting maximum identity permissions with SCPs.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Service Catalog provides approved products for controlled self-service provisioning, while AWS RAM shares supported resources across accounts",
+        "text": "AWS Service Catalog: approved products for self-service provisioning; AWS RAM: sharing supported resources across AWS accounts.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "AWS Service Catalog manages DDoS protection, while AWS RAM filters web requests",
+        "text": "AWS Service Catalog: setting maximum identity permissions with SCPs; AWS RAM: sharing supported resources across AWS accounts.",
         "correct": false
       }
     ],
@@ -1687,12 +1687,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Service Catalog is a threat-detection service",
+        "text": "AWS Service Catalog is the service that creates SCP permission boundaries",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Organizations replaces the need for IAM permissions inside member accounts",
+        "text": "An SCP replaces the IAM policies needed to grant permissions",
         "correct": false
       },
       {
@@ -1723,7 +1723,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Key Management Service",
+        "text": "AWS KMS",
         "correct": false
       },
       {
@@ -1733,12 +1733,12 @@
       },
       {
         "key": "C",
-        "text": "Amazon CloudWatch",
+        "text": "AWS Systems Manager Parameter Store",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Config",
+        "text": "AWS Certificate Manager",
         "correct": false
       }
     ],
@@ -1763,22 +1763,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Detect compromised AWS credentials from threat telemetry",
+        "text": "Issue temporary credentials when an IAM role is assumed",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Provide DDoS mitigation for internet-facing applications",
+        "text": "Manage public TLS certificates for web endpoints",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Aggregate security findings from multiple services",
+        "text": "Rotate every application secret without additional configuration",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Store hierarchical configuration values and secure parameter values",
+        "text": "Store hierarchical configuration and secure parameter values",
         "correct": true
       }
     ],
@@ -1803,22 +1803,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Secrets Manager includes secret lifecycle capabilities such as automatic rotation, while Parameter Store provides hierarchical configuration and secret-value storage without its own automatic rotation service",
+        "text": "Secrets Manager: secret storage with configured automatic rotation; Parameter Store: hierarchical configuration and secure-value storage.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Secrets Manager stores only encryption keys, while Parameter Store stores only TLS certificates",
+        "text": "Secrets Manager: hierarchical configuration and secure-value storage; Parameter Store: secret storage with configured automatic rotation.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Secrets Manager is a network firewall, while Parameter Store is an identity provider",
+        "text": "Secrets Manager: secret storage with configured automatic rotation; Parameter Store: public TLS certificate provisioning and renewal.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Secrets Manager is only for public data, while Parameter Store is only for root credentials",
+        "text": "Secrets Manager: public TLS certificate provisioning and renewal; Parameter Store: hierarchical configuration and secure-value storage.",
         "correct": false
       }
     ],
@@ -1844,12 +1844,12 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS KMS alone",
+        "text": "AWS KMS",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS CloudTrail",
+        "text": "AWS Systems Manager Parameter Store without additional rotation automation",
         "correct": false
       },
       {
@@ -1859,7 +1859,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Resource Access Manager",
+        "text": "AWS Certificate Manager",
         "correct": false
       }
     ],
@@ -1884,22 +1884,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Store application passwords as the primary secret database",
+        "text": "Store and automatically rotate application database passwords",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Create and control cryptographic keys used to encrypt or sign data",
+        "text": "Create and control cryptographic keys for encryption or signing",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Filter HTTP requests to web applications",
+        "text": "Provision and manage public TLS certificates",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Provide user sign-up for mobile applications",
+        "text": "Issue temporary AWS credentials to application users",
         "correct": false
       }
     ],
@@ -1924,17 +1924,17 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Certificate Manager",
+        "text": "AWS KMS using the default managed key infrastructure",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Artifact",
+        "text": "AWS Certificate Manager",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Inspector",
+        "text": "AWS Secrets Manager",
         "correct": false
       },
       {
@@ -1969,17 +1969,17 @@
       },
       {
         "key": "B",
-        "text": "Managing service control policies across an organization",
+        "text": "Managing encryption keys used for data at rest",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Detecting sensitive data in Amazon S3",
+        "text": "Rotating stored database credentials",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Recording API activity for audit purposes",
+        "text": "Providing customer-controlled dedicated HSMs",
         "correct": false
       }
     ],
@@ -2004,22 +2004,22 @@
     "options": [
       {
         "key": "A",
-        "text": "KMS manages TLS certificates, CloudHSM aggregates findings, and ACM scans vulnerabilities",
+        "text": "KMS: TLS certificates; CloudHSM: dedicated HSMs; ACM: encryption-key policies",
         "correct": false
       },
       {
         "key": "B",
-        "text": "KMS provides DDoS protection, CloudHSM stores application users, and ACM records API calls",
+        "text": "KMS: managed keys; CloudHSM: TLS certificate renewal; ACM: dedicated HSMs",
         "correct": false
       },
       {
         "key": "C",
-        "text": "KMS provides managed key management, CloudHSM provides dedicated HSMs with greater customer control, and ACM manages SSL/TLS certificates",
+        "text": "KMS: managed keys; CloudHSM: dedicated HSMs; ACM: TLS certificates",
         "correct": true
       },
       {
         "key": "D",
-        "text": "KMS, CloudHSM, and ACM are interchangeable services for storing application passwords",
+        "text": "KMS: dedicated HSM ownership; CloudHSM: application sign-in; ACM: managed keys",
         "correct": false
       }
     ],
@@ -2045,7 +2045,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Use Amazon Macie to create dedicated hardware security modules",
+        "text": "Use AWS Certificate Manager as the primary database-password rotation service",
         "correct": false
       },
       {
@@ -2055,12 +2055,12 @@
       },
       {
         "key": "C",
-        "text": "Use AWS CloudHSM as the primary service for user sign-up and sign-in",
+        "text": "Use AWS KMS to manage application-user sign-up and sign-in",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Use AWS Artifact to rotate application database passwords",
+        "text": "Use AWS Secrets Manager to provision public TLS certificates",
         "correct": false
       },
       {
@@ -2090,22 +2090,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A subnet-level stateless firewall that supports explicit deny rules",
+        "text": "A stateless subnet firewall with allow and deny rules",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A service that records AWS API activity",
+        "text": "A stateful resource firewall with explicit deny rules",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A managed DDoS protection subscription",
+        "text": "An identity policy that authorizes AWS API calls",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A stateful virtual firewall that controls allowed inbound and outbound traffic for associated resources",
+        "text": "A stateful firewall controlling allowed resource traffic",
         "correct": true
       }
     ],
@@ -2135,17 +2135,17 @@
       },
       {
         "key": "B",
-        "text": "Every inbound rule must have an identical outbound rule number",
+        "text": "Rules are applied in ascending numeric priority",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Security groups remember configuration history for audit purposes",
+        "text": "The firewall can allow or deny a connection explicitly",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Security groups can contain explicit deny rules that override allows",
+        "text": "Every response must match a separate reverse-direction rule",
         "correct": false
       }
     ],
@@ -2170,22 +2170,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Security groups operate only at the subnet level, while network ACLs attach to IAM users",
+        "text": "Security groups: stateless allow and deny rules at the subnet boundary; Network ACLs: stateful allow rules associated with resources.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Security groups support only deny rules, while network ACLs support only allow rules",
+        "text": "Security groups: stateful allow rules associated with resources; Network ACLs: inspection of SQL injection patterns in HTTP content.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Security groups are stateful and associated with resources, while network ACLs are stateless and operate at the subnet level",
+        "text": "Security groups: stateful allow rules associated with resources; Network ACLs: stateless allow and deny rules at the subnet boundary.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Security groups are for application logging, while network ACLs are for encryption",
+        "text": "Security groups: inspection of SQL injection patterns in HTTP content; Network ACLs: stateless allow and deny rules at the subnet boundary.",
         "correct": false
       }
     ],
@@ -2210,22 +2210,22 @@
     "options": [
       {
         "key": "A",
-        "text": "An SCP that grants HTTPS access to the EC2 instance",
+        "text": "A security group rule allowing TCP 443 from every source",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A security group inbound rule allowing TCP port 443 from the corporate CIDR range",
+        "text": "An inbound security group rule allowing TCP 443 from the corporate CIDR",
         "correct": true
       },
       {
         "key": "C",
-        "text": "An AWS Artifact agreement for the corporate network",
+        "text": "An outbound-only rule allowing TCP 443 to the corporate CIDR",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A CloudTrail trail filtered to HTTPS requests",
+        "text": "An IAM policy that allows EC2 DescribeInstances calls from the corporate CIDR",
         "correct": false
       }
     ],
@@ -2296,17 +2296,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Individual IAM user level",
+        "text": "Individual network-interface level",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Organizations level",
+        "text": "VPC-wide application identity level",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Application source-code level",
+        "text": "Organization-account level",
         "correct": false
       },
       {
@@ -2336,22 +2336,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Both allow and deny rules",
+        "text": "Explicit allow and deny rules",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Only allow rules because network ACLs are stateful",
+        "text": "Allow rules only with automatic response tracking",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Only identity-based permissions",
+        "text": "HTTP content patterns and rate-based controls",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Only HTTP path filtering",
+        "text": "IAM action and resource permissions",
         "correct": false
       }
     ],
@@ -2376,12 +2376,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Network ACLs automatically deny all response traffic generated by AWS services",
+        "text": "Network ACLs automatically track sessions but ignore the response ports",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Network ACLs are identity policies rather than network controls",
+        "text": "A rule allowing inbound traffic automatically creates an outbound rule",
         "correct": false
       },
       {
@@ -2391,7 +2391,7 @@
       },
       {
         "key": "D",
-        "text": "Network ACLs only work after CloudTrail records the request",
+        "text": "Network ACL rules are applied only after IAM authorization",
         "correct": false
       }
     ],
@@ -2416,7 +2416,7 @@
     "options": [
       {
         "key": "A",
-        "text": "A security group only",
+        "text": "A security group",
         "correct": false
       },
       {
@@ -2426,12 +2426,12 @@
       },
       {
         "key": "C",
-        "text": "An IAM role trust policy",
+        "text": "A route-table entry granting IAM permissions",
         "correct": false
       },
       {
         "key": "D",
-        "text": "An AWS WAF web ACL attached to an IAM user",
+        "text": "An IAM permissions boundary",
         "correct": false
       }
     ],
@@ -2456,22 +2456,22 @@
     "options": [
       {
         "key": "A",
-        "text": "SQL schema drift",
+        "text": "SQL injection in application requests",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Accidental IAM policy deletion",
+        "text": "Unpatched software package exploitation",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Sensitive data stored in S3",
+        "text": "Unauthorized access to sensitive S3 objects",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Distributed denial-of-service (DDoS) attacks",
+        "text": "Distributed denial-of-service attacks",
         "correct": true
       }
     ],
@@ -2501,17 +2501,17 @@
       },
       {
         "key": "B",
-        "text": "It requires a paid Shield Advanced subscription before any protection is enabled",
+        "text": "It must be purchased before AWS provides any DDoS protection",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It is primarily a vulnerability scanner for EC2 and Lambda",
+        "text": "It includes every additional capability of Shield Advanced",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It is a web identity provider for application users",
+        "text": "It replaces customer-defined WAF application-layer rules",
         "correct": false
       }
     ],
@@ -2536,22 +2536,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Shield manages encryption keys, while WAF manages TLS certificates",
+        "text": "AWS Shield: HTTP request inspection and filtering rules; AWS WAF: managed DDoS protection.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Shield records API activity, while WAF records resource configuration history",
+        "text": "AWS Shield: managed DDoS protection; AWS WAF: software package vulnerability scanning.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Shield focuses on DDoS protection, while WAF inspects and controls HTTP(S) web requests using rules",
+        "text": "AWS Shield: managed DDoS protection; AWS WAF: HTTP request inspection and filtering rules.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Shield provides workforce SSO, while WAF provides app-user sign-up",
+        "text": "AWS Shield: software package vulnerability scanning; AWS WAF: HTTP request inspection and filtering rules.",
         "correct": false
       }
     ],
@@ -2577,7 +2577,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Shield Standard only",
+        "text": "AWS Shield Standard",
         "correct": false
       },
       {
@@ -2587,12 +2587,12 @@
       },
       {
         "key": "C",
-        "text": "Amazon Macie",
+        "text": "AWS WAF alone",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Artifact",
+        "text": "Amazon GuardDuty",
         "correct": false
       }
     ],
@@ -2617,12 +2617,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Shield is primarily used to discover PII in Amazon S3",
+        "text": "Shield Standard includes all Shield Advanced capabilities",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Shield replaces IAM policies for user authorization",
+        "text": "Shield performs application-user authentication",
         "correct": false
       },
       {
@@ -2632,7 +2632,7 @@
       },
       {
         "key": "D",
-        "text": "Shield's main purpose is to record resource configuration changes",
+        "text": "Shield replaces the need to configure application access permissions",
         "correct": false
       },
       {
@@ -2663,22 +2663,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Provide temporary credentials to workforce users",
+        "text": "Control instance traffic using port and protocol rules",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Scan EC2 instances for software vulnerabilities",
+        "text": "Inspect workload packages for known vulnerabilities",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Manage encryption keys for application data",
+        "text": "Analyze account activity for compromised credentials",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Inspect and control HTTP(S) requests to supported web applications and resources",
+        "text": "Inspect HTTP requests and apply web access rules",
         "correct": true
       }
     ],
@@ -2708,17 +2708,17 @@
       },
       {
         "key": "B",
-        "text": "Whether an IAM user's password is older than 90 days",
+        "text": "Whether a principal has an IAM policy allowing an S3 API action",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Whether an EC2 instance has enough CPU credits",
+        "text": "Whether an installed operating-system package has a CVE",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Whether an AWS account has accepted a legal agreement",
+        "text": "Whether a storage volume matches a required encryption configuration",
         "correct": false
       }
     ],
@@ -2743,22 +2743,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS WAF manages organization accounts, while Firewall Manager provides application user sign-up",
+        "text": "AWS WAF: central management of supported security policies across accounts; AWS Firewall Manager: web request inspection and filtering.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS WAF filters web requests, while Firewall Manager centrally applies and manages supported security policies across accounts and resources",
+        "text": "AWS WAF: web request inspection and filtering; AWS Firewall Manager: central management of supported security policies across accounts.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "AWS WAF stores secrets, while Firewall Manager rotates encryption keys",
+        "text": "AWS WAF: web request inspection and filtering; AWS Firewall Manager: sensitive-data classification in S3 objects.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS WAF scans container images, while Firewall Manager records API activity",
+        "text": "AWS WAF: sensitive-data classification in S3 objects; AWS Firewall Manager: central management of supported security policies across accounts.",
         "correct": false
       }
     ],
@@ -2783,17 +2783,17 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Shield Standard alone",
+        "text": "AWS Shield Standard",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS IAM Identity Center",
+        "text": "Amazon GuardDuty",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Artifact",
+        "text": "Amazon Inspector",
         "correct": false
       },
       {
@@ -2823,12 +2823,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Create cross-account IAM roles",
+        "text": "Authorize AWS API calls using IAM role trust policies",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Discover sensitive data stored in S3 objects",
+        "text": "Scan uploaded S3 objects for sensitive personal data",
         "correct": false
       },
       {
@@ -2838,7 +2838,7 @@
       },
       {
         "key": "D",
-        "text": "Patch guest operating systems on EC2 instances",
+        "text": "Apply operating-system security patches to EC2 instances",
         "correct": false
       },
       {
@@ -2868,22 +2868,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Detect suspicious and potentially malicious activity in AWS environments",
+        "text": "Detect suspicious activity and threats in AWS environments",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Manage SSL/TLS certificate renewals",
+        "text": "Identify missing software security patches",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Store application configuration parameters",
+        "text": "Discover sensitive data in S3 objects",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Create approved product catalogs for end users",
+        "text": "Evaluate resource configurations against compliance rules",
         "correct": false
       }
     ],
@@ -2907,7 +2907,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Only monthly AWS invoices",
+        "text": "Only archived customer support conversations",
         "correct": false
       },
       {
@@ -2917,12 +2917,12 @@
       },
       {
         "key": "C",
-        "text": "Only application source code stored in Git repositories",
+        "text": "Only operating-system package version inventories",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Only AWS Artifact compliance reports",
+        "text": "Only the text content of stored S3 documents",
         "correct": false
       }
     ],
@@ -2948,22 +2948,22 @@
     "options": [
       {
         "key": "A",
-        "text": "GuardDuty manages TLS certificates, while Inspector manages encryption keys",
+        "text": "GuardDuty: finding software vulnerabilities and unintended exposure; Inspector: detecting suspicious or malicious activity.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "GuardDuty stores secrets, while Inspector provides workforce SSO",
+        "text": "GuardDuty: detecting suspicious or malicious activity; Inspector: classifying sensitive data in S3 objects.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "GuardDuty and Inspector are identical services with different consoles",
+        "text": "GuardDuty: classifying sensitive data in S3 objects; Inspector: finding software vulnerabilities and unintended exposure.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "GuardDuty detects suspicious or malicious activity, while Inspector scans supported workloads for vulnerabilities and unintended exposure",
+        "text": "GuardDuty: detecting suspicious or malicious activity; Inspector: finding software vulnerabilities and unintended exposure.",
         "correct": true
       }
     ],
@@ -2993,17 +2993,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Certificate Manager",
+        "text": "Amazon Inspector",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Service Catalog",
+        "text": "Amazon Macie",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon CloudWatch dashboards alone",
+        "text": "AWS Config",
         "correct": false
       }
     ],
@@ -3028,12 +3028,12 @@
     "options": [
       {
         "key": "A",
-        "text": "It is primarily a legal-agreement repository",
+        "text": "It primarily inventories installed packages to identify missing patches",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It replaces all preventive IAM and network controls",
+        "text": "It automatically replaces the IAM policies required for authorization",
         "correct": false
       },
       {
@@ -3043,7 +3043,7 @@
       },
       {
         "key": "D",
-        "text": "It is primarily used to issue public TLS certificates",
+        "text": "It primarily extracts personally identifiable information from S3 objects",
         "correct": false
       },
       {
@@ -3112,22 +3112,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Only Amazon S3 buckets",
+        "text": "S3 buckets, Route 53 zones, and IAM groups",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Only Route 53 hosted zones",
+        "text": "VPC route tables, DNS records, and billing reports",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Only IAM users and groups",
+        "text": "EBS snapshots, support cases, and CloudFront cache keys",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon EC2 instances, Amazon ECR container images, and AWS Lambda functions",
+        "text": "EC2 instances, ECR container images, and Lambda functions",
         "correct": true
       }
     ],
@@ -3153,22 +3153,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Inspector finds software vulnerabilities and exposure in supported workloads, while Macie discovers sensitive data and data-security risks in Amazon S3",
+        "text": "Inspector: software vulnerability and exposure assessment; Macie: sensitive-data discovery and security risks in S3.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Inspector manages IAM permissions, while Macie manages network ACLs",
+        "text": "Inspector: sensitive-data discovery and security risks in S3; Macie: software vulnerability and exposure assessment.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Inspector records API calls, while Macie issues TLS certificates",
+        "text": "Inspector: software vulnerability and exposure assessment; Macie: interactive workforce authentication.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Inspector and Macie both only provide DDoS protection",
+        "text": "Inspector: interactive workforce authentication; Macie: sensitive-data discovery and security risks in S3.",
         "correct": false
       }
     ],
@@ -3198,7 +3198,7 @@
       },
       {
         "key": "B",
-        "text": "AWS Artifact",
+        "text": "Amazon GuardDuty",
         "correct": false
       },
       {
@@ -3208,7 +3208,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Shield",
+        "text": "Amazon Macie",
         "correct": false
       }
     ],
@@ -3274,17 +3274,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Route-table propagation and BGP only",
+        "text": "Guest operating-system package version analysis",
         "correct": false
       },
       {
         "key": "B",
-        "text": "TLS certificate validation only",
+        "text": "Network packet-rate thresholds",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Service control policy inheritance only",
+        "text": "Database schema conversion",
         "correct": false
       },
       {
@@ -3314,22 +3314,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Macie focuses on sensitive-data discovery and S3 data-security risks, while GuardDuty focuses on threat detection",
+        "text": "Macie: sensitive-data discovery in S3; GuardDuty: threat detection from AWS activity and telemetry.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Macie manages TLS certificates, while GuardDuty manages root-user passwords",
+        "text": "Macie: threat detection from AWS activity and telemetry; GuardDuty: sensitive-data discovery in S3.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Macie provides DDoS protection, while GuardDuty provides workforce SSO",
+        "text": "Macie: sensitive-data discovery in S3; GuardDuty: software package vulnerability scanning.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Macie and GuardDuty both only evaluate billing data",
+        "text": "Macie: software package vulnerability scanning; GuardDuty: threat detection from AWS activity and telemetry.",
         "correct": false
       }
     ],
@@ -3359,7 +3359,7 @@
       },
       {
         "key": "B",
-        "text": "AWS Shield Advanced",
+        "text": "Amazon GuardDuty",
         "correct": false
       },
       {
@@ -3369,7 +3369,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Resource Access Manager",
+        "text": "AWS Config",
         "correct": false
       }
     ],
@@ -3395,22 +3395,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Issue public TLS certificates",
+        "text": "Continuously scan installed software for vulnerabilities",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Help investigate security findings and identify root causes using correlated context and analytics",
+        "text": "Provide correlated context for security investigations",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Create service control policies",
+        "text": "Classify sensitive information stored in S3",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Perform automatic secret rotation",
+        "text": "Filter HTTP requests before they reach an application",
         "correct": false
       }
     ],
@@ -3435,22 +3435,22 @@
     "options": [
       {
         "key": "A",
-        "text": "It replaces all logs with a single monthly invoice",
+        "text": "Replace vulnerability scanning with patch installation",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It blocks all inbound network traffic by default",
+        "text": "Block network connections using subnet deny rules",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It automatically changes every IAM policy to AdministratorAccess",
+        "text": "Issue replacement credentials for compromised identities",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It correlates resource activity and provides visual context such as behavior graphs",
+        "text": "Correlate resource activity and present behavior graphs",
         "correct": true
       }
     ],
@@ -3475,22 +3475,22 @@
     "options": [
       {
         "key": "A",
-        "text": "GuardDuty detects threats and creates findings, while Detective helps investigate findings and understand related activity",
+        "text": "GuardDuty: detecting threats and producing findings; Detective: investigating findings with related activity and context.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Detective provides DDoS protection, while GuardDuty manages certificates",
+        "text": "GuardDuty: investigating findings with related activity and context; Detective: detecting threats and producing findings.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Detective stores application secrets, while GuardDuty manages password policies",
+        "text": "GuardDuty: detecting threats and producing findings; Detective: classifying sensitive data in stored documents.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Detective and GuardDuty have exactly the same primary function",
+        "text": "GuardDuty: classifying sensitive data in stored documents; Detective: investigating findings with related activity and context.",
         "correct": false
       }
     ],
@@ -3515,12 +3515,12 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Certificate Manager",
+        "text": "Amazon Inspector",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Service Catalog",
+        "text": "Amazon Macie",
         "correct": false
       },
       {
@@ -3530,7 +3530,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Systems Manager Parameter Store",
+        "text": "AWS Secrets Manager",
         "correct": false
       }
     ],
@@ -3556,22 +3556,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Store application secrets with automatic rotation",
+        "text": "Store and rotate application secrets",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Provide a centralized view of security posture and findings across AWS services and accounts",
+        "text": "Aggregate findings and assess security posture",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Provide DNS resolution for VPC resources",
+        "text": "Issue temporary credentials to workforce users",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Patch guest operating systems on EC2 instances",
+        "text": "Apply operating-system patches to EC2 fleets",
         "correct": false
       }
     ],
@@ -3596,22 +3596,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Only AWS Billing and Cost Management",
+        "text": "Only third-party security products",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Only Route 53 and CloudFront",
+        "text": "Only manually uploaded compliance reports",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Only AWS Certificate Manager",
+        "text": "Only AWS Config, with no other findings providers",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Services such as Amazon GuardDuty, Amazon Inspector, and Amazon Macie",
+        "text": "Services including GuardDuty, Inspector, and Macie",
         "correct": true
       }
     ],
@@ -3637,22 +3637,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Security Hub CSPM aggregates posture information and evaluates security controls, while GuardDuty specializes in threat detection",
+        "text": "Security Hub CSPM: security posture checks and finding aggregation; GuardDuty: specialized threat detection.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Security Hub CSPM provides temporary credentials, while GuardDuty creates IAM users",
+        "text": "Security Hub CSPM: specialized threat detection; GuardDuty: security posture checks and finding aggregation.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Security Hub CSPM manages TLS certificates, while GuardDuty stores secrets",
+        "text": "Security Hub CSPM: security posture checks and finding aggregation; GuardDuty: application-password storage and rotation.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Security Hub CSPM and GuardDuty are interchangeable services",
+        "text": "Security Hub CSPM: application-password storage and rotation; GuardDuty: specialized threat detection.",
         "correct": false
       }
     ],
@@ -3677,7 +3677,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Act as the primary store for application database passwords",
+        "text": "Rotate application database passwords as its primary service",
         "correct": false
       },
       {
@@ -3687,12 +3687,12 @@
       },
       {
         "key": "C",
-        "text": "Replace security groups with subnet firewall rules",
+        "text": "Patch operating-system vulnerabilities directly as its primary service",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Issue all public TLS certificates used by AWS customers",
+        "text": "Replace IAM policies with automatically granted permissions",
         "correct": false
       },
       {
@@ -3762,7 +3762,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Unlimited retention of every data event in every Region",
+        "text": "All data events for 90 days without configuration",
         "correct": false
       },
       {
@@ -3772,12 +3772,12 @@
       },
       {
         "key": "C",
-        "text": "A five-year archive of CloudWatch metrics",
+        "text": "Management events retained indefinitely in Event history",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Automatic remediation of noncompliant resources",
+        "text": "Only events recorded after the customer creates a trail",
         "correct": false
       }
     ],
@@ -3802,22 +3802,22 @@
     "options": [
       {
         "key": "A",
-        "text": "CloudTrail manages TLS certificates, while CloudWatch manages encryption keys",
+        "text": "CloudTrail: operational metrics, logs, and alarms; CloudWatch: account and API activity for auditing.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "CloudTrail creates IAM users, while CloudWatch creates Organizations accounts",
+        "text": "CloudTrail: account and API activity for auditing; CloudWatch: automatic rotation of application credentials.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "CloudTrail filters HTTP requests, while CloudWatch provides DDoS protection",
+        "text": "CloudTrail: automatic rotation of application credentials; CloudWatch: operational metrics, logs, and alarms.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "CloudTrail records account and API activity for auditing, while CloudWatch focuses on operational metrics, logs, alarms, and observability",
+        "text": "CloudTrail: account and API activity for auditing; CloudWatch: operational metrics, logs, and alarms.",
         "correct": true
       }
     ],
@@ -3847,17 +3847,17 @@
       },
       {
         "key": "B",
-        "text": "Amazon Macie",
+        "text": "AWS Config",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Shield",
+        "text": "Amazon Inspector",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Service Catalog",
+        "text": "AWS Artifact",
         "correct": false
       }
     ],
@@ -3883,12 +3883,12 @@
     "options": [
       {
         "key": "A",
-        "text": "CloudTrail is primarily a software vulnerability scanner",
+        "text": "Event history includes all S3 object-level data events automatically",
         "correct": false
       },
       {
         "key": "B",
-        "text": "CloudTrail automatically blocks every suspicious API call",
+        "text": "Event history retains management events indefinitely",
         "correct": false
       },
       {
@@ -3898,12 +3898,12 @@
       },
       {
         "key": "D",
-        "text": "CloudTrail is the service used to issue SSL/TLS certificates",
+        "text": "Creating a trail automatically enables every available data-event type",
         "correct": false
       },
       {
         "key": "E",
-        "text": "A trail or CloudTrail Lake can be used for ongoing collection beyond the default Event history window",
+        "text": "A configured trail can deliver events to S3 for retention beyond the default Event history window",
         "correct": true
       }
     ],
@@ -3928,22 +3928,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Managing legal compliance agreements",
+        "text": "Accessing AWS compliance reports",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Providing cross-account temporary IAM credentials",
+        "text": "Recording resource configuration history",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Monitoring AWS resources and applications using operational telemetry such as metrics and logs",
+        "text": "Monitoring metrics and logs from resources and applications",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Filtering web requests for SQL injection",
+        "text": "Inspecting web requests for malicious content",
         "correct": false
       }
     ],
@@ -3968,22 +3968,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Grant permanent IAM permissions to a user",
+        "text": "Authorize an application to assume an IAM role",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Evaluate a metric against a threshold and trigger a notification or automated action",
+        "text": "Evaluate a metric and trigger notifications or actions",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Create an AWS Organizations service control policy",
+        "text": "Compare resource configuration against a compliance rule",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Issue a public TLS certificate",
+        "text": "Record which identity called an AWS management API",
         "correct": false
       }
     ],
@@ -4008,22 +4008,22 @@
     "options": [
       {
         "key": "A",
-        "text": "CloudWatch stores secrets, while Config rotates credentials",
+        "text": "CloudWatch: resource configuration history and compliance evaluation; AWS Config: operational metrics, logs, and alerts.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "CloudWatch provides workforce federation, while Config creates app users",
+        "text": "CloudWatch: operational metrics, logs, and alerts; AWS Config: provisioning public TLS certificates.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "CloudWatch and Config both only record billing information",
+        "text": "CloudWatch: provisioning public TLS certificates; AWS Config: resource configuration history and compliance evaluation.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "CloudWatch focuses on operational telemetry and alerting, while Config records resource configuration state and evaluates compliance",
+        "text": "CloudWatch: operational metrics, logs, and alerts; AWS Config: resource configuration history and compliance evaluation.",
         "correct": true
       }
     ],
@@ -4053,17 +4053,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Artifact",
+        "text": "AWS CloudTrail",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Detective",
+        "text": "AWS Config",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Resource Access Manager",
+        "text": "Amazon Inspector",
         "correct": false
       }
     ],
@@ -4089,17 +4089,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Accept legal agreements for an AWS organization",
+        "text": "Manage acceptance of AWS compliance agreements",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Create cross-account role trust policies",
+        "text": "Define the maximum permissions of organization accounts",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Provide the AWS account root user",
+        "text": "Issue temporary credentials to applications",
         "correct": false
       },
       {
@@ -4134,22 +4134,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Provide application user sign-up and sign-in",
+        "text": "Manage application sign-in sessions",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Protect against DDoS attacks",
+        "text": "Filter inbound web requests",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Record AWS resource configurations and how they change over time",
+        "text": "Record resource configurations and changes",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Manage SSL/TLS certificate renewals",
+        "text": "Manage public TLS certificate renewal",
         "correct": false
       }
     ],
@@ -4174,22 +4174,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Whether a user has successfully completed MFA registration",
+        "text": "The text content of S3 documents for personal information",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Whether resource configurations comply with defined conditions",
+        "text": "Whether resource configurations meet specified conditions",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Whether a web request contains SQL injection text",
+        "text": "The payload of incoming HTTP requests for SQL injection",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Whether an S3 object contains PII using machine learning",
+        "text": "The transaction data in an application database",
         "correct": false
       }
     ],
@@ -4214,22 +4214,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Config records resource configuration state and compliance, while CloudTrail records account and API activity",
+        "text": "AWS Config: resource configuration state and compliance; CloudTrail: account and API activity history.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Config provides DDoS protection, while CloudTrail manages TLS certificates",
+        "text": "AWS Config: account and API activity history; CloudTrail: resource configuration state and compliance.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Config stores application secrets, while CloudTrail rotates passwords",
+        "text": "AWS Config: resource configuration state and compliance; CloudTrail: software package vulnerability assessment.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Config is for workforce federation, while CloudTrail is for mobile-app users",
+        "text": "AWS Config: software package vulnerability assessment; CloudTrail: account and API activity history.",
         "correct": false
       }
     ],
@@ -4254,12 +4254,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Cognito",
+        "text": "AWS CloudTrail",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Shield Advanced",
+        "text": "Amazon CloudWatch metrics",
         "correct": false
       },
       {
@@ -4269,7 +4269,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Certificate Manager",
+        "text": "Amazon Inspector",
         "correct": false
       }
     ],
@@ -4300,17 +4300,17 @@
       },
       {
         "key": "B",
-        "text": "Issue temporary AWS credentials to mobile-app users",
+        "text": "Issue temporary credentials for an IAM role session",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Provide application-layer DDoS protection",
+        "text": "Inspect live HTTP request bodies for injection attacks",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Automatically rotate database passwords as its primary function",
+        "text": "Rotate application database passwords on a schedule",
         "correct": false
       },
       {
@@ -4340,22 +4340,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Scanning EC2 instances for software vulnerabilities",
+        "text": "Collect evidence from customer workloads for audit preparation",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Accessing AWS security and compliance reports and managing certain legal agreements",
+        "text": "Access AWS compliance reports and supported agreements",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Detecting suspicious API activity",
+        "text": "Evaluate customer resource configurations against rules",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Filtering inbound HTTP requests",
+        "text": "Aggregate threat findings from multiple security services",
         "correct": false
       }
     ],
@@ -4380,17 +4380,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon GuardDuty",
+        "text": "AWS Audit Manager",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon CloudWatch",
+        "text": "AWS Config",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS WAF",
+        "text": "AWS Security Hub CSPM",
         "correct": false
       },
       {
@@ -4460,22 +4460,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Artifact detects threats, while Config manages TLS certificates",
+        "text": "AWS Artifact: customer-resource configuration tracking and evaluation; AWS Config: AWS compliance reports and supported agreements.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Artifact provides workforce SSO, while Config provides app-user identity",
+        "text": "AWS Artifact: AWS compliance reports and supported agreements; AWS Config: automatic database-password rotation.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Artifact provides compliance documentation and agreements, while Config evaluates and records AWS resource configurations",
+        "text": "AWS Artifact: AWS compliance reports and supported agreements; AWS Config: customer-resource configuration tracking and evaluation.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Artifact filters web requests, while Config provides DDoS mitigation",
+        "text": "AWS Artifact: automatic database-password rotation; AWS Config: customer-resource configuration tracking and evaluation.",
         "correct": false
       }
     ],
@@ -4500,17 +4500,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Continuously scan ECR images for vulnerabilities",
+        "text": "Evaluate the customer's infrastructure against Config rules",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Provide temporary AWS credentials to EC2 workloads",
+        "text": "Collect customer workload evidence for an audit assessment",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Block HTTP requests based on source IP address",
+        "text": "Certify that every customer workload satisfies its regulatory obligations",
         "correct": false
       },
       {
@@ -4545,7 +4545,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Shield Advanced",
+        "text": "AWS Artifact",
         "correct": false
       },
       {
@@ -4555,12 +4555,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Key Management Service",
+        "text": "AWS Marketplace",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Resource Access Manager",
+        "text": "AWS Cost Explorer",
         "correct": false
       }
     ],
@@ -4585,17 +4585,17 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Certificate Manager certificate inventory",
+        "text": "AWS Artifact agreements",
         "correct": false
       },
       {
         "key": "B",
-        "text": "IAM credential report",
+        "text": "IAM credential reports",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon VPC route table",
+        "text": "AWS Marketplace seller listings",
         "correct": false
       },
       {
@@ -4630,17 +4630,17 @@
       },
       {
         "key": "B",
-        "text": "AWS CloudTrail Event history",
+        "text": "AWS Artifact",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Artifact Agreements",
+        "text": "AWS Support Center",
         "correct": false
       },
       {
         "key": "D",
-        "text": "IAM Identity Center",
+        "text": "AWS Service Catalog",
         "correct": false
       }
     ],
@@ -4665,22 +4665,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The AWS Security Blog creates IAM permissions, while the AWS Security website/center records API activity",
+        "text": "AWS Security website: security articles and announcements; AWS Security Blog: security service information and guidance resources.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "The AWS Security website/center is a vulnerability scanner, while the AWS Security Blog manages encryption keys",
+        "text": "AWS Security website: security service information and guidance resources; AWS Security Blog: customer-specific account activity audit records.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The AWS Security website/center provides centralized security guidance and service information, while the AWS Security Blog publishes security articles and announcements",
+        "text": "AWS Security website: security service information and guidance resources; AWS Security Blog: security articles and announcements.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "The AWS Security Blog is a marketplace for third-party products, while the AWS Security website/center is only a billing tool",
+        "text": "AWS Security website: customer-specific account activity audit records; AWS Security Blog: security articles and announcements.",
         "correct": false
       }
     ],

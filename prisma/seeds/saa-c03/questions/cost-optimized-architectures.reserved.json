@@ -1,0 +1,1224 @@
+[
+  {
+    "code": "SAA-COST-055",
+    "concept": "saa-s3-access-and-retention-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A media archive has unpredictable access: old objects sometimes become popular again, and the team cannot maintain accurate per-object access schedules. Objects are eligible for the selected features. Which approach should it evaluate before writing many fixed lifecycle rules?",
+    "options": [
+      {
+        "key": "A",
+        "text": "S3 Intelligent-Tiering, with monitoring/tiering fees and any optional archive-access behavior included in the evaluation.",
+        "correct": true,
+        "explanation": "Access not terprediksi suitable for tiering access-based; cost and feature archive opsional remains checked."
+      },
+      {
+        "key": "B",
+        "text": "Move every object to Deep Archive one day after upload regardless of access needs.",
+        "correct": false,
+        "explanation": "Object that back populer will faces restore and cost that not appropriate."
+      },
+      {
+        "key": "C",
+        "text": "Use Standard-IA for every object immediately and evaluate storage price without including retrieval charges.",
+        "correct": false,
+        "explanation": "Pattern access not pasti requires cost retrieval and requirement storage class also evaluated."
+      },
+      {
+        "key": "D",
+        "text": "Transition every object to an archive class on a fixed date without checking whether it is still frequently accessed.",
+        "correct": false,
+        "explanation": "Rules usia only not reflects changes popularitas that explained."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "s3-access-and-retention-cost",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "S3 Intelligent-Tiering",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-056",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Financial records must be retained immutably for seven years. Audits are rare and allow a day for retrieval. The company wants low storage cost without weakening retention. Which combination should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Only versioning with unrestricted version deletion, because seven-year billing implies immutability.",
+        "correct": false,
+        "explanation": "Storage costs does not restrict removal version."
+      },
+      {
+        "key": "B",
+        "text": "Use low-cost archive storage and governance retention while granting archive administrators permission to bypass that retention.",
+        "correct": false,
+        "explanation": "Requirements immutable even against admin not met by bypass governance that allowed."
+      },
+      {
+        "key": "C",
+        "text": "An appropriate S3 archive class together with Object Lock compliance retention and a tested restore procedure.",
+        "correct": true,
+        "explanation": "Class storage optimizes cost; immutability and capability restore is control separate."
+      },
+      {
+        "key": "D",
+        "text": "Only Deep Archive, assuming the storage class itself forbids all early deletion by administrators.",
+        "correct": false,
+        "explanation": "Class archive is not a substitute for Object Lock or permissions retention."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "S3 storage classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-057",
+    "concept": "saa-archive-query-and-snapshot-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Analysts query a few dates and columns from years of logs in S3 several times monthly. The current files are uncompressed text with no useful partitioning. Which change can reduce Athena scan-based cost while preserving query usefulness?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Compress each year into a single large text object and keep queries scanning the entire object for every date filter.",
+        "correct": false,
+        "explanation": "Compression helps some cost, but layout this does not leverages selective partition and column pruning that is requested."
+      },
+      {
+        "key": "B",
+        "text": "Convert suitable data to compressed columnar files and partition around frequent selective predicates without excessive tiny files.",
+        "correct": true,
+        "explanation": "Column pruning, compression, and partition pruning can reduce byte that read; layout needs to measured."
+      },
+      {
+        "key": "C",
+        "text": "Create one small object and one partition for every log line.",
+        "correct": false,
+        "explanation": "Fragmentasi ekstrem adds overhead; partition should follow predicate useful without tiny-file excessive."
+      },
+      {
+        "key": "D",
+        "text": "Provision a large always-on warehouse solely because occasional queries can never use serverless analytics.",
+        "correct": false,
+        "explanation": "Pernyataan that wrong and can add capacity idle that does not need to."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "archive-query-and-snapshot-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Partitioning data in Athena",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/partitions.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-058",
+    "concept": "saa-storage-utilization-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A gp2 volume was made much larger than the dataset solely to obtain its required IOPS. Benchmarks show a supported gp3 size with separately configured IOPS and throughput meets the workload and costs less under the supplied estimate. What is the appropriate optimization?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Plan and test a supported migration to the gp3 configuration, accounting for the fact that an existing volume cannot simply be shrunk in place.",
+        "correct": true,
+        "explanation": "gp3 separates tuning performance and size; reduction capacity requires path migration data that appropriate."
+      },
+      {
+        "key": "B",
+        "text": "Move the dataset to a larger gp2 volume to obtain the same IOPS and leave its extra capacity unused.",
+        "correct": false,
+        "explanation": "this maintains cause waste that can separated with configuration gp3 tested."
+      },
+      {
+        "key": "C",
+        "text": "Change only the existing volume size to a smaller number and assume EBS performs an in-place shrink.",
+        "correct": false,
+        "explanation": "EBS does not provide reduction size volume in-place that."
+      },
+      {
+        "key": "D",
+        "text": "Move to HDD regardless of measured random-I/O latency requirements.",
+        "correct": false,
+        "explanation": "Media cheaper does not necessarily meets performance."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-utilization-efficiency",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "EBS general purpose SSD volumes",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/general-purpose.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-059",
+    "concept": "saa-compute-pricing-and-capacity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A stateless queue-processing fleet must always retain a minimum processing rate. Additional jobs can wait and are checkpointed. The team wants lower burst cost but cannot depend entirely on spare capacity. Which mix is appropriate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep a suitable reliable baseline and use diversified Spot capacity for tolerant bursts, with queue monitoring and fallback rules.",
+        "correct": true,
+        "explanation": "Baseline meets throughput minimum; Spot reduces additional costs without dijadikan guarantee single."
+      },
+      {
+        "key": "B",
+        "text": "Run the baseline entirely on Spot and depend on launching On-Demand only after an interruption.",
+        "correct": false,
+        "explanation": "Requirement maintains minimum rate cannot relies on provisioning replacement that not yet ready."
+      },
+      {
+        "key": "C",
+        "text": "Buy a Savings Plan and treat it as an automatic replacement for interruption handling.",
+        "correct": false,
+        "explanation": "Discount commitment not implements retry or checkpoint."
+      },
+      {
+        "key": "D",
+        "text": "Commit to enough always-running capacity for the largest historical burst and keep it running when jobs can wait.",
+        "correct": false,
+        "explanation": "Design meets capacity but pays burst idle that actually can ditoleransi and processed via option cheaper."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-pricing-and-capacity",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "EC2 Spot Instances",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-060",
+    "concept": "saa-commitment-and-capacity-planning",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A prototype runs for six weeks, cannot tolerate Spot interruption, and has no committed follow-on workload. The team is comparing On-Demand with a one-year commitment solely because its quoted hourly rate is lower. What should drive the decision?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume every one-year commitment can be canceled freely after six weeks.",
+        "correct": false,
+        "explanation": "Not may assume rights cancellation without basis product/kontrak."
+      },
+      {
+        "key": "B",
+        "text": "Use Spot despite the explicit intolerance of capacity interruptions.",
+        "correct": false,
+        "explanation": "this violates requirement workload."
+      },
+      {
+        "key": "C",
+        "text": "Compare total commitment liability with the short planned usage; On-Demand is the appropriate baseline when no other eligible use justifies the remaining term.",
+        "correct": true,
+        "explanation": "Rate discount is not total cost project; masa commitment that not used must calculated."
+      },
+      {
+        "key": "D",
+        "text": "Always choose the lower hourly committed rate and ignore all unused months.",
+        "correct": false,
+        "explanation": "Pembayaran commitment in outside project can create total more expensive."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "commitment-and-capacity-planning",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Savings Plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-061",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "Two tested designs meet identical latency and availability requirements. Under hypothetical rates, design A costs $80 fixed plus $0.004 per job; design B costs $0.012 per job with no fixed charge. At 5,000 jobs monthly, which is less expensive?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Design B: $60 compared with $100 for A.",
+        "correct": true,
+        "explanation": "A: 80+20=100; B: 60. Compare total on volume that stated."
+      },
+      {
+        "key": "B",
+        "text": "Design A: $20 compared with $60 for B.",
+        "correct": false,
+        "explanation": "Calculation A ignores cost remains 80."
+      },
+      {
+        "key": "C",
+        "text": "Both designs cost $100 at 5,000 jobs.",
+        "correct": false,
+        "explanation": "Cost B is 5000 x $0.012 = $60; not exists cost remains B."
+      },
+      {
+        "key": "D",
+        "text": "Design B at $60 compared with $80 for A.",
+        "correct": false,
+        "explanation": "Cost A also includes $20 cost job; totalnya $100, is not $80."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "SAA cost-optimized architectures domain",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain4.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-062",
+    "concept": "saa-database-capacity-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A DynamoDB workload has steady, measured demand with no expected spikes. A modeled provisioned/autoscaling configuration meets throughput targets for $300 monthly; on-demand is estimated at $460. Operational overhead is acceptable and other charges are equal. Which conclusion follows?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use on-demand and count a compute Savings Plan as a discount on DynamoDB request charges.",
+        "correct": false,
+        "explanation": "Commitment compute is not mechanism discount request DynamoDB that used within comparison this."
+      },
+      {
+        "key": "B",
+        "text": "Evaluate the provisioned configuration, monitor throttling and utilization, and verify the forecast after deployment.",
+        "correct": true,
+        "explanation": "Estimate shows potential economical 160; pemantauan ensures capacity remains meets workload."
+      },
+      {
+        "key": "C",
+        "text": "Choose on-demand because it must always be cheaper regardless of demand shape or measured estimate.",
+        "correct": false,
+        "explanation": "Not exists rules universal that; data question shows cost different."
+      },
+      {
+        "key": "D",
+        "text": "Choose a smaller provisioned allocation that costs $200 but is known to throttle the measured workload.",
+        "correct": false,
+        "explanation": "Reduction cost not valid if throughput target fails."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-capacity-cost",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "DynamoDB capacity modes",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/capacity-mode.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-063",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A write-heavy DynamoDB application pays substantial GSI storage/write costs. A frequently updated large attribute is projected into an index but never returned by index queries. The index key itself is still required. What should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rebuild or redesign the index projection to exclude unnecessary attributes, with migration and query-compatibility planning.",
+        "correct": true,
+        "explanation": "Proyeksi that smaller can reduce storage/maintenance; changes index needs to flow secure."
+      },
+      {
+        "key": "B",
+        "text": "Keep the projection and add a response filter so the application no longer returns the large attribute.",
+        "correct": false,
+        "explanation": "Filter response not deletes attribute that stored and updated within index."
+      },
+      {
+        "key": "C",
+        "text": "Reduce base-table provisioned capacity while keeping the same successful write volume and index projection.",
+        "correct": false,
+        "explanation": "Penurunan capacity does not eliminate requirements index maintenance and can causes throttling."
+      },
+      {
+        "key": "D",
+        "text": "Delete the required index and replace every request with an unlimited full-table scan without comparison.",
+        "correct": false,
+        "explanation": "this can move cost to read and worsens latency."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "DynamoDB index guidelines",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-064",
+    "concept": "saa-database-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A supported Aurora workload is mostly idle. Forecast A for Standard is $900 compute/storage plus $40 I/O. Forecast B for I/O-Optimized is $1,080 total. Performance is equivalent for this workload and other charges are equal. Which option is cheaper?",
+    "options": [
+      {
+        "key": "A",
+        "text": "I/O-Optimized because eliminating an I/O line item must always lower the total.",
+        "correct": false,
+        "explanation": "Component compute/storage that different also must calculated."
+      },
+      {
+        "key": "B",
+        "text": "Standard at $900 because I/O charges are ignored when small.",
+        "correct": false,
+        "explanation": "40 remains part total."
+      },
+      {
+        "key": "C",
+        "text": "Standard at $940, saving $180 against I/O-Optimized.",
+        "correct": false,
+        "explanation": "Selisih that correct $1080 - $940 = $140; $180 ignores I/O on Standard."
+      },
+      {
+        "key": "D",
+        "text": "Standard at $940, saving $140 in the stated forecast.",
+        "correct": true,
+        "explanation": "Low cost I/O not yet menutupi improvement total configuration I/O-Optimized."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-request-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Aurora storage configurations",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-065",
+    "concept": "saa-network-cost-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A cross-Region log delivery path costs $400 monthly for transfer under a hypothetical estimate. A tested compression stage would reduce transfer charges to $100 and add $60 in compute. It preserves every required record and meets latency targets. Other costs are unchanged. Which conclusion follows?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Both designs cost $400 because compression changes byte count but cannot affect transfer charges.",
+        "correct": false,
+        "explanation": "On model question, cost transfer explicitly changes appropriate volume terkompresi."
+      },
+      {
+        "key": "B",
+        "text": "The compressed design costs $100, saving $300 monthly.",
+        "correct": false,
+        "explanation": "this melupakan cost compute additional that mentioned."
+      },
+      {
+        "key": "C",
+        "text": "The compressed design costs $160 for the compared components, saving $240 monthly.",
+        "correct": true,
+        "explanation": "Jumlahkan transfer $100 and compute $60; savings $400 - $160 = $240."
+      },
+      {
+        "key": "D",
+        "text": "The compressed design costs $460, so the original path is cheaper.",
+        "correct": false,
+        "explanation": "this still calculates transfer long $400 padahal model states decreases becomes $100."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "network-cost-models",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Compression and caching for repetitive network transfers",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/hybrid-networking-lens/hncost04-bp03.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-066",
+    "concept": "saa-delivery-cache-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A public image-transform service receives the same transformation parameters from many global viewers. Cache keys include an irrelevant unique tracking parameter, causing low cache hits and expensive repeat processing. Which change should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Exclude parameters that do not change the representation from the cache key while preserving those that do, and validate responses.",
+        "correct": true,
+        "explanation": "Key that appropriate increases reuse without mencampur output that different."
+      },
+      {
+        "key": "B",
+        "text": "Exclude image ID and transformation size too, so every request maps to one cached object.",
+        "correct": false,
+        "explanation": "this produces content wrong although hit rate naik."
+      },
+      {
+        "key": "C",
+        "text": "Only lengthen TTL while retaining the unique per-request cache-key parameter.",
+        "correct": false,
+        "explanation": "TTL not enables reuse when each request uses key unique."
+      },
+      {
+        "key": "D",
+        "text": "Include every viewer cookie in the cache key in addition to the unique tracking parameter.",
+        "correct": false,
+        "explanation": "The more variation that not affects contents can makin splits cache."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-cache-economics",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "CloudFront cache keys and policies",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-067",
+    "concept": "saa-network-cost-models",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A central log platform receives the same application events through both a direct agent stream and a second forwarding pipeline. The duplicate paths have identical destination, retention, and delivery guarantees, and no independent compliance requirement. Transfer and ingestion charges are rising. What should be evaluated first?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add a third forwarding path to improve ingestion throughput without changing the duplicated records.",
+        "correct": false,
+        "explanation": "Path new does not eliminate source cost duplicate."
+      },
+      {
+        "key": "B",
+        "text": "Compress both streams but leave duplicate ingestion unchanged as the only optimization considered.",
+        "correct": false,
+        "explanation": "Compression can help byte transfer, but redundancy record and ingestion still remains exists; root problem must be evaluated."
+      },
+      {
+        "key": "C",
+        "text": "Change the log destination to another Region without first eliminating redundant delivery.",
+        "correct": false,
+        "explanation": "Changes location does not solve duplication and can add transfer across Regions."
+      },
+      {
+        "key": "D",
+        "text": "Verify event coverage and delivery guarantees, then remove the redundant path while monitoring for gaps.",
+        "correct": true,
+        "explanation": "Delivery duplicate that not punya benefit separate adds transfer and ingestion; validation required before deletes path."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "network-cost-models",
+      "reserved-exam",
+      "exam-a"
+    ],
+    "source": {
+      "title": "Compression and caching for repetitive network transfers",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/hybrid-networking-lens/hncost04-bp03.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-A"
+  },
+  {
+    "code": "SAA-COST-068",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A versioned bucket holds frequently replaced operational files. Current files must stay quickly accessible; prior versions are required for 14 days only. Storage growth comes mainly from old noncurrent versions. Which policy targets the waste?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Expire current object versions after 14 days but leave noncurrent versions without expiration.",
+        "correct": false,
+        "explanation": "this targets current data, is not source growth primary in the form of noncurrent versions."
+      },
+      {
+        "key": "B",
+        "text": "Retain current objects in a suitable active class and expire noncurrent versions according to the approved recovery window.",
+        "correct": true,
+        "explanation": "Lifecycle must targets version that menumpuk while maintains requirements restore."
+      },
+      {
+        "key": "C",
+        "text": "Remove expired delete markers only and retain all noncurrent data versions indefinitely.",
+        "correct": false,
+        "explanation": "Deletes delete marker only not deletes data version long that causes cost."
+      },
+      {
+        "key": "D",
+        "text": "Expire old versions immediately even when they are still within the required recovery window.",
+        "correct": false,
+        "explanation": "this sacrifices requirement recovery for cost."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "S3 Lifecycle transition considerations",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-069",
+    "concept": "saa-storage-utilization-efficiency",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "An EFS application has a small hot working set and many eligible files that are rarely read. The filesystem must remain accessible through the same file interface. Which optimization is appropriate to evaluate?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move active files to an S3 archive and assume applications can continue unchanged with the same NFS semantics.",
+        "correct": false,
+        "explanation": "Object archive not maintains all interface and latency file."
+      },
+      {
+        "key": "B",
+        "text": "Use EFS lifecycle management to move eligible cold data to suitable lower-cost classes, accounting for access and transition charges.",
+        "correct": true,
+        "explanation": "Lifecycle maintains interface file but total cost depends pattern access and class that chosen."
+      },
+      {
+        "key": "C",
+        "text": "Increase EFS throughput while leaving all cold files in the current storage class.",
+        "correct": false,
+        "explanation": "Throughput is dimension different from tiering byte cold."
+      },
+      {
+        "key": "D",
+        "text": "Reduce file permissions for cold files but leave their storage class unchanged.",
+        "correct": false,
+        "explanation": "Permissions does not change class storage or cost byte stored."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-utilization-efficiency",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "EFS Lifecycle management",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-070",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Application logs are actively searched for 14 days, but must be retained for a year for occasional investigations. Keeping all logs in the active operational system is costly. Which design should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Delete every log after 14 days regardless of the one-year requirement.",
+        "correct": false,
+        "explanation": "this eliminates evidence that is required stored."
+      },
+      {
+        "key": "B",
+        "text": "Keep an appropriate hot retention window and deliver/archive older required logs to a protected S3 storage strategy with a tested query/restore path.",
+        "correct": true,
+        "explanation": "Pattern hot/cold adjusts access; process delivery, kelengkapan, and retention must diverifikasi."
+      },
+      {
+        "key": "C",
+        "text": "Keep only daily aggregate counts after day 14 and discard the original records.",
+        "correct": false,
+        "explanation": "Count aggregate is not sufficient to for investigation that requires log original while setahun."
+      },
+      {
+        "key": "D",
+        "text": "Move the log service to another Region but retain the same hot-storage duration and delivery pattern.",
+        "correct": false,
+        "explanation": "Movement Region not directly overcomes requirements hot/cold retention and can add transfer."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "CloudWatch Logs retention",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-071",
+    "concept": "saa-storage-request-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A busy SSE-KMS S3 workload has many object accesses by a relatively small set of roles. It must keep customer-managed encryption. Which change can reduce KMS request costs, and what should be validated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Assume Bucket Keys apply to DSSE-KMS identically and skip checking support.",
+        "correct": false,
+        "explanation": "Documentation states support mode different."
+      },
+      {
+        "key": "B",
+        "text": "Enable Bucket Keys and guarantee every existing object automatically changes without copy or further action.",
+        "correct": false,
+        "explanation": "Object long does not automatically use setting new."
+      },
+      {
+        "key": "C",
+        "text": "Evaluate S3 Bucket Keys and validate encryption-context/policy compatibility, audit implications, and treatment of existing objects.",
+        "correct": true,
+        "explanation": "Optimization reduces request KMS but not may change requirements governance without review."
+      },
+      {
+        "key": "D",
+        "text": "Keep the same SSE-KMS objects and disable key rotation solely to remove per-request KMS charges.",
+        "correct": false,
+        "explanation": "Rotation key and request cryptography is dimension different; shuts down rotation does not eliminate request that."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.1",
+      "storage-request-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "S3 Bucket Keys",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-072",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A service passes functional tests on both x86 and Arm. Under hypothetical costs, x86 serves 100 requests/second for $0.20/hour; Arm serves 160 requests/second for $0.24/hour. Both meet latency targets at those rates. Which has lower compute cost per unit of throughput?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Arm has 25 percent lower compute cost per request at the measured throughput rates.",
+        "correct": true,
+        "explanation": "Compare $0.24/160 with $0.20/100; ratio 0.75 means cost per request 25 percent lower on benchmark this."
+      },
+      {
+        "key": "B",
+        "text": "x86 solely because $0.20/hour is lower than $0.24/hour.",
+        "correct": false,
+        "explanation": "this ignores difference capacity that tested."
+      },
+      {
+        "key": "C",
+        "text": "x86 at $0.00125 per unit of throughput and Arm at $0.0024.",
+        "correct": false,
+        "explanation": "Calculation this assigns cost with throughput that wrong; each needs to divided its capacity itself."
+      },
+      {
+        "key": "D",
+        "text": "Both have equal normalized cost because Arm costs 20 percent more and serves 20 percent more traffic.",
+        "correct": false,
+        "explanation": "Throughput Arm naik 60 percent, is not 20 percent; calculate ratio both design."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Compute Optimizer architecture migration considerations",
+      "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/view-ec2-recommendations.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-073",
+    "concept": "saa-measured-compute-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A development EC2 instance with EBS-backed data is needed only during office hours. It can tolerate stop/start and changing automatically assigned public IPv4 addresses. Which plan lowers compute use without falsely claiming zero residual cost?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Schedule stop/start and retain needed EBS data, while accounting for storage, snapshots, addresses, and other resources that may still incur charges.",
+        "correct": true,
+        "explanation": "Stop reduces usage compute, but resource that remains exists does not necessarily gratis."
+      },
+      {
+        "key": "B",
+        "text": "Stop it and guarantee no charge of any kind can occur anywhere in the environment.",
+        "correct": false,
+        "explanation": "Storage and other component remains needs to accounted for."
+      },
+      {
+        "key": "C",
+        "text": "Leave instances running overnight but purchase more EBS capacity for their existing data.",
+        "correct": false,
+        "explanation": "this does not reduce time compute that becomes waste."
+      },
+      {
+        "key": "D",
+        "text": "Hibernate instances without checking supported configuration or accounting for retained EBS storage.",
+        "correct": false,
+        "explanation": "Hibernate requires support and remains maintains storage; not may diusulkan without validation cost residual."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "measured-compute-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Stopping and starting EC2",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-074",
+    "concept": "saa-commitment-and-capacity-planning",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A proposed commitment costs $900 per month regardless of use. Expected eligible use fits within it except for $120 of additional On-Demand charges. Running the same forecast entirely On-Demand costs $980. Other costs are equal. Which forecast is cheaper?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The commitment at $900 compared with $1,100 On-Demand.",
+        "correct": false,
+        "explanation": "Forecast On-Demand $980 already granted for all workload; overage not added again to forecast that."
+      },
+      {
+        "key": "B",
+        "text": "The commitment at $900 because overage never counts once a commitment exists.",
+        "correct": false,
+        "explanation": "Usage in outside scope remains part total."
+      },
+      {
+        "key": "C",
+        "text": "The commitment at $1,020, saving $40 compared with On-Demand.",
+        "correct": false,
+        "explanation": "Total commitment correct $1020, but its value more expensive $40 from $980, is not cheaper."
+      },
+      {
+        "key": "D",
+        "text": "Entirely On-Demand at $980 rather than $1,020.",
+        "correct": true,
+        "explanation": "Commitment 900 added overage 120 becomes 1.020; discount label does not guarantee economical."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "commitment-and-capacity-planning",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Savings Plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-075",
+    "concept": "saa-compute-pricing-and-capacity",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A batch design costs $100 per completed workload on reliable capacity. A Spot design has an estimated $55 base compute cost plus $15 of checkpoint/retry overhead and still meets the deadline in testing. Other costs are equal. What is the correct conclusion?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Spot costs $55 because retries and checkpoint writes are never chargeable.",
+        "correct": false,
+        "explanation": "Overhead that stated not may ignored."
+      },
+      {
+        "key": "B",
+        "text": "The $30 savings guarantees spare capacity will always be available.",
+        "correct": false,
+        "explanation": "Savings cost not becomes guarantee capacity."
+      },
+      {
+        "key": "C",
+        "text": "The tested Spot design is estimated at $70, saving $30, while interruption/deadline risk still needs monitoring.",
+        "correct": true,
+        "explanation": "Total inserts overhead; result test and assumption deadline becomes part decision."
+      },
+      {
+        "key": "D",
+        "text": "The Spot design costs $85 because retry overhead should be counted twice.",
+        "correct": false,
+        "explanation": "Overhead $15 already is total estimate that granted, is not cost separate two times."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.2",
+      "compute-pricing-and-capacity",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "EC2 Spot Instances",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-076",
+    "concept": "saa-database-retention-and-commitment",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Expired DynamoDB sessions should be removed eventually to reduce retained data. Security requires that an expired session become invalid immediately at its expiry time. Which design satisfies both goals?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use TTL for asynchronous cleanup and explicitly reject expired sessions in the authorization path.",
+        "correct": true,
+        "explanation": "TTL not deletes appropriate on second expiry; application must enforces time applies itself."
+      },
+      {
+        "key": "B",
+        "text": "Cache the original successful login indefinitely and omit the expiry check on subsequent requests.",
+        "correct": false,
+        "explanation": "Cache not may extend validity exceeds limit expiry business."
+      },
+      {
+        "key": "C",
+        "text": "Rely only on TTL deletion and accept sessions until the background delete happens.",
+        "correct": false,
+        "explanation": "this can extend access after expiry that is required."
+      },
+      {
+        "key": "D",
+        "text": "Run cleanup once per day and treat every item that remains stored as an active session.",
+        "correct": false,
+        "explanation": "Batch cleanup not gives invalidasi appropriate on time expiry."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-retention-and-commitment",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "DynamoDB time to live",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-077",
+    "concept": "saa-database-retention-and-commitment",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "A steady RDS deployment has estimated monthly instance charges of $600 and storage/backup charges of $200. A suitable reservation reduces the instance portion to $420; the other charges stay unchanged. What is the new estimated total?",
+    "options": [
+      {
+        "key": "A",
+        "text": "$560 because every charge receives the same 30 percent discount.",
+        "correct": false,
+        "explanation": "Discount only granted on part instance within model."
+      },
+      {
+        "key": "B",
+        "text": "$420 because a reservation includes all storage and backups for free.",
+        "correct": false,
+        "explanation": "Assumption question states other component remains 200."
+      },
+      {
+        "key": "C",
+        "text": "$620.",
+        "correct": true,
+        "explanation": "420 cost instance added 200 storage/backup; discount instance does not automatically applies on all component."
+      },
+      {
+        "key": "D",
+        "text": "$740, because the 30 percent reduction applies only to the $200 storage portion.",
+        "correct": false,
+        "explanation": "Discount applies for instance $600 becomes $420; storage remains $200."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.3",
+      "database-retention-and-commitment",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "Reserved DB instances",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-078",
+    "concept": "saa-private-network-transfer-cost",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "Only two nonoverlapping VPCs in the same Region need private communication. No transitive routing, centralized inspection, or expected network expansion is required. A cost review questions using a transit gateway solely for this link. What should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Keep the transit gateway and add a second attachment for each VPC without any new connectivity requirement.",
+        "correct": false,
+        "explanation": "Attachment additional not reduces costs architecture simple this."
+      },
+      {
+        "key": "B",
+        "text": "A direct peering route through an unrelated third VPC as automatic transit.",
+        "correct": false,
+        "explanation": "Peering does not support transitive routing such as that."
+      },
+      {
+        "key": "C",
+        "text": "Direct VPC peering with appropriate routes and security controls, comparing applicable transfer charges.",
+        "correct": true,
+        "explanation": "For relationship simple, peering can avoids cost hub that is not required; cost transfer remains assessed."
+      },
+      {
+        "key": "D",
+        "text": "Use NAT gateways as the direct private-routing mechanism between the two VPC CIDRs.",
+        "correct": false,
+        "explanation": "NAT is not a substitute for connection private between VPCs and can increases costs processing."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "private-network-transfer-cost",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "VPC peering and its limitations",
+      "url": "https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-079",
+    "concept": "saa-delivery-cache-economics",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "EASY",
+    "style": "SCENARIO",
+    "question": "For cacheable public assets, a forecast estimates origin compute/egress at $700 monthly without a CDN. With CloudFront, origin costs fall to $180 and CDN charges are $330. Other costs and user-visible behavior are equivalent. Which estimate is lower?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The CloudFront design at $510, saving $370.",
+        "correct": false,
+        "explanation": "Total new correct but selisih from $700 is $190, is not $370."
+      },
+      {
+        "key": "B",
+        "text": "CloudFront at $180 because CDN delivery is always free.",
+        "correct": false,
+        "explanation": "Cost CDN 330 remains must paid appropriate question."
+      },
+      {
+        "key": "C",
+        "text": "The CloudFront design at $510, saving $190.",
+        "correct": true,
+        "explanation": "Total new inserts origin that remaining and cost distribution."
+      },
+      {
+        "key": "D",
+        "text": "The CloudFront design at $1,030, so the original path is cheaper.",
+        "correct": false,
+        "explanation": "this adds $330 CDN on cost origin long $700; forecast origin new is $180."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "delivery-cache-economics",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "CloudFront content delivery",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  },
+  {
+    "code": "SAA-COST-080",
+    "concept": "saa-hybrid-and-regional-cost-tradeoffs",
+    "type": "SINGLE_CHOICE",
+    "difficulty": "MEDIUM",
+    "style": "SCENARIO",
+    "question": "A large dataset must remain in one AWS Region for policy reasons. A processing job in another Region repeatedly downloads the full dataset, creating substantial transfer charges. Users only need a small final summary elsewhere. Which redesign should be evaluated?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Move the source data out of its permitted Region without review because compute is cheaper elsewhere.",
+        "correct": false,
+        "explanation": "Cost not overrides constraint residensi data."
+      },
+      {
+        "key": "B",
+        "text": "Keep processing remote and store a fresh full dataset copy there before every job.",
+        "correct": false,
+        "explanation": "this maintains transfer repeated and does not within the limits location dataset."
+      },
+      {
+        "key": "C",
+        "text": "Increase the remote job fleet size while retaining the same full-dataset transfer for every run.",
+        "correct": false,
+        "explanation": "Capacity compute does not eliminate volume transfer that becomes problem cost."
+      },
+      {
+        "key": "D",
+        "text": "Run eligible processing near the dataset and transfer only the required summary, while validating policy and latency requirements.",
+        "correct": true,
+        "explanation": "Data locality reduces movement large repeated; output small can dikirim according to policy."
+      }
+    ],
+    "tags": [
+      "saa-c03",
+      "task-4.4",
+      "hybrid-and-regional-cost-tradeoffs",
+      "reserved-exam",
+      "exam-b"
+    ],
+    "source": {
+      "title": "SAA cost-optimized architectures domain",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain4.html"
+    },
+    "active": true,
+    "assessmentPack": "SAA-C03-FRESH-B"
+  }
+]

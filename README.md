@@ -9,12 +9,16 @@ AWS Quest currently implements the V1 application shell for:
 - AWS Certified Cloud Practitioner (CLF-C02)
 - AWS Certified Solutions Architect – Associate (SAA-C03)
 - short concept lessons
-- immediate learn-mode challenges
-- confidence-aware adaptive practice
+- immediate learn-mode challenges, with an optional "try from memory" mode
+- confidence-aware adaptive practice with resumable sessions and a session recap
+- answer review with the original question, shuffled-option letters, and per-option explanations
+- a mistakes page filtered by certification, domain, source, session and confidence
 - concept-level spaced review
 - concept mastery tracking
-- timed mock exams with blueprint-aware topic weighting
-- certification progress and activity history
+- timed mock exams sampled by the domain blueprint, with shuffled questions and options, autosaved answers and flags, a question map, resume, a submit confirmation, and a full answer review
+- one-time sealed fresh mocks built from reserved assessment packs
+- certification progress with an internal exam-readiness checklist (first-time vs repeat accuracy, domain coverage, fresh evidence)
+- activity history
 
 The app intentionally has **no runtime AI dependency**, no separate backend service, and no authentication in V1.
 
@@ -47,7 +51,19 @@ pnpm dev
 
 Then open `http://localhost:3000`.
 
-`pnpm db:setup` generates Prisma Client, syncs the local SQLite schema, and runs the idempotent seed pipeline.
+`pnpm db:setup` generates Prisma Client, applies the migrations in `prisma/migrations`, and runs the idempotent seed pipeline.
+
+### Upgrading a database created with `db push`
+
+Databases created before migrations existed have the `0_init` schema but no migration history. Stop the app, back up the SQLite file, then mark the baseline as applied and deploy the additive migrations:
+
+```bash
+pnpm exec prisma migrate resolve --applied 0_init
+pnpm db:deploy
+pnpm db:seed
+```
+
+All migrations after `0_init` only add nullable or defaulted columns and indexes; existing attempts, progress and mock history are kept.
 
 ## Useful commands
 
@@ -56,9 +72,12 @@ pnpm dev          # start Next.js in development
 pnpm build        # production build
 pnpm lint         # ESLint
 pnpm typecheck    # TypeScript check
-pnpm test:learning # learning-engine unit tests
+pnpm test         # unit + content-validation tests
+pnpm test:learning # learning-engine unit tests only
+pnpm test:db      # migrations + seed + selection checks on a throwaway SQLite file
 pnpm db:generate  # generate Prisma Client
-pnpm db:setup     # generate + db push + seed
+pnpm db:deploy    # apply pending migrations
+pnpm db:setup     # generate + migrate deploy + seed
 pnpm db:seed      # re-run idempotent content seeds
 pnpm content:validate # validate seed JSON and print coverage stats (no database writes)
 pnpm db:studio    # Prisma Studio
@@ -78,6 +97,7 @@ pnpm db:studio    # Prisma Studio
 /mock/[certification]/[examId]
 /progress
 /progress/[certification]
+/mistakes
 /history
 ```
 
@@ -85,7 +105,7 @@ pnpm db:studio    # Prisma Studio
 
 Learning content lives under `prisma/seeds/` and is committed to Git. Stable certification codes, concept slugs, and question codes are used so the seeder can safely upsert content.
 
-The included content is only a **development starter bank**. The product target remains roughly 400 CLF-C02 questions and 800 SAA-C03 questions, with quality and concept coverage taking priority over raw count.
+The bank contains 415 CLF-C02 questions and 400 SAA-C03 questions. SAA-C03 splits into 270 training questions and 130 reserved questions in two sealed 65-question assessment packs, which never appear in Learn, Practice or standard mocks. The product target remains roughly 800 SAA-C03 questions; 19 SAA concepts still have fewer than 3 training questions and cannot reach mastery until expanded.
 
 See:
 
@@ -106,7 +126,22 @@ Regular practice prioritizes, in broad order:
 
 Question selection prefers an unseen question from the chosen concept, then a question outside the recent-question window, before allowing an exact repeat.
 
-The spaced-review MVP uses stages of 1, 3, 7, 14, 30, and 60 days. Mastery requires repeated retrieval rather than a single correct answer.
+The spaced-review MVP uses stages of 1, 3, 7, 14, 30, and 60 days. A correct answer before the review is due keeps the current stage and due date, so answering several questions in one sitting cannot inflate the interval. A wrong answer lowers the stage and never pushes a pending review later.
+
+Mock exams allow one active exam per certification, enforced by a unique key in the database. Answers and flags autosave; the server checks the submit time against the deadline (30-second grace) and records the exam as on time or late, and only the first submission is graded. Each mock question records whether it had never been answered in AWS Quest when the exam started, so first-sight accuracy can be separated from repeats. A sealed pack can be started once and is refused if any of its questions was already shown.
+
+A concept is cleared only from Practice, where the lesson is not on screen: the last three Practice answers must be correct, not LOW confidence, on three different questions, and span at least two days. Learn answers still schedule reviews but never clear a concept. Concepts cleared under the earlier rule keep their status until the next wrong answer.
+
+Each Learn and Practice answer records whether the question had never been answered or shown in a mock before (`isFirstRecordedAttempt`). Answers recorded before this was tracked stay `null` and are reported as untracked rather than guessed.
+
+The readiness panel on `/progress/[certification]` is an internal study signal, not an AWS score or pass prediction. Its thresholds live in `READINESS_RULES` (`src/lib/learning/readiness.ts`, versioned) and are shown in the panel:
+
+- two full-length standard mocks, submitted on time, in the last 30 days, averaging 80% or more with neither below 75%
+- fresh evidence at 75% or more: a sealed fresh exam from the last 90 days whose questions were all unseen at start, or at least 65 first-sight answers in standard mocks
+- at least 10 answers per domain across qualifying mocks in the last 30 days, each domain at 65% or more
+- no more than 20% of started concepts due for review
+
+Partial, late and untimed (pre-tracking) mocks are left out. The state stays INSUFFICIENT DATA until every benchmark has enough data, so high scores on repeated questions alone never read as on track.
 
 ## Important
 

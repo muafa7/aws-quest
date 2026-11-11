@@ -53,17 +53,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Command Line Interface (AWS CLI)",
+        "text": "AWS CLI",
         "correct": true
       },
       {
         "key": "C",
-        "text": "AWS Artifact",
+        "text": "AWS SDK libraries embedded in application code",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Support Center",
+        "text": "AWS CloudFormation templates",
         "correct": false
       }
     ],
@@ -88,22 +88,22 @@
     "options": [
       {
         "key": "A",
-        "text": "An AWS SDK is only a browser interface, while the AWS CLI is a managed database",
+        "text": "AWS SDK: commands for shells and scripts; AWS CLI: language-specific libraries for application code.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "An AWS SDK can bypass IAM authorization, while the AWS CLI cannot",
+        "text": "AWS SDK: language-specific libraries for application code; AWS CLI: interactive browser-based resource management.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "An AWS SDK provides language-specific libraries for application code, while the AWS CLI provides shell commands for interacting with AWS services",
+        "text": "AWS SDK: language-specific libraries for application code; AWS CLI: commands for shells and scripts.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "An AWS SDK is only for billing, while the AWS CLI is only for networking",
+        "text": "AWS SDK: interactive browser-based resource management; AWS CLI: commands for shells and scripts.",
         "correct": false
       }
     ],
@@ -129,22 +129,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Require a person to click through the AWS Management Console for every request",
+        "text": "Perform each operation manually in the AWS Management Console",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Use Route 53 health checks as the application interface",
+        "text": "Define a CloudFormation template for each application request",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Use an Elastic Load Balancer as a replacement for the service API",
+        "text": "Use a CloudWatch dashboard to submit application requests",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Use an AWS SDK for Python to call the service APIs",
+        "text": "Use the AWS SDK for Python to call service APIs",
         "correct": true
       }
     ],
@@ -170,22 +170,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Provision and manage AWS resources from infrastructure templates",
+        "text": "Provision and manage resources from infrastructure templates",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Distribute incoming traffic across application targets",
+        "text": "Automate source, build, and deployment stages in a release pipeline",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Provide a managed relational database engine",
+        "text": "Run administrative commands on managed servers",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Register internet domain names",
+        "text": "Record resource configurations and compliance history",
         "correct": false
       }
     ],
@@ -209,22 +209,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A physical rack of servers in an AWS data center",
+        "text": "A billing category for related resource charges",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A collection of AWS resources managed as a single unit from a CloudFormation template",
+        "text": "Resources managed as a unit from a template",
         "correct": true
       },
       {
         "key": "C",
-        "text": "A container image repository",
+        "text": "A library of container images used by an application",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A DNS routing policy",
+        "text": "A collection of application source-code branches",
         "correct": false
       }
     ],
@@ -249,22 +249,22 @@
     "options": [
       {
         "key": "A",
-        "text": "CloudFormation is a DNS service, while Elastic Beanstalk is a relational database",
+        "text": "CloudFormation: managed deployment of application environments; Elastic Beanstalk: general infrastructure provisioning from templates.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "CloudFormation stores container images, while Elastic Beanstalk converts database schemas",
+        "text": "CloudFormation: general infrastructure provisioning from templates; Elastic Beanstalk: operational telemetry collection and alerting.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "CloudFormation is general-purpose infrastructure provisioning from templates, while Elastic Beanstalk focuses on deploying and managing application environments",
+        "text": "CloudFormation: general infrastructure provisioning from templates; Elastic Beanstalk: managed deployment of application environments.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "CloudFormation only manages billing, while Elastic Beanstalk only manages IAM users",
+        "text": "CloudFormation: operational telemetry collection and alerting; Elastic Beanstalk: managed deployment of application environments.",
         "correct": false
       }
     ],
@@ -289,22 +289,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Create each environment manually and document the differences afterward",
+        "text": "Create resources manually from screenshots of the previous environment",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Use Route 53 to copy EC2 operating systems between environments",
+        "text": "Copy the application code without describing its infrastructure",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Use an Application Load Balancer to provision all infrastructure resources",
+        "text": "Create resources manually and use tagging to record the differences",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Define the infrastructure in a reusable CloudFormation template and deploy stacks from it",
+        "text": "Deploy stacks from a version-controlled CloudFormation template",
         "correct": true
       }
     ],
@@ -335,7 +335,7 @@
       },
       {
         "key": "B",
-        "text": "CloudFormation guarantees that applications contain no software defects",
+        "text": "Templates grant deployment permissions independently of IAM",
         "correct": false
       },
       {
@@ -345,12 +345,12 @@
       },
       {
         "key": "D",
-        "text": "CloudFormation removes the need for IAM permissions",
+        "text": "Templates remove the need to review proposed infrastructure changes",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Every CloudFormation stack is automatically deployed to all AWS Regions",
+        "text": "Creating a stack automatically provisions it in every AWS Region",
         "correct": false
       }
     ],
@@ -386,12 +386,12 @@
       },
       {
         "key": "C",
-        "text": "Single-AZ",
+        "text": "On-premises-only",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Edge-only",
+        "text": "Multi-cloud without an on-premises component",
         "correct": false
       }
     ],
@@ -415,22 +415,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A public DNS resolver that replaces Amazon Route 53",
+        "text": "A dedicated connection between an on-premises network and AWS",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS-managed infrastructure and supported AWS services at a customer premises",
+        "text": "AWS-managed infrastructure and supported services at customer premises",
         "correct": true
       },
       {
         "key": "C",
-        "text": "A global content cache that replaces every AWS Region",
+        "text": "A managed gateway that connects local applications to cloud storage",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A software license inventory service",
+        "text": "An AWS-owned Region closer to a metropolitan area",
         "correct": false
       }
     ],
@@ -455,22 +455,22 @@
     "options": [
       {
         "key": "A",
-        "text": "On-premises resources always use AWS APIs, while cloud resources cannot",
+        "text": "On-premises deployment: consuming services on cloud-provider infrastructure; Cloud deployment: infrastructure at organization-controlled facilities.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "On-premises deployments are automatically multi-Region, while cloud deployments are not",
+        "text": "On-premises deployment: infrastructure at organization-controlled facilities; Cloud deployment: only caching public content at edge locations.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "On-premises infrastructure runs in facilities controlled by the organization, while cloud resources run on provider infrastructure and are consumed as cloud services",
+        "text": "On-premises deployment: infrastructure at organization-controlled facilities; Cloud deployment: consuming services on cloud-provider infrastructure.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "On-premises deployments cannot use networking, while cloud deployments can",
+        "text": "On-premises deployment: only caching public content at edge locations; Cloud deployment: consuming services on cloud-provider infrastructure.",
         "correct": false
       }
     ],
@@ -496,7 +496,7 @@
     "options": [
       {
         "key": "A",
-        "text": "All AWS services run on the Outpost with no Regional connection",
+        "text": "An Outpost includes the entire AWS service catalog without a Region dependency",
         "correct": false
       },
       {
@@ -506,7 +506,7 @@
       },
       {
         "key": "C",
-        "text": "The customer must replace AWS APIs with a separate proprietary interface",
+        "text": "An Outpost replaces AWS APIs with an unrelated management interface",
         "correct": false
       },
       {
@@ -516,7 +516,7 @@
       },
       {
         "key": "E",
-        "text": "The Outpost becomes an independent AWS Region owned by the customer",
+        "text": "An Outpost automatically becomes a separate AWS Region",
         "correct": false
       }
     ],
@@ -542,22 +542,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A single server rack inside one data center",
+        "text": "An isolated data-center location within an AWS geographic area",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A global DNS record",
+        "text": "A point of presence for edge delivery services",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A subnet inside one Availability Zone",
+        "text": "A customer-defined IP address range within a VPC",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A separate geographic area that contains multiple Availability Zones",
+        "text": "A geographic area containing multiple Availability Zones",
         "correct": true
       }
     ],
@@ -586,17 +586,17 @@
       },
       {
         "key": "B",
-        "text": "The alphabetical order of Region codes",
+        "text": "The lowest compute price without considering location",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The number of IAM users in the account",
+        "text": "The greatest number of Availability Zones without considering jurisdiction",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The Availability Zone letter, because data residency is chosen per Availability Zone rather than per Region",
+        "text": "The shortest physical distance to AWS billing offices",
         "correct": false
       }
     ],
@@ -621,22 +621,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A Region is a subnet, while an Availability Zone is a VPC",
+        "text": "Region: an isolated location within a Region; Availability Zone: a geographic area containing multiple AZs.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A Region is a geographic area containing multiple Availability Zones, while an Availability Zone is an isolated location within a Region",
+        "text": "Region: a geographic area containing multiple AZs; Availability Zone: an isolated location within a Region.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "A Region is an edge cache, while an Availability Zone is a DNS record",
+        "text": "Region: a geographic area containing multiple AZs; Availability Zone: an edge point of presence for content delivery.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A Region and an Availability Zone are the same physical location with different names",
+        "text": "Region: an edge point of presence for content delivery; Availability Zone: an isolated location within a Region.",
         "correct": false
       }
     ],
@@ -661,12 +661,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Choose the Region with the most Availability Zones, regardless of where the users are located",
+        "text": "Select the Region with the lowest compute price regardless of distance",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Choose a Region based only on the number of IAM groups",
+        "text": "Select the Region with the largest number of service features",
         "correct": false
       },
       {
@@ -676,7 +676,7 @@
       },
       {
         "key": "D",
-        "text": "Choose any Region because physical distance never affects latency",
+        "text": "Select the same Region used by the billing contact regardless of users",
         "correct": false
       }
     ],
@@ -701,12 +701,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Whether the Region automatically copies every resource to all other Regions",
+        "text": "Whether every AZ has the same letter across all AWS accounts",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Whether the Region removes the need for application backups",
+        "text": "Whether choosing a Region automatically replicates the workload elsewhere",
         "correct": false
       },
       {
@@ -716,7 +716,7 @@
       },
       {
         "key": "D",
-        "text": "Whether the Region guarantees identical pricing for every AWS service worldwide",
+        "text": "Whether prices are guaranteed to be identical across all Regions",
         "correct": false
       },
       {
@@ -747,22 +747,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A global content delivery network",
+        "text": "A geographic area containing several AWS Regions",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A billing boundary shared by all AWS accounts",
+        "text": "A global network location used primarily for edge delivery",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A DNS routing policy",
+        "text": "A logical network boundary created by a customer",
         "correct": false
       },
       {
         "key": "D",
-        "text": "An isolated location within an AWS Region consisting of one or more discrete data centers",
+        "text": "An isolated location within a Region containing one or more data centers",
         "correct": true
       }
     ],
@@ -791,17 +791,17 @@
       },
       {
         "key": "B",
-        "text": "To make all Availability Zones the same physical data center",
+        "text": "To make AZs share a single power and cooling system",
         "correct": false
       },
       {
         "key": "C",
-        "text": "To eliminate the need for any application-level resilience",
+        "text": "To remove the need for workload-level failover mechanisms",
         "correct": false
       },
       {
         "key": "D",
-        "text": "To turn each Availability Zone into an independent AWS Region",
+        "text": "To replicate every customer resource without configuration",
         "correct": false
       }
     ],
@@ -826,22 +826,22 @@
     "options": [
       {
         "key": "A",
-        "text": "An Availability Zone only provides DNS, while an edge location hosts all EC2 instance types",
+        "text": "Availability Zone: edge services closer to end users; Edge location: isolated hosting of Regional workload resources.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "An Availability Zone hosts Regional workload resources in an isolated location, while an edge location is part of AWS's global edge network closer to end users",
+        "text": "Availability Zone: isolated hosting of Regional workload resources; Edge location: edge services closer to end users.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "An Availability Zone is outside every Region, while an edge location is always a subnet",
+        "text": "Availability Zone: isolated hosting of Regional workload resources; Edge location: a customer-defined subnet spanning several Regions.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Availability Zones and edge locations are interchangeable names for the same facility type",
+        "text": "Availability Zone: a customer-defined subnet spanning several Regions; Edge location: edge services closer to end users.",
         "correct": false
       }
     ],
@@ -866,12 +866,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Move all application components into one larger subnet in the same Availability Zone",
+        "text": "Place all instances in a larger subnet in the same AZ",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Increase the storage size of the existing single-zone server",
+        "text": "Create more frequent backups without adding serving capacity",
         "correct": false
       },
       {
@@ -881,7 +881,7 @@
       },
       {
         "key": "D",
-        "text": "Rename the Region in application configuration",
+        "text": "Purchase a longer commitment for the same single-AZ deployment",
         "correct": false
       }
     ],
@@ -906,22 +906,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A customer's private subnet",
+        "text": "A customer-created subnet",
         "correct": false
       },
       {
         "key": "B",
-        "text": "An Amazon RDS database cluster",
-        "correct": false
-      },
-      {
-        "key": "C",
         "text": "An EC2 Auto Scaling group",
         "correct": false
       },
       {
+        "key": "C",
+        "text": "A Region's application database cluster",
+        "correct": false
+      },
+      {
         "key": "D",
-        "text": "The AWS global edge network that provides services closer to end users",
+        "text": "The AWS global network of edge points of presence",
         "correct": true
       }
     ],
@@ -950,17 +950,17 @@
       },
       {
         "key": "B",
-        "text": "AWS CloudFormation",
+        "text": "Amazon Route 53",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS License Manager",
+        "text": "Amazon CloudFront",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Artifact",
+        "text": "AWS Direct Connect",
         "correct": false
       }
     ],
@@ -985,22 +985,22 @@
     "options": [
       {
         "key": "A",
-        "text": "An edge location is always a customer data center, while a Region is always a single server",
+        "text": "Edge location: a geographic area containing multiple Availability Zones; Region: a point of presence for edge network services.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "An edge location is a point of presence used by edge networking/content services, while a Region is a geographic area where Regional AWS services run across Availability Zones",
+        "text": "Edge location: a point of presence for edge network services; Region: a geographic area containing multiple Availability Zones.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "An edge location contains every AWS service, while a Region contains only DNS",
+        "text": "Edge location: a point of presence for edge network services; Region: a customer-managed network segment within one AZ.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "An edge location and a Region are identical deployment boundaries",
+        "text": "Edge location: a customer-managed network segment within one AZ; Region: a geographic area containing multiple Availability Zones.",
         "correct": false
       }
     ],
@@ -1025,12 +1025,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon EC2 Auto Scaling",
+        "text": "Amazon Route 53",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS CloudFormation",
+        "text": "Amazon CloudFront",
         "correct": false
       },
       {
@@ -1040,7 +1040,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon RDS",
+        "text": "AWS Direct Connect",
         "correct": false
       }
     ],
@@ -1066,22 +1066,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A managed authoritative DNS service",
+        "text": "Managed execution of functions without virtual-server administration",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A serverless NoSQL database",
+        "text": "Managed orchestration of Kubernetes clusters",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A container image registry",
+        "text": "A registry for container images",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Resizable virtual server capacity in the AWS Cloud",
+        "text": "Resizable virtual servers in the AWS Cloud",
         "correct": true
       }
     ],
@@ -1106,22 +1106,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The combination of compute, memory, storage, and networking capabilities available to an instance",
+        "text": "The instance's compute, memory, storage, and networking capabilities",
         "correct": true
       },
       {
         "key": "B",
-        "text": "The IAM password policy for the AWS account",
+        "text": "The operating-system image initially installed on the instance",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The DNS name of every application",
+        "text": "The purchasing commitment and billing discount applied to the instance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The AWS Support plan for the account",
+        "text": "The inbound and outbound network access rules",
         "correct": false
       }
     ],
@@ -1146,22 +1146,22 @@
     "options": [
       {
         "key": "A",
-        "text": "EC2 is a DNS service, while Lambda is an object store",
+        "text": "EC2: function execution without underlying-server administration; Lambda: virtual-server and guest-operating-system control.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EC2 provides virtual servers with more operating-system and instance control, while Lambda runs code without customer management of the underlying servers",
+        "text": "EC2: virtual-server and guest-operating-system control; Lambda: function execution without underlying-server administration.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "EC2 can only run containers, while Lambda can only run databases",
+        "text": "EC2: virtual-server and guest-operating-system control; Lambda: managed Kubernetes control-plane operations.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "EC2 automatically removes all operating-system responsibility, while Lambda requires customers to patch the host",
+        "text": "EC2: managed Kubernetes control-plane operations; Lambda: function execution without underlying-server administration.",
         "correct": false
       }
     ],
@@ -1202,7 +1202,7 @@
       },
       {
         "key": "D",
-        "text": "General purpose selected only for maximum memory",
+        "text": "General purpose",
         "correct": false
       }
     ],
@@ -1232,12 +1232,12 @@
       },
       {
         "key": "B",
-        "text": "A CPU-bound batch calculation should always use memory optimized instances regardless of measurements",
+        "text": "A CPU-bound batch workload should select memory-optimized instances because of its arithmetic requirements",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A storage-I/O-intensive workload should always use the smallest general purpose instance",
+        "text": "A workload needing high local storage I/O should choose instances solely by their smallest memory size",
         "correct": false
       },
       {
@@ -1247,7 +1247,7 @@
       },
       {
         "key": "E",
-        "text": "Every application should use the same instance family because instance families have identical resource profiles",
+        "text": "A workload requiring CUDA-compatible GPUs should use compute-optimized instances without accelerators",
         "correct": false
       }
     ],
@@ -1273,22 +1273,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Register internet domain names",
+        "text": "Distribute incoming connections among application targets",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Store container images",
+        "text": "Monitor CPU utilization and store application logs",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Convert database schemas",
+        "text": "Reserve launch capacity in a specified Availability Zone",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Maintain and adjust the number of EC2 instances available for an application",
+        "text": "Maintain and adjust the number of EC2 instances for a workload",
         "correct": true
       }
     ],
@@ -1308,26 +1308,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "UNDERSTANDING",
-    "question": "What does the desired capacity of an EC2 Auto Scaling group represent?",
+    "question": "For an EC2 Auto Scaling group that measures capacity in instances, what does desired capacity represent?",
     "options": [
       {
         "key": "A",
-        "text": "The number of instances the group attempts to keep running, subject to its configured limits and policies",
+        "text": "The instance count the group attempts to maintain",
         "correct": true
       },
       {
         "key": "B",
-        "text": "The maximum number of DNS records in a hosted zone",
+        "text": "The largest count the group is allowed to reach",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The amount of data stored in an S3 bucket",
+        "text": "The smallest count the group is allowed to reach",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The number of AWS Regions in an account",
+        "text": "The count reserved by a pricing commitment",
         "correct": false
       }
     ],
@@ -1351,22 +1351,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Auto Scaling provides DNS, while Elastic Load Balancing converts database schemas",
+        "text": "EC2 Auto Scaling: distributing requests across targets; Elastic Load Balancing: maintaining and adjusting EC2 capacity.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Auto Scaling changes and maintains compute capacity, while Elastic Load Balancing distributes incoming traffic across healthy targets",
+        "text": "EC2 Auto Scaling: maintaining and adjusting EC2 capacity; Elastic Load Balancing: distributing requests across targets.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Auto Scaling stores container images, while Elastic Load Balancing creates IAM users",
+        "text": "EC2 Auto Scaling: maintaining and adjusting EC2 capacity; Elastic Load Balancing: estimating charges for a proposed resource configuration.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Auto Scaling and Elastic Load Balancing perform exactly the same function",
+        "text": "EC2 Auto Scaling: estimating charges for a proposed resource configuration; Elastic Load Balancing: distributing requests across targets.",
         "correct": false
       }
     ],
@@ -1391,12 +1391,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Route 53 domain registration",
+        "text": "Elastic Load Balancing",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Artifact",
+        "text": "Amazon Route 53",
         "correct": false
       },
       {
@@ -1406,7 +1406,7 @@
       },
       {
         "key": "D",
-        "text": "AWS License Manager",
+        "text": "EC2 Capacity Reservations",
         "correct": false
       }
     ],
@@ -1432,17 +1432,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Create relational database schemas",
+        "text": "Adjust the number of instances in an application fleet",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Store application source code",
+        "text": "Reserve launch capacity in an Availability Zone",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Register software licenses",
+        "text": "Return DNS records for registered domain names",
         "correct": false
       },
       {
@@ -1467,26 +1467,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "UNDERSTANDING",
-    "question": "How do Elastic Load Balancing health checks improve application availability?",
+    "question": "How do load balancer health checks normally support application availability?",
     "options": [
       {
         "key": "A",
-        "text": "They help the load balancer route traffic only to targets that are considered healthy",
+        "text": "They direct requests away from unhealthy targets when healthy targets are available",
         "correct": true
       },
       {
         "key": "B",
-        "text": "They automatically rewrite application code after every failure",
+        "text": "They automatically repair application code on unhealthy targets",
         "correct": false
       },
       {
         "key": "C",
-        "text": "They copy every EC2 instance to another AWS Region",
+        "text": "They create replacement application instances without any scaling configuration",
         "correct": false
       },
       {
         "key": "D",
-        "text": "They replace IAM policies with network rules",
+        "text": "They create cross-Region copies of all registered targets",
         "correct": false
       }
     ],
@@ -1496,8 +1496,8 @@
       "availability"
     ],
     "source": {
-      "title": "What is Elastic Load Balancing?",
-      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+      "title": "Health checks for Application Load Balancer target groups",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html"
     },
     "active": true
   },
@@ -1511,22 +1511,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The load balancer creates IAM users, while Auto Scaling manages DNS records",
+        "text": "EC2 Auto Scaling: distributing traffic to the fleet's available targets; Elastic Load Balancing: adjusting the instance fleet.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Auto Scaling adjusts the pool of EC2 instances, while the load balancer distributes traffic across the healthy instances in that pool",
+        "text": "EC2 Auto Scaling: adjusting the instance fleet; Elastic Load Balancing: distributing traffic to the fleet's available targets.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Auto Scaling stores container images, while the load balancer creates database backups",
+        "text": "EC2 Auto Scaling: adjusting the instance fleet; Elastic Load Balancing: changing application database schemas.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Both services only change DNS records and do not interact with compute targets",
+        "text": "EC2 Auto Scaling: changing application database schemas; Elastic Load Balancing: distributing traffic to the fleet's available targets.",
         "correct": false
       }
     ],
@@ -1547,7 +1547,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "A web application runs on several EC2 instances across multiple Availability Zones. The company wants one entry point that stops sending new requests to an unhealthy instance. Which service should it use?",
+    "question": "A web application runs on several EC2 instances across Availability Zones. It needs a single entry point that routes requests away from an unhealthy instance while other healthy instances remain. Which service meets this requirement?",
     "options": [
       {
         "key": "A",
@@ -1556,7 +1556,7 @@
       },
       {
         "key": "B",
-        "text": "AWS Database Migration Service",
+        "text": "Amazon EC2 Auto Scaling alone",
         "correct": false
       },
       {
@@ -1566,7 +1566,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon ECR",
+        "text": "Amazon Route 53 domain registration",
         "correct": false
       }
     ],
@@ -1591,22 +1591,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A managed relational database service",
+        "text": "A service for managed Kubernetes orchestration",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A dedicated physical server purchasing model",
+        "text": "A service for running customer-managed virtual servers",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A DNS domain registrar",
+        "text": "A registry for storing container images",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A serverless compute service that runs code without requiring customers to provision or manage servers",
+        "text": "A service for running function code without managing underlying servers",
         "correct": true
       }
     ],
@@ -1631,22 +1631,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Running code in response to events or API requests",
+        "text": "Processing a short task when an object is uploaded or an API request arrives",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Maintaining a customer-managed operating system that must stay running indefinitely",
+        "text": "Running a process that requires direct administration of its guest operating system",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Providing authoritative DNS for a domain",
+        "text": "Running a job that cannot be split and must execute continuously for several days",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Storing container images for later deployment",
+        "text": "Running software that requires a licensed dedicated physical host",
         "correct": false
       }
     ],
@@ -1671,22 +1671,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Lambda is a relational database, while EC2 is a DNS service",
+        "text": "Lambda: direct virtual-server and guest-OS control; EC2: managed function execution.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Lambda manages the underlying compute infrastructure for function execution, while EC2 gives customers direct virtual-server control",
+        "text": "Lambda: managed function execution; EC2: direct virtual-server and guest-OS control.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Lambda requires customers to patch the host operating system, while EC2 never does",
+        "text": "Lambda: managed function execution; EC2: managed Kubernetes cluster orchestration.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Lambda can only run in customer data centers, while EC2 only runs at edge locations",
+        "text": "Lambda: managed Kubernetes cluster orchestration; EC2: direct virtual-server and guest-OS control.",
         "correct": false
       }
     ],
@@ -1707,16 +1707,16 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "A company wants to expose a serverless HTTP API whose requests invoke Lambda functions. Which AWS service is designed to act as the managed API front door?",
+    "question": "A company needs a managed service to create HTTP API endpoints, apply API throttling, and invoke Lambda functions. Which service is designed for this purpose?",
     "options": [
       {
         "key": "A",
-        "text": "Amazon ECR",
+        "text": "Amazon CloudFront",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Batch",
+        "text": "Amazon Route 53",
         "correct": false
       },
       {
@@ -1726,7 +1726,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Route 53 Resolver only",
+        "text": "AWS Global Accelerator",
         "correct": false
       }
     ],
@@ -1751,7 +1751,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Customers must maintain a fleet of EC2 hosts before any function can run",
+        "text": "Customers must maintain the operating-system images of the underlying Lambda hosts",
         "correct": false
       },
       {
@@ -1761,12 +1761,12 @@
       },
       {
         "key": "C",
-        "text": "Every Lambda workload requires a permanently running operating system managed by the customer",
+        "text": "A function must keep a dedicated instance running between invocations",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Lambda is primarily a domain-registration service",
+        "text": "Every function is designed to run continuously without a timeout",
         "correct": false
       },
       {
@@ -1797,22 +1797,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Registering domain names",
+        "text": "Store and distribute container images",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Converting relational database schemas",
+        "text": "Provide a managed Kubernetes control plane",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Managing software license entitlements",
+        "text": "Build container images from source code",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Deploying, managing, and scaling containerized applications with AWS-managed orchestration",
+        "text": "Orchestrate containerized application tasks and services",
         "correct": true
       }
     ],
@@ -1847,12 +1847,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Batch",
+        "text": "Amazon ECS",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon Lightsail DNS",
+        "text": "AWS Fargate",
         "correct": false
       }
     ],
@@ -1877,22 +1877,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon ECR is a Kubernetes control plane, while Amazon ECS is a DNS registrar",
+        "text": "Amazon ECR: orchestrating running containerized applications; Amazon ECS: storing and managing container images.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon ECR stores and manages container images, while Amazon ECS orchestrates running containerized applications",
+        "text": "Amazon ECR: storing and managing container images; Amazon ECS: orchestrating running containerized applications.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Amazon ECR scales EC2 instances, while Amazon ECS converts database schemas",
+        "text": "Amazon ECR: storing and managing container images; Amazon ECS: providing a managed Kubernetes control plane.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon ECR and Amazon ECS are identical services",
+        "text": "Amazon ECR: providing a managed Kubernetes control plane; Amazon ECS: orchestrating running containerized applications.",
         "correct": false
       }
     ],
@@ -1923,7 +1923,7 @@
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "The EC2 launch type for Amazon ECS",
         "correct": false
       },
       {
@@ -1933,7 +1933,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Artifact",
+        "text": "Self-managed worker nodes for Amazon EKS",
         "correct": false
       }
     ],
@@ -1963,7 +1963,7 @@
       },
       {
         "key": "B",
-        "text": "Use Amazon ECR as a DNS service for container endpoints",
+        "text": "Use Amazon ECR to schedule running container tasks",
         "correct": false
       },
       {
@@ -1973,12 +1973,12 @@
       },
       {
         "key": "D",
-        "text": "Use AWS Fargate only as a container image registry",
+        "text": "Use AWS Fargate as the registry that stores container images",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Use Amazon ECS primarily to convert relational database schemas",
+        "text": "Use Amazon ECS as the managed Kubernetes control plane",
         "correct": false
       }
     ],
@@ -2004,22 +2004,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Register internet domains",
+        "text": "Run scheduled batch-processing job queues",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Convert database schemas between engines",
+        "text": "Compile source code and produce build artifacts",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Store encryption keys in dedicated hardware",
+        "text": "Store container images for later deployment",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Deploy web applications while AWS provisions and manages much of the application environment",
+        "text": "Deploy applications with managed environment provisioning",
         "correct": true
       }
     ],
@@ -2054,12 +2054,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Database Migration Service",
+        "text": "AWS Fargate",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon GuardDuty",
+        "text": "Amazon EKS",
         "correct": false
       }
     ],
@@ -2084,22 +2084,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Batch is a DNS service, while Elastic Beanstalk is a key management service",
+        "text": "AWS Batch: deploying managed application environments; Elastic Beanstalk: scheduling and running batch computing jobs.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Batch schedules and runs batch computing jobs, while Elastic Beanstalk focuses on deploying and managing application environments",
+        "text": "AWS Batch: scheduling and running batch computing jobs; Elastic Beanstalk: deploying managed application environments.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "AWS Batch stores container images, while Elastic Beanstalk registers domains",
+        "text": "AWS Batch: scheduling and running batch computing jobs; Elastic Beanstalk: storing container images in a registry.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Batch and Elastic Beanstalk are both only database migration tools",
+        "text": "AWS Batch: storing container images in a registry; Elastic Beanstalk: deploying managed application environments.",
         "correct": false
       }
     ],
@@ -2124,7 +2124,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Use Elastic Beanstalk primarily as a container image registry",
+        "text": "Use Elastic Beanstalk as a dedicated container-image registry",
         "correct": false
       },
       {
@@ -2134,7 +2134,7 @@
       },
       {
         "key": "C",
-        "text": "Use AWS Batch primarily to register domain names",
+        "text": "Use AWS Batch to provide personal persistent virtual desktops",
         "correct": false
       },
       {
@@ -2144,7 +2144,7 @@
       },
       {
         "key": "E",
-        "text": "Use Amazon Lightsail primarily to convert database schemas between engines",
+        "text": "Use Amazon Lightsail to orchestrate large batch job queues",
         "correct": false
       }
     ],
@@ -2169,22 +2169,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A managed NoSQL key-value database only",
+        "text": "A managed key-value and document database",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A container image registry",
+        "text": "A managed graph database",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A managed service for setting up, operating, and scaling relational databases in AWS",
+        "text": "A managed relational database service",
         "correct": true
       },
       {
         "key": "D",
-        "text": "A DNS domain-registration service",
+        "text": "A managed in-memory caching service",
         "correct": false
       }
     ],
@@ -2249,22 +2249,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Aurora is a managed relational database engine compatible with MySQL and PostgreSQL, while DynamoDB is a managed NoSQL key-value and document database",
+        "text": "Amazon Aurora: MySQL- and PostgreSQL-compatible relational databases; Amazon DynamoDB: NoSQL key-value and document data.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Aurora is a DNS service, while DynamoDB is a load balancer",
+        "text": "Amazon Aurora: NoSQL key-value and document data; Amazon DynamoDB: MySQL- and PostgreSQL-compatible relational databases.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Aurora stores container images, while DynamoDB manages Kubernetes clusters",
+        "text": "Amazon Aurora: MySQL- and PostgreSQL-compatible relational databases; Amazon DynamoDB: in-memory caching for another primary database.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Aurora and DynamoDB are the same database engine with different pricing",
+        "text": "Amazon Aurora: in-memory caching for another primary database; Amazon DynamoDB: NoSQL key-value and document data.",
         "correct": false
       }
     ],
@@ -2290,22 +2290,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A read replica used only for reporting queries",
+        "text": "An asynchronous read replica without a failover mechanism",
         "correct": false
       },
       {
         "key": "B",
-        "text": "RDS Multi-AZ deployment",
+        "text": "An RDS Multi-AZ deployment",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Amazon Route 53 domain registration",
+        "text": "Automated backups without a standby instance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon ECR cross-account image replication",
+        "text": "A larger instance in the same Availability Zone",
         "correct": false
       }
     ],
@@ -2331,12 +2331,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon RDS requires customers to patch the physical database host hardware",
+        "text": "Customers patch the underlying host operating system for standard RDS instances",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon RDS is a NoSQL-only database service",
+        "text": "A read replica automatically provides the same standby failover behavior as a Multi-AZ DB instance",
         "correct": false
       },
       {
@@ -2346,7 +2346,7 @@
       },
       {
         "key": "D",
-        "text": "Using Amazon RDS means customers no longer decide who can access application data",
+        "text": "RDS defines the customer's application access permissions without customer decisions",
         "correct": false
       },
       {
@@ -2377,22 +2377,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A self-managed relational database running only on EC2",
+        "text": "A managed relational database",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A graph database service",
+        "text": "A managed graph database",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A serverless, fully managed NoSQL key-value and document database",
+        "text": "A managed NoSQL key-value and document database",
         "correct": true
       },
       {
         "key": "D",
-        "text": "A DNS record store",
+        "text": "A managed in-memory cache",
         "correct": false
       }
     ],
@@ -2457,22 +2457,22 @@
     "options": [
       {
         "key": "A",
-        "text": "DynamoDB is a managed NoSQL service, while Amazon RDS provides managed relational database engines",
+        "text": "DynamoDB: managed NoSQL key-value and document data; RDS: managed relational database engines.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "DynamoDB is a DNS service, while RDS is a container orchestrator",
+        "text": "DynamoDB: managed relational database engines; RDS: managed NoSQL key-value and document data.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "DynamoDB can only run on customer-owned servers, while RDS only runs at edge locations",
+        "text": "DynamoDB: managed NoSQL key-value and document data; RDS: managed graph traversal for connected data.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "DynamoDB and RDS use the same database model and APIs",
+        "text": "DynamoDB: managed graph traversal for connected data; RDS: managed relational database engines.",
         "correct": false
       }
     ],
@@ -2514,7 +2514,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "Amazon Aurora PostgreSQL",
         "correct": false
       }
     ],
@@ -2545,12 +2545,12 @@
       },
       {
         "key": "B",
-        "text": "It requires customers to patch database servers manually",
+        "text": "Customers must patch the database server operating systems",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It is designed primarily for complex relational JOIN operations",
+        "text": "Its primary query model is complex SQL JOINs across normalized tables",
         "correct": false
       },
       {
@@ -2560,7 +2560,7 @@
       },
       {
         "key": "E",
-        "text": "It requires a dedicated EC2 instance for every table",
+        "text": "Each table requires the customer to maintain a dedicated EC2 server",
         "correct": false
       }
     ],
@@ -2586,22 +2586,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Providing authoritative DNS for public domains",
+        "text": "Managed graph traversal for connected datasets",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Running Kubernetes control planes",
+        "text": "Managed relational transaction processing",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Providing a managed in-memory data store or cache for low-latency access",
+        "text": "A managed in-memory data store or cache",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Converting database schemas between relational engines",
+        "text": "Managed MongoDB-compatible document storage",
         "correct": false
       }
     ],
@@ -2636,7 +2636,7 @@
       },
       {
         "key": "C",
-        "text": "Amazon Route 53",
+        "text": "Amazon Aurora",
         "correct": false
       },
       {
@@ -2666,22 +2666,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Neptune is a graph database for highly connected data, while DocumentDB is a MongoDB-compatible document database",
+        "text": "Amazon Neptune: graph data and relationship traversal; Amazon DocumentDB: MongoDB-compatible document workloads.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Neptune is an in-memory cache, while DocumentDB is a DNS service",
+        "text": "Amazon Neptune: MongoDB-compatible document workloads; Amazon DocumentDB: graph data and relationship traversal.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Neptune stores container images, while DocumentDB manages Kubernetes",
+        "text": "Amazon Neptune: graph data and relationship traversal; Amazon DocumentDB: managed in-memory caching.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Neptune and DocumentDB are both relational database engines",
+        "text": "Amazon Neptune: managed in-memory caching; Amazon DocumentDB: MongoDB-compatible document workloads.",
         "correct": false
       }
     ],
@@ -2707,7 +2707,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon ElastiCache used only as a cache",
+        "text": "Amazon ElastiCache",
         "correct": false
       },
       {
@@ -2717,12 +2717,12 @@
       },
       {
         "key": "C",
-        "text": "Amazon DocumentDB selected only for relational JOIN support",
+        "text": "Amazon DocumentDB",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "Amazon RDS for MySQL",
         "correct": false
       }
     ],
@@ -2747,22 +2747,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Registering internet domains",
+        "text": "Replicate entire server disk images for rehosting",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Storing container images",
+        "text": "Track software license usage across accounts",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Migrating and replicating data between supported data stores",
+        "text": "Migrate and replicate data between supported data stores",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Distributing incoming web traffic",
+        "text": "Provide a managed relational database for application transactions",
         "correct": false
       }
     ],
@@ -2787,22 +2787,22 @@
     "options": [
       {
         "key": "A",
-        "text": "It guarantees that the source application never writes new data",
+        "text": "It makes application writes stop automatically throughout the migration",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It replaces every application server with Lambda functions",
+        "text": "It replaces application access-control decisions",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It converts DNS records into database schemas",
+        "text": "It changes DNS records instead of copying database changes",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It can replicate ongoing source changes while the target database is being prepared for cutover",
+        "text": "It can replicate ongoing source changes before cutover",
         "correct": true
       }
     ],
@@ -2824,26 +2824,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement BEST distinguishes AWS DMS from AWS Schema Conversion Tool (AWS SCT)?",
+    "question": "Which statement distinguishes AWS DMS data replication from AWS Schema Conversion Tool (AWS SCT)?",
     "options": [
       {
         "key": "A",
-        "text": "AWS DMS moves or replicates data, while AWS SCT converts database schemas and code objects between supported engines",
+        "text": "AWS DMS data replication: moving data and ongoing changes; AWS SCT: converting supported database schemas and code objects.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "AWS DMS is a DNS service, while AWS SCT is a load balancer",
+        "text": "AWS DMS data replication: converting supported database schemas and code objects; AWS SCT: moving data and ongoing changes.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS DMS stores container images, while AWS SCT runs Kubernetes clusters",
+        "text": "AWS DMS data replication: moving data and ongoing changes; AWS SCT: rehosting complete server operating systems.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS DMS and AWS SCT perform exactly the same task",
+        "text": "AWS DMS data replication: rehosting complete server operating systems; AWS SCT: converting supported database schemas and code objects.",
         "correct": false
       }
     ],
@@ -2869,22 +2869,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Use only Route 53 because DNS records automatically convert database schemas",
+        "text": "Use only schema conversion and omit replication of ongoing source writes",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Use a schema-conversion capability such as AWS SCT or DMS Schema Conversion for the schema, and AWS DMS for data migration and ongoing replication",
+        "text": "Convert the schema with SCT or DMS Schema Conversion, and use DMS to migrate data and replicate ongoing changes",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Use only Elastic Load Balancing because health checks replicate database data",
+        "text": "Use only a final database snapshot without converting the target schema",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Use Amazon ECR because container image replication migrates relational data",
+        "text": "Use server rehosting without addressing differences between the database engines",
         "correct": false
       }
     ],
@@ -2910,12 +2910,12 @@
     "options": [
       {
         "key": "A",
-        "text": "A managed relational database engine",
+        "text": "A dedicated physical network owned by one AWS customer",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A global container image registry",
+        "text": "An encrypted tunnel from an office to AWS",
         "correct": false
       },
       {
@@ -2925,7 +2925,7 @@
       },
       {
         "key": "D",
-        "text": "A domain-registration service",
+        "text": "A global network of edge content caches",
         "correct": false
       }
     ],
@@ -2950,22 +2950,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A collection of AWS Regions",
+        "text": "A set of IP addresses spanning every AZ in a Region",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A DNS routing policy",
+        "text": "A range of DNS names assigned to a load balancer",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A software license pool",
+        "text": "A shared pool of public IP addresses across Regions",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A range of IP addresses within a VPC that resides in a single Availability Zone",
+        "text": "An IP address range within a VPC located in one AZ",
         "correct": true
       }
     ],
@@ -2986,26 +2986,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement BEST distinguishes an internet gateway from a NAT gateway in a typical VPC design?",
+    "question": "Which statement distinguishes an internet gateway from a public NAT gateway in a typical VPC design?",
     "options": [
       {
         "key": "A",
-        "text": "An internet gateway enables connectivity between a VPC and the internet, while a NAT gateway commonly lets private-subnet resources initiate outbound IPv4 connections without accepting unsolicited inbound internet connections",
+        "text": "Internet gateway: VPC internet connectivity when routing and addressing are configured; Public NAT gateway: outbound IPv4 internet access for private resources via an internet gateway.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "An internet gateway converts database schemas, while a NAT gateway stores container images",
+        "text": "Internet gateway: outbound IPv4 internet access for private resources via an internet gateway; Public NAT gateway: VPC internet connectivity when routing and addressing are configured.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "An internet gateway connects IAM users, while a NAT gateway registers domain names",
+        "text": "Internet gateway: VPC internet connectivity when routing and addressing are configured; Public NAT gateway: private access to a service through an interface VPC endpoint.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Internet gateways and NAT gateways are identical services with different names",
+        "text": "Internet gateway: private access to a service through an interface VPC endpoint; Public NAT gateway: outbound IPv4 internet access for private resources via an internet gateway.",
         "correct": false
       }
     ],
@@ -3031,22 +3031,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A public IPv4 address on every instance",
+        "text": "An internet gateway with public instance addresses",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A VPC endpoint using the appropriate endpoint type, including AWS PrivateLink for supported interface endpoints",
+        "text": "An appropriate VPC endpoint, such as an interface endpoint using AWS PrivateLink",
         "correct": true
       },
       {
         "key": "C",
-        "text": "A separate internet gateway for each instance",
+        "text": "A public NAT gateway",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A Route 53 domain registration",
+        "text": "A public Route 53 hosted zone",
         "correct": false
       }
     ],
@@ -3072,7 +3072,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Every subnet automatically spans all Availability Zones in a Region",
+        "text": "A VPC subnet automatically spans multiple Availability Zones",
         "correct": false
       },
       {
@@ -3082,12 +3082,12 @@
       },
       {
         "key": "C",
-        "text": "A VPC endpoint requires traffic to traverse the public internet",
+        "text": "An interface VPC endpoint requires traffic to pass through an internet gateway",
         "correct": false
       },
       {
         "key": "D",
-        "text": "An internet gateway automatically makes every resource in every subnet publicly reachable",
+        "text": "Attaching an internet gateway alone makes every VPC resource publicly reachable",
         "correct": false
       },
       {
@@ -3118,22 +3118,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Running virtual servers",
+        "text": "Caching web content at edge locations",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Storing container images",
+        "text": "Distributing application connections across targets",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Highly available DNS, domain registration, and DNS routing capabilities",
+        "text": "DNS, domain registration, and DNS-based routing",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Converting database schemas",
+        "text": "Providing a dedicated network connection from a data center",
         "correct": false
       }
     ],
@@ -3158,22 +3158,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A group of EC2 instances managed by Auto Scaling",
+        "text": "A pool of application targets registered with a load balancer",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A container image repository",
+        "text": "A customer-defined network segment within a VPC",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A database replication task",
+        "text": "An edge cache holding content for one application",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A container for DNS records that define how traffic should be routed for a domain",
+        "text": "A collection of DNS records for a domain and its subdomains",
         "correct": true
       }
     ],
@@ -3198,22 +3198,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Route 53 answers DNS queries and can make DNS routing decisions, while Elastic Load Balancing distributes actual incoming traffic across registered targets",
+        "text": "Route 53: DNS responses and DNS-based routing; Elastic Load Balancing: distributing incoming application traffic across targets.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Route 53 scales EC2 instance counts, while Elastic Load Balancing registers domains",
+        "text": "Route 53: distributing incoming application traffic across targets; Elastic Load Balancing: DNS responses and DNS-based routing.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Route 53 stores container images, while Elastic Load Balancing converts database schemas",
+        "text": "Route 53: DNS responses and DNS-based routing; Elastic Load Balancing: increasing and decreasing EC2 instance counts.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Route 53 and Elastic Load Balancing are identical services",
+        "text": "Route 53: increasing and decreasing EC2 instance counts; Elastic Load Balancing: distributing incoming application traffic across targets.",
         "correct": false
       }
     ],
@@ -3235,26 +3235,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "HARD",
     "style": "SCENARIO",
-    "question": "A company has two endpoints that provide the same application function. It wants DNS responses to avoid an endpoint when a Route 53 health check reports it as unhealthy. Which Route 53 capability is relevant?",
+    "question": "Two endpoints provide the same application. When one becomes unhealthy and the other remains healthy, the company wants DNS responses to direct users to the healthy endpoint. Which Route 53 capability is relevant?",
     "options": [
       {
         "key": "A",
-        "text": "EC2 instance-family selection",
+        "text": "An EC2 instance purchasing commitment",
         "correct": false
       },
       {
         "key": "B",
-        "text": "DNS failover using health checks and an appropriate routing configuration",
+        "text": "DNS failover with health checks and suitable records",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Amazon ECR image scanning",
+        "text": "A CloudFront cache policy by itself",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS SCT schema conversion",
+        "text": "A VPC security group rule",
         "correct": false
       }
     ],
@@ -3269,7 +3269,7 @@
     },
     "active": true
   },
-{
+  {
     "code": "CCP-CFR-001",
     "concept": "clf-cloudfront",
     "type": "SINGLE_CHOICE",
@@ -3279,22 +3279,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Delivering web content with low latency through a global network of edge locations",
+        "text": "Deliver and cache content through global edge locations",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Provisioning relational database instances",
+        "text": "Answer DNS queries and register domain names",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Running batch computing jobs",
+        "text": "Provide static anycast addresses for accelerated network paths",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Managing software license entitlements",
+        "text": "Distribute traffic among targets within an application deployment",
         "correct": false
       }
     ],
@@ -3319,22 +3319,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The IAM user who created the distribution",
+        "text": "The edge cache selected for a particular viewer",
         "correct": false
       },
       {
         "key": "B",
-        "text": "The source location from which CloudFront retrieves content, such as an S3 bucket or an HTTP server",
+        "text": "The source from which CloudFront retrieves content",
         "correct": true
       },
       {
         "key": "C",
-        "text": "The Availability Zone letter used by the viewer",
+        "text": "The DNS resolver used by the viewer",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The billing account that pays for the request",
+        "text": "The client application requesting the content",
         "correct": false
       }
     ],
@@ -3359,22 +3359,22 @@
     "options": [
       {
         "key": "A",
-        "text": "CloudFront is a database service, while Global Accelerator is an object store",
+        "text": "CloudFront: accelerated network paths to healthy application endpoints; Global Accelerator: content delivery with edge caching.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "CloudFront only manages IAM users, while Global Accelerator only manages billing",
+        "text": "CloudFront: content delivery with edge caching; Global Accelerator: domain registration and authoritative DNS hosting.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "CloudFront is a CDN that can cache and deliver content at edge locations, while Global Accelerator optimizes network traffic to healthy application endpoints using the AWS global network",
+        "text": "CloudFront: content delivery with edge caching; Global Accelerator: accelerated network paths to healthy application endpoints.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "CloudFront and Global Accelerator are identical services",
+        "text": "CloudFront: domain registration and authoritative DNS hosting; Global Accelerator: accelerated network paths to healthy application endpoints.",
         "correct": false
       }
     ],
@@ -3399,17 +3399,17 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Database Migration Service",
+        "text": "Amazon Route 53",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS License Manager",
+        "text": "AWS Global Accelerator",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon EC2 Auto Scaling by itself",
+        "text": "Elastic Load Balancing",
         "correct": false
       },
       {
@@ -3440,22 +3440,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Encrypted IPsec connectivity between a customer network and AWS",
+        "text": "An encrypted IPsec connection between a customer network and AWS",
         "correct": true
       },
       {
         "key": "B",
-        "text": "A container image registry",
+        "text": "A dedicated circuit without encryption configured by default",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A managed data warehouse",
+        "text": "Private service access through an interface VPC endpoint",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A global content cache",
+        "text": "A network link between two VPCs without an external network",
         "correct": false
       }
     ],
@@ -3480,7 +3480,7 @@
     "options": [
       {
         "key": "A",
-        "text": "It automatically encrypts every application payload at the application layer",
+        "text": "It encrypts all traffic by default without additional configuration",
         "correct": false
       },
       {
@@ -3490,12 +3490,12 @@
       },
       {
         "key": "C",
-        "text": "It is a DNS-only service",
+        "text": "It provides application-content caching at edge locations",
         "correct": false
       },
       {
         "key": "D",
-        "text": "It requires all traffic to use public internet routing",
+        "text": "It requires traffic to traverse the public internet",
         "correct": false
       }
     ],
@@ -3520,22 +3520,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Direct Connect is object storage, while VPN is block storage",
+        "text": "Direct Connect: encrypted IPsec tunnels commonly over the internet; Site-to-Site VPN: a dedicated network path to AWS.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Direct Connect is a managed database, while VPN is a queue",
+        "text": "Direct Connect: a dedicated network path to AWS; Site-to-Site VPN: private service connectivity through interface endpoints.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Direct Connect provides dedicated connectivity to AWS, while Site-to-Site VPN commonly provides encrypted tunnels over the internet",
+        "text": "Direct Connect: a dedicated network path to AWS; Site-to-Site VPN: encrypted IPsec tunnels commonly over the internet.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Direct Connect and VPN are identical networking products",
+        "text": "Direct Connect: private service connectivity through interface endpoints; Site-to-Site VPN: encrypted IPsec tunnels commonly over the internet.",
         "correct": false
       }
     ],
@@ -3561,17 +3561,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon CloudFront",
+        "text": "AWS Direct Connect",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon EFS",
+        "text": "AWS Client VPN for individual remote users",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Glue",
+        "text": "VPC peering",
         "correct": false
       },
       {
@@ -3606,7 +3606,7 @@
       },
       {
         "key": "B",
-        "text": "Direct Connect is primarily a DNS routing service",
+        "text": "Direct Connect encrypts all transmitted data by default",
         "correct": false
       },
       {
@@ -3616,12 +3616,12 @@
       },
       {
         "key": "D",
-        "text": "Site-to-Site VPN requires an AWS edge cache to store all traffic",
+        "text": "Site-to-Site VPN requires a dedicated Direct Connect circuit",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Direct Connect automatically replaces all application-level encryption requirements",
+        "text": "A single Direct Connect connection guarantees uninterrupted connectivity",
         "correct": false
       }
     ],
@@ -3651,17 +3651,17 @@
       },
       {
         "key": "B",
-        "text": "Block storage attached directly as an EC2 volume",
+        "text": "Block storage",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A POSIX shared file system only",
+        "text": "Shared file storage",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A relational database engine",
+        "text": "In-memory caching",
         "correct": false
       }
     ],
@@ -3685,22 +3685,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Blocks are attached to EC2 hosts as instance store only",
+        "text": "Blocks stored on a locally attached device",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Objects are stored in buckets",
+        "text": "Objects stored in buckets",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Files must always be mounted over NFS",
+        "text": "Files stored in a native NFS mount hierarchy",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Rows are stored only in relational tables",
+        "text": "Rows stored in relational tables",
         "correct": false
       }
     ],
@@ -3725,22 +3725,22 @@
     "options": [
       {
         "key": "A",
-        "text": "S3 is a relational database, while EBS is a DNS service",
+        "text": "S3: block volumes attached to EC2 instances; EBS: objects accessed through object-storage APIs.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "S3 and EBS expose the same storage interface and lifecycle",
+        "text": "S3: objects accessed through object-storage APIs; EBS: shared NFS file-system storage.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "S3 is object storage accessed through S3 APIs, while EBS provides block storage volumes for EC2 workloads",
+        "text": "S3: objects accessed through object-storage APIs; EBS: block volumes attached to EC2 instances.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "S3 is only for temporary cache data, while EBS is only for public websites",
+        "text": "S3: shared NFS file-system storage; EBS: block volumes attached to EC2 instances.",
         "correct": false
       }
     ],
@@ -3771,12 +3771,12 @@
       },
       {
         "key": "B",
-        "text": "Amazon EBS only",
+        "text": "Amazon EBS",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Route 53",
+        "text": "Amazon EFS",
         "correct": false
       },
       {
@@ -3802,11 +3802,11 @@
     "type": "MULTIPLE_CHOICE",
     "difficulty": "HARD",
     "style": "UNDERSTANDING",
-    "question": "Which TWO capabilities are available with Amazon S3? (Select TWO.)",
+    "question": "Which TWO capabilities can be configured for general-purpose Amazon S3 buckets? (Select TWO.)",
     "options": [
       {
         "key": "A",
-        "text": "S3 requires customers to manage storage servers",
+        "text": "Every object version is retained without enabling versioning",
         "correct": false
       },
       {
@@ -3816,7 +3816,7 @@
       },
       {
         "key": "C",
-        "text": "Every S3 bucket is automatically a POSIX file system",
+        "text": "A general-purpose bucket is attached directly as an EC2 block volume",
         "correct": false
       },
       {
@@ -3826,7 +3826,7 @@
       },
       {
         "key": "E",
-        "text": "S3 objects can only be stored in one fixed storage class for their entire lifetime",
+        "text": "Every uploaded object is automatically replicated to another Region",
         "correct": false
       }
     ],
@@ -3891,7 +3891,7 @@
     "options": [
       {
         "key": "A",
-        "text": "S3 Standard selected permanently",
+        "text": "S3 Standard",
         "correct": false
       },
       {
@@ -3901,12 +3901,12 @@
       },
       {
         "key": "C",
-        "text": "S3 One Zone-IA for every critical workload",
+        "text": "S3 One Zone-IA",
         "correct": false
       },
       {
         "key": "D",
-        "text": "S3 Glacier Deep Archive for frequently accessed data",
+        "text": "S3 Glacier Deep Archive",
         "correct": false
       }
     ],
@@ -3931,22 +3931,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Standard-IA is block storage, while One Zone-IA is file storage",
+        "text": "Standard-IA uses one AZ; One Zone-IA uses multiple AZs",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Standard-IA is always free to retrieve, while One Zone-IA cannot be retrieved",
+        "text": "Standard-IA requires asynchronous restore; One Zone-IA provides millisecond access",
         "correct": false
       },
       {
         "key": "C",
-        "text": "S3 Standard-IA stores data across multiple Availability Zones, while S3 One Zone-IA stores data in a single Availability Zone",
+        "text": "Standard-IA stores data across multiple AZs; One Zone-IA stores data in one AZ",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Standard-IA is only for databases, while One Zone-IA is only for DNS",
+        "text": "Standard-IA is for frequent access; One Zone-IA is for immediate archival retrieval",
         "correct": false
       }
     ],
@@ -3968,21 +3968,21 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "A company stores compliance archives that are rarely accessed and can tolerate retrieval taking hours. Which S3 storage class is designed for the lowest-cost long-term archival use case?",
+    "question": "A company retains rarely accessed archives for years. It can wait up to 48 hours for retrieval and wants the lowest storage price among the listed classes. Which S3 storage class best fits?",
     "options": [
       {
         "key": "A",
-        "text": "S3 Standard",
+        "text": "S3 Glacier Instant Retrieval",
         "correct": false
       },
       {
         "key": "B",
-        "text": "S3 Express One Zone",
+        "text": "S3 Glacier Flexible Retrieval",
         "correct": false
       },
       {
         "key": "C",
-        "text": "S3 Standard-IA selected for frequent access",
+        "text": "S3 Standard-IA",
         "correct": false
       },
       {
@@ -4012,12 +4012,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Resize an EC2 instance based on object age",
+        "text": "Replicate eligible objects to a destination bucket in another Region",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Create IAM users when a bucket grows",
+        "text": "Change the resource-based permission policy of a bucket",
         "correct": false
       },
       {
@@ -4027,7 +4027,7 @@
       },
       {
         "key": "D",
-        "text": "Convert S3 objects into EBS volumes automatically",
+        "text": "Enable versioning automatically when an object reaches a certain age",
         "correct": false
       },
       {
@@ -4063,17 +4063,17 @@
       },
       {
         "key": "B",
-        "text": "A global DNS service",
+        "text": "Shared NFS file storage",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A managed message queue",
+        "text": "Ephemeral host-attached block storage",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A serverless data warehouse",
+        "text": "Object storage accessed through bucket APIs",
         "correct": false
       }
     ],
@@ -4138,22 +4138,22 @@
     "options": [
       {
         "key": "A",
-        "text": "EBS is object storage, while instance store is DNS",
+        "text": "EBS: ephemeral storage physically attached to the host; EC2 instance store: persistent block volumes separate from the instance host.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EBS is always shared across thousands of instances, while instance store is a relational database",
+        "text": "EBS: persistent block volumes separate from the instance host; EC2 instance store: shared NFS storage for multiple clients.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "EBS provides persistent block volumes with a lifecycle separate from the host, while instance store is ephemeral storage physically attached to the host",
+        "text": "EBS: persistent block volumes separate from the instance host; EC2 instance store: ephemeral storage physically attached to the host.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "EBS and instance store have identical durability characteristics",
+        "text": "EBS: shared NFS storage for multiple clients; EC2 instance store: ephemeral storage physically attached to the host.",
         "correct": false
       }
     ],
@@ -4179,22 +4179,22 @@
     "options": [
       {
         "key": "A",
-        "text": "EC2 instance store only",
+        "text": "EC2 instance store",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "Amazon EFS",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon SNS",
+        "text": "Amazon S3",
         "correct": false
       },
       {
         "key": "D",
-        "text": "An Amazon EBS volume",
+        "text": "Amazon EBS",
         "correct": true
       }
     ],
@@ -4224,12 +4224,12 @@
       },
       {
         "key": "B",
-        "text": "Instance-store data is designed as the only durable copy of critical data",
+        "text": "Instance-store data persists after the instance is terminated",
         "correct": false
       },
       {
         "key": "C",
-        "text": "EBS is accessed only through the S3 object API",
+        "text": "EBS volumes can only be accessed through the S3 object API",
         "correct": false
       },
       {
@@ -4239,7 +4239,7 @@
       },
       {
         "key": "E",
-        "text": "Instance store automatically becomes a shared network file system",
+        "text": "Every EBS volume is retained automatically when its instance is terminated",
         "correct": false
       }
     ],
@@ -4279,7 +4279,7 @@
       },
       {
         "key": "D",
-        "text": "A relational database engine",
+        "text": "A managed graph database",
         "correct": false
       }
     ],
@@ -4304,22 +4304,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A single EC2 instance needs temporary scratch block storage",
+        "text": "One instance needs disposable local scratch storage",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Multiple Linux-based compute instances need concurrent access to the same shared NFS file system",
+        "text": "Multiple Linux instances need concurrent access to the same NFS file system",
         "correct": true
       },
       {
         "key": "C",
-        "text": "An application needs a graph database",
+        "text": "An application needs API-based object storage for public images",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A workload needs a container image registry",
+        "text": "A Windows application requires a native SMB-only file server",
         "correct": false
       }
     ],
@@ -4344,22 +4344,22 @@
     "options": [
       {
         "key": "A",
-        "text": "EFS is a DNS service, while FSx is a message queue",
+        "text": "Amazon EFS: managed file systems such as Windows File Server and Lustre; Amazon FSx: elastic shared NFS file storage.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EFS is object storage, while FSx is an IAM service",
+        "text": "Amazon EFS: elastic shared NFS file storage; Amazon FSx: ephemeral local disks attached to EC2 hosts.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "EFS provides elastic shared NFS file storage, while FSx provides managed file systems for specific technologies such as Windows File Server, Lustre, ONTAP, and OpenZFS",
+        "text": "Amazon EFS: elastic shared NFS file storage; Amazon FSx: managed file systems such as Windows File Server and Lustre.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "EFS and FSx provide only identical NFS file systems",
+        "text": "Amazon EFS: ephemeral local disks attached to EC2 hosts; Amazon FSx: managed file systems such as Windows File Server and Lustre.",
         "correct": false
       }
     ],
@@ -4385,17 +4385,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon EFS selected for NFS-only access",
+        "text": "Amazon EFS",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EC2 instance store",
+        "text": "Amazon EBS",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon S3 Glacier Deep Archive mounted as a Windows system drive",
+        "text": "Amazon S3",
         "correct": false
       },
       {
@@ -4425,22 +4425,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Integrate on-premises applications with cloud-backed AWS storage",
+        "text": "Connect on-premises applications to cloud-backed AWS storage",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Provide managed Kubernetes control planes",
+        "text": "Continuously replicate complete servers for recovery launches",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Register internet domain names",
+        "text": "Manage backup schedules across supported resources",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Build machine learning models",
+        "text": "Migrate database records between different database engines",
         "correct": false
       }
     ],
@@ -4474,12 +4474,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Direct Connect",
+        "text": "Volume Gateway",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon EBS Multi-Attach",
+        "text": "Amazon EFS",
         "correct": false
       }
     ],
@@ -4505,22 +4505,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Tape Gateway is a DNS service, while Volume Gateway is a relational database",
+        "text": "Tape Gateway: cloud-backed iSCSI block volumes; Volume Gateway: virtual tapes for backup workflows.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Tape Gateway stores container images, while Volume Gateway runs Lambda functions",
+        "text": "Tape Gateway: virtual tapes for backup workflows; Volume Gateway: S3-backed NFS and SMB file shares.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Tape Gateway presents virtual tapes for backup/archive workflows, while Volume Gateway presents cloud-backed iSCSI block volumes",
+        "text": "Tape Gateway: virtual tapes for backup workflows; Volume Gateway: cloud-backed iSCSI block volumes.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Tape Gateway and Volume Gateway expose the same storage interface",
+        "text": "Tape Gateway: S3-backed NFS and SMB file shares; Volume Gateway: cloud-backed iSCSI block volumes.",
         "correct": false
       }
     ],
@@ -4546,17 +4546,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon EFS",
+        "text": "AWS Storage Gateway Volume Gateway",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "AWS Storage Gateway S3 File Gateway",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS CodeBuild",
+        "text": "Amazon EFS",
         "correct": false
       },
       {
@@ -4587,22 +4587,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Centrally managing and automating backup policies for supported resources",
+        "text": "Centralize backup policies for supported resources",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Distributing web traffic across targets",
+        "text": "Continuously replicate complete servers for disaster recovery",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Building container images",
+        "text": "Provide local file access backed by cloud objects",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Registering domain names",
+        "text": "Move database changes between source and target engines",
         "correct": false
       }
     ],
@@ -4627,22 +4627,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The CPU instruction set of an EC2 instance",
+        "text": "Compute instance types used by every protected resource",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Backup schedules, lifecycle/retention behavior, and backup targets for protected resources",
+        "text": "Backup schedules, retention, and destination vault settings",
         "correct": true
       },
       {
         "key": "C",
-        "text": "The DNS TTL for every Route 53 record",
+        "text": "Application-user permissions for the protected databases",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The source code of a Lambda function",
+        "text": "Network routes used by backup client applications",
         "correct": false
       }
     ],
@@ -4667,22 +4667,22 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Backup is a CDN, while AWS DRS is a DNS service",
+        "text": "AWS Backup: continuous server replication and recovery launches; AWS DRS: centralized backup policies and recovery points.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Backup and AWS DRS are identical storage classes",
+        "text": "AWS Backup: centralized backup policies and recovery points; AWS DRS: hybrid NFS and SMB access to cloud object storage.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Backup manages backup copies and policies, while AWS DRS continuously replicates server data to support disaster-recovery launches",
+        "text": "AWS Backup: centralized backup policies and recovery points; AWS DRS: continuous server replication and recovery launches.",
         "correct": true
       },
       {
         "key": "D",
-        "text": "AWS Backup builds ML models, while AWS DRS creates IAM users",
+        "text": "AWS Backup: hybrid NFS and SMB access to cloud object storage; AWS DRS: continuous server replication and recovery launches.",
         "correct": false
       }
     ],
@@ -4707,7 +4707,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Create BI dashboards from business data",
+        "text": "Schedule weekly backups with a seven-year retention requirement",
         "correct": false
       },
       {
@@ -4717,12 +4717,12 @@
       },
       {
         "key": "C",
-        "text": "Deliver cached static content from edge locations",
+        "text": "Apply consistent backup policies to supported managed databases",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Convert speech to text",
+        "text": "Audit whether protected resources meet backup-plan requirements",
         "correct": false
       },
       {
@@ -4752,22 +4752,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Providing authoritative DNS",
+        "text": "Use prebuilt text-to-speech models",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Operating a virtual tape library",
+        "text": "Extract tables from scanned documents with a prebuilt API",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Sending email at scale",
+        "text": "Build conversational applications using managed intents",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Building, training, and deploying machine learning models",
+        "text": "Build, train, and deploy custom machine learning models",
         "correct": true
       }
     ],
@@ -4791,22 +4791,22 @@
     "options": [
       {
         "key": "A",
-        "text": "When a team needs to develop and manage a custom machine learning model and its training/inference workflow",
+        "text": "A team needs to train and deploy a proprietary prediction model",
         "correct": true
       },
       {
         "key": "B",
-        "text": "When the only requirement is domain registration",
+        "text": "A team only needs standard speech-to-text conversion",
         "correct": false
       },
       {
         "key": "C",
-        "text": "When the only requirement is storing static objects",
+        "text": "A team only needs prebuilt document text extraction",
         "correct": false
       },
       {
         "key": "D",
-        "text": "When no machine learning work is needed",
+        "text": "A team only needs standard text translation between languages",
         "correct": false
       }
     ],
@@ -4831,22 +4831,22 @@
     "options": [
       {
         "key": "A",
-        "text": "SageMaker AI is a DNS service, while Rekognition is block storage",
+        "text": "SageMaker AI: managed image and video analysis capabilities; Rekognition: custom machine learning development and deployment.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "SageMaker AI provides a platform for custom ML development and deployment, while Rekognition provides pre-built image and video analysis capabilities",
+        "text": "SageMaker AI: custom machine learning development and deployment; Rekognition: managed image and video analysis capabilities.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "SageMaker AI only sends email, while Rekognition only runs containers",
+        "text": "SageMaker AI: custom machine learning development and deployment; Rekognition: managed speech-to-text conversion.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "SageMaker AI and Rekognition are identical services",
+        "text": "SageMaker AI: managed speech-to-text conversion; Rekognition: managed image and video analysis capabilities.",
         "correct": false
       }
     ],
@@ -4871,12 +4871,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Polly",
+        "text": "Amazon Comprehend",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "Amazon Rekognition",
         "correct": false
       },
       {
@@ -4886,7 +4886,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Storage Gateway",
+        "text": "Amazon Textract",
         "correct": false
       }
     ],
@@ -4992,22 +4992,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Transcribe translates languages, while Polly extracts tables from documents",
+        "text": "Amazon Transcribe: text-to-speech conversion; Amazon Polly: speech-to-text conversion.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Transcribe converts speech to text, while Polly converts text to speech",
+        "text": "Amazon Transcribe: speech-to-text conversion; Amazon Polly: text-to-speech conversion.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Transcribe is a chatbot service, while Polly is a graph database",
+        "text": "Amazon Transcribe: speech-to-text conversion; Amazon Polly: translation between written languages.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Transcribe and Polly perform the same direction of conversion",
+        "text": "Amazon Transcribe: translation between written languages; Amazon Polly: text-to-speech conversion.",
         "correct": false
       }
     ],
@@ -5033,12 +5033,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Polly by itself",
+        "text": "Amazon Polly",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon S3",
+        "text": "Amazon Comprehend",
         "correct": false
       },
       {
@@ -5048,7 +5048,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon EBS",
+        "text": "Amazon Translate",
         "correct": false
       }
     ],
@@ -5079,7 +5079,7 @@
       },
       {
         "key": "B",
-        "text": "Amazon Comprehend is primarily a virtual desktop service",
+        "text": "Amazon Comprehend converts written text into spoken audio",
         "correct": false
       },
       {
@@ -5089,12 +5089,12 @@
       },
       {
         "key": "D",
-        "text": "Amazon Polly converts speech recordings into written transcripts",
+        "text": "Amazon Polly transcribes recorded speech",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Amazon Lex is primarily a block-storage service",
+        "text": "Amazon Lex primarily extracts tables from scanned documents",
         "correct": false
       }
     ],
@@ -5119,22 +5119,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Providing NFS file storage",
+        "text": "Convert recorded speech into written transcripts",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Sending application email",
+        "text": "Extract structured fields from scanned forms",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Running relational database queries",
+        "text": "Train every type of custom prediction model",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Analyzing images and videos using pre-built computer vision capabilities",
+        "text": "Analyze images and videos using managed computer-vision APIs",
         "correct": true
       }
     ],
@@ -5159,22 +5159,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Text and structured information such as forms and tables",
+        "text": "Text, forms, and tables",
         "correct": true
       },
       {
         "key": "B",
-        "text": "EC2 instance metrics only",
+        "text": "Spoken words from audio recordings",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Container images",
+        "text": "Entities and sentiment from plain text only",
         "correct": false
       },
       {
         "key": "D",
-        "text": "DNS routing policies",
+        "text": "Object labels and scene categories from video",
         "correct": false
       }
     ],
@@ -5199,22 +5199,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Rekognition is a database migration tool, while Textract is a message queue",
+        "text": "Rekognition: document text, forms, and table extraction; Textract: image and video analysis.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Rekognition focuses on image/video analysis, while Textract focuses on extracting text and structure from documents",
+        "text": "Rekognition: image and video analysis; Textract: document text, forms, and table extraction.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Rekognition provides DNS, while Textract provides object storage",
+        "text": "Rekognition: image and video analysis; Textract: audio-to-text transcription.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Rekognition and Textract are identical services",
+        "text": "Rekognition: audio-to-text transcription; Textract: document text, forms, and table extraction.",
         "correct": false
       }
     ],
@@ -5240,12 +5240,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Rekognition selected only for object detection",
+        "text": "Amazon Rekognition",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "Amazon Comprehend",
         "correct": false
       },
       {
@@ -5255,7 +5255,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Direct Connect",
+        "text": "Amazon Transcribe",
         "correct": false
       }
     ],
@@ -5281,17 +5281,17 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Route 53",
+        "text": "Amazon DynamoDB",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon ECR",
+        "text": "Amazon Neptune",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon WorkSpaces",
+        "text": "Amazon RDS",
         "correct": false
       },
       {
@@ -5322,22 +5322,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Cloud data warehousing and large-scale analytical queries",
+        "text": "Cloud data warehousing and large-scale analytics",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Managing DNS zones",
+        "text": "Graph traversal for highly connected transaction data",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Providing virtual desktops",
+        "text": "In-memory caching for application requests",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Storing container images",
+        "text": "Document storage using MongoDB-compatible APIs",
         "correct": false
       }
     ],
@@ -5362,22 +5362,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Glue is a DNS service, while EMR is block storage",
+        "text": "AWS Glue: managed big-data frameworks such as Spark and Hadoop; Amazon EMR: serverless data integration with catalog and ETL capabilities.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Glue is a serverless data integration service with catalog and ETL capabilities, while EMR provides managed big-data frameworks such as Spark and Hadoop",
+        "text": "AWS Glue: serverless data integration with catalog and ETL capabilities; Amazon EMR: managed big-data frameworks such as Spark and Hadoop.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Glue provides virtual desktops, while EMR sends email",
+        "text": "AWS Glue: serverless data integration with catalog and ETL capabilities; Amazon EMR: business-user dashboard authoring and sharing.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Glue and EMR are identical data warehouses",
+        "text": "AWS Glue: business-user dashboard authoring and sharing; Amazon EMR: managed big-data frameworks such as Spark and Hadoop.",
         "correct": false
       }
     ],
@@ -5403,12 +5403,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon Redshift provisioned only because a cluster is mandatory",
+        "text": "Amazon RDS for PostgreSQL",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon EC2 instance store",
+        "text": "Amazon DynamoDB",
         "correct": false
       },
       {
@@ -5418,7 +5418,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "Amazon Neptune",
         "correct": false
       }
     ],
@@ -5440,11 +5440,11 @@
     "type": "MULTIPLE_CHOICE",
     "difficulty": "HARD",
     "style": "UNDERSTANDING",
-    "question": "Which TWO service-to-use-case mappings are correct? (Select TWO.)",
+    "question": "Which TWO AWS analytics service-to-use-case mappings are correct? (Select TWO.)",
     "options": [
       {
         "key": "A",
-        "text": "Use Amazon Athena primarily as a virtual desktop service",
+        "text": "Use Amazon Athena as the primary managed OLTP database for application transactions",
         "correct": false
       },
       {
@@ -5454,7 +5454,7 @@
       },
       {
         "key": "C",
-        "text": "Use Amazon Redshift primarily as a DNS registrar",
+        "text": "Use Amazon Redshift as an in-memory cache for database queries",
         "correct": false
       },
       {
@@ -5464,7 +5464,7 @@
       },
       {
         "key": "E",
-        "text": "Use AWS Glue primarily as a CDN",
+        "text": "Use AWS Glue as the primary BI dashboard authoring service",
         "correct": false
       }
     ],
@@ -5487,21 +5487,21 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "Which AWS service is designed for real-time streaming data ingestion with ordered streams of records?",
+    "question": "Which AWS service is purpose-built to ingest a continuous stream of records for real-time processing by consuming applications?",
     "options": [
       {
         "key": "A",
-        "text": "Amazon EFS",
+        "text": "Amazon Athena",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS License Manager",
+        "text": "Amazon Quick Sight",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Route 53",
+        "text": "Amazon Redshift",
         "correct": false
       },
       {
@@ -5531,22 +5531,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Managed search, log analytics, and observability workloads",
+        "text": "Managed search, log analytics, and observability",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Persistent EC2 boot volumes",
+        "text": "Managed relational transaction processing",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Virtual desktop streaming",
+        "text": "Managed in-memory caching",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Domain registration only",
+        "text": "Managed database schema conversion",
         "correct": false
       }
     ],
@@ -5572,22 +5572,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Quick Sight is block storage, while OpenSearch is DNS",
+        "text": "Amazon Quick Sight: search indexing and log analytics; OpenSearch Service: business-intelligence dashboards and visual analytics.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Quick Sight provides BI dashboards and visual analytics, while OpenSearch Service provides search and log-analytics capabilities",
+        "text": "Amazon Quick Sight: business-intelligence dashboards and visual analytics; OpenSearch Service: search indexing and log analytics.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Quick Sight is a container registry, while OpenSearch is email",
+        "text": "Amazon Quick Sight: business-intelligence dashboards and visual analytics; OpenSearch Service: managed ingestion of streaming records.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Quick Sight and OpenSearch are identical services",
+        "text": "Amazon Quick Sight: managed ingestion of streaming records; OpenSearch Service: search indexing and log analytics.",
         "correct": false
       }
     ],
@@ -5609,7 +5609,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "HARD",
     "style": "SCENARIO",
-    "question": "Business users need interactive dashboards and visualizations over company datasets rather than a search engine for application logs. Which AWS BI capability is the BEST fit?",
+    "question": "A company wants a managed business-intelligence service for business users to create and share interactive dashboards over company datasets. Which service best fits?",
     "options": [
       {
         "key": "A",
@@ -5618,17 +5618,17 @@
       },
       {
         "key": "B",
-        "text": "Amazon OpenSearch Service selected only for log indexing",
+        "text": "Amazon OpenSearch Service",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon Quick Sight within Amazon Quick",
+        "text": "Amazon Quick Sight (formerly Amazon QuickSight)",
         "correct": true
       },
       {
         "key": "D",
-        "text": "EC2 instance store",
+        "text": "Amazon Athena",
         "correct": false
       }
     ],
@@ -5639,8 +5639,8 @@
       "dashboard"
     ],
     "source": {
-      "title": "What is Amazon Quick?",
-      "url": "https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html"
+      "title": "Amazon Quick User Guide",
+      "url": "https://docs.aws.amazon.com/quick/latest/userguide/"
     },
     "active": true
   },
@@ -5654,22 +5654,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Providing global DNS",
+        "text": "Publish notifications to multiple subscribers",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Building ML models",
+        "text": "Coordinate multi-step workflows using state machines",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Storing container images",
+        "text": "Route events to targets using event patterns",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Providing managed message queues that decouple producers from consumers",
+        "text": "Provide message queues that decouple producers and consumers",
         "correct": true
       }
     ],
@@ -5690,7 +5690,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "UNDERSTANDING",
-    "question": "Which AWS service uses a publish/subscribe model to fan out a message to multiple subscribers?",
+    "question": "Which AWS service uses topics and subscriptions to publish a message to multiple subscribers?",
     "options": [
       {
         "key": "A",
@@ -5699,17 +5699,17 @@
       },
       {
         "key": "B",
-        "text": "Amazon SQS used as a single queue only",
+        "text": "Amazon SQS",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Amazon EBS",
+        "text": "Amazon EventBridge",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon RDS",
+        "text": "AWS Step Functions",
         "correct": false
       }
     ],
@@ -5735,22 +5735,22 @@
     "options": [
       {
         "key": "A",
-        "text": "EventBridge is block storage, while Step Functions is DNS",
+        "text": "EventBridge: orchestrating stateful multi-step workflows; Step Functions: routing events to targets through rules.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EventBridge routes events to targets based on rules, while Step Functions orchestrates multi-step workflows using state machines",
+        "text": "EventBridge: routing events to targets through rules; Step Functions: orchestrating stateful multi-step workflows.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "EventBridge stores container images, while Step Functions sends email only",
+        "text": "EventBridge: routing events to targets through rules; Step Functions: storing messages in a queue for consumers to poll.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "EventBridge and Step Functions perform exactly the same function",
+        "text": "EventBridge: storing messages in a queue for consumers to poll; Step Functions: orchestrating stateful multi-step workflows.",
         "correct": false
       }
     ],
@@ -5772,16 +5772,16 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "An order-processing system must absorb traffic spikes so that producers can continue submitting work even when consumers process messages more slowly. Which service is the BEST fit?",
+    "question": "An order system needs a managed queue to hold incoming work during traffic spikes until workers can retrieve and process it. Which service best fits?",
     "options": [
       {
         "key": "A",
-        "text": "Amazon Route 53",
+        "text": "Amazon SNS",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon EFS",
+        "text": "AWS Step Functions",
         "correct": false
       },
       {
@@ -5791,7 +5791,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Artifact",
+        "text": "Amazon EventBridge",
         "correct": false
       }
     ],
@@ -5817,12 +5817,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon SQS is primarily a CDN",
+        "text": "Amazon SQS coordinates a workflow through a state-machine definition",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon EventBridge is primarily persistent block storage",
+        "text": "Amazon EventBridge is a relational database for event records",
         "correct": false
       },
       {
@@ -5832,7 +5832,7 @@
       },
       {
         "key": "D",
-        "text": "Step Functions is primarily a domain registrar",
+        "text": "AWS Step Functions is a topic-based notification service",
         "correct": false
       },
       {
@@ -5864,22 +5864,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Delivering cached website content",
+        "text": "Manage application release-pipeline stages",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Creating relational database schemas",
+        "text": "Record historical resource configurations",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Running a public DNS service",
+        "text": "Aggregate security findings across accounts",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Centrally managing and operating nodes and common operational tasks across environments",
+        "text": "Manage nodes and automate common operational tasks",
         "correct": true
       }
     ],
@@ -5909,17 +5909,17 @@
       },
       {
         "key": "B",
-        "text": "Route 53 Resolver",
+        "text": "Patch Manager",
         "correct": false
       },
       {
         "key": "C",
-        "text": "S3 Lifecycle",
+        "text": "State Manager",
         "correct": false
       },
       {
         "key": "D",
-        "text": "CloudFront Origin Shield",
+        "text": "Inventory",
         "correct": false
       }
     ],
@@ -5944,22 +5944,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Systems Manager is object storage, while CloudWatch is block storage",
+        "text": "Systems Manager: metrics, logs, alarms, and observability; CloudWatch: node management and operational actions.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Systems Manager performs node management and operational actions, while CloudWatch focuses on observability through metrics, logs, alarms, and related monitoring capabilities",
+        "text": "Systems Manager: node management and operational actions; CloudWatch: metrics, logs, alarms, and observability.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Systems Manager and CloudWatch are identical services",
+        "text": "Systems Manager: node management and operational actions; CloudWatch: AWS compliance report distribution.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Systems Manager only manages DNS, while CloudWatch only sends email",
+        "text": "Systems Manager: AWS compliance report distribution; CloudWatch: metrics, logs, alarms, and observability.",
         "correct": false
       }
     ],
@@ -5985,12 +5985,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon CloudFront",
+        "text": "Amazon Inspector",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Quick Sight",
+        "text": "AWS Config",
         "correct": false
       },
       {
@@ -6000,7 +6000,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Database Migration Service",
+        "text": "AWS CloudTrail",
         "correct": false
       }
     ],
@@ -6026,22 +6026,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Registering domain names",
+        "text": "Coordinate the stages of a release pipeline",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Providing virtual desktops",
+        "text": "Trace requests across distributed services",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Managing S3 storage classes",
+        "text": "Manage application infrastructure from templates",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Compiling source code, running tests, and producing build artifacts",
+        "text": "Compile source code, run tests, and produce build artifacts",
         "correct": true
       }
     ],
@@ -6066,22 +6066,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Stages and actions in a continuous software release workflow",
+        "text": "Source, build, and deployment stages in a release workflow",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Block storage attachment",
+        "text": "Application-level request tracing",
         "correct": false
       },
       {
         "key": "C",
-        "text": "DNS recursive resolution",
+        "text": "Infrastructure configuration compliance checks",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Machine translation",
+        "text": "Software license entitlement management",
         "correct": false
       }
     ],
@@ -6106,22 +6106,22 @@
     "options": [
       {
         "key": "A",
-        "text": "X-Ray stores container images, while CodeBuild registers domains",
+        "text": "AWS X-Ray: source compilation and automated tests; AWS CodeBuild: distributed request tracing.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "X-Ray traces requests through distributed applications for diagnostics, while CodeBuild runs builds and tests",
+        "text": "AWS X-Ray: distributed request tracing; AWS CodeBuild: source compilation and automated tests.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "X-Ray is a database, while CodeBuild is a CDN",
+        "text": "AWS X-Ray: distributed request tracing; AWS CodeBuild: software release-stage orchestration.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "X-Ray and CodeBuild perform identical pipeline stages",
+        "text": "AWS X-Ray: software release-stage orchestration; AWS CodeBuild: source compilation and automated tests.",
         "correct": false
       }
     ],
@@ -6152,7 +6152,7 @@
       },
       {
         "key": "B",
-        "text": "Amazon SES",
+        "text": "AWS CodePipeline",
         "correct": false
       },
       {
@@ -6162,7 +6162,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon EBS",
+        "text": "AWS CloudFormation",
         "correct": false
       }
     ],
@@ -6184,26 +6184,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "Which AWS service provides managed virtual desktops to end users?",
+    "question": "Which AWS offering provides each user with a persistent managed virtual desktop?",
     "options": [
       {
         "key": "A",
-        "text": "Amazon AppStream 2.0 selected only as object storage",
+        "text": "Amazon WorkSpaces Applications",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon Route 53",
+        "text": "Amazon WorkSpaces Secure Browser",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Glue",
+        "text": "AWS Client VPN",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon WorkSpaces",
+        "text": "Amazon WorkSpaces Personal",
         "correct": true
       }
     ],
@@ -6213,8 +6213,8 @@
       "virtual-desktop"
     ],
     "source": {
-      "title": "What is Amazon WorkSpaces?",
-      "url": "https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html"
+      "title": "Use and manage WorkSpaces Personal",
+      "url": "https://docs.aws.amazon.com/workspaces/latest/adminguide/managing-wsp-personal.html"
     },
     "active": true
   },
@@ -6228,22 +6228,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Streaming desktop applications from AWS to users without requiring those applications to be installed locally",
+        "text": "Stream desktop applications to users without local application installation",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Providing managed relational databases",
+        "text": "Provide a dedicated persistent personal desktop for every user",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Creating S3 storage classes",
+        "text": "Provide isolated sessions exclusively for web browsing",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Running DNS health checks",
+        "text": "Establish an encrypted remote-user connection into a VPC",
         "correct": false
       }
     ],
@@ -6264,26 +6264,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement BEST distinguishes WorkSpaces Secure Browser from Amazon WorkSpaces?",
+    "question": "Which statement best distinguishes WorkSpaces Secure Browser from WorkSpaces Personal?",
     "options": [
       {
         "key": "A",
-        "text": "Secure Browser is block storage, while WorkSpaces is a CDN",
+        "text": "WorkSpaces Secure Browser: persistent managed virtual desktops; WorkSpaces Personal: isolated browser sessions for web access.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Secure Browser provides isolated browser sessions for web access, while WorkSpaces provides managed virtual desktops",
+        "text": "WorkSpaces Secure Browser: isolated browser sessions for web access; WorkSpaces Personal: persistent managed virtual desktops.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Secure Browser is a database migration service, while WorkSpaces is a queue",
+        "text": "WorkSpaces Secure Browser: isolated browser sessions for web access; WorkSpaces Personal: encrypted network tunnels for remote users.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Secure Browser and WorkSpaces provide identical end-user environments",
+        "text": "WorkSpaces Secure Browser: encrypted network tunnels for remote users; WorkSpaces Personal: persistent managed virtual desktops.",
         "correct": false
       }
     ],
@@ -6305,16 +6305,16 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "HARD",
     "style": "SCENARIO",
-    "question": "A company wants contractors to access internal web applications through an isolated browser session without providing each contractor a full virtual desktop. Which service matches this capability?",
+    "question": "An existing eligible customer needs a purpose-built hosted browser service for contractors to access internal web applications. The team does not want to maintain a custom application-streaming image. Which service meets this requirement?",
     "options": [
       {
         "key": "A",
-        "text": "Amazon WorkSpaces selected specifically because a full desktop is not wanted",
+        "text": "Amazon WorkSpaces Personal",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon EBS",
+        "text": "Amazon WorkSpaces Applications",
         "correct": false
       },
       {
@@ -6324,7 +6324,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "AWS Client VPN",
         "correct": false
       }
     ],
@@ -6334,8 +6334,8 @@
       "browser-isolation"
     ],
     "source": {
-      "title": "Amazon WorkSpaces Secure Browser",
-      "url": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html"
+      "title": "Amazon WorkSpaces Secure Browser availability change",
+      "url": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/workspaces-secure-browser-maintenance-mode.html"
     },
     "active": true
   },
@@ -6388,22 +6388,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Sending and receiving email at scale",
+        "text": "Send and receive email at scale",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Providing managed virtual desktops",
+        "text": "Publish notifications through subscribed topics",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Running graph databases",
+        "text": "Route application events to selected targets",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Providing dedicated network circuits",
+        "text": "Manage application-user sign-up and sign-in",
         "correct": false
       }
     ],
@@ -6427,22 +6427,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Amplify is block storage, while IoT Core is a relational database",
+        "text": "AWS Amplify: device connectivity and IoT message routing; AWS IoT Core: web and mobile application development and hosting.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amplify provides tools and managed capabilities for web/mobile application development and hosting, while IoT Core connects devices and routes IoT messages to AWS services",
+        "text": "AWS Amplify: web and mobile application development and hosting; AWS IoT Core: device connectivity and IoT message routing.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Amplify is a DNS registrar, while IoT Core is a data warehouse",
+        "text": "AWS Amplify: web and mobile application development and hosting; AWS IoT Core: cloud contact-center operations.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amplify and IoT Core are identical frontend services",
+        "text": "AWS Amplify: cloud contact-center operations; AWS IoT Core: device connectivity and IoT message routing.",
         "correct": false
       }
     ],
@@ -6463,7 +6463,7 @@
     "type": "MULTIPLE_CHOICE",
     "difficulty": "HARD",
     "style": "UNDERSTANDING",
-    "question": "Which TWO service-to-use-case mappings are correct? (Select TWO.)",
+    "question": "Which TWO mappings of AWS business, frontend, or IoT services to use cases are correct? (Select TWO.)",
     "options": [
       {
         "key": "A",
@@ -6472,12 +6472,12 @@
       },
       {
         "key": "B",
-        "text": "Use Amazon SES primarily for virtual desktop delivery",
+        "text": "Use Amazon SES to provide application-user sign-in",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Use AWS Amplify primarily as a dedicated network circuit",
+        "text": "Use AWS Amplify as the service that manages IoT device connectivity",
         "correct": false
       },
       {
@@ -6487,7 +6487,7 @@
       },
       {
         "key": "E",
-        "text": "Use AWS IoT Core primarily as a relational database engine",
+        "text": "Use AWS IoT Core as the service that hosts business-intelligence dashboards",
         "correct": false
       }
     ],

@@ -4,8 +4,8 @@
     "concept": "clf-on-demand-spot",
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
-    "style": "BASIC",
-    "question": "Which Amazon EC2 purchasing option requires no long-term commitment and charges for compute as it is used?",
+    "style": "SCENARIO",
+    "question": "A company needs EC2 instances for a three-week project. It will not make a one-year or three-year commitment and cannot accept interruptions caused by AWS reclaiming spare capacity. Which purchasing option best meets these requirements?",
     "options": [
       {
         "key": "A",
@@ -14,17 +14,17 @@
       },
       {
         "key": "B",
-        "text": "Spot Instances with interruption risk",
+        "text": "Spot Instances",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Reserved Instances with a term commitment",
+        "text": "Reserved Instances",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Dedicated Hosts purchased only for server-bound licensing",
+        "text": "Compute Savings Plans",
         "correct": false
       }
     ],
@@ -48,22 +48,22 @@
     "options": [
       {
         "key": "A",
-        "text": "They guarantee dedicated physical hosts at the On-Demand price",
+        "text": "A discount in exchange for a fixed one-year or three-year term",
         "correct": false
       },
       {
         "key": "B",
-        "text": "They use spare EC2 capacity at a large discount, but they can be interrupted by EC2",
+        "text": "Discounted spare capacity that EC2 can reclaim",
         "correct": true
       },
       {
         "key": "C",
-        "text": "They require a three-year commitment but cannot be interrupted",
+        "text": "A discount that reserves capacity in one Availability Zone",
         "correct": false
       },
       {
         "key": "D",
-        "text": "They reserve capacity in a specific Availability Zone without running an instance",
+        "text": "Discounted single-tenant hardware with host-level placement control",
         "correct": false
       }
     ],
@@ -88,22 +88,22 @@
     "options": [
       {
         "key": "A",
-        "text": "On-Demand always requires a one-year term, while Spot requires three years",
+        "text": "On-Demand requires a term commitment; Spot charges only for capacity actually used",
         "correct": false
       },
       {
         "key": "B",
-        "text": "On-Demand reserves an entire physical host, while Spot is always single tenant",
+        "text": "On-Demand guarantees launch capacity; Spot guarantees uninterrupted execution",
         "correct": false
       },
       {
         "key": "C",
-        "text": "On-Demand emphasizes flexibility without interruption caused by EC2 capacity reclamation, while Spot offers deeper discounts for workloads that can tolerate interruption",
+        "text": "On-Demand has no Spot reclamation mechanism; Spot uses interruptible spare capacity",
         "correct": true
       },
       {
         "key": "D",
-        "text": "On-Demand and Spot have identical pricing and interruption behavior",
+        "text": "On-Demand uses dedicated physical hosts; Spot uses shared physical hosts",
         "correct": false
       }
     ],
@@ -129,17 +129,17 @@
     "options": [
       {
         "key": "A",
-        "text": "On-Demand Instances only because interruption is acceptable",
+        "text": "On-Demand Instances",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Dedicated Hosts solely to reduce batch-compute price",
+        "text": "Dedicated Hosts",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Capacity Reservations solely to obtain a billing discount",
+        "text": "On-Demand Capacity Reservations",
         "correct": false
       },
       {
@@ -170,27 +170,27 @@
     "options": [
       {
         "key": "A",
-        "text": "A stateless worker fleet whose interrupted tasks can be retried",
+        "text": "A worker fleet that checkpoints work and retries interrupted tasks",
         "correct": true
       },
       {
         "key": "B",
-        "text": "A single-instance database that cannot tolerate any interruption",
+        "text": "A single database server whose interruption would stop a critical transaction system",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A flexible batch-processing workload with no strict requirement that each instance run continuously",
+        "text": "Batch jobs with flexible completion times and restartable processing",
         "correct": true
       },
       {
         "key": "D",
-        "text": "A workload that requires guaranteed capacity in one Availability Zone at all times",
+        "text": "A non-restartable job that must run continuously until a strict deadline",
         "correct": false
       },
       {
         "key": "E",
-        "text": "A legacy application whose license requires a customer-controlled dedicated physical host",
+        "text": "An application that requires a specific dedicated physical host for licensing",
         "correct": false
       }
     ],
@@ -212,26 +212,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "What do AWS Savings Plans provide in exchange for a usage commitment?",
+    "question": "What is the primary benefit of a Compute Savings Plan in exchange for a one-year or three-year spending commitment?",
     "options": [
       {
         "key": "A",
-        "text": "Discounted pricing for eligible compute usage",
+        "text": "Discounts on eligible compute usage",
         "correct": true
       },
       {
         "key": "B",
-        "text": "A dedicated physical host with no billing commitment",
+        "text": "Reserved launch capacity in a specific Availability Zone",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A guarantee that an EC2 instance can never be interrupted",
+        "text": "Exclusive use of a physical server",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A DNS routing policy for multi-Region applications",
+        "text": "Protection from Spot capacity interruptions",
         "correct": false
       }
     ],
@@ -251,26 +251,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "UNDERSTANDING",
-    "question": "What is the primary purpose of an EC2 Capacity Reservation?",
+    "question": "What is the primary purpose of an EC2 On-Demand Capacity Reservation?",
     "options": [
       {
         "key": "A",
-        "text": "Provide a billing discount without reserving capacity",
+        "text": "Reduce compute prices through an hourly spending commitment",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Reserve EC2 capacity for a specific configuration in an Availability Zone",
+        "text": "Reserve matching EC2 capacity in a specified Availability Zone",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Store long-term backup objects",
+        "text": "Provide discounted spare capacity that EC2 can reclaim",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Create an organization-wide support plan",
+        "text": "Dedicate an entire physical server to one customer",
         "correct": false
       }
     ],
@@ -290,26 +290,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement BEST distinguishes a Savings Plan from an EC2 Reserved Instance?",
+    "question": "Which statement best distinguishes Compute Savings Plans from EC2 Reserved Instances?",
     "options": [
       {
         "key": "A",
-        "text": "Savings Plans reserve a physical host, while Reserved Instances are DNS records",
+        "text": "Compute Savings Plans reserve physical hosts; EC2 Reserved Instances reserve IP addresses",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Savings Plans can only apply to S3 storage, while Reserved Instances can only apply to Lambda",
+        "text": "Compute Savings Plans guarantee launch capacity; EC2 Reserved Instances only grant temporary discounts",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A Savings Plan commits to a consistent amount of eligible usage spending, while an EC2 Reserved Instance discount is tied more directly to an eligible EC2 instance configuration",
+        "text": "Compute Savings Plans commit to eligible hourly spending; EC2 Reserved Instances provide discounts for matching instance attributes",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Savings Plans and Reserved Instances are both capacity reservations with no pricing effect",
+        "text": "Compute Savings Plans are limited to one Availability Zone; EC2 Reserved Instances cover all AWS services",
         "correct": false
       }
     ],
@@ -330,26 +330,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "COMPARISON",
-    "question": "Which statement about Capacity Reservations is correct?",
+    "question": "Which statement about EC2 On-Demand Capacity Reservations is correct?",
     "options": [
       {
         "key": "A",
-        "text": "A Capacity Reservation always includes the deepest EC2 pricing discount",
+        "text": "An On-Demand Capacity Reservation automatically provides a Reserved Instance discount",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A Capacity Reservation is free until an instance launches into it",
+        "text": "Unused reserved capacity is not billed",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A Capacity Reservation can only reserve capacity across all Regions at once",
+        "text": "An On-Demand Capacity Reservation reserves capacity in every Availability Zone in a Region",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A Capacity Reservation solves a capacity-availability requirement and can incur On-Demand-equivalent charges even when the reserved capacity is unused",
+        "text": "Unused reserved capacity can incur charges even when no instance is using it",
         "correct": true
       }
     ],
@@ -379,17 +379,17 @@
       },
       {
         "key": "B",
-        "text": "A Capacity Reservation used only for guaranteed capacity",
+        "text": "EC2 Instance Savings Plans",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Spot Instances for every production component regardless of interruption tolerance",
+        "text": "Standard EC2 Reserved Instances",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Dedicated Hosts solely because usage is predictable",
+        "text": "On-Demand Capacity Reservations",
         "correct": false
       }
     ],
@@ -414,7 +414,7 @@
     "options": [
       {
         "key": "A",
-        "text": "A Capacity Reservation automatically creates a three-year Savings Plan",
+        "text": "A Compute Savings Plan guarantees that matching instances can launch in a chosen Availability Zone",
         "correct": false
       },
       {
@@ -424,7 +424,7 @@
       },
       {
         "key": "C",
-        "text": "Reserved Instances cannot provide billing discounts",
+        "text": "A Regional EC2 Reserved Instance guarantees capacity in every Availability Zone in its Region",
         "correct": false
       },
       {
@@ -434,7 +434,7 @@
       },
       {
         "key": "E",
-        "text": "Spot Instances guarantee reserved capacity in a chosen Availability Zone",
+        "text": "An On-Demand Capacity Reservation automatically adds a long-term commitment discount",
         "correct": false
       }
     ],
@@ -459,22 +459,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A shared-tenancy EC2 instance with no host visibility",
+        "text": "An EC2 instance that uses shared physical hardware",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A physical server dedicated for a customer's EC2 usage with host-level visibility and placement control",
+        "text": "A physical server dedicated to a customer with host-level visibility and placement control",
         "correct": true
       },
       {
         "key": "C",
-        "text": "A managed DNS service",
+        "text": "Reserved instance capacity in a selected Availability Zone",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A serverless compute environment",
+        "text": "A commitment to a fixed amount of eligible compute spending",
         "correct": false
       }
     ],
@@ -498,22 +498,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The application needs a public DNS name",
+        "text": "The workload must scale across several Availability Zones",
         "correct": false
       },
       {
         "key": "B",
-        "text": "The application needs object storage",
+        "text": "The workload must run on hardware isolated from other customers, without placement requirements",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A software license is bound to physical sockets or cores and requires host-level visibility",
+        "text": "An eligible per-socket license requires visibility into the physical host",
         "correct": true
       },
       {
         "key": "D",
-        "text": "The team wants to send email notifications",
+        "text": "The workload can use interruptible spare capacity to lower costs",
         "correct": false
       }
     ],
@@ -538,22 +538,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Dedicated Hosts are always serverless, while Dedicated Instances are always containers",
+        "text": "Dedicated Hosts: single-tenant instances without equivalent host-level control; Dedicated Instances: dedicated hardware with host-level placement and licensing visibility.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Dedicated Hosts are object storage, while Dedicated Instances are block storage",
+        "text": "Dedicated Hosts: dedicated hardware with host-level placement and licensing visibility; Dedicated Instances: a spending commitment that discounts shared-tenancy compute.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Dedicated Hosts and Dedicated Instances provide identical host-level licensing visibility",
+        "text": "Dedicated Hosts: a spending commitment that discounts shared-tenancy compute; Dedicated Instances: single-tenant instances without equivalent host-level control.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Dedicated Hosts expose host-level placement and hardware visibility, while Dedicated Instances provide single-tenant instances without the same host-level control",
+        "text": "Dedicated Hosts: dedicated hardware with host-level placement and licensing visibility; Dedicated Instances: single-tenant instances without equivalent host-level control.",
         "correct": true
       }
     ],
@@ -583,7 +583,7 @@
       },
       {
         "key": "B",
-        "text": "Dedicated Instances only",
+        "text": "Amazon EC2 Dedicated Instances",
         "correct": false
       },
       {
@@ -593,7 +593,7 @@
       },
       {
         "key": "D",
-        "text": "A standard On-Demand shared-tenancy instance",
+        "text": "Amazon EC2 shared-tenancy On-Demand Instances",
         "correct": false
       }
     ],
@@ -614,26 +614,26 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "EASY",
     "style": "BASIC",
-    "question": "Which data-transfer direction is generally more likely to incur AWS data-transfer charges?",
+    "question": "Which operation is generally subject to internet data-transfer-out charges?",
     "options": [
       {
         "key": "A",
-        "text": "Data transferred into AWS from the internet",
+        "text": "Inbound transfer from the internet to EC2",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Data transferred out from AWS to the internet",
+        "text": "Outbound transfer from EC2 to the internet after applicable free allowances",
         "correct": true
       },
       {
         "key": "C",
-        "text": "All data transferred within the same EC2 instance",
+        "text": "Data copied between processes on the same instance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Every API call within the AWS Management Console",
+        "text": "Data read locally from an EC2 instance-store disk",
         "correct": false
       }
     ],
@@ -657,12 +657,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Availability Zones use different currencies",
+        "text": "Every Availability Zone requires a separate network subscription",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS requires a separate Support plan for every Availability Zone",
+        "text": "Each Availability Zone applies its own AWS Support charge",
         "correct": false
       },
       {
@@ -672,7 +672,7 @@
       },
       {
         "key": "D",
-        "text": "Cross-AZ traffic always becomes internet traffic",
+        "text": "All cross-AZ traffic must pass through a NAT gateway",
         "correct": false
       }
     ],
@@ -697,22 +697,22 @@
     "options": [
       {
         "key": "A",
-        "text": "All AWS data transfer is free regardless of direction",
+        "text": "Inbound and outbound internet data always have the same transfer price",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Only the number of IAM users determines transfer cost",
+        "text": "The account's Support tier determines the per-GB data-transfer rate",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Data transfer always has one global flat price for every service and topology",
+        "text": "The same per-GB rate applies to every Region and network path",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Transfer cost depends on factors such as direction, service, Region, and whether traffic crosses Availability Zones or other network boundaries",
+        "text": "Charges depend on the service, direction, Region, and network path",
         "correct": true
       }
     ],
@@ -742,17 +742,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Support case fees for each packet",
+        "text": "Internet gateway hourly rental charges",
         "correct": false
       },
       {
         "key": "C",
-        "text": "S3 Glacier retrieval fees even though S3 is not used",
+        "text": "Route 53 hosted-zone charges",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Route 53 domain-registration fees for each TCP connection",
+        "text": "Data transfer between processes on the same instance",
         "correct": false
       }
     ],
@@ -788,12 +788,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Support Center",
+        "text": "AWS Budgets",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "AWS Cost and Usage Reports",
         "correct": false
       }
     ],
@@ -822,7 +822,7 @@
       },
       {
         "key": "B",
-        "text": "AWS Data Exports only",
+        "text": "AWS Cost and Usage Reports",
         "correct": false
       },
       {
@@ -832,7 +832,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Health Dashboard",
+        "text": "Cost allocation tags",
         "correct": false
       }
     ],
@@ -857,22 +857,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Pricing Calculator opens support cases, while Cost Explorer registers domains",
+        "text": "AWS Pricing Calculator: analysis of historical costs and usage with forecasts; AWS Cost Explorer: estimates for planned or modeled resource usage.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Pricing Calculator manages IAM users, while Cost Explorer stores objects",
+        "text": "AWS Pricing Calculator: estimates for planned or modeled resource usage; AWS Cost Explorer: budget threshold notifications.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Pricing Calculator and Cost Explorer are identical tools",
+        "text": "AWS Pricing Calculator: budget threshold notifications; AWS Cost Explorer: analysis of historical costs and usage with forecasts.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Pricing Calculator estimates planned or modeled costs, while Cost Explorer analyzes actual historical cost and usage data and forecasts",
+        "text": "AWS Pricing Calculator: estimates for planned or modeled resource usage; AWS Cost Explorer: analysis of historical costs and usage with forecasts.",
         "correct": true
       }
     ],
@@ -903,17 +903,17 @@
       },
       {
         "key": "B",
-        "text": "AWS Cost Explorer only, because it requires historical usage",
+        "text": "AWS Cost Explorer",
         "correct": false
       },
       {
         "key": "C",
-        "text": "AWS Health Dashboard",
+        "text": "AWS Budgets",
         "correct": false
       },
       {
         "key": "D",
-        "text": "AWS Trusted Advisor service-limit checks",
+        "text": "AWS Cost and Usage Reports",
         "correct": false
       }
     ],
@@ -938,7 +938,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Budgets email alerts only",
+        "text": "AWS Budgets notifications",
         "correct": false
       },
       {
@@ -948,12 +948,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Support Center",
+        "text": "AWS Pricing Calculator estimates",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Amazon Route 53 hosted zones",
+        "text": "AWS Trusted Advisor cost recommendations",
         "correct": false
       }
     ],
@@ -979,12 +979,12 @@
     "options": [
       {
         "key": "A",
-        "text": "Use Pricing Calculator primarily to inspect account-specific AWS Health events",
+        "text": "Use AWS Pricing Calculator to send account-spending threshold alerts",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Use Cost Explorer primarily to create IAM users",
+        "text": "Use AWS Budgets as the primary export of itemized hourly billing data to S3",
         "correct": false
       },
       {
@@ -994,7 +994,7 @@
       },
       {
         "key": "D",
-        "text": "Use CUR 2.0 primarily as a technical-support case system",
+        "text": "Use Cost and Usage Reports to estimate a new architecture before any usage occurs",
         "correct": false
       },
       {
@@ -1024,12 +1024,12 @@
     "options": [
       {
         "key": "A",
-        "text": "All member accounts become one IAM security boundary",
+        "text": "Combine member-account IAM identities into one directory",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Every AWS service becomes free",
+        "text": "Apply the management account's IAM policies to all member accounts",
         "correct": false
       },
       {
@@ -1039,7 +1039,7 @@
       },
       {
         "key": "D",
-        "text": "All member resources are automatically moved into one Region",
+        "text": "Pool every service quota across all member accounts",
         "correct": false
       }
     ],
@@ -1063,17 +1063,17 @@
     "options": [
       {
         "key": "A",
-        "text": "It eliminates all data-transfer charges",
+        "text": "All inter-account data transfer becomes free",
         "correct": false
       },
       {
         "key": "B",
-        "text": "It converts every On-Demand instance into a Spot Instance",
+        "text": "All member-account resources receive Reserved Instance prices",
         "correct": false
       },
       {
         "key": "C",
-        "text": "It changes every resource to the smallest size automatically",
+        "text": "Every member account inherits the largest service quota in the organization",
         "correct": false
       },
       {
@@ -1108,17 +1108,17 @@
       },
       {
         "key": "B",
-        "text": "All IAM users from member accounts are automatically merged",
+        "text": "IAM users are merged into the management account",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Consolidated billing removes account-level resource isolation",
+        "text": "All member accounts must use one VPC",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Consolidated billing requires every workload to share one VPC",
+        "text": "Member-account service quotas are combined into one shared quota",
         "correct": false
       }
     ],
@@ -1143,7 +1143,7 @@
     "options": [
       {
         "key": "A",
-        "text": "Create one IAM user shared by all teams",
+        "text": "AWS IAM Identity Center permission sets",
         "correct": false
       },
       {
@@ -1153,12 +1153,12 @@
       },
       {
         "key": "C",
-        "text": "Move every workload into one account",
+        "text": "AWS Resource Access Manager resource shares",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Use Route 53 health checks",
+        "text": "AWS Control Tower account-level detective controls",
         "correct": false
       }
     ],
@@ -1203,7 +1203,7 @@
       },
       {
         "key": "E",
-        "text": "It automatically makes every workload multi-Region",
+        "text": "Service quotas for member accounts are automatically combined",
         "correct": false
       }
     ],
@@ -1229,22 +1229,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Change the price of an EC2 instance",
+        "text": "Enforce a fixed spending limit on each resource",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Increase an account's service quota",
+        "text": "Automatically apply a service-level volume discount",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Categorize and track AWS costs using business-relevant labels such as project or cost center",
+        "text": "Group costs by labels such as project or cost center",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Encrypt all resource data",
+        "text": "Share a Savings Plan with selected organizational units",
         "correct": false
       }
     ],
@@ -1269,22 +1269,22 @@
     "options": [
       {
         "key": "A",
-        "text": "The resource must be moved to another Region",
+        "text": "An IAM permission policy must use the tag in a condition",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A Premium Support case must be opened",
+        "text": "An AWS Budget must be created for the tag value",
         "correct": false
       },
       {
         "key": "C",
-        "text": "The tag value must be converted into an IAM policy",
+        "text": "The resource must be assigned to a separate linked account",
         "correct": false
       },
       {
         "key": "D",
-        "text": "The relevant tag must be activated as a cost allocation tag",
+        "text": "The tag key must be activated for cost allocation in Billing",
         "correct": true
       }
     ],
@@ -1309,22 +1309,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Cost allocation tags categorize spend by business context, while AWS Budgets tracks spend or usage against defined thresholds",
+        "text": "Cost allocation tags: categorizing costs by business labels; AWS Budgets: tracking costs or usage against defined thresholds.",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Cost allocation tags send support engineers, while Budgets creates DNS records",
+        "text": "Cost allocation tags: tracking costs or usage against defined thresholds; AWS Budgets: categorizing costs by business labels.",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Cost allocation tags reserve EC2 capacity, while Budgets purchases Savings Plans automatically",
+        "text": "Cost allocation tags: categorizing costs by business labels; AWS Budgets: estimating charges for a proposed architecture.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Cost allocation tags and Budgets perform the same function",
+        "text": "Cost allocation tags: estimating charges for a proposed architecture; AWS Budgets: tracking costs or usage against defined thresholds.",
         "correct": false
       }
     ],
@@ -1349,22 +1349,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Create different Availability Zone letters for each project",
+        "text": "Use project names in resource names without activating cost allocation tags",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Apply project tags to supported resources and activate those tags for cost allocation",
+        "text": "Apply project tags to supported resources and activate them for cost allocation",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Use one shared untagged resource name for all projects",
+        "text": "Create separate IAM groups for project users without tagging resources",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Open separate AWS Health events for each project",
+        "text": "Create a single account-wide budget without project dimensions",
         "correct": false
       }
     ],
@@ -1473,17 +1473,17 @@
       },
       {
         "key": "B",
-        "text": "The ability to create an AWS account",
+        "text": "Account and billing assistance",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Access to AWS Documentation",
+        "text": "Access to AWS documentation",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Access to Basic Support billing questions",
+        "text": "24/7 access to Cloud Support Engineers",
         "correct": false
       }
     ],
@@ -1505,7 +1505,7 @@
     "type": "SINGLE_CHOICE",
     "difficulty": "MEDIUM",
     "style": "SCENARIO",
-    "question": "A company operates business-critical production workloads and wants a designated TAM plus strategic guidance from AWS. Which support tier should it evaluate?",
+    "question": "A company wants a designated Technical Account Manager and strategic guidance. Which is the lowest AWS Support tier listed that includes a designated TAM under the current commercial plan lineup?",
     "options": [
       {
         "key": "A",
@@ -1519,12 +1519,12 @@
       },
       {
         "key": "C",
-        "text": "AWS Business Support+ only",
+        "text": "AWS Business Support+",
         "correct": false
       },
       {
         "key": "D",
-        "text": "No support plan because TAMs are provided by Cost Explorer",
+        "text": "AWS Unified Operations",
         "correct": false
       }
     ],
@@ -1549,22 +1549,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Unified Operations removes all technical support access",
+        "text": "It removes the designated TAM and relies only on self-service guidance",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Unified Operations is the free tier for personal AWS accounts",
+        "text": "It replaces technical support with account and billing assistance",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Unified Operations adds a designated specialist team, proactive workload monitoring, and deeper application-specific operational engagement",
+        "text": "It adds specialist operational engagement and proactive workload monitoring",
         "correct": true
       },
       {
         "key": "D",
-        "text": "Unified Operations only provides billing documentation and no operational guidance",
+        "text": "It limits support to business hours in one AWS Region",
         "correct": false
       }
     ],
@@ -1586,11 +1586,11 @@
     "type": "MULTIPLE_CHOICE",
     "difficulty": "HARD",
     "style": "UNDERSTANDING",
-    "question": "Which TWO statements reflect the current AWS Support lineup? (Select TWO.)",
+    "question": "Which TWO statements describe the current commercial AWS Support plans? (Select TWO.)",
     "options": [
       {
         "key": "A",
-        "text": "Basic Support includes unlimited technical support cases with Cloud Support Engineers",
+        "text": "Basic Support includes Cloud Support Engineer assistance for production incidents",
         "correct": false
       },
       {
@@ -1600,17 +1600,17 @@
       },
       {
         "key": "C",
-        "text": "Developer Support is the long-term replacement for Business Support+",
+        "text": "Business Support+ includes a designated TAM as a standard feature",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Unified Operations provides fewer proactive capabilities than Basic Support",
+        "text": "Unified Operations provides only self-service documentation",
         "correct": false
       },
       {
         "key": "E",
-        "text": "AWS Enterprise Support includes a designated TAM and faster production-critical response than Business Support+",
+        "text": "Enterprise Support includes a designated TAM and a shorter initial response target for business-critical system-down cases than Business Support+",
         "correct": true
       }
     ],
@@ -1635,22 +1635,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Real-time packet capture for every VPC",
+        "text": "Historical resource configuration and compliance records",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A marketplace for third-party products",
+        "text": "Detailed line items for the monthly AWS bill",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A serverless relational database",
+        "text": "Account-specific notifications about AWS service events",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Best-practice checks and recommendations for an AWS environment",
+        "text": "Best-practice checks and recommendations for the AWS environment",
         "correct": true
       }
     ],
@@ -1679,17 +1679,17 @@
       },
       {
         "key": "B",
-        "text": "Domain Registration",
+        "text": "Security",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Machine Translation",
+        "text": "Fault Tolerance",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Object Versioning",
+        "text": "Performance",
         "correct": false
       }
     ],
@@ -1713,22 +1713,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Trusted Advisor is a DNS service, while AWS Health is block storage",
+        "text": "AWS Trusted Advisor: service events and scheduled changes affecting resources; AWS Health: best-practice recommendations for the AWS environment.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Trusted Advisor gives best-practice recommendations about the customer's environment, while AWS Health reports service and account events that may affect resources",
+        "text": "AWS Trusted Advisor: best-practice recommendations for the AWS environment; AWS Health: service events and scheduled changes affecting resources.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Trusted Advisor is a pricing calculator, while AWS Health manages IAM users",
+        "text": "AWS Trusted Advisor: best-practice recommendations for the AWS environment; AWS Health: itemized cost and usage exports.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Trusted Advisor and AWS Health are identical tools",
+        "text": "AWS Trusted Advisor: itemized cost and usage exports; AWS Health: service events and scheduled changes affecting resources.",
         "correct": false
       }
     ],
@@ -1753,22 +1753,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Amazon CloudFront cache behaviors",
+        "text": "AWS Pricing Calculator estimates",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon S3 Lifecycle",
+        "text": "Cost allocation tags",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Trusted Advisor Service Limits checks and the Service Quotas console",
+        "text": "Trusted Advisor Service Limits checks and Service Quotas",
         "correct": true
       },
       {
         "key": "D",
-        "text": "AWS Marketplace private offers",
+        "text": "AWS Marketplace subscriptions",
         "correct": false
       }
     ],
@@ -1798,7 +1798,7 @@
       },
       {
         "key": "B",
-        "text": "Domain Registration",
+        "text": "Cost allocation tagging",
         "correct": false
       },
       {
@@ -1808,12 +1808,12 @@
       },
       {
         "key": "D",
-        "text": "Machine Translation",
+        "text": "Billing forecasts",
         "correct": false
       },
       {
         "key": "E",
-        "text": "Container Image Storage",
+        "text": "Application release management",
         "correct": false
       }
     ],
@@ -1838,22 +1838,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Estimating the monthly cost of a new workload",
+        "text": "Forecasting next month's AWS bill",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Storing container images",
+        "text": "Evaluating resource compliance against custom rules",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Creating IAM permission policies",
+        "text": "Checking guest-operating-system CPU metrics",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Viewing AWS service events, account-specific events, and scheduled changes that may affect AWS resources",
+        "text": "Viewing AWS service events and account-specific resource notifications",
         "correct": true
       }
     ],
@@ -1882,17 +1882,17 @@
       },
       {
         "key": "B",
-        "text": "A public service event that is never related to any account",
+        "text": "A public event that necessarily affects every account in the Region",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A Cost Explorer forecast",
+        "text": "A forecast of future resource charges",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A Marketplace private offer",
+        "text": "A recommendation to change an IAM policy",
         "correct": false
       }
     ],
@@ -1916,22 +1916,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Public events are pricing estimates, while account events are IAM policies",
+        "text": "Public AWS Health events: events relevant to a particular account or its resources; Account-specific AWS Health events: service events not limited to one customer account.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Public events describe service issues not specific to one account, while account-specific events relate to a particular account or resources",
+        "text": "Public AWS Health events: service events not limited to one customer account; Account-specific AWS Health events: events relevant to a particular account or its resources.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Public events require Dedicated Hosts, while account events require Spot Instances",
+        "text": "Public AWS Health events: service events not limited to one customer account; Account-specific AWS Health events: application-level CPU threshold alarms.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Public and account-specific events are always identical",
+        "text": "Public AWS Health events: application-level CPU threshold alarms; Account-specific AWS Health events: events relevant to a particular account or its resources.",
         "correct": false
       }
     ],
@@ -1957,12 +1957,12 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Pricing Calculator API only",
+        "text": "AWS Cost Explorer API",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Amazon S3 Lifecycle",
+        "text": "AWS Config API",
         "correct": false
       },
       {
@@ -1972,7 +1972,7 @@
       },
       {
         "key": "D",
-        "text": "AWS Marketplace Catalog API",
+        "text": "AWS Pricing Calculator API",
         "correct": false
       }
     ],
@@ -1997,17 +1997,17 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Marketplace seller listings",
+        "text": "AWS Marketplace listings",
         "correct": false
       },
       {
         "key": "B",
-        "text": "EC2 Spot market history only",
+        "text": "AWS Well-Architected Tool reviews",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Cost allocation tag reports",
+        "text": "AWS Billing reports",
         "correct": false
       },
       {
@@ -2036,22 +2036,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Troubleshooting articles and answers to common AWS technical questions",
+        "text": "Troubleshooting articles addressing common AWS technical questions",
         "correct": true
       },
       {
         "key": "B",
-        "text": "Buying Reserved Instances",
+        "text": "Software procurement offers from third-party vendors",
         "correct": false
       },
       {
         "key": "C",
-        "text": "Managing EC2 Capacity Reservations",
+        "text": "A catalog of supported AWS compliance agreements",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Creating consolidated bills",
+        "text": "Workload-specific cost forecasts based on account usage",
         "correct": false
       }
     ],
@@ -2077,22 +2077,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Prescriptive Guidance is a support pricing plan, while Documentation is a billing invoice",
+        "text": "AWS Prescriptive Guidance: product-specific usage guides and API references; AWS Documentation: strategies and patterns for common technical initiatives.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Prescriptive Guidance focuses on strategies, patterns, and implementation guidance for common initiatives, while Documentation provides product-specific reference and usage guidance",
+        "text": "AWS Prescriptive Guidance: strategies and patterns for common technical initiatives; AWS Documentation: product-specific usage guides and API references.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Prescriptive Guidance is a DNS service, while Documentation is object storage",
+        "text": "AWS Prescriptive Guidance: strategies and patterns for common technical initiatives; AWS Documentation: third-party software procurement offers.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Prescriptive Guidance and Documentation are identical resources",
+        "text": "AWS Prescriptive Guidance: third-party software procurement offers; AWS Documentation: product-specific usage guides and API references.",
         "correct": false
       }
     ],
@@ -2118,12 +2118,12 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Pricing Calculator",
+        "text": "AWS Cost Explorer",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Cost Explorer",
+        "text": "AWS Marketplace",
         "correct": false
       },
       {
@@ -2133,7 +2133,7 @@
       },
       {
         "key": "D",
-        "text": "EC2 Capacity Reservations",
+        "text": "AWS Artifact",
         "correct": false
       }
     ],
@@ -2158,22 +2158,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A mandatory replacement for AWS Support",
+        "text": "A portal exclusively for opening AWS technical support cases",
         "correct": false
       },
       {
         "key": "B",
-        "text": "A service for reserving EC2 capacity",
+        "text": "A framework for reviewing workload architecture",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A DNS-only service",
+        "text": "An assessment of organizational cloud readiness",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A curated digital catalog for finding, buying, deploying, and managing third-party software, data, and services",
+        "text": "A digital catalog for finding and procuring third-party offerings on AWS",
         "correct": true
       }
     ],
@@ -2197,22 +2197,22 @@
     "options": [
       {
         "key": "A",
-        "text": "A global community of organizations that build and deliver solutions and services using AWS",
+        "text": "A global community of organizations that deliver AWS-based solutions and services",
         "correct": true
       },
       {
         "key": "B",
-        "text": "An EC2 purchasing option",
+        "text": "An AWS-operated consulting team for a specific customer engagement",
         "correct": false
       },
       {
         "key": "C",
-        "text": "A private subnet type",
+        "text": "A collection of AWS accounts under consolidated billing",
         "correct": false
       },
       {
         "key": "D",
-        "text": "A storage class for archived objects",
+        "text": "A directory of IAM users with access to partner products",
         "correct": false
       }
     ],
@@ -2236,22 +2236,22 @@
     "options": [
       {
         "key": "A",
-        "text": "Marketplace is a support plan, while Professional Services is a storage class",
+        "text": "AWS Marketplace: AWS-led consulting engagements; AWS Professional Services: discovery and procurement of third-party offerings.",
         "correct": false
       },
       {
         "key": "B",
-        "text": "Marketplace is a catalog and procurement channel for third-party offerings, while AWS Professional Services provides AWS-led consulting engagements",
+        "text": "AWS Marketplace: discovery and procurement of third-party offerings; AWS Professional Services: AWS-led consulting engagements.",
         "correct": true
       },
       {
         "key": "C",
-        "text": "Marketplace creates IAM users, while Professional Services registers domains",
+        "text": "AWS Marketplace: discovery and procurement of third-party offerings; AWS Professional Services: centralized management of workforce permissions.",
         "correct": false
       },
       {
         "key": "D",
-        "text": "Marketplace and Professional Services are identical offerings",
+        "text": "AWS Marketplace: centralized management of workforce permissions; AWS Professional Services: AWS-led consulting engagements.",
         "correct": false
       }
     ],
@@ -2276,12 +2276,12 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Health Dashboard",
+        "text": "AWS Support Center",
         "correct": false
       },
       {
         "key": "B",
-        "text": "AWS Service Quotas",
+        "text": "AWS Service Catalog",
         "correct": false
       },
       {
@@ -2291,7 +2291,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Route 53",
+        "text": "AWS Artifact",
         "correct": false
       }
     ],
@@ -2316,7 +2316,7 @@
     "options": [
       {
         "key": "A",
-        "text": "AWS Marketplace is the only way to open an AWS technical support case",
+        "text": "AWS Marketplace purchases automatically include AWS-led migration consulting",
         "correct": false
       },
       {
@@ -2326,7 +2326,7 @@
       },
       {
         "key": "C",
-        "text": "The AWS Partner Network is an EC2 capacity-reservation mechanism",
+        "text": "The AWS Partner Network is the AWS-operated team that delivers every Professional Services engagement",
         "correct": false
       },
       {
@@ -2336,7 +2336,7 @@
       },
       {
         "key": "E",
-        "text": "AWS Solutions Architects are a billing discount model",
+        "text": "AWS Solutions Architects replace the customer's responsibility for choosing requirements and operating workloads",
         "correct": false
       }
     ],

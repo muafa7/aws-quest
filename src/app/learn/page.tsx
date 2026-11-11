@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel } from "@/components/retro-panel";
 
 export const metadata = { title: "Learn" };
+export const dynamic = "force-dynamic";
 
 export default async function LearnPage() {
   const certifications = await prisma.certification.findMany({

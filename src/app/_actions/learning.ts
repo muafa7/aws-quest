@@ -3,7 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { nextReviewStage, reviewDateForStage } from "@/lib/learning/review";
+import { isExactPermutation, isValidSelection, sameAnswers, snapshotOptions } from "@/lib/learning/answers";
+import { challengeProgress } from "@/lib/learning/mastery";
+import { trainingQuestionWhere } from "@/lib/learning/question-pools";
+import { scheduleReview } from "@/lib/learning/review";
 import type { Confidence, LearningMode } from "@/lib/learning/types";
 
 function requiredString(formData: FormData, key: string) {
@@ -25,54 +28,34 @@ function parseConfidence(value: FormDataEntryValue | null): Confidence {
   throw new Error("Confidence is required for regular learning attempts.");
 }
 
-function normalizeAnswers(values: FormDataEntryValue[]) {
+function stringValues(values: FormDataEntryValue[]) {
   return values
     .filter((value): value is string => typeof value === "string")
     .map((value) => value.trim())
-    .filter(Boolean)
-    .sort();
-}
-
-function sameAnswers(a: string[], b: string[]) {
-  return a.length === b.length && a.every((value, index) => value === b[index]);
-}
-
-async function calculateMastery(conceptId: number) {
-  const attempts = await prisma.attempt.findMany({
-    where: { question: { conceptId }, mode: { in: ["LEARN", "PRACTICE"] } },
-    select: {
-      questionId: true,
-      isCorrect: true,
-      confidence: true,
-      answeredAt: true,
-    },
-    orderBy: { answeredAt: "asc" },
-  });
-
-  if (attempts.length < 3) return false;
-  const distinctQuestions = new Set(attempts.map((attempt) => attempt.questionId));
-  const distinctDates = new Set(attempts.map((attempt) => attempt.answeredAt.toISOString().slice(0, 10)));
-  const recent = attempts.slice(-3);
-  const recentAccuracy = recent.filter((attempt) => attempt.isCorrect).length / recent.length;
-  const latestConfidence = recent.at(-1)?.confidence;
-
-  return (
-    distinctQuestions.size >= 3 &&
-    distinctDates.size >= 2 &&
-    recentAccuracy >= 0.8 &&
-    (latestConfidence === "MEDIUM" || latestConfidence === "HIGH")
-  );
+    .filter(Boolean);
 }
 
 export async function startPracticeSession(formData: FormData) {
   const certificationCode = requiredString(formData, "certification");
-  const certification = await prisma.certification.findUnique({ where: { code: certificationCode } });
+  const certification = await prisma.certification.findUnique({ where: { code: certificationCode, active: true } });
   if (!certification) throw new Error("Certification not found");
 
-  const session = await prisma.practiceSession.create({
-    data: { certificationId: certification.id },
+  const open = await prisma.practiceSession.findFirst({
+    where: { certificationId: certification.id, endedAt: null },
+    orderBy: { startedAt: "desc" },
+  });
+  // Starting again resumes the open session unless a fresh one was explicitly requested.
+  // An untouched open session is reused rather than closed as an empty record.
+  if (open && (formData.get("fresh") !== "1" || open.questionCount === 0)) {
+    redirect(`/practice/${certificationCode}?session=${open.id}`);
+  }
+
+  const session = await prisma.$transaction(async (tx) => {
+    await tx.practiceSession.updateMany({ where: { certificationId: certification.id, endedAt: null }, data: { endedAt: new Date() } });
+    return tx.practiceSession.create({ data: { certificationId: certification.id } });
   });
 
+  revalidatePath("/");
   redirect(`/practice/${certificationCode}?session=${session.id}`);
 }
 
@@ -80,13 +63,15 @@ export async function finishPracticeSession(formData: FormData) {
   const certificationCode = requiredString(formData, "certification");
   const sessionId = parseId(formData, "sessionId");
 
-  await prisma.practiceSession.update({
-    where: { id: sessionId },
+  await prisma.practiceSession.updateMany({
+    where: { id: sessionId, certification: { code: certificationCode }, endedAt: null },
     data: { endedAt: new Date() },
   });
 
+  revalidatePath("/");
+  revalidatePath("/history");
   revalidatePath(`/progress/${certificationCode}`);
-  redirect(`/progress/${certificationCode}`);
+  redirect(`/practice/${certificationCode}?session=${sessionId}`);
 }
 
 export async function submitLearningAnswer(formData: FormData) {
@@ -96,45 +81,71 @@ export async function submitLearningAnswer(formData: FormData) {
   if (mode !== "LEARN" && mode !== "PRACTICE") throw new Error("Invalid learning mode");
 
   const confidence = parseConfidence(formData.get("confidence"));
-  const selected = normalizeAnswers(formData.getAll("answer"));
-  if (selected.length === 0) throw new Error("Choose at least one answer before submitting.");
+  const selected = stringValues(formData.getAll("answer")).sort();
+  const shownOrder = stringValues(formData.getAll("optionOrder"));
+  const recall = formData.get("recall") === "1";
 
-  const sessionRaw = formData.get("sessionId");
-  const practiceSessionId = typeof sessionRaw === "string" && sessionRaw ? Number(sessionRaw) : null;
-  const conceptSlug = typeof formData.get("conceptSlug") === "string" ? String(formData.get("conceptSlug")) : null;
-
-  const question = await prisma.question.findUnique({
-    where: { id: questionId, active: true },
-    include: { options: true, concept: true },
+  const question = await prisma.question.findFirst({
+    where: { id: questionId, ...trainingQuestionWhere, concept: { topic: { certification: { code: certificationCode } } } },
+    include: { options: { orderBy: { key: "asc" } }, concept: true },
   });
   if (!question) throw new Error("Question not found");
+
+  const keys = question.options.map((option) => option.key);
+  if (!isValidSelection(selected, keys, question.type)) throw new Error("Choose a valid answer before submitting.");
+  // Forms rendered before shuffling existed send no order; they showed options in key order.
+  if (shownOrder.length > 0 && !isExactPermutation(shownOrder, keys)) throw new Error("Invalid option order");
+  const optionOrder = shownOrder.length > 0 ? shownOrder : keys;
+
+  let practiceSessionId: number | null = null;
+  if (mode === "PRACTICE") {
+    practiceSessionId = parseId(formData, "sessionId");
+    const session = await prisma.practiceSession.findFirst({
+      where: { id: practiceSessionId, certification: { code: certificationCode } },
+    });
+    if (!session) throw new Error("Practice session not found");
+    if (session.endedAt) redirect(`/practice/${certificationCode}?session=${session.id}`);
+  }
 
   const correct = question.options.filter((option) => option.isCorrect).map((option) => option.key).sort();
   const isCorrect = sameAnswers(selected, correct);
   const now = new Date();
-  const existingProgress = await prisma.conceptProgress.findUnique({ where: { conceptId: question.conceptId } });
-  const stage = nextReviewStage(existingProgress?.reviewStage ?? 0, isCorrect, confidence);
 
   const attempt = await prisma.$transaction(async (tx) => {
+    const existing = await tx.conceptProgress.findUnique({ where: { conceptId: question.conceptId } });
+    const { stage, nextReviewAt } = scheduleReview(existing?.reviewStage ?? 0, isCorrect, confidence, now, existing?.nextReviewAt ?? null);
+    const earlierAttempts = await tx.attempt.count({ where: { questionId } });
+    const mockShows = await tx.mockExamQuestion.count({ where: { questionId } });
+
     const created = await tx.attempt.create({
       data: {
         questionId,
-        practiceSessionId: mode === "PRACTICE" ? practiceSessionId : null,
+        practiceSessionId,
         mode,
         confidence,
         isCorrect,
         questionTextSnapshot: question.prompt,
         selectedOptionsSnapshot: JSON.stringify(selected),
         correctOptionsSnapshot: JSON.stringify(correct),
+        optionOrderSnapshot: JSON.stringify(optionOrder),
+        optionsSnapshot: snapshotOptions(question.options),
+        isFirstRecordedAttempt: earlierAttempts + mockShows === 0,
+        // Shared with masteredAt below, so feedback can tell which answer cleared the concept.
+        answeredAt: now,
       },
     });
 
-    const confidenceField =
-      confidence === "LOW"
-        ? { lowConfidenceCount: { increment: 1 } }
-        : confidence === "MEDIUM"
-          ? { mediumConfidenceCount: { increment: 1 } }
-          : { highConfidenceCount: { increment: 1 } };
+    const trainingQuestions = await tx.question.findMany({
+      where: { conceptId: question.conceptId, ...trainingQuestionWhere },
+      select: { id: true },
+    });
+    const answered = await tx.attempt.findMany({
+      where: { mode: { in: ["LEARN", "PRACTICE"] }, questionId: { in: trainingQuestions.map((item) => item.id) } },
+      select: { questionId: true },
+      distinct: ["questionId"],
+    });
+    const covered = challengeProgress(trainingQuestions.map((item) => item.id), answered.map((item) => item.questionId));
+    const masteredAt = covered.cleared ? (existing?.masteredAt ?? now) : null;
 
     await tx.conceptProgress.upsert({
       where: { conceptId: question.conceptId },
@@ -147,50 +158,43 @@ export async function submitLearningAnswer(formData: FormData) {
         mediumConfidenceCount: confidence === "MEDIUM" ? 1 : 0,
         highConfidenceCount: confidence === "HIGH" ? 1 : 0,
         reviewStage: stage,
-        introducedAt: mode === "LEARN" ? now : existingProgress?.introducedAt,
+        introducedAt: mode === "LEARN" ? now : null,
         lastReviewedAt: now,
-        nextReviewAt: reviewDateForStage(stage, now),
-        masteredAt: !isCorrect ? null : undefined,
+        nextReviewAt,
+        masteredAt,
       },
       update: {
         totalAttempts: { increment: 1 },
         correctAttempts: isCorrect ? { increment: 1 } : undefined,
         wrongAttempts: !isCorrect ? { increment: 1 } : undefined,
-        ...confidenceField,
+        lowConfidenceCount: confidence === "LOW" ? { increment: 1 } : undefined,
+        mediumConfidenceCount: confidence === "MEDIUM" ? { increment: 1 } : undefined,
+        highConfidenceCount: confidence === "HIGH" ? { increment: 1 } : undefined,
         reviewStage: stage,
-        introducedAt: mode === "LEARN" && !existingProgress?.introducedAt ? now : undefined,
+        introducedAt: mode === "LEARN" && !existing?.introducedAt ? now : undefined,
         lastReviewedAt: now,
-        nextReviewAt: reviewDateForStage(stage, now),
-        masteredAt: !isCorrect ? null : undefined,
+        nextReviewAt,
+        masteredAt,
       },
     });
 
-    if (mode === "PRACTICE" && practiceSessionId) {
+    if (practiceSessionId) {
       await tx.practiceSession.update({
         where: { id: practiceSessionId },
-        data: {
-          questionCount: { increment: 1 },
-          correctCount: isCorrect ? { increment: 1 } : undefined,
-        },
+        data: { questionCount: { increment: 1 }, correctCount: isCorrect ? { increment: 1 } : undefined },
       });
     }
 
     return created;
   });
 
-  if (await calculateMastery(question.conceptId)) {
-    await prisma.conceptProgress.update({
-      where: { conceptId: question.conceptId },
-      data: { masteredAt: existingProgress?.masteredAt ?? now },
-    });
-  }
-
   revalidatePath("/");
   revalidatePath(`/progress/${certificationCode}`);
 
   if (mode === "PRACTICE") {
-    redirect(`/practice/${certificationCode}?session=${practiceSessionId ?? ""}&attempt=${attempt.id}`);
+    redirect(`/practice/${certificationCode}?session=${practiceSessionId}&attempt=${attempt.id}`);
   }
 
-  redirect(`/learn/${certificationCode}/${conceptSlug ?? question.concept.slug}?attempt=${attempt.id}`);
+  // The hash makes the router scroll to the feedback instead of the top of the page.
+  redirect(`/learn/${certificationCode}/${question.concept.slug}?attempt=${attempt.id}${recall ? "&recall=1" : ""}#challenge`);
 }

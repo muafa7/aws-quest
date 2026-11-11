@@ -1,12 +1,852 @@
 [
   {
-    "topic": "resilient-architectures",
-    "slug": "saa-rds-multi-az",
-    "name": "Amazon RDS Multi-AZ",
-    "generalExplanation": "RDS Multi-AZ digunakan terutama untuk high availability dan failover. RDS mempertahankan standby di Availability Zone lain dan dapat melakukan failover ketika primary mengalami gangguan. Fitur ini berbeda dari read replica yang terutama digunakan untuk read scaling.",
-    "keyNote": "Multi-AZ = high availability/failover; read replica = read scaling.",
-    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+    "topic": "secure-architectures",
+    "slug": "saa-workforce-federation",
+    "name": "Workforce federation and account access",
+    "generalExplanation": "For employees who access multiple AWS accounts, separate organizational identity from permissions for each account. IAM Identity Center connects directory or identity provider with role-based access. Use groups and permission sets to grant access according to job responsibilities, rather than a single shared account. Federation provides temporary sessions; long-term access keys are not required for CLI access. Removing assignments prevents new access, but do not assume existing sessions terminate immediately. Cognito is intended especially for application-user identities, rather than managing staff access to multiple AWS accounts.",
+    "keyNote": "Use groups and permission sets to grant access according to job responsibilities, rather than a single shared account.",
+    "referenceUrl": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     "order": 1,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-workload-roles",
+    "name": "Temporary credentials for workloads",
+    "generalExplanation": "Application also requires identity. Provide role to execution unit that appropriate so that SDK can use temporary credentials without embedding access key on image or source code. EC2 uses instance profile for provides IAM role to application. ECS task role manages call AWS by code application; task execution role used by infrastructure ECS for work such as takes image. Limit action and resource as needed, for example one prefix S3. Rotation secret is not a substitute for selection role when the service supports identity workload.",
+    "keyNote": "EC2 uses instance profile for provides IAM role to application.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-cross-account-access",
+    "name": "Cross-account delegation and trust",
+    "generalExplanation": "Access across accounts requires relationship trust and permissions operation that appropriate. Target role determines who that may take session; policy permissions determines what that may performed session that. AssumeRole across accounts requires permissions caller and trust on role destination. Use external ID that defined provider to restrict scenario confused deputy party third. Do not send access key permanent so that partner can acts on behalf of account. Access object S3 encrypted across accounts also can require authorization KMS separate.",
+    "keyNote": "AssumeRole across accounts requires permissions caller and trust on role destination.",
+    "referenceUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_aws-accounts.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-guardrails-permissions",
+    "name": "Organization guardrails and delegated permissions",
+    "generalExplanation": "Distinguish granting permissions from permission restrictions. SCP sets guardrail account member, whereas permissions boundary restricts permissions that can granted identity policy to a role or user. SCP does not grant permissions and does not restrict identity management account. Explicit deny that applies not overridden by allow additional. Boundary useful when developer may create role but not may exceeds limit that defined. Evaluation permissions also can melibatkan resource policy and session; avoid formula simple that ignores context principal.",
+    "keyNote": "SCP does not grant permissions and does not restrict identity management account.",
+    "referenceUrl": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-private-service-connectivity",
+    "name": "Private service access and endpoint selection",
+    "generalExplanation": "Choose path network based on service destination and who that mengaksesnya. Endpoint gives path private, but application remains requires authorization and configuration DNS and security group that correct. Gateway endpoint supports S3 and DynamoDB without additional costs endpoint. Interface endpoint provides network interface private for service that supports PrivateLink. Endpoint service can expose one service without provides connectivity full between VPCs. Endpoint policy restricts usage endpoint; does not automatically provide permissions resource.",
+    "keyNote": "Gateway endpoint supports S3 and DynamoDB without additional costs endpoint.",
+    "referenceUrl": "https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-network-segmentation",
+    "name": "Network segmentation with security groups and ACLs",
+    "generalExplanation": "Limit paths between tiers according to the flow of application. Security group can reference source security groups within the VPC, so changing instance addresses does not require manually maintaining IP lists. Allow database ports only from the application's security group that requires it. Network ACL works at the subnet level and supports allow and deny with rule evaluation order. Stateless ACLs requires rules for return traffic; security groups track connection state. A private subnet does not automatically block all access from other resource in network.",
+    "keyNote": "Allow database ports only from the application's security group that requires it.",
+    "referenceUrl": "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-application-edge-protection",
+    "name": "HTTP protection and DDoS defenses",
+    "generalExplanation": "Control network, firewall application, and defense DDoS solves problem that different. Choose based on layer traffic and capability response that is required. WAF checks HTTP(S), for example pattern SQL injection or rules request rate. WAF rate-based rules does not guarantee limit transaction appropriate per second. Shield Advanced adds capability protection and response DDoS; remains check prerequisite support that applies. Security group not reads query string HTTP to choose request that dangerous.",
+    "keyNote": "WAF checks HTTP(S), for example pattern SQL injection or rules request rate.",
+    "referenceUrl": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-secrets-lifecycle",
+    "name": "Secrets, configuration, and rotation",
+    "generalExplanation": "Distinguish stores configuration encrypted from manages lifecycle credential. Rotation must update secret and the system receiving credential that. Secrets Manager supports rotation; its mechanism depends on type secret and integration service. Parameter Store suitable for configuration hierarkis and SecureString that does not require lifecycle secret complex. Changes value secret only does not automatically change password database external. Application needs to strategy reads value latest so that rotation not breaks access.",
+    "keyNote": "Secrets Manager supports rotation; its mechanism depends on type secret and integration service.",
+    "referenceUrl": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-customer-identity",
+    "name": "Application users and temporary AWS access",
+    "generalExplanation": "Login application and permissions API AWS is two requirements different. Cognito user pool manages authentication application; identity pool exchanges identity that is supported becomes credentials AWS temporary. User pool can issues token for applications web and mobile. Identity pool uses IAM role to restrict API AWS that may dipanggil user. Token login is not permissions automatically to all object S3. Separate data per user through resource policy that appropriate, is not just rules on UI.",
+    "keyNote": "User pool can issues token for applications web and mobile.",
+    "referenceUrl": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-encryption-key-control",
+    "name": "Encryption and KMS authorization",
+    "generalExplanation": "Data encrypted remains requires design who that can using it. Customer managed KMS key enables control policy, administration, and usage key that more specific. Separate permissions administration key from permissions operation cryptography. Key policy determines path authorization KMS; IAM Allow only does not always enough. Permissions reads object and permissions decrypt can checked separately. Do not assume storage encrypted automatically restricts who that entitled reads plaintext.",
+    "keyNote": "Separate permissions administration key from permissions operation cryptography.",
+    "referenceUrl": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-private-content-delivery",
+    "name": "Private S3 content through controlled delivery",
+    "generalExplanation": "Separate access origin from authorization viewer. OAC protects path CloudFront to S3, temporary signed URL or signed cookie controls access user to content specific. Use S3 bucket origin ordinary for OAC, is not website endpoint. Limit bucket policy to distribution that intended and maintain bucket private. Presigned URL gives access limited based on permissions signer and masa applies credential. Signed cookies suitable for many file limited without changes each URL.",
+    "keyNote": "Use S3 bucket origin ordinary for OAC, is not website endpoint.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-immutable-retention",
+    "name": "Immutable retention and object recovery",
+    "generalExplanation": "Versioning helps recovery, whereas Object Lock controls whether version specific may deleted. Choose retention mode based on party that still may exceeds protection. Compliance mode protects version while retention, including from root account. Governance mode can bypassed by principal with permissions bypass that appropriate. Legal hold does not have date ends automatically; pelepasannya requires permissions. Object Lock protects version, is not prohibits creation version new on name object that same.",
+    "keyNote": "Compliance mode protects version while retention, including from root account.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-discovery-audit-detection",
+    "name": "Sensitive data, API audit, and threat detection",
+    "generalExplanation": "Three requirements that often tertukar is finds data sensitive, records operation API, and detects threat. Choose service based on evidence that is required, is not kemiripan term security. Macie finds and reports data sensitive on S3 that is supported. CloudTrail data events records operation object such as GetObject if logging that configured. GuardDuty analyzes source data for finds activity suspicious. Detection or logging does not automatically improve each findings; design response and access rights separate.",
+    "keyNote": "Macie finds and reports data sensitive on S3 that is supported.",
+    "referenceUrl": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-secure-remote-connectivity",
+    "name": "Secure hybrid and administrative connectivity",
+    "generalExplanation": "Path private and encryption is not matter that identical. Choose connection based on who that connected, protocol that is required, and whether encryption must applied throughout path. Direct Connect does not automatically encrypts traffic; use option such as IPsec or MACsec that appropriate scope. Client VPN intended for device user remote. Session Manager can give access shell without opens inbound SSH when prerequisite agent, IAM, and connectivity available. Deletes inbound SSH does not eliminate requirements authorization administrator and path to service Systems Manager.",
+    "keyNote": "Direct Connect does not automatically encrypts traffic; use option such as IPsec or MACsec that appropriate scope.",
+    "referenceUrl": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-tls-and-transport-controls",
+    "name": "TLS termination and transport requirements",
+    "generalExplanation": "Determine where TLS terminates and where plaintext may exist. Certificate, listener, origin protocol, and bucket policy must align with limit trust that is requested. ALB HTTPS listener performs TLS termination; encryption to the target must be configured separately. NLB TCP listener can forward TLS without decrypting it at load balancer. An ACM certificate for CloudFront viewers must reside in us-east-1. S3 bucket policy can rejects access without secure transport; encryption at rest does not replace rules this.",
+    "keyNote": "ALB HTTPS listener performs TLS termination; encryption to the target must be configured separately.",
+    "referenceUrl": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-queue-decoupling",
+    "name": "Buffering work and handling failed messages",
+    "generalExplanation": "Queue separates receipt work from pemrosesannya. Producer does not need to waits all process completed, but consumer must have retry, idempotency, and limit retention that appropriate. SQS holds backlog when producer faster from consumer. Visibility timeout manages when message that not yet completed can be received back. DLQ separates message fails repeated; improvement and redrive remains needs to procedure. Increases server only does not eliminate dependency synchronous between service.",
+    "keyNote": "SQS holds backlog when producer faster from consumer.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-ordering-and-idempotency",
+    "name": "Ordering, deduplication, and idempotent effects",
+    "generalExplanation": "Order message, duplication delivery, and duplication effect business is three problem separate. FIFO helps pengurutan and deduplication delivery, but application remains need to handle retry with secure. MessageGroupId restricts order in a single group, is not forces all entity shares one path serial. Use event ID that stable when mengulangi delivery so that deduplication meaningful. Do not promises exactly-once on changes external only because uses FIFO. Design idempotency must atomic against effect business or uses mechanism transaction that appropriate.",
+    "keyNote": "MessageGroupId restricts order in a single group, is not forces all entity shares one path serial.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-fanout-and-event-routing",
+    "name": "Independent consumers and event routing",
+    "generalExplanation": "Distinguish shares work with menyiarkan event. Consumer that reads one queue compete takes work; subscriber that each has queue can process each event independently. SNS with one SQS queue per subscriber suitable for fanout and backlog separate. EventBridge selects target based on event pattern that appropriate. Queue policy must allow source service that indeed trusted. Event routing not creates subscriber automatically idempotent or stores state bisnisnya.",
+    "keyNote": "SNS with one SQS queue per subscriber suitable for fanout and backlog separate.",
+    "referenceUrl": "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-workflow-recovery",
+    "name": "Durable workflows, retries, and compensation",
+    "generalExplanation": "Workflow managed stores progress step and manages failure. Separate retry error temporary from handling failure permanent and from cancellation effect business that already occurs. Standard workflows supports pattern callback to wait for response external. Retry and Catch enables retry controlled and path failure. Retry without limit or without pause can worsens disruption downstream. Effect across services requires idempotency and sometimes compensation; is not rollback database automatically.",
+    "keyNote": "Standard workflows supports pattern callback to wait for response external.",
+    "referenceUrl": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-stateless-application-tiers",
+    "name": "Stateless application instances",
+    "generalExplanation": "Horizontal scaling secure if resource that can replaced not becomes the only place state important. Separate session, file, and progress work from disk or memory one instance. Session store shared creates request not depends on instance login initial. Sticky session can help affinity, but not saves state on instance that fails. File shared that requires NFS can placed on EFS Regional. Work queue must completed and stored before message deleted; retry needs to secure.",
+    "keyNote": "Session store shared creates request not depends on instance login initial.",
+    "referenceUrl": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-managed-execution-and-migration",
+    "name": "Managed execution and protocol-compatible migration",
+    "generalExplanation": "Reduce work operational with selects execution unit that suitable, is not forces all workload to one service. Consider model request, container, limit downstream, and protocol that already used. ECS on Fargate runs container without manages host EC2. Restriction concurrency helps protects database that its capacity limited. Migration broker that requires compatibility ActiveMQ or RabbitMQ can suitable with Amazon MQ. Managed compute remains requires health checks, permissions, state management, and capacity that designed.",
+    "keyNote": "ECS on Fargate runs container without manages host EC2.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-multi-az-application-availability",
+    "name": "Multi-AZ application and egress design",
+    "generalExplanation": "Availability depends on all dependency path. Distribution instance on many AZ is not sufficient to if database, file store, or egress still depends on one AZ. Distribute capacity application and load balancer to more than one AZ. Use health checks that reflects readiness application, is not just host life. If maintains zonal NAT, route lokal-AZ avoids dependency egress on other AZ. Regional NAT is choice other on documentation current; do not states all NAT gateway always zonal.",
+    "keyNote": "Distribute capacity application and load balancer to more than one AZ.",
+    "referenceUrl": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-relational-availability",
+    "name": "Database failover versus recovery and read scaling",
+    "generalExplanation": "High availability, capacity baca, and recovery logical error cannot disamakan. Choose feature database based on failure that must be handled. Multi-AZ DB instance with one standby gives failover; standby that not serves reporting. Read replica can reduce load baca, but replication lag must received. Replication also can copies changes data that incorrect; backup/PITR required for back to condition previously. Aurora has layer storage and compute that separate; replica compute in other AZ increases readiness failover.",
+    "keyNote": "Multi-AZ DB instance with one standby gives failover; standby that not serves reporting.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-disaster-recovery-strategies",
+    "name": "Recovery objectives and cross-Region design",
+    "generalExplanation": "RPO determines tolerance loss data, whereas RTO determines target recovery time. Choose strategy DR from result test and requirements, is not memorizes that one pattern always has number that same. Backup-and-restore suitable when recovery slower still received and cost standby must small. Pilot light prepares component inti; warm standby runs system functional with capacity small. Replication does not automatically moves traffic application or ensures all dependencies ready. DynamoDB global tables has choice consistency mode; do not equate everything with eventual consistency.",
+    "keyNote": "Backup-and-restore suitable when recovery slower still received and cost standby must small.",
+    "referenceUrl": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-backup-and-logical-recovery",
+    "name": "Independent backups and recoverable state",
+    "generalExplanation": "Backup protects from class failure that different from replica active. Design recovery need to consider isolation account, access rights, encryption, and configuration resource after restore. Copy backup across accounts reduces dependency on permissions operational account source. Support AWS Backup and requirement encryption different per type resource; check matriks feature. DynamoDB PITR returns data to table new and requires verification configuration lanjutan. S3 live replication not copies all object long in a manner retroactive; use Batch Replication if needs to.",
+    "keyNote": "Copy backup across accounts reduces dependency on permissions operational account source.",
+    "referenceUrl": "https://docs.aws.amazon.com/aws-backup/latest/devguide/create-cross-account-backup.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-health-routing-and-failover",
+    "name": "Health-aware routing and failover limits",
+    "generalExplanation": "Health-based routing selects destination, is not improves data or runs all procedure DR. Understand limit DNS caching and behavior when all target considered not healthy. Route 53 can route answer DNS based on health and routing policy. ALB can fail open when all target registered not healthy. CloudFront origin failover needs to origin group, error criteria, and method HTTP that is supported. Data, authorization, and capacity secondary must already ready; routing only not menyiapkannya.",
+    "keyNote": "Route 53 can route answer DNS based on health and routing policy.",
+    "referenceUrl": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-durable-shared-storage",
+    "name": "Shared files and recoverable temporary compute",
+    "generalExplanation": "Determine protocol file and failure that must ditahan. Storage temporary may used for performance, but state that is required for recovery must be located in place that durable. EFS Regional provides file storage cross-AZ for access NFS. FSx for Windows File Server Multi-AZ suitable for file share SMB with requirements availability. Mount target or endpoint needs to designed for client in AZ that used. Checkpoint not must be located on media that the same as scratch data that is fast.",
+    "keyNote": "EFS Regional provides file storage cross-AZ for access NFS.",
+    "referenceUrl": "https://docs.aws.amazon.com/efs/latest/ug/features.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-hybrid-connectivity-resilience",
+    "name": "Independent hybrid paths and failover testing",
+    "generalExplanation": "Redundancy must avoids point failure shared. Two link that exceeds facility or device that same does not necessarily persists when facility that fails. For requirements location fails, use path and Direct Connect location that independent. Site-to-Site VPN provides two tunnel that must be configured and tested. Device customer, provider, routing, DNS, and capacity backup also part availability. Test failover required for knows whether design truly meets destination recovery.",
+    "keyNote": "For requirements location fails, use path and Direct Connect location that independent.",
+    "referenceUrl": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/resiliency_toolkit.html",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-storage-workload-fit",
+    "name": "Choose storage for the access pattern",
+    "generalExplanation": "Choose storage from protocol, pattern I/O, and requirements shares data, is not just large its capacity. EBS provides block storage for EC2; type volume determines characteristics I/O. FSx for Lustre suitable for parallel file access on compute performant high. Requirements SMB and integration Windows different from requirements NFS in the application Linux. Check also bandwidth instance and network; storage that faster does not necessarily eliminates bottleneck other.",
+    "keyNote": "EBS provides block storage for EC2; type volume determines characteristics I/O.",
+    "referenceUrl": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-large-data-movement",
+    "name": "Move data without changing its intended access model",
+    "generalExplanation": "Distinguish transfer object large, migration dataset file, and access file hybrid that takes place terus-menerus. Multipart upload divides object large becomes part that can uploaded and repeated separate. DataSync helps transfer data online with scheduling and inspection integritas that can configured. S3 File Gateway provides access NFS/SMB with cache local and storage object S3. Bandwidth and number file affects time transfer; not exists service that deletes limit network physical.",
+    "keyNote": "Multipart upload divides object large becomes part that can uploaded and repeated separate.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-compute-scaling-and-latency",
+    "name": "Scale compute for demand and latency",
+    "generalExplanation": "Strategy scaling must considers when load appears and berapa long capacity new ready used. Scheduled scaling helps provides capacity before spike that the time known. Cluster placement group targets proximity network for workloads tightly coupled in a single AZ. Lambda provisioned concurrency prepares execution environment; reserved concurrency manages allocation/limit concurrency. Optimization latency can have cost or compromise fault isolation.",
+    "keyNote": "Scheduled scaling helps provides capacity before spike that the time known.",
+    "referenceUrl": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-execution-model-fit",
+    "name": "Select an execution model for the job",
+    "generalExplanation": "Choose runtime from duration, hardware, and way orchestration workload, is not from label serverless only. Task container that long can run with ECS/Fargate without limit duration invocation Lambda ordinary. AWS Batch handles queue and scheduling batch jobs; requirements GPU affects compute environment. Fargate reduces management host, but is not a substitute for all feature EC2. Benchmark workload real before replaces instance family or size.",
+    "keyNote": "Task container that long can run with ECS/Fargate without limit duration invocation Lambda ordinary.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-database-read-and-connection-scaling",
+    "name": "Separate read scaling from connection management",
+    "generalExplanation": "Load query, number connection, and high availability is problem that different and can require component different. Read replica helps read scaling if application can receive lag that may occurs. Aurora reader endpoint divides connection to reader, is not divides each query in a single connection. RDS Proxy helps manages pool connection; this service does not automatically create query expensive becomes cheap. Traditional Multi-AZ DB instance standby is not read replica for query application.",
+    "keyNote": "Read replica helps read scaling if application can receive lag that may occurs.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-dynamodb-access-patterns",
+    "name": "Design DynamoDB keys and read paths",
+    "generalExplanation": "Design DynamoDB started from pattern access that known; additional capacity does not always improves distribution key that poor. Partition key with distribution value and traffic that good helps distributes workload. Sort key can support order and range in a single partition key. GSI provides pattern query with key alternative, but update and konsistensinya must dipahami. DAX suitable for pattern read that can use cache; does not change strongly consistent read becomes cache hit.",
+    "keyNote": "Partition key with distribution value and traffic that good helps distributes workload.",
+    "referenceUrl": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-cache-correctness",
+    "name": "Cache without breaking freshness or isolation",
+    "generalExplanation": "Cache that is fast remains wrong if displays data other tenant or maintains value that already not applies. Cache-aside reads cache previously and takes data from source when cache miss. TTL restricts masa cache, but does not guarantee each changes directly appears. Key cache must inserts dimension that truly changes response, including tenant if relevant. Data that requires consistency directly requires invalidation, write coordination, or path without cache.",
+    "keyNote": "Cache-aside reads cache previously and takes data from source when cache miss.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-load-balancer-fit",
+    "name": "Match the load balancer to the traffic",
+    "generalExplanation": "ALB, NLB, and GWLB has destination that different; selection started from protocol and function that is required. ALB supports routing HTTP based on host or path. NLB suitable for requirements layer-4 such as TCP/UDP and address IP static per AZ that configured. GWLB helps integration and scaling virtual network appliances. Port 443 only not yet enough to choose: consider in which TLS stopped and whether inspection HTTP required.",
+    "keyNote": "ALB supports routing HTTP based on host or path.",
+    "referenceUrl": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-global-delivery-and-dns",
+    "name": "Choose global delivery and hybrid DNS",
+    "generalExplanation": "Cache content, optimization route network, and resolution DNS is function different although everything can affects experience user. CloudFront places cache HTTP near user and can reduce request repeated to origin. Global Accelerator provides static anycast IP and routing to endpoint regional for TCP/UDP that is supported. Resolver inbound endpoints helps network outside VPC performs resolution through VPC Resolver. Resolver outbound endpoints and rules forwards query from VPC to DNS external that appropriate.",
+    "keyNote": "CloudFront places cache HTTP near user and can reduce request repeated to origin.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-network-routing-topology",
+    "name": "Build the routing topology the workload needs",
+    "generalExplanation": "Connectivity VPC must designed from pattern communication and growth, is not assumes each connection can becomes transit. Transit Gateway supports hub for many VPC and connection on-premises. VPC peering does not provide transitive routing. CIDR overlap must handled appropriate service; adds route not deletes overlap. Latency routing uses estimate latency network, is more than just distance geografis.",
+    "keyNote": "Transit Gateway supports hub for many VPC and connection on-premises.",
+    "referenceUrl": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-stream-ingestion-patterns",
+    "name": "Separate replayable streams from managed delivery",
+    "generalExplanation": "Choose ingestion from requirements consumption, replay, ecosystem, and how much many pipeline must managed. Kinesis Data Streams provides stream with retention and consumer that can read data. Amazon Data Firehose manages delivery with buffering to destination that is supported. Amazon MSK suitable when compatibility Apache Kafka becomes requirements. Ordering, retry, and throughput must assessed per partition/shard or configuration service related.",
+    "keyNote": "Kinesis Data Streams provides stream with retention and consumer that can read data.",
+    "referenceUrl": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-analytics-and-transformation",
+    "name": "Design a usable analytics data path",
+    "generalExplanation": "Cataloging metadata, transforms data, and runs analytics is work that different within pipeline. Glue Data Catalog stores metadata; Glue jobs can run ETL. Format columnar and partition pruning can reduce data that read Athena. Crawler does not automatically cleans or transforms all contents dataset. Redshift designed for analytics warehouse; database OLTP serves pattern transaction different.",
+    "keyNote": "Glue Data Catalog stores metadata; Glue jobs can run ETL.",
+    "referenceUrl": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-s3-access-and-retention-cost",
+    "name": "Match S3 cost to access and retention",
+    "generalExplanation": "Cost storage must assessed shared frequency access, time retrieval, size object, and long storage. Intelligent-Tiering helps access that changes without needs to guesses each object, but monitoring and size object needs to accounted for. Optional archive tiers different from access tiers that remains provides access milliseconds. Deep Archive appropriate for retention long with retrieval rarely and delay that diperbolehkan. Lifecycle that too aggressive can add retrieval, transition, and early-deletion charges.",
+    "keyNote": "Intelligent-Tiering helps access that changes without needs to guesses each object, but monitoring and size object needs to accounted for.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html",
+    "order": 1,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-storage-utilization-efficiency",
+    "name": "Avoid paying for unused storage characteristics",
+    "generalExplanation": "Optimization storage can originates from configuration that appropriate and cleanup, is not just replaces class storage. Gp3 separates provisioning performance specific from capacity so that not must always adds GiB for IOPS. EFS Lifecycle can places file eligible that cold on class that more ekonomis while maintains namespace. Multipart uploads that not resolved can leaves part that remains memakan cost. Savings must remains maintains requirements durability and latency application.",
+    "keyNote": "gp3 separates provisioning performance specific from capacity so that not must always adds GiB for IOPS.",
+    "referenceUrl": "https://docs.aws.amazon.com/ebs/latest/userguide/general-purpose.html",
+    "order": 2,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-compute-pricing-and-capacity",
+    "name": "Separate discounts from capacity and interruption",
+    "generalExplanation": "Choice purchase compute has dimension different: commitment cost, flexibility, capacity, and risk interruption. Compute Savings Plans gives discount usage eligible with commitment expenditure per hour, including service compute that is supported. Spot appropriate for work that can faces interruption and variation capacity. Discount Savings Plans itself is not reservation capacity on AZ specific. Capacity Reservation and plan discount can dipertimbangkan shared if requirements suitable.",
+    "keyNote": "Compute Savings Plans gives discount usage eligible with commitment expenditure per hour, including service compute that is supported.",
+    "referenceUrl": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+    "order": 3,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-compute-utilization-and-rightsizing",
+    "name": "Reduce idle compute without losing required capacity",
+    "generalExplanation": "Savings compute simplest often originates from schedule usage, model execution, and sizing that measurable. Instance EC2 that stopped not uses running compute, but storage and other resource still can costing. Serverless appropriate for some workload bursty, does not automatically cheapest on all pattern. Rightsizing must sees peak, memory, and requirements latency besides CPU average. Changes needs to tested and monitored before given commitment long-term.",
+    "keyNote": "Instance EC2 that stopped not uses running compute, but storage and other resource still can costing.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html",
+    "order": 4,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-database-capacity-cost",
+    "name": "Match database capacity to demand",
+    "generalExplanation": "Choose model capacity database from character load and result calculation, is not slogan provisioned or serverless. DynamoDB on-demand reduces capacity planning for request that changes. Provisioned capacity can eligible for load that stable and can predicted; compare cost actual. Aurora Serverless adjusts compute capacity within range that configured for engine/version that is supported. Autoscaling is not capacity without limit or guarantee cost zero when idle.",
+    "keyNote": "DynamoDB on-demand reduces capacity planning for request that changes.",
+    "referenceUrl": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/capacity-mode.html",
+    "order": 5,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-database-retention-and-commitment",
+    "name": "Optimize database commitments and retained data",
+    "generalExplanation": "Cost database dipengaruhi compute that always active, data that not again required, and recovery policy. Reserved DB pricing gives discount usage that suitable without moves data to instance new. DynamoDB TTL cleans expired items asynchronously; is not limit time authorization that presisi. Retention backup must follow recovery requirement, is not deleted entirely for bill small. Changes cost needs to maintains limit consistency, recovery, and security.",
+    "keyNote": "Reserved DB pricing gives discount usage that suitable without moves data to instance new.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html",
+    "order": 6,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-private-network-transfer-cost",
+    "name": "Reduce unnecessary network processing paths",
+    "generalExplanation": "Path that dilalui byte can increases costs although application and the data not changes. Gateway endpoint for access S3 that appropriate can avoids NAT processing on traffic that. On design zonal NAT, path cross-AZ can add transfer charges. Peering directly can simple for two VPC without requirements transit. Reduction cost network must remains considers availability and access that is required.",
+    "keyNote": "Gateway endpoint for access S3 that appropriate can avoids NAT processing on traffic that.",
+    "referenceUrl": "https://aws.amazon.com/vpc/pricing/",
+    "order": 7,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-delivery-and-shared-front-door-cost",
+    "name": "Reuse delivery infrastructure safely",
+    "generalExplanation": "Reduces origin work and shares component frontend can saves cost if limit isolation and workload allows. Cache hit reduces fetch to origin, but cost CDN must remains incoming model. ALB can route several host/path to target group different. Cache key that inserts dimension is not relevant can splits cache and reduces hit ratio. Do not remove dimension authentication or personalisasi that is required for cache hit.",
+    "keyNote": "Cache hit reduces fetch to origin, but cost CDN must remains incoming model.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+    "order": 8,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-archive-query-and-snapshot-economics",
+    "name": "Reduce retained bytes and unnecessary scanning",
+    "generalExplanation": "Cost optimization storage includes query layout, copy that can be created again, and relationship across snapshot. Athena can reduce scan if query and layout enables partition/column pruning. One Zone-IA reduces redundancy location so that appropriate only if loss one AZ can be received or data can be created again. EBS snapshots incremental remains can be restored without user maintains each snapshot previous manually. Deletes snapshot only frees data that not again required other snapshot.",
+    "keyNote": "Athena can reduce scan if query and layout enables partition/column pruning.",
+    "referenceUrl": "https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html",
+    "order": 9,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-hybrid-and-regional-cost-tradeoffs",
+    "name": "Meet network requirements without unnecessary infrastructure",
+    "generalExplanation": "Choice connection and location processing affects cost remains, transfer, and characteristics performance. VPN can suitable for hybrid traffic small when connection internet and its characteristics can be received. Direct Connect gives connection dedicated that benefit and its cost must suitable with requirements. Processes data near source can reduce transfer data raw across Regions. Assumption price within practice architecture must separated from list price AWS actual.",
+    "keyNote": "VPN can suitable for hybrid traffic small when connection internet and its characteristics can be received.",
+    "referenceUrl": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html",
+    "order": 10,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-policy-evaluation-abac",
+    "name": "Policy evaluation, boundaries, and ABAC",
+    "generalExplanation": "permissions effective not determined by one policy that appears most broad. Start from principal, action, resource, and condition request, then evaluation type policy that applies. Explicit deny that suitable remains overrides allow. Permissions boundary and session policy restricts permissions within its scope, is not provides new permissions. ABAC reduces list resource within policy with compares attribute, but only secure if user cannot change attribute authorization to grant dirinya access additional.",
+    "keyNote": "Separate identity policy, resource policy, session policy, and guardrail; do not assume everything always evaluated with formula intersection that same.",
+    "referenceUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-service-to-service-authorization",
+    "name": "Federation and service-to-service authorization",
+    "generalExplanation": "Distinguish who that calls service and who that runs code afterwards. Role CI uses federation to obtain temporary credentials, whereas execution role determines application permissions when operates. Iam:PassRole allows caller assigns role to service; permissions this needs to restricted so that not becomes path escalation. When policy mempercayai service principal, limit resource and account source that may create service that acts on behalf of they.",
+    "keyNote": "For OIDC, check issuer, audience, and subject that represents repository or environment that approved.",
+    "referenceUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html",
+    "order": 17,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-central-account-governance",
+    "name": "Governed accounts and shared infrastructure",
+    "generalExplanation": "Separation account gives limit administration and helps restricts impact mistake, but requires provisioning, logging, and control that consistent. Control Tower orchestrates landing zone based Organizations. RAM shares resource that is supported to other account; VPC sharing enables application participant uses subnet centralized while maintains ownership resource application. Connectivity between VPCs not with itself provides rights uses subnet or changes ownership resource.",
+    "keyNote": "Choose landing zone for baseline account and control, is not just dashboard bill.",
+    "referenceUrl": "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
+    "order": 18,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-directory-integration",
+    "name": "Directory gateways and managed Active Directory",
+    "generalExplanation": "Requirements directory determined by place identity authoritative is located and function directory that is required. AD Connector forwards authentication to AD that already exists through connectivity that appropriate; ia is not domain controller new. AWS Managed Microsoft AD provides directory managed for requirements domain, group policy, and trust that is supported. Identity Center handles access workforce to the account and application, whereas Cognito especially handles application-user identities.",
+    "keyNote": "Choose connector when wants uses directory that same without creates directory cloud new.",
+    "referenceUrl": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_ad_connector.html",
+    "order": 19,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-private-api-auth",
+    "name": "Private APIs and application authorization",
+    "generalExplanation": "Endpoint private restricts path network, is does not prove that each request entitled accesses all data. For private REST API, design interface endpoint, endpoint policy, and API resource policy, then tambahkan authorization application that appropriate. API key and usage plan useful for identification usage and restriction best effort, but is not a substitute for authentication and authorization. Requirements quota business that strict requires control application additional.",
+    "keyNote": "Distinguish restriction network, authentication caller, and permissions against data business.",
+    "referenceUrl": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-apis.html",
+    "order": 20,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-network-inspection",
+    "name": "Network inspection and organization-wide controls",
+    "generalExplanation": "Choose point inspection appropriate protocol and path traffic. WAF checks request web in integration that is supported, whereas Network Firewall provides inspection network stateful through routing that designed. Firewall Manager helps manages policy protection across accounts. On architecture inspection centralized, path goes and back must remains consistent against appliance stateful; keterhubungan only does not guarantee symmetry flow.",
+    "keyNote": "Routing determines whether traffic truly exceeds firewall.",
+    "referenceUrl": "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
+    "order": 21,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-security-posture",
+    "name": "Vulnerabilities, posture, and access exposure",
+    "generalExplanation": "Determine type question security before choosing service. Inspector assesses vulnerability workload that is supported. GuardDuty searches indikasi threat from source telemetri that is supported. Security Hub CSPM consolidates findings and inspection posture. Config records configuration and evaluates rules; remediation is action separate. Access Analyzer helps analyzes access within policy. One dashboard does not mean all function that mutually replaces.",
+    "keyNote": "Vulnerability software different from evidence activity dangerous.",
+    "referenceUrl": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+    "order": 22,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-data-lake-governance",
+    "name": "Fine-grained data-lake governance",
+    "generalExplanation": "Analytics often requires restriction table, column, or baris without duplicates all dataset. Lake Formation provides control detailed for integration that is supported. Design must include identity, metadata catalog, permissions query, and access storage. If user still can read object raw directly with permissions S3 that too broad, restriction on path query not becomes limit security menyeluruh.",
+    "keyNote": "Choose column or row filter based on data that truly may seen user.",
+    "referenceUrl": "https://docs.aws.amazon.com/lake-formation/latest/dg/data-filtering.html",
+    "order": 23,
+    "active": true
+  },
+  {
+    "topic": "secure-architectures",
+    "slug": "saa-encryption-lifecycle",
+    "name": "Encryption migration and key lifecycle",
+    "generalExplanation": "Configuration encryption new does not always changes data long. Rotation material key KMS different from encrypts again ciphertext. Migration EBS, EFS, and RDS has mechanism each; do not assume each resource has tombol to change encryption directly. Plan copy or restore to resource encrypted, validation data, permissions key, and cutover application. Removal key also can eliminate capability reads backup that still required.",
+    "keyNote": "Default encryption S3 manages writing new; object long requires process writing again that appropriate if standarnya changes.",
+    "referenceUrl": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html",
+    "order": 24,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-container-orchestration",
+    "name": "Container orchestration and safe releases",
+    "generalExplanation": "Container is format workload, is not decision orchestration. FORMER suitable when Kubernetes API, operator, or scheduler becomes requirements; ECS often reduces complexity when dependency that not exists. Design health checks, capacity deployment, and rollback. Rollback traffic not membalikkan schema database automatically. Separate task execution role that used platform for startup from task role that used code application.",
+    "keyNote": "identification dependency Kubernetes before choosing orchestration.",
+    "referenceUrl": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-backpressure-and-stream-recovery",
+    "name": "Backpressure, retries, and poison records",
+    "generalExplanation": "System asynchronous remains requires limit load and strategy failure. Addition consumer can accelerates queue but also burdens database. Use size backlog that considers capacity worker, limit concurrency, and retry with backoff. Partial batch response reduces repetition record that already succeeds, but not deletes requirements idempotency. Poison record needs to retry that restricted and path investigation or recovery so that progress not stops forever.",
+    "keyNote": "Visibility timeout must appropriate duration work; heartbeat helps work that durasinya changes.",
+    "referenceUrl": "https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-errorhandling.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-managed-data-integration",
+    "name": "Managed SaaS and partner file integration",
+    "generalExplanation": "Moves data, maintains interface file, and receives file from partner is decision different. AppFlow provides integration with application SaaS that is supported. Transfer Family enables protocol transfer such as SFTP toward storage AWS without operates server SFTP itself. After file received in a manner durable, processing downstream can separated with event and queue so that disruption consumer not undermines all path ingest.",
+    "keyNote": "Check connector and direction transfer AppFlow that truly supported.",
+    "referenceUrl": "https://docs.aws.amazon.com/appflow/latest/userguide/what-is-appflow.html",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-managed-ai-integration",
+    "name": "Managed document and text analysis",
+    "generalExplanation": "Choose service based on bentuk input and result that is required. Textract analyzes document, including structure such as table and form on capability that is supported. Comprehend analyzes text that already available for produces insight language. Uses API managed reduces operation model and server, but workflow remains requires permissions, storage result, handling failure, and choice synchronous or asynchronous that appropriate.",
+    "keyNote": "Do not uses text analytics as a substitute for extraction text from image document.",
+    "referenceUrl": "https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html",
+    "order": 17,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-server-migration",
+    "name": "Server replication and controlled cutover",
+    "generalExplanation": "Rehosting server maintains most operating system and application, different from conversion engine database or refactoring application. AWS Transform MGN, previously Application Migration Service, helps replication and launch server that is supported in AWS. Planning remains includes prerequisite, dependencies, test launch, networking, and cutover. Existence replica does not prove application will functions if DNS, secrets, license, or capacity target not yet ready.",
+    "keyNote": "Use destination migration for distinguishes rehost server from migration schema/data database.",
+    "referenceUrl": "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html",
+    "order": 18,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-operational-recovery",
+    "name": "Recovery validation and operational dependencies",
+    "generalExplanation": "Infrastructure as code can create again resource, but does not automatically restores data, capacity, or access application. Test recovery as transaction business end to end: network, identity, DNS, database, worker, and service external. Quota, capacity instance, and permissions key can becomes penghambat although template succeeds divalidasi. Lifecycle hook helps coordination startup and shutdown, but does not guarantee that each failure provides time cleanup.",
+    "keyNote": "Separate resource provisioning from restore state and cutover traffic.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+    "order": 19,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-multiregion-data",
+    "name": "Multi-Region replication and write ownership",
+    "generalExplanation": "Replication improves proximity data and capability recovery, but is not a substitute for backup historical. Aurora Global Database uses replication across Regions with nature that needs to accounted for when plans failover. For DynamoDB global tables, sebutkan mode consistency that used; rules multi-Region eventual consistency not may digeneralisasi to mode strong consistency. Operation business such as reservation unique requires strategy ownership or coordination that appropriate.",
+    "keyNote": "RPO and RTO is limit different; replication fast does not prove both zero.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+    "order": 20,
+    "active": true
+  },
+  {
+    "topic": "resilient-architectures",
+    "slug": "saa-stateful-service-failover",
+    "name": "Cache failover and graceful degradation",
+    "generalExplanation": "Cache helps performance but can becomes source failure if application depends padanya without limit. Replica cross-AZ and automatic failover increases availability on configuration ElastiCache that is supported. Application remains needs to reconnect, timeout, and strategy when cache empty or not available. Redirects all traffic simultaneously to database when cache fails can create database also jatuh, so that fallback needs to restricted and prioritized.",
+    "keyNote": "Determine whether cache may built again from source data authoritative.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html",
+    "order": 21,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-advanced-file-storage",
+    "name": "Managed file-system compatibility",
+    "generalExplanation": "Do not choose storage only because everything stores file. Workload can require SMB and integration AD, feature NetApp ONTAP, snapshot or clone ZFS, or throughput parallel for HPC. Understand protocol, operation metadata, durability, throughput, and way dataset incoming or out. FSx offers several keluarga file system with behavior different; a name service not creates all feature available in each engine.",
+    "keyNote": "FSx for Windows File Server serves requirements SMB and integration Windows that is supported.",
+    "referenceUrl": "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-storage-throughput-diagnostics",
+    "name": "Storage bottlenecks and throughput modes",
+    "generalExplanation": "Bottleneck can be located in volume, instance, network, or pattern request. Adds IOPS volume not helps if limit throughput EBS instance already achieved. For EFS, mode throughput determines how capacity throughput diperoleh; number byte stored rather than a single-satunya consideration. Use metrics and size I/O to separate IOPS, bandwidth, and latency before raises capacity or replaces class storage.",
+    "keyNote": "Calculate requirements operation per second and byte per second separately.",
+    "referenceUrl": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-performance.html",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-hpc-and-compute-initialization",
+    "name": "Parallel compute and startup latency",
+    "generalExplanation": "For HPC, communication between nodes can same its importance with CPU. EFA and placement that appropriate helps workload tightly coupled that supports it. For applications ordinary, startup slow can create scaling tertinggal although capacity finally enough; warm pool prepares EC2 more initial. On Lambda, addition memory also affects CPU that is available so that evaluation must use measurement latency and cost, is not assumption memory terkecil always best.",
+    "keyNote": "Distinguish latency between nodes HPC from latency public to application.",
+    "referenceUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-container-compute-fit",
+    "name": "Container runtime and batch compute selection",
+    "generalExplanation": "Workload determines runtime. Container without dependency Kubernetes can use ECS; requirements Kubernetes API points to FORMER. AWS Batch provides scheduling work, including array jobs and resource specific that is supported. Limit duration Lambda and keterbatasan Fargate means not each container or job suitable on all option serverless. Choose based on duration, GPU, requirements OS, concurrency, and level management that can be received.",
+    "keyNote": "GPU on FORMER requires compute that supports it; do not assume all mode Fargate supports GPU.",
+    "referenceUrl": "https://docs.aws.amazon.com/eks/latest/userguide/fargate.html",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-database-migration",
+    "name": "Schema conversion, CDC, and database cutover",
+    "generalExplanation": "Migration database heterogeneous includes two work: adjusts schema and code that depends on engine, and moves data. DMS Schema Conversion helps assessment and conversion that is supported; findings that does not automatically terkonversi remains needs to handled. Full load and change data capture can reduce downtime, but cutover still requires validation, synchronization end, switch connection, and handling writer long.",
+    "keyNote": "Do not assume DMS data replication automatically convert all stored procedure.",
+    "referenceUrl": "https://docs.aws.amazon.com/dms/latest/userguide/schema-conversion.html",
+    "order": 17,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-purpose-built-databases",
+    "name": "Database engines and access-pattern fit",
+    "generalExplanation": "Choose engine based on operation that dominant and compatibility that must retained. Traversal relationship multi-hop different from full-text search, key-value lookup, document access, and Cassandra-compatible APIs. Neptune, OpenSearch, DocumentDB, and Keyspaces answers requirements different. Maintains API that mirip reduces changes application, but is not evidence all feature engine source identical. Search index often becomes copy derived, is not source transaction authoritative.",
+    "keyNote": "Neptune targets graph relationship traversal.",
+    "referenceUrl": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html",
+    "order": 18,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-database-access-correctness",
+    "name": "Key design, indexes, and read consistency",
+    "generalExplanation": "Performance DynamoDB depends on access pattern and distribution key, is not just total capacity. Partition key that concentrated can create hot key. GSI helps query with alternate key but does not provide strongly consistent reads. If business requires verification immediately after write, choose path read or model data that supports consistency that. Scan or filter is not a substitute for design key that appropriate.",
+    "keyNote": "identification partition key, sort key, and range query before choosing index.",
+    "referenceUrl": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html",
+    "order": 19,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-hybrid-dns-decisions",
+    "name": "Hybrid DNS direction and namespace ownership",
+    "generalExplanation": "Connection network that succeeds does not automatically create name private can di-resolve. Inbound Resolver endpoint receives query from on premises toward resolution VPC. Outbound endpoint and forwarding rule routes query domain specific from VPC to DNS in outside VPC. For multiple accounts, rule sharing can reduce duplication. Split-view DNS requires planning namespace because private hosted zone that suitable can take priority without fallback automatically for record that not exists.",
+    "keyNote": "Image direction query before choosing inbound or outbound.",
+    "referenceUrl": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-overview-forward-network-to-vpc.html",
+    "order": 20,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-network-protocol-and-segmentation",
+    "name": "IPv6 egress and routed network segmentation",
+    "generalExplanation": "Protocol and route table determines design network. Egress-only internet gateway provides access IPv6 out without allows connection internet new incoming through gateway that. NAT IPv4 is not answer universal for traffic IPv6. On Transit Gateway, association and propagation route table can separates environment while gives access to shared services. Shared hub does not mean each attachment must can communicate with all that other.",
+    "keyNote": "Distinguish IPv4 NAT, IPv6 egress-only, and access private to service.",
+    "referenceUrl": "https://docs.aws.amazon.com/vpc/latest/userguide/egress-only-internet-gateway.html",
+    "order": 21,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-distributed-analytics-and-bi",
+    "name": "Data-lake processing and dashboard freshness",
+    "generalExplanation": "Pipeline analytics has tahapan different: ingest, catalog, transformation, query, and visualization. EMR Serverless can run framework such as Spark that is supported without manages cluster directly. Athena runs SQL on data S3; Glue Data Catalog helps metadata, does not automatically improve quality data. Quick Sight provides visualization; SPICE reduces query to source through storage analytics in-memory with refresh that needs to appropriate target freshness.",
+    "keyNote": "Choose engine appropriate pipeline and framework that already required.",
+    "referenceUrl": "https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/emr-serverless.html",
+    "order": 22,
+    "active": true
+  },
+  {
+    "topic": "high-performing-architectures",
+    "slug": "saa-stream-scaling-and-checkpoints",
+    "name": "Stream ordering, partitioning, and checkpoints",
+    "generalExplanation": "Streaming requires decision about unit ordering, throughput, and recovery. Partition key distributes record to shard; uses one key for all device can create bottleneck. Ordering per device does not mean all stream requires order global. Consumer needs to checkpoint or posisi baca and strategy for record fails. Glue job bookmark helps tracks data that has processed on source that is supported, but does not automatically make all effect downstream exactly once.",
+    "keyNote": "Determine whether order required per entity, per shard, or global.",
+    "referenceUrl": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html",
+    "order": 23,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-cost-attribution-and-controls",
+    "name": "Cost attribution, budgets, and control boundaries",
+    "generalExplanation": "Optimization started from atribusi and metrics that correct. Tag cost needs to enabled and managed so that report meaningful; support backfill has provisions separate. Cost and Usage Reports helps analysis detail, whereas Budgets gives monitoring and action that configured. Alarm anggaran does not guarantee service stops appropriate before one dolar next ditagih. Distinguish visibility, alerting, approval, and enforcement application.",
+    "keyNote": "Use label business that consistent before compares cost across teams.",
+    "referenceUrl": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html",
+    "order": 11,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-storage-request-economics",
+    "name": "Storage, request, retrieval, and encryption costs",
+    "generalExplanation": "Cost storage not stops on price per GB. Consider duration minimum, size minimum that relevant, request, retrieval, metadata, and requirements availability and retention. S3 Bucket Keys can reduce request KMS on workload SSE-KMS that meets requirement, but level savings depends on pattern usage. Object versioning, log retention, and multipart uploads also can store data that not appears from version active application.",
+    "keyNote": "Calculate total cost throughout lifecycle data, including way data will taken back.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html",
+    "order": 12,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-measured-compute-economics",
+    "name": "Compute cost per successful unit of work",
+    "generalExplanation": "Choose configuration compute based on work that completed with SLO that equivalent. Memory Lambda larger can accelerates CPU and reduces duration so that cost needs to calculated, is not guessed. Migration to Graviton requires compatibility architecture and benchmark. Stops instance development reduces compute but storage and resource related remains can causes cost. All comparison numerik within question uses assumption explicit, is not price AWS when this.",
+    "keyNote": "Use cost per transaction succeeds or per job completed.",
+    "referenceUrl": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html",
+    "order": 13,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-commitment-and-capacity-planning",
+    "name": "Commitments, utilization, and capacity assurance",
+    "generalExplanation": "Discount usage and kepastian capacity solves problem different. Savings Plans is commitment usage that meets provisions; savings depends on utilization commitment that. Capacity Reservation relates with tersedianya capacity within scope that chosen and mempunyai consequence cost itself. Capacity Spot can interrupted, so that gabungkan with requirements baseline, checkpoint, and plan when capacity not available.",
+    "keyNote": "Ukur baseline that enough stable before creates commitment long-term.",
+    "referenceUrl": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+    "order": 14,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-database-request-economics",
+    "name": "Database access cost and storage configuration",
+    "generalExplanation": "Optimization database must maintains access pattern and reliability. Query DynamoDB that reads many data then memfilternya still pays read that performed; index that appropriate can reduce work that but adds write/storage. Aurora offers configuration cost I/O that needs to compared with against workload, is not chosen based on name. RDS storage autoscaling protects capacity that menipis however is not mechanism automatically for shrinks storage after spike.",
+    "keyNote": "Calculate load baca and write, is not just number record that returned.",
+    "referenceUrl": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.FilterExpression.html",
+    "order": 15,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-network-cost-models",
+    "name": "Network path and incremental cost modeling",
+    "generalExplanation": "Path traffic determines component cost. When evaluates endpoint, NAT, Transit Gateway, or location resource, calculate cost remains that truly can be deleted and cost variable that changes. If NAT remains required for traffic other, cost fixed portion is not savings that can claimed from moves some traffic to endpoint. Do not exchanges target availability or security for cost lower without states that requirements changes.",
+    "keyNote": "Separate cost per hour, per GB, cross-AZ, and across Regions appropriate scenario.",
+    "referenceUrl": "https://aws.amazon.com/vpc/pricing/",
+    "order": 16,
+    "active": true
+  },
+  {
+    "topic": "cost-optimized-architectures",
+    "slug": "saa-delivery-cache-economics",
+    "name": "Delivery-path cost and cache efficiency",
+    "generalExplanation": "Cache hit ratio affects load origin and cost, but cache key must remains separates variation response that valid. Parameter analytics that does not change contents can reduce hit ratio if inserted without reason. Origin Shield can reduce origin fetch across location edge on pattern that appropriate, but has component cost itself. Compare total path delivery and requirements freshness, is not just one metrics that membaik.",
+    "keyNote": "Keluarkan attribute that not affects response from cache key only after checks correctness.",
+    "referenceUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html",
+    "order": 17,
     "active": true
   }
 ]

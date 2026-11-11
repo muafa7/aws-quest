@@ -6,9 +6,14 @@ import { prisma } from "@/lib/prisma";
 import { RetroPanel, StatusBadge } from "@/components/retro-panel";
 
 export const metadata = { title: "Mock Exam" };
+export const dynamic = "force-dynamic";
 
 export default async function MockPage() {
-  const certifications = await prisma.certification.findMany({ where: { active: true }, orderBy: { code: "asc" } });
+  const certifications = await prisma.certification.findMany({
+    where: { active: true },
+    orderBy: { code: "asc" },
+    include: { mockExams: { where: { status: "IN_PROGRESS" }, select: { id: true }, take: 1 } },
+  });
   return (
     <main id="main-content" tabIndex={-1} className="page-wrap">
       <PageHeader eyebrow="BOSS EXAM" title="Mock certification exam" description="Timed. No confidence input. No feedback until submission. Scores are internal practice scores, not official AWS scaled scores." icon="mock" tone="coral" />
@@ -16,7 +21,7 @@ export default async function MockPage() {
         {certifications.map((certification, index) => (
           <Link key={certification.id} href={`/mock/${certification.code}`} className="panel-link">
             <RetroPanel accent interactive tone={domainTone(index)} className="picker-card">
-              <div className="certification-card__top"><span className="code-chip">{certification.code}</span><StatusBadge>{certification.durationMinutes} MIN</StatusBadge></div>
+              <div className="certification-card__top"><span className="code-chip">{certification.code}</span>{certification.mockExams.length > 0 ? <StatusBadge tone="warning">IN PROGRESS</StatusBadge> : <StatusBadge>{certification.durationMinutes} MIN</StatusBadge>}</div>
               <h2>{certification.name}</h2>
               <div className="picker-card__footer"><span>Target {certification.examQuestionCount} questions</span><ArcadeIcon name="arrow" /></div>
             </RetroPanel>

@@ -74,6 +74,8 @@ model Question {
   active      Boolean            @default(true)
   sourceTitle String?
   sourceUrl   String?
+  /// null = training question; otherwise the sealed assessment pack it belongs to
+  assessmentPackId String?
   concept     Concept            @relation(fields: [conceptId], references: [id], onDelete: Cascade)
   options     QuestionOption[]
   tags        QuestionTag[]
@@ -84,15 +86,17 @@ model Question {
 
   @@index([conceptId, active])
   @@index([difficulty, style])
+  @@index([assessmentPackId])
 }
 
 model QuestionOption {
-  id         Int      @id @default(autoincrement())
-  questionId Int
-  key        String
-  text       String
-  isCorrect  Boolean  @default(false)
-  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  id          Int      @id @default(autoincrement())
+  questionId  Int
+  key         String
+  text        String
+  isCorrect   Boolean  @default(false)
+  explanation String?
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@unique([questionId, key])
 }
@@ -128,6 +132,12 @@ model Attempt {
   questionTextSnapshot    String
   selectedOptionsSnapshot String
   correctOptionsSnapshot  String
+  /// JSON array of canonical option keys in the order they were shown
+  optionOrderSnapshot     String?
+  /// JSON array of { key, text, explanation } as the options read when answered
+  optionsSnapshot         String?
+  /// True when no earlier attempt or mock had shown this question; null for attempts recorded before this was tracked
+  isFirstRecordedAttempt  Boolean?
   answeredAt              DateTime         @default(now())
   question                Question         @relation(fields: [questionId], references: [id], onDelete: Restrict)
   practiceSession         PracticeSession? @relation(fields: [practiceSessionId], references: [id], onDelete: SetNull)
@@ -162,6 +172,14 @@ model MockExam {
   durationMinutes Int
   questionCount   Int
   correctCount    Int                @default(0)
+  /// Certification code while IN_PROGRESS, null afterwards: at most one active exam per certification
+  activeKey       String?            @unique
+  /// STANDARD draws from the training bank; FRESH uses one sealed assessment pack
+  assessmentMode  String             @default("STANDARD")
+  /// A sealed pack can be started once
+  assessmentPackId String?           @unique
+  /// VALID or EXPIRED, checked on the server at submit; null for exams taken before this was recorded
+  timeValidity    String?
   certification   Certification      @relation(fields: [certificationId], references: [id], onDelete: Cascade)
   questions       MockExamQuestion[]
 
@@ -176,6 +194,16 @@ model MockExamQuestion {
   selectedOptionsSnapshot String?
   correctOptionsSnapshot  String
   isCorrect               Boolean?
+  /// JSON array of canonical option keys in the order they are shown
+  optionOrderSnapshot     String?
+  /// JSON array of { key, text, explanation } as the options read when the exam started
+  optionsSnapshot         String?
+  questionTextSnapshot    String?
+  /// Autosaved answer while the exam is in progress; never graded until submit
+  selectedDraftSnapshot   String?
+  flagged                 Boolean  @default(false)
+  /// Whether the question had never been answered in AWS Quest when the exam started; null for older exams
+  wasUnseenAtStart        Boolean?
   mockExam                MockExam @relation(fields: [mockExamId], references: [id], onDelete: Cascade)
   question                Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
 

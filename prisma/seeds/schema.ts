@@ -48,6 +48,7 @@ export const questionSchema = z.strictObject({
       key: nonEmpty,
       text: nonEmpty,
       correct: z.boolean(),
+      explanation: nonEmpty.optional(),
     }),
   ).min(2),
   tags: z.array(nonEmpty).default([]),
@@ -56,6 +57,7 @@ export const questionSchema = z.strictObject({
     url: z.url(),
   }).optional(),
   active: z.boolean().default(true),
+  assessmentPack: z.string().regex(/^[A-Z0-9]+(?:-[A-Z0-9]+)+$/, "Assessment pack IDs look like SAA-C03-FRESH-A.").optional(),
 });
 
 export type CertificationSeed = z.infer<typeof certificationSchema>;

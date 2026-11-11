@@ -2,6 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
+import { allocateQuotas } from "../../src/lib/learning/blueprint";
 import {
   certificationSchema,
   conceptSchema,
@@ -18,9 +19,11 @@ import {
 const seedRoot = path.dirname(fileURLToPath(import.meta.url));
 const certificationDirectories = ["clf-c02", "saa-c03"];
 const legacyQuestionFile = "core.json";
+const reservedFileSuffix = ".reserved.json";
 const codePattern = /^([A-Z]{3})-([A-Z0-9]{2,5})-\d{3}$/;
-const selectPattern = /\(Select [A-Z]+\.\)/;
+const selectPattern = /\(?Select [A-Z]+\.\)?/;
 const selectWords = ["TWO", "THREE", "FOUR", "FIVE", "SIX"];
+const selectInstruction = new RegExp(`\\bSelect (?:${selectWords.join("|")})\\.`);
 
 export type LoadedQuestion = { file: string; question: QuestionSeed };
 
@@ -131,6 +134,45 @@ async function loadBundle(directory: string): Promise<ContentBundle> {
   return { directory, certification: certification.data, topics, concepts, lessons, questions };
 }
 
+function validateAssessmentPacks({ directory, certification, topics, concepts, questions }: ContentBundle, issues: string[]) {
+  const topicByConcept = new Map(concepts.map((concept) => [concept.slug, concept.topic]));
+  const sortedTopics = [...topics].sort((a, b) => a.order - b.order);
+  const packs = new Map<string, QuestionSeed[]>();
+  for (const { question } of questions) {
+    if (question.assessmentPack && question.active) {
+      packs.set(question.assessmentPack, [...(packs.get(question.assessmentPack) ?? []), question]);
+    }
+  }
+  if (packs.size === 0) return;
+
+  const location = `${directory}/questions`;
+  if (sortedTopics.some((topic) => topic.weight === undefined)) {
+    issues.push(issue(location, "Assessment packs need every topic to declare an exam weight in topics.json."));
+    return;
+  }
+  const blueprint = allocateQuotas(
+    sortedTopics.map((topic) => ({ weight: topic.weight ?? 0, capacity: certification.examQuestionCount })),
+    certification.examQuestionCount,
+  );
+
+  for (const [pack, items] of packs) {
+    if (items.length !== certification.examQuestionCount) {
+      issues.push(issue(location, `Assessment pack has ${items.length} active questions; ${certification.code} exams need ${certification.examQuestionCount}.`, pack));
+    }
+    // One question of tolerance per domain absorbs unavoidable rounding ties in the blueprint.
+    const mismatched = sortedTopics
+      .map((topic, index) => ({ topic: topic.slug, expected: blueprint[index], actual: items.filter((q) => topicByConcept.get(q.concept) === topic.slug).length }))
+      .filter(({ expected, actual }) => Math.abs(expected - actual) > 1);
+    if (mismatched.length > 0) {
+      issues.push(issue(
+        location,
+        `Assessment pack does not follow the domain blueprint (±1 allowed):\n${mismatched.map(({ topic, expected, actual }) => `${topic}: ${actual}, expected ${expected}`).join("\n")}`,
+        pack,
+      ));
+    }
+  }
+}
+
 function validateBundle(bundle: ContentBundle, issues: string[]) {
   const { directory, certification, topics, concepts, lessons, questions } = bundle;
   const topicSlugs = new Set(topics.map((topic) => topic.slug));
@@ -172,7 +214,9 @@ function validateBundle(bundle: ContentBundle, issues: string[]) {
   }
 
   const codes = new Set<string>();
-  const prefixOwners = new Map<string, { concept: string; code: string }>();
+  // CCP prefixes name one concept (CCP-SRM) while SAA prefixes name a domain family
+  // (SAA-SEC). Both conventions keep a prefix inside a single topic.
+  const prefixOwners = new Map<string, { topic: string; code: string }>();
   const codesByCertificationPrefix = new Map<string, string[]>();
 
   for (const { file, question } of questions) {
@@ -186,18 +230,25 @@ function validateBundle(bundle: ContentBundle, issues: string[]) {
 
     const codeMatch = codePattern.exec(question.code);
     if (!codeMatch) {
-      report("Question code must look like <CERT>-<PREFIX>-<NNN>, e.g. CCP-SRM-001.");
+      report("Question code must look like <CERT>-<PREFIX>-<NNN>, e.g. CCP-SRM-001 or SAA-SEC-001.");
     } else {
-      const [, certificationPrefix, conceptPrefix] = codeMatch;
+      const [, certificationPrefix, familyPrefix] = codeMatch;
       codesByCertificationPrefix.set(certificationPrefix, [...(codesByCertificationPrefix.get(certificationPrefix) ?? []), question.code]);
 
-      const prefix = `${certificationPrefix}-${conceptPrefix}`;
+      const prefix = `${certificationPrefix}-${familyPrefix}`;
       const owner = prefixOwners.get(prefix);
-      if (!owner) {
-        prefixOwners.set(prefix, { concept: question.concept, code: question.code });
-      } else if (owner.concept !== question.concept) {
-        report(`Code prefix ${prefix} belongs to '${owner.concept}' (${owner.code}); this question references '${question.concept}'.`);
+      if (concept && !owner) {
+        prefixOwners.set(prefix, { topic: concept.topic, code: question.code });
+      } else if (concept && owner && owner.topic !== concept.topic) {
+        report(`Code prefix ${prefix} belongs to topic '${owner.topic}' (${owner.code}); this question's concept '${concept.slug}' is in '${concept.topic}'.`);
       }
+    }
+
+    const inReservedFile = file.endsWith(reservedFileSuffix);
+    if (inReservedFile && !question.assessmentPack) {
+      report(`Questions in *${reservedFileSuffix} files must declare an assessmentPack.`);
+    } else if (!inReservedFile && question.assessmentPack) {
+      report(`Reserved questions must live in <topic-slug>${reservedFileSuffix} so they stay out of training files.`);
     }
 
     const fileTopic = topicOfFile(file);
@@ -215,17 +266,22 @@ function validateBundle(bundle: ContentBundle, issues: string[]) {
     const correctCount = question.options.filter((option) => option.correct).length;
     if (question.type === "SINGLE_CHOICE") {
       if (correctCount !== 1) report(`SINGLE_CHOICE requires exactly 1 correct answer.\nFound: ${correctCount}`);
-      if (question.question.includes("(Select")) report("SINGLE_CHOICE prompt must not contain '(Select ...)'.");
+      if (question.question.includes("(Select") || selectInstruction.test(question.question)) {
+        report("SINGLE_CHOICE prompt must not contain a 'Select N.' instruction.");
+      }
     } else if (correctCount < 2) {
       report(`MULTIPLE_CHOICE requires at least 2 correct answers.\nFound: ${correctCount}`);
     } else {
-      const expected = `(Select ${selectWords[correctCount - 2] ?? correctCount}.)`;
-      if (!question.question.includes(expected)) {
+      const inline = `Select ${selectWords[correctCount - 2] ?? correctCount}.`;
+      const expected = `(${inline})`;
+      if (!question.question.includes(inline)) {
         const found = selectPattern.exec(question.question)?.[0];
-        report(`MULTIPLE_CHOICE prompt must include '${expected}' for ${correctCount} correct answers.${found ? `\nFound: '${found}'` : ""}`);
+        report(`MULTIPLE_CHOICE prompt must include '${expected}' or '${inline}' for ${correctCount} correct answers.${found ? `\nFound: '${found}'` : ""}`);
       }
     }
   }
+
+  validateAssessmentPacks(bundle, issues);
 
   if (codesByCertificationPrefix.size > 1) {
     const groups = [...codesByCertificationPrefix].map(
@@ -265,17 +321,20 @@ function validateAcrossBundles(bundles: ContentBundle[], issues: string[]) {
   }
 }
 
+export function validateBundles(bundles: ContentBundle[]) {
+  const issues: string[] = [];
+  for (const bundle of bundles) validateBundle(bundle, issues);
+  validateAcrossBundles(bundles, issues);
+  return issues;
+}
+
 export async function loadAndValidateAll() {
   const bundles: ContentBundle[] = [];
   for (const directory of certificationDirectories) {
     bundles.push(await loadBundle(directory));
   }
 
-  const issues: string[] = [];
-  for (const bundle of bundles) validateBundle(bundle, issues);
-  validateAcrossBundles(bundles, issues);
-  assertNoIssues(issues);
-
+  assertNoIssues(validateBundles(bundles));
   return bundles;
 }
 
@@ -288,8 +347,13 @@ export function summarizeBundle({ certification, topics, concepts, lessons, ques
   const activeConcepts = concepts
     .filter((concept) => concept.active)
     .sort((a, b) => (topicOrder.get(a.topic) ?? 0) - (topicOrder.get(b.topic) ?? 0) || a.order - b.order);
-  const activeQuestions = questions.map(({ question }) => question).filter((question) => question.active);
+  const allActive = questions.map(({ question }) => question).filter((question) => question.active);
+  const activeQuestions = allActive.filter((question) => !question.assessmentPack);
+  const reservedQuestions = allActive.filter((question) => question.assessmentPack);
+  const packIds = [...new Set(reservedQuestions.map((question) => question.assessmentPack!))].sort();
   const questionCount = (slug: string) => activeQuestions.filter((question) => question.concept === slug).length;
+  const optionCount = allActive.reduce((total, question) => total + question.options.length, 0);
+  const explainedOptions = allActive.reduce((total, question) => total + question.options.filter((option) => option.explanation).length, 0);
   const width = Math.max(0, ...topics.map((topic) => topic.slug.length), ...activeConcepts.map((concept) => concept.slug.length)) + 2;
 
   const correctKeys = activeQuestions.flatMap((question) => question.options.filter((option) => option.correct).map((option) => option.key));
@@ -298,8 +362,13 @@ export function summarizeBundle({ certification, topics, concepts, lessons, ques
   const belowRecommended = activeConcepts.filter((concept) => questionCount(concept.slug) === 3).map((concept) => concept.slug);
 
   return [
-    `${certification.code}: ${activeConcepts.length} active concepts, ${lessons.length} lessons, ${activeQuestions.length} active questions (${questions.length} total)`,
-    "  Domains",
+    `${certification.code}: ${activeConcepts.length} active concepts, ${lessons.length} lessons, ` +
+      `${activeQuestions.length} active training questions, ${reservedQuestions.length} reserved (${questions.length} total)`,
+    `  Option explanations  ${explainedOptions}/${optionCount}`,
+    ...(packIds.length > 0
+      ? packIds.map((pack) => `  Sealed pack ${pack}: ${reservedQuestions.filter((question) => question.assessmentPack === pack).length} questions`)
+      : ["  Sealed packs  none"]),
+    "  Training domains",
     ...[...topics]
       .sort((a, b) => a.order - b.order)
       .map((topic) => {
@@ -307,7 +376,7 @@ export function summarizeBundle({ certification, topics, concepts, lessons, ques
         const topicQuestions = topicConcepts.reduce((sum, concept) => sum + questionCount(concept.slug), 0);
         return `    ${topic.slug.padEnd(width)}${String(topicConcepts.length).padStart(3)} concepts${String(topicQuestions).padStart(5)} questions`;
       }),
-    "  Active questions per concept",
+    "  Active training questions per concept",
     ...activeConcepts.map((concept) => `    ${concept.slug.padEnd(width)}${String(questionCount(concept.slug)).padStart(3)}`),
     `  Style        ${countBy(activeQuestions.map((question) => question.style), questionSchema.shape.style.options)}`,
     `  Difficulty   ${countBy(activeQuestions.map((question) => question.difficulty), questionSchema.shape.difficulty.options)}`,
